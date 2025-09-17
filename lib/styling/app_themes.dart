@@ -7,16 +7,8 @@ import 'app_text_styles.dart';
 // Example:
 class AppThemes {
   static final lightTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.grey[100],
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: AppColors.primaryColor,
-      unselectedItemColor: Colors.grey[600],
-      backgroundColor: AppColors.primaryColor,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      type: BottomNavigationBarType.fixed,
-    ),
-    primaryColor: AppColors.primaryColor,
+    scaffoldBackgroundColor: AppColors.whiteColor,
+    primaryColor: AppColors.blackColor,
     fontFamily: AppFonts.mainFontName,
 
     textTheme: TextTheme(
@@ -25,12 +17,12 @@ class AppThemes {
     ),
 
     buttonTheme: const ButtonThemeData(
-      buttonColor: AppColors.primaryColor,
-      disabledColor: AppColors.secondaryColor,
+      buttonColor: AppColors.whiteColor,
+      disabledColor: AppColors.whiteColor,
     ),
 
     colorScheme: ColorScheme.fromSwatch(
-      primarySwatch: Colors.teal,
+      primarySwatch: Colors.grey,
     ).copyWith(secondary: Colors.white),
 
     splashColor: Colors.transparent,
@@ -41,19 +33,11 @@ class AppThemes {
   // ---------------------------------------------------------
 
   static final darkTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.grey[900],
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedItemColor: AppColors.primaryColor,
-      unselectedItemColor: Colors.grey[600],
-      backgroundColor: AppColors.secondaryColor,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      type: BottomNavigationBarType.fixed,
-    ),
-    primaryColor: AppColors.primaryColor,
+    scaffoldBackgroundColor: AppColors.blackColor,
+    primaryColor: AppColors.whiteColor,
 
     colorScheme: const ColorScheme.dark(
-      primary: AppColors.primaryColor,
+      primary: AppColors.whiteColor,
       secondary: Colors.tealAccent,
       brightness: Brightness.dark,
     ),
@@ -65,8 +49,8 @@ class AppThemes {
       titleMedium: AppTextStyles.whiteTitleMediumTextStyle,
     ),
     buttonTheme: const ButtonThemeData(
-      buttonColor: AppColors.primaryColor,
-      disabledColor: AppColors.secondaryColor,
+      buttonColor: AppColors.whiteColor,
+      disabledColor: AppColors.blackColor,
     ),
 
     splashColor: Colors.transparent,

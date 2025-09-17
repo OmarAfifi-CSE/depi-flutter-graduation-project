@@ -5,14 +5,14 @@ import 'app_fonts.dart';
 
 class AppTextStyles {
   static TextStyle primaryHeadlineStyle = TextStyle(
-    color: AppColors.primaryColor,
+    color: AppColors.blackColor,
     fontFamily: AppFonts.mainFontName,
     fontSize: 30,
     fontWeight: FontWeight.bold,
   );
 
   static TextStyle subtitlesStyle = TextStyle(
-    color: AppColors.secondaryColor,
+    color: AppColors.blackColor,
     fontFamily: AppFonts.mainFontName,
     fontSize: 16,
     fontWeight: FontWeight.w400,
@@ -21,13 +21,13 @@ class AppTextStyles {
   // Example:
   // for themes
   static TextStyle whiteTitleMediumTextStyle = TextStyle(
-    color: AppColors.primaryColor,
+    color: AppColors.blackColor,
     fontFamily: AppFonts.mainFontName,
     fontSize: 20,
     fontWeight: FontWeight.bold,
   );
   static TextStyle blackTitleMediumTextStyle = TextStyle(
-    color: AppColors.secondaryColor,
+    color: AppColors.blackColor,
     fontFamily: AppFonts.mainFontName,
     fontSize: 20,
     fontWeight: FontWeight.bold,
