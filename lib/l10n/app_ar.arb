@@ -1,0 +1,9 @@
+{
+"@@locale": "ar",
+"hello": "أهلاً",
+"welcome": "أهلاً بك في تطبيقنا",
+"settings": "الإعدادات",
+"language": "اللغة",
+"userName": "أهلاً {name}!"
+
+}
