@@ -1,5 +1,7 @@
 {
   "@@locale": "en",
+  "test": "Test",
+
   "hello": "hello",
   "welcome": "Welcome",
   "settings": "Sittings",

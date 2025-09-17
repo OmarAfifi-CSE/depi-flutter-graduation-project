@@ -95,6 +95,12 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
+  /// No description provided for @test.
+  ///
+  /// In en, this message translates to:
+  /// **'Test'**
+  String get test;
+
   /// No description provided for @hello.
   ///
   /// In en, this message translates to:

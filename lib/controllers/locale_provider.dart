@@ -13,8 +13,15 @@ class LocaleProvider extends ChangeNotifier {
     if (!supporterLocales.contains(localeName)) {
       return;
     }
-    _locale = Locale(localeName);
-    notifyListeners();
+    if (localeName == "ar") {
+      AppFonts.mainFontName = "Tajawal";
+      _locale = const Locale("ar");
+      notifyListeners();
+    } else {
+      AppFonts.mainFontName = "Poppins";
+      _locale = const Locale("en");
+      notifyListeners();
+    }
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
     try {
@@ -22,19 +29,5 @@ class LocaleProvider extends ChangeNotifier {
     } catch (e) {
       debugPrint("error while saving locale");
     }
-  }
-
-  void changeLocale(String localeName) {
-    if (localeName == "ar") {
-      print("dsdsds");
-      AppFonts.mainFontName = "Tajawal";
-
-      _locale = const Locale("ar");
-      notifyListeners();
-      return;
-    }
-    AppFonts.mainFontName = "Poppins";
-    _locale = const Locale("en");
-    notifyListeners();
   }
 }

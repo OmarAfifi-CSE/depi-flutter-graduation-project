@@ -51,6 +51,36 @@ class MyApp extends StatelessWidget {
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) =>
             MaterialApp.router(
+              builder: (context, child) {
+                return Stack(
+                  children: [
+                    ?child,
+                    Positioned(
+                      right: 0,
+                      bottom: 0,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (themeProvider.themeMode == ThemeMode.dark) {
+                            context.read<ThemeProvider>().setTheme(
+                              ThemeMode.light,
+                            );
+                          } else {
+                            context.read<ThemeProvider>().setTheme(
+                              ThemeMode.dark,
+                            );
+                          }
+                          if (localeProvider.locale.languageCode == "ar") {
+                            context.read<LocaleProvider>().setLocale("en");
+                          } else {
+                            context.read<LocaleProvider>().setLocale("ar");
+                          }
+                        },
+                        child: Text(AppLocalizations.of(context)!.test),
+                      ),
+                    ),
+                  ],
+                );
+              },
               supportedLocales: const [Locale("ar"), Locale("en")],
               localizationsDelegates: const [
                 AppLocalizations.delegate,
@@ -58,6 +88,8 @@ class MyApp extends StatelessWidget {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
+              themeAnimationDuration: const Duration(milliseconds: 500),
+              themeAnimationCurve: Curves.easeInOut,
               locale: localeProvider.locale,
               title: 'Batrina',
               debugShowCheckedModeBanner: false,

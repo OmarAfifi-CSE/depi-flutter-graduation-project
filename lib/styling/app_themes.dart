@@ -35,6 +35,7 @@ class AppThemes {
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: AppColors.blackColor,
     primaryColor: AppColors.whiteColor,
+    fontFamily: AppFonts.mainFontName,
 
     colorScheme: const ColorScheme.dark(
       primary: AppColors.whiteColor,
