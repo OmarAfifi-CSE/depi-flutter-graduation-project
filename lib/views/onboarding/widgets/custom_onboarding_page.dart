@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../styling/app_colors.dart';
+
 class CustomOnboardingPage extends StatelessWidget {
   const CustomOnboardingPage({
     super.key,
@@ -20,6 +22,7 @@ class CustomOnboardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColorTheme>()!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.0.w),
       child:
@@ -42,7 +45,12 @@ class CustomOnboardingPage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
               SizedBox(height: 18.h),
-              CustomText(data: _subTitle, fontSize: 14.sp, fontWeight: FontWeight.w300)
+              CustomText(
+                data: _subTitle,
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w300,
+                color: appColors.secondaryText,
+              ),
             ],
           ).animate().fadeIn(
             duration: Duration(milliseconds: 1000),

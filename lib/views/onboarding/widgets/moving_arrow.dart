@@ -1,20 +1,29 @@
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
-class MovingArrow extends StatelessWidget {
+class MovingArrow extends StatefulWidget {
   const MovingArrow({super.key, required PageController pageCont})
     : _pageController = pageCont;
   final PageController _pageController;
 
+  @override
+  State<MovingArrow> createState() => _MovingArrowState();
+}
+
+class _MovingArrowState extends State<MovingArrow> {
   void _onTap() {
-    if (_pageController.page! < 2) {
-      _pageController.animateToPage(
-        (_pageController.page! + 1).toInt(),
+    if (widget._pageController.page! < 2) {
+      widget._pageController.animateToPage(
+        (widget._pageController.page! + 1).toInt(),
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
+    } else if (widget._pageController.page == 2) {
+      context.pushReplacementNamed(AppRoutes.signInScreen);
     }
   }
 

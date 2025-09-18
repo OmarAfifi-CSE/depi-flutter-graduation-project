@@ -48,6 +48,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final router = RouterGenerationConfig.goRouter();
+
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
@@ -79,10 +81,10 @@ class MyApp extends StatelessWidget {
                               ThemeMode.dark,
                             );
                           }
-                          if (localeProvider.locale.languageCode == "ar") {
-                            context.read<LocaleProvider>().setLocale("en");
-                          } else {
+                          if (localeProvider.locale.languageCode != "ar") {
                             context.read<LocaleProvider>().setLocale("ar");
+                          } else {
+                            context.read<LocaleProvider>().setLocale("en");
                           }
                         },
                         child: Text(AppLocalizations.of(context)!.test),
@@ -106,7 +108,7 @@ class MyApp extends StatelessWidget {
               theme: AppThemes.lightTheme,
               darkTheme: AppThemes.darkTheme,
               themeMode: themeProvider.themeMode,
-              routerConfig: RouterGenerationConfig.goRouter(),
+              routerConfig: router,
             );
           },
         ),

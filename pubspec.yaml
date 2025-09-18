@@ -23,6 +23,7 @@ dependencies:
   smooth_page_indicator: ^1.2.1
   flutter_animate: ^4.5.2
   flutter_svg: ^2.2.1
+  animations: ^2.0.11
 
 
 dev_dependencies:

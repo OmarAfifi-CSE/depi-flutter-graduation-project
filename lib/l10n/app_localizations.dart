@@ -166,6 +166,144 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Browse through various categories and find the best deals that match your needs and preferences.'**
   String get allTypesOffersDescription;
+
+  /// No description provided for @welcomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome!'**
+  String get welcomeTitle;
+
+  /// No description provided for @welcomeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login or sign up to continue our app'**
+  String get welcomeDescription;
+
+  /// No description provided for @emailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get emailTitle;
+
+  /// No description provided for @passwordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordTitle;
+
+  /// No description provided for @loginTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get loginTitle;
+
+  /// No description provided for @orTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'or'**
+  String get orTitle;
+
+  /// No description provided for @continueWithGoogleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogleTitle;
+
+  /// No description provided for @continueWithGoogleDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast and secure login with your Google account'**
+  String get continueWithGoogleDescription;
+
+  /// No description provided for @forgotPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPasswordTitle;
+
+  /// No description provided for @dontHaveAccountTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get dontHaveAccountTitle;
+
+  /// No description provided for @signUpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signUpTitle;
+
+  /// No description provided for @emailRequiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Required'**
+  String get emailRequiredTitle;
+
+  /// No description provided for @emailRequiredDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email address to continue'**
+  String get emailRequiredDescription;
+
+  /// No description provided for @emailInvalidTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid Email'**
+  String get emailInvalidTitle;
+
+  /// No description provided for @emailInvalidDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address format'**
+  String get emailInvalidDescription;
+
+  /// No description provided for @passwordRequiredTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Required'**
+  String get passwordRequiredTitle;
+
+  /// No description provided for @passwordRequiredDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your password to login'**
+  String get passwordRequiredDescription;
+
+  /// No description provided for @passwordTooShortTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Too Short'**
+  String get passwordTooShortTitle;
+
+  /// No description provided for @passwordTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters long'**
+  String get passwordTooShortDescription;
+
+  /// No description provided for @loginFailedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Login Failed'**
+  String get loginFailedTitle;
+
+  /// No description provided for @loginFailedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password. Please try again'**
+  String get loginFailedDescription;
+
+  /// No description provided for @loginSuccessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Login Successful'**
+  String get loginSuccessTitle;
+
+  /// No description provided for @loginSuccessDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back! Redirecting to home screen'**
+  String get loginSuccessDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

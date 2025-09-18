@@ -16,17 +16,13 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
-  @override
-  void initState() {
-    // TODO: implement initState
-    _pageController.addListener(() {});
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
+    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -73,7 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         dotHeight: 10.0,
                         paintStyle: PaintingStyle.fill,
                         strokeWidth: 1.5,
-                        dotColor: theme.colorScheme.primary,
+                        dotColor: appColors.card!,
                         activeDotColor: theme.primaryColor,
                       ), // your preferred effect
                       onDotClicked: (index) {},
