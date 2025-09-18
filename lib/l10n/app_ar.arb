@@ -48,6 +48,53 @@
 
   "passwordEmptyDescription": "من فضلك أدخل كلمة المرور",
   "passwordTooShortDescription": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
-  "passwordWeakDescription": "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم"
+  "passwordWeakDescription": "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم",
+
+
+
+
+  "googleSignInCanceledDescription": "تم إلغاء تسجيل الدخول",
+
+  "googleNetworkErrorDescription": "مشكلة في الاتصال",
+
+  "googleSignInFailedDescription": "فشل تسجيل الدخول",
+
+  "googleConfigErrorDescription": "خطأ في إعدادات جوجل",
+
+  "googleUnexpectedErrorDescription": "حدث خطأ غير متوقع",
+
+  "emailAlreadyInUseDescription": "الايميل مسجل مسبقاً",
+
+  "invalidEmailDescription": "عنوان ايميل غير صحيح",
+
+  "operationNotAllowedDescription": "طريقة الدخول معطلة",
+
+  "weakPasswordDescription": "كلمة المرور ضعيفة جداً",
+
+  "userDisabledDescription": "الحساب معطل",
+
+  "userNotFoundDescription": "المستخدم غير موجود",
+
+  "wrongPasswordDescription": "كلمة مرور خاطئة",
+
+  "invalidCredentialDescription": "بيانات دخول غير صحيحة",
+
+  "networkRequestFailedDescription": "فشل الاتصال",
+
+  "invalidVerificationCodeDescription": "رمز التحقق غير صحيح",
+
+  "invalidVerificationIdDescription": "معرف التحقق غير صحيح",
+
+  "tooManyRequestsDescription": "طلبات كثيرة، حاول لاحقاً",
+
+  "internalErrorDescription": "حدث خطأ داخلي",
+
+  "accountExistsWithDifferentCredentialDescription": "الحساب موجود بطريقة دخول مختلفة",
+
+  "credentialAlreadyInUseDescription": "بيانات الدخول مستخدمة في مكان آخر",
+
+  "defaultAuthErrorDescription": "حدث خطأ غير متوقع",
+
+  "passwordMustMatch": "كلمات المرور غير متطابقة"
 
 }

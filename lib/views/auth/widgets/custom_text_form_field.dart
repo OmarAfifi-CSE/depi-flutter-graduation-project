@@ -50,6 +50,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: widget.validator,
       controller: widget.controller,
       obscureText: _isObscured,

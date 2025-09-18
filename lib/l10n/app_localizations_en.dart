@@ -123,4 +123,70 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordWeakDescription => 'Password must contain upper, lower case letters and a number';
+
+  @override
+  String get googleSignInCanceledDescription => 'Sign-in canceled';
+
+  @override
+  String get googleNetworkErrorDescription => 'Network connection issue';
+
+  @override
+  String get googleSignInFailedDescription => 'Sign-in failed';
+
+  @override
+  String get googleConfigErrorDescription => 'Google Sign-In configuration error';
+
+  @override
+  String get googleUnexpectedErrorDescription => 'Unexpected error occurred';
+
+  @override
+  String get emailAlreadyInUseDescription => 'Email already registered';
+
+  @override
+  String get invalidEmailDescription => 'Invalid email address';
+
+  @override
+  String get operationNotAllowedDescription => 'Sign-in method disabled';
+
+  @override
+  String get weakPasswordDescription => 'Password too weak';
+
+  @override
+  String get userDisabledDescription => 'Account disabled';
+
+  @override
+  String get userNotFoundDescription => 'User not found';
+
+  @override
+  String get wrongPasswordDescription => 'Incorrect password';
+
+  @override
+  String get invalidCredentialDescription => 'Invalid credentials';
+
+  @override
+  String get networkRequestFailedDescription => 'Connection failed';
+
+  @override
+  String get invalidVerificationCodeDescription => 'Invalid verification code';
+
+  @override
+  String get invalidVerificationIdDescription => 'Invalid verification ID';
+
+  @override
+  String get tooManyRequestsDescription => 'Too many requests, try later';
+
+  @override
+  String get internalErrorDescription => 'Internal error occurred';
+
+  @override
+  String get accountExistsWithDifferentCredentialDescription => 'Account exists with different login';
+
+  @override
+  String get credentialAlreadyInUseDescription => 'Credentials used elsewhere';
+
+  @override
+  String get defaultAuthErrorDescription => 'Unexpected error occurred';
+
+  @override
+  String get passwordMustMatch => 'Passwords do not match ';
 }

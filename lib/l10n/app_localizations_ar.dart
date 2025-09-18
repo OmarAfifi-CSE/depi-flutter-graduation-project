@@ -123,4 +123,70 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordWeakDescription => 'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم';
+
+  @override
+  String get googleSignInCanceledDescription => 'تم إلغاء تسجيل الدخول';
+
+  @override
+  String get googleNetworkErrorDescription => 'مشكلة في الاتصال';
+
+  @override
+  String get googleSignInFailedDescription => 'فشل تسجيل الدخول';
+
+  @override
+  String get googleConfigErrorDescription => 'خطأ في إعدادات جوجل';
+
+  @override
+  String get googleUnexpectedErrorDescription => 'حدث خطأ غير متوقع';
+
+  @override
+  String get emailAlreadyInUseDescription => 'الايميل مسجل مسبقاً';
+
+  @override
+  String get invalidEmailDescription => 'عنوان ايميل غير صحيح';
+
+  @override
+  String get operationNotAllowedDescription => 'طريقة الدخول معطلة';
+
+  @override
+  String get weakPasswordDescription => 'كلمة المرور ضعيفة جداً';
+
+  @override
+  String get userDisabledDescription => 'الحساب معطل';
+
+  @override
+  String get userNotFoundDescription => 'المستخدم غير موجود';
+
+  @override
+  String get wrongPasswordDescription => 'كلمة مرور خاطئة';
+
+  @override
+  String get invalidCredentialDescription => 'بيانات دخول غير صحيحة';
+
+  @override
+  String get networkRequestFailedDescription => 'فشل الاتصال';
+
+  @override
+  String get invalidVerificationCodeDescription => 'رمز التحقق غير صحيح';
+
+  @override
+  String get invalidVerificationIdDescription => 'معرف التحقق غير صحيح';
+
+  @override
+  String get tooManyRequestsDescription => 'طلبات كثيرة، حاول لاحقاً';
+
+  @override
+  String get internalErrorDescription => 'حدث خطأ داخلي';
+
+  @override
+  String get accountExistsWithDifferentCredentialDescription => 'الحساب موجود بطريقة دخول مختلفة';
+
+  @override
+  String get credentialAlreadyInUseDescription => 'بيانات الدخول مستخدمة في مكان آخر';
+
+  @override
+  String get defaultAuthErrorDescription => 'حدث خطأ غير متوقع';
+
+  @override
+  String get passwordMustMatch => 'كلمات المرور غير متطابقة';
 }

@@ -54,5 +54,52 @@
 
   "passwordEmptyDescription": "Please enter your password",
   "passwordTooShortDescription": "Password must be at least 6 characters long",
-  "passwordWeakDescription": "Password must contain upper, lower case letters and a number"
+  "passwordWeakDescription": "Password must contain upper, lower case letters and a number",
+
+
+
+
+  "googleSignInCanceledDescription": "Sign-in canceled",
+
+  "googleNetworkErrorDescription": "Network connection issue",
+
+  "googleSignInFailedDescription": "Sign-in failed",
+
+  "googleConfigErrorDescription": "Google Sign-In configuration error",
+
+  "googleUnexpectedErrorDescription": "Unexpected error occurred",
+
+  "emailAlreadyInUseDescription": "Email already registered",
+
+  "invalidEmailDescription": "Invalid email address",
+
+  "operationNotAllowedDescription": "Sign-in method disabled",
+
+  "weakPasswordDescription": "Password too weak",
+
+  "userDisabledDescription": "Account disabled",
+
+  "userNotFoundDescription": "User not found",
+
+  "wrongPasswordDescription": "Incorrect password",
+
+  "invalidCredentialDescription": "Invalid credentials",
+
+  "networkRequestFailedDescription": "Connection failed",
+
+  "invalidVerificationCodeDescription": "Invalid verification code",
+
+  "invalidVerificationIdDescription": "Invalid verification ID",
+
+  "tooManyRequestsDescription": "Too many requests, try later",
+
+  "internalErrorDescription": "Internal error occurred",
+
+  "accountExistsWithDifferentCredentialDescription": "Account exists with different login",
+
+  "credentialAlreadyInUseDescription": "Credentials used elsewhere",
+
+  "defaultAuthErrorDescription": "Unexpected error occurred",
+  "passwordMustMatch": "Passwords do not match "
+
 }

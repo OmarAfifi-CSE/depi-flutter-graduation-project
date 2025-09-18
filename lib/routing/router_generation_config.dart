@@ -4,6 +4,7 @@ import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 
+import '../test.dart';
 import 'app_routes.dart';
 
 class RouterGenerationConfig {
@@ -35,6 +36,22 @@ class RouterGenerationConfig {
         name: AppRoutes.signUpScreen,
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const SignUpScreen(),
+          transitionDuration: const Duration(milliseconds: 1000),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeThroughTransition(
+              animation: animation,
+              secondaryAnimation: secondaryAnimation,
+              child: child,
+            );
+          },
+        ),
+      ),
+      GoRoute(
+        // path: AppRoutes.signUpScreen,
+        // name: AppRoutes.signUpScreen,
+        path: "/test",
+        pageBuilder: (context, state) => CustomTransitionPage(
+          child: const Test(),
           transitionDuration: const Duration(milliseconds: 1000),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeThroughTransition(
