@@ -59,5 +59,16 @@
   "loginFailedDescription": "Invalid email or password. Please try again",
 
   "loginSuccessTitle": "Login Successful",
-  "loginSuccessDescription": "Welcome back! Redirecting to home screen"
+  "loginSuccessDescription": "Welcome back! Redirecting to home screen",
+
+  "signUpDescription": "Create an new account",
+
+  "userNameTitle": "User Name",
+
+
+
+  "confirmPasswordTitle": "Confirm Password",
+
+  "agreeTermsTitle": "By creating an account you have to agree with our them & condication."
+
 }

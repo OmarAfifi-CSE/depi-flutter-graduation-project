@@ -22,6 +22,41 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  String? emailValidation(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your email !';
+    }
+    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value.trim())) {
+      return 'Please enter a valid email address !';
+    }
+    return null;
+  }
+
+  String? nameValidation(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Name is required !';
+    }
+    if (value.length < 2) {
+      return 'Name is too short !';
+    }
+    return null;
+  }
+
+  String? passValidation(String? value) {
+    if (value == null || value.trim().isEmpty) {
+      return 'Please enter your password !';
+    }
+    if (value.trim().length < 6) {
+      return 'Password must be at least 6 characters long !';
+    }
+    if (!RegExp(
+      r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$',
+    ).hasMatch(value.trim())) {
+      return 'Password must contain upper, lower case letters and a number !';
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,45 +119,42 @@ class _SignInScreenState extends State<SignInScreen> {
                         curve: Curves.easeInOut,
                       ),
                   SizedBox(height: 60.h),
-                  CustomTextFormField(
-                        controller: emailController,
-                        labelText: loc.emailTitle,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          }
-                          return null;
-                        },
-                      )
-                      .animate(delay: 300.ms)
-                      .fadeIn(duration: 1000.ms)
-                      .moveX(
-                        begin: -300,
-                        end: 0,
-                        duration: 1000.ms,
-                        curve: Curves.easeInOut,
-                      ),
-                  SizedBox(height: 12.h),
-                  CustomTextFormField(
-                        controller: passwordController,
-                        labelText: loc.passwordTitle,
-                        obscureText: true,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          return null;
-                        },
-                      )
-                      .animate(delay: 400.ms)
-                      .fadeIn(duration: 1000.ms)
-                      .moveX(
-                        begin: -300,
-                        end: 0,
-                        duration: 1000.ms,
-                        curve: Curves.easeInOut,
-                      ),
-
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CustomTextFormField(
+                              controller: emailController,
+                              labelText: loc.emailTitle,
+                              validator: emailValidation,
+                            )
+                            .animate(delay: 300.ms)
+                            .fadeIn(duration: 1000.ms)
+                            .moveX(
+                              begin: -300,
+                              end: 0,
+                              duration: 1000.ms,
+                              curve: Curves.easeInOut,
+                            ),
+                        SizedBox(height: 12.h),
+                        CustomTextFormField(
+                              controller: passwordController,
+                              labelText: loc.passwordTitle,
+                              obscureText: true,
+                              validator: passValidation,
+                            )
+                            .animate(delay: 400.ms)
+                            .fadeIn(duration: 1000.ms)
+                            .moveX(
+                              begin: -300,
+                              end: 0,
+                              duration: 1000.ms,
+                              curve: Curves.easeInOut,
+                            ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 44.h),
                   CustomElevatedButton(
                         onPressed: () {},

@@ -114,4 +114,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get loginSuccessDescription => 'أهلاً بعودتك! جاري التوجه إلى الشاشة الرئيسية';
+
+  @override
+  String get signUpDescription => 'أنشئ حساب جديد';
+
+  @override
+  String get userNameTitle => 'اسم المستخدم';
+
+  @override
+  String get confirmPasswordTitle => 'تأكيد كلمة المرور';
+
+  @override
+  String get agreeTermsTitle => 'بإنشاء حساب، فإنك توافق على الشروط والأحكام الخاصة بنا';
 }

@@ -50,5 +50,15 @@
   "loginFailedDescription": "بريد إلكتروني أو كلمة مرور خاطئة. من فضلك حاول مرة أخرى",
 
   "loginSuccessTitle": "تم تسجيل الدخول بنجاح",
-  "loginSuccessDescription": "أهلاً بعودتك! جاري التوجه إلى الشاشة الرئيسية"
+  "loginSuccessDescription": "أهلاً بعودتك! جاري التوجه إلى الشاشة الرئيسية",
+
+
+  "signUpDescription": "أنشئ حساب جديد",
+
+  "userNameTitle": "اسم المستخدم",
+
+  "confirmPasswordTitle": "تأكيد كلمة المرور",
+
+  "agreeTermsTitle": "بإنشاء حساب، فإنك توافق على الشروط والأحكام الخاصة بنا"
+
 }

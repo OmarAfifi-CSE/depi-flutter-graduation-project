@@ -304,6 +304,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome back! Redirecting to home screen'**
   String get loginSuccessDescription;
+
+  /// No description provided for @signUpDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an new account'**
+  String get signUpDescription;
+
+  /// No description provided for @userNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'User Name'**
+  String get userNameTitle;
+
+  /// No description provided for @confirmPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPasswordTitle;
+
+  /// No description provided for @agreeTermsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'By creating an account you have to agree with our them & condication.'**
+  String get agreeTermsTitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

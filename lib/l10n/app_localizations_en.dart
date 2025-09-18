@@ -114,4 +114,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loginSuccessDescription => 'Welcome back! Redirecting to home screen';
+
+  @override
+  String get signUpDescription => 'Create an new account';
+
+  @override
+  String get userNameTitle => 'User Name';
+
+  @override
+  String get confirmPasswordTitle => 'Confirm Password';
+
+  @override
+  String get agreeTermsTitle => 'By creating an account you have to agree with our them & condication.';
 }
