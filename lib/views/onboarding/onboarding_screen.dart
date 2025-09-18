@@ -22,7 +22,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -60,7 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SmoothPageIndicator(
-                      controller: _pageController, // PageController
+                      controller: _pageController,
                       count: 3,
                       effect: ExpandingDotsEffect(
                         spacing: 8.0,
@@ -71,7 +70,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         strokeWidth: 1.5,
                         dotColor: appColors.card!,
                         activeDotColor: theme.primaryColor,
-                      ), // your preferred effect
+                      ),
                       onDotClicked: (index) {},
                     ),
                     const Spacer(),

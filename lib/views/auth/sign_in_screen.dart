@@ -1,15 +1,15 @@
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter/material.dart';
-import 'package:batrina/styling/app_fonts.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_colors.dart';
-import 'package:batrina/widgets/custom_text.dart';
-import 'package:batrina/l10n/app_localizations.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/auth/widgets/custom_divider.dart';
 import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
+import 'package:batrina/widgets/custom_text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -21,6 +21,39 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey();
+
+  String? emailValidation(String? value) {
+    final loc = AppLocalizations.of(context);
+    if (value == null || value.trim().isEmpty) {
+      return loc!.emailEmptyDescription;
+    }
+    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value.trim())) {
+      return loc!.emailInvalidDescription;
+    }
+    return null;
+  }
+
+  String? passValidation(String? value) {
+    final loc = AppLocalizations.of(context);
+
+    if (value == null || value.trim().isEmpty) {
+      return loc!.passwordEmptyDescription;
+    }
+    if (value.trim().length < 6) {
+      return loc!.passwordTooShortDescription;
+    }
+    if (!RegExp(
+      r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$',
+    ).hasMatch(value.trim())) {
+      return loc!.passwordWeakDescription;
+    }
+    return null;
+  }
+
+  void validation() {
+    if (_formKey.currentState!.validate()) {}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,45 +116,42 @@ class _SignInScreenState extends State<SignInScreen> {
                         curve: Curves.easeInOut,
                       ),
                   SizedBox(height: 60.h),
-                  CustomTextFormField(
-                        controller: emailController,
-                        labelText: loc.emailTitle,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your email';
-                          }
-                          return null;
-                        },
-                      )
-                      .animate(delay: 300.ms)
-                      .fadeIn(duration: 1000.ms)
-                      .moveX(
-                        begin: -300,
-                        end: 0,
-                        duration: 1000.ms,
-                        curve: Curves.easeInOut,
-                      ),
-                  SizedBox(height: 12.h),
-                  CustomTextFormField(
-                        controller: passwordController,
-                        labelText: loc.passwordTitle,
-                        obscureText: true,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your password';
-                          }
-                          return null;
-                        },
-                      )
-                      .animate(delay: 400.ms)
-                      .fadeIn(duration: 1000.ms)
-                      .moveX(
-                        begin: -300,
-                        end: 0,
-                        duration: 1000.ms,
-                        curve: Curves.easeInOut,
-                      ),
-
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CustomTextFormField(
+                              controller: emailController,
+                              labelText: loc.emailTitle,
+                              validator: emailValidation,
+                            )
+                            .animate(delay: 300.ms)
+                            .fadeIn(duration: 1000.ms)
+                            .moveX(
+                              begin: -300,
+                              end: 0,
+                              duration: 1000.ms,
+                              curve: Curves.easeInOut,
+                            ),
+                        SizedBox(height: 12.h),
+                        CustomTextFormField(
+                              controller: passwordController,
+                              labelText: loc.passwordTitle,
+                              obscureText: true,
+                              validator: passValidation,
+                            )
+                            .animate(delay: 400.ms)
+                            .fadeIn(duration: 1000.ms)
+                            .moveX(
+                              begin: -300,
+                              end: 0,
+                              duration: 1000.ms,
+                              curve: Curves.easeInOut,
+                            ),
+                      ],
+                    ),
+                  ),
                   SizedBox(height: 44.h),
                   CustomElevatedButton(
                         onPressed: () {},
@@ -156,7 +186,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       .shimmer(duration: 500.ms),
                   SizedBox(height: 6.h),
                   CustomElevatedButton(
-                        onPressed: () {},
+                        onPressed: validation,
                         backgroundColor: const Color(0xffde1500),
                         buttonChild: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

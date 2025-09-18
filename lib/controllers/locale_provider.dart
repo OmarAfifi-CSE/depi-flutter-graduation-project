@@ -5,10 +5,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LocaleProvider extends ChangeNotifier {
   static List<String> supporterLocales = const ["ar", "en"];
   static const _localeKey = "loc";
+
   static String get localeKey => _localeKey;
   Locale _locale;
+
   Locale get locale => _locale;
+
   LocaleProvider(this._locale);
+
   Future setLocale(String localeName) async {
     if (!supporterLocales.contains(localeName)) {
       return;

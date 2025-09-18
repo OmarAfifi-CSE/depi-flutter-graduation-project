@@ -80,30 +80,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signUpTitle => 'Sign Up';
 
   @override
-  String get emailRequiredTitle => 'Email Required';
-
-  @override
-  String get emailRequiredDescription => 'Please enter your email address to continue';
-
-  @override
-  String get emailInvalidTitle => 'Invalid Email';
-
-  @override
-  String get emailInvalidDescription => 'Please enter a valid email address format';
-
-  @override
-  String get passwordRequiredTitle => 'Password Required';
-
-  @override
-  String get passwordRequiredDescription => 'Please enter your password to login';
-
-  @override
-  String get passwordTooShortTitle => 'Password Too Short';
-
-  @override
-  String get passwordTooShortDescription => 'Password must be at least 6 characters long';
-
-  @override
   String get loginFailedTitle => 'Login Failed';
 
   @override
@@ -114,4 +90,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loginSuccessDescription => 'Welcome back! Redirecting to home screen';
+
+  @override
+  String get signUpDescription => 'Create an new account';
+
+  @override
+  String get userNameTitle => 'User Name';
+
+  @override
+  String get confirmPasswordTitle => 'Confirm Password';
+
+  @override
+  String get emailEmptyTitle => 'Email Required';
+
+  @override
+  String get emailEmptyDescription => 'Please enter your email';
+
+  @override
+  String get emailInvalidDescription => 'Please enter a valid email address';
+
+  @override
+  String get nameEmptyDescription => 'Name is required';
+
+  @override
+  String get nameTooShortDescription => 'Name is too short';
+
+  @override
+  String get passwordEmptyDescription => 'Please enter your password';
+
+  @override
+  String get passwordTooShortDescription => 'Password must be at least 6 characters long';
+
+  @override
+  String get passwordWeakDescription => 'Password must contain upper, lower case letters and a number';
 }

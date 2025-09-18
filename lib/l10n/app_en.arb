@@ -17,18 +17,13 @@
   "allTypesOffersDescription": "Browse through various categories and find the best deals that match your needs and preferences.",
 
 
-
-
   "welcomeTitle": "Welcome!",
   "welcomeDescription": "Please login or sign up to continue our app",
 
   "emailTitle": "Email",
-
   "passwordTitle": "Password",
 
-
   "loginTitle": "Login",
-
   "orTitle": "or",
 
 
@@ -37,27 +32,27 @@
 
 
   "forgotPasswordTitle": "Forgot Password?",
-
   "dontHaveAccountTitle": "Don't have an account?",
-
   "signUpTitle": "Sign Up",
-
-
-  "emailRequiredTitle": "Email Required",
-  "emailRequiredDescription": "Please enter your email address to continue",
-
-  "emailInvalidTitle": "Invalid Email",
-  "emailInvalidDescription": "Please enter a valid email address format",
-
-  "passwordRequiredTitle": "Password Required",
-  "passwordRequiredDescription": "Please enter your password to login",
-
-  "passwordTooShortTitle": "Password Too Short",
-  "passwordTooShortDescription": "Password must be at least 6 characters long",
 
   "loginFailedTitle": "Login Failed",
   "loginFailedDescription": "Invalid email or password. Please try again",
 
   "loginSuccessTitle": "Login Successful",
-  "loginSuccessDescription": "Welcome back! Redirecting to home screen"
+  "loginSuccessDescription": "Welcome back! Redirecting to home screen",
+
+  "signUpDescription": "Create an new account",
+  "userNameTitle": "User Name",
+  "confirmPasswordTitle": "Confirm Password",
+
+  "emailEmptyTitle": "Email Required",
+  "emailEmptyDescription": "Please enter your email",
+  "emailInvalidDescription": "Please enter a valid email address",
+
+  "nameEmptyDescription": "Name is required",
+  "nameTooShortDescription": "Name is too short",
+
+  "passwordEmptyDescription": "Please enter your password",
+  "passwordTooShortDescription": "Password must be at least 6 characters long",
+  "passwordWeakDescription": "Password must contain upper, lower case letters and a number"
 }

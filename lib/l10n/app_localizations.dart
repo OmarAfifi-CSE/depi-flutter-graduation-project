@@ -233,54 +233,6 @@ abstract class AppLocalizations {
   /// **'Sign Up'**
   String get signUpTitle;
 
-  /// No description provided for @emailRequiredTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Email Required'**
-  String get emailRequiredTitle;
-
-  /// No description provided for @emailRequiredDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter your email address to continue'**
-  String get emailRequiredDescription;
-
-  /// No description provided for @emailInvalidTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Invalid Email'**
-  String get emailInvalidTitle;
-
-  /// No description provided for @emailInvalidDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter a valid email address format'**
-  String get emailInvalidDescription;
-
-  /// No description provided for @passwordRequiredTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Password Required'**
-  String get passwordRequiredTitle;
-
-  /// No description provided for @passwordRequiredDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Please enter your password to login'**
-  String get passwordRequiredDescription;
-
-  /// No description provided for @passwordTooShortTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Password Too Short'**
-  String get passwordTooShortTitle;
-
-  /// No description provided for @passwordTooShortDescription.
-  ///
-  /// In en, this message translates to:
-  /// **'Password must be at least 6 characters long'**
-  String get passwordTooShortDescription;
-
   /// No description provided for @loginFailedTitle.
   ///
   /// In en, this message translates to:
@@ -304,6 +256,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome back! Redirecting to home screen'**
   String get loginSuccessDescription;
+
+  /// No description provided for @signUpDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an new account'**
+  String get signUpDescription;
+
+  /// No description provided for @userNameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'User Name'**
+  String get userNameTitle;
+
+  /// No description provided for @confirmPasswordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirmPasswordTitle;
+
+  /// No description provided for @emailEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Required'**
+  String get emailEmptyTitle;
+
+  /// No description provided for @emailEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email'**
+  String get emailEmptyDescription;
+
+  /// No description provided for @emailInvalidDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get emailInvalidDescription;
+
+  /// No description provided for @nameEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Name is required'**
+  String get nameEmptyDescription;
+
+  /// No description provided for @nameTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Name is too short'**
+  String get nameTooShortDescription;
+
+  /// No description provided for @passwordEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your password'**
+  String get passwordEmptyDescription;
+
+  /// No description provided for @passwordTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters long'**
+  String get passwordTooShortDescription;
+
+  /// No description provided for @passwordWeakDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must contain upper, lower case letters and a number'**
+  String get passwordWeakDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
