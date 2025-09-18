@@ -8,7 +8,7 @@ import 'app_routes.dart';
 
 class RouterGenerationConfig {
   static GoRouter goRouter() => GoRouter(
-    initialLocation: AppRoutes.onboardingScreen,
+    initialLocation: AppRoutes.signUpScreen,
     routes: [
       GoRoute(
         path: AppRoutes.onboardingScreen,

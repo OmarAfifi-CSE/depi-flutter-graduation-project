@@ -24,38 +24,35 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
   String? emailValidation(String? value) {
+    final loc = AppLocalizations.of(context);
     if (value == null || value.trim().isEmpty) {
-      return 'Please enter your email !';
+      return loc!.emailEmptyDescription;
     }
     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value.trim())) {
-      return 'Please enter a valid email address !';
-    }
-    return null;
-  }
-
-  String? nameValidation(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return 'Name is required !';
-    }
-    if (value.length < 2) {
-      return 'Name is too short !';
+      return loc!.emailInvalidDescription;
     }
     return null;
   }
 
   String? passValidation(String? value) {
+    final loc = AppLocalizations.of(context);
+
     if (value == null || value.trim().isEmpty) {
-      return 'Please enter your password !';
+      return loc!.passwordEmptyDescription;
     }
     if (value.trim().length < 6) {
-      return 'Password must be at least 6 characters long !';
+      return loc!.passwordTooShortDescription;
     }
     if (!RegExp(
       r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$',
     ).hasMatch(value.trim())) {
-      return 'Password must contain upper, lower case letters and a number !';
+      return loc!.passwordWeakDescription;
     }
     return null;
+  }
+
+  void validation() {
+    if (_formKey.currentState!.validate()) {}
   }
 
   @override
@@ -189,7 +186,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       .shimmer(duration: 500.ms),
                   SizedBox(height: 6.h),
                   CustomElevatedButton(
-                        onPressed: () {},
+                        onPressed: validation,
                         backgroundColor: const Color(0xffde1500),
                         buttonChild: Row(
                           mainAxisAlignment: MainAxisAlignment.center,

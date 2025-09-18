@@ -34,17 +34,7 @@
 
   "signUpTitle": "إنشاء حساب",
 
-  "emailRequiredTitle": "البريد الإلكتروني مطلوب",
-  "emailRequiredDescription": "من فضلك أدخل عنوان بريدك الإلكتروني للمتابعة",
 
-  "emailInvalidTitle": "بريد إلكتروني غير صحيح",
-  "emailInvalidDescription": "من فضلك أدخل عنوان بريد إلكتروني صالح",
-
-  "passwordRequiredTitle": "كلمة المرور مطلوبة",
-  "passwordRequiredDescription": "من فضلك أدخل كلمة المرور لتسجيل الدخول",
-
-  "passwordTooShortTitle": "كلمة المرور قصيرة جداً",
-  "passwordTooShortDescription": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
 
   "loginFailedTitle": "فشل تسجيل الدخول",
   "loginFailedDescription": "بريد إلكتروني أو كلمة مرور خاطئة. من فضلك حاول مرة أخرى",
@@ -59,6 +49,22 @@
 
   "confirmPasswordTitle": "تأكيد كلمة المرور",
 
-  "agreeTermsTitle": "بإنشاء حساب، فإنك توافق على الشروط والأحكام الخاصة بنا"
+  "agreeTermsTitle": "بإنشاء حساب، فإنك توافق على الشروط والأحكام الخاصة بنا",
+
+
+  "emailEmptyDescription": "من فضلك أدخل بريدك الإلكتروني !",
+
+  "emailInvalidDescription": "من فضلك أدخل عنوان بريد إلكتروني صالح !",
+
+  "nameEmptyDescription": "الاسم مطلوب !",
+
+  "nameTooShortDescription": "الاسم قصير جداً !",
+
+  "passwordEmptyDescription": "من فضلك أدخل كلمة المرور !",
+
+  "passwordTooShortDescription": "كلمة المرور يجب أن تكون 6 أحرف على الأقل !",
+
+  "passwordWeakTitle": "كلمة مرور ضعيفة",
+  "passwordWeakDescription": "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم !"
 
 }

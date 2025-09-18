@@ -25,36 +25,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
   String? emailValidation(String? value) {
+    final loc = AppLocalizations.of(context);
     if (value == null || value.trim().isEmpty) {
-      return 'Please enter your email !';
+      return loc!.emailEmptyDescription;
     }
     if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value.trim())) {
-      return 'Please enter a valid email address !';
+      return loc!.emailInvalidDescription;
     }
     return null;
   }
 
   String? nameValidation(String? value) {
+    final loc = AppLocalizations.of(context);
+
     if (value == null || value.trim().isEmpty) {
-      return 'Name is required !';
+      return loc!.nameEmptyDescription;
     }
     if (value.length < 2) {
-      return 'Name is too short !';
+      return loc!.nameTooShortDescription;
     }
     return null;
   }
 
   String? passValidation(String? value) {
+    final loc = AppLocalizations.of(context);
+
     if (value == null || value.trim().isEmpty) {
-      return 'Please enter your password !';
+      return loc!.passwordEmptyDescription;
     }
     if (value.trim().length < 6) {
-      return 'Password must be at least 6 characters long !';
+      return loc!.passwordTooShortDescription;
     }
     if (!RegExp(
       r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{6,}$',
     ).hasMatch(value.trim())) {
-      return 'Password must contain upper, lower case letters and a number !';
+      return loc!.passwordWeakDescription;
     }
     return null;
   }
@@ -99,7 +104,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               duration: 1000.ms,
                               curve: Curves.easeInOut,
                             ),
-                        SizedBox(height: 107.h),
+                        SizedBox(height: 90.h),
                         Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.stretch,

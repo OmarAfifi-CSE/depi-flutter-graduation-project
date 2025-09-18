@@ -80,30 +80,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get signUpTitle => 'إنشاء حساب';
 
   @override
-  String get emailRequiredTitle => 'البريد الإلكتروني مطلوب';
-
-  @override
-  String get emailRequiredDescription => 'من فضلك أدخل عنوان بريدك الإلكتروني للمتابعة';
-
-  @override
-  String get emailInvalidTitle => 'بريد إلكتروني غير صحيح';
-
-  @override
-  String get emailInvalidDescription => 'من فضلك أدخل عنوان بريد إلكتروني صالح';
-
-  @override
-  String get passwordRequiredTitle => 'كلمة المرور مطلوبة';
-
-  @override
-  String get passwordRequiredDescription => 'من فضلك أدخل كلمة المرور لتسجيل الدخول';
-
-  @override
-  String get passwordTooShortTitle => 'كلمة المرور قصيرة جداً';
-
-  @override
-  String get passwordTooShortDescription => 'يجب أن تكون كلمة المرور 6 أحرف على الأقل';
-
-  @override
   String get loginFailedTitle => 'فشل تسجيل الدخول';
 
   @override
@@ -126,4 +102,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get agreeTermsTitle => 'بإنشاء حساب، فإنك توافق على الشروط والأحكام الخاصة بنا';
+
+  @override
+  String get emailEmptyTitle => 'Email Required';
+
+  @override
+  String get emailEmptyDescription => 'من فضلك أدخل بريدك الإلكتروني !';
+
+  @override
+  String get emailInvalidDescription => 'من فضلك أدخل عنوان بريد إلكتروني صالح !';
+
+  @override
+  String get nameEmptyDescription => 'الاسم مطلوب !';
+
+  @override
+  String get nameTooShortDescription => 'الاسم قصير جداً !';
+
+  @override
+  String get passwordEmptyDescription => 'من فضلك أدخل كلمة المرور !';
+
+  @override
+  String get passwordTooShortDescription => 'كلمة المرور يجب أن تكون 6 أحرف على الأقل !';
+
+  @override
+  String get passwordWeakTitle => 'كلمة مرور ضعيفة';
+
+  @override
+  String get passwordWeakDescription => 'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم !';
 }
