@@ -78,7 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       ), // your preferred effect
                       onDotClicked: (index) {},
                     ),
-                    Spacer(),
+                    const Spacer(),
                     MovingArrow(pageCont: _pageController),
                   ],
                 ),

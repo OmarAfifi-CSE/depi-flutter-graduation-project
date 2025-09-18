@@ -1,4 +1,5 @@
 import 'package:batrina/views/onboarding/widgets/angled_image_container.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -35,9 +36,13 @@ class CustomOnboardingPage extends StatelessWidget {
                 borderRadius: 20.r,
               ),
               SizedBox(height: 68.h),
-              Text(_title, style: Theme.of(context).textTheme.titleLarge),
+              CustomText(
+                data: _title,
+                fontSize: 24.sp,
+                fontWeight: FontWeight.bold,
+              ),
               SizedBox(height: 18.h),
-              Text(_subTitle, style: Theme.of(context).textTheme.titleSmall),
+              CustomText(data: _subTitle, fontSize: 14.sp, fontWeight: FontWeight.w300)
             ],
           ).animate().fadeIn(
             duration: Duration(milliseconds: 1000),

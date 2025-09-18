@@ -12,7 +12,7 @@ class MovingArrow extends StatelessWidget {
     if (_pageController.page! < 2) {
       _pageController.animateToPage(
         (_pageController.page! + 1).toInt(),
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
     }
@@ -23,10 +23,10 @@ class MovingArrow extends StatelessWidget {
     final theme = Theme.of(context);
     return Material(
       color: theme.primaryColor,
-      shape: CircleBorder(),
+      shape: const CircleBorder(),
       child: InkWell(
         onTap: _onTap,
-        customBorder: CircleBorder(),
+        customBorder: const CircleBorder(),
         child: Container(
           width: 60.w,
           height: 60.w,
