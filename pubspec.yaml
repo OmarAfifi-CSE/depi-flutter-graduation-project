@@ -25,55 +25,54 @@ dependencies:
   flutter_svg: ^2.2.1
   animations: ^2.0.11
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^5.0.0
 
-
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
-    - assets/icons/
+  - assets/icons/
+  - assets/fonts/
+  - assets/images/
 
   generate: true
 
   fonts:
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/poppins/Poppins-Light.ttf
-          weight: 300
-        - asset: assets/fonts/poppins/Poppins-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/poppins/Poppins-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/poppins/Poppins-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/poppins/Poppins-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/poppins/Poppins-Black.ttf
-          weight: 900
+  - family: Poppins
+    fonts:
+    - asset: assets/fonts/poppins/Poppins-ExtraLight.ttf
+      weight: 200
+    - asset: assets/fonts/poppins/Poppins-Light.ttf
+      weight: 300
+    - asset: assets/fonts/poppins/Poppins-Regular.ttf
+      weight: 400
+    - asset: assets/fonts/poppins/Poppins-Medium.ttf
+      weight: 500
+    - asset: assets/fonts/poppins/Poppins-SemiBold.ttf
+      weight: 600
+    - asset: assets/fonts/poppins/Poppins-Bold.ttf
+      weight: 700
+    - asset: assets/fonts/poppins/Poppins-ExtraBold.ttf
+      weight: 800
+    - asset: assets/fonts/poppins/Poppins-Black.ttf
+      weight: 900
 
-    - family: Tajawal
-      fonts:
-        - asset: assets/fonts/tajawal/Tajawal-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/tajawal/Tajawal-Light.ttf
-          weight: 300
-        - asset: assets/fonts/tajawal/Tajawal-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/tajawal/Tajawal-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/tajawal/Tajawal-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/tajawal/Tajawal-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/tajawal/Tajawal-Black.ttf
-          weight: 900
+  - family: Tajawal
+    fonts:
+    - asset: assets/fonts/tajawal/Tajawal-ExtraLight.ttf
+      weight: 200
+    - asset: assets/fonts/tajawal/Tajawal-Light.ttf
+      weight: 300
+    - asset: assets/fonts/tajawal/Tajawal-Regular.ttf
+      weight: 400
+    - asset: assets/fonts/tajawal/Tajawal-Medium.ttf
+      weight: 500
+    - asset: assets/fonts/tajawal/Tajawal-Bold.ttf
+      weight: 700
+    - asset: assets/fonts/tajawal/Tajawal-ExtraBold.ttf
+      weight: 800
+    - asset: assets/fonts/tajawal/Tajawal-Black.ttf
+      weight: 900

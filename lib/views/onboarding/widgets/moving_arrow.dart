@@ -1,9 +1,7 @@
-import 'package:batrina/routing/app_routes.dart';
-import 'package:batrina/styling/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:batrina/routing/app_routes.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MovingArrow extends StatefulWidget {
   const MovingArrow({super.key, required PageController pageCont})

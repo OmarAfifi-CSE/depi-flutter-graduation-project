@@ -1,14 +1,14 @@
-import 'package:batrina/l10n/app_localizations.dart';
-import 'package:batrina/views/onboarding/widgets/custom_onboarding_page.dart';
-import 'package:batrina/views/onboarding/widgets/moving_arrow.dart';
 import 'package:flutter/material.dart';
+import '../../styling/app_colors.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:batrina/views/onboarding/widgets/moving_arrow.dart';
+import 'package:batrina/views/onboarding/widgets/custom_onboarding_page.dart';
 
-import '../../styling/app_colors.dart';
 
 class OnboardingScreen extends StatefulWidget {
-  OnboardingScreen({Key? key}) : super(key: key);
+  const OnboardingScreen({super.key});
 
   @override
   State<OnboardingScreen> createState() => _OnboardingScreenState();

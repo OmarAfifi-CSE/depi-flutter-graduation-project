@@ -1,16 +1,15 @@
-import 'package:batrina/l10n/app_localizations.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_colors.dart';
-import 'package:batrina/styling/app_fonts.dart';
+import 'package:batrina/widgets/custom_text.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/views/auth/widgets/custom_divider.dart';
 import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
-import 'package:batrina/widgets/custom_text.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -48,7 +47,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         color: theme.primaryColor,
                       )
                       .animate()
-                      .fade(duration: Duration(milliseconds: 500))
+                      .fade(duration: const Duration(milliseconds: 500))
                       .shimmer(duration: 1000.ms)
                       .moveY(
                         begin: -300,
