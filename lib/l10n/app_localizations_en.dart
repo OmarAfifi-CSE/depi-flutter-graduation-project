@@ -101,32 +101,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirmPasswordTitle => 'Confirm Password';
 
   @override
-  String get agreeTermsTitle => 'By creating an account you have to agree with our them & condication.';
-
-  @override
   String get emailEmptyTitle => 'Email Required';
 
   @override
-  String get emailEmptyDescription => 'Please enter your email !';
+  String get emailEmptyDescription => 'Please enter your email';
 
   @override
-  String get emailInvalidDescription => 'Please enter a valid email address !';
+  String get emailInvalidDescription => 'Please enter a valid email address';
 
   @override
-  String get nameEmptyDescription => 'Name is required !';
+  String get nameEmptyDescription => 'Name is required';
 
   @override
-  String get nameTooShortDescription => 'Name is too short !';
+  String get nameTooShortDescription => 'Name is too short';
 
   @override
-  String get passwordEmptyDescription => 'Please enter your password !';
+  String get passwordEmptyDescription => 'Please enter your password';
 
   @override
-  String get passwordTooShortDescription => 'Password must be at least 6 characters long !';
+  String get passwordTooShortDescription => 'Password must be at least 6 characters long';
 
   @override
-  String get passwordWeakTitle => 'Weak Password';
-
-  @override
-  String get passwordWeakDescription => 'Password must contain upper, lower case letters and a number !';
+  String get passwordWeakDescription => 'Password must contain upper, lower case letters and a number';
 }

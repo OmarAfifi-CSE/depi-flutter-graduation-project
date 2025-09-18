@@ -101,32 +101,26 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPasswordTitle => 'تأكيد كلمة المرور';
 
   @override
-  String get agreeTermsTitle => 'بإنشاء حساب، فإنك توافق على الشروط والأحكام الخاصة بنا';
-
-  @override
   String get emailEmptyTitle => 'Email Required';
 
   @override
-  String get emailEmptyDescription => 'من فضلك أدخل بريدك الإلكتروني !';
+  String get emailEmptyDescription => 'من فضلك أدخل بريدك الإلكتروني';
 
   @override
-  String get emailInvalidDescription => 'من فضلك أدخل عنوان بريد إلكتروني صالح !';
+  String get emailInvalidDescription => 'من فضلك أدخل عنوان بريد إلكتروني صالح';
 
   @override
-  String get nameEmptyDescription => 'الاسم مطلوب !';
+  String get nameEmptyDescription => 'الاسم مطلوب';
 
   @override
-  String get nameTooShortDescription => 'الاسم قصير جداً !';
+  String get nameTooShortDescription => 'الاسم قصير جداً';
 
   @override
-  String get passwordEmptyDescription => 'من فضلك أدخل كلمة المرور !';
+  String get passwordEmptyDescription => 'من فضلك أدخل كلمة المرور';
 
   @override
-  String get passwordTooShortDescription => 'كلمة المرور يجب أن تكون 6 أحرف على الأقل !';
+  String get passwordTooShortDescription => 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
 
   @override
-  String get passwordWeakTitle => 'كلمة مرور ضعيفة';
-
-  @override
-  String get passwordWeakDescription => 'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم !';
+  String get passwordWeakDescription => 'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم';
 }

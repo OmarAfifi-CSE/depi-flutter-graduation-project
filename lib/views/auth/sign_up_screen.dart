@@ -1,14 +1,12 @@
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../l10n/app_localizations.dart';
-import '../../styling/app_colors.dart';
-import '../../styling/app_fonts.dart';
-import '../../widgets/custom_text.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -24,6 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
+
   String? emailValidation(String? value) {
     final loc = AppLocalizations.of(context);
     if (value == null || value.trim().isEmpty) {
@@ -96,7 +95,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: theme.primaryColor,
                             )
                             .animate()
-                            .fade(duration: Duration(milliseconds: 500))
+                            .fade(duration: const Duration(milliseconds: 500))
                             .shimmer(duration: 1000.ms)
                             .moveY(
                               begin: -300,

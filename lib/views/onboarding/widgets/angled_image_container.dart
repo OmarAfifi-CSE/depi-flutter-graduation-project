@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -122,7 +119,7 @@ class SimpleAngledContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
 
   const SimpleAngledContainer({
-    Key? key,
+    super.key,
     required this.child,
     this.backgroundColor = Colors.white,
     this.borderColor = Colors.grey,
@@ -134,7 +131,7 @@ class SimpleAngledContainer extends StatelessWidget {
     this.height,
     this.padding,
     this.margin,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -218,7 +215,7 @@ class AngledImageContainer extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
 
   const AngledImageContainer({
-    Key? key,
+    super.key,
     required this.imageUrl,
     this.width,
     this.height,
@@ -229,7 +226,7 @@ class AngledImageContainer extends StatelessWidget {
     this.angleHeight = 30.0,
     this.fit = BoxFit.cover,
     this.margin,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

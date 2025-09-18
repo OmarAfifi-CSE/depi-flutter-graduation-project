@@ -1,11 +1,9 @@
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/onboarding/widgets/angled_image_container.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../styling/app_colors.dart';
 
 class CustomOnboardingPage extends StatelessWidget {
   const CustomOnboardingPage({
@@ -30,7 +28,6 @@ class CustomOnboardingPage extends StatelessWidget {
             children: [
               AngledImageContainer(
                 imageUrl: _image,
-                // width: double.infinity,
                 height: 444.h,
                 borderColor: Colors.transparent,
                 borderWidth: 0.0,
@@ -53,7 +50,7 @@ class CustomOnboardingPage extends StatelessWidget {
               ),
             ],
           ).animate().fadeIn(
-            duration: Duration(milliseconds: 1000),
+            duration: const Duration(milliseconds: 1000),
             curve: Curves.easeInOut,
           ),
     );

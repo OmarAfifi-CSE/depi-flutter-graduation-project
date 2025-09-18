@@ -275,12 +275,6 @@ abstract class AppLocalizations {
   /// **'Confirm Password'**
   String get confirmPasswordTitle;
 
-  /// No description provided for @agreeTermsTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'By creating an account you have to agree with our them & condication.'**
-  String get agreeTermsTitle;
-
   /// No description provided for @emailEmptyTitle.
   ///
   /// In en, this message translates to:
@@ -290,49 +284,43 @@ abstract class AppLocalizations {
   /// No description provided for @emailEmptyDescription.
   ///
   /// In en, this message translates to:
-  /// **'Please enter your email !'**
+  /// **'Please enter your email'**
   String get emailEmptyDescription;
 
   /// No description provided for @emailInvalidDescription.
   ///
   /// In en, this message translates to:
-  /// **'Please enter a valid email address !'**
+  /// **'Please enter a valid email address'**
   String get emailInvalidDescription;
 
   /// No description provided for @nameEmptyDescription.
   ///
   /// In en, this message translates to:
-  /// **'Name is required !'**
+  /// **'Name is required'**
   String get nameEmptyDescription;
 
   /// No description provided for @nameTooShortDescription.
   ///
   /// In en, this message translates to:
-  /// **'Name is too short !'**
+  /// **'Name is too short'**
   String get nameTooShortDescription;
 
   /// No description provided for @passwordEmptyDescription.
   ///
   /// In en, this message translates to:
-  /// **'Please enter your password !'**
+  /// **'Please enter your password'**
   String get passwordEmptyDescription;
 
   /// No description provided for @passwordTooShortDescription.
   ///
   /// In en, this message translates to:
-  /// **'Password must be at least 6 characters long !'**
+  /// **'Password must be at least 6 characters long'**
   String get passwordTooShortDescription;
-
-  /// No description provided for @passwordWeakTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Weak Password'**
-  String get passwordWeakTitle;
 
   /// No description provided for @passwordWeakDescription.
   ///
   /// In en, this message translates to:
-  /// **'Password must contain upper, lower case letters and a number !'**
+  /// **'Password must contain upper, lower case letters and a number'**
   String get passwordWeakDescription;
 }
 

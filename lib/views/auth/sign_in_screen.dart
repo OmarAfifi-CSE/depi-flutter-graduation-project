@@ -6,7 +6,6 @@ import 'package:batrina/views/auth/widgets/custom_divider.dart';
 import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,6 +22,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
+
   String? emailValidation(String? value) {
     final loc = AppLocalizations.of(context);
     if (value == null || value.trim().isEmpty) {
@@ -80,7 +80,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         color: theme.primaryColor,
                       )
                       .animate()
-                      .fade(duration: Duration(milliseconds: 500))
+                      .fade(duration: const Duration(milliseconds: 500))
                       .shimmer(duration: 1000.ms)
                       .moveY(
                         begin: -300,

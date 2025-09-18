@@ -13,14 +13,14 @@ class RouterGenerationConfig {
       GoRoute(
         path: AppRoutes.onboardingScreen,
         name: AppRoutes.onboardingScreen,
-        builder: (context, state) => OnboardingScreen(),
+        builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
         path: AppRoutes.signInScreen,
         name: AppRoutes.signInScreen,
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const SignInScreen(),
-          transitionDuration: Duration(milliseconds: 1000),
+          transitionDuration: const Duration(milliseconds: 1000),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeThroughTransition(
               animation: animation,
@@ -35,7 +35,7 @@ class RouterGenerationConfig {
         name: AppRoutes.signUpScreen,
         pageBuilder: (context, state) => CustomTransitionPage(
           child: const SignUpScreen(),
-          transitionDuration: Duration(milliseconds: 1000),
+          transitionDuration: const Duration(milliseconds: 1000),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeThroughTransition(
               animation: animation,

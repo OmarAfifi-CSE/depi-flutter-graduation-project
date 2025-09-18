@@ -4,10 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ThemeProvider with ChangeNotifier {
   // A constant key to use for saving/loading the theme.
   static const String _themeKey = 'theme_mode';
+
   static String get themeKey => _themeKey;
   ThemeMode _themeMode;
 
   ThemeProvider(this._themeMode);
+
   ThemeMode get themeMode => _themeMode;
 
   Future<void> setTheme(ThemeMode themeMode) async {
