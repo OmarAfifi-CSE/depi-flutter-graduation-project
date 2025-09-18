@@ -6,5 +6,13 @@
   "welcome": "Welcome",
   "settings": "Sittings",
   "language": "lan",
-  "userName": "name"
+  "userName": "name",
+  "discountNewArrivalTitle": "20% Discount New Arrival Product",
+  "discountNewArrivalDescription": "Discover amazing discounts on our latest collection. Get 20% off on all new arrival products.",
+
+  "takeAdvantageShoppingTitle": "Take Advantage Of The Offer Shopping",
+  "takeAdvantageShoppingDescription": "Don't miss out on exclusive shopping deals. Save more on your favorite items with special offers.",
+
+  "allTypesOffersTitle": "All Types Offers Within Your Reach",
+  "allTypesOffersDescription": "Browse through various categories and find the best deals that match your needs and preferences."
 }

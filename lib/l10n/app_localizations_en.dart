@@ -27,4 +27,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String userName(Object name) {
     return 'name';
   }
+
+  @override
+  String get discountNewArrivalTitle => '20% Discount New Arrival Product';
+
+  @override
+  String get discountNewArrivalDescription => 'Discover amazing discounts on our latest collection. Get 20% off on all new arrival products.';
+
+  @override
+  String get takeAdvantageShoppingTitle => 'Take Advantage Of The Offer Shopping';
+
+  @override
+  String get takeAdvantageShoppingDescription => 'Don\'t miss out on exclusive shopping deals. Save more on your favorite items with special offers.';
+
+  @override
+  String get allTypesOffersTitle => 'All Types Offers Within Your Reach';
+
+  @override
+  String get allTypesOffersDescription => 'Browse through various categories and find the best deals that match your needs and preferences.';
 }

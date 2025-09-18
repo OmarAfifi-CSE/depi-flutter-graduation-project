@@ -27,4 +27,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String userName(Object name) {
     return 'أهلاً $name!';
   }
+
+  @override
+  String get discountNewArrivalTitle => 'خصم 20% على المنتجات الجديدة';
+
+  @override
+  String get discountNewArrivalDescription => 'اكتشف خصومات مذهلة على أحدث مجموعاتنا. احصل على خصم 20% على جميع المنتجات الجديدة.';
+
+  @override
+  String get takeAdvantageShoppingTitle => 'استفد من عروض التسوق';
+
+  @override
+  String get takeAdvantageShoppingDescription => 'لا تفوت العروض الحصرية للتسوق. وفر أكثر على العناصر المفضلة لديك مع العروض الخاصة.';
+
+  @override
+  String get allTypesOffersTitle => 'جميع أنواع العروض في متناول يدك';
+
+  @override
+  String get allTypesOffersDescription => 'تصفح عبر فئات مختلفة واعثر على أفضل الصفقات التي تناسب احتياجاتك وتفضيلاتك.';
 }

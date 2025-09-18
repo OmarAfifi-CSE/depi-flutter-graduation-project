@@ -20,6 +20,8 @@ dependencies:
   intl: ^0.20.2
   flutter_localizations:
     sdk: flutter
+  smooth_page_indicator: ^1.2.1
+  flutter_animate: ^4.5.2
 
 
 dev_dependencies:

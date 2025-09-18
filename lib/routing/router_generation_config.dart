@@ -1,4 +1,5 @@
-import 'package:batrina/views/onboarding_screen.dart';
+import 'package:batrina/views/auth/sign in_screen.dart';
+import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,7 +12,12 @@ class RouterGenerationConfig {
       GoRoute(
         path: AppRoutes.onboardingScreen,
         name: AppRoutes.onboardingScreen,
-        builder: (context, state) => const OnboardingScreen(),
+        builder: (context, state) => OnboardingScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.loginScreen,
+        name: AppRoutes.loginScreen,
+        builder: (context, state) => SigninScreen(),
       ),
     ],
   );

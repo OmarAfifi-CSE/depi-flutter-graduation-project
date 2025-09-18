@@ -5,6 +5,7 @@ import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/styling/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,9 +16,7 @@ import 'l10n/app_localizations.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // --- Firebase Initialization ---
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // --- 1. Load Saved Theme ---
   final prefs = await SharedPreferences.getInstance();
   final String themeName =
@@ -55,8 +54,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
-        builder: (context, themeProvider, localeProvider, child) =>
-            MaterialApp.router(
+        builder: (context, themeProvider, localeProvider, child) => ScreenUtilInit(
+          designSize: const Size(375, 812),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          // Use builder only if you need to use library outside ScreenUtilInit context
+          builder: (_, child) {
+            return MaterialApp.router(
               builder: (context, child) {
                 return Stack(
                   children: [
@@ -103,7 +107,9 @@ class MyApp extends StatelessWidget {
               darkTheme: AppThemes.darkTheme,
               themeMode: themeProvider.themeMode,
               routerConfig: RouterGenerationConfig.goRouter(),
-            ),
+            );
+          },
+        ),
       ),
     );
   }

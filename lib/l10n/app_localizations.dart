@@ -130,6 +130,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'name'**
   String userName(Object name);
+
+  /// No description provided for @discountNewArrivalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'20% Discount New Arrival Product'**
+  String get discountNewArrivalTitle;
+
+  /// No description provided for @discountNewArrivalDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover amazing discounts on our latest collection. Get 20% off on all new arrival products.'**
+  String get discountNewArrivalDescription;
+
+  /// No description provided for @takeAdvantageShoppingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Take Advantage Of The Offer Shopping'**
+  String get takeAdvantageShoppingTitle;
+
+  /// No description provided for @takeAdvantageShoppingDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t miss out on exclusive shopping deals. Save more on your favorite items with special offers.'**
+  String get takeAdvantageShoppingDescription;
+
+  /// No description provided for @allTypesOffersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'All Types Offers Within Your Reach'**
+  String get allTypesOffersTitle;
+
+  /// No description provided for @allTypesOffersDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse through various categories and find the best deals that match your needs and preferences.'**
+  String get allTypesOffersDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

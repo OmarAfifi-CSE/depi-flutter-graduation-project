@@ -21,9 +21,9 @@ class AppThemes {
       disabledColor: AppColors.whiteColor,
     ),
 
-    colorScheme: ColorScheme.fromSwatch(
-      primarySwatch: Colors.grey,
-    ).copyWith(secondary: Colors.white),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      primary: AppColors.cardColor,
+    ),
 
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
