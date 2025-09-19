@@ -29,6 +29,7 @@ class CustomOnboardingPage extends StatelessWidget {
               AngledImageContainer(
                 imageUrl: _image,
                 height: 444.h,
+                width: MediaQuery.widthOf(context),
                 borderColor: Colors.transparent,
                 borderWidth: 0.0,
                 fit: BoxFit.cover,

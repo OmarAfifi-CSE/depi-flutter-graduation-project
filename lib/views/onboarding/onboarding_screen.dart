@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-import '../../styling/app_colors.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/views/onboarding/widgets/custom_onboarding_page.dart';
+import 'package:batrina/views/onboarding/widgets/moving_arrow.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:batrina/views/onboarding/widgets/moving_arrow.dart';
-import 'package:batrina/views/onboarding/widgets/custom_onboarding_page.dart';
-
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -31,22 +30,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Expanded(
                 child: PageView(
                   controller: _pageController,
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     CustomOnboardingPage(
                       image:
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIsKrMKEnxtEXBGdJltmzaTuA3nYmg07oygA&s",
+                          "https://i.pinimg.com/736x/24/d6/a5/24d6a5c152cc149152b139b12db4121b.jpg",
                       title: loc!.discountNewArrivalTitle,
                       subTitle: loc.discountNewArrivalDescription,
                     ),
                     CustomOnboardingPage(
                       image:
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIsKrMKEnxtEXBGdJltmzaTuA3nYmg07oygA&s",
+                          "https://i.pinimg.com/736x/64/33/44/6433444d347a9474e2d2ebe607d32fea.jpg",
                       title: loc.takeAdvantageShoppingTitle,
                       subTitle: loc.takeAdvantageShoppingDescription,
                     ),
                     CustomOnboardingPage(
                       image:
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIsKrMKEnxtEXBGdJltmzaTuA3nYmg07oygA&s",
+                          "https://i.pinimg.com/736x/3c/42/5e/3c425ee48ec0d4b183be05665ff83fe3.jpg",
                       title: loc.allTypesOffersTitle,
                       subTitle: loc.allTypesOffersDescription,
                     ),
@@ -71,7 +71,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         dotColor: appColors.card!,
                         activeDotColor: theme.primaryColor,
                       ),
-                      onDotClicked: (index) {},
+                      onDotClicked: (index) {
+                        _pageController.animateToPage(
+                          index,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                        );
+                      },
                     ),
                     const Spacer(),
                     MovingArrow(pageCont: _pageController),

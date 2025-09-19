@@ -1,12 +1,14 @@
+import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_colors.dart';
-import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
+import 'package:batrina/views/auth/widgets/sign_up_button.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -63,8 +65,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return null;
   }
 
+  String? confirmPassValidation(String? value) {
+    final loc = AppLocalizations.of(context);
+
+    if (passwordController.text.trim() != value) {
+      return loc!.passwordMustMatch;
+    }
+
+    return null;
+  }
+
   void validation() {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState!.validate()) {
+      context.read<AuthCubit>().signUp(
+        email: emailController.text.trim(),
+        pass: passwordController.text.trim(),
+        name: userNameController.text.trim(),
+      );
+    }
   }
 
   @override
@@ -87,11 +105,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        SizedBox(height: 70.h),
+                        SizedBox(height: 30.h),
                         //temp
                         Icon(
                               Icons.check_circle,
-                              size: 100.sp,
+                              size: 140.sp,
                               color: theme.primaryColor,
                             )
                             .animate()
@@ -103,7 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               duration: 1000.ms,
                               curve: Curves.easeInOut,
                             ),
-                        SizedBox(height: 90.h),
+                        SizedBox(height: 60.h),
                         Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -185,7 +203,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     controller: confirmPasswordController,
                                     labelText: loc.confirmPasswordTitle,
                                     obscureText: true,
-                                    validator: passValidation,
+                                    validator: confirmPassValidation,
                                   )
                                   .animate(delay: 400.ms)
                                   .fadeIn(duration: 1000.ms)
@@ -202,28 +220,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
-
-                CustomElevatedButton(
-                      backgroundColor: theme.primaryColor,
-                      onPressed: validation,
-                      buttonChild: Text(
-                        loc.signUpTitle,
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontFamily: AppFonts.mainFontName,
-                          color: theme.scaffoldBackgroundColor,
+                SizedBox(height: 44.h),
+                SignUpButton(validation: validation),
+                SizedBox(height: 10.h),
+                Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomText(
+                          data: loc.alreadyAUserTitle,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
                         ),
-                      ),
+                        const SizedBox(width: 4),
+                        InkWell(
+                          onTap: () {
+                            context.pop();
+                          },
+                          child: CustomText(
+                            data: loc.signInTitle,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
                     )
-                    .animate(delay: 500.ms)
+                    .animate(delay: 450.ms)
                     .fadeIn(duration: 500.ms)
-                    .scale(
-                      duration: 1000.ms,
-                      begin: const Offset(0.8, 0.8),
-                      end: const Offset(1, 1),
-                      curve: Curves.elasticOut,
-                    )
-                    .shimmer(duration: 500.ms),
+                    .slideY(
+                      delay: 200.ms,
+                      begin: 0.5,
+                      end: 0,
+                      duration: 500.ms,
+                    ),
+                SizedBox(height: 10.h),
               ],
             ),
           ),

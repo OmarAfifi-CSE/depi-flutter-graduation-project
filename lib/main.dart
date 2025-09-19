@@ -1,9 +1,11 @@
-import 'package:batrina/controllers/locale_provider.dart';
-import 'package:batrina/controllers/theme_provider.dart';
+import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/provider/locale_provider.dart';
+import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/routing/router_generation_config.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/styling/app_themes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -54,6 +56,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
+        BlocProvider(create: (_) => AuthCubit()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) => ScreenUtilInit(
@@ -64,6 +67,7 @@ class MyApp extends StatelessWidget {
           builder: (_, child) {
             return MaterialApp.router(
               builder: (context, child) {
+                context.read<AuthCubit>().loc = AppLocalizations.of(context);
                 return Stack(
                   children: [
                     ?child,

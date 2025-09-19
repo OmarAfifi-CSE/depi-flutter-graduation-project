@@ -197,6 +197,12 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get loginTitle;
 
+  /// No description provided for @signInTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signInTitle;
+
   /// No description provided for @orTitle.
   ///
   /// In en, this message translates to:
@@ -226,6 +232,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Don\'t have an account?'**
   String get dontHaveAccountTitle;
+
+  /// No description provided for @alreadyAUserTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Already a user?'**
+  String get alreadyAUserTitle;
 
   /// No description provided for @signUpTitle.
   ///
@@ -322,6 +334,138 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Password must contain upper, lower case letters and a number'**
   String get passwordWeakDescription;
+
+  /// No description provided for @googleSignInCanceledDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in canceled'**
+  String get googleSignInCanceledDescription;
+
+  /// No description provided for @googleNetworkErrorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Network connection issue'**
+  String get googleNetworkErrorDescription;
+
+  /// No description provided for @googleSignInFailedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in failed'**
+  String get googleSignInFailedDescription;
+
+  /// No description provided for @googleConfigErrorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Sign-In configuration error'**
+  String get googleConfigErrorDescription;
+
+  /// No description provided for @googleUnexpectedErrorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error occurred'**
+  String get googleUnexpectedErrorDescription;
+
+  /// No description provided for @emailAlreadyInUseDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Email already registered'**
+  String get emailAlreadyInUseDescription;
+
+  /// No description provided for @invalidEmailDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email address'**
+  String get invalidEmailDescription;
+
+  /// No description provided for @operationNotAllowedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-in method disabled'**
+  String get operationNotAllowedDescription;
+
+  /// No description provided for @weakPasswordDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Password too weak'**
+  String get weakPasswordDescription;
+
+  /// No description provided for @userDisabledDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Account disabled'**
+  String get userDisabledDescription;
+
+  /// No description provided for @userNotFoundDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'User not found'**
+  String get userNotFoundDescription;
+
+  /// No description provided for @wrongPasswordDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect password'**
+  String get wrongPasswordDescription;
+
+  /// No description provided for @invalidCredentialDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid credentials'**
+  String get invalidCredentialDescription;
+
+  /// No description provided for @networkRequestFailedDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection failed'**
+  String get networkRequestFailedDescription;
+
+  /// No description provided for @invalidVerificationCodeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid verification code'**
+  String get invalidVerificationCodeDescription;
+
+  /// No description provided for @invalidVerificationIdDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid verification ID'**
+  String get invalidVerificationIdDescription;
+
+  /// No description provided for @tooManyRequestsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many requests, try later'**
+  String get tooManyRequestsDescription;
+
+  /// No description provided for @internalErrorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Internal error occurred'**
+  String get internalErrorDescription;
+
+  /// No description provided for @accountExistsWithDifferentCredentialDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Account exists with different login'**
+  String get accountExistsWithDifferentCredentialDescription;
+
+  /// No description provided for @credentialAlreadyInUseDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Credentials used elsewhere'**
+  String get credentialAlreadyInUseDescription;
+
+  /// No description provided for @defaultAuthErrorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error occurred'**
+  String get defaultAuthErrorDescription;
+
+  /// No description provided for @passwordMustMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match '**
+  String get passwordMustMatch;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

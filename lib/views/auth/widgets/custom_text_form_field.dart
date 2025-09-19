@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:batrina/styling/app_fonts.dart';
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
+import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
@@ -52,6 +51,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: widget.validator,
       controller: widget.controller,
       obscureText: _isObscured,
@@ -60,8 +60,24 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         suffixIcon: widget.obscureText
             ? _buildPasswordIcon(context)
             : isValid
-            ? const Icon(Icons.check_circle)
-            : const Icon(Icons.cancel, color: Colors.red),
+            ? Icon(Icons.check_circle, color: theme.primaryColor)
+                  .animate(key: const ValueKey('check_icon'))
+                  .scale(
+                    begin: const Offset(0.8, 0.8),
+                    end: const Offset(1, 1),
+                    duration: 800.ms,
+                    curve: Curves.elasticOut,
+                  )
+            : widget.controller.text.isEmpty
+            ? null
+            : const Icon(Icons.cancel, color: Colors.red)
+                  .animate(key: const ValueKey('cancel_icon'))
+                  .scale(
+                    begin: const Offset(0.8, 0.8),
+                    end: const Offset(1, 1),
+                    duration: 800.ms,
+                    curve: Curves.elasticOut,
+                  ),
         border: UnderlineInputBorder(
           borderSide: BorderSide(color: theme.cardColor),
         ),
@@ -89,10 +105,23 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget _buildPasswordIcon(BuildContext context) {
     final theme = Theme.of(context);
     return IconButton(
-      icon: Icon(
-        _isObscured ? Icons.visibility_off : Icons.visibility,
-        color: theme.primaryColor,
-      ),
+      icon: _isObscured
+          ? Icon(Icons.visibility_off, color: theme.primaryColor)
+                .animate(key: const ValueKey('show_icon'))
+                .scale(
+                  begin: const Offset(0.8, 0.8),
+                  end: const Offset(1, 1),
+                  duration: 800.ms,
+                  curve: Curves.elasticOut,
+                )
+          : Icon(Icons.visibility, color: theme.primaryColor)
+                .animate(key: const ValueKey('hide_icon'))
+                .scale(
+                  begin: const Offset(0.8, 0.8),
+                  end: const Offset(1, 1),
+                  duration: 800.ms,
+                  curve: Curves.elasticOut,
+                ),
       onPressed: () {
         setState(() {
           _isObscured = !_isObscured;
