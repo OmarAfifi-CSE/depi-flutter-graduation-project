@@ -13,8 +13,9 @@ class AppThemes {
         textFieldFill: Color(0xffF3F4F5),
         textField: Color(0xffAAAAAA),
         secondaryText: Color(0xff666666),
-        card: Color(0xffDDDDDD),
+        card: Color(0xffdddddd),
         containerBorder: Color(0xff888888),
+        countButtonBackground: Color(0xffEEEEEE),
       ),
     ],
   );
@@ -34,6 +35,7 @@ class AppThemes {
         secondaryText: Color(0xffCCCCCC),
         card: Color(0xff1E1E1E),
         containerBorder: Color(0xff555555),
+        countButtonBackground: Color(0xffEEEEEE),
       ),
     ],
   );
