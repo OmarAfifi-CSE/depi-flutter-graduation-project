@@ -1,3 +1,8 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 class UserModel {
   final String id;
   final String name;
@@ -22,5 +27,19 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {'id': id, 'name': name, 'email': email, 'picture': picture};
+  }
+
+  static const String lastUserKey = "lastUser";
+  static Future<void> setUser(UserModel user) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+
+    try {
+      await sharedPreferences.setString(
+        UserModel.lastUserKey,
+        jsonEncode(user.toJson()),
+      );
+    } catch (e) {
+      debugPrint("error while adding last user");
+    }
   }
 }

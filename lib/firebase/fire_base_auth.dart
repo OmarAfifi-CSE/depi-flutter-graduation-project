@@ -34,17 +34,13 @@ class FireBaseAuth {
       serverClientId:
           "558409290947-852ohvhnnsnthuroj6armveab2mdoci1.apps.googleusercontent.com",
     );
-    print("here");
     GoogleSignInAccount googleSignInAccount = await googleSignIn.authenticate();
-    print("here 1");
     GoogleSignInAuthentication googleSignInAuthentication =
         googleSignInAccount.authentication;
-    print("here 2");
 
     AuthCredential authCredential = GoogleAuthProvider.credential(
       idToken: googleSignInAuthentication.idToken,
     );
-    print("here 3");
 
     UserCredential userCredential = await fireAuth.signInWithCredential(
       authCredential,

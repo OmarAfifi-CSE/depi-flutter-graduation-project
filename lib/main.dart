@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
+import 'package:batrina/firebase/fire_base_firestore.dart';
+import 'package:batrina/models/user_model.dart';
 import 'package:batrina/routing/router_generation_config.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/styling/app_themes.dart';
@@ -27,7 +31,13 @@ void main() async {
   if (locale == "ar") {
     AppFonts.mainFontName = "Tajawal";
   }
-
+  if (prefs.getString(UserModel.lastUserKey) != null) {
+    // RouterGenerationConfig.initialLoc = AppRoutes.signInScreen;
+    UserModel lastUser = UserModel.fromJson(
+      jsonDecode(prefs.getString(UserModel.lastUserKey)!),
+    );
+    FireBaseFireStore.currentUser = lastUser;
+  }
   final initialThemeMode = ThemeMode.values.firstWhere(
     (e) => e.name == themeName,
     orElse: () => ThemeMode.light,

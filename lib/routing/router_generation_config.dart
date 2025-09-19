@@ -6,8 +6,9 @@ import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
+  static String initialLoc = AppRoutes.onboardingScreen;
   static GoRouter goRouter() => GoRouter(
-    initialLocation: AppRoutes.onboardingScreen,
+    initialLocation: initialLoc,
     routes: [
       GoRoute(
         path: AppRoutes.onboardingScreen,
