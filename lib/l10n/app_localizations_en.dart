@@ -62,6 +62,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginTitle => 'Login';
 
   @override
+  String get signInTitle => 'Sign In';
+
+  @override
   String get orTitle => 'or';
 
   @override
@@ -75,6 +78,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dontHaveAccountTitle => 'Don\'t have an account?';
+
+  @override
+  String get alreadyAUserTitle => 'Already a user?';
 
   @override
   String get signUpTitle => 'Sign Up';

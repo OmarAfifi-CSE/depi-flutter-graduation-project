@@ -197,6 +197,12 @@ abstract class AppLocalizations {
   /// **'Login'**
   String get loginTitle;
 
+  /// No description provided for @signInTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign In'**
+  String get signInTitle;
+
   /// No description provided for @orTitle.
   ///
   /// In en, this message translates to:
@@ -226,6 +232,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Don\'t have an account?'**
   String get dontHaveAccountTitle;
+
+  /// No description provided for @alreadyAUserTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Already a user?'**
+  String get alreadyAUserTitle;
 
   /// No description provided for @signUpTitle.
   ///

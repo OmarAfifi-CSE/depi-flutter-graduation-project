@@ -62,6 +62,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loginTitle => 'تسجيل الدخول';
 
   @override
+  String get signInTitle => 'تسجيل الدخول';
+
+  @override
   String get orTitle => 'أو';
 
   @override
@@ -75,6 +78,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get dontHaveAccountTitle => 'ليس لديك حساب؟';
+
+  @override
+  String get alreadyAUserTitle => 'هل لديك حساب؟';
 
   @override
   String get signUpTitle => 'إنشاء حساب';

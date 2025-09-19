@@ -1,14 +1,13 @@
 import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_fonts.dart';
+import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../l10n/app_localizations.dart';
-import '../../../styling/app_fonts.dart';
-import 'custom_elevated_button.dart';
 
 class SignUpButton extends StatelessWidget {
   const SignUpButton({super.key, required this.validation});
@@ -30,8 +29,8 @@ class SignUpButton extends StatelessWidget {
             } else if (state is AuthSignUpSuccess) {
               CustomSnackBar.showSnackBar(
                 context: context,
-                message: "go sign ",
-                color: Colors.red,
+                message: "go sign ", //TODO: localize
+                color: Colors.green,
               );
             }
           },

@@ -21,6 +21,7 @@
   "passwordTitle": "كلمة المرور",
 
   "loginTitle": "تسجيل الدخول",
+  "signInTitle": "تسجيل الدخول",
   "orTitle": "أو",
 
   "continueWithGoogleTitle": "المتابعة مع جوجل",
@@ -28,6 +29,7 @@
 
   "forgotPasswordTitle": "نسيت كلمة المرور؟",
   "dontHaveAccountTitle": "ليس لديك حساب؟",
+  "alreadyAUserTitle": "هل لديك حساب؟",
   "signUpTitle": "إنشاء حساب",
 
   "loginFailedTitle": "فشل تسجيل الدخول",

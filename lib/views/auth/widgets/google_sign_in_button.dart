@@ -1,4 +1,9 @@
 import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_assets.dart';
+import 'package:batrina/styling/app_fonts.dart';
+import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_snack_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -6,12 +11,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-
-import '../../../l10n/app_localizations.dart';
-import '../../../styling/app_assets.dart';
-import '../../../styling/app_fonts.dart';
-import '../../../widgets/custom_snack_bar.dart';
-import 'custom_elevated_button.dart';
 
 class GoogleSignInButton extends StatelessWidget {
   const GoogleSignInButton({super.key});
@@ -33,19 +32,19 @@ class GoogleSignInButton extends StatelessWidget {
               context.pop();
               CustomSnackBar.showSnackBar(
                 context: context,
-                message: "Signed in",
-                color: Colors.red,
+                message: "Signed in", //TODO: localize
+                color: Colors.green,
               );
             } else if (state is AuthGoogleLoading) {
               showDialog(
+                barrierDismissible: false,
                 context: context,
                 builder: (context) {
                   return AlertDialog(
                     contentPadding: EdgeInsets.zero,
-                    backgroundColor: theme.primaryColor,
-                    content: Container(
-                      height: 200.h,
-                      // width: double.infinity,
+                    backgroundColor: Colors.white70,
+                    content: SizedBox(
+                      height: 150.h,
                       child: Center(
                         child: CupertinoActivityIndicator(
                           color: theme.scaffoldBackgroundColor,
@@ -58,7 +57,6 @@ class GoogleSignInButton extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            //loading change
             return CustomElevatedButton(
               onPressed: context.read<AuthCubit>().signInWithGoogle,
               backgroundColor: const Color(0xffde1500),

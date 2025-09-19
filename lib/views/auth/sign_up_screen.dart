@@ -7,6 +7,7 @@ import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -104,11 +105,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        SizedBox(height: 70.h),
+                        SizedBox(height: 30.h),
                         //temp
                         Icon(
                               Icons.check_circle,
-                              size: 100.sp,
+                              size: 140.sp,
                               color: theme.primaryColor,
                             )
                             .animate()
@@ -120,7 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               duration: 1000.ms,
                               curve: Curves.easeInOut,
                             ),
-                        SizedBox(height: 90.h),
+                        SizedBox(height: 60.h),
                         Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -219,7 +220,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                 ),
+                SizedBox(height: 44.h),
                 SignUpButton(validation: validation),
+                SizedBox(height: 10.h),
+                Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomText(
+                          data: loc.alreadyAUserTitle,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        const SizedBox(width: 4),
+                        InkWell(
+                          onTap: () {
+                            context.pop();
+                          },
+                          child: CustomText(
+                            data: loc.signInTitle,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    )
+                    .animate(delay: 450.ms)
+                    .fadeIn(duration: 500.ms)
+                    .slideY(
+                      delay: 200.ms,
+                      begin: 0.5,
+                      end: 0,
+                      duration: 500.ms,
+                    ),
+                SizedBox(height: 10.h),
               ],
             ),
           ),

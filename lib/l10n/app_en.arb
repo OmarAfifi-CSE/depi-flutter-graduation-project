@@ -24,6 +24,7 @@
   "passwordTitle": "Password",
 
   "loginTitle": "Login",
+  "signInTitle": "Sign In",
   "orTitle": "or",
 
 
@@ -33,6 +34,7 @@
 
   "forgotPasswordTitle": "Forgot Password?",
   "dontHaveAccountTitle": "Don't have an account?",
+  "alreadyAUserTitle": "Already a user?",
   "signUpTitle": "Sign Up",
 
   "loginFailedTitle": "Login Failed",

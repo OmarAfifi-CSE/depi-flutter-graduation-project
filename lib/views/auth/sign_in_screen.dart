@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/auth/widgets/custom_divider.dart';
 import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -77,7 +79,7 @@ class _SignInScreenState extends State<SignInScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 70.h),
+                  SizedBox(height: 30.h),
                   //temp
                   Icon(
                         Icons.check_circle,
@@ -93,7 +95,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         duration: 1000.ms,
                         curve: Curves.easeInOut,
                       ),
-                  SizedBox(height: 70.h),
+                  SizedBox(height: 60.h),
                   Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -172,6 +174,37 @@ class _SignInScreenState extends State<SignInScreen> {
                       .shimmer(duration: 500.ms),
                   SizedBox(height: 6.h),
                   const GoogleSignInButton(),
+                  SizedBox(height: 10.h),
+                  Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomText(
+                            data: loc.dontHaveAccountTitle,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          const SizedBox(width: 4),
+                          InkWell(
+                            onTap: () {
+                              context.pushNamed(AppRoutes.signUpScreen);
+                            },
+                            child: CustomText(
+                              data: loc.signUpTitle,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      )
+                      .animate(delay: 450.ms)
+                      .fadeIn(duration: 500.ms)
+                      .slideY(
+                        delay: 200.ms,
+                        begin: 0.5,
+                        end: 0,
+                        duration: 500.ms,
+                      ),
+                  SizedBox(height: 10.h),
                 ],
               ),
             ),
