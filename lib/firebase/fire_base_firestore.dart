@@ -14,11 +14,13 @@ class FireBaseFireStore {
     if (docSnap.exists) {
       if (setCurrent) {
         currentUser = UserModel.fromJson(docSnap.data()!);
+        UserModel.setUser(currentUser!);
       }
       return;
     }
     if (setCurrent) {
       currentUser = user;
+      UserModel.setUser(currentUser!);
     }
     await fireBaseFireStore
         .collection("users")
