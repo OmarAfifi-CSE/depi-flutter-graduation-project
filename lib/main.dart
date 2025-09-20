@@ -31,6 +31,7 @@ void main() async {
   if (locale == "ar") {
     AppFonts.mainFontName = "Tajawal";
   }
+
   if (prefs.getString(UserModel.lastUserKey) != null) {
     // RouterGenerationConfig.initialLoc = AppRoutes.signInScreen;
     UserModel lastUser = UserModel.fromJson(

@@ -195,4 +195,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordMustMatch => 'Passwords do not match ';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get resetPasswordLabel => 'Enter the email assoicated wth your account and we\'ll send an email with instuction to reset your password';
+
+  @override
+  String get sendInstruction => 'Send Instruction';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get reset => 'Reset';
 }

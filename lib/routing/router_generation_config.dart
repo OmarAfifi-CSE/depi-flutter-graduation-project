@@ -1,15 +1,16 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/routing/app_routes.dart';
+import 'package:batrina/views/auth/forget_pass.dart';
 import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
-  static String initialLoc = AppRoutes.onboardingScreen;
+  static String initialLoc = AppRoutes.signInScreen;
   static GoRouter goRouter() => GoRouter(
     initialLocation: initialLoc,
-    routes: [
+    routes: <RouteBase>[
       GoRoute(
         path: AppRoutes.onboardingScreen,
         name: AppRoutes.onboardingScreen,
@@ -45,6 +46,28 @@ class RouterGenerationConfig {
             );
           },
         ),
+      ),
+      GoRoute(
+        path: AppRoutes.forgetPassScreen,
+        name: AppRoutes.forgetPassScreen,
+        pageBuilder: (context, state) {
+          final oobCode = state.uri.queryParameters['oobCode'];
+          print(oobCode);
+          return CustomTransitionPage(
+            child: const ForgetPass(),
+            transitionDuration: const Duration(milliseconds: 1000),
+            reverseTransitionDuration: const Duration(milliseconds: 1000),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+                  return SharedAxisTransition(
+                    transitionType: SharedAxisTransitionType.horizontal,
+                    animation: animation,
+                    secondaryAnimation: secondaryAnimation,
+                    child: child,
+                  );
+                },
+          );
+        },
       ),
     ],
   );

@@ -195,4 +195,19 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordMustMatch => 'كلمات المرور غير متطابقة';
+
+  @override
+  String get resetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get resetPasswordLabel => 'أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك رسالة تتضمن التعليمات لإعادة تعيين كلمة المرور';
+
+  @override
+  String get sendInstruction => 'إرسال التعليمات';
+
+  @override
+  String get forgotPassword => 'هل نسيت كلمة المرور؟';
+
+  @override
+  String get reset => 'إعادة التعيين';
 }

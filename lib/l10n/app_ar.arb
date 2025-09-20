@@ -97,6 +97,13 @@
 
   "defaultAuthErrorDescription": "حدث خطأ غير متوقع",
 
-  "passwordMustMatch": "كلمات المرور غير متطابقة"
+  "passwordMustMatch": "كلمات المرور غير متطابقة",
 
+
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "resetPasswordLabel": "أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك رسالة تتضمن التعليمات لإعادة تعيين كلمة المرور",
+  "sendInstruction": "إرسال التعليمات",
+
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "reset": "إعادة التعيين"
 }

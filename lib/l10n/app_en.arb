@@ -102,6 +102,16 @@
   "credentialAlreadyInUseDescription": "Credentials used elsewhere",
 
   "defaultAuthErrorDescription": "Unexpected error occurred",
-  "passwordMustMatch": "Passwords do not match "
+  "passwordMustMatch": "Passwords do not match ",
+
+
+  "resetPassword": "Reset Password",
+  "resetPasswordLabel": "Enter the email assoicated wth your account and we'll send an email with instuction to reset your password",
+  "sendInstruction": "Send Instruction",
+
+
+  "forgotPassword": "Forgot Password?",
+  "reset": "Reset"
+
 
 }

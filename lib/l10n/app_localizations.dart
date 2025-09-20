@@ -466,6 +466,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match '**
   String get passwordMustMatch;
+
+  /// No description provided for @resetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPassword;
+
+  /// No description provided for @resetPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the email assoicated wth your account and we\'ll send an email with instuction to reset your password'**
+  String get resetPasswordLabel;
+
+  /// No description provided for @sendInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Instruction'**
+  String get sendInstruction;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPassword;
+
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

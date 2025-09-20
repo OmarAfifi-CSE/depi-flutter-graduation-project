@@ -1,1 +1,40 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"batrina-76502","appId":"1:558409290947:android:d9050ad1c25e6064853e76","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"batrina-76502","configurations":{"android":"1:558409290947:android:d9050ad1c25e6064853e76","ios":"1:558409290947:ios:223e584647c5ed88853e76"}}}}}}
+{
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "batrina-76502",
+          "appId": "1:558409290947:android:d9050ad1c25e6064853e76",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "batrina-76502",
+          "configurations": {
+            "android": "1:558409290947:android:d9050ad1c25e6064853e76",
+            "ios": "1:558409290947:ios:223e584647c5ed88853e76"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/.well-known/assetlinks.json",
+        "destination": "/assetlinks.json"
+      }
+    ]
+  }
+}

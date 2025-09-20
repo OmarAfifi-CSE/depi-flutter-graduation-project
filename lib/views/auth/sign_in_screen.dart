@@ -75,138 +75,177 @@ class _SignInScreenState extends State<SignInScreen> {
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: 30.h),
-                  //temp
-                  Icon(
-                        Icons.check_circle,
-                        size: 140.sp,
-                        color: theme.primaryColor,
-                      )
-                      .animate()
-                      .fade(duration: const Duration(milliseconds: 500))
-                      .shimmer(duration: 1000.ms)
-                      .moveY(
-                        begin: -300,
-                        end: 0,
-                        duration: 1000.ms,
-                        curve: Curves.easeInOut,
-                      ),
-                  SizedBox(height: 60.h),
-                  Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          CustomText(
-                            data: loc!.welcomeTitle,
-                            fontSize: 22.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                          SizedBox(height: 6.h),
-                          CustomText(
-                            data: loc.welcomeDescription,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
-                            color: appColors.secondaryText,
-                          ),
-                        ],
-                      )
-                      .animate(delay: 200.ms)
-                      .fadeIn()
-                      .moveX(
-                        begin: -600,
-                        end: 0,
-                        duration: 1000.ms,
-                        curve: Curves.easeInOut,
-                      ),
-                  SizedBox(height: 60.h),
-                  Form(
-                    key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: SingleChildScrollView(
                     child: Column(
-                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        CustomTextFormField(
-                              controller: emailController,
-                              labelText: loc.emailTitle,
-                              validator: emailValidation,
+                        SizedBox(height: 30.h),
+                        //temp
+                        Icon(
+                              Icons.check_circle,
+                              size: 140.sp,
+                              color: theme.primaryColor,
                             )
-                            .animate(delay: 300.ms)
-                            .fadeIn(duration: 1000.ms)
-                            .moveX(
+                            .animate()
+                            .fade(duration: const Duration(milliseconds: 500))
+                            .shimmer(duration: 1000.ms)
+                            .moveY(
                               begin: -300,
                               end: 0,
                               duration: 1000.ms,
                               curve: Curves.easeInOut,
                             ),
-                        SizedBox(height: 12.h),
-                        CustomTextFormField(
-                              controller: passwordController,
-                              labelText: loc.passwordTitle,
-                              obscureText: true,
-                              validator: passValidation,
+                        SizedBox(height: 60.h),
+                        Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                CustomText(
+                                  data: loc!.welcomeTitle,
+                                  fontSize: 22.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                SizedBox(height: 6.h),
+                                CustomText(
+                                  data: loc.welcomeDescription,
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: appColors.secondaryText,
+                                ),
+                              ],
                             )
-                            .animate(delay: 400.ms)
-                            .fadeIn(duration: 1000.ms)
+                            .animate(delay: 200.ms)
+                            .fadeIn()
                             .moveX(
-                              begin: -300,
+                              begin: -600,
                               end: 0,
                               duration: 1000.ms,
                               curve: Curves.easeInOut,
                             ),
+                        SizedBox(height: 60.h),
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Hero(
+                                    tag: "email",
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      child: CustomTextFormField(
+                                        controller: emailController,
+                                        labelText: loc.emailTitle,
+                                        validator: emailValidation,
+                                      ),
+                                    ),
+                                  )
+                                  .animate(delay: 300.ms)
+                                  .fadeIn(duration: 1000.ms)
+                                  .moveX(
+                                    begin: -300,
+                                    end: 0,
+                                    duration: 1000.ms,
+                                    curve: Curves.easeInOut,
+                                  ),
+                              SizedBox(height: 12.h),
+                              CustomTextFormField(
+                                    controller: passwordController,
+                                    labelText: loc.passwordTitle,
+                                    obscureText: true,
+                                    validator: passValidation,
+                                  )
+                                  .animate(delay: 400.ms)
+                                  .fadeIn(duration: 1000.ms)
+                                  .moveX(
+                                    begin: -300,
+                                    end: 0,
+                                    duration: 1000.ms,
+                                    curve: Curves.easeInOut,
+                                  ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 22.h),
+
+                        Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    context.pushNamed(
+                                      AppRoutes.forgetPassScreen,
+                                    );
+                                  },
+                                  child: CustomText(
+                                    data: loc.forgotPassword,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ],
+                            )
+                            .animate(delay: 450.ms)
+                            .fadeIn(duration: 500.ms)
+                            .slideY(
+                              delay: 200.ms,
+                              begin: 0.5,
+                              end: 0,
+                              duration: 500.ms,
+                            ),
+                        SizedBox(height: 22.h),
                       ],
                     ),
                   ),
-                  SizedBox(height: 44.h),
-                  SignInButton(validation: validation),
-                  SizedBox(height: 6.h),
-                  const CustomDivider()
-                      .animate(delay: 1350.ms)
-                      .fadeIn(duration: 550.ms)
-                      .scale(
-                        duration: 1000.ms,
-                        begin: const Offset(0.8, 0.8),
-                        end: const Offset(1, 1),
-                        curve: Curves.elasticOut,
-                      )
-                      .shimmer(duration: 500.ms),
-                  SizedBox(height: 6.h),
-                  const GoogleSignInButton(),
-                  SizedBox(height: 10.h),
-                  Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomText(
-                            data: loc.dontHaveAccountTitle,
+                ),
+                SignInButton(validation: validation),
+                SizedBox(height: 6.h),
+                const CustomDivider()
+                    .animate(delay: 1350.ms)
+                    .fadeIn(duration: 550.ms)
+                    .scale(
+                      duration: 1000.ms,
+                      begin: const Offset(0.8, 0.8),
+                      end: const Offset(1, 1),
+                      curve: Curves.elasticOut,
+                    )
+                    .shimmer(duration: 500.ms),
+                SizedBox(height: 6.h),
+                const GoogleSignInButton(),
+                SizedBox(height: 10.h),
+                Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CustomText(
+                          data: loc.dontHaveAccountTitle,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
+                        const SizedBox(width: 4),
+                        InkWell(
+                          onTap: () {
+                            context.pushNamed(AppRoutes.signUpScreen);
+                          },
+                          child: CustomText(
+                            data: loc.signUpTitle,
                             fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w700,
                           ),
-                          const SizedBox(width: 4),
-                          InkWell(
-                            onTap: () {
-                              context.pushNamed(AppRoutes.signUpScreen);
-                            },
-                            child: CustomText(
-                              data: loc.signUpTitle,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      )
-                      .animate(delay: 450.ms)
-                      .fadeIn(duration: 500.ms)
-                      .slideY(
-                        delay: 200.ms,
-                        begin: 0.5,
-                        end: 0,
-                        duration: 500.ms,
-                      ),
-                  SizedBox(height: 10.h),
-                ],
-              ),
+                        ),
+                      ],
+                    )
+                    .animate(delay: 450.ms)
+                    .fadeIn(duration: 500.ms)
+                    .slideY(
+                      delay: 200.ms,
+                      begin: 0.5,
+                      end: 0,
+                      duration: 500.ms,
+                    ),
+                SizedBox(height: 10.h),
+              ],
             ),
           ),
         ),
