@@ -54,6 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   void validation() {
+    FocusScope.of(context).unfocus();
     if (_formKey.currentState!.validate()) {
       context.read<AuthCubit>().signIn(
         email: emailController.text.trim(),

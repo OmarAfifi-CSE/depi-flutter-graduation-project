@@ -60,15 +60,24 @@ class AuthCubit extends Cubit<AuthState> {
         email: email,
         pass: pass,
       );
-      if (_currentOperation == signInKeyOperation) {
-        UserModel currentUser = UserModel(
-          id: userCredential.user!.uid,
-          name: userCredential.user?.displayName ?? "",
-          email: userCredential.user!.email!,
-        );
-        await fireBaseFireStore.addUser(user: currentUser, setCurrent: true);
-        emit(AuthSignInSuccess());
-        print(FireBaseFireStore.currentUser!.name);
+      if (userCredential.user != null) {
+        if (userCredential.user!.emailVerified) {
+          if (_currentOperation == signInKeyOperation) {
+            UserModel currentUser = UserModel(
+              id: userCredential.user!.uid,
+              name: userCredential.user?.displayName ?? "",
+              email: userCredential.user!.email!,
+            );
+            await fireBaseFireStore.addUser(
+              user: currentUser,
+              setCurrent: true,
+            );
+            emit(AuthSignInSuccess());
+          }
+        } else {
+          await fireBaseAuth.signOut();
+          emit(AuthSignInFailure("Please verify your email first"));
+        }
       }
     } on FirebaseAuthException catch (e) {
       if (_currentOperation == signInKeyOperation) {
@@ -94,6 +103,10 @@ class AuthCubit extends Cubit<AuthState> {
         email: email,
         pass: pass,
       );
+      User? firebaseUser = FirebaseAuth.instance.currentUser;
+      if (firebaseUser != null) {
+        await firebaseUser.sendEmailVerification();
+      }
       if (_currentOperation == signUpKeyOperation) {
         await fireBaseFireStore.addUser(setCurrent: false, user: currentUser);
         emit(AuthSignUpSuccess());
