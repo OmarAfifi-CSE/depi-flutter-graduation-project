@@ -1,5 +1,5 @@
-import 'package:batrina/styling/app_fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:batrina/styling/app_fonts.dart';
 
 class CustomText extends StatelessWidget {
   const CustomText({
@@ -8,17 +8,20 @@ class CustomText extends StatelessWidget {
     required this.fontSize,
     required this.fontWeight,
     this.color,
+    this.textAlign,
   });
 
   final String data;
   final double fontSize;
   final FontWeight fontWeight;
   final Color? color;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       data,
+      textAlign: textAlign ?? TextAlign.center,
       style: TextStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,

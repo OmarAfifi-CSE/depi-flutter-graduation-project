@@ -1,23 +1,21 @@
 import 'dart:convert';
-
-import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
-import 'package:batrina/controllers/provider/locale_provider.dart';
-import 'package:batrina/controllers/provider/theme_provider.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
-import 'package:batrina/models/user_model.dart';
-import 'package:batrina/routing/router_generation_config.dart';
-import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/styling/app_themes.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-
 import 'l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:batrina/models/user_model.dart';
+import 'package:batrina/styling/app_fonts.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:batrina/styling/app_themes.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:batrina/firebase/fire_base_firestore.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:batrina/routing/router_generation_config.dart';
+import 'package:batrina/controllers/provider/theme_provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:batrina/controllers/provider/locale_provider.dart';
+import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
