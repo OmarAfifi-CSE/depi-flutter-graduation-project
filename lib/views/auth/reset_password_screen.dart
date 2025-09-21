@@ -1,14 +1,14 @@
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
+import 'package:batrina/widgets/back_arrow.dart';
+import 'package:batrina/widgets/custom_header_widget.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../l10n/app_localizations.dart';
-import '../../styling/app_colors.dart';
-import '../../widgets/back_arrow.dart';
-import '../../widgets/custom_header_widget.dart';
-import '../../widgets/custom_text.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key, required this.oobCode});
@@ -88,7 +88,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               SizedBox(height: 12.h),
               CustomTextFormField(
                     controller: confirmPasswordController,
-                    labelText: loc!.confirmPasswordTitle,
+                    labelText: loc.confirmPasswordTitle,
                     obscureText: true,
                     validator: confirmPassValidation,
                   )

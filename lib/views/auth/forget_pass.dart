@@ -39,9 +39,9 @@ class _ForgetPassState extends State<ForgetPass> {
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: SafeArea(
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -54,56 +54,63 @@ class _ForgetPassState extends State<ForgetPass> {
                   fontSize: 23.sp,
                 ),
               ),
-              Center(
-                child: Lottie.asset(
-                  AppAssets.forgotPassword,
-                  height: 400.h,
-                  width: 400.w,
-                  fit: BoxFit.fill,
-                ),
-              ),
-              SizedBox(height: 0.h),
-              CustomText(
-                data: loc.resetPasswordLabel,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-                color: appColors.secondaryText,
-              ),
-              SizedBox(height: 10.h),
-              Hero(
-                tag: "email",
-                child: Material(
-                  color: Colors.transparent,
-                  child: CustomTextFormField(
-                    controller: emailCont,
-                    labelText: loc.emailTitle,
-                    validator: emailValidation,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Lottie.asset(
+                          AppAssets.forgotPassword,
+                          height: 400.h,
+                          width: 400.w,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                      SizedBox(height: 0.h),
+                      CustomText(
+                        data: loc.resetPasswordLabel,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        color: appColors.secondaryText,
+                      ),
+                      SizedBox(height: 10.h),
+                      Hero(
+                        tag: "email",
+                        child: Material(
+                          color: Colors.transparent,
+                          child: CustomTextFormField(
+                            controller: emailCont,
+                            labelText: loc.emailTitle,
+                            validator: emailValidation,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 30.h),
+                      CustomElevatedButton(
+                            onPressed: () {},
+                            buttonChild: CustomText(
+                              data: loc.sendInstruction,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                              color: theme.scaffoldBackgroundColor,
+                            ),
+                          )
+                          .animate()
+                          .fadeIn(
+                            delay: const Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
+                          )
+                          .shimmer(color: theme.scaffoldBackgroundColor)
+                          .slideY(
+                            delay: const Duration(milliseconds: 500),
+                            duration: const Duration(milliseconds: 500),
+                            begin: 4,
+                            curve: Curves.easeInOut,
+                          ),
+                    ],
                   ),
                 ),
               ),
-              SizedBox(height: 30.h),
-              CustomElevatedButton(
-                    onPressed: () {},
-                    buttonChild: CustomText(
-                      data: loc.sendInstruction,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500,
-                      color: theme.scaffoldBackgroundColor,
-                    ),
-                  )
-                  .animate()
-                  .fadeIn(
-                    delay: const Duration(milliseconds: 500),
-
-                    duration: const Duration(milliseconds: 500),
-                  )
-                  .shimmer(color: theme.scaffoldBackgroundColor)
-                  .slideY(
-                    delay: const Duration(milliseconds: 500),
-                    duration: const Duration(milliseconds: 500),
-                    begin: 4,
-                    curve: Curves.easeInOut,
-                  ),
             ],
           ),
         ),
