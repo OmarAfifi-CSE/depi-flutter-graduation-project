@@ -1,16 +1,20 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forget_pass.dart';
+import 'package:batrina/views/auth/reset_password_screen.dart';
 import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
   static String initialLoc = AppRoutes.signInScreen;
-  static GoRouter goRouter() => GoRouter(
+  static final GoRouter router = GoRouter(
     initialLocation: initialLoc,
     routes: <RouteBase>[
+      // Route للـ reset password
       GoRoute(
         path: AppRoutes.onboardingScreen,
         name: AppRoutes.onboardingScreen,
@@ -69,6 +73,36 @@ class RouterGenerationConfig {
           );
         },
       ),
+      GoRoute(
+        path: AppRoutes.resetPassword,
+        builder: (context, state) {
+          final oobCode = state.uri.queryParameters['oobCode'];
+          final mode = state.uri.queryParameters['mode'];
+          final lang = state.uri.queryParameters['lang'];
+          return ResetPasswordScreen(oobCode: oobCode!);
+        },
+      ),
     ],
+    errorBuilder: (context, state) {
+      final uri = state.uri.toString();
+
+      if (uri.contains("reset.html")) {
+        final redirect = Uri.parse(uri).queryParameters['link'];
+
+        if (redirect != null) {
+          print("helodfs");
+          return const SizedBox.shrink();
+        }
+        return Scaffold(
+          backgroundColor: Colors.white,
+          body: Center(child: Text("404: ${state.error}")),
+        );
+      } else {
+        return Scaffold(
+          backgroundColor: Colors.white,
+          body: Center(child: Text("404: ${state.error}")),
+        );
+      }
+    },
   );
 }

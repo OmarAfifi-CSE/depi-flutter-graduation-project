@@ -5,10 +5,13 @@ import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/user_model.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/routing/router_generation_config.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/styling/app_themes.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,6 +26,30 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // --- Firebase Initialization ---
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // initMethodChannel();
+
+  // await FirebaseAuth.instance.sendPasswordResetEmail(
+  //   email: "bdalzymmrw@gmail.com",
+  //   actionCodeSettings: ActionCodeSettings(
+  //     url: "https://batrina-76502.web.app/reset.html",
+  //     handleCodeInApp: false,
+  //     androidPackageName: "com.oamao.batrina.batrina",
+  //     androidInstallApp: true,
+  //     androidMinimumVersion: "1",
+  //     iOSBundleId: "com.example.batrina.ios",
+  //   ),
+  // );
+  // await FirebaseAuth.instance.sendPasswordResetEmail(
+  //   email: "bdalzymmrw@gmail.com",
+  //   actionCodeSettings: ActionCodeSettings(
+  //     url: "https://batrina-76502.web.app/reset.html",
+  //     handleCodeInApp: true,
+  //     androidPackageName: "com.oamao.batrina.batrina",
+  //     androidInstallApp: true,
+  //     androidMinimumVersion: "1",
+  //   ),
+  // );
+
   // --- 1. Load Saved Theme ---
   final prefs = await SharedPreferences.getInstance();
   final String themeName =
@@ -61,7 +88,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final router = RouterGenerationConfig.goRouter();
+    // final router = RouterGenerationConfig.goRouter();
 
     return MultiProvider(
       providers: [
@@ -123,7 +150,7 @@ class MyApp extends StatelessWidget {
               theme: AppThemes.lightTheme,
               darkTheme: AppThemes.darkTheme,
               themeMode: themeProvider.themeMode,
-              routerConfig: router,
+              routerConfig: RouterGenerationConfig.router,
             );
           },
         ),
@@ -131,3 +158,67 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+final MethodChannel channel = MethodChannel("deeplink_channel");
+
+// void initMethodChannel() {
+//   channel.setMethodCallHandler((call) async {
+//     switch (call.method) {
+//       case "openResetPasswordPage":
+//         final String oobCode = call.arguments;
+//         print("Opening reset password with oobCode: $oobCode");
+//
+//         // استخدم GoRouter للـ navigation
+//         RouterGenerationConfig.router.push(
+//           '${AppRoutes.forgetPassScreen}?oobCode=$oobCode',
+//         );
+//         break;
+//
+//       case "onDeepLink":
+//         final String deepLink = call.arguments;
+//         print("General deep link: $deepLink");
+//         // معالجة عامة لو محتاج
+//         break;
+//     }
+//   });
+// }
+
+// Future<void> _handleMethodCall(MethodCall call) async {
+//   if (call.method == 'onDeepLink') {
+//     final String deepLink = call.arguments;
+//     print('🔗 Deep link received: $deepLink');
+//
+//     _parseAndNavigate(deepLink);
+//   }
+// }
+//
+// void _parseAndNavigate(String deepLink) {
+//   try {
+//     final uri = Uri.parse(deepLink);
+//     print('📝 Parsed URI: $uri');
+//
+//     // استخرج الـ link parameter
+//     final linkParam = uri.queryParameters['link'];
+//     print('🔍 Link param: $linkParam');
+//
+//     if (linkParam != null) {
+//       // decode الـ URL
+//       final decodedLink = Uri.decodeComponent(linkParam);
+//       print('🔓 Decoded link: $decodedLink');
+//
+//       final linkUri = Uri.parse(decodedLink);
+//       final mode = linkUri.queryParameters['mode'];
+//       final oobCode = linkUri.queryParameters['oobCode'];
+//
+//       print('⚙️ Mode: $mode, OobCode: $oobCode');
+//
+//       if (mode == 'resetPassword' && oobCode != null && oobCode.isNotEmpty) {
+//         print('✅ Navigating to reset page');
+//       } else {
+//         print('❌ Invalid parameters');
+//       }
+//     }
+//   } catch (e) {
+//     print('💥 Error parsing deep link: $e');
+//   }
+// }
