@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,12 +39,26 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
-        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
+        style: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w600,
+          fontFamily: AppFonts.mainFontName,
+        ),
       ),
       textDirection: TextDirection.ltr,
+      maxLines: 1,
     );
-    textPainter.layout();
-    return textPainter.width + 72.w;
+
+    textPainter.layout(minWidth: 0, maxWidth: double.infinity);
+
+    final double iconWidth = 30.w;
+    final double leftPadding = 14.w;
+    final double rightPadding = 14.w;
+    final double textWidth = textPainter.width;
+
+    final double safetyMargin = 2.w;
+
+    return iconWidth + leftPadding + textWidth + rightPadding + safetyMargin;
   }
 
   @override
@@ -53,7 +66,7 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 500),
     );
 
     _textAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -99,7 +112,7 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
       _containerHeight = 30.h;
     });
 
-    await Future.delayed(const Duration(milliseconds: 400));
+    await Future.delayed(const Duration(milliseconds: 200));
 
     if (mounted) {
       setState(() {
@@ -159,7 +172,7 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
         }
       },
       child: Stack(
-        alignment: Alignment.centerLeft,
+        alignment: AlignmentDirectional.centerStart,
         children: [
           AnimatedOpacity(
             duration: const Duration(milliseconds: 400),
@@ -170,8 +183,8 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
               curve: Curves.easeInOut,
               width: _backgroundWidth,
               height: 30.h,
-              alignment: Alignment.centerRight,
-              padding: EdgeInsets.only(right: 12.w),
+              alignment: AlignmentDirectional.centerEnd,
+              padding: EdgeInsetsDirectional.only(end: 14.w),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.r),
                 color: appColors?.card ?? theme.cardColor,
