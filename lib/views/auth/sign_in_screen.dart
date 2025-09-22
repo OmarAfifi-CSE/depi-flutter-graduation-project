@@ -177,7 +177,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 InkWell(
                                   onTap: () {
                                     context.pushNamed(
-                                      AppRoutes.forgetPassScreen,
+                                      AppRoutes.forgotPasswordScreen,
                                     );
                                   },
                                   child: CustomText(

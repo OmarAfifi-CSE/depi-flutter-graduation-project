@@ -26,6 +26,7 @@ class ForgetPass extends StatefulWidget {
 class _ForgetPassState extends State<ForgetPass> {
   TextEditingController emailCont = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey();
+
   String themeName(BuildContext context) {
     return Theme.of(context).brightness == Brightness.dark ? "dark" : "light";
   }
@@ -117,6 +118,7 @@ class _ForgetPassState extends State<ForgetPass> {
                               return CustomElevatedButton(
                                 onPressed: state is! ForgetPasswordLoading
                                     ? () async {
+                                        FocusScope.of(context).unfocus();
                                         if (_formKey.currentState!.validate()) {
                                           context
                                               .read<ForgetPasswordCubit>()
