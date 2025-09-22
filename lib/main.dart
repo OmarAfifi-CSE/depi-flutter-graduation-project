@@ -5,11 +5,9 @@ import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/user_model.dart';
-import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/routing/router_generation_config.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/styling/app_themes.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,30 +24,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // --- Firebase Initialization ---
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // initMethodChannel();
-
-  // await FirebaseAuth.instance.sendPasswordResetEmail(
-  //   email: "bdalzymmrw@gmail.com",
-  //   actionCodeSettings: ActionCodeSettings(
-  //     url: "https://batrina-76502.web.app/reset.html",
-  //     handleCodeInApp: false,
-  //     androidPackageName: "com.oamao.batrina.batrina",
-  //     androidInstallApp: true,
-  //     androidMinimumVersion: "1",
-  //     iOSBundleId: "com.example.batrina.ios",
-  //   ),
-  // );
-  // await FirebaseAuth.instance.sendPasswordResetEmail(
-  //   email: "bdalzymmrw@gmail.com",
-  //   actionCodeSettings: ActionCodeSettings(
-  //     url: "https://batrina-76502.web.app/reset.html",
-  //     handleCodeInApp: true,
-  //     androidPackageName: "com.oamao.batrina.batrina",
-  //     androidInstallApp: true,
-  //     androidMinimumVersion: "1",
-  //   ),
-  // );
-
   // --- 1. Load Saved Theme ---
   final prefs = await SharedPreferences.getInstance();
   final String themeName =

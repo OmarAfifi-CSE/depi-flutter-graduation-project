@@ -68,10 +68,10 @@ class FireBaseAuth {
         url:
             "https://batrina-76502.web.app/reset.html#theme=$themeModeName&lang=$lang",
         handleCodeInApp: false,
-        androidPackageName: "com.example.batrina",
+        androidPackageName: "com.oamao.batrina.batrina",
         androidInstallApp: true,
         androidMinimumVersion: "1",
-        iOSBundleId: "com.example.batrina.ios",
+        iOSBundleId: "com.oamao.batrina.batrina",
       ),
     );
   }

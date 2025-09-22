@@ -13,8 +13,7 @@ class RouterGenerationConfig {
   static String initialLoc = AppRoutes.signInScreen;
   static final GoRouter router = GoRouter(
     initialLocation: initialLoc,
-    routes: <RouteBase>[
-      // Route للـ reset password
+    routes: [
       GoRoute(
         path: AppRoutes.onboardingScreen,
         name: AppRoutes.onboardingScreen,
@@ -34,6 +33,30 @@ class RouterGenerationConfig {
             );
           },
         ),
+        routes: [
+          GoRoute(
+            path: 'reset.html',
+            name: AppRoutes.forgetPassScreen,
+            pageBuilder: (context, state) {
+              final oobCode = state.uri.queryParameters['oobCode'];
+              print("Mario ::$oobCode");
+              return CustomTransitionPage(
+                child: const ForgetPass(),
+                transitionDuration: const Duration(milliseconds: 1000),
+                reverseTransitionDuration: const Duration(milliseconds: 1000),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  return SharedAxisTransition(
+                    transitionType: SharedAxisTransitionType.horizontal,
+                    animation: animation,
+                    secondaryAnimation: secondaryAnimation,
+                    child: child,
+                  );
+                },
+              );
+            },
+          )
+        ],
       ),
       GoRoute(
         path: AppRoutes.signUpScreen,
@@ -51,28 +74,7 @@ class RouterGenerationConfig {
           },
         ),
       ),
-      GoRoute(
-        path: AppRoutes.forgetPassScreen,
-        name: AppRoutes.forgetPassScreen,
-        pageBuilder: (context, state) {
-          final oobCode = state.uri.queryParameters['oobCode'];
-          print(oobCode);
-          return CustomTransitionPage(
-            child: const ForgetPass(),
-            transitionDuration: const Duration(milliseconds: 1000),
-            reverseTransitionDuration: const Duration(milliseconds: 1000),
-            transitionsBuilder:
-                (context, animation, secondaryAnimation, child) {
-                  return SharedAxisTransition(
-                    transitionType: SharedAxisTransitionType.horizontal,
-                    animation: animation,
-                    secondaryAnimation: secondaryAnimation,
-                    child: child,
-                  );
-                },
-          );
-        },
-      ),
+
       GoRoute(
         path: AppRoutes.resetPassword,
         builder: (context, state) {
@@ -83,26 +85,28 @@ class RouterGenerationConfig {
         },
       ),
     ],
-    errorBuilder: (context, state) {
-      final uri = state.uri.toString();
+    redirect: (BuildContext context, GoRouterState state) {
+      // Check if the incoming link is the one from Firebase Auth
+      if (state.uri.path == '/__/auth/links') {
+        // Find the 'link' query parameter, which contains the actual deep link
+        final innerLinkString = state.uri.queryParameters['link'];
 
-      if (uri.contains("reset.html")) {
-        final redirect = Uri.parse(uri).queryParameters['link'];
+        if (innerLinkString != null) {
+          // Parse that inner link to access its parameters
+          final innerUri = Uri.parse(innerLinkString);
+          final oobCode = innerUri.queryParameters['oobCode'];
+          final mode = innerUri.queryParameters['mode'];
 
-        if (redirect != null) {
-          print("helodfs");
-          return const SizedBox.shrink();
+          // If it's a password reset link, build the correct path for your app
+          if (mode == 'resetPassword' && oobCode != null) {
+            // Redirect to the route your app already knows how to handle
+            return '${AppRoutes.signInScreen}/reset.html?oobCode=$oobCode';
+          }
+          // You could add more cases here for 'verifyEmail', etc.
         }
-        return Scaffold(
-          backgroundColor: Colors.white,
-          body: Center(child: Text("404: ${state.error}")),
-        );
-      } else {
-        return Scaffold(
-          backgroundColor: Colors.white,
-          body: Center(child: Text("404: ${state.error}")),
-        );
       }
+      // For any other link, don't do anything.
+      return null;
     },
   );
 }

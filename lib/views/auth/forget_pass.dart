@@ -4,6 +4,7 @@ import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -87,7 +88,20 @@ class _ForgetPassState extends State<ForgetPass> {
                       ),
                       SizedBox(height: 30.h),
                       CustomElevatedButton(
-                            onPressed: () {},
+                            onPressed: () async{
+                              print('Mario ::');
+                              await FirebaseAuth.instance.sendPasswordResetEmail(
+                                email: "o.abdelsalam2004@gmail.com",
+                                actionCodeSettings: ActionCodeSettings(
+                                  url: "https://batrina-76502.web.app/reset.html",
+                                  handleCodeInApp: true,
+                                  androidPackageName: "com.oamao.batrina.batrina",
+                                  androidInstallApp: true,
+                                  androidMinimumVersion: "1",
+                                  iOSBundleId: "com.oamao.batrina.batrina",
+                                ),
+                              );
+                            },
                             buttonChild: CustomText(
                               data: loc.sendInstruction,
                               fontSize: 14.sp,
