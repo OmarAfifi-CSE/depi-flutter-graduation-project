@@ -1,9 +1,10 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/routing/app_routes.dart';
-import 'package:batrina/views/auth/forget_pass.dart';
-import 'package:batrina/views/auth/reset_password_screen.dart';
+import 'package:batrina/views/auth/forgot_password_screen.dart';
+import 'package:batrina/views/auth/create_new_password_screen.dart';
 import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
+import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,12 +36,12 @@ class RouterGenerationConfig {
         ),
         routes: [
           GoRoute(
-            path: AppRoutes.resetPassword,
-            name: AppRoutes.resetPassword,
+            path: AppRoutes.createNewPasswordScreen,
+            name: AppRoutes.createNewPasswordScreen,
             pageBuilder: (context, state) {
               final oobCode = state.uri.queryParameters['oobCode'];
               return CustomTransitionPage(
-                child: ResetPasswordScreen(oobCode: oobCode!),
+                child: CreateNewPasswordScreen(oobCode: oobCode!),
                 transitionDuration: const Duration(milliseconds: 1000),
                 reverseTransitionDuration: const Duration(milliseconds: 1000),
                 transitionsBuilder:
@@ -52,6 +53,27 @@ class RouterGenerationConfig {
                         child: child,
                       );
                     },
+              );
+            },
+          ),
+          GoRoute(
+            path: AppRoutes.verificationScreen,
+            name: AppRoutes.verificationScreen,
+            pageBuilder: (context, state) {
+              final oobCode = state.uri.queryParameters['oobCode'];
+              return CustomTransitionPage(
+                child: EmailVerificationScreen(oobCode: oobCode!),
+                transitionDuration: const Duration(milliseconds: 1000),
+                reverseTransitionDuration: const Duration(milliseconds: 1000),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  return SharedAxisTransition(
+                    transitionType: SharedAxisTransitionType.horizontal,
+                    animation: animation,
+                    secondaryAnimation: secondaryAnimation,
+                    child: child,
+                  );
+                },
               );
             },
           ),
@@ -74,8 +96,8 @@ class RouterGenerationConfig {
         ),
       ),
       GoRoute(
-        path: AppRoutes.forgetPassScreen,
-        name: AppRoutes.forgetPassScreen,
+        path: AppRoutes.forgotPasswordScreen,
+        name: AppRoutes.forgotPasswordScreen,
         pageBuilder: (context, state) {
           return CustomTransitionPage(
             child: const ForgetPass(),
@@ -95,23 +117,29 @@ class RouterGenerationConfig {
       ),
     ],
     redirect: (BuildContext context, GoRouterState state) {
-      // Check if the incoming link is the one from Firebase Auth
+      String? mode;
+      String? oobCode;
+
       if (state.uri.path == '/__/auth/links') {
-        // Find the 'link' query parameter, which contains the actual deep link
         final innerLinkString = state.uri.queryParameters['link'];
-
         if (innerLinkString != null) {
-          // Parse that inner link to access its parameters
           final innerUri = Uri.parse(innerLinkString);
-          final oobCode = innerUri.queryParameters['oobCode'];
-          final mode = innerUri.queryParameters['mode'];
+          mode = innerUri.queryParameters['mode'];
+          oobCode = innerUri.queryParameters['oobCode'];
+        }
+      } else if (state.uri.path == '/action') {
+        mode = state.uri.queryParameters['mode'];
+        oobCode = state.uri.queryParameters['oobCode'];
+      }
 
-          // If it's a password reset link, build the correct path for your app
-          if (mode == 'resetPassword' && oobCode != null) {
-            // Redirect to the route your app already knows how to handle
-            return '${AppRoutes.signInScreen}${AppRoutes.resetPassword}?oobCode=$oobCode';
-          }
-          // You could add more cases here for 'verifyEmail', etc.
+      // If we successfully extracted the params, redirect accordingly
+      if (mode != null && oobCode != null) {
+        switch (mode) {
+          case 'resetPassword':
+            return '${AppRoutes.signInScreen}${AppRoutes.createNewPasswordScreen}?oobCode=$oobCode';
+
+          case 'verifyEmail':
+            return '${AppRoutes.signInScreen}${AppRoutes.verificationScreen}?oobCode=$oobCode';
         }
       }
       // For any other link, don't do anything.

@@ -210,4 +210,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get reset => 'إعادة التعيين';
+
+  @override
+  String get expiredActionCodeDescription => 'الرابط منتهي الصلاحية. من فضلك اطلب رابط جديد.';
+
+  @override
+  String get invalidActionCodeDescription => 'الرابط غير صالح. من فضلك اطلب رابط جديد.';
+
+  @override
+  String get emailVerifiedTitle => 'تم تأكيد البريد الإلكتروني!';
+
+  @override
+  String get emailVerifiedSubtitle => 'حسابك الآن نشط وجاهز للاستخدام. شكراً لانضمامك إلينا.';
+
+  @override
+  String get continueToSignInButton => 'متابعة لتسجيل الدخول';
+
+  @override
+  String get verificationFailedTitle => 'فشل التحقق';
+
+  @override
+  String get backToSignInButton => 'العودة لتسجيل الدخول';
 }

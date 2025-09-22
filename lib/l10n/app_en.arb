@@ -111,7 +111,15 @@
 
 
   "forgotPassword": "Forgot Password?",
-  "reset": "Reset"
+  "reset": "Reset",
 
+  "expiredActionCodeDescription": "The link has expired. Please request a new one.",
+  "invalidActionCodeDescription": "The link is invalid. Please request a new one.",
 
+  "emailVerifiedTitle": "Email Verified!",
+  "emailVerifiedSubtitle": "Your account is now active and ready to use. Thank you for joining us.",
+  "continueToSignInButton": "Continue to Sign In",
+
+  "verificationFailedTitle": "Verification Failed",
+  "backToSignInButton": "Back to Sign In"
 }

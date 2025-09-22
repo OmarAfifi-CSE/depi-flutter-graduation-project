@@ -496,6 +496,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Reset'**
   String get reset;
+
+  /// No description provided for @expiredActionCodeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The link has expired. Please request a new one.'**
+  String get expiredActionCodeDescription;
+
+  /// No description provided for @invalidActionCodeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The link is invalid. Please request a new one.'**
+  String get invalidActionCodeDescription;
+
+  /// No description provided for @emailVerifiedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Verified!'**
+  String get emailVerifiedTitle;
+
+  /// No description provided for @emailVerifiedSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account is now active and ready to use. Thank you for joining us.'**
+  String get emailVerifiedSubtitle;
+
+  /// No description provided for @continueToSignInButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Sign In'**
+  String get continueToSignInButton;
+
+  /// No description provided for @verificationFailedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification Failed'**
+  String get verificationFailedTitle;
+
+  /// No description provided for @backToSignInButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Sign In'**
+  String get backToSignInButton;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

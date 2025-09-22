@@ -105,5 +105,15 @@
   "sendInstruction": "إرسال التعليمات",
 
   "forgotPassword": "هل نسيت كلمة المرور؟",
-  "reset": "إعادة التعيين"
+  "reset": "إعادة التعيين",
+
+  "expiredActionCodeDescription": "الرابط منتهي الصلاحية. من فضلك اطلب رابط جديد.",
+  "invalidActionCodeDescription": "الرابط غير صالح. من فضلك اطلب رابط جديد.",
+
+  "emailVerifiedTitle": "تم تأكيد البريد الإلكتروني!",
+  "emailVerifiedSubtitle": "حسابك الآن نشط وجاهز للاستخدام. شكراً لانضمامك إلينا.",
+  "continueToSignInButton": "متابعة لتسجيل الدخول",
+
+  "verificationFailedTitle": "فشل التحقق",
+  "backToSignInButton": "العودة لتسجيل الدخول"
 }

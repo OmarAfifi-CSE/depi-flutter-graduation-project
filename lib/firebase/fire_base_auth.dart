@@ -66,7 +66,7 @@ class FireBaseAuth {
       email: email,
       actionCodeSettings: ActionCodeSettings(
         url:
-            "https://batrina-76502.web.app/reset.html#theme=$themeModeName&lang=$lang",
+            "https://batrina-76502.web.app/action#theme=$themeModeName&lang=$lang",
         handleCodeInApp: true,
         androidPackageName: "com.oamao.batrina.batrina",
         androidInstallApp: true,

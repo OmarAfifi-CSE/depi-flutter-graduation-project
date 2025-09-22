@@ -33,14 +33,14 @@
                     android:host="batrina-76502.web.app" />
             </intent-filter>
 
-            <!-- Intent filter للـ reset.html -->
+            <!-- Intent filter للـ action -->
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https"
                     android:host="batrina-76502.web.app"
-                    android:pathPrefix="/reset.html" />
+                    android:pathPrefix="/action" />
             </intent-filter>
 
             <!-- Intent filter للـ firebaseapp.com -->

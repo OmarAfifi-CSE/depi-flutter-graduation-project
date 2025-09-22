@@ -210,4 +210,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get reset => 'Reset';
+
+  @override
+  String get expiredActionCodeDescription => 'The link has expired. Please request a new one.';
+
+  @override
+  String get invalidActionCodeDescription => 'The link is invalid. Please request a new one.';
+
+  @override
+  String get emailVerifiedTitle => 'Email Verified!';
+
+  @override
+  String get emailVerifiedSubtitle => 'Your account is now active and ready to use. Thank you for joining us.';
+
+  @override
+  String get continueToSignInButton => 'Continue to Sign In';
+
+  @override
+  String get verificationFailedTitle => 'Verification Failed';
+
+  @override
+  String get backToSignInButton => 'Back to Sign In';
 }
