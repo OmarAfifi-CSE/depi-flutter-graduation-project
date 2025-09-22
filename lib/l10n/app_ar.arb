@@ -115,5 +115,22 @@
   "continueToSignInButton": "متابعة لتسجيل الدخول",
 
   "verificationFailedTitle": "فشل التحقق",
-  "backToSignInButton": "العودة لتسجيل الدخول"
+  "backToSignInButton": "العودة لتسجيل الدخول",
+
+
+
+
+  "signin_success": "تم تسجيل الدخول بنجاح",
+  "check_email_activation": "من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.",
+  "forget_password_sent": "تم الإرسال بنجاح",
+  "something_went_wrong": "حدث خطأ ما.",
+  "close": "إغلاق",
+  "login_success": "تم تسجيل الدخول بنجاح",
+  "create_new_password": "إنشاء كلمة مرور جديدة",
+  "password_changed_success": "تم تغيير كلمة المرور بنجاح",
+
+  "confirm": "تأكيد",
+  "invalid_or_expired_link": "الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.",
+  "unexpected_error": "حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.",
+  "error_happened": "حدث خطأ"
 }

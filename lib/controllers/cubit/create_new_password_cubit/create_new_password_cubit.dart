@@ -26,7 +26,7 @@ class CreateNewPasswordCubit extends Cubit<CreateNewPasswordState> {
     } on FirebaseAuthException catch (e) {
       emit(CreateNewPasswordFailure(_handleFirebaseCreateNewPasswordError(e)));
     } catch (e) {
-      emit(CreateNewPasswordFailure("Error happened"));
+      emit(CreateNewPasswordFailure(loc!.error_happened));
     }
   }
 

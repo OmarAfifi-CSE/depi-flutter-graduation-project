@@ -28,7 +28,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     } on FirebaseAuthException catch (e) {
       emit(ForgetPasswordFailure(_handleFirebaseForgetPassError(e)));
     } catch (e) {
-      emit(ForgetPasswordFailure("Error happened"));
+      emit(ForgetPasswordFailure(loc!.error_happened));
     }
   }
 

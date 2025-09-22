@@ -109,7 +109,7 @@ class _ForgetPassState extends State<ForgetPass> {
                               } else if (state is ForgetPasswordSuccess) {
                                 CustomSnackBar.showSnackBar(
                                   context: context,
-                                  message: "sent successfully",
+                                  message: loc.forget_password_sent,
                                   color: Colors.green,
                                 );
                               }

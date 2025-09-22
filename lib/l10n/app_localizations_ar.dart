@@ -231,4 +231,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get backToSignInButton => 'العودة لتسجيل الدخول';
+
+  @override
+  String get signin_success => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get check_email_activation => 'من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.';
+
+  @override
+  String get forget_password_sent => 'تم الإرسال بنجاح';
+
+  @override
+  String get something_went_wrong => 'حدث خطأ ما.';
+
+  @override
+  String get close => 'إغلاق';
+
+  @override
+  String get login_success => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get create_new_password => 'إنشاء كلمة مرور جديدة';
+
+  @override
+  String get password_changed_success => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get invalid_or_expired_link => 'الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.';
+
+  @override
+  String get unexpected_error => 'حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.';
+
+  @override
+  String get error_happened => 'حدث خطأ';
 }

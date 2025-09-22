@@ -121,5 +121,21 @@
   "continueToSignInButton": "Continue to Sign In",
 
   "verificationFailedTitle": "Verification Failed",
-  "backToSignInButton": "Back to Sign In"
+  "backToSignInButton": "Back to Sign In",
+
+
+
+
+  "signin_success": "Signed in successfully",
+  "check_email_activation": "Please check your email to activate your account.",
+  "forget_password_sent": "Sent successfully",
+  "something_went_wrong": "Something went wrong.",
+  "close": "Close",
+  "login_success": "Signed in successfully",
+  "create_new_password": "Create New Password",
+  "password_changed_success": "Password changed successfully",
+  "confirm": "Confirm",
+  "invalid_or_expired_link": "The link is invalid, expired, or has already been used. Please request a new one.",
+  "unexpected_error": "An unexpected error occurred. Please try again.",
+  "error_happened": "Error happened"
 }

@@ -47,7 +47,16 @@ class CreateNewPasswordScreen extends StatelessWidget {
                     } else if (state is VerifyCreateNewPasswordSuccess) {
                       return CreateNewPassword(oobCode: oobCode);
                     }
-                    return const Center(child: Text("Something went wrong."));
+
+                    return Center(
+                      child: CustomText(
+                        data: AppLocalizations.of(
+                          context,
+                        )!.something_went_wrong,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 20.sp,
+                      ),
+                    );
                   },
                 ),
           ),
@@ -64,52 +73,53 @@ Widget _buildErrorUI(
   String error,
 ) {
   return SafeArea(
-    child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Center(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-          decoration: BoxDecoration(
-            color: theme.cardColor,
-            borderRadius: BorderRadius.circular(12.r),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.1),
-                blurRadius: 10.r,
-                offset: Offset(0, 5.h),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child: Center(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+              decoration: BoxDecoration(
+                color: theme.cardColor,
+                borderRadius: BorderRadius.circular(12.r),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withValues(alpha: 0.1),
+                    blurRadius: 10.r,
+                    offset: Offset(0, 5.h),
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Icon(Icons.error_outline, color: Colors.red, size: 60.r),
-              SizedBox(height: 20.h),
-              CustomText(
-                data: error,
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w500,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Icon(Icons.error_outline, color: Colors.red, size: 60.r),
+                  SizedBox(height: 20.h),
+                  CustomText(
+                    data: error,
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  SizedBox(height: 40.h),
+                  CustomElevatedButton(
+                    onPressed: () {
+                      if (context.canPop()) context.pop();
+                    },
+                    buttonChild: CustomText(
+                      data: loc!.close,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                      color: theme.scaffoldBackgroundColor,
+                    ),
+                  ),
+                ],
               ),
-              SizedBox(height: 40.h),
-              CustomElevatedButton(
-                onPressed: () {
-                  if (context.canPop()) context.pop();
-                },
-                buttonChild: CustomText(
-                  data: "Close",
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                  color: theme.scaffoldBackgroundColor,
-                ),
-              ),
-            ],
+            ),
           ),
         ),
-      ),
-    ),
-  ).animate()
+      )
+      .animate()
       .fadeIn(duration: 500.ms)
       .slideY(begin: 0.2, curve: Curves.easeOut);
 }

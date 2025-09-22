@@ -73,7 +73,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
         CustomHeaderWidget(
           prefix: const BackArrow(),
           center: CustomText(
-            data: "Create New Password",
+            data: loc!.create_new_password,
             fontWeight: FontWeight.w500,
             fontSize: 20.sp,
           ),
@@ -86,7 +86,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
             children: [
               CustomTextFormField(
                     controller: passwordController,
-                    labelText: loc!.passwordTitle,
+                    labelText: loc.passwordTitle,
                     validator: passValidation,
                     obscureText: true,
                   )
@@ -129,7 +129,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                 } else if (state is CreateNewPasswordSuccess) {
                   CustomSnackBar.showSnackBar(
                     context: context,
-                    message: "Created",
+                    message: loc.password_changed_success,
                     color: Colors.green,
                   );
                   context.pop();
@@ -153,7 +153,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                       : () {},
                   buttonChild: state is! CreateNewPasswordLoading
                       ? CustomText(
-                          data: "Confirm",
+                          data: loc.confirm,
                           fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                           color: theme.scaffoldBackgroundColor,

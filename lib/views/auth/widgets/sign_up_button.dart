@@ -29,9 +29,7 @@ class SignUpButton extends StatelessWidget {
             } else if (state is AuthSignUpSuccess) {
               CustomSnackBar.showSnackBar(
                 context: context,
-                message:
-                    "من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.",
-                //TODO: localize
+                message: loc!.check_email_activation,
                 color: Colors.green,
               );
             }

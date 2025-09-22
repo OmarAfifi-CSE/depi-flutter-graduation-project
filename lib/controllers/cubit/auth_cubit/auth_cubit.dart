@@ -117,7 +117,7 @@ class AuthCubit extends Cubit<AuthState> {
       }
     } catch (e) {
       if (_currentOperation == signUpKeyOperation) {
-        emit(AuthSignUpFailure("Error happened"));
+        emit(AuthSignUpFailure(loc!.error_happened));
       }
     }
   }

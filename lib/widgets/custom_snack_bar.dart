@@ -38,11 +38,15 @@ class CustomSnackBar {
                         color: theme.primaryColor,
                       ),
                       const SizedBox(width: 8),
-                      FittedBox(
-                        child: CustomText(
-                          data: message,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
+                      Expanded(
+                        child: FittedBox(
+                          alignment: Alignment.centerLeft,
+                          fit: BoxFit.scaleDown,
+                          child: CustomText(
+                            data: message,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ],

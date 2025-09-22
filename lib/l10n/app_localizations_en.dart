@@ -231,4 +231,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get backToSignInButton => 'Back to Sign In';
+
+  @override
+  String get signin_success => 'Signed in successfully';
+
+  @override
+  String get check_email_activation => 'Please check your email to activate your account.';
+
+  @override
+  String get forget_password_sent => 'Sent successfully';
+
+  @override
+  String get something_went_wrong => 'Something went wrong.';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get login_success => 'Signed in successfully';
+
+  @override
+  String get create_new_password => 'Create New Password';
+
+  @override
+  String get password_changed_success => 'Password changed successfully';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get invalid_or_expired_link => 'The link is invalid, expired, or has already been used. Please request a new one.';
+
+  @override
+  String get unexpected_error => 'An unexpected error occurred. Please try again.';
+
+  @override
+  String get error_happened => 'Error happened';
 }

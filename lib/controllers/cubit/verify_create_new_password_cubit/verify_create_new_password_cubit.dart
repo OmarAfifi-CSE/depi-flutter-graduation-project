@@ -17,9 +17,9 @@ class VerifyCreateNewPasswordCubit extends Cubit<VerifyCreateNewPasswordState> {
       emit(VerifyCreateNewPasswordSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-action-code') {
-        emit(VerifyCreateNewPasswordFailure("The link is invalid, expired, or has already been used. Please request a new one."));
+        emit(VerifyCreateNewPasswordFailure(loc!.invalid_or_expired_link));
       } else {
-        emit(VerifyCreateNewPasswordFailure("An unexpected error occurred. Please try again."));
+        emit(VerifyCreateNewPasswordFailure(loc!.unexpected_error));
       }
     }
   }
