@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -38,7 +40,7 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
     final textPainter = TextPainter(
       text: TextSpan(
         text: text,
-        style: TextStyle(fontSize: 11.sp, fontWeight: FontWeight.w600),
+        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600),
       ),
       textDirection: TextDirection.ltr,
     );
@@ -97,7 +99,7 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
       _containerHeight = 30.h;
     });
 
-    await Future.delayed(const Duration(milliseconds: 200));
+    await Future.delayed(const Duration(milliseconds: 400));
 
     if (mounted) {
       setState(() {
@@ -159,30 +161,35 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
       child: Stack(
         alignment: Alignment.centerLeft,
         children: [
-          AnimatedContainer(
+          AnimatedOpacity(
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeInOut,
-            width: _backgroundWidth,
-            height: 30.h,
-            alignment: Alignment.centerRight,
-            padding: EdgeInsets.only(right: 12.w),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30.r),
-              color: appColors?.card ?? theme.cardColor,
-            ),
-            child: AnimatedBuilder(
-              animation: _textAnimation,
-              builder: (context, child) {
-                return Opacity(
-                  opacity: _textAnimation.value,
-                  child: CustomText(
-                    data: widget.name,
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w600,
-                    color: theme.textTheme.bodyMedium?.color,
-                  ),
-                );
-              },
+            opacity: _backgroundWidth == 0 ? 0 : 1,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 400),
+              curve: Curves.easeInOut,
+              width: _backgroundWidth,
+              height: 30.h,
+              alignment: Alignment.centerRight,
+              padding: EdgeInsets.only(right: 12.w),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30.r),
+                color: appColors?.card ?? theme.cardColor,
+              ),
+              child: AnimatedBuilder(
+                animation: _textAnimation,
+                builder: (context, child) {
+                  return Opacity(
+                    opacity: _textAnimation.value,
+                    child: CustomText(
+                      data: widget.name,
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w600,
+                      color: theme.textTheme.bodyMedium?.color,
+                    ),
+                  );
+                },
+              ),
             ),
           ),
 
