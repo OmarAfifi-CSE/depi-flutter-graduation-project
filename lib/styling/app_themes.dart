@@ -7,6 +7,7 @@ class AppThemes {
     brightness: Brightness.light,
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.black,
+    cardColor: const Color(0xffDDDDDD),
     // Add the extension with your LIGHT theme colors
     extensions: const <ThemeExtension<dynamic>>[
       AppColorTheme(
@@ -26,6 +27,7 @@ class AppThemes {
     brightness: Brightness.dark,
     scaffoldBackgroundColor: Colors.black,
     primaryColor: Colors.white,
+    cardColor: const Color(0xff1E1E1E),
 
     // Add the extension with your DARK theme colors
     extensions: const <ThemeExtension<dynamic>>[

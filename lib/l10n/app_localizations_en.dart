@@ -195,4 +195,88 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get passwordMustMatch => 'Passwords do not match ';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get resetPasswordLabel => 'Enter the email assoicated wth your account and we\'ll send an email with instuction to reset your password';
+
+  @override
+  String get sendInstruction => 'Send Instruction';
+
+  @override
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get reset => 'Reset';
+
+  @override
+  String get expiredActionCodeDescription => 'The link has expired. Please request a new one.';
+
+  @override
+  String get invalidActionCodeDescription => 'The link is invalid. Please request a new one.';
+
+  @override
+  String get emailVerifiedTitle => 'Email Verified!';
+
+  @override
+  String get emailVerifiedSubtitle => 'Your account is now active and ready to use. Thank you for joining us.';
+
+  @override
+  String get continueToSignInButton => 'Continue to Sign In';
+
+  @override
+  String get verificationFailedTitle => 'Verification Failed';
+
+  @override
+  String get backToSignInButton => 'Back to Sign In';
+
+  @override
+  String get signin_success => 'Signed in successfully';
+
+  @override
+  String get check_email_activation => 'Please check your email to activate your account.';
+
+  @override
+  String get forget_password_sent => 'Sent successfully';
+
+  @override
+  String get something_went_wrong => 'Something went wrong.';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get login_success => 'Signed in successfully';
+
+  @override
+  String get create_new_password => 'Create New Password';
+
+  @override
+  String get password_changed_success => 'Password changed successfully';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get invalid_or_expired_link => 'The link is invalid, expired, or has already been used. Please request a new one.';
+
+  @override
+  String get unexpected_error => 'An unexpected error occurred. Please try again.';
+
+  @override
+  String get error_happened => 'Error happened';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get notification => 'Notifications';
+
+  @override
+  String get profile => 'Profile';
 }

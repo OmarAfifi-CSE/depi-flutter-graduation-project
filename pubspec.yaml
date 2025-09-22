@@ -29,6 +29,8 @@ dependencies:
   flutter_bloc: ^9.1.1
   cloud_firestore: ^6.0.1
   top_snackbar_flutter: ^3.3.0
+  lottie: ^3.3.2
+
 
 
 dev_dependencies:
@@ -37,11 +39,13 @@ dev_dependencies:
 
   flutter_lints: ^5.0.0
 
+
 flutter:
   uses-material-design: true
   assets:
-    - assets/icons/
     - assets/images/
+    - assets/icons/
+    - assets/lottie/
 
   generate: true
 

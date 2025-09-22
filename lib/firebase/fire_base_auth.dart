@@ -56,4 +56,30 @@ class FireBaseAuth {
       debugPrint("sign out error");
     }
   }
+
+  Future<void> sendEmailResetPass({
+    required String email,
+    required String lang,
+    required String themeModeName,
+  }) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(
+      email: email,
+      actionCodeSettings: ActionCodeSettings(
+        url:
+            "https://batrina-76502.web.app/action#theme=$themeModeName&lang=$lang",
+        handleCodeInApp: true,
+        androidPackageName: "com.oamao.batrina.batrina",
+        androidInstallApp: true,
+        androidMinimumVersion: "1",
+        iOSBundleId: "com.oamao.batrina.batrina",
+      ),
+    );
+  }
+
+  Future<void> createNewPassword({
+    required String code,
+    required String newPassword,
+  }) async {
+    await fireAuth.confirmPasswordReset(code: code, newPassword: newPassword);
+  }
 }

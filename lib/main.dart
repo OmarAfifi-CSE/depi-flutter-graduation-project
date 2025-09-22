@@ -1,21 +1,28 @@
 import 'dart:convert';
-import 'firebase_options.dart';
-import 'l10n/app_localizations.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:batrina/models/user_model.dart';
-import 'package:batrina/styling/app_fonts.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:batrina/styling/app_themes.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:batrina/routing/router_generation_config.dart';
-import 'package:batrina/controllers/provider/theme_provider.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:batrina/controllers/provider/locale_provider.dart';
+
 import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/cubit/create_new_password_cubit/create_new_password_cubit.dart';
+import 'package:batrina/controllers/cubit/forget_password_cubit/forget_password__cubit.dart';
+import 'package:batrina/controllers/cubit/nav_control/nav_control_cubit.dart';
+import 'package:batrina/controllers/provider/locale_provider.dart';
+import 'package:batrina/controllers/provider/theme_provider.dart';
+import 'package:batrina/firebase/fire_base_firestore.dart';
+import 'package:batrina/models/user_model.dart';
+import 'package:batrina/routing/router_generation_config.dart';
+import 'package:batrina/styling/app_fonts.dart';
+import 'package:batrina/styling/app_themes.dart';
+import 'package:batrina/widgets/custom_nav_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +36,7 @@ void main() async {
   if (locale == "ar") {
     AppFonts.mainFontName = "Tajawal";
   }
+
   if (prefs.getString(UserModel.lastUserKey) != null) {
     // RouterGenerationConfig.initialLoc = AppRoutes.signInScreen;
     UserModel lastUser = UserModel.fromJson(
@@ -58,13 +66,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final router = RouterGenerationConfig.goRouter();
+    // final router = RouterGenerationConfig.goRouter();
 
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
         BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (_) => ForgetPasswordCubit()),
+        BlocProvider(create: (_) => CreateNewPasswordCubit()),
+        BlocProvider(create: (_) => NavControlCubit()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) => ScreenUtilInit(
@@ -76,6 +87,9 @@ class MyApp extends StatelessWidget {
             return MaterialApp.router(
               builder: (context, child) {
                 context.read<AuthCubit>().loc = AppLocalizations.of(context);
+                context.read<ForgetPasswordCubit>().loc = AppLocalizations.of(
+                  context,
+                );
                 return Stack(
                   children: [
                     ?child,
@@ -120,7 +134,8 @@ class MyApp extends StatelessWidget {
               theme: AppThemes.lightTheme,
               darkTheme: AppThemes.darkTheme,
               themeMode: themeProvider.themeMode,
-              routerConfig: router,
+              routerConfig: RouterGenerationConfig.router,
+              // home: CustomNavBar(),
             );
           },
         ),
@@ -128,3 +143,67 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+final MethodChannel channel = MethodChannel("deeplink_channel");
+
+// void initMethodChannel() {
+//   channel.setMethodCallHandler((call) async {
+//     switch (call.method) {
+//       case "openResetPasswordPage":
+//         final String oobCode = call.arguments;
+//         print("Opening reset password with oobCode: $oobCode");
+//
+//         // استخدم GoRouter للـ navigation
+//         RouterGenerationConfig.router.push(
+//           '${AppRoutes.forgetPassScreen}?oobCode=$oobCode',
+//         );
+//         break;
+//
+//       case "onDeepLink":
+//         final String deepLink = call.arguments;
+//         print("General deep link: $deepLink");
+//         // معالجة عامة لو محتاج
+//         break;
+//     }
+//   });
+// }
+
+// Future<void> _handleMethodCall(MethodCall call) async {
+//   if (call.method == 'onDeepLink') {
+//     final String deepLink = call.arguments;
+//     print('🔗 Deep link received: $deepLink');
+//
+//     _parseAndNavigate(deepLink);
+//   }
+// }
+//
+// void _parseAndNavigate(String deepLink) {
+//   try {
+//     final uri = Uri.parse(deepLink);
+//     print('📝 Parsed URI: $uri');
+//
+//     // استخرج الـ link parameter
+//     final linkParam = uri.queryParameters['link'];
+//     print('🔍 Link param: $linkParam');
+//
+//     if (linkParam != null) {
+//       // decode الـ URL
+//       final decodedLink = Uri.decodeComponent(linkParam);
+//       print('🔓 Decoded link: $decodedLink');
+//
+//       final linkUri = Uri.parse(decodedLink);
+//       final mode = linkUri.queryParameters['mode'];
+//       final oobCode = linkUri.queryParameters['oobCode'];
+//
+//       print('⚙️ Mode: $mode, OobCode: $oobCode');
+//
+//       if (mode == 'resetPassword' && oobCode != null && oobCode.isNotEmpty) {
+//         print('✅ Navigating to reset page');
+//       } else {
+//         print('❌ Invalid parameters');
+//       }
+//     }
+//   } catch (e) {
+//     print('💥 Error parsing deep link: $e');
+//   }
+// }

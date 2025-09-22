@@ -32,7 +32,7 @@ class GoogleSignInButton extends StatelessWidget {
               context.pop();
               CustomSnackBar.showSnackBar(
                 context: context,
-                message: "Signed in", //TODO: localize
+                message: loc!.signin_success,
                 color: Colors.green,
               );
             } else if (state is AuthGoogleLoading) {

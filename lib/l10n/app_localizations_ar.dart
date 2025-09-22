@@ -195,4 +195,88 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordMustMatch => 'كلمات المرور غير متطابقة';
+
+  @override
+  String get resetPassword => 'إعادة تعيين كلمة المرور';
+
+  @override
+  String get resetPasswordLabel => 'أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك رسالة تتضمن التعليمات لإعادة تعيين كلمة المرور';
+
+  @override
+  String get sendInstruction => 'إرسال التعليمات';
+
+  @override
+  String get forgotPassword => 'هل نسيت كلمة المرور؟';
+
+  @override
+  String get reset => 'إعادة التعيين';
+
+  @override
+  String get expiredActionCodeDescription => 'الرابط منتهي الصلاحية. من فضلك اطلب رابط جديد.';
+
+  @override
+  String get invalidActionCodeDescription => 'الرابط غير صالح. من فضلك اطلب رابط جديد.';
+
+  @override
+  String get emailVerifiedTitle => 'تم تأكيد البريد الإلكتروني!';
+
+  @override
+  String get emailVerifiedSubtitle => 'حسابك الآن نشط وجاهز للاستخدام. شكراً لانضمامك إلينا.';
+
+  @override
+  String get continueToSignInButton => 'متابعة لتسجيل الدخول';
+
+  @override
+  String get verificationFailedTitle => 'فشل التحقق';
+
+  @override
+  String get backToSignInButton => 'العودة لتسجيل الدخول';
+
+  @override
+  String get signin_success => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get check_email_activation => 'من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.';
+
+  @override
+  String get forget_password_sent => 'تم الإرسال بنجاح';
+
+  @override
+  String get something_went_wrong => 'حدث خطأ ما.';
+
+  @override
+  String get close => 'إغلاق';
+
+  @override
+  String get login_success => 'تم تسجيل الدخول بنجاح';
+
+  @override
+  String get create_new_password => 'إنشاء كلمة مرور جديدة';
+
+  @override
+  String get password_changed_success => 'تم تغيير كلمة المرور بنجاح';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get invalid_or_expired_link => 'الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.';
+
+  @override
+  String get unexpected_error => 'حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.';
+
+  @override
+  String get error_happened => 'حدث خطأ';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get cart => 'السلة';
+
+  @override
+  String get notification => 'الإشعارات';
+
+  @override
+  String get profile => 'الملف الشخصي';
 }

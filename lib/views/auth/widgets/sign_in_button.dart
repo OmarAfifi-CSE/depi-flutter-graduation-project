@@ -29,7 +29,7 @@ class SignInButton extends StatelessWidget {
             } else if (state is AuthSignInSuccess) {
               CustomSnackBar.showSnackBar(
                 context: context,
-                message: "Welcome", //TODO: localize
+                message: loc!.signin_success,
                 color: Colors.green,
               );
             }

@@ -466,6 +466,174 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Passwords do not match '**
   String get passwordMustMatch;
+
+  /// No description provided for @resetPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset Password'**
+  String get resetPassword;
+
+  /// No description provided for @resetPasswordLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter the email assoicated wth your account and we\'ll send an email with instuction to reset your password'**
+  String get resetPasswordLabel;
+
+  /// No description provided for @sendInstruction.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Instruction'**
+  String get sendInstruction;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot Password?'**
+  String get forgotPassword;
+
+  /// No description provided for @reset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset'**
+  String get reset;
+
+  /// No description provided for @expiredActionCodeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The link has expired. Please request a new one.'**
+  String get expiredActionCodeDescription;
+
+  /// No description provided for @invalidActionCodeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The link is invalid. Please request a new one.'**
+  String get invalidActionCodeDescription;
+
+  /// No description provided for @emailVerifiedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Email Verified!'**
+  String get emailVerifiedTitle;
+
+  /// No description provided for @emailVerifiedSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your account is now active and ready to use. Thank you for joining us.'**
+  String get emailVerifiedSubtitle;
+
+  /// No description provided for @continueToSignInButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue to Sign In'**
+  String get continueToSignInButton;
+
+  /// No description provided for @verificationFailedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verification Failed'**
+  String get verificationFailedTitle;
+
+  /// No description provided for @backToSignInButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Sign In'**
+  String get backToSignInButton;
+
+  /// No description provided for @signin_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed in successfully'**
+  String get signin_success;
+
+  /// No description provided for @check_email_activation.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your email to activate your account.'**
+  String get check_email_activation;
+
+  /// No description provided for @forget_password_sent.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent successfully'**
+  String get forget_password_sent;
+
+  /// No description provided for @something_went_wrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong.'**
+  String get something_went_wrong;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// No description provided for @login_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed in successfully'**
+  String get login_success;
+
+  /// No description provided for @create_new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Password'**
+  String get create_new_password;
+
+  /// No description provided for @password_changed_success.
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully'**
+  String get password_changed_success;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @invalid_or_expired_link.
+  ///
+  /// In en, this message translates to:
+  /// **'The link is invalid, expired, or has already been used. Please request a new one.'**
+  String get invalid_or_expired_link;
+
+  /// No description provided for @unexpected_error.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred. Please try again.'**
+  String get unexpected_error;
+
+  /// No description provided for @error_happened.
+  ///
+  /// In en, this message translates to:
+  /// **'Error happened'**
+  String get error_happened;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notification;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

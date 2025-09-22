@@ -76,6 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void validation() {
+    FocusScope.of(context).unfocus();
     if (_formKey.currentState!.validate()) {
       context.read<AuthCubit>().signUp(
         email: emailController.text.trim(),
