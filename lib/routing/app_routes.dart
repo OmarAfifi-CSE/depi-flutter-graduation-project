@@ -5,5 +5,5 @@ class AppRoutes {
   static const String mainScreen = '/home';
   static const String profileScreen = '/profile';
   static const String forgetPassScreen = '/forgetPass';
-  static const String resetPassword = '/resetPass';
+  static const String resetPassword = '/reset.html';
 }

@@ -35,27 +35,26 @@ class RouterGenerationConfig {
         ),
         routes: [
           GoRoute(
-            path: 'reset.html',
-            name: AppRoutes.forgetPassScreen,
+            path: AppRoutes.resetPassword,
+            name: AppRoutes.resetPassword,
             pageBuilder: (context, state) {
               final oobCode = state.uri.queryParameters['oobCode'];
-              print("Mario ::$oobCode");
               return CustomTransitionPage(
-                child: const ForgetPass(),
+                child: ResetPasswordScreen(oobCode: oobCode!),
                 transitionDuration: const Duration(milliseconds: 1000),
                 reverseTransitionDuration: const Duration(milliseconds: 1000),
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
-                  return SharedAxisTransition(
-                    transitionType: SharedAxisTransitionType.horizontal,
-                    animation: animation,
-                    secondaryAnimation: secondaryAnimation,
-                    child: child,
-                  );
-                },
+                      return SharedAxisTransition(
+                        transitionType: SharedAxisTransitionType.horizontal,
+                        animation: animation,
+                        secondaryAnimation: secondaryAnimation,
+                        child: child,
+                      );
+                    },
               );
             },
-          )
+          ),
         ],
       ),
       GoRoute(
@@ -74,14 +73,24 @@ class RouterGenerationConfig {
           },
         ),
       ),
-
       GoRoute(
-        path: AppRoutes.resetPassword,
-        builder: (context, state) {
-          final oobCode = state.uri.queryParameters['oobCode'];
-          final mode = state.uri.queryParameters['mode'];
-          final lang = state.uri.queryParameters['lang'];
-          return ResetPasswordScreen(oobCode: oobCode!);
+        path: AppRoutes.forgetPassScreen,
+        name: AppRoutes.forgetPassScreen,
+        pageBuilder: (context, state) {
+          return CustomTransitionPage(
+            child: const ForgetPass(),
+            transitionDuration: const Duration(milliseconds: 1000),
+            reverseTransitionDuration: const Duration(milliseconds: 1000),
+            transitionsBuilder:
+                (context, animation, secondaryAnimation, child) {
+                  return SharedAxisTransition(
+                    transitionType: SharedAxisTransitionType.horizontal,
+                    animation: animation,
+                    secondaryAnimation: secondaryAnimation,
+                    child: child,
+                  );
+                },
+          );
         },
       ),
     ],
@@ -100,7 +109,7 @@ class RouterGenerationConfig {
           // If it's a password reset link, build the correct path for your app
           if (mode == 'resetPassword' && oobCode != null) {
             // Redirect to the route your app already knows how to handle
-            return '${AppRoutes.signInScreen}/reset.html?oobCode=$oobCode';
+            return '${AppRoutes.signInScreen}${AppRoutes.resetPassword}?oobCode=$oobCode';
           }
           // You could add more cases here for 'verifyEmail', etc.
         }

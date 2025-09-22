@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/cubit/create_new_password_cubit/create_new_password_cubit.dart';
+import 'package:batrina/controllers/cubit/forget_password_cubit/forget_password__cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
@@ -69,6 +71,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
         BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (_) => ForgetPasswordCubit()),
+        BlocProvider(create: (_) => CreateNewPasswordCubit()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) => ScreenUtilInit(
@@ -80,6 +84,9 @@ class MyApp extends StatelessWidget {
             return MaterialApp.router(
               builder: (context, child) {
                 context.read<AuthCubit>().loc = AppLocalizations.of(context);
+                context.read<ForgetPasswordCubit>().loc = AppLocalizations.of(
+                  context,
+                );
                 return Stack(
                   children: [
                     ?child,

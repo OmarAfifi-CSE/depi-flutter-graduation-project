@@ -67,12 +67,19 @@ class FireBaseAuth {
       actionCodeSettings: ActionCodeSettings(
         url:
             "https://batrina-76502.web.app/reset.html#theme=$themeModeName&lang=$lang",
-        handleCodeInApp: false,
+        handleCodeInApp: true,
         androidPackageName: "com.oamao.batrina.batrina",
         androidInstallApp: true,
         androidMinimumVersion: "1",
         iOSBundleId: "com.oamao.batrina.batrina",
       ),
     );
+  }
+
+  Future<void> createNewPassword({
+    required String code,
+    required String newPassword,
+  }) async {
+    await fireAuth.confirmPasswordReset(code: code, newPassword: newPassword);
   }
 }

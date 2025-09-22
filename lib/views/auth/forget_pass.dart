@@ -1,12 +1,15 @@
+import 'package:batrina/controllers/cubit/forget_password_cubit/forget_password__cubit.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
+import 'package:batrina/widgets/custom_snack_bar.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
@@ -22,6 +25,10 @@ class ForgetPass extends StatefulWidget {
 
 class _ForgetPassState extends State<ForgetPass> {
   TextEditingController emailCont = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey();
+  String themeName(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.dark ? "dark" : "light";
+  }
 
   String? emailValidation(String? value) {
     final loc = AppLocalizations.of(context);
@@ -75,39 +82,68 @@ class _ForgetPassState extends State<ForgetPass> {
                         color: appColors.secondaryText,
                       ),
                       SizedBox(height: 10.h),
-                      Hero(
-                        tag: "email",
-                        child: Material(
-                          color: Colors.transparent,
-                          child: CustomTextFormField(
-                            controller: emailCont,
-                            labelText: loc.emailTitle,
-                            validator: emailValidation,
+                      Form(
+                        key: _formKey,
+                        child: Hero(
+                          tag: "email",
+                          child: Material(
+                            color: Colors.transparent,
+                            child: CustomTextFormField(
+                              controller: emailCont,
+                              labelText: loc.emailTitle,
+                              validator: emailValidation,
+                            ),
                           ),
                         ),
                       ),
                       SizedBox(height: 30.h),
-                      CustomElevatedButton(
-                            onPressed: () async{
-                              print('Mario ::');
-                              await FirebaseAuth.instance.sendPasswordResetEmail(
-                                email: "o.abdelsalam2004@gmail.com",
-                                actionCodeSettings: ActionCodeSettings(
-                                  url: "https://batrina-76502.web.app/reset.html",
-                                  handleCodeInApp: true,
-                                  androidPackageName: "com.oamao.batrina.batrina",
-                                  androidInstallApp: true,
-                                  androidMinimumVersion: "1",
-                                  iOSBundleId: "com.oamao.batrina.batrina",
-                                ),
+                      BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
+                            listener: (context, state) {
+                              if (state is ForgetPasswordFailure) {
+                                CustomSnackBar.showSnackBar(
+                                  context: context,
+                                  message: state.error,
+                                  color: Colors.red,
+                                );
+                              } else if (state is ForgetPasswordSuccess) {
+                                CustomSnackBar.showSnackBar(
+                                  context: context,
+                                  message: "sent successfully",
+                                  color: Colors.green,
+                                );
+                              }
+                            },
+                            builder: (context, state) {
+                              return CustomElevatedButton(
+                                onPressed: state is! ForgetPasswordLoading
+                                    ? () async {
+                                        if (_formKey.currentState!.validate()) {
+                                          context
+                                              .read<ForgetPasswordCubit>()
+                                              .forgetPass(
+                                                email: emailCont.text.trim(),
+                                                lang: Localizations.localeOf(
+                                                  context,
+                                                ).languageCode,
+                                                themeModeName: themeName(
+                                                  context,
+                                                ),
+                                              );
+                                        }
+                                      }
+                                    : () {},
+                                buttonChild: state is! ForgetPasswordLoading
+                                    ? CustomText(
+                                        data: loc.sendInstruction,
+                                        fontSize: 14.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: theme.scaffoldBackgroundColor,
+                                      )
+                                    : CupertinoActivityIndicator(
+                                        color: theme.scaffoldBackgroundColor,
+                                      ),
                               );
                             },
-                            buttonChild: CustomText(
-                              data: loc.sendInstruction,
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
-                              color: theme.scaffoldBackgroundColor,
-                            ),
                           )
                           .animate()
                           .fadeIn(
