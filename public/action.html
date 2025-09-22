@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إعادة تعيين كلمة المرور</title>
+    <title>Batrina Action</title>
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             min-height: 100vh;
@@ -20,62 +19,57 @@
             padding: 20px;
             transition: all 0.3s ease;
         }
-
-        /* Light theme */
         body.light {
-            background-color: #f5f5f5;
+            background-color: #f5f5ff5;
             color: #333;
         }
-
-        /* Dark theme */
         body.dark {
             background-color: #000;
             color: #fff;
         }
-
         .container {
             width: 100%;
             max-width: 400px;
             padding: 40px 20px;
         }
-
         .form-card {
             background: transparent;
             border-radius: 12px;
             padding: 0;
+            text-align: left;
         }
-
         .light .form-card {
             background: #fff;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             padding: 40px 30px;
         }
-
         .dark .form-card {
             background: rgba(30, 30, 30, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 20px 30px;
         }
-
+        #verificationUI {
+            text-align: center;
+        }
+        #successIcon {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
         .title {
             font-size: 28px;
             font-weight: 600;
             margin-bottom: 8px;
-            text-align: left;
         }
-
         .subtitle {
             font-size: 16px;
             opacity: 0.7;
             margin-bottom: 40px;
-            text-align: left;
         }
-
         .form-group {
             margin-bottom: 25px;
             position: relative;
         }
-
         .form-group input {
             width: 100%;
             padding: 16px 0;
@@ -86,38 +80,34 @@
             border-bottom: 1px solid;
             transition: all 0.3s ease;
         }
-
         .light .form-group input {
             border-bottom-color: #ddd;
             color: #333;
         }
-
         .dark .form-group input {
             border-bottom-color: #333;
             color: #fff;
         }
-
         .form-group input:focus {
             border-bottom-width: 2px;
         }
-
         .light .form-group input:focus {
             border-bottom-color: #007AFF;
         }
-
         .dark .form-group input:focus {
             border-bottom-color: #fff;
         }
-
         .form-group input::placeholder {
             opacity: 0.6;
             transition: all 0.3s ease;
         }
-
         .form-group input:focus::placeholder {
             opacity: 0.4;
         }
-
+        input::-ms-reveal,
+        input::-webkit-password-reveal-button {
+            display: none !important;
+        }
         .password-toggle {
             position: absolute;
             right: 10px;
@@ -136,19 +126,15 @@
             align-items: center;
             justify-content: center;
         }
-
         .password-toggle:hover {
             opacity: 1;
         }
-
         .light .password-toggle {
             color: #333;
         }
-
         .dark .password-toggle {
             color: #fff;
         }
-
         .submit-btn {
             width: 100%;
             padding: 16px;
@@ -160,33 +146,27 @@
             transition: all 0.3s ease;
             margin-top: 20px;
         }
-
         .light .submit-btn {
             background-color: #000;
             color: #fff;
         }
-
         .light .submit-btn:hover:not(:disabled) {
             background-color: #333;
             transform: translateY(-1px);
         }
-
         .dark .submit-btn {
             background-color: #fff;
             color: #000;
         }
-
         .dark .submit-btn:hover:not(:disabled) {
             background-color: #f0f0f0;
             transform: translateY(-1px);
         }
-
         .submit-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
             transform: none !important;
         }
-
         .controls {
             position: fixed;
             top: 30px;
@@ -195,7 +175,6 @@
             gap: 20px;
             z-index: 1000;
         }
-
         .control-btn {
             background: none;
             border: none;
@@ -208,14 +187,12 @@
             border-radius: 8px;
             padding: 8px 12px;
         }
-
         .theme-btn {
             font-size: 24px;
             width: 40px;
             height: 40px;
             border-radius: 50%;
         }
-
         .lang-btn {
             font-size: 14px;
             font-weight: 600;
@@ -224,37 +201,29 @@
             border: 2px solid;
             font-family: inherit;
         }
-
         .light .lang-btn {
             color: #333;
             border-color: #333;
         }
-
         .dark .lang-btn {
             color: #fff;
             border-color: #fff;
         }
-
         .control-btn:hover {
             opacity: 1;
         }
-
         .light .theme-btn:hover {
             background: rgba(0,0,0,0.1);
         }
-
         .dark .theme-btn:hover {
             background: rgba(255,255,255,0.1);
         }
-
         .light .lang-btn:hover {
             background: rgba(0,0,0,0.05);
         }
-
         .dark .lang-btn:hover {
             background: rgba(255,255,255,0.1);
         }
-
         .message {
             margin: 20px 0;
             padding: 12px;
@@ -262,25 +231,21 @@
             text-align: center;
             font-size: 14px;
         }
-
         .success {
             background-color: rgba(76, 175, 80, 0.1);
             color: #4CAF50;
             border: 1px solid rgba(76, 175, 80, 0.3);
         }
-
         .error {
             background-color: rgba(244, 67, 54, 0.1);
             color: #f44336;
             border: 1px solid rgba(244, 67, 54, 0.3);
         }
-
         .loading {
             display: none;
             text-align: center;
             margin: 20px 0;
         }
-
         .spinner {
             width: 24px;
             height: 24px;
@@ -291,50 +256,39 @@
             margin: 0 auto 10px;
             opacity: 0.7;
         }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         .form-confirmed .form-group input,
         .form-confirmed .submit-btn,
         .form-confirmed .password-toggle {
             pointer-events: none;
         }
-
         .form-confirmed .form-group input {
             opacity: 0.6;
         }
-
-        /* RTL Support */
         .rtl {
             direction: rtl;
-            text-align: right;
         }
-
         .rtl .title,
-        .rtl .subtitle {
+        .rtl .subtitle,
+        .rtl .form-card {
             text-align: right;
         }
-
         .rtl .password-toggle {
             right: auto;
             left: 10px;
         }
-
-        /* Mobile responsiveness */
         @media (max-width: 480px) {
             .container {
                 padding: 20px 10px;
             }
-
             .dark .form-card {
                 background: rgba(30, 30, 30, 0.8);
                 border: 1px solid rgba(255, 255, 255, 0.1);
                 padding: 20px;
             }
-
             .controls {
                 top: 20px;
                 right: 20px;
@@ -344,55 +298,58 @@
     </style>
 </head>
 <body class="light">
+
 <div class="controls">
-    <button class="control-btn theme-btn" id="themeToggle" onclick="toggleTheme()">🌙</button>
-    <button class="control-btn lang-btn" id="langToggle" onclick="toggleLanguage()">عربي</button>
+    <button class="control-btn theme-btn" id="themeToggle">🌙</button>
+    <button class="control-btn lang-btn" id="langToggle">Arabic</button>
 </div>
 
 <div class="container">
     <div class="form-card">
-        <h1 class="title" id="title">Reset Password</h1>
-        <p class="subtitle" id="subtitle">Enter your new password</p>
+        <div id="verificationUI" style="display: none;">
+            <div id="successIcon">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
+            <h1 class="title" id="title-verify"></h1>
+            <p class="subtitle" id="subtitle-verify"></p>
+            <div id="message-verify"></div>
+        </div>
 
-        <form id="resetForm">
+        <form id="resetForm" style="display: none;">
+            <h1 class="title" id="title-reset"></h1>
+            <p class="subtitle" id="subtitle-reset"></p>
             <div class="form-group">
-                <input type="password" id="newPassword" placeholder="New Password" required minlength="6">
+                <input type="password" id="newPassword" required minlength="6">
                 <button type="button" class="password-toggle" onclick="togglePassword('newPassword')">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                 </button>
             </div>
-
             <div class="form-group">
-                <input type="password" id="confirmPassword" placeholder="Confirm Password" required minlength="6">
+                <input type="password" id="confirmPassword" required minlength="6">
                 <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                 </button>
             </div>
-
-            <div class="loading" id="loading">
-                <div class="spinner"></div>
-                <span id="loadingText">Updating password...</span>
-            </div>
-
-            <div id="message"></div>
-
-            <button type="submit" class="submit-btn" id="submitBtn">Update Password</button>
+            <div class="loading" id="loading"><div class="spinner"></div><span id="loadingText"></span></div>
+            <div id="message-reset"></div>
+            <button type="submit" class="submit-btn" id="submitBtn"></button>
         </form>
+
+        <div id="errorUI" style="display: none;">
+            <h1 class="title" id="title-error"></h1>
+            <p class="subtitle" id="subtitle-error"></p>
+            <div id="message-error"></div>
+        </div>
     </div>
 </div>
 
 <script type="module">
-    // Import Firebase modules
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
-    import { getAuth, confirmPasswordReset } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js';
+    import { getAuth, confirmPasswordReset, applyActionCode, verifyPasswordResetCode } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js';
 
-    // Firebase configuration
     const firebaseConfig = {
         apiKey: "AIzaSyDGvtAF1zb8-wblSWG2hTvfOllHWrDiduw",
         authDomain: "batrina-76502.firebaseapp.com",
@@ -402,77 +359,46 @@
         appId: "1:123456789:web:abcdef"
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Get URL parameters
-    function getUrlParams() {
-        const urlParams = new URLSearchParams(window.location.search);
-
-        const mode = urlParams.get('mode');
-        const oobCode = urlParams.get('oobCode');
-        const apiKey = urlParams.get('apiKey');
-
-        let theme = 'light';
-        let lang = 'en';
-
-        // Check direct URL parameters first
-        theme = urlParams.get('theme') || theme;
-        lang = urlParams.get('lang') || lang;
-
-        // Try to extract from continueUrl if not found
-        const continueUrl = urlParams.get('continueUrl');
-        if (continueUrl && (!urlParams.get('theme') || !urlParams.get('lang'))) {
-            try {
-                let decodedUrl = decodeURIComponent(continueUrl);
-                if (decodedUrl.includes('%')) {
-                    decodedUrl = decodeURIComponent(decodedUrl);
-                }
-
-                const themeMatch = decodedUrl.match(/theme[=%]([^&%]+)/);
-                const langMatch = decodedUrl.match(/lang[=%]([^&%]+)/);
-
-                if (themeMatch && themeMatch[1]) {
-                    theme = themeMatch[1];
-                }
-                if (langMatch && langMatch[1]) {
-                    lang = langMatch[1];
-                }
-            } catch (e) {
-                console.log('Error parsing continueUrl:', e);
-            }
-        }
-
-        return { mode, oobCode, apiKey, theme, lang };
-    }
-
-    // Language translations
     const translations = {
         en: {
-            title: 'Reset Password',
-            subtitle: 'Enter your new password',
+            resetTitle: 'Reset Password',
+            resetSubtitle: 'Enter your new password',
             newPasswordPlaceholder: 'New Password',
             confirmPasswordPlaceholder: 'Confirm Password',
-            submitBtn: 'Update Password',
-            success: 'Password updated successfully!',
-            error: 'An error occurred. Please check the link.',
-            passwordMismatch: 'Passwords do not match',
-            weakPassword: 'Password is too weak',
-            loadingText: 'Updating password...',
-            langToggleText: 'عربي'
+            resetSubmitBtn: 'Update Password',
+            resetSuccess: 'Password updated successfully!',
+            resetLoadingText: 'Updating password...',
+            verifyTitle: 'Email Verified',
+            verifySubtitle: 'Thank you for confirming your email address.',
+            verifySuccess: 'Your email has been verified! You can now close this page.',
+            errorTitle: 'An Error Occurred',
+            errorSubtitle: 'The link may be invalid, expired, or already used.',
+            error: 'Please request a new link from the app and try again.',
+            passwordMismatch: 'Passwords do not match.',
+            passwordShort: 'Password must be at least 6 characters.',
+            passwordWeak: 'Password must include uppercase, lowercase, and a number.',
+            langToggleText: 'Arabic'
         },
         ar: {
-            title: 'إعادة تعيين كلمة المرور',
-            subtitle: 'أدخل كلمة المرور الجديدة',
+            resetTitle: 'إعادة تعيين كلمة المرور',
+            resetSubtitle: 'أدخل كلمة المرور الجديدة',
             newPasswordPlaceholder: 'كلمة المرور الجديدة',
             confirmPasswordPlaceholder: 'تأكيد كلمة المرور',
-            submitBtn: 'تحديث كلمة المرور',
-            success: 'تم تحديث كلمة المرور بنجاح!',
-            error: 'حدث خطأ. تأكد من صحة الرابط.',
-            passwordMismatch: 'كلمات المرور غير متطابقة',
-            weakPassword: 'كلمة المرور ضعيفة جداً',
-            loadingText: 'جاري تحديث كلمة المرور...',
+            resetSubmitBtn: 'تحديث كلمة المرور',
+            resetSuccess: 'تم تحديث كلمة المرور بنجاح!',
+            resetLoadingText: 'جاري تحديث كلمة المرور...',
+            verifyTitle: 'تم تأكيد البريد الإلكتروني',
+            verifySubtitle: 'شكراً لتأكيد عنوان بريدك الإلكتروني.',
+            verifySuccess: 'تم تأكيد بريدك بنجاح! يمكنك الآن إغلاق هذه الصفحة.',
+            errorTitle: 'حدث خطأ',
+            errorSubtitle: 'قد يكون الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه بالفعل.',
+            error: 'يرجى طلب رابط جديد من التطبيق والمحاولة مرة أخرى.',
+            passwordMismatch: 'كلمات المرور غير متطابقة.',
+            passwordShort: 'يجب أن تتكون كلمة المرور من 6 أحرف على الأقل.',
+            passwordWeak: 'يجب أن تحتوي كلمة المرور على حرف كبير وحرف صغير ورقم.',
             langToggleText: 'English'
         }
     };
@@ -480,45 +406,45 @@
     let currentLang = 'en';
     let isConfirmed = false;
 
-    // Apply settings
-    function applySettings() {
-        const params = getUrlParams();
-
-        // Apply theme
-        document.body.className = params.theme;
-        document.getElementById('themeToggle').textContent = params.theme === 'dark' ? '☀️' : '🌙';
-
-        // Apply language
-        currentLang = params.lang;
-        setLanguage(params.lang);
-
-        return params;
+    function getUrlParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const mode = urlParams.get('mode');
+        const oobCode = urlParams.get('oobCode');
+        const continueUrl = urlParams.get('continueUrl');
+        let theme = urlParams.get('theme') || 'light';
+        let lang = urlParams.get('lang') || 'en';
+        if (continueUrl) {
+            try {
+                const continueParams = new URL(continueUrl).searchParams;
+                theme = continueParams.get('theme') || theme;
+                lang = continueParams.get('lang') || lang;
+            } catch (e) { console.error('Error parsing continueUrl:', e); }
+        }
+        return { mode, oobCode, theme, lang };
     }
 
-    // Set language
     function setLanguage(lang) {
+        currentLang = lang;
         const t = translations[lang];
-
-        document.getElementById('title').textContent = t.title;
-        document.getElementById('subtitle').textContent = t.subtitle;
+        document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+        document.getElementById('langToggle').textContent = t.langToggleText;
+        document.getElementById('title-reset').textContent = t.resetTitle;
+        document.getElementById('subtitle-reset').textContent = t.resetSubtitle;
         document.getElementById('newPassword').placeholder = t.newPasswordPlaceholder;
         document.getElementById('confirmPassword').placeholder = t.confirmPasswordPlaceholder;
-        document.getElementById('submitBtn').textContent = t.submitBtn;
-        document.getElementById('loadingText').textContent = t.loadingText;
-        document.getElementById('langToggle').textContent = t.langToggleText;
-
-        // Apply RTL for Arabic
-        if (lang === 'ar') {
-            document.body.classList.add('rtl');
-        } else {
-            document.body.classList.remove('rtl');
-        }
+        document.getElementById('submitBtn').textContent = t.resetSubmitBtn;
+        document.getElementById('loadingText').textContent = t.resetLoadingText;
+        document.getElementById('title-verify').textContent = t.verifyTitle;
+        document.getElementById('subtitle-verify').textContent = t.verifySubtitle;
+        document.getElementById('message-verify').innerHTML = `<div class="message success">${t.verifySuccess}</div>`;
+        document.getElementById('title-error').textContent = t.errorTitle;
+        document.getElementById('subtitle-error').textContent = t.errorSubtitle;
+        document.getElementById('message-error').innerHTML = `<div class="message error">${t.error}</div>`;
+        if (lang === 'ar') { document.body.classList.add('rtl'); }
+        else { document.body.classList.remove('rtl'); }
     }
 
-    // Toggle theme
     window.toggleTheme = function() {
-        if (isConfirmed) return; // Prevent theme change after confirmation
-
         const body = document.body;
         const isDark = body.classList.contains('dark');
         body.className = isDark ? 'light' : 'dark';
@@ -526,95 +452,115 @@
             body.classList.add('rtl');
         }
         document.getElementById('themeToggle').textContent = isDark ? '🌙' : '☀️';
-    };
+    }
 
-    // Toggle language
     window.toggleLanguage = function() {
-        if (isConfirmed) return; // Prevent language change after confirmation
+        const newLang = currentLang === 'en' ? 'ar' : 'en';
+        setLanguage(newLang);
+    }
 
-        currentLang = currentLang === 'en' ? 'ar' : 'en';
-        setLanguage(currentLang);
-    };
-
-    // Toggle password visibility
     window.togglePassword = function(inputId) {
-        if (isConfirmed) return; // Prevent toggle after confirmation
-
+        if (isConfirmed) return;
         const input = document.getElementById(inputId);
         const button = input.nextElementSibling;
+        const isPassword = input.type === 'password';
+        input.type = isPassword ? 'text' : 'password';
+        button.innerHTML = isPassword ?
+            `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-.722-3.25"></path><path d="M2 8a10.645 10.645 0 0 0 20 0"></path><path d="m20 15-1.726-2.05"></path><path d="m4 15 1.726-2.05"></path><path d="m9 18 .722-3.25"></path></svg>` :
+            `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+    }
 
-        if (input.type === 'password') {
-            input.type = 'text';
-            button.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m15 18-.722-3.25"></path>
-                    <path d="M2 8a10.645 10.645 0 0 0 20 0"></path>
-                    <path d="m20 15-1.726-2.05"></path>
-                    <path d="m4 15 1.726-2.05"></path>
-                    <path d="m9 18 .722-3.25"></path>
-                </svg>
-            `;
-        } else {
-            input.type = 'password';
-            button.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-            `;
+    function handleError(lang) {
+        setLanguage(lang);
+        document.getElementById('resetForm').style.display = 'none';
+        document.getElementById('verificationUI').style.display = 'none';
+        document.getElementById('errorUI').style.display = 'block';
+    }
+
+    document.getElementById('themeToggle').onclick = toggleTheme;
+    document.getElementById('langToggle').onclick = toggleLanguage;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const params = getUrlParams();
+        setLanguage(params.lang);
+        document.body.className = params.theme;
+        document.getElementById('themeToggle').textContent = params.theme === 'dark' ? '☀️' : '🌙';
+
+        const { mode, oobCode, lang } = params;
+        const resetForm = document.getElementById('resetForm');
+        const verificationUI = document.getElementById('verificationUI');
+
+        if (!oobCode || !mode) {
+            handleError(lang);
+            return;
         }
-    };
 
-    // Form submission
+        switch (mode) {
+            case 'resetPassword':
+                try {
+                    await verifyPasswordResetCode(auth, oobCode);
+                    resetForm.style.display = 'block';
+                } catch (error) {
+                    handleError(lang);
+                }
+                break;
+            case 'verifyEmail':
+                try {
+                    await applyActionCode(auth, oobCode);
+                    verificationUI.style.display = 'block';
+                } catch (error) {
+                    handleError(lang);
+                }
+                break;
+            default:
+                handleError(lang);
+        }
+    });
+
     document.getElementById('resetForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-
-        if (isConfirmed) return; // Prevent resubmission
+        if (isConfirmed) return;
 
         const params = getUrlParams();
         const newPassword = document.getElementById('newPassword').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
-        const messageDiv = document.getElementById('message');
+        const messageDiv = document.getElementById('message-reset');
         const loading = document.getElementById('loading');
         const submitBtn = document.getElementById('submitBtn');
         const t = translations[currentLang];
+        const controls = document.querySelector('.controls');
 
-        // Validate passwords
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/;
+
+        messageDiv.innerHTML = '';
         if (newPassword !== confirmPassword) {
             messageDiv.innerHTML = `<div class="message error">${t.passwordMismatch}</div>`;
             return;
         }
-
         if (newPassword.length < 6) {
-            messageDiv.innerHTML = `<div class="message error">${t.weakPassword}</div>`;
+            messageDiv.innerHTML = `<div class="message error">${t.passwordShort}</div>`;
+            return;
+        }
+        if (!passwordRegex.test(newPassword)) {
+            messageDiv.innerHTML = `<div class="message error">${t.passwordWeak}</div>`;
             return;
         }
 
-        // Show loading
         loading.style.display = 'block';
         submitBtn.disabled = true;
-        messageDiv.innerHTML = '';
 
         try {
             await confirmPasswordReset(auth, params.oobCode, newPassword);
-            messageDiv.innerHTML = `<div class="message success">${t.success}</div>`;
-
-            // Mark as confirmed and disable interactions
+            messageDiv.innerHTML = `<div class="message success">${t.resetSuccess}</div>`;
             isConfirmed = true;
             document.querySelector('.form-card').classList.add('form-confirmed');
-
+            controls.style.display = 'none';
         } catch (error) {
-            console.error('Error:', error);
             messageDiv.innerHTML = `<div class="message error">${t.error}</div>`;
+            submitBtn.disabled = false;
         } finally {
             loading.style.display = 'none';
-            submitBtn.disabled = false;
         }
-    });
-
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-        applySettings();
     });
 </script>
 </body>

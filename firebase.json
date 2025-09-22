@@ -27,6 +27,10 @@
         "destination": "/assetlinks.json"
       },
       {
+        "source": "/action",
+        "destination": "/action.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
