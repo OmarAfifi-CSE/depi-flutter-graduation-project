@@ -267,4 +267,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get error_happened => 'Error happened';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get cart => 'Cart';
+
+  @override
+  String get notification => 'Notifications';
+
+  @override
+  String get profile => 'Profile';
 }

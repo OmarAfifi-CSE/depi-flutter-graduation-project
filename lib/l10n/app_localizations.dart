@@ -610,6 +610,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error happened'**
   String get error_happened;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @cart.
+  ///
+  /// In en, this message translates to:
+  /// **'Cart'**
+  String get cart;
+
+  /// No description provided for @notification.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notification;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

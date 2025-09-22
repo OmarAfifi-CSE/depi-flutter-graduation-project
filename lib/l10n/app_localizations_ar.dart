@@ -267,4 +267,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get error_happened => 'حدث خطأ';
+
+  @override
+  String get home => 'الرئيسية';
+
+  @override
+  String get cart => 'السلة';
+
+  @override
+  String get notification => 'الإشعارات';
+
+  @override
+  String get profile => 'الملف الشخصي';
 }

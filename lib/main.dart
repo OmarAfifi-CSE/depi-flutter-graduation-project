@@ -3,13 +3,14 @@ import 'dart:convert';
 import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
 import 'package:batrina/controllers/cubit/create_new_password_cubit/create_new_password_cubit.dart';
 import 'package:batrina/controllers/cubit/forget_password_cubit/forget_password__cubit.dart';
+import 'package:batrina/controllers/cubit/nav_control/nav_control_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/user_model.dart';
-import 'package:batrina/routing/router_generation_config.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/styling/app_themes.dart';
+import 'package:batrina/widgets/custom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -73,6 +74,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => AuthCubit()),
         BlocProvider(create: (_) => ForgetPasswordCubit()),
         BlocProvider(create: (_) => CreateNewPasswordCubit()),
+        BlocProvider(create: (_) => NavControlCubit()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) => ScreenUtilInit(
@@ -81,7 +83,7 @@ class MyApp extends StatelessWidget {
           splitScreenMode: true,
           // Use builder only if you need to use library outside ScreenUtilInit context
           builder: (_, child) {
-            return MaterialApp.router(
+            return MaterialApp(
               builder: (context, child) {
                 context.read<AuthCubit>().loc = AppLocalizations.of(context);
                 context.read<ForgetPasswordCubit>().loc = AppLocalizations.of(
@@ -131,7 +133,8 @@ class MyApp extends StatelessWidget {
               theme: AppThemes.lightTheme,
               darkTheme: AppThemes.darkTheme,
               themeMode: themeProvider.themeMode,
-              routerConfig: RouterGenerationConfig.router,
+              // routerConfig: RouterGenerationConfig.router,
+              home: CustomNavBar(),
             );
           },
         ),

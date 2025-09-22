@@ -137,5 +137,10 @@
   "confirm": "Confirm",
   "invalid_or_expired_link": "The link is invalid, expired, or has already been used. Please request a new one.",
   "unexpected_error": "An unexpected error occurred. Please try again.",
-  "error_happened": "Error happened"
+  "error_happened": "Error happened",
+
+  "home": "Home",
+  "cart": "Cart",
+  "notification": "Notifications",
+  "profile": "Profile"
 }
