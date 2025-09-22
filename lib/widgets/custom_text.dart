@@ -9,7 +9,6 @@ class CustomText extends StatelessWidget {
     required this.fontWeight,
     this.textAlign,
     this.color,
-    this.textAlign,
   });
 
   final String data;

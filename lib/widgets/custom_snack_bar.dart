@@ -40,7 +40,7 @@ class CustomSnackBar {
                       const SizedBox(width: 8),
                       Expanded(
                         child: FittedBox(
-                          alignment: Alignment.centerLeft,
+                          alignment: AlignmentDirectional.centerStart,
                           fit: BoxFit.scaleDown,
                           child: CustomText(
                             data: message,

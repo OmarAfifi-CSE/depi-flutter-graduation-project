@@ -84,7 +84,7 @@ class MyApp extends StatelessWidget {
           splitScreenMode: true,
           // Use builder only if you need to use library outside ScreenUtilInit context
           builder: (_, child) {
-            return MaterialApp.router(
+            return MaterialApp(
               builder: (context, child) {
                 context.read<AuthCubit>().loc = AppLocalizations.of(context);
                 context.read<ForgetPasswordCubit>().loc = AppLocalizations.of(
@@ -134,8 +134,8 @@ class MyApp extends StatelessWidget {
               theme: AppThemes.lightTheme,
               darkTheme: AppThemes.darkTheme,
               themeMode: themeProvider.themeMode,
-              routerConfig: RouterGenerationConfig.router,
-              // home: CustomNavBar(),
+              //routerConfig: RouterGenerationConfig.router,
+              home: const CustomNavBar(),
             );
           },
         ),
@@ -143,67 +143,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-final MethodChannel channel = MethodChannel("deeplink_channel");
-
-// void initMethodChannel() {
-//   channel.setMethodCallHandler((call) async {
-//     switch (call.method) {
-//       case "openResetPasswordPage":
-//         final String oobCode = call.arguments;
-//         print("Opening reset password with oobCode: $oobCode");
-//
-//         // استخدم GoRouter للـ navigation
-//         RouterGenerationConfig.router.push(
-//           '${AppRoutes.forgetPassScreen}?oobCode=$oobCode',
-//         );
-//         break;
-//
-//       case "onDeepLink":
-//         final String deepLink = call.arguments;
-//         print("General deep link: $deepLink");
-//         // معالجة عامة لو محتاج
-//         break;
-//     }
-//   });
-// }
-
-// Future<void> _handleMethodCall(MethodCall call) async {
-//   if (call.method == 'onDeepLink') {
-//     final String deepLink = call.arguments;
-//     print('🔗 Deep link received: $deepLink');
-//
-//     _parseAndNavigate(deepLink);
-//   }
-// }
-//
-// void _parseAndNavigate(String deepLink) {
-//   try {
-//     final uri = Uri.parse(deepLink);
-//     print('📝 Parsed URI: $uri');
-//
-//     // استخرج الـ link parameter
-//     final linkParam = uri.queryParameters['link'];
-//     print('🔍 Link param: $linkParam');
-//
-//     if (linkParam != null) {
-//       // decode الـ URL
-//       final decodedLink = Uri.decodeComponent(linkParam);
-//       print('🔓 Decoded link: $decodedLink');
-//
-//       final linkUri = Uri.parse(decodedLink);
-//       final mode = linkUri.queryParameters['mode'];
-//       final oobCode = linkUri.queryParameters['oobCode'];
-//
-//       print('⚙️ Mode: $mode, OobCode: $oobCode');
-//
-//       if (mode == 'resetPassword' && oobCode != null && oobCode.isNotEmpty) {
-//         print('✅ Navigating to reset page');
-//       } else {
-//         print('❌ Invalid parameters');
-//       }
-//     }
-//   } catch (e) {
-//     print('💥 Error parsing deep link: $e');
-//   }
-// }

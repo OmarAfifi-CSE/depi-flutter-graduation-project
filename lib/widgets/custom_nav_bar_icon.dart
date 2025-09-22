@@ -152,7 +152,6 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
 
     return GestureDetector(
       onTap: () {
-        print('Tap detected - isAnimating: ${CustomNavBarIcon.isAnimating}');
         if (!CustomNavBarIcon.isAnimating) {
           widget.onTap();
         }
