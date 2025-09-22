@@ -23,22 +23,30 @@ class CustomTextFormField extends StatefulWidget {
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   late bool _isObscured;
   bool isValid = false;
+  VoidCallback? _listener;
 
   @override
   void initState() {
     super.initState();
     _isObscured = widget.obscureText;
+
     if (!widget.obscureText) {
-      widget.controller.addListener(() {
+      _listener = () {
+        if (!mounted) return; // حماية من الكراش
         setState(() {
-          if (widget.validator(widget.controller.text) == null) {
-            isValid = true;
-          } else {
-            isValid = false;
-          }
+          isValid = widget.validator(widget.controller.text) == null;
         });
-      });
+      };
+      widget.controller.addListener(_listener!);
     }
+  }
+
+  @override
+  void dispose() {
+    if (_listener != null) {
+      widget.controller.removeListener(_listener!);
+    }
+    super.dispose();
   }
 
   toggleObscure() {
