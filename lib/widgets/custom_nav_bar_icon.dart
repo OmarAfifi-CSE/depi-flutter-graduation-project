@@ -8,6 +8,7 @@ import 'custom_text.dart';
 
 class CustomNavBarIcon extends StatefulWidget {
   static bool isAnimating = false;
+
   const CustomNavBarIcon({
     super.key,
     required this.path,
@@ -31,39 +32,31 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
   late Animation<double> _textAnimation;
   late Animation<double> _scaleAnimation;
 
-  double _containerWidth = 16.0;
-  double _backgroundWidth = 0.0;
-  double _containerHeight = 16.0;
+  // --- 1. CENTRALIZED DIMENSIONS ---
+  final double _iconSize = 22.w;
+  late final double _unselectedContainerSize;
+  late final double _selectedContainerSize;
+  late final double _backgroundHeight;
 
-  double _calculateTextWidth(String text) {
-    final textPainter = TextPainter(
-      text: TextSpan(
-        text: text,
-        style: TextStyle(
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: AppFonts.mainFontName,
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-      maxLines: 1,
-    );
+  // --- State variables for animation ---
+  late double _containerWidth;
+  late double _backgroundWidth;
+  late double _containerHeight;
 
-    textPainter.layout(minWidth: 0, maxWidth: double.infinity);
-
-    final double iconWidth = 30.w;
-    final double leftPadding = 14.w;
-    final double rightPadding = 14.w;
-    final double textWidth = textPainter.width;
-
-    final double safetyMargin = 2.w;
-
-    return iconWidth + leftPadding + textWidth + rightPadding + safetyMargin;
-  }
+  bool _isInitialSetupDone = false;
 
   @override
   void initState() {
     super.initState();
+
+    _unselectedContainerSize = _iconSize;
+    _selectedContainerSize = _iconSize + 12.w;
+    _backgroundHeight = _selectedContainerSize;
+
+    _containerWidth = _unselectedContainerSize;
+    _containerHeight = _unselectedContainerSize;
+    _backgroundWidth = 0.0;
+
     _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
@@ -79,10 +72,40 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
     _scaleAnimation = Tween<double>(begin: 1.0, end: 1.2).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
+  }
 
-    if (widget.isSelected) {
-      _setSelectedState();
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isInitialSetupDone && widget.isSelected) {
+      _setSelectedState(context);
+      _isInitialSetupDone = true;
     }
+  }
+
+  double _calculateTextWidth(BuildContext context, String text) {
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: text,
+        style: TextStyle(
+          fontSize: 12.sp,
+          fontWeight: FontWeight.w600,
+          fontFamily: AppFonts.mainFontName,
+        ),
+      ),
+      textDirection: Directionality.of(context),
+      maxLines: 1,
+    );
+
+    textPainter.layout(minWidth: 0, maxWidth: double.infinity);
+
+    final double iconWidth = _selectedContainerSize;
+    final double leftPadding = 14.w;
+    final double rightPadding = 14.w;
+    final double textWidth = textPainter.width;
+    final double safetyMargin = 2.w;
+
+    return iconWidth + leftPadding + textWidth + rightPadding + safetyMargin;
   }
 
   @override
@@ -90,67 +113,60 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
     super.didUpdateWidget(oldWidget);
     if (widget.isSelected != oldWidget.isSelected) {
       if (widget.isSelected) {
-        _animateToSelected();
+        _animateToSelected(context);
       } else {
         _animateToUnselected();
       }
+    } else if (widget.isSelected && widget.name != oldWidget.name) {
+      setState(() {
+        _backgroundWidth = _calculateTextWidth(context, widget.name);
+      });
     }
   }
 
-  void _setSelectedState() {
-    _containerWidth = 30.w;
-    _containerHeight = 30.h;
-    _backgroundWidth = _calculateTextWidth(widget.name);
+  void _setSelectedState(BuildContext context) {
+    _containerWidth = _selectedContainerSize;
+    _containerHeight = _selectedContainerSize;
+    _backgroundWidth = _calculateTextWidth(context, widget.name);
     _animationController.value = 1.0;
   }
 
-  void _animateToSelected() async {
+  void _animateToSelected(BuildContext context) async {
     CustomNavBarIcon.isAnimating = true;
-
     setState(() {
-      _containerWidth = 30.w;
-      _containerHeight = 30.h;
+      _containerWidth = _selectedContainerSize;
+      _containerHeight = _selectedContainerSize;
     });
-
     await Future.delayed(const Duration(milliseconds: 200));
-
     if (mounted) {
       setState(() {
-        _backgroundWidth = _calculateTextWidth(widget.name);
+        _backgroundWidth = _calculateTextWidth(context, widget.name);
       });
     }
-
     await Future.delayed(const Duration(milliseconds: 200));
-
     if (mounted) {
       await _animationController.forward();
     }
-
     CustomNavBarIcon.isAnimating = false;
   }
 
   void _animateToUnselected() async {
     CustomNavBarIcon.isAnimating = true;
-
     if (mounted) {
       await _animationController.reverse();
     }
-
     if (mounted) {
       setState(() {
         _backgroundWidth = 0.0;
       });
     }
-
     await Future.delayed(const Duration(milliseconds: 200));
-
     if (mounted) {
       setState(() {
-        _containerWidth = 16.w;
-        _containerHeight = 16.h;
+        _containerWidth = _unselectedContainerSize;
+        _containerHeight = _unselectedContainerSize;
       });
     }
-
     CustomNavBarIcon.isAnimating = false;
   }
 
@@ -174,6 +190,7 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
       child: Stack(
         alignment: AlignmentDirectional.centerStart,
         children: [
+          // Background container with text
           AnimatedOpacity(
             duration: const Duration(milliseconds: 400),
             curve: Curves.easeInOut,
@@ -182,26 +199,29 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
               duration: const Duration(milliseconds: 400),
               curve: Curves.easeInOut,
               width: _backgroundWidth,
-              height: 30.h,
-              alignment: AlignmentDirectional.centerEnd,
-              padding: EdgeInsetsDirectional.only(end: 14.w),
+              height: _backgroundHeight,
+              padding: EdgeInsetsDirectional.only(
+                start: _selectedContainerSize + 6.w,
+                end: 6.w,
+              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.r),
                 color: appColors?.card ?? theme.cardColor,
               ),
-              child: AnimatedBuilder(
-                animation: _textAnimation,
-                builder: (context, child) {
-                  return Opacity(
-                    opacity: _textAnimation.value,
-                    child: CustomText(
-                      data: widget.name,
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.w600,
-                      color: theme.textTheme.bodyMedium?.color,
-                    ),
-                  );
-                },
+              child: Center(
+                child: AnimatedBuilder(
+                  animation: _textAnimation,
+                  builder: (context, child) {
+                    return Opacity(
+                      opacity: _textAnimation.value,
+                      child: CustomText(
+                        data: widget.name,
+                        fontSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ),
@@ -226,8 +246,8 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
                   child: Center(
                     child: SvgPicture.asset(
                       widget.path,
-                      width: 16.w,
-                      height: 16.h,
+                      width: _iconSize,
+                      height: _iconSize,
                       colorFilter: ColorFilter.mode(
                         widget.isSelected
                             ? theme.scaffoldBackgroundColor
