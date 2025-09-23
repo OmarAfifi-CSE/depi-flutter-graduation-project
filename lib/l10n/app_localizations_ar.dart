@@ -275,6 +275,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get cart => 'السلة';
 
   @override
+  String get favorites => 'المفضلة';
+
+  @override
   String get notification => 'الإشعارات';
 
   @override

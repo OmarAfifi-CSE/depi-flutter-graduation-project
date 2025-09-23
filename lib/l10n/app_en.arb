@@ -141,6 +141,7 @@
 
   "home": "Home",
   "cart": "Cart",
+  "favorites": "Wishlist",
   "notification": "Notifications",
   "profile": "Profile"
 }

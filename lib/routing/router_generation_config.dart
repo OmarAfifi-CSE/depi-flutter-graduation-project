@@ -5,13 +5,18 @@ import 'package:batrina/views/auth/create_new_password_screen.dart';
 import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/auth/email_verification_screen.dart';
+import 'package:batrina/views/cart/cart_screen.dart';
+import 'package:batrina/views/home/home_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
+import 'package:batrina/views/profile/profile_screen.dart';
+import 'package:batrina/views/wishlist/screens/wishlist_screen.dart';
+import 'package:batrina/views/wrapper_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
-  static String initialLoc = AppRoutes.signInScreen;
+  static String initialLoc = AppRoutes.wrapperScreen;
   static final GoRouter router = GoRouter(
     initialLocation: initialLoc,
     routes: [
@@ -114,6 +119,49 @@ class RouterGenerationConfig {
                 },
           );
         },
+      ),
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return WrapperScreen(navigationShell: navigationShell);
+        },
+        branches: [
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.wrapperScreen,
+                name: AppRoutes.wrapperScreen,
+                builder: (context, state) => const HomeScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.wishlistScreen,
+                name: AppRoutes.wishlistScreen,
+                builder: (context, state) => const WishlistScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.cartScreen,
+                name: AppRoutes.cartScreen,
+                builder: (context, state) => const CartScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: AppRoutes.profileScreen,
+                name: AppRoutes.profileScreen,
+                builder: (context, state) => const ProfileScreen(),
+              ),
+            ],
+          ),
+        ],
       ),
     ],
     redirect: (BuildContext context, GoRouterState state) {

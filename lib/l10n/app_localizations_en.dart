@@ -275,6 +275,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cart => 'Cart';
 
   @override
+  String get favorites => 'Wishlist';
+
+  @override
   String get notification => 'Notifications';
 
   @override
