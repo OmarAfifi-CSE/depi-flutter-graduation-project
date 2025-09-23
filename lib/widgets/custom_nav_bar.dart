@@ -16,63 +16,67 @@ class CustomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
-    return BlocBuilder<NavControlCubit, NavControlState>(
-      builder: (context, state) {
-        return BottomAppBar(
-          //to solve if there additional space
-          key: ValueKey(theme.scaffoldBackgroundColor.toString()),
-          color: theme.scaffoldBackgroundColor,
-          padding: EdgeInsets.zero,
-          child: Container(
-            padding: EdgeInsets.only(top: 10.h, left: 30.w, right: 30.w),
-            decoration: BoxDecoration(
-              color: theme.scaffoldBackgroundColor,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(40.r),
-                topLeft: Radius.circular(40.r),
+    return BlocProvider(
+      create: (context) =>
+          NavControlCubit()..setIndex(navigationShell.currentIndex),
+      child: BlocBuilder<NavControlCubit, NavControlState>(
+        builder: (context, state) {
+          return BottomAppBar(
+            //to solve if there additional space
+            key: ValueKey(theme.scaffoldBackgroundColor.toString()),
+            color: theme.scaffoldBackgroundColor,
+            padding: EdgeInsets.zero,
+            child: Container(
+              padding: EdgeInsets.only(top: 10.h, left: 30.w, right: 30.w),
+              decoration: BoxDecoration(
+                color: theme.scaffoldBackgroundColor,
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(40.r),
+                  topLeft: Radius.circular(40.r),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: theme.primaryColor.withValues(alpha: .15),
+                    blurRadius: 10,
+                    spreadRadius: -3,
+                    offset: const Offset(0, -5),
+                  ),
+                ],
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: theme.primaryColor.withValues(alpha: .15),
-                  blurRadius: 10,
-                  spreadRadius: -3,
-                  offset: const Offset(0, -5),
-                ),
-              ],
+              height: 100.h,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomNavBarIcon(
+                    path: AppAssets.homeIcon,
+                    name: loc!.home,
+                    isSelected: state.index == 0,
+                    onTap: () => _selectTab(context, 0),
+                  ),
+                  CustomNavBarIcon(
+                    path: AppAssets.favoriteIcon,
+                    name: loc.favorites,
+                    isSelected: state.index == 1,
+                    onTap: () => _selectTab(context, 1),
+                  ),
+                  CustomNavBarIcon(
+                    path: AppAssets.cartIcon,
+                    name: loc.cart,
+                    isSelected: state.index == 2,
+                    onTap: () => _selectTab(context, 2),
+                  ),
+                  CustomNavBarIcon(
+                    path: AppAssets.profileIcon,
+                    name: loc.profile,
+                    isSelected: state.index == 3,
+                    onTap: () => _selectTab(context, 3),
+                  ),
+                ],
+              ),
             ),
-            height: 100.h,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                CustomNavBarIcon(
-                  path: AppAssets.homeIcon,
-                  name: loc!.home,
-                  isSelected: state.index == 0,
-                  onTap: () => _selectTab(context, 0),
-                ),
-                CustomNavBarIcon(
-                  path: AppAssets.favoriteIcon,
-                  name: loc.favorites,
-                  isSelected: state.index == 1,
-                  onTap: () => _selectTab(context, 1),
-                ),
-                CustomNavBarIcon(
-                  path: AppAssets.cartIcon,
-                  name: loc.cart,
-                  isSelected: state.index == 2,
-                  onTap: () => _selectTab(context, 2),
-                ),
-                CustomNavBarIcon(
-                  path: AppAssets.profileIcon,
-                  name: loc.profile,
-                  isSelected: state.index == 3,
-                  onTap: () => _selectTab(context, 3),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 

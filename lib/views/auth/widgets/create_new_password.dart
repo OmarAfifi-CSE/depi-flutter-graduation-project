@@ -66,7 +66,10 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
-    return Column(
+    return BlocProvider(
+      create: (context) => CreateNewPasswordCubit()
+        ..loc = loc,
+  child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         SizedBox(height: 9.h),
@@ -177,6 +180,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
               curve: Curves.easeInOut,
             ),
       ],
-    );
+    ),
+);
   }
 }

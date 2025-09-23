@@ -1,9 +1,5 @@
 import 'dart:convert';
-
 import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
-import 'package:batrina/controllers/cubit/create_new_password_cubit/create_new_password_cubit.dart';
-import 'package:batrina/controllers/cubit/forget_password_cubit/forget_password__cubit.dart';
-import 'package:batrina/controllers/cubit/nav_control/nav_control_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
@@ -26,7 +22,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // --- Firebase Initialization ---
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // --- 1. Load Saved Theme ---
+  // --- Load Saved Theme ---
   final prefs = await SharedPreferences.getInstance();
   final String themeName =
       prefs.getString(ThemeProvider.themeKey) ?? ThemeMode.light.name;
@@ -64,14 +60,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
-        BlocProvider(create: (_) => AuthCubit()),
-        BlocProvider(create: (_) => ForgetPasswordCubit()),
-        BlocProvider(create: (_) => CreateNewPasswordCubit()),
-        BlocProvider(create: (_) => NavControlCubit()),
+        BlocProvider(create: (_) => AuthCubit()..loc = loc),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) =>
@@ -82,11 +76,6 @@ class MyApp extends StatelessWidget {
               builder: (_, child) {
                 return MaterialApp.router(
                   builder: (context, child) {
-                    context.read<AuthCubit>().loc = AppLocalizations.of(
-                      context,
-                    );
-                    context.read<ForgetPasswordCubit>().loc =
-                        AppLocalizations.of(context);
                     return Stack(
                       children: [
                         ?child,

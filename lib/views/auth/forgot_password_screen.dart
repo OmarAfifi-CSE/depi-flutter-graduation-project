@@ -47,7 +47,10 @@ class _ForgetPassState extends State<ForgetPass> {
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    return Scaffold(
+    return BlocProvider(
+      create: (context) => ForgetPasswordCubit()
+        ..loc = loc,
+  child: Scaffold(
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
@@ -167,6 +170,7 @@ class _ForgetPassState extends State<ForgetPass> {
           ),
         ),
       ),
-    );
+    ),
+);
   }
 }

@@ -60,6 +60,7 @@ class _SignInScreenState extends State<SignInScreen> {
         email: emailController.text.trim(),
         pass: passwordController.text.trim(),
       );
+      context.pushReplacementNamed(AppRoutes.wrapperScreen);
     }
   }
 
@@ -170,7 +171,6 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ),
                         SizedBox(height: 22.h),
-
                         Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

@@ -16,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
-  static String initialLoc = AppRoutes.wrapperScreen;
+  static String initialLoc = AppRoutes.onboardingScreen;
   static final GoRouter router = GoRouter(
     initialLocation: initialLoc,
     routes: [
@@ -72,13 +72,13 @@ class RouterGenerationConfig {
                 reverseTransitionDuration: const Duration(milliseconds: 1000),
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
-                  return SharedAxisTransition(
-                    transitionType: SharedAxisTransitionType.horizontal,
-                    animation: animation,
-                    secondaryAnimation: secondaryAnimation,
-                    child: child,
-                  );
-                },
+                      return SharedAxisTransition(
+                        transitionType: SharedAxisTransitionType.horizontal,
+                        animation: animation,
+                        secondaryAnimation: secondaryAnimation,
+                        child: child,
+                      );
+                    },
               );
             },
           ),
