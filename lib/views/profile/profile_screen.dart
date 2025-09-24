@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+ profile
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_colors.dart';
@@ -27,7 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         elevation: 0,
         leading: Container(
           margin: EdgeInsetsDirectional.only(
-            start: 14.r, // المسافة من بداية الاتجاه (يسار في LTR ويمين في RTL)
+            start: 14.r,
             top: 7.r,
             bottom: 7.r,
           ),
@@ -337,5 +338,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
       trailing: trailing,
       onTap: onTap,
     );
-  }
-}

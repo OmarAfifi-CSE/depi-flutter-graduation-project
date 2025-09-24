@@ -102,6 +102,46 @@
   "credentialAlreadyInUseDescription": "Credentials used elsewhere",
 
   "defaultAuthErrorDescription": "Unexpected error occurred",
-  "passwordMustMatch": "Passwords do not match "
+  "passwordMustMatch": "Passwords do not match ",
 
+
+  "resetPassword": "Reset Password",
+  "resetPasswordLabel": "Enter the email assoicated wth your account and we'll send an email with instuction to reset your password",
+  "sendInstruction": "Send Instruction",
+
+
+  "forgotPassword": "Forgot Password?",
+  "reset": "Reset",
+
+  "expiredActionCodeDescription": "The link has expired. Please request a new one.",
+  "invalidActionCodeDescription": "The link is invalid. Please request a new one.",
+
+  "emailVerifiedTitle": "Email Verified!",
+  "emailVerifiedSubtitle": "Your account is now active and ready to use. Thank you for joining us.",
+  "continueToSignInButton": "Continue to Sign In",
+
+  "verificationFailedTitle": "Verification Failed",
+  "backToSignInButton": "Back to Sign In",
+
+
+
+
+  "signin_success": "Signed in successfully",
+  "check_email_activation": "Please check your email to activate your account.",
+  "forget_password_sent": "Sent successfully",
+  "something_went_wrong": "Something went wrong.",
+  "close": "Close",
+  "login_success": "Signed in successfully",
+  "create_new_password": "Create New Password",
+  "password_changed_success": "Password changed successfully",
+  "confirm": "Confirm",
+  "invalid_or_expired_link": "The link is invalid, expired, or has already been used. Please request a new one.",
+  "unexpected_error": "An unexpected error occurred. Please try again.",
+  "error_happened": "Error happened",
+
+  "home": "Home",
+  "cart": "Cart",
+  "favorites": "Wishlist",
+  "notification": "Notifications",
+  "profile": "Profile"
 }

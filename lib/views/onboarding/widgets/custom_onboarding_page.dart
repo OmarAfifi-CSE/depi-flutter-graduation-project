@@ -25,6 +25,7 @@ class CustomOnboardingPage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.0.w),
       child:
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AngledImageContainer(
                 imageUrl: _image,

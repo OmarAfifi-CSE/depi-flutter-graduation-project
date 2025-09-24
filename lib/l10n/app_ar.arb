@@ -97,6 +97,47 @@
 
   "defaultAuthErrorDescription": "حدث خطأ غير متوقع",
 
-  "passwordMustMatch": "كلمات المرور غير متطابقة"
+  "passwordMustMatch": "كلمات المرور غير متطابقة",
 
+
+  "resetPassword": "إعادة تعيين كلمة المرور",
+  "resetPasswordLabel": "أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك رسالة تتضمن التعليمات لإعادة تعيين كلمة المرور",
+  "sendInstruction": "إرسال التعليمات",
+
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "reset": "إعادة التعيين",
+
+  "expiredActionCodeDescription": "الرابط منتهي الصلاحية. من فضلك اطلب رابط جديد.",
+  "invalidActionCodeDescription": "الرابط غير صالح. من فضلك اطلب رابط جديد.",
+
+  "emailVerifiedTitle": "تم تأكيد البريد الإلكتروني!",
+  "emailVerifiedSubtitle": "حسابك الآن نشط وجاهز للاستخدام. شكراً لانضمامك إلينا.",
+  "continueToSignInButton": "متابعة لتسجيل الدخول",
+
+  "verificationFailedTitle": "فشل التحقق",
+  "backToSignInButton": "العودة لتسجيل الدخول",
+
+
+
+
+  "signin_success": "تم تسجيل الدخول بنجاح",
+  "check_email_activation": "من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.",
+  "forget_password_sent": "تم الإرسال بنجاح",
+  "something_went_wrong": "حدث خطأ ما.",
+  "close": "إغلاق",
+  "login_success": "تم تسجيل الدخول بنجاح",
+  "create_new_password": "إنشاء كلمة مرور جديدة",
+  "password_changed_success": "تم تغيير كلمة المرور بنجاح",
+
+  "confirm": "تأكيد",
+  "invalid_or_expired_link": "الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.",
+  "unexpected_error": "حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.",
+  "error_happened": "حدث خطأ",
+
+
+  "home": "الرئيسية",
+  "cart": "السلة",
+  "favorites": "المفضلة",
+  "notification": "الإشعارات",
+  "profile": "الملف الشخصي"
 }
