@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
- profile
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_colors.dart';
@@ -338,3 +337,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
       trailing: trailing,
       onTap: onTap,
     );
+  }
+}
