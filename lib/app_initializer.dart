@@ -4,8 +4,10 @@ import 'package:batrina/routing/router_generation_config.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:ui' as ui;
 
 import 'firebase_options.dart';
 
@@ -39,18 +41,46 @@ class AppInitializer {
     // 4. Create the router instance, passing its dependencies.
     final appRouter = RouterGenerationConfig(sharedPreferences: prefs);
 
-    // 5. Load the saved theme from storage.
-    final String themeName =
-        prefs.getString(ThemeProvider.themeKey) ?? ThemeMode.light.name;
-    final initialThemeMode = ThemeMode.values.firstWhere(
-      (e) => e.name == themeName,
-      orElse: () => ThemeMode.light,
-    );
+    // 5. Determine the initial theme.
+    final String? savedThemeName = prefs.getString(ThemeProvider.themeKey);
+    late final ThemeMode initialThemeMode;
 
-    // 6. Load the saved locale and configure fonts.
-    final String localeCode = prefs.getString(LocaleProvider.localeKey) ?? "en";
+    if (savedThemeName != null) {
+      initialThemeMode = ThemeMode.values.firstWhere(
+        (e) => e.name == savedThemeName,
+        orElse: () => ThemeMode.light,
+      );
+    } else {
+      // If no theme is saved, get it from the device's system settings.
+      final Brightness platformBrightness =
+          SchedulerBinding.instance.platformDispatcher.platformBrightness;
+      initialThemeMode = platformBrightness == Brightness.dark
+          ? ThemeMode.dark
+          : ThemeMode.light;
+      await prefs.setString(ThemeProvider.themeKey, initialThemeMode.name);
+    }
+
+    // 6. Determine the initial locale.
+    final String? savedLocaleCode = prefs.getString(LocaleProvider.localeKey);
+    late final String localeCode;
+
+    if (savedLocaleCode != null) {
+      localeCode = savedLocaleCode;
+    } else {
+      // If no locale is saved, get it from the device's system settings.
+      final String systemLocale =
+          ui.PlatformDispatcher.instance.locale.languageCode;
+      if (systemLocale == 'ar') {
+        localeCode = 'ar';
+      } else {
+        localeCode = 'en';
+      }
+      await prefs.setString(LocaleProvider.localeKey, localeCode);
+    }
     if (localeCode == "ar") {
       AppFonts.mainFontName = "Tajawal";
+    } else {
+      AppFonts.mainFontName = "Poppins";
     }
     final initialLocale = Locale(localeCode);
 
