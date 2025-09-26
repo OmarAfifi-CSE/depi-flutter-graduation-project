@@ -80,7 +80,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       },
                     ),
                     const Spacer(),
-                    MovingArrow(pageCont: _pageController),
+                    MovingArrow(pageController: _pageController),
                   ],
                 ),
               ),

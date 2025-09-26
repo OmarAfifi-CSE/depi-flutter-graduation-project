@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:batrina/views/card/widget/quant_counter.dart';
+import 'package:batrina/views/cart/widget/quant_counter.dart';
 
 class ItemDetails extends StatelessWidget {
   const ItemDetails({super.key,});

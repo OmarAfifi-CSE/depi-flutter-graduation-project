@@ -1,71 +1,47 @@
-import 'dart:convert';
+import 'package:batrina/app_initializer.dart';
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
-import 'package:batrina/models/user_model.dart';
-import 'package:batrina/routing/router_generation_config.dart';
-import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/styling/app_themes.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'firebase_options.dart';
 import 'l10n/app_localizations.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  // --- Firebase Initialization ---
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // --- Load Saved Theme ---
-  final prefs = await SharedPreferences.getInstance();
-  final String themeName =
-      prefs.getString(ThemeProvider.themeKey) ?? ThemeMode.light.name;
-  final String locale = prefs.getString(LocaleProvider.localeKey) ?? "en";
-  if (locale == "ar") {
-    AppFonts.mainFontName = "Tajawal";
-  }
-
-  if (prefs.getString(UserModel.lastUserKey) != null) {
-    // RouterGenerationConfig.initialLoc = AppRoutes.signInScreen;
-    UserModel lastUser = UserModel.fromJson(
-      jsonDecode(prefs.getString(UserModel.lastUserKey)!),
-    );
-    FireBaseFireStore.currentUser = lastUser;
-  }
-  final initialThemeMode = ThemeMode.values.firstWhere(
-    (e) => e.name == themeName,
-    orElse: () => ThemeMode.light,
-  );
+  final InitializationResult result = await AppInitializer.initialize();
 
   runApp(
-    MyApp(initialThemeMode: initialThemeMode, initialLocale: Locale(locale)),
+    MyApp(
+      initialThemeMode: result.initialThemeMode,
+      initialLocale: result.initialLocale,
+      router: result.router,
+    ),
   );
 }
 
 class MyApp extends StatelessWidget {
   final ThemeMode initialThemeMode;
   final Locale initialLocale;
+  final GoRouter router;
 
   const MyApp({
     super.key,
     this.initialThemeMode = ThemeMode.light,
     required this.initialLocale,
+    required this.router,
   });
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
-        BlocProvider(create: (_) => AuthCubit()..loc = loc),
+        BlocProvider(create: (_) => AuthCubit()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) =>
@@ -76,6 +52,9 @@ class MyApp extends StatelessWidget {
               builder: (_, child) {
                 return MaterialApp.router(
                   builder: (context, child) {
+                    context.read<AuthCubit>().loc = AppLocalizations.of(
+                      context,
+                    );
                     return Stack(
                       children: [
                         ?child,
@@ -120,7 +99,7 @@ class MyApp extends StatelessWidget {
                   theme: AppThemes.lightTheme,
                   darkTheme: AppThemes.darkTheme,
                   themeMode: themeProvider.themeMode,
-                  routerConfig: RouterGenerationConfig.router,
+                  routerConfig: router,
                 );
               },
             ),

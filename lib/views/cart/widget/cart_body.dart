@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:batrina/widgets/custom_button.dart';
-import 'package:batrina/views/card/widget/card_item.dart';
-import 'package:batrina/views/card/widget/check_out_details.dart';
+import 'package:batrina/views/cart/widget/cart_item.dart';
+import 'package:batrina/views/cart/widget/check_out_details.dart';
 
-class CardViewBody extends StatelessWidget {
-  const CardViewBody({super.key});
+class CartViewBody extends StatelessWidget {
+  const CartViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {

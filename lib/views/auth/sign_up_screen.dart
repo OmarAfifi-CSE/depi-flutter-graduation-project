@@ -75,10 +75,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return null;
   }
 
-  void validation() {
+  void validation() async {
     FocusScope.of(context).unfocus();
     if (_formKey.currentState!.validate()) {
-      context.read<AuthCubit>().signUp(
+      await context.read<AuthCubit>().signUp(
         email: emailController.text.trim(),
         pass: passwordController.text.trim(),
         name: userNameController.text.trim(),
