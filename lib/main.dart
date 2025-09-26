@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';

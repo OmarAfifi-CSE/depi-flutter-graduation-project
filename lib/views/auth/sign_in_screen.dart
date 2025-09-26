@@ -1,4 +1,4 @@
-import 'package:batrina/controllers/cubit/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';

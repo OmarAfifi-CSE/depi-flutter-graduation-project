@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:batrina/l10n/app_localizations.dart'; // Your localization file
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'verify_email_state.dart';
 

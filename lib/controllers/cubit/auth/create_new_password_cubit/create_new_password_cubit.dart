@@ -1,9 +1,8 @@
 import 'package:batrina/firebase/fire_base_auth.dart';
-import 'package:bloc/bloc.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-
-import '../../../l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'create_new_password_state.dart';
 
