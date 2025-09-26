@@ -183,7 +183,6 @@ class RouterGenerationConfig {
       redirect: (BuildContext context, GoRouterState state) {
         String? mode;
         String? oobCode;
-
         if (state.uri.path == '/__/auth/links') {
           final innerLinkString = state.uri.queryParameters['link'];
           if (innerLinkString != null) {
@@ -195,8 +194,6 @@ class RouterGenerationConfig {
           mode = state.uri.queryParameters['mode'];
           oobCode = state.uri.queryParameters['oobCode'];
         }
-
-        // If we successfully extracted the params, redirect accordingly
         if (mode != null && oobCode != null) {
           switch (mode) {
             case 'resetPassword':
@@ -207,7 +204,7 @@ class RouterGenerationConfig {
           }
         }
 
-        // --- START: NEW LOGIC FOR ONBOARDING AND AUTH ---
+        // Check Authentication State
         final bool isLoggedIn = FirebaseAuth.instance.currentUser != null;
         final bool isOnboardingComplete =
             sharedPreferences.getBool('onboardingComplete') ?? false;
@@ -215,7 +212,6 @@ class RouterGenerationConfig {
 
         // 1. Check Onboarding
         if (!isOnboardingComplete) {
-          // Always redirect to onboarding if it's not complete.
           return location == AppRoutes.onboardingScreen
               ? null
               : AppRoutes.onboardingScreen;
@@ -225,20 +221,12 @@ class RouterGenerationConfig {
         final bool isGoingToAuth =
             location == AppRoutes.signInScreen ||
             location == AppRoutes.signUpScreen;
-
-        // If the user is logged in but tries to go to an auth screen (login/signup),
-        // redirect them to the home screen.
         if (isLoggedIn && isGoingToAuth) {
           return AppRoutes.wrapperScreen;
         }
-
-        // If the user is not logged in and not trying to go to an auth screen,
-        // force them to the sign-in screen.
         if (!isLoggedIn && !isGoingToAuth) {
           return AppRoutes.signInScreen;
         }
-        // --- END: NEW LOGIC ---
-
         // If no redirection conditions are met, allow navigation.
         return null;
       },
