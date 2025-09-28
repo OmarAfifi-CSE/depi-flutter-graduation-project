@@ -2,6 +2,7 @@ import 'package:batrina/styling/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
+// ignore: must_be_immutable
 class CustomTextFormField extends StatefulWidget {
   final TextEditingController controller;
   bool obscureText;

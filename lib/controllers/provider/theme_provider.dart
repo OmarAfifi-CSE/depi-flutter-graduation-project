@@ -2,25 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeProvider with ChangeNotifier {
-  // A constant key to use for saving/loading the theme.
-  static const String _themeKey = 'theme_mode';
-
-  static String get themeKey => _themeKey;
-  ThemeMode _themeMode;
-
-  ThemeProvider(this._themeMode);
+  ThemeMode _themeMode = ThemeMode.system;
 
   ThemeMode get themeMode => _themeMode;
 
-  Future<void> setTheme(ThemeMode themeMode) async {
-    if (_themeMode == themeMode) return;
-    _themeMode = themeMode;
+  ThemeProvider(ThemeMode initialThemeMode) {
+    _loadTheme();
+  }
+
+static const String themeKey = 'themeMode';
+
+  void setTheme(ThemeMode mode) async {
+    _themeMode = mode;
     notifyListeners();
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setString(_themeKey, themeMode.name);
-    } catch (e) {
-      debugPrint("Error saving theme: $e");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('themeMode', mode.toString());
+  }
+
+  void _loadTheme() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? themeText = prefs.getString('themeMode');
+    if (themeText != null) {
+      if (themeText.contains('dark')) {
+        _themeMode = ThemeMode.dark;
+      } else if (themeText.contains('light')) {
+        _themeMode = ThemeMode.light;
+      } else {
+        _themeMode = ThemeMode.system;
+      }
     }
+    notifyListeners();
   }
 }

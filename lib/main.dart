@@ -21,30 +21,35 @@ import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // --- Firebase Initialization ---
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // --- 1. Load Saved Theme ---
+
   final prefs = await SharedPreferences.getInstance();
+
   final String themeName =
       prefs.getString(ThemeProvider.themeKey) ?? ThemeMode.light.name;
-  final String locale = prefs.getString(LocaleProvider.localeKey) ?? "en";
-  if (locale == "ar") {
+  final String localeCode = prefs.getString(LocaleProvider.localeKey) ?? "en";
+
+  if (localeCode == "ar") {
     AppFonts.mainFontName = "Tajawal";
   }
+
   if (prefs.getString(UserModel.lastUserKey) != null) {
-    // RouterGenerationConfig.initialLoc = AppRoutes.signInScreen;
-    UserModel lastUser = UserModel.fromJson(
-      jsonDecode(prefs.getString(UserModel.lastUserKey)!),
-    );
+    final String userJson = prefs.getString(UserModel.lastUserKey)!;
+    final UserModel lastUser = UserModel.fromJson(jsonDecode(userJson));
     FireBaseFireStore.currentUser = lastUser;
   }
-  final initialThemeMode = ThemeMode.values.firstWhere(
+
+  final ThemeMode initialThemeMode = ThemeMode.values.firstWhere(
     (e) => e.name == themeName,
     orElse: () => ThemeMode.light,
   );
 
   runApp(
-    MyApp(initialThemeMode: initialThemeMode, initialLocale: Locale(locale)),
+    MyApp(
+      initialThemeMode: initialThemeMode,
+      initialLocale: Locale(localeCode),
+    ),
   );
 }
 
@@ -69,36 +74,34 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => AuthCubit()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
-        builder: (context, themeProvider, localeProvider, child) => ScreenUtilInit(
+        builder: (context, themeProvider, localeProvider, child) =>
+            ScreenUtilInit(
           designSize: const Size(375, 812),
           minTextAdapt: true,
           splitScreenMode: true,
-          // Use builder only if you need to use library outside ScreenUtilInit context
           builder: (_, child) {
             return MaterialApp.router(
               builder: (context, child) {
-                context.read<AuthCubit>().loc = AppLocalizations.of(context);
+                context.read<AuthCubit>().loc = AppLocalizations.of(context)!;
+
                 return Stack(
                   children: [
-                    ?child,
+                    child ?? const SizedBox.shrink(),
                     Positioned(
                       right: 0,
                       bottom: 0,
                       child: ElevatedButton(
                         onPressed: () {
                           if (themeProvider.themeMode == ThemeMode.dark) {
-                            context.read<ThemeProvider>().setTheme(
-                              ThemeMode.light,
-                            );
+                            themeProvider.setTheme(ThemeMode.light);
                           } else {
-                            context.read<ThemeProvider>().setTheme(
-                              ThemeMode.dark,
-                            );
+                            themeProvider.setTheme(ThemeMode.dark);
                           }
+
                           if (localeProvider.locale.languageCode != "ar") {
-                            context.read<LocaleProvider>().setLocale("ar");
+                            localeProvider.setLocale("ar");
                           } else {
-                            context.read<LocaleProvider>().setLocale("en");
+                            localeProvider.setLocale("en");
                           }
                         },
                         child: Text(AppLocalizations.of(context)!.test),

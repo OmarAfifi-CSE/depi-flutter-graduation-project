@@ -41,7 +41,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/
-    - assets/images/
+    - assets/images/Favhoto-01-30_22-26-47.jpg
 
   generate: true
 

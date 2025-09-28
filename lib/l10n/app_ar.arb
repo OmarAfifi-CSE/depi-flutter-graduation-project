@@ -1,102 +1,149 @@
 {
   "@@locale": "ar",
   "test": "جرب",
+  "@test": {},
   "hello": "أهلاً",
+  "@hello": {},
   "settings": "الإعدادات",
+  "@settings": {},
   "language": "اللغة",
+  "@language": {},
   "userName": "أهلاً {name}!",
+  "@userName": {
+    "placeholders": {
+      "name": {}
+    }
+  },
   "discountNewArrivalTitle": "خصم 20% على المنتجات الجديدة",
+  "@discountNewArrivalTitle": {},
   "discountNewArrivalDescription": "اكتشف خصومات مذهلة على أحدث مجموعاتنا. احصل على خصم 20% على جميع المنتجات الجديدة.",
-
+  "@discountNewArrivalDescription": {},
   "takeAdvantageShoppingTitle": "استفد من عروض التسوق",
+  "@takeAdvantageShoppingTitle": {},
   "takeAdvantageShoppingDescription": "لا تفوت العروض الحصرية للتسوق. وفر أكثر على العناصر المفضلة لديك مع العروض الخاصة.",
-
+  "@takeAdvantageShoppingDescription": {},
   "allTypesOffersTitle": "جميع أنواع العروض في متناول يدك",
+  "@allTypesOffersTitle": {},
   "allTypesOffersDescription": "تصفح عبر فئات مختلفة واعثر على أفضل الصفقات التي تناسب احتياجاتك وتفضيلاتك.",
-
+  "@allTypesOffersDescription": {},
   "welcomeTitle": "أهلاً وسهلاً!",
+  "@welcomeTitle": {},
   "welcomeDescription": "من فضلك سجل دخول أو أنشئ حساب جديد لمتابعة استخدام التطبيق",
-
+  "@welcomeDescription": {},
+  "welcome": "أهلاً",
+  "@welcome": {},
   "emailTitle": "البريد الإلكتروني",
+  "@emailTitle": {},
   "passwordTitle": "كلمة المرور",
-
+  "@passwordTitle": {},
   "loginTitle": "تسجيل الدخول",
+  "@loginTitle": {},
   "signInTitle": "تسجيل الدخول",
+  "@signInTitle": {},
   "orTitle": "أو",
-
+  "@orTitle": {},
   "continueWithGoogleTitle": "المتابعة مع جوجل",
+  "@continueWithGoogleTitle": {},
   "continueWithGoogleDescription": "تسجيل دخول سريع وآمن باستخدام حساب جوجل الخاص بك",
-
+  "@continueWithGoogleDescription": {},
   "forgotPasswordTitle": "نسيت كلمة المرور؟",
+  "@forgotPasswordTitle": {},
   "dontHaveAccountTitle": "ليس لديك حساب؟",
+  "@dontHaveAccountTitle": {},
   "alreadyAUserTitle": "هل لديك حساب؟",
+  "@alreadyAUserTitle": {},
   "signUpTitle": "إنشاء حساب",
-
+  "@signUpTitle": {},
   "loginFailedTitle": "فشل تسجيل الدخول",
+  "@loginFailedTitle": {},
   "loginFailedDescription": "بريد إلكتروني أو كلمة مرور خاطئة. من فضلك حاول مرة أخرى",
-
+  "@loginFailedDescription": {},
   "loginSuccessTitle": "تم تسجيل الدخول بنجاح",
+  "@loginSuccessTitle": {},
   "loginSuccessDescription": "أهلاً بعودتك! جاري التوجه إلى الشاشة الرئيسية",
-
+  "@loginSuccessDescription": {},
   "signUpDescription": "أنشئ حساب جديد",
+  "@signUpDescription": {},
   "userNameTitle": "اسم المستخدم",
+  "@userNameTitle": {},
   "confirmPasswordTitle": "تأكيد كلمة المرور",
-
+  "@confirmPasswordTitle": {},
   "emailEmptyDescription": "من فضلك أدخل بريدك الإلكتروني",
+  "@emailEmptyDescription": {},
   "emailInvalidDescription": "من فضلك أدخل عنوان بريد إلكتروني صالح",
-
+  "@emailInvalidDescription": {},
+  "emailEmptyTitle": "البريد الإلكتروني مطلوب",
+  "@emailEmptyTitle": {},
   "nameEmptyDescription": "الاسم مطلوب",
+  "@nameEmptyDescription": {},
   "nameTooShortDescription": "الاسم قصير جداً",
-
+  "@nameTooShortDescription": {},
   "passwordEmptyDescription": "من فضلك أدخل كلمة المرور",
+  "@passwordEmptyDescription": {},
   "passwordTooShortDescription": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
+  "@passwordTooShortDescription": {},
   "passwordWeakDescription": "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم",
-
-
-
-
+  "@passwordWeakDescription": {},
   "googleSignInCanceledDescription": "تم إلغاء تسجيل الدخول",
-
+  "@googleSignInCanceledDescription": {},
   "googleNetworkErrorDescription": "مشكلة في الاتصال",
-
+  "@googleNetworkErrorDescription": {},
   "googleSignInFailedDescription": "فشل تسجيل الدخول",
-
+  "@googleSignInFailedDescription": {},
   "googleConfigErrorDescription": "خطأ في إعدادات جوجل",
-
+  "@googleConfigErrorDescription": {},
   "googleUnexpectedErrorDescription": "حدث خطأ غير متوقع",
-
+  "@googleUnexpectedErrorDescription": {},
   "emailAlreadyInUseDescription": "الايميل مسجل مسبقاً",
-
+  "@emailAlreadyInUseDescription": {},
   "invalidEmailDescription": "عنوان ايميل غير صحيح",
-
+  "@invalidEmailDescription": {},
   "operationNotAllowedDescription": "طريقة الدخول معطلة",
-
+  "@operationNotAllowedDescription": {},
   "weakPasswordDescription": "كلمة المرور ضعيفة جداً",
-
+  "@weakPasswordDescription": {},
   "userDisabledDescription": "الحساب معطل",
-
+  "@userDisabledDescription": {},
   "userNotFoundDescription": "المستخدم غير موجود",
-
+  "@userNotFoundDescription": {},
   "wrongPasswordDescription": "كلمة مرور خاطئة",
-
+  "@wrongPasswordDescription": {},
   "invalidCredentialDescription": "بيانات دخول غير صحيحة",
-
+  "@invalidCredentialDescription": {},
   "networkRequestFailedDescription": "فشل الاتصال",
-
+  "@networkRequestFailedDescription": {},
   "invalidVerificationCodeDescription": "رمز التحقق غير صحيح",
-
+  "@invalidVerificationCodeDescription": {},
   "invalidVerificationIdDescription": "معرف التحقق غير صحيح",
-
+  "@invalidVerificationIdDescription": {},
   "tooManyRequestsDescription": "طلبات كثيرة، حاول لاحقاً",
-
+  "@tooManyRequestsDescription": {},
   "internalErrorDescription": "حدث خطأ داخلي",
-
+  "@internalErrorDescription": {},
   "accountExistsWithDifferentCredentialDescription": "الحساب موجود بطريقة دخول مختلفة",
-
+  "@accountExistsWithDifferentCredentialDescription": {},
   "credentialAlreadyInUseDescription": "بيانات الدخول مستخدمة في مكان آخر",
-
+  "@credentialAlreadyInUseDescription": {},
   "defaultAuthErrorDescription": "حدث خطأ غير متوقع",
-
-  "passwordMustMatch": "كلمات المرور غير متطابقة"
-
+  "@defaultAuthErrorDescription": {},
+  "passwordMustMatch": "كلمات المرور غير متطابقة",
+  "@passwordMustMatch": {},
+  "personalDetails": "التفاصيل الشخصية",
+  "@personalDetails": {},
+  "myOrder": "طلبي",
+  "@myOrder": {},
+  "myFavourites": "مفضلاتي",
+  "@myFavourites": {},
+  "shippingAddress": "عنوان الشحن",
+  "@shippingAddress": {},
+  "myCard": "بطاقتي",
+  "@myCard": {},
+  "notifications": "الإشعارات",
+  "@notifications": {},
+  "darkMode": "الوضع الداكن",
+  "@darkMode": {},
+  "off": "إيقاف",
+  "@off": {},
+  "on": "تشغيل",
+  "@on": {}
 }

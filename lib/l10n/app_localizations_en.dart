@@ -18,15 +18,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcome => 'Welcome';
 
   @override
-  String get settings => 'Sittings';
+  String get settings => 'Settings';
 
   @override
-  String get language => 'lan';
+  String get language => 'Language';
 
   @override
-  String userName(Object name) {
-    return 'name';
-  }
+  String get userName => 'Name';
 
   @override
   String get discountNewArrivalTitle => '20% Discount New Arrival Product';
@@ -131,6 +129,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordWeakDescription => 'Password must contain upper, lower case letters and a number';
 
   @override
+  String get passwordMustMatch => 'Passwords do not match';
+
+  @override
   String get googleSignInCanceledDescription => 'Sign-in canceled';
 
   @override
@@ -194,5 +195,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get defaultAuthErrorDescription => 'Unexpected error occurred';
 
   @override
-  String get passwordMustMatch => 'Passwords do not match ';
+  String get personalDetails => 'Personal Details';
+
+  @override
+  String get myOrder => 'My Order';
+
+  @override
+  String get myFavourites => 'My Favourites';
+
+  @override
+  String get shippingAddress => 'Shipping Address';
+
+  @override
+  String get myCard => 'My Card';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get off => 'Off';
+
+  @override
+  String get on => 'On';
 }

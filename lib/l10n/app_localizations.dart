@@ -95,377 +95,431 @@ abstract class AppLocalizations {
     Locale('en')
   ];
 
-  /// No description provided for @test.
+  /// Test string
   ///
   /// In en, this message translates to:
   /// **'Test'**
   String get test;
 
-  /// No description provided for @hello.
+  /// Greeting word
   ///
   /// In en, this message translates to:
   /// **'hello'**
   String get hello;
 
-  /// No description provided for @welcome.
+  /// Welcome message
   ///
   /// In en, this message translates to:
   /// **'Welcome'**
   String get welcome;
 
-  /// No description provided for @settings.
+  /// Settings menu title
   ///
   /// In en, this message translates to:
-  /// **'Sittings'**
+  /// **'Settings'**
   String get settings;
 
-  /// No description provided for @language.
+  /// Language option
   ///
   /// In en, this message translates to:
-  /// **'lan'**
+  /// **'Language'**
   String get language;
 
-  /// No description provided for @userName.
+  /// User name label
   ///
   /// In en, this message translates to:
-  /// **'name'**
-  String userName(Object name);
+  /// **'Name'**
+  String get userName;
 
-  /// No description provided for @discountNewArrivalTitle.
+  /// Title for new arrival discount offer
   ///
   /// In en, this message translates to:
   /// **'20% Discount New Arrival Product'**
   String get discountNewArrivalTitle;
 
-  /// No description provided for @discountNewArrivalDescription.
+  /// Description for new arrival discount offer
   ///
   /// In en, this message translates to:
   /// **'Discover amazing discounts on our latest collection. Get 20% off on all new arrival products.'**
   String get discountNewArrivalDescription;
 
-  /// No description provided for @takeAdvantageShoppingTitle.
+  /// Title for offer shopping
   ///
   /// In en, this message translates to:
   /// **'Take Advantage Of The Offer Shopping'**
   String get takeAdvantageShoppingTitle;
 
-  /// No description provided for @takeAdvantageShoppingDescription.
+  /// Description for shopping offer
   ///
   /// In en, this message translates to:
   /// **'Don\'t miss out on exclusive shopping deals. Save more on your favorite items with special offers.'**
   String get takeAdvantageShoppingDescription;
 
-  /// No description provided for @allTypesOffersTitle.
+  /// Title for all types of offers
   ///
   /// In en, this message translates to:
   /// **'All Types Offers Within Your Reach'**
   String get allTypesOffersTitle;
 
-  /// No description provided for @allTypesOffersDescription.
+  /// Description for all types of offers
   ///
   /// In en, this message translates to:
   /// **'Browse through various categories and find the best deals that match your needs and preferences.'**
   String get allTypesOffersDescription;
 
-  /// No description provided for @welcomeTitle.
+  /// Welcome title
   ///
   /// In en, this message translates to:
   /// **'Welcome!'**
   String get welcomeTitle;
 
-  /// No description provided for @welcomeDescription.
+  /// Description for welcome screen
   ///
   /// In en, this message translates to:
   /// **'Please login or sign up to continue our app'**
   String get welcomeDescription;
 
-  /// No description provided for @emailTitle.
+  /// Email field label
   ///
   /// In en, this message translates to:
   /// **'Email'**
   String get emailTitle;
 
-  /// No description provided for @passwordTitle.
+  /// Password field label
   ///
   /// In en, this message translates to:
   /// **'Password'**
   String get passwordTitle;
 
-  /// No description provided for @loginTitle.
+  /// Login button title
   ///
   /// In en, this message translates to:
   /// **'Login'**
   String get loginTitle;
 
-  /// No description provided for @signInTitle.
+  /// Sign in button title
   ///
   /// In en, this message translates to:
   /// **'Sign In'**
   String get signInTitle;
 
-  /// No description provided for @orTitle.
+  /// OR separator
   ///
   /// In en, this message translates to:
   /// **'or'**
   String get orTitle;
 
-  /// No description provided for @continueWithGoogleTitle.
+  /// Google sign-in button title
   ///
   /// In en, this message translates to:
   /// **'Continue with Google'**
   String get continueWithGoogleTitle;
 
-  /// No description provided for @continueWithGoogleDescription.
+  /// Description for Google login
   ///
   /// In en, this message translates to:
   /// **'Fast and secure login with your Google account'**
   String get continueWithGoogleDescription;
 
-  /// No description provided for @forgotPasswordTitle.
+  /// Forgot password link
   ///
   /// In en, this message translates to:
   /// **'Forgot Password?'**
   String get forgotPasswordTitle;
 
-  /// No description provided for @dontHaveAccountTitle.
+  /// Prompt to sign up
   ///
   /// In en, this message translates to:
   /// **'Don\'t have an account?'**
   String get dontHaveAccountTitle;
 
-  /// No description provided for @alreadyAUserTitle.
+  /// Prompt for existing users
   ///
   /// In en, this message translates to:
   /// **'Already a user?'**
   String get alreadyAUserTitle;
 
-  /// No description provided for @signUpTitle.
+  /// Sign up button title
   ///
   /// In en, this message translates to:
   /// **'Sign Up'**
   String get signUpTitle;
 
-  /// No description provided for @loginFailedTitle.
+  /// Title for login failed error
   ///
   /// In en, this message translates to:
   /// **'Login Failed'**
   String get loginFailedTitle;
 
-  /// No description provided for @loginFailedDescription.
+  /// Description for login failed error
   ///
   /// In en, this message translates to:
   /// **'Invalid email or password. Please try again'**
   String get loginFailedDescription;
 
-  /// No description provided for @loginSuccessTitle.
+  /// Title for successful login
   ///
   /// In en, this message translates to:
   /// **'Login Successful'**
   String get loginSuccessTitle;
 
-  /// No description provided for @loginSuccessDescription.
+  /// Description for successful login
   ///
   /// In en, this message translates to:
   /// **'Welcome back! Redirecting to home screen'**
   String get loginSuccessDescription;
 
-  /// No description provided for @signUpDescription.
+  /// Description for sign up
   ///
   /// In en, this message translates to:
   /// **'Create an new account'**
   String get signUpDescription;
 
-  /// No description provided for @userNameTitle.
+  /// User name field label
   ///
   /// In en, this message translates to:
   /// **'User Name'**
   String get userNameTitle;
 
-  /// No description provided for @confirmPasswordTitle.
+  /// Confirm password field label
   ///
   /// In en, this message translates to:
   /// **'Confirm Password'**
   String get confirmPasswordTitle;
 
-  /// No description provided for @emailEmptyTitle.
+  /// Error title when email is empty
   ///
   /// In en, this message translates to:
   /// **'Email Required'**
   String get emailEmptyTitle;
 
-  /// No description provided for @emailEmptyDescription.
+  /// Error description when email is empty
   ///
   /// In en, this message translates to:
   /// **'Please enter your email'**
   String get emailEmptyDescription;
 
-  /// No description provided for @emailInvalidDescription.
+  /// Error description when email is invalid
   ///
   /// In en, this message translates to:
   /// **'Please enter a valid email address'**
   String get emailInvalidDescription;
 
-  /// No description provided for @nameEmptyDescription.
+  /// Error description when name is empty
   ///
   /// In en, this message translates to:
   /// **'Name is required'**
   String get nameEmptyDescription;
 
-  /// No description provided for @nameTooShortDescription.
+  /// Error description when name is too short
   ///
   /// In en, this message translates to:
   /// **'Name is too short'**
   String get nameTooShortDescription;
 
-  /// No description provided for @passwordEmptyDescription.
+  /// Error description when password is empty
   ///
   /// In en, this message translates to:
   /// **'Please enter your password'**
   String get passwordEmptyDescription;
 
-  /// No description provided for @passwordTooShortDescription.
+  /// Error description when password is too short
   ///
   /// In en, this message translates to:
   /// **'Password must be at least 6 characters long'**
   String get passwordTooShortDescription;
 
-  /// No description provided for @passwordWeakDescription.
+  /// Error description when password is weak
   ///
   /// In en, this message translates to:
   /// **'Password must contain upper, lower case letters and a number'**
   String get passwordWeakDescription;
 
-  /// No description provided for @googleSignInCanceledDescription.
+  /// Error description when confirm password mismatch
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordMustMatch;
+
+  /// Error description when Google sign-in is canceled
   ///
   /// In en, this message translates to:
   /// **'Sign-in canceled'**
   String get googleSignInCanceledDescription;
 
-  /// No description provided for @googleNetworkErrorDescription.
+  /// Error description for Google network issue
   ///
   /// In en, this message translates to:
   /// **'Network connection issue'**
   String get googleNetworkErrorDescription;
 
-  /// No description provided for @googleSignInFailedDescription.
+  /// Error description when Google sign-in fails
   ///
   /// In en, this message translates to:
   /// **'Sign-in failed'**
   String get googleSignInFailedDescription;
 
-  /// No description provided for @googleConfigErrorDescription.
+  /// Error description for Google config issue
   ///
   /// In en, this message translates to:
   /// **'Google Sign-In configuration error'**
   String get googleConfigErrorDescription;
 
-  /// No description provided for @googleUnexpectedErrorDescription.
+  /// Error description for unexpected Google issue
   ///
   /// In en, this message translates to:
   /// **'Unexpected error occurred'**
   String get googleUnexpectedErrorDescription;
 
-  /// No description provided for @emailAlreadyInUseDescription.
+  /// Error description when email already exists
   ///
   /// In en, this message translates to:
   /// **'Email already registered'**
   String get emailAlreadyInUseDescription;
 
-  /// No description provided for @invalidEmailDescription.
+  /// Error description for invalid email
   ///
   /// In en, this message translates to:
   /// **'Invalid email address'**
   String get invalidEmailDescription;
 
-  /// No description provided for @operationNotAllowedDescription.
+  /// Error description when operation is not allowed
   ///
   /// In en, this message translates to:
   /// **'Sign-in method disabled'**
   String get operationNotAllowedDescription;
 
-  /// No description provided for @weakPasswordDescription.
+  /// Error description for weak password
   ///
   /// In en, this message translates to:
   /// **'Password too weak'**
   String get weakPasswordDescription;
 
-  /// No description provided for @userDisabledDescription.
+  /// Error description when user is disabled
   ///
   /// In en, this message translates to:
   /// **'Account disabled'**
   String get userDisabledDescription;
 
-  /// No description provided for @userNotFoundDescription.
+  /// Error description when user not found
   ///
   /// In en, this message translates to:
   /// **'User not found'**
   String get userNotFoundDescription;
 
-  /// No description provided for @wrongPasswordDescription.
+  /// Error description when password is incorrect
   ///
   /// In en, this message translates to:
   /// **'Incorrect password'**
   String get wrongPasswordDescription;
 
-  /// No description provided for @invalidCredentialDescription.
+  /// Error description when credentials are invalid
   ///
   /// In en, this message translates to:
   /// **'Invalid credentials'**
   String get invalidCredentialDescription;
 
-  /// No description provided for @networkRequestFailedDescription.
+  /// Error description when network request fails
   ///
   /// In en, this message translates to:
   /// **'Connection failed'**
   String get networkRequestFailedDescription;
 
-  /// No description provided for @invalidVerificationCodeDescription.
+  /// Error description when verification code is invalid
   ///
   /// In en, this message translates to:
   /// **'Invalid verification code'**
   String get invalidVerificationCodeDescription;
 
-  /// No description provided for @invalidVerificationIdDescription.
+  /// Error description when verification ID is invalid
   ///
   /// In en, this message translates to:
   /// **'Invalid verification ID'**
   String get invalidVerificationIdDescription;
 
-  /// No description provided for @tooManyRequestsDescription.
+  /// Error description for too many requests
   ///
   /// In en, this message translates to:
   /// **'Too many requests, try later'**
   String get tooManyRequestsDescription;
 
-  /// No description provided for @internalErrorDescription.
+  /// Error description for internal error
   ///
   /// In en, this message translates to:
   /// **'Internal error occurred'**
   String get internalErrorDescription;
 
-  /// No description provided for @accountExistsWithDifferentCredentialDescription.
+  /// Error description when account exists with different credential
   ///
   /// In en, this message translates to:
   /// **'Account exists with different login'**
   String get accountExistsWithDifferentCredentialDescription;
 
-  /// No description provided for @credentialAlreadyInUseDescription.
+  /// Error description when credential already in use
   ///
   /// In en, this message translates to:
   /// **'Credentials used elsewhere'**
   String get credentialAlreadyInUseDescription;
 
-  /// No description provided for @defaultAuthErrorDescription.
+  /// Default error description for unexpected auth error
   ///
   /// In en, this message translates to:
   /// **'Unexpected error occurred'**
   String get defaultAuthErrorDescription;
 
-  /// No description provided for @passwordMustMatch.
+  /// Menu option for personal details
   ///
   /// In en, this message translates to:
-  /// **'Passwords do not match '**
-  String get passwordMustMatch;
+  /// **'Personal Details'**
+  String get personalDetails;
+
+  /// Menu option for orders
+  ///
+  /// In en, this message translates to:
+  /// **'My Order'**
+  String get myOrder;
+
+  /// Menu option for favourites
+  ///
+  /// In en, this message translates to:
+  /// **'My Favourites'**
+  String get myFavourites;
+
+  /// Menu option for shipping address
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping Address'**
+  String get shippingAddress;
+
+  /// Menu option for my card
+  ///
+  /// In en, this message translates to:
+  /// **'My Card'**
+  String get myCard;
+
+  /// Menu option for notifications
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// Toggle for dark mode
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// Dark mode is turned off
+  ///
+  /// In en, this message translates to:
+  /// **'Off'**
+  String get off;
+
+  /// Dark mode is turned on
+  ///
+  /// In en, this message translates to:
+  /// **'On'**
+  String get on;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

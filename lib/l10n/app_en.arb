@@ -1,107 +1,358 @@
 {
   "@@locale": "en",
   "test": "Test",
-
+  "@test": {
+    "description": "Test string",
+    "type": "text"
+  },
   "hello": "hello",
+  "@hello": {
+    "description": "Greeting word",
+    "type": "text"
+  },
   "welcome": "Welcome",
-  "settings": "Sittings",
-  "language": "lan",
-  "userName": "name",
+  "@welcome": {
+    "description": "Welcome message",
+    "type": "text"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings menu title",
+    "type": "text"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language option",
+    "type": "text"
+  },
+  "userName": "Name",
+  "@userName": {
+    "description": "User name label",
+    "type": "text"
+  },
   "discountNewArrivalTitle": "20% Discount New Arrival Product",
+  "@discountNewArrivalTitle": {
+    "description": "Title for new arrival discount offer",
+    "type": "text"
+  },
   "discountNewArrivalDescription": "Discover amazing discounts on our latest collection. Get 20% off on all new arrival products.",
-
+  "@discountNewArrivalDescription": {
+    "description": "Description for new arrival discount offer",
+    "type": "text"
+  },
   "takeAdvantageShoppingTitle": "Take Advantage Of The Offer Shopping",
+  "@takeAdvantageShoppingTitle": {
+    "description": "Title for offer shopping",
+    "type": "text"
+  },
   "takeAdvantageShoppingDescription": "Don't miss out on exclusive shopping deals. Save more on your favorite items with special offers.",
-
+  "@takeAdvantageShoppingDescription": {
+    "description": "Description for shopping offer",
+    "type": "text"
+  },
   "allTypesOffersTitle": "All Types Offers Within Your Reach",
+  "@allTypesOffersTitle": {
+    "description": "Title for all types of offers",
+    "type": "text"
+  },
   "allTypesOffersDescription": "Browse through various categories and find the best deals that match your needs and preferences.",
-
-
+  "@allTypesOffersDescription": {
+    "description": "Description for all types of offers",
+    "type": "text"
+  },
   "welcomeTitle": "Welcome!",
+  "@welcomeTitle": {
+    "description": "Welcome title",
+    "type": "text"
+  },
   "welcomeDescription": "Please login or sign up to continue our app",
-
+  "@welcomeDescription": {
+    "description": "Description for welcome screen",
+    "type": "text"
+  },
   "emailTitle": "Email",
+  "@emailTitle": {
+    "description": "Email field label",
+    "type": "text"
+  },
   "passwordTitle": "Password",
-
+  "@passwordTitle": {
+    "description": "Password field label",
+    "type": "text"
+  },
   "loginTitle": "Login",
+  "@loginTitle": {
+    "description": "Login button title",
+    "type": "text"
+  },
   "signInTitle": "Sign In",
+  "@signInTitle": {
+    "description": "Sign in button title",
+    "type": "text"
+  },
   "orTitle": "or",
-
-
+  "@orTitle": {
+    "description": "OR separator",
+    "type": "text"
+  },
   "continueWithGoogleTitle": "Continue with Google",
+  "@continueWithGoogleTitle": {
+    "description": "Google sign-in button title",
+    "type": "text"
+  },
   "continueWithGoogleDescription": "Fast and secure login with your Google account",
-
-
+  "@continueWithGoogleDescription": {
+    "description": "Description for Google login",
+    "type": "text"
+  },
   "forgotPasswordTitle": "Forgot Password?",
+  "@forgotPasswordTitle": {
+    "description": "Forgot password link",
+    "type": "text"
+  },
   "dontHaveAccountTitle": "Don't have an account?",
+  "@dontHaveAccountTitle": {
+    "description": "Prompt to sign up",
+    "type": "text"
+  },
   "alreadyAUserTitle": "Already a user?",
+  "@alreadyAUserTitle": {
+    "description": "Prompt for existing users",
+    "type": "text"
+  },
   "signUpTitle": "Sign Up",
-
+  "@signUpTitle": {
+    "description": "Sign up button title",
+    "type": "text"
+  },
   "loginFailedTitle": "Login Failed",
+  "@loginFailedTitle": {
+    "description": "Title for login failed error",
+    "type": "text"
+  },
   "loginFailedDescription": "Invalid email or password. Please try again",
-
+  "@loginFailedDescription": {
+    "description": "Description for login failed error",
+    "type": "text"
+  },
   "loginSuccessTitle": "Login Successful",
+  "@loginSuccessTitle": {
+    "description": "Title for successful login",
+    "type": "text"
+  },
   "loginSuccessDescription": "Welcome back! Redirecting to home screen",
-
+  "@loginSuccessDescription": {
+    "description": "Description for successful login",
+    "type": "text"
+  },
   "signUpDescription": "Create an new account",
+  "@signUpDescription": {
+    "description": "Description for sign up",
+    "type": "text"
+  },
   "userNameTitle": "User Name",
+  "@userNameTitle": {
+    "description": "User name field label",
+    "type": "text"
+  },
   "confirmPasswordTitle": "Confirm Password",
-
+  "@confirmPasswordTitle": {
+    "description": "Confirm password field label",
+    "type": "text"
+  },
   "emailEmptyTitle": "Email Required",
+  "@emailEmptyTitle": {
+    "description": "Error title when email is empty",
+    "type": "text"
+  },
   "emailEmptyDescription": "Please enter your email",
+  "@emailEmptyDescription": {
+    "description": "Error description when email is empty",
+    "type": "text"
+  },
   "emailInvalidDescription": "Please enter a valid email address",
-
+  "@emailInvalidDescription": {
+    "description": "Error description when email is invalid",
+    "type": "text"
+  },
   "nameEmptyDescription": "Name is required",
+  "@nameEmptyDescription": {
+    "description": "Error description when name is empty",
+    "type": "text"
+  },
   "nameTooShortDescription": "Name is too short",
-
+  "@nameTooShortDescription": {
+    "description": "Error description when name is too short",
+    "type": "text"
+  },
   "passwordEmptyDescription": "Please enter your password",
+  "@passwordEmptyDescription": {
+    "description": "Error description when password is empty",
+    "type": "text"
+  },
   "passwordTooShortDescription": "Password must be at least 6 characters long",
+  "@passwordTooShortDescription": {
+    "description": "Error description when password is too short",
+    "type": "text"
+  },
   "passwordWeakDescription": "Password must contain upper, lower case letters and a number",
-
-
-
-
+  "@passwordWeakDescription": {
+    "description": "Error description when password is weak",
+    "type": "text"
+  },
+  "passwordMustMatch": "Passwords do not match",
+  "@passwordMustMatch": {
+    "description": "Error description when confirm password mismatch",
+    "type": "text"
+  },
   "googleSignInCanceledDescription": "Sign-in canceled",
-
+  "@googleSignInCanceledDescription": {
+    "description": "Error description when Google sign-in is canceled",
+    "type": "text"
+  },
   "googleNetworkErrorDescription": "Network connection issue",
-
+  "@googleNetworkErrorDescription": {
+    "description": "Error description for Google network issue",
+    "type": "text"
+  },
   "googleSignInFailedDescription": "Sign-in failed",
-
+  "@googleSignInFailedDescription": {
+    "description": "Error description when Google sign-in fails",
+    "type": "text"
+  },
   "googleConfigErrorDescription": "Google Sign-In configuration error",
-
+  "@googleConfigErrorDescription": {
+    "description": "Error description for Google config issue",
+    "type": "text"
+  },
   "googleUnexpectedErrorDescription": "Unexpected error occurred",
-
+  "@googleUnexpectedErrorDescription": {
+    "description": "Error description for unexpected Google issue",
+    "type": "text"
+  },
   "emailAlreadyInUseDescription": "Email already registered",
-
+  "@emailAlreadyInUseDescription": {
+    "description": "Error description when email already exists",
+    "type": "text"
+  },
   "invalidEmailDescription": "Invalid email address",
-
+  "@invalidEmailDescription": {
+    "description": "Error description for invalid email",
+    "type": "text"
+  },
   "operationNotAllowedDescription": "Sign-in method disabled",
-
+  "@operationNotAllowedDescription": {
+    "description": "Error description when operation is not allowed",
+    "type": "text"
+  },
   "weakPasswordDescription": "Password too weak",
-
+  "@weakPasswordDescription": {
+    "description": "Error description for weak password",
+    "type": "text"
+  },
   "userDisabledDescription": "Account disabled",
-
+  "@userDisabledDescription": {
+    "description": "Error description when user is disabled",
+    "type": "text"
+  },
   "userNotFoundDescription": "User not found",
-
+  "@userNotFoundDescription": {
+    "description": "Error description when user not found",
+    "type": "text"
+  },
   "wrongPasswordDescription": "Incorrect password",
-
+  "@wrongPasswordDescription": {
+    "description": "Error description when password is incorrect",
+    "type": "text"
+  },
   "invalidCredentialDescription": "Invalid credentials",
-
+  "@invalidCredentialDescription": {
+    "description": "Error description when credentials are invalid",
+    "type": "text"
+  },
   "networkRequestFailedDescription": "Connection failed",
-
+  "@networkRequestFailedDescription": {
+    "description": "Error description when network request fails",
+    "type": "text"
+  },
   "invalidVerificationCodeDescription": "Invalid verification code",
-
+  "@invalidVerificationCodeDescription": {
+    "description": "Error description when verification code is invalid",
+    "type": "text"
+  },
   "invalidVerificationIdDescription": "Invalid verification ID",
-
+  "@invalidVerificationIdDescription": {
+    "description": "Error description when verification ID is invalid",
+    "type": "text"
+  },
   "tooManyRequestsDescription": "Too many requests, try later",
-
+  "@tooManyRequestsDescription": {
+    "description": "Error description for too many requests",
+    "type": "text"
+  },
   "internalErrorDescription": "Internal error occurred",
-
+  "@internalErrorDescription": {
+    "description": "Error description for internal error",
+    "type": "text"
+  },
   "accountExistsWithDifferentCredentialDescription": "Account exists with different login",
-
+  "@accountExistsWithDifferentCredentialDescription": {
+    "description": "Error description when account exists with different credential",
+    "type": "text"
+  },
   "credentialAlreadyInUseDescription": "Credentials used elsewhere",
-
+  "@credentialAlreadyInUseDescription": {
+    "description": "Error description when credential already in use",
+    "type": "text"
+  },
   "defaultAuthErrorDescription": "Unexpected error occurred",
-  "passwordMustMatch": "Passwords do not match "
-
+  "@defaultAuthErrorDescription": {
+    "description": "Default error description for unexpected auth error",
+    "type": "text"
+  },
+  "personalDetails": "Personal Details",
+  "@personalDetails": {
+    "description": "Menu option for personal details",
+    "type": "text"
+  },
+  "myOrder": "My Order",
+  "@myOrder": {
+    "description": "Menu option for orders",
+    "type": "text"
+  },
+  "myFavourites": "My Favourites",
+  "@myFavourites": {
+    "description": "Menu option for favourites",
+    "type": "text"
+  },
+  "shippingAddress": "Shipping Address",
+  "@shippingAddress": {
+    "description": "Menu option for shipping address",
+    "type": "text"
+  },
+  "myCard": "My Card",
+  "@myCard": {
+    "description": "Menu option for my card",
+    "type": "text"
+  },
+  "notifications": "Notifications",
+  "@notifications": {
+    "description": "Menu option for notifications",
+    "type": "text"
+  },
+  "darkMode": "Dark Mode",
+  "@darkMode": {
+    "description": "Toggle for dark mode",
+    "type": "text"
+  },
+  "off": "Off",
+  "@off": {
+    "description": "Dark mode is turned off",
+    "type": "text"
+  },
+  "on": "On",
+  "@on": {
+    "description": "Dark mode is turned on",
+    "type": "text"
+  }
 }

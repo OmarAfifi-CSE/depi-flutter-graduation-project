@@ -15,7 +15,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hello => 'أهلاً';
 
   @override
-  String get welcome => 'Welcome';
+  String get welcome => 'أهلاً';
 
   @override
   String get settings => 'الإعدادات';
@@ -24,9 +24,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get language => 'اللغة';
 
   @override
-  String userName(Object name) {
-    return 'أهلاً $name!';
-  }
+  String get userName => 'أهلاً null!';
 
   @override
   String get discountNewArrivalTitle => 'خصم 20% على المنتجات الجديدة';
@@ -107,7 +105,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPasswordTitle => 'تأكيد كلمة المرور';
 
   @override
-  String get emailEmptyTitle => 'Email Required';
+  String get emailEmptyTitle => 'البريد الإلكتروني مطلوب';
 
   @override
   String get emailEmptyDescription => 'من فضلك أدخل بريدك الإلكتروني';
@@ -129,6 +127,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get passwordWeakDescription => 'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم';
+
+  @override
+  String get passwordMustMatch => 'كلمات المرور غير متطابقة';
 
   @override
   String get googleSignInCanceledDescription => 'تم إلغاء تسجيل الدخول';
@@ -194,5 +195,29 @@ class AppLocalizationsAr extends AppLocalizations {
   String get defaultAuthErrorDescription => 'حدث خطأ غير متوقع';
 
   @override
-  String get passwordMustMatch => 'كلمات المرور غير متطابقة';
+  String get personalDetails => 'التفاصيل الشخصية';
+
+  @override
+  String get myOrder => 'طلبي';
+
+  @override
+  String get myFavourites => 'مفضلاتي';
+
+  @override
+  String get shippingAddress => 'عنوان الشحن';
+
+  @override
+  String get myCard => 'بطاقتي';
+
+  @override
+  String get notifications => 'الإشعارات';
+
+  @override
+  String get darkMode => 'الوضع الداكن';
+
+  @override
+  String get off => 'إيقاف';
+
+  @override
+  String get on => 'تشغيل';
 }
