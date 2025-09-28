@@ -143,5 +143,18 @@
   "cart": "Cart",
   "favorites": "Wishlist",
   "notification": "Notifications",
-  "profile": "Profile"
+  "profile": "Profile",
+  "search": "Search",
+  "addtocard" :"Add to Card",
+  "processtocheckout" :"Proceed to Checkout",
+  "mycart" : "My Cart",
+  "subtotal" : "Subtotal",
+  "shipping" : "Shipping",
+  "total" : "Total",
+  "items" : "items",
+  "review":"Review",
+  "availableinstock" : "Available in stock",
+  "description":"Description"
+
+
 }

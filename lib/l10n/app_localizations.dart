@@ -640,6 +640,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @addtocard.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to Card'**
+  String get addtocard;
+
+  /// No description provided for @processtocheckout.
+  ///
+  /// In en, this message translates to:
+  /// **'Proceed to Checkout'**
+  String get processtocheckout;
+
+  /// No description provided for @mycart.
+  ///
+  /// In en, this message translates to:
+  /// **'My Cart'**
+  String get mycart;
+
+  /// No description provided for @subtotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal'**
+  String get subtotal;
+
+  /// No description provided for @shipping.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping'**
+  String get shipping;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @items.
+  ///
+  /// In en, this message translates to:
+  /// **'items'**
+  String get items;
+
+  /// No description provided for @review.
+  ///
+  /// In en, this message translates to:
+  /// **'Review'**
+  String get review;
+
+  /// No description provided for @availableinstock.
+  ///
+  /// In en, this message translates to:
+  /// **'Available in stock'**
+  String get availableinstock;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

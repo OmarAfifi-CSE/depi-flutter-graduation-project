@@ -1,44 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WishListSearchBar extends StatelessWidget {
   const WishListSearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context);
+
     return Row(
       children: [
         Expanded(
           child: Container(
-            height: 50,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
+            height: 50.h,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25.r),
+            ),
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search...',
+                hintText: '${loc!.search}...', 
                 hintStyle: const TextStyle(color: Colors.grey),
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.circular(50.r),
                 ),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 15,
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 20.w,
+                  vertical: 15.h,
                 ),
               ),
             ),
           ),
         ),
-        const SizedBox(width: 12),
+        SizedBox(width: 12.w),
         Container(
-          width: 50,
-          height: 50,
+          width: 50.w,
+          height: 50.h,
           decoration: const BoxDecoration(
             color: Colors.black,
             shape: BoxShape.circle,
           ),
           child: IconButton(
-            onPressed: () {
-              // Handle cart/scanner button tap
-            },
+            onPressed: () {},
             icon: const Icon(
               Icons.qr_code_rounded,
               color: Colors.white,

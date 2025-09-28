@@ -139,5 +139,18 @@
   "cart": "السلة",
   "favorites": "المفضلة",
   "notification": "الإشعارات",
-  "profile": "الملف الشخصي"
+  "profile": "الملف الشخصي",
+  "search": "بحث",
+  "addtocard": "إضافة إلى السلة",
+  "processtocheckout": "المتابعة للدفع",
+  "mycart": "سلة التسوق",
+  "subtotal": "المجموع الفرعي",
+  "shipping": "الشحن",
+  "total": "المجموع الكلي",
+  "items": "عناصر",
+  "review": "مراجعة",
+  "availableinstock": "متوفر في المخزون",
+  "description": "الوصف"
+  
+
 }

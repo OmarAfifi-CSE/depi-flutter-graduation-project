@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:batrina/views/item/widgets/item_img.dart';
-import 'package:batrina/views/item/widgets/item_title.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:batrina/views/item/widgets/item_details.dart';
 import 'package:batrina/views/item/widgets/add_to_card_btn.dart';
 
 class ItemBody extends StatelessWidget {
@@ -8,20 +9,25 @@ class ItemBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      physics: BouncingScrollPhysics(),
+    return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
       slivers: [
         // Product image section
-        SliverToBoxAdapter(child: ItemImg()),
+        const SliverToBoxAdapter(child: ItemImg()),
 
         // Product details card
-        SliverToBoxAdapter(child: ItemDetails()),
+         SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0.w),
+            child: const ItemDetails(),
+          ),
+        ),
 
         // Fixed bottom bar
         SliverToBoxAdapter(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: AddToCardBtn(),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: const AddToCardBtn(),
           ),
         ),
       ],

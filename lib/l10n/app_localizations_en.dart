@@ -282,4 +282,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get addtocard => 'Add to Card';
+
+  @override
+  String get processtocheckout => 'Proceed to Checkout';
+
+  @override
+  String get mycart => 'My Cart';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get shipping => 'Shipping';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get items => 'items';
+
+  @override
+  String get review => 'Review';
+
+  @override
+  String get availableinstock => 'Available in stock';
+
+  @override
+  String get description => 'Description';
 }
