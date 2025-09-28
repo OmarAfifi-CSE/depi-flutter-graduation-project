@@ -282,4 +282,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get profile => 'الملف الشخصي';
+
+  @override
+  String get search => 'ابحث';
+
+  @override
+  String get clothes => 'ملابس';
+
+  @override
+  String get categories => 'فئات';
+
+  @override
+  String get top_dresses => 'أفضل الفساتين';
 }

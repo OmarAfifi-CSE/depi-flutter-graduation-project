@@ -143,5 +143,11 @@
   "cart": "Cart",
   "favorites": "Wishlist",
   "notification": "Notifications",
-  "profile": "Profile"
+  "profile": "Profile",
+
+
+  "search": "Search",
+  "clothes": "Clothes",
+  "categories": "Categories",
+  "top_dresses": "Top Dresses"
 }

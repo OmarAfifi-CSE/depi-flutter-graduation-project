@@ -139,5 +139,14 @@
   "cart": "السلة",
   "favorites": "المفضلة",
   "notification": "الإشعارات",
-  "profile": "الملف الشخصي"
+  "profile": "الملف الشخصي",
+
+
+  "search": "ابحث",
+  "clothes": "ملابس",
+  "categories": "فئات",
+  "top_dresses": "أفضل الفساتين"
+
+
+
 }

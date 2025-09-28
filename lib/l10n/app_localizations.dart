@@ -640,6 +640,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @search.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// No description provided for @clothes.
+  ///
+  /// In en, this message translates to:
+  /// **'Clothes'**
+  String get clothes;
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @top_dresses.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Dresses'**
+  String get top_dresses;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

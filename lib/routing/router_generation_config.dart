@@ -6,7 +6,9 @@ import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
+import 'package:batrina/views/home/category_screen.dart';
 import 'package:batrina/views/home/home_screen.dart';
+import 'package:batrina/views/home/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
 import 'package:batrina/views/wishlist/screens/wishlist_screen.dart';
@@ -16,7 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
-  static String initialLoc = AppRoutes.onboardingScreen;
+  static String initialLoc = AppRoutes.categoryScreen;
   static final GoRouter router = GoRouter(
     initialLocation: initialLoc,
     routes: [
@@ -162,6 +164,21 @@ class RouterGenerationConfig {
             ],
           ),
         ],
+      ),
+      GoRoute(
+        path: AppRoutes.categoryScreen,
+        name: AppRoutes.categoryScreen,
+        builder: (context, state) => const CategoryScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.homeScreen,
+        name: AppRoutes.homeScreen,
+        builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.productScreen,
+        name: AppRoutes.productScreen,
+        builder: (context, state) => const ProductScreen(),
       ),
     ],
     redirect: (BuildContext context, GoRouterState state) {

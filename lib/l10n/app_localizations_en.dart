@@ -282,4 +282,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get clothes => 'Clothes';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get top_dresses => 'Top Dresses';
 }
