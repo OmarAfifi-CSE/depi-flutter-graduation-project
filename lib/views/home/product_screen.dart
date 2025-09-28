@@ -1,5 +1,10 @@
-import 'package:batrina/views/home/widgets/product_grid_view.dart' show ProductGridView;
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/views/home/widgets/product_grid_view.dart'
+    show ProductGridView;
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
@@ -11,22 +16,28 @@ class ProductScreen extends StatefulWidget {
 class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 25,),
-      child:  Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Clothes',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
+    final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
+    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25.w,vertical: 25.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  data: loc!.clothes,
+                  fontSize: 22.sp,
+                  fontWeight: FontWeight.w700,
+                ),
+                SizedBox(height: 18.h),
+                const ProductGridView(),
+              ],
             ),
           ),
-          SizedBox(height: 18),
-          ProductGridView(),
-        ],
+        ),
       ),
     );
   }

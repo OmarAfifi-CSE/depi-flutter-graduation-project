@@ -1,51 +1,69 @@
 import 'package:batrina/models/product_model.dart';
-import 'package:batrina/views/home/widgets/product_card_widget.dart' show ProductCardWidget;
+import 'package:batrina/styling/app_assets.dart';
+import 'package:batrina/views/home/widgets/product_card_widget.dart'
+    show ProductCardWidget;
 import 'package:flutter/material.dart';
-
 
 final List<Product> products = [
   Product(
     name: 'Roller Rabbit',
     brand: 'Vinca Jogger',
     price: 198.00,
-    imageUrl:
-        'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=300&h=400&fit=crop',
-    isSelected: true,
+    imageUrl: AppAssets.categoryTestImage,
   ),
   Product(
     name: 'endless rose',
-    brand: 'Button Up Shirt',
+    brand: 'Button Shirt',
     price: 50.00,
-    imageUrl:
-        'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=300&h=400&fit=crop',
+    imageUrl: AppAssets.categoryTestImage,
   ),
   Product(
     name: 'Theory',
-    brand: 'Regular Fit T-Shirt',
+    brand: 'T-Shirt',
     price: 345.00,
-    imageUrl:
-        'https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=300&h=400&fit=crop',
+    imageUrl: AppAssets.categoryTestImage,
   ),
   Product(
     name: 'Madewell',
-    brand: 'Galsier Top in Wkdn Blnc',
+    brand: 'Galsier Top',
     price: 69.50,
-    imageUrl:
-        'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=300&h=400&fit=crop',
+    imageUrl: AppAssets.categoryTestImage,
   ),
   Product(
     name: 'Summer Vibes',
-    brand: 'Casual Beach Dress',
+    brand: 'Casual Dress',
     price: 89.99,
-    imageUrl:
-        'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&h=400&fit=crop',
+    imageUrl: AppAssets.categoryTestImage,
   ),
   Product(
     name: 'Urban Style',
     brand: 'Black Hoodie',
     price: 125.00,
-    imageUrl:
-        'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=300&h=400&fit=crop',
+    imageUrl: AppAssets.categoryTestImage,
+  ),
+  Product(
+    name: 'Roller Rabbit',
+    brand: 'Vinca Jogger',
+    price: 198.00,
+    imageUrl: AppAssets.categoryTestImage,
+  ),
+  Product(
+    name: 'endless rose',
+    brand: 'Button Shirt',
+    price: 50.00,
+    imageUrl: AppAssets.categoryTestImage,
+  ),
+  Product(
+    name: 'Theory',
+    brand: 'T-Shirt',
+    price: 345.00,
+    imageUrl: AppAssets.categoryTestImage,
+  ),
+  Product(
+    name: 'Madewell',
+    brand: 'Galsier Top ',
+    price: 69.50,
+    imageUrl: AppAssets.categoryTestImage,
   ),
 ];
 
@@ -54,19 +72,25 @@ class ProductGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 0.65,
-          crossAxisSpacing: 15,
-          mainAxisSpacing: 30,
-        ),
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          return const ProductCardWidget();
-        },
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 0.65,
+        crossAxisSpacing: 15,
+        mainAxisSpacing: 30,
       ),
+      itemCount: products.length,
+      itemBuilder: (context, index) {
+        Product pr = products[index];
+        return ProductCardWidget(
+          price: pr.price,
+          desc: pr.name,
+          brand: pr.brand,
+          img: pr.imageUrl,
+        );
+      },
     );
   }
 }

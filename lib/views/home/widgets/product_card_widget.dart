@@ -1,35 +1,48 @@
+import 'package:batrina/styling/app_assets.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductCardWidget extends StatelessWidget {
-  const ProductCardWidget({super.key});
+  final double price;
+  final String desc;
+  final String brand;
+  final String img;
+  const ProductCardWidget({super.key, required this.price, required this.desc, required this.brand, required this.img});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          height: 170,
-          decoration:  BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-              image: const DecorationImage(
-                  image: AssetImage("assets/1.png"), fit: BoxFit.cover)),
+          height: 170.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16.r),
+            image: DecorationImage(
+              image: AssetImage(img),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
-        const Column(
+        Column(
           children: [
-            Text(
-              "title",
-              style: TextStyle(fontSize: 20),
+            CustomText(
+              data: brand,
+              fontSize: 18.sp,
+              fontWeight: FontWeight.w600,
             ),
-            Text(
-              "description",
-              style: TextStyle(fontSize: 15),
+            CustomText(
+              data: desc,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.w400,
             ),
-            Text(
-              "200\$",
-              style: TextStyle(fontSize: 20),
-            )
+            CustomText(
+              data: "$price\$",
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+            ),
           ],
-        )
+        ),
       ],
     );
   }

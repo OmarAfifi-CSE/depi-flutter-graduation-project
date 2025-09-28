@@ -18,7 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class RouterGenerationConfig {
-  static String initialLoc = AppRoutes.categoryScreen;
+  static String initialLoc = AppRoutes.productScreen;
   static final GoRouter router = GoRouter(
     initialLocation: initialLoc,
     routes: [
