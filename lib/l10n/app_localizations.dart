@@ -107,6 +107,18 @@ abstract class AppLocalizations {
   /// **'hello'**
   String get hello;
 
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @arabic.
+  ///
+  /// In en, this message translates to:
+  /// **'Arabic'**
+  String get arabic;
+
   /// Welcome message
   ///
   /// In en, this message translates to:

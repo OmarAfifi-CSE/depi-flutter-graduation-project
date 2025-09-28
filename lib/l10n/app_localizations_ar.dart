@@ -15,6 +15,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hello => 'أهلاً';
 
   @override
+  String get english => 'إنجليزي';
+
+  @override
+  String get arabic => 'عربي';
+
+  @override
   String get welcome => 'أهلاً';
 
   @override

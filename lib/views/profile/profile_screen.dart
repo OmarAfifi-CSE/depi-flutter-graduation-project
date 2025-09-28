@@ -143,7 +143,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Text(
-                                  'English',
+                                  Localizations.localeOf(
+                                            context,
+                                          ).languageCode ==
+                                          'ar'
+                                      ? 'العربية'
+                                      : 'English',
                                   style: TextStyle(
                                     color: appColors.secondaryText,
                                     fontSize: 14.sp,
@@ -158,6 +163,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ],
                             ),
                           ),
+
                           ProfileSettingsItem(
                             icon: Icons.notifications,
                             title: loc.notifications,
@@ -181,7 +187,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             title: loc.darkMode,
                             trailing: Consumer<ThemeProvider>(
                               builder: (context, themeProvider, child) {
-                                final isDark = themeProvider.themeMode == ThemeMode.dark;
+                                final isDark =
+                                    themeProvider.themeMode == ThemeMode.dark;
                                 return Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
@@ -201,11 +208,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         value: isDark,
                                         onChanged: (value) {
                                           themeProvider.setTheme(
-                                            value ? ThemeMode.dark : ThemeMode.light,
+                                            value
+                                                ? ThemeMode.dark
+                                                : ThemeMode.light,
                                           );
                                         },
                                         activeThumbColor: theme.primaryColor,
-                                        inactiveThumbColor: appColors.secondaryText,
+                                        inactiveThumbColor:
+                                            appColors.secondaryText,
                                         inactiveTrackColor: appColors.card,
                                       ),
                                     ),

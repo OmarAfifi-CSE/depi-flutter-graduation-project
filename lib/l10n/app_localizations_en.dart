@@ -15,6 +15,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get hello => 'hello';
 
   @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
   String get welcome => 'Welcome';
 
   @override
