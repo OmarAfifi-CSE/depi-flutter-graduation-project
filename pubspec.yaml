@@ -30,6 +30,7 @@ dependencies:
   cloud_firestore: ^6.0.1
   top_snackbar_flutter: ^3.3.0
   lottie: ^3.3.2
+  carousel_slider: ^5.1.1
 
 
 
