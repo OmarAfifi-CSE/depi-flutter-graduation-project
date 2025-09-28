@@ -1,11 +1,8 @@
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_colors.dart';
-import 'package:batrina/views/home/widgets/category_filter.dart'
-    show FilterListView;
-import 'package:batrina/views/home/widgets/home_carousel.dart'
-    show HomeCarousel;
-import 'package:batrina/views/home/widgets/product_grid_view.dart'
-    show ProductGridView;
+import 'package:batrina/views/home/widgets/category_filter.dart';
+import 'package:batrina/views/home/widgets/home_carousel.dart';
+import 'package:batrina/views/home/widgets/product_grid_view.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
