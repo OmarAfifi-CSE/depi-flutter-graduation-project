@@ -1,9 +1,13 @@
+import 'package:batrina/views/profile/widgets/profile_menu_item.dart';
+import 'package:batrina/views/profile/widgets/profile_settings_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/styling/app_colors.dart';
+
+import 'widgets/profile_header.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -27,87 +31,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 22.h),
-            Container(
-              margin: EdgeInsetsDirectional.only(start: 22.r, top: 7.r),
-              decoration: BoxDecoration(
-                color: theme.primaryColor,
-                shape: BoxShape.circle,
-              ),
-              child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: theme.scaffoldBackgroundColor,
-                  size: 24.sp,
-                ),
-                onPressed: () => Navigator.pop(context),
-              ),
-            ),
-            SizedBox(height: 20.h),
             Expanded(
               child: SingleChildScrollView(
                 padding: EdgeInsets.all(24.w),
                 child: Column(
                   children: [
-                    Container(
-                      width: 326.w,
-                      height: 90.h,
-                      padding: EdgeInsets.all(12.r),
-                      decoration: BoxDecoration(
-                        color: theme.scaffoldBackgroundColor,
-                        borderRadius: BorderRadius.circular(16.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: appColors.containerBorder!.withValues(
-                              alpha: 0.5,
-                            ),
-                            spreadRadius: .5,
-                            blurRadius: 10,
-                            offset: const Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 70.w,
-                            height: 70.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.r),
-                              image: const DecorationImage(
-                                image: AssetImage(
-                                  'assets/images/Favhoto-01-30_22-26-47.jpg',
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 16.w),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Wello',
-                                  style: TextStyle(
-                                    fontSize: 28.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: theme.primaryColor,
-                                  ),
-                                ),
-                                SizedBox(height: 1.h),
-                                Text(
-                                  'wello6668@gmail.com',
-                                  style: TextStyle(
-                                    fontSize: 14.sp,
-                                    color: appColors.secondaryText,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                    ProfileHeader(
+                      name: 'Wello',
+                      email: 'wello6668@gmail.com',
+                      onBack: () {},
                     ),
                     SizedBox(height: 32.h),
                     Container(
@@ -129,38 +61,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         children: [
                           const SizedBox(height: 30),
-                          _buildMenuItem(
-                            context: context,
+                          ProfileMenuItem(
                             icon: Icons.person,
                             title: loc.personalDetails,
                             onTap: () {},
                           ),
-                          _buildMenuItem(
-                            context: context,
+                          ProfileMenuItem(
                             icon: Icons.shopping_bag,
                             title: loc.myOrder,
                             onTap: () {},
                           ),
-                          _buildMenuItem(
-                            context: context,
+                          ProfileMenuItem(
                             icon: Icons.favorite,
                             title: loc.myFavourites,
                             onTap: () {},
                           ),
-                          _buildMenuItem(
-                            context: context,
+                          ProfileMenuItem(
                             icon: Icons.local_shipping,
                             title: loc.shippingAddress,
                             onTap: () {},
                           ),
-                          _buildMenuItem(
-                            context: context,
+                          ProfileMenuItem(
                             icon: Icons.credit_card,
                             title: loc.myCard,
                             onTap: () {},
                           ),
-                          _buildMenuItem(
-                            context: context,
+                          ProfileMenuItem(
                             icon: Icons.settings,
                             title: loc.settings,
                             onTap: () {},
@@ -172,15 +98,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(height: 20.h),
                     Padding(
                       padding: EdgeInsets.only(
-                        left: .5.w,
-                        top: 4.h,
-                        bottom: 4.h,
+                        left: 5.w,
+                        // top: 4.h,
                       ),
                       child: Align(
                         alignment:
                             Localizations.localeOf(context).languageCode == 'ar'
-                                ? Alignment.centerRight
-                                : Alignment.centerLeft,
+                            ? Alignment.centerRight
+                            : Alignment.centerLeft,
                         child: Text(
                           loc.settings,
                           style: TextStyle(
@@ -211,8 +136,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         children: [
                           SizedBox(height: 30.h),
-                          _buildSettingsItem(
-                            context: context,
+                          ProfileSettingsItem(
                             icon: Icons.language,
                             title: loc.language,
                             trailing: Row(
@@ -234,8 +158,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ],
                             ),
                           ),
-                          _buildSettingsItem(
-                            context: context,
+                          ProfileSettingsItem(
                             icon: Icons.notifications,
                             title: loc.notifications,
                             trailing: Transform.scale(
@@ -253,8 +176,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
-                          _buildSettingsItem(
-                            context: context,
+                          ProfileSettingsItem(
                             icon: Icons.dark_mode,
                             title: loc.darkMode,
                             trailing: Consumer<ThemeProvider>(
@@ -298,7 +220,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 30.h),
+                    SizedBox(height: 10.h),
                   ],
                 ),
               ),
@@ -306,73 +228,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildMenuItem({
-    required BuildContext context,
-    required IconData icon,
-    required String title,
-    required VoidCallback onTap,
-  }) {
-    final theme = Theme.of(context);
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 4.h),
-      leading: Container(
-        padding: EdgeInsets.all(8.r),
-        decoration: BoxDecoration(
-          color: appColors.textFieldFill,
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        child: Icon(icon, size: 40.sp, color: appColors.containerBorder),
-      ),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
-          color: theme.primaryColor,
-        ),
-      ),
-      trailing: Icon(
-        Icons.chevron_right,
-        color: appColors.secondaryText,
-        size: 25.sp,
-      ),
-      onTap: onTap,
-    );
-  }
-
-  Widget _buildSettingsItem({
-    required BuildContext context,
-    required IconData icon,
-    required String title,
-    required Widget trailing,
-    VoidCallback? onTap,
-  }) {
-    final theme = Theme.of(context);
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 4.h),
-      leading: Container(
-        padding: EdgeInsets.all(8.r),
-        decoration: BoxDecoration(
-          color: appColors.textFieldFill,
-          borderRadius: BorderRadius.circular(8.r),
-        ),
-        child: Icon(icon, size: 40.sp, color: appColors.containerBorder),
-      ),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
-          color: theme.primaryColor,
-        ),
-      ),
-      trailing: trailing,
-      onTap: onTap,
     );
   }
 }
