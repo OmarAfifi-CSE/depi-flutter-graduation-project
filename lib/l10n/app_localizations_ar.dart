@@ -266,6 +266,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get home => 'الرئيسية';
 
   @override
+  String get categories => 'الفئات';
+
+  @override
   String get cart => 'السلة';
 
   @override
@@ -282,9 +285,6 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get clothes => 'ملابس';
-
-  @override
-  String get categories => 'فئات';
 
   @override
   String get top_dresses => 'أفضل الفساتين';

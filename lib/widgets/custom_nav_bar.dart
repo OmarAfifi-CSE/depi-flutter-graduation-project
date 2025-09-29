@@ -54,8 +54,8 @@ class CustomNavBar extends StatelessWidget {
                     onTap: () => _selectTab(context, 0),
                   ),
                   CustomNavBarIcon(
-                    path: AppAssets.favoriteIcon,
-                    name: loc.favorites,
+                    path: AppAssets.categoriesIcon,
+                    name: loc.categories,
                     isSelected: state.index == 1,
                     onTap: () => _selectTab(context, 1),
                   ),

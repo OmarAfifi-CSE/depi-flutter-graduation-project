@@ -6,10 +6,10 @@ import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
+import 'package:batrina/views/home/category_screen.dart';
 import 'package:batrina/views/home/home_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
-import 'package:batrina/views/wishlist/screens/wishlist_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -155,7 +155,7 @@ class RouterGenerationConfig {
                 GoRoute(
                   path: AppRoutes.wishlistScreen,
                   name: AppRoutes.wishlistScreen,
-                  builder: (context, state) => const WishlistScreen(),
+                  builder: (context, state) => const CategoryScreen(),
                 ),
               ],
             ),

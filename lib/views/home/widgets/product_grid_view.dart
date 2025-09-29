@@ -1,8 +1,8 @@
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/styling/app_assets.dart';
-import 'package:batrina/views/home/widgets/product_card_widget.dart'
-    show ProductCardWidget;
+import 'package:batrina/views/home/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 final List<Product> products = [
   Product(
@@ -75,11 +75,11 @@ class ProductGridView extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.65,
-        crossAxisSpacing: 15,
-        mainAxisSpacing: 30,
+        childAspectRatio: 0.6,
+        crossAxisSpacing: 18.w,
+        mainAxisSpacing: 20.h,
       ),
       itemCount: products.length,
       itemBuilder: (context, index) {

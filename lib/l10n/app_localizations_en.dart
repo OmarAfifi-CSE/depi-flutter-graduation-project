@@ -266,6 +266,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get home => 'Home';
 
   @override
+  String get categories => 'Categories';
+
+  @override
   String get cart => 'Cart';
 
   @override
@@ -282,9 +285,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get clothes => 'Clothes';
-
-  @override
-  String get categories => 'Categories';
 
   @override
   String get top_dresses => 'Top Dresses';

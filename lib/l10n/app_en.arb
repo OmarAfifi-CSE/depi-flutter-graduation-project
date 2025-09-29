@@ -138,6 +138,7 @@
   "error_happened": "Error happened",
 
   "home": "Home",
+  "categories": "Categories",
   "cart": "Cart",
   "favorites": "Wishlist",
   "notifications": "Notifications",
@@ -146,7 +147,6 @@
 
   "search": "Search",
   "clothes": "Clothes",
-  "categories": "Categories",
   "top_dresses": "Top Dresses",
 
 

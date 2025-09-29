@@ -12,7 +12,7 @@ class WrapperScreen extends StatelessWidget {
 
   static const List<String> _pageTitles = [
     'Home',
-    'Wishlist',
+    'Categories',
     'Cart',
     'Profile',
   ];
