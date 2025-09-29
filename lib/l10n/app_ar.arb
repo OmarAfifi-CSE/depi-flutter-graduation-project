@@ -140,7 +140,7 @@
   "profile": "الملف الشخصي",
 
 
-  "search": "ابحث",
+  "search": "بحث",
   "clothes": "ملابس",
   "categories": "فئات",
   "top_dresses": "أفضل الفساتين",
@@ -155,5 +155,17 @@
   "language": "اللغة",
   "darkMode": "الوضع الداكن",
   "helpCenter": "مركز المساعدة",
-  "english": "الإنجليزية"
+  "english": "الإنجليزية",
+
+
+  "addtocard": "إضافة إلى السلة",
+  "processtocheckout": "المتابعة للدفع",
+  "mycart": "سلة التسوق",
+  "subtotal": "المجموع الفرعي",
+  "shipping": "الشحن",
+  "total": "المجموع الكلي",
+  "items": "عناصر",
+  "review": "مراجعة",
+  "availableinstock": "متوفر في المخزون",
+  "description": "الوصف"
 }

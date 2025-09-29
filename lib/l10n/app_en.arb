@@ -159,5 +159,17 @@
   "language": "Language",
   "darkMode": "Dark Mode",
   "helpCenter": "Help Center",
-  "english": "English"
+  "english": "English",
+
+
+  "addtocard" :"Add to Card",
+  "processtocheckout" :"Proceed to Checkout",
+  "mycart" : "My Cart",
+  "subtotal" : "Subtotal",
+  "shipping" : "Shipping",
+  "total" : "Total",
+  "items" : "items",
+  "review":"Review",
+  "availableinstock" : "Available in stock",
+  "description":"Description"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemImg extends StatelessWidget {
   const ItemImg({super.key});
@@ -10,7 +11,7 @@ class ItemImg extends StatelessWidget {
         // Main product image
         SizedBox(
           width: double.infinity,
-          height: MediaQuery.sizeOf(context).height * .4,
+          height: 400.h,
           child: Image.asset(
             'assets/images/images.jpeg',
             fit: BoxFit.cover,
@@ -28,8 +29,8 @@ class ItemImg extends StatelessWidget {
           bottom: 20,
           right: 20,
           child: Container(
-            width: 40,
-            height: 40,
+            width: 40.w,
+            height: 40.h,
             decoration: BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
@@ -47,6 +48,5 @@ class ItemImg extends StatelessWidget {
         ),
       ],
     );
- 
   }
 }

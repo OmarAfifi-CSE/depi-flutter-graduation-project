@@ -278,7 +278,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get profile => 'الملف الشخصي';
 
   @override
-  String get search => 'ابحث';
+  String get search => 'بحث';
 
   @override
   String get clothes => 'ملابس';
@@ -318,4 +318,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get english => 'الإنجليزية';
+
+  @override
+  String get addtocard => 'إضافة إلى السلة';
+
+  @override
+  String get processtocheckout => 'المتابعة للدفع';
+
+  @override
+  String get mycart => 'سلة التسوق';
+
+  @override
+  String get subtotal => 'المجموع الفرعي';
+
+  @override
+  String get shipping => 'الشحن';
+
+  @override
+  String get total => 'المجموع الكلي';
+
+  @override
+  String get items => 'عناصر';
+
+  @override
+  String get review => 'مراجعة';
+
+  @override
+  String get availableinstock => 'متوفر في المخزون';
+
+  @override
+  String get description => 'الوصف';
 }

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:batrina/widgets/custom_text.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/views/cart/widget/quant_counter.dart';
 
 class ItemDetails extends StatelessWidget {
-  const ItemDetails({super.key,});
-
+  const ItemDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context);
+    final theme = Theme.of(context);
     return Container(
-      margin: const EdgeInsets.all(16),
-      padding: const EdgeInsets.all(20),
+      margin: EdgeInsets.only(top: 16.h, bottom: 16.h),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        color: theme.scaffoldBackgroundColor,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withAlpha((0.1 * 255).toInt()),
@@ -23,50 +24,50 @@ class ItemDetails extends StatelessWidget {
           ),
         ],
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               // Brand and product name
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
 
-                children: [
-                  CustomText(
-                    data: 'Herschel Supply Co.',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                  SizedBox(height: 4),
-                  CustomText(
-                    data: 'Daypack Backpack',
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.grey,
-                  ),
-                  SizedBox(height: 4),
-                  CustomText(
-                    data: '(270 Review)',
-                    fontSize: 14,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.grey,
-                  ),
-                ],
+                  children: [
+                    const CustomText(
+                      data: 'Herschel Supply Co.',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(height: 4.h),
+                    const CustomText(
+                      data: 'Daypack Backpack',
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.grey,
+                    ),
+                    SizedBox(height: 4.h),
+                    CustomText(
+                      data: '(270 ${loc!.review})',
+                      fontSize: 14,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
               ),
               // Quantity and availability
-              Spacer(),
               Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.end,
-
                 children: [
                   // counter
-                  QuantCounter(),
-                  SizedBox(height: 16),
+                  const QuantCounter(),
+                  SizedBox(height: 16.h),
                   CustomText(
-                    data: 'Available in stock',
+                    data: loc.availableinstock,
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
                     color: Colors.grey,
@@ -75,17 +76,17 @@ class ItemDetails extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 20.h),
 
           // Description
           CustomText(
-            data: 'Description',
+            data: loc.description,
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
           ),
-          SizedBox(height: 8),
-          CustomText(
+
+          SizedBox(height: 8.h),
+          const CustomText(
             data:
                 'A roomy backpack from the specialists in everyday bags at Herschel Supply Co., featuring resilient canvas and a light-blue patina that feels just right for summer.',
             fontSize: 14,

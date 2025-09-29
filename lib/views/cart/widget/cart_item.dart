@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/views/cart/widget/quant_counter.dart';
 
 class CardItem extends StatelessWidget {
@@ -7,12 +10,15 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context);
+    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        color: theme.cardColor,
+        borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withAlpha((0.1 * 255).toInt()),
@@ -26,14 +32,14 @@ class CardItem extends StatelessWidget {
         children: [
           // Product image
           Container(
-            width: 80,
-            height: 80,
+            width: 80.w,
+            height: 80.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               color: Colors.grey[200],
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               child: Image.asset(
                 'assets/images/images.jpeg',
                 fit: BoxFit.cover,
@@ -46,39 +52,37 @@ class CardItem extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: 16.w),
 
           // Product details
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(
+                const CustomText(
                   data: 'brand',
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
                 ),
-                SizedBox(height: 4),
-                CustomText(
+                SizedBox(height: 4.h),
+                const CustomText(
                   data: 'productName',
                   fontSize: 14,
                   color: Colors.grey,
                   fontWeight: FontWeight.w500,
                 ),
-                SizedBox(height: 8),
-                CustomText(
-                  data: 'price',
+                SizedBox(height: 8.h),
+                const CustomText(
+                  data: '123\$',
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
                 ),
               ],
             ),
           ),
 
           // Quantity control
-          const QuantCounter(),
+          const Align(alignment: Alignment.bottomCenter, child: QuantCounter()),
         ],
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:batrina/widgets/custom_text.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/views/wishlist/widgets/search_bar.dart';
 import 'package:batrina/views/wishlist/widgets/wishlist_tile.dart';
 
@@ -10,15 +12,13 @@ class WishlistBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 20),
-
         // Search bar
         const WishListSearchBar(),
-        const SizedBox(height: 20),
+        SizedBox(height: 20.h),
 
         // Wishlist title
-        _buildWishlistTitle(),
-        const SizedBox(height: 16),
+        _buildWishlistTitle(context),
+        SizedBox(height: 20.h),
 
         // Wishlist items
         Expanded(child: _buildWishlistItems()),
@@ -27,14 +27,14 @@ class WishlistBody extends StatelessWidget {
   }
 }
 
-Widget _buildWishlistTitle() {
-  return const Align(
+Widget _buildWishlistTitle(BuildContext context) {
+  final loc = AppLocalizations.of(context);
+  return Align(
     alignment: Alignment.centerLeft,
     child: CustomText(
-      data: 'Wishlist',
-      fontSize: 24,
+      data: loc!.favorites,
+      fontSize: 24.sp,
       fontWeight: FontWeight.bold,
-      color: Colors.black,
     ),
   );
 }
