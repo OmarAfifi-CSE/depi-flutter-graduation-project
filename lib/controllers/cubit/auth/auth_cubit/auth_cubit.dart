@@ -28,12 +28,26 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthGoogleLoading());
       UserCredential userCredential = await fireBaseAuth.signInWithGoogle();
       if (_currentOperation == googleSignInKeyOperation) {
-        UserModel currentUser = UserModel(
+        // 1. Create a model with default data in case this is a new user
+        UserModel userToSave = UserModel(
           id: userCredential.user!.uid,
           name: userCredential.user!.displayName!,
           email: userCredential.user!.email!,
+          role: 'user',
         );
-        await fireBaseFireStore.addUser(setCurrent: true, user: currentUser);
+
+        // 2. This will create the user in Firestore ONLY if they don't already exist.
+        await fireBaseFireStore.addUser(user: userToSave);
+
+        // 3. Now, fetch the definitive data from Firestore. This gets the correct role
+        //    if the user is an existing admin.
+        UserModel currentUser = await fireBaseFireStore.getUserData(
+          userCredential.user!.uid,
+        );
+
+        // 4. Set the fetched user as the current user in your app
+        FireBaseFireStore.currentUser = currentUser;
+
         emit(AuthGoogleSuccess());
       }
     } on GoogleSignInException catch (e) {
@@ -63,15 +77,15 @@ class AuthCubit extends Cubit<AuthState> {
       if (userCredential.user != null) {
         if (userCredential.user!.emailVerified) {
           if (_currentOperation == signInKeyOperation) {
-            UserModel currentUser = UserModel(
-              id: userCredential.user!.uid,
-              name: userCredential.user?.displayName ?? "",
-              email: userCredential.user!.email!,
+            // 1. Instead of creating a new UserModel, fetch the existing one from Firestore.
+            UserModel currentUser = await fireBaseFireStore.getUserData(
+              userCredential.user!.uid,
             );
-            await fireBaseFireStore.addUser(
-              user: currentUser,
-              setCurrent: true,
-            );
+
+            // 2. Now you have the full user data, including the correct role.
+            //    Set it as the current user and cache it.
+            FireBaseFireStore.currentUser = currentUser;
+
             emit(AuthSignInSuccess());
           }
         } else {
@@ -98,17 +112,23 @@ class AuthCubit extends Cubit<AuthState> {
     _currentOperation = signUpKeyOperation;
     try {
       emit(AuthSignUpLoading());
+      // 1. Your signUp method in FireBaseAuth now creates a UserModel with role: 'user'
       UserModel currentUser = await fireBaseAuth.signUp(
         name: name,
         email: email,
         pass: pass,
       );
+
       User? firebaseUser = FirebaseAuth.instance.currentUser;
       if (firebaseUser != null) {
         await firebaseUser.sendEmailVerification();
       }
+      // Sign the user out immediately
+      await fireBaseAuth.signOut();
+
       if (_currentOperation == signUpKeyOperation) {
-        await fireBaseFireStore.addUser(setCurrent: false, user: currentUser);
+        // 2. This now saves the new user with their default role to Firestore.
+        await fireBaseFireStore.addUser(user: currentUser);
         emit(AuthSignUpSuccess());
       }
     } on FirebaseAuthException catch (e) {
@@ -128,7 +148,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   String _handleGoogleSignInError(GoogleSignInException e) {
     final error = e.toString();
-
     if (error.contains('canceled')) {
       return loc!.googleSignInCanceledDescription;
     } else if (error.contains('network_error')) {
@@ -144,7 +163,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   String _handleFirebaseAuthError(FirebaseAuthException e) {
     switch (e.code) {
-      // تسجيل مستخدم جديد
+      // Sign up errors
       case 'email-already-in-use':
         return loc!.emailAlreadyInUseDescription;
       case 'invalid-email':
@@ -153,8 +172,7 @@ class AuthCubit extends Cubit<AuthState> {
         return loc!.operationNotAllowedDescription;
       case 'weak-password':
         return loc!.weakPasswordDescription;
-
-      // تسجيل دخول
+      // Sign in errors
       case 'user-disabled':
         return loc!.userDisabledDescription;
       case 'user-not-found':
@@ -163,18 +181,14 @@ class AuthCubit extends Cubit<AuthState> {
         return loc!.wrongPasswordDescription;
       case 'invalid-credential':
         return loc!.invalidCredentialDescription;
-
-      // الشبكة
+      // Network errors
       case 'network-request-failed':
         return loc!.networkRequestFailedDescription;
-
-      // التحقق
+      // Generic errors
       case 'invalid-verification-code':
         return loc!.invalidVerificationCodeDescription;
       case 'invalid-verification-id':
         return loc!.invalidVerificationIdDescription;
-
-      // مواقف عامة
       case 'too-many-requests':
         return loc!.tooManyRequestsDescription;
       case 'internal-error':
@@ -183,7 +197,6 @@ class AuthCubit extends Cubit<AuthState> {
         return loc!.accountExistsWithDifferentCredentialDescription;
       case 'credential-already-in-use':
         return loc!.credentialAlreadyInUseDescription;
-
       default:
         return loc!.defaultAuthErrorDescription;
     }

@@ -24,12 +24,15 @@ class FireBaseAuth {
   }) async {
     UserCredential userCredential = await fireAuth
         .createUserWithEmailAndPassword(email: email, password: pass);
-    return UserModel(id: userCredential.user!.uid, name: name, email: email);
+    return UserModel(
+      id: userCredential.user!.uid,
+      role: 'user',
+      name: name,
+      email: email,
+    );
   }
 
   Future<UserCredential> signInWithGoogle() async {
-    print("here ");
-
     await googleSignIn.initialize(
       serverClientId:
           "558409290947-852ohvhnnsnthuroj6armveab2mdoci1.apps.googleusercontent.com",

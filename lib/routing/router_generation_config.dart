@@ -204,28 +204,34 @@ class RouterGenerationConfig {
           }
         }
 
-        // Check Authentication State
-        final bool isLoggedIn = FirebaseAuth.instance.currentUser != null;
+        final currentUser = FirebaseAuth.instance.currentUser;
         final bool isOnboardingComplete =
             sharedPreferences.getBool('onboardingComplete') ?? false;
         final String location = state.matchedLocation;
+        final bool isOnAuthFlow =
+            location.startsWith(AppRoutes.signInScreen) ||
+            location == AppRoutes.signUpScreen ||
+            location == AppRoutes.forgotPasswordScreen;
+        final bool isFullyAuthenticated =
+            currentUser != null && currentUser.emailVerified;
 
-        // 1. Check Onboarding
+        // A. Check Onboarding
         if (!isOnboardingComplete) {
           return location == AppRoutes.onboardingScreen
               ? null
               : AppRoutes.onboardingScreen;
         }
 
-        // 2. Check Login Status
-        final bool isGoingToAuth =
-            location == AppRoutes.signInScreen ||
-            location == AppRoutes.signUpScreen;
-        if (isLoggedIn && isGoingToAuth) {
-          return AppRoutes.wrapperScreen;
+        // B. User is Logged Out or Email is NOT Verified
+        if (!isFullyAuthenticated && !isOnAuthFlow) {
+          if (location != AppRoutes.onboardingScreen) {
+            return AppRoutes.signInScreen;
+          }
         }
-        if (!isLoggedIn && !isGoingToAuth) {
-          return AppRoutes.signInScreen;
+
+        // c. User is Logged In AND Email is Verified
+        if (isFullyAuthenticated && isOnAuthFlow) {
+          return AppRoutes.wrapperScreen;
         }
         // If no redirection conditions are met, allow navigation.
         return null;
