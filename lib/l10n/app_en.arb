@@ -144,6 +144,12 @@
   "profile": "Profile",
 
 
+  "search": "Search",
+  "clothes": "Clothes",
+  "categories": "Categories",
+  "top_dresses": "Top Dresses",
+
+
   "personalDetails": "Personal Details",
   "myOrders": "My Order",
   "myFavourites": "My Favourites",

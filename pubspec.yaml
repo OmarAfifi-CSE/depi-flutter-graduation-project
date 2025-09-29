@@ -28,7 +28,6 @@ dependencies:
   google_sign_in: ^7.2.0
   flutter_bloc: ^9.1.1
   cloud_firestore: ^6.0.1
-  top_snackbar_flutter: ^3.3.0
   lottie: ^3.3.2
   carousel_slider: ^5.1.1
 
