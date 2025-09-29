@@ -23,7 +23,7 @@ class FilterListView extends StatefulWidget {
     this.selectedTextColor = Colors.white,
     this.unselectedTextColor = Colors.black87,
     this.borderRadius = 25.0,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+    this.padding = const EdgeInsets.symmetric(horizontal: 14.0, vertical: 6.0),
     this.spacing = 8.0,
   });
 
@@ -43,7 +43,7 @@ class _FilterListViewState extends State<FilterListView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h,
+      height: 34.h,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: widget.filters.length,
@@ -125,7 +125,7 @@ class FilterChip extends StatelessWidget {
             filter,
             style: TextStyle(
               color: isSelected ? selectedTextColor : unselectedTextColor,
-              fontSize: 16,
+              fontSize: 16.sp,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
             ),
           ),

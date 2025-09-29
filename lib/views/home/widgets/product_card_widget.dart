@@ -28,7 +28,7 @@ class ProductCardWidget extends StatelessWidget {
           children: [
             CustomText(
               data: brand,
-              fontSize: 18.sp,
+              fontSize: 16.sp,
               fontWeight: FontWeight.w600,
             ),
             CustomText(
