@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:batrina/widgets/custom_button.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/views/cart/widget/cart_item.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
