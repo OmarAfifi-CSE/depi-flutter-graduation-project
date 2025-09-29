@@ -4,8 +4,6 @@
 
   "hello": "hello",
   "welcome": "Welcome",
-  "settings": "Sittings",
-  "language": "lan",
   "userName": "name",
   "discountNewArrivalTitle": "20% Discount New Arrival Product",
   "discountNewArrivalDescription": "Discover amazing discounts on our latest collection. Get 20% off on all new arrival products.",
@@ -142,6 +140,18 @@
   "home": "Home",
   "cart": "Cart",
   "favorites": "Wishlist",
-  "notification": "Notifications",
-  "profile": "Profile"
+  "notifications": "Notifications",
+  "profile": "Profile",
+
+
+  "personalDetails": "Personal Details",
+  "myOrders": "My Order",
+  "myFavourites": "My Favourites",
+  "shippingAddress": "Shipping Address",
+  "myCard": "My Card",
+  "settings": "Settings",
+  "language": "Language",
+  "darkMode": "Dark Mode",
+  "helpCenter": "Help Center",
+  "english": "English"
 }

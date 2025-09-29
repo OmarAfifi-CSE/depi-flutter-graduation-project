@@ -18,12 +18,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get welcome => 'Welcome';
 
   @override
-  String get settings => 'الإعدادات';
-
-  @override
-  String get language => 'اللغة';
-
-  @override
   String userName(Object name) {
     return 'أهلاً $name!';
   }
@@ -278,8 +272,38 @@ class AppLocalizationsAr extends AppLocalizations {
   String get favorites => 'المفضلة';
 
   @override
-  String get notification => 'الإشعارات';
+  String get notifications => 'الإشعارات';
 
   @override
   String get profile => 'الملف الشخصي';
+
+  @override
+  String get personalDetails => 'التفاصيل الشخصية';
+
+  @override
+  String get myOrders => 'طلباتي';
+
+  @override
+  String get myFavourites => 'مفضلاتي';
+
+  @override
+  String get shippingAddress => 'عنوان الشحن';
+
+  @override
+  String get myCard => 'بطاقاتي';
+
+  @override
+  String get settings => 'الإعدادات';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get darkMode => 'الوضع الداكن';
+
+  @override
+  String get helpCenter => 'مركز المساعدة';
+
+  @override
+  String get english => 'الإنجليزية';
 }

@@ -113,18 +113,6 @@ abstract class AppLocalizations {
   /// **'Welcome'**
   String get welcome;
 
-  /// No description provided for @settings.
-  ///
-  /// In en, this message translates to:
-  /// **'Sittings'**
-  String get settings;
-
-  /// No description provided for @language.
-  ///
-  /// In en, this message translates to:
-  /// **'lan'**
-  String get language;
-
   /// No description provided for @userName.
   ///
   /// In en, this message translates to:
@@ -629,17 +617,77 @@ abstract class AppLocalizations {
   /// **'Wishlist'**
   String get favorites;
 
-  /// No description provided for @notification.
+  /// No description provided for @notifications.
   ///
   /// In en, this message translates to:
   /// **'Notifications'**
-  String get notification;
+  String get notifications;
 
   /// No description provided for @profile.
   ///
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @personalDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Details'**
+  String get personalDetails;
+
+  /// No description provided for @myOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My Order'**
+  String get myOrders;
+
+  /// No description provided for @myFavourites.
+  ///
+  /// In en, this message translates to:
+  /// **'My Favourites'**
+  String get myFavourites;
+
+  /// No description provided for @shippingAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping Address'**
+  String get shippingAddress;
+
+  /// No description provided for @myCard.
+  ///
+  /// In en, this message translates to:
+  /// **'My Card'**
+  String get myCard;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get darkMode;
+
+  /// No description provided for @helpCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Help Center'**
+  String get helpCenter;
+
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
