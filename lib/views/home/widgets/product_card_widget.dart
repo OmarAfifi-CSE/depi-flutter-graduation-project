@@ -19,18 +19,17 @@ class ProductCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          height: 170.h,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.r),
-            image: DecorationImage(image: AssetImage(img), fit: BoxFit.cover),
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.r),
+              image: DecorationImage(image: AssetImage(img), fit: BoxFit.cover),
+            ),
           ),
         ),
         SizedBox(height: 12.h),
         Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
             CustomText(
               data: brand,
