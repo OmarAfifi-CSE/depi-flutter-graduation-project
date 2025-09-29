@@ -18,12 +18,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcome => 'Welcome';
 
   @override
-  String get settings => 'Sittings';
-
-  @override
-  String get language => 'lan';
-
-  @override
   String userName(Object name) {
     return 'name';
   }
@@ -278,13 +272,52 @@ class AppLocalizationsEn extends AppLocalizations {
   String get favorites => 'Wishlist';
 
   @override
-  String get notification => 'Notifications';
+  String get notifications => 'Notifications';
 
   @override
   String get profile => 'Profile';
 
   @override
   String get search => 'Search';
+
+  @override
+  String get clothes => 'Clothes';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get top_dresses => 'Top Dresses';
+
+  @override
+  String get personalDetails => 'Personal Details';
+
+  @override
+  String get myOrders => 'My Order';
+
+  @override
+  String get myFavourites => 'My Favourites';
+
+  @override
+  String get shippingAddress => 'Shipping Address';
+
+  @override
+  String get myCard => 'My Card';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get helpCenter => 'Help Center';
+
+  @override
+  String get english => 'English';
 
   @override
   String get addtocard => 'Add to Card';
