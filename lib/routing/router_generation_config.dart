@@ -1,6 +1,5 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/controllers/provider/control_rating_provider.dart';
-import 'package:batrina/main.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
@@ -11,15 +10,14 @@ import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
 import 'package:batrina/views/home/category_screen.dart';
 import 'package:batrina/views/home/home_screen.dart';
-import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
+import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/product/reviews_screen.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,115 +37,12 @@ class RouterGenerationConfig {
   RouterGenerationConfig({required this.sharedPreferences}) {
     router = GoRouter(
       refreshListenable: AuthStateListenable(),
-      initialLocation: AppRoutes.productScreen,
+      initialLocation: AppRoutes.wrapperScreen,
       routes: [
         GoRoute(
           path: AppRoutes.onboardingScreen,
           name: AppRoutes.onboardingScreen,
           builder: (context, state) => const OnboardingScreen(),
-        ),
-        // GoRoute(
-        //   path: AppRoutes.productScreen,
-        //   name: AppRoutes.productScreen,
-        //   pageBuilder: (context, state) {
-        //     // final ProductModel product = state.extra as ProductModel;
-        //
-        //     return CustomTransitionPage(
-        //       child: ProductScreen(productModel: pr),
-        //       transitionDuration: const Duration(milliseconds: 1000),
-        //       reverseTransitionDuration: const Duration(milliseconds: 1000),
-        //       transitionsBuilder:
-        //           (context, animation, secondaryAnimation, child) {
-        //         return SharedAxisTransition(
-        //           transitionType: SharedAxisTransitionType.horizontal,
-        //           animation: animation,
-        //           secondaryAnimation: secondaryAnimation,
-        //           child: child,
-        //         );
-        //       },
-        //     );
-        //   },
-        // ),
-        //
-        // // صفحة الـ Reviews
-        // GoRoute(
-        //   path: AppRoutes.reviewsScreen,
-        //   name: AppRoutes.reviewsScreen,
-        //   pageBuilder: (context, state) {
-        //     final ProductModel product = state.extra as ProductModel;
-        //
-        //     return CustomTransitionPage(
-        //       child: ReviewsScreen(productModel: product),
-        //       transitionDuration: const Duration(milliseconds: 1000),
-        //       reverseTransitionDuration: const Duration(milliseconds: 1000),
-        //       transitionsBuilder:
-        //           (context, animation, secondaryAnimation, child) {
-        //         return SharedAxisTransition(
-        //           transitionType: SharedAxisTransitionType.horizontal,
-        //           animation: animation,
-        //           secondaryAnimation: secondaryAnimation,
-        //           child: child,
-        //         );
-        //       },
-        //     );
-        //   },
-        // ),
-        ShellRoute(
-          builder: (context, state, child) {
-            return ChangeNotifierProvider(
-              create: (context) => ControlRatingProvider(),
-              child: child,
-            );
-          },
-          routes: [
-            // صفحة الـ Product
-            GoRoute(
-              path: AppRoutes.productScreen,
-              name: AppRoutes.productScreen,
-              pageBuilder: (context, state) {
-                // final ProductModel product = state.extra as ProductModel;
-
-                return CustomTransitionPage(
-                  child: ProductScreen(productModel: pr),
-                  transitionDuration: const Duration(milliseconds: 1000),
-                  reverseTransitionDuration: const Duration(milliseconds: 1000),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                        return SharedAxisTransition(
-                          transitionType: SharedAxisTransitionType.horizontal,
-                          animation: animation,
-                          secondaryAnimation: secondaryAnimation,
-                          child: child,
-                        );
-                      },
-                );
-              },
-            ),
-
-            // صفحة الـ Reviews
-            GoRoute(
-              path: AppRoutes.reviewsScreen,
-              name: AppRoutes.reviewsScreen,
-              pageBuilder: (context, state) {
-                final ProductModel product = state.extra as ProductModel;
-
-                return CustomTransitionPage(
-                  child: ReviewsScreen(productModel: product),
-                  transitionDuration: const Duration(milliseconds: 1000),
-                  reverseTransitionDuration: const Duration(milliseconds: 1000),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                        return SharedAxisTransition(
-                          transitionType: SharedAxisTransitionType.horizontal,
-                          animation: animation,
-                          secondaryAnimation: secondaryAnimation,
-                          child: child,
-                        );
-                      },
-                );
-              },
-            ),
-          ],
         ),
         GoRoute(
           path: AppRoutes.signInScreen,
@@ -209,7 +104,6 @@ class RouterGenerationConfig {
             ),
           ],
         ),
-
         GoRoute(
           path: AppRoutes.signUpScreen,
           name: AppRoutes.signUpScreen,
@@ -247,27 +141,6 @@ class RouterGenerationConfig {
             );
           },
         ),
-        // GoRoute(
-        //   path: AppRoutes.productScreen,
-        //   name: AppRoutes.productScreen,
-        //   pageBuilder: (context, state) {
-        //     // final ProductModel productModel =state.extra as ProductModel;
-        //     return CustomTransitionPage(
-        //       child: ProductScreen(productModel: pr),
-        //       transitionDuration: const Duration(milliseconds: 1000),
-        //       reverseTransitionDuration: const Duration(milliseconds: 1000),
-        //       transitionsBuilder:
-        //           (context, animation, secondaryAnimation, child) {
-        //             return SharedAxisTransition(
-        //               transitionType: SharedAxisTransitionType.horizontal,
-        //               animation: animation,
-        //               secondaryAnimation: secondaryAnimation,
-        //               child: child,
-        //             );
-        //           },
-        //     );
-        //   },
-        // ),
         StatefulShellRoute.indexedStack(
           builder: (context, state, navigationShell) {
             return WrapperScreen(navigationShell: navigationShell);
@@ -308,6 +181,63 @@ class RouterGenerationConfig {
                   builder: (context, state) => const ProfileScreen(),
                 ),
               ],
+            ),
+          ],
+        ),
+        ShellRoute(
+          builder: (context, state, child) {
+            return ChangeNotifierProvider(
+              create: (context) => ControlRatingProvider(),
+              child: child,
+            );
+          },
+          routes: [
+            // صفحة الـ Product
+            GoRoute(
+              path: AppRoutes.productScreen,
+              name: AppRoutes.productScreen,
+              pageBuilder: (context, state) {
+                final ProductModel product = state.extra as ProductModel;
+
+                return CustomTransitionPage(
+                  child: ProductScreen(productModel: product),
+                  transitionDuration: const Duration(milliseconds: 1000),
+                  reverseTransitionDuration: const Duration(milliseconds: 1000),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+                );
+              },
+            ),
+
+            // صفحة الـ Reviews
+            GoRoute(
+              path: AppRoutes.reviewsScreen,
+              name: AppRoutes.reviewsScreen,
+              pageBuilder: (context, state) {
+                final ProductModel product = state.extra as ProductModel;
+
+                return CustomTransitionPage(
+                  child: ReviewsScreen(productModel: product),
+                  transitionDuration: const Duration(milliseconds: 1000),
+                  reverseTransitionDuration: const Duration(milliseconds: 1000),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+                );
+              },
             ),
           ],
         ),

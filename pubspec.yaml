@@ -30,6 +30,8 @@ dependencies:
   cloud_firestore: ^6.0.1
   lottie: ^3.3.2
   carousel_slider: ^5.1.1
+  sliding_up_panel: ^2.0.0+1
+  cached_network_image: ^3.4.1
 
 
 

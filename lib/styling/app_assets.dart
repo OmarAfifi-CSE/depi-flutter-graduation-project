@@ -9,4 +9,8 @@ class AppAssets {
   static const String favoriteIcon = 'assets/icons/favorite-icon.svg';
   static const String notificationsIcon = 'assets/icons/notifications-icon.svg';
   static const String categoryTestImage = 'assets/images/1.png';
+  static const String heartIcon = 'assets/icons/heart-icon.svg';
+  static const String heartIconFilled = 'assets/icons/heart-icon-filled.svg';
+  static const String cartIcon2 = 'assets/icons/cart-icon2.svg';
+
 }

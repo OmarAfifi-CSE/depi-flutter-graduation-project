@@ -13,8 +13,9 @@ class AppRoutes {
   static const String cartScreen = '/cart';
   static const String profileScreen = '/profile';
 
-
   //Home Screens
   static const String homeScreen = '/home-screen';
   static const String categoryScreen = '/category';
-  static const String productScreen = '/productScreen';}
+  static const String productScreen = '/productScreen';
+  static const String reviewsScreen = '/reviews';
+}
