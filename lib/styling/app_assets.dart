@@ -7,4 +7,7 @@ class AppAssets {
   static const String cartIcon = 'assets/icons/cart-icon.svg';
   static const String notificationsIcon = 'assets/icons/notifications-icon.svg';
   static const String profileIcon = 'assets/icons/profile-icon.svg';
+  static const String heartIcon = 'assets/icons/heart-icon.svg';
+  static const String heartIconFilled = 'assets/icons/heart-icon-filled.svg';
+  static const String cartIcon2 = 'assets/icons/cart-icon2.svg';
 }
