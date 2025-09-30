@@ -41,8 +41,8 @@ class _ColorOptionState extends State<ColorOption> {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 13.0.w, vertical: 11.h),
               child: Wrap(
-                spacing: 10.w,
-                runSpacing: 10.h,
+                spacing: 8.w,
+                runSpacing: 8.h,
                 children: List.generate(widget.colors.length, (index) {
                   return GestureDetector(
                     onTap: () {

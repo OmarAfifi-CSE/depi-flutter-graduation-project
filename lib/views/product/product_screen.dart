@@ -25,10 +25,12 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   void initState() {
     // TODO: implement initState
-    context.read<ControlRatingProvider>().currentRating =
-        widget.productModel.rating ?? 0.0;
-    context.read<ControlRatingProvider>().currentRatingCount =
-        widget.productModel.reviewsCount ?? 0;
+    // context.read<ControlRatingProvider>().currentRating =
+    //     widget.productModel.rating ?? 0.0;
+    // context.read<ControlRatingProvider>().currentRatingCount =
+    //     widget.productModel.reviewsCount ?? 0;
+    //todo make provider out side
+    context.read<ControlRatingProvider>().productModel = widget.productModel;
     super.initState();
   }
 
@@ -46,9 +48,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
       child: BlocBuilder<GetProductVariantCubit, GetProductVariantState>(
         builder: (context, state) {
-          print(state);
-          if (state is GetProductVariantFailure ||
-              state is GetProductReviewsInitial) {
+          if (state is GetProductVariantFailure) {
             return const Scaffold(body: Center(child: Text("err")));
           } else if (state is GetProductVariantLoading) {
             return Scaffold(
@@ -68,7 +68,7 @@ class _ProductScreenState extends State<ProductScreen> {
             create: (context) => ProductProvider(widget.productModel)
               ..currentColorName = initColor
               ..currentSize = initSize
-              ..variantStock = widget.productModel.getVariantStock(
+              ..currentVariantStock = widget.productModel.getVariantStock(
                 initColor ?? '',
                 initSize ?? '',
               )
@@ -89,7 +89,6 @@ class _ProductScreenState extends State<ProductScreen> {
                               constraints.maxHeight * _currentSheetSize - 20.h,
                           child: Container(
                             width: double.infinity,
-                            clipBehavior: Clip.hardEdge,
                             decoration: const BoxDecoration(),
                             child: ProductImagesSlider(
                               productModel: widget.productModel,

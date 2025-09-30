@@ -4,14 +4,12 @@ import 'package:flutter/cupertino.dart';
 
 class ProductProvider extends ChangeNotifier {
   ProductModel productModel;
-  late int variantStock;
+  late int currentVariantStock;
   late List<String> currentSliderImage;
 
   late String? currentColorName;
   late String? currentSize;
 
-  // late double currentRating;
-  // late int currentRatingCount;
   ProductProvider(this.productModel);
 
   void setVariantStock({
@@ -20,11 +18,10 @@ class ProductProvider extends ChangeNotifier {
   }) {
     currentSize = sizeName;
     currentColorName = colorCode;
-    variantStock = productModel.getVariantStock(
+    currentVariantStock = productModel.getVariantStock(
       colorCode ?? '',
       sizeName ?? '',
     );
-    print(variantStock.toString());
     notifyListeners();
   }
 
@@ -32,16 +29,4 @@ class ProductProvider extends ChangeNotifier {
     currentSliderImage = productModel.getImagesByColor(colorCode);
     notifyListeners();
   }
-
-  // void setRating(List<ReviewModel> reviews) {
-  //   double totalRating = 0;
-  //   for (var review in reviews) {
-  //     totalRating += review.rating;
-  //   }
-  //   double averageRating = totalRating / reviews.length;
-  //   averageRating = averageRating.clamp(0.0, 5.0);
-  //   currentRating = averageRating.round().toDouble();
-  //   currentRatingCount = reviews.length;
-  //   notifyListeners();
-  // }
 }

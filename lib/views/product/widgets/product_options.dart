@@ -66,15 +66,18 @@ class ProductOptions extends StatelessWidget {
                   child: Consumer<ControlRatingProvider>(
                     builder: (context, value, child) {
                       print("hasasasasasa");
-                      print(value.currentRating);
-                      print(value.currentRatingCount);
+                      print(value.productModel.reviewsCount);
+                      print(value.productModel.rating);
                       return Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Stars(numberOfStart: value.currentRating.round()),
+                          Stars(
+                            numberOfStart: value.productModel.rating!.round(),
+                          ),
                           SizedBox(width: 4.w),
                           CustomText(
-                            data: "(${value.currentRatingCount} Reviews)",
+                            data:
+                                "(${value.productModel.reviewsCount} Reviews)",
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
                           ),

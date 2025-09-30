@@ -22,65 +22,63 @@ class AddToCartButton extends StatelessWidget {
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
 
-    return SizedBox(
+    return Container(
       height: 60.h,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(horizontal: 8.w),
-          backgroundColor: theme.primaryColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(12.r),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+
+      decoration: BoxDecoration(
+        color: theme.primaryColor,
+        borderRadius: BorderRadiusGeometry.circular(12.r),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          CustomText(
+            data: "\$${productModel.price}",
+            fontSize: 15.sp,
+            fontWeight: FontWeight.w400,
+            color: theme.scaffoldBackgroundColor,
           ),
-        ),
-        onPressed: productProvider.variantStock != 0 ? addToCart : () {},
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            CustomText(
-              data: "\$" + productModel.price.toString(),
-              fontSize: 15.sp,
-              fontWeight: FontWeight.w400,
-              color: theme.scaffoldBackgroundColor,
-            ),
-            SizedBox(
-              height: 40.h,
-              width: 160.w,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  backgroundColor: theme.scaffoldBackgroundColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(12.r),
-                  ),
+          SizedBox(
+            height: 40.h,
+            width: 160.w,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                backgroundColor: theme.scaffoldBackgroundColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusGeometry.circular(12.r),
                 ),
-                onPressed: () {},
-                child: productProvider.variantStock != 0
-                    ? Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SvgPicture.asset(
-                            AppAssets.cartIcon2,
-                            fit: BoxFit.scaleDown,
-                            color: theme.primaryColor,
-                          ),
-                          CustomText(
-                            data: "Add to cart ",
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ],
-                      )
-                    : Center(
-                        child: CustomText(
-                          data: "Not available",
+              ),
+              onPressed: productProvider.currentVariantStock != 0
+                  ? addToCart
+                  : () {},
+              child: productProvider.currentVariantStock != 0
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.cartIcon2,
+                          fit: BoxFit.scaleDown,
+                          color: theme.primaryColor,
+                        ),
+                        CustomText(
+                          data: "Add to cart ",
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w400,
                         ),
+                      ],
+                    )
+                  : Center(
+                      child: CustomText(
+                        data: "Not available",
+                        fontSize: 15.sp,
+                        fontWeight: FontWeight.w400,
                       ),
-              ),
+                    ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

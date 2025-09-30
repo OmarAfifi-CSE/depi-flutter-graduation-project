@@ -54,8 +54,6 @@ class FireBaseFireStore {
 
   Future<void> getProductVariants({required ProductModel productModel}) async {
     // جيب الـ variants لكل product
-    print("hello");
-    print(productModel.variants.length);
     final variantsSnapshot = await fireBaseFireStore
         .collection("products")
         .doc(productModel.id)
@@ -65,10 +63,7 @@ class FireBaseFireStore {
     List<ProductVariant> variants = variantsSnapshot.docs
         .map((doc) => ProductVariant.fromJson(doc.data()))
         .toList();
-
-    print(productModel.variants.length);
     productModel.variants.addAll(variants);
-    print(productModel.availableSizes.length);
   }
 
   Future<List<ProductModel>> getCategoriesProduct(String category) async {
@@ -79,6 +74,7 @@ class FireBaseFireStore {
     if (querySnapshot.docs.isEmpty) {
       return [];
     }
+
     List<ProductModel> categoryProduct = querySnapshot.docs.map((e) {
       return ProductModel.fromJson(e.data());
     }).toList();
@@ -96,7 +92,7 @@ class FireBaseFireStore {
 
   Future<void> addToWishList({required ProductModel productModel}) async {
     await fireBaseFireStore
-        .collection("wishLists")
+        .collection("users")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("userWishList")
         .doc(productModel.id)
@@ -105,7 +101,7 @@ class FireBaseFireStore {
 
   Future<void> removeFromWishList({required ProductModel productModel}) async {
     await fireBaseFireStore
-        .collection("wishLists")
+        .collection("users")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("userWishList")
         .doc(productModel.id)
@@ -115,7 +111,7 @@ class FireBaseFireStore {
   Future<bool> checkIfItInFav({required ProductModel productModel}) async {
     DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
         await fireBaseFireStore
-            .collection("wishLists")
+            .collection("users")
             .doc(FirebaseAuth.instance.currentUser!.uid)
             .collection("userWishList")
             .doc(productModel.id)
@@ -174,7 +170,6 @@ class FireBaseFireStore {
     await fireBaseFireStore.collection("products").doc(productModel.id).update({
       'rating': averageRating,
       'reviewsCount': reviewCount,
-      'updatedAt': DateTime.now().toIso8601String(),
     });
   }
 }

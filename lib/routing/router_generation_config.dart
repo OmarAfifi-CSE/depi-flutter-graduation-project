@@ -1,5 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/controllers/provider/control_rating_provider.dart';
+import 'package:batrina/main.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
@@ -37,7 +38,7 @@ class RouterGenerationConfig {
   RouterGenerationConfig({required this.sharedPreferences}) {
     router = GoRouter(
       refreshListenable: AuthStateListenable(),
-      initialLocation: AppRoutes.wrapperScreen,
+      initialLocation: "/temp",
       routes: [
         GoRoute(
           path: AppRoutes.onboardingScreen,
@@ -194,24 +195,54 @@ class RouterGenerationConfig {
           routes: [
             // صفحة الـ Product
             GoRoute(
-              path: AppRoutes.productScreen,
-              name: AppRoutes.productScreen,
+              path: "/temp",
               pageBuilder: (context, state) {
-                final ProductModel product = state.extra as ProductModel;
+                // final ProductModel product = state.extra as ProductModel;
 
                 return CustomTransitionPage(
-                  child: ProductScreen(productModel: product),
+                  child: Scaffold(
+                    body: Center(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          context.push(AppRoutes.productScreen, extra: pr);
+                        },
+                        child: Text("click"),
+                      ),
+                    ),
+                  ),
                   transitionDuration: const Duration(milliseconds: 1000),
                   reverseTransitionDuration: const Duration(milliseconds: 1000),
                   transitionsBuilder:
                       (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
-                    );
-                  },
+                        return SharedAxisTransition(
+                          transitionType: SharedAxisTransitionType.horizontal,
+                          animation: animation,
+                          secondaryAnimation: secondaryAnimation,
+                          child: child,
+                        );
+                      },
+                );
+              },
+            ),
+            GoRoute(
+              path: AppRoutes.productScreen,
+              name: AppRoutes.productScreen,
+              pageBuilder: (context, state) {
+                // final ProductModel product = state.extra as ProductModel;
+
+                return CustomTransitionPage(
+                  child: ProductScreen(productModel: pr),
+                  transitionDuration: const Duration(milliseconds: 1000),
+                  reverseTransitionDuration: const Duration(milliseconds: 1000),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                        return SharedAxisTransition(
+                          transitionType: SharedAxisTransitionType.horizontal,
+                          animation: animation,
+                          secondaryAnimation: secondaryAnimation,
+                          child: child,
+                        );
+                      },
                 );
               },
             ),
@@ -229,13 +260,13 @@ class RouterGenerationConfig {
                   reverseTransitionDuration: const Duration(milliseconds: 1000),
                   transitionsBuilder:
                       (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
-                    );
-                  },
+                        return SharedAxisTransition(
+                          transitionType: SharedAxisTransitionType.horizontal,
+                          animation: animation,
+                          secondaryAnimation: secondaryAnimation,
+                          child: child,
+                        );
+                      },
                 );
               },
             ),

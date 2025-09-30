@@ -13,10 +13,10 @@ class StockCountText extends StatelessWidget {
     ProductProvider productProvider = context.watch<ProductProvider>();
     final theme = Theme.of(context);
     return CustomText(
-      data: "${productProvider.variantStock} available in stocks ",
+      data: "${productProvider.currentVariantStock} available in stocks ",
       fontSize: 10.sp,
       fontWeight: FontWeight.w600,
-      color: productProvider.variantStock == 0
+      color: productProvider.currentVariantStock == 0
           ? Colors.red
           : theme.primaryColor,
     );

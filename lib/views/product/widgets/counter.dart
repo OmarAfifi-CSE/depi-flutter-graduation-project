@@ -21,10 +21,10 @@ class _CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     ProductProvider productProvider = context.watch<ProductProvider>();
-    if (count > productProvider.variantStock) {
-      count = productProvider.variantStock;
+    if (count > productProvider.currentVariantStock) {
+      count = productProvider.currentVariantStock;
     }
-    if (count == 0 && productProvider.variantStock > 0) {
+    if (count == 0 && productProvider.currentVariantStock > 0) {
       count = 1;
     }
     final theme = Theme.of(context);
@@ -42,11 +42,11 @@ class _CounterState extends State<Counter> {
         padding: EdgeInsetsGeometry.symmetric(horizontal: 10.w),
         child: Row(
           spacing: 13.w,
-          mainAxisAlignment: productProvider.variantStock != 0
+          mainAxisAlignment: productProvider.currentVariantStock != 0
               ? MainAxisAlignment.spaceBetween
               : MainAxisAlignment.center,
           children: [
-            if (productProvider.variantStock != 0)
+            if (productProvider.currentVariantStock != 0)
               GestureDetector(
                 onTap: () {
                   if (count > 1) {
@@ -62,14 +62,16 @@ class _CounterState extends State<Counter> {
                 ),
               ),
             CustomText(
-              data: productProvider.variantStock != 0 ? count.toString() : "0",
+              data: productProvider.currentVariantStock != 0
+                  ? count.toString()
+                  : "0",
               fontSize: 15.sp,
               fontWeight: FontWeight.w500,
             ),
-            if (productProvider.variantStock != 0)
+            if (productProvider.currentVariantStock != 0)
               GestureDetector(
                 onTap: () {
-                  if (count < productProvider.variantStock) {
+                  if (count < productProvider.currentVariantStock) {
                     setState(() {
                       count++;
                     });

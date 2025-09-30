@@ -28,43 +28,41 @@ class _SizeOptionState extends State<SizeOption> {
     print(productProvider.currentSize);
 
     return productProvider.currentSize != null
-        ? IntrinsicWidth(
-            child: Wrap(
-              spacing: 15.w,
-              runSpacing: 15.h,
-              children: List.generate(widget.sizes.length, (index) {
-                return GestureDetector(
-                  onTap: () {
-                    selected = index;
-                    context.read<ProductProvider>().setVariantStock(
-                      colorCode: productProvider.currentColorName,
-                      sizeName: widget.sizes[index],
-                    );
-                  },
-                  child: Container(
-                    width: 41.w,
-                    height: 41.w,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
+        ? Wrap(
+            spacing: 8.w,
+            runSpacing: 8.h,
+            children: List.generate(widget.sizes.length, (index) {
+              return GestureDetector(
+                onTap: () {
+                  selected = index;
+                  context.read<ProductProvider>().setVariantStock(
+                    colorCode: productProvider.currentColorName,
+                    sizeName: widget.sizes[index],
+                  );
+                },
+                child: Container(
+                  width: 30.w,
+                  height: 30.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: index != selected
+                        ? theme.scaffoldBackgroundColor
+                        : theme.primaryColor,
+                    border: Border.all(color: appColors.containerBorder!),
+                  ),
+                  child: Center(
+                    child: CustomText(
+                      data: widget.sizes[index],
+                      fontSize: 12.sp,
+                      fontWeight: FontWeight.w400,
                       color: index != selected
-                          ? theme.scaffoldBackgroundColor
-                          : theme.primaryColor,
-                      border: Border.all(color: appColors.containerBorder!),
-                    ),
-                    child: Center(
-                      child: CustomText(
-                        data: widget.sizes[index],
-                        fontSize: 15.sp,
-                        fontWeight: FontWeight.w400,
-                        color: index != selected
-                            ? appColors.secondaryText
-                            : theme.scaffoldBackgroundColor,
-                      ),
+                          ? appColors.secondaryText
+                          : theme.scaffoldBackgroundColor,
                     ),
                   ),
-                );
-              }),
-            ),
+                ),
+              );
+            }),
           )
         : CustomText(
             textAlign: TextAlign.start,

@@ -58,7 +58,7 @@ class _AddReviewButtonState extends State<AddReviewButton>
 
     topAnimation = Tween<double>(
       begin: 44.h + MediaQuery.of(context).padding.top,
-      end: 170.h,
+      end: 190.h,
     ).animate(CurvedAnimation(parent: moveController, curve: Curves.easeInOut));
 
     leftAnimation = Tween<double>(
@@ -206,9 +206,7 @@ class _AddReviewButtonState extends State<AddReviewButton>
                                                         .addReview(
                                                           reviewModel: ReviewModel(
                                                             id: "",
-                                                            productId: widget
-                                                                .productModel
-                                                                .id,
+
                                                             userId: FirebaseAuth
                                                                 .instance
                                                                 .currentUser!

@@ -20,12 +20,8 @@ final List<ProductModel> demoProducts = [
     salePrice: 249.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
-    sellerId: 'store1',
-    sellerName: 'FashionHub',
-    freeShipping: true,
     availableColors: [
       ProductColor(
-        name: 'Blue',
         colorCode: '#1E88E5',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
@@ -33,7 +29,6 @@ final List<ProductModel> demoProducts = [
         ],
       ),
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
@@ -60,12 +55,8 @@ final List<ProductModel> demoProducts = [
     price: 599.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
-    sellerId: 'store1',
-    sellerName: 'FashionHub',
-    freeShipping: false,
     availableColors: [
       ProductColor(
-        name: 'Dark Blue',
         colorCode: '#1565C0',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
@@ -73,7 +64,6 @@ final List<ProductModel> demoProducts = [
         ],
       ),
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
@@ -97,19 +87,14 @@ final List<ProductModel> demoProducts = [
     price: 749.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
-    sellerId: 'store1',
-    sellerName: 'FashionHub',
-    shippingCost: 25.0,
     availableColors: [
       ProductColor(
-        name: 'Dark Blue',
         colorCode: '#0D47A1',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
         ],
       ),
       ProductColor(
-        name: 'Black',
         colorCode: '#000000',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
@@ -134,19 +119,14 @@ final List<ProductModel> demoProducts = [
     salePrice: 799.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
-    sellerId: 'sneaker1',
-    sellerName: 'SneakerWorld',
-    freeShipping: true,
     availableColors: [
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
         ],
       ),
       ProductColor(
-        name: 'Blue',
         colorCode: '#1E88E5',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
@@ -170,22 +150,18 @@ final List<ProductModel> demoProducts = [
     price: 399.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
-    sellerId: 'bags1',
-    sellerName: 'UrbanBags',
     variants: [
       ProductVariant(color: '#1976D2', size: 'OneSize', stock: 14, id: ''),
       ProductVariant(color: '#FFFFFF', size: 'OneSize', stock: 10, id: ''),
     ],
     availableColors: [
       ProductColor(
-        name: 'Blue',
         colorCode: '#1976D2',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
         ],
       ),
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
@@ -204,22 +180,18 @@ final List<ProductModel> demoProducts = [
     price: 129.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
-    sellerId: 'store1',
-    sellerName: 'FashionHub',
     variants: [
       ProductVariant(color: '#1E88E5', size: 'OneSize', stock: 22, id: ''),
       ProductVariant(color: '#FFFFFF', size: 'OneSize', stock: 12, id: ''),
     ],
     availableColors: [
       ProductColor(
-        name: 'Blue',
         colorCode: '#1E88E5',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
         ],
       ),
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
@@ -238,8 +210,6 @@ final List<ProductModel> demoProducts = [
     price: 899.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
-    sellerId: 'store2',
-    sellerName: 'LadyStyle',
     variants: [
       ProductVariant(color: '#FFFFFF', size: 'S', stock: 5, id: ''),
       ProductVariant(color: '#FFFFFF', size: 'M', stock: 7, id: ''),
@@ -247,14 +217,12 @@ final List<ProductModel> demoProducts = [
     ],
     availableColors: [
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
         ],
       ),
       ProductColor(
-        name: 'Light Blue',
         colorCode: '#64B5F6',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
@@ -273,22 +241,18 @@ final List<ProductModel> demoProducts = [
     price: 199.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
-    sellerId: 'store3',
-    sellerName: 'BeachWear',
     variants: [
       ProductVariant(color: '#1E88E5', size: 'M', stock: 18, id: ''),
       ProductVariant(color: '#FFFFFF', size: 'L', stock: 12, id: ''),
     ],
     availableColors: [
       ProductColor(
-        name: 'Blue',
         colorCode: '#1E88E5',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
         ],
       ),
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
@@ -307,22 +271,18 @@ final List<ProductModel> demoProducts = [
     price: 459.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
-    sellerId: 'bags2',
-    sellerName: 'ChicBags',
     variants: [
       ProductVariant(color: '#FFFFFF', size: 'OneSize', stock: 9, id: ''),
       ProductVariant(color: '#1976D2', size: 'OneSize', stock: 6, id: ''),
     ],
     availableColors: [
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
         ],
       ),
       ProductColor(
-        name: 'Blue',
         colorCode: '#1976D2',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
@@ -341,22 +301,19 @@ final List<ProductModel> demoProducts = [
     price: 129.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
-    sellerId: 'store1',
-    sellerName: 'FashionHub',
+
     variants: [
       ProductVariant(color: '#1E88E5', size: 'OneSize', stock: 30, id: ''),
       ProductVariant(color: '#FFFFFF', size: 'OneSize', stock: 25, id: ''),
     ],
     availableColors: [
       ProductColor(
-        name: 'Blue',
         colorCode: '#1E88E5',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
         ],
       ),
       ProductColor(
-        name: 'White',
         colorCode: '#FFFFFF',
         images: [
           'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',

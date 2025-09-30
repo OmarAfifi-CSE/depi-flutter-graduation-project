@@ -9,23 +9,12 @@ class ProductModel {
   final double price;
   final double? salePrice;
   final String thumbnail;
-  final double? rating;
-  final int? reviewsCount;
-  final String sellerId;
-  final String sellerName;
-  final double shippingCost;
-  final bool freeShipping;
+  double? rating;
+  int? reviewsCount;
+
   final bool isActive;
-  final bool isFeatured;
-  final bool isOnSale;
-  final bool isInStock;
   final List<ProductVariant> variants;
   final List<ProductColor> availableColors;
-
-  // get it from variants better
-  // final List<String> availableSizes;
-
-  // ليه عاملهم ارراي علشان لو عملتهم subCollection هيبقي تقيل اوي علشان اجيب برودكت واحد
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -40,14 +29,8 @@ class ProductModel {
     required this.thumbnail,
     this.rating = 0.0,
     this.reviewsCount = 0,
-    required this.sellerId,
-    required this.sellerName,
-    this.shippingCost = 0.0,
-    this.freeShipping = false,
     this.isActive = true,
-    this.isFeatured = false,
-    this.isOnSale = false,
-    this.isInStock = true,
+
     required this.variants,
     this.availableColors = const [],
     this.createdAt,
@@ -166,26 +149,15 @@ class ProductModel {
       thumbnail: json['thumbnail'] ?? '',
       rating: (json['rating'] ?? 0.0).toDouble(),
       reviewsCount: json['reviewsCount'] ?? 0,
-      sellerId: json['sellerId'] ?? '',
-      sellerName: json['sellerName'] ?? '',
-      shippingCost: (json['shippingCost'] ?? 0.0).toDouble(),
-      freeShipping: json['freeShipping'] ?? false,
       isActive: json['isActive'] ?? true,
-      isFeatured: json['isFeatured'] ?? false,
-      isOnSale: json['isOnSale'] ?? false,
-      isInStock: json['isInStock'] ?? true,
       variants: [],
       availableColors:
           (json['availableColors'] as List<dynamic>?)
               ?.map((c) => ProductColor.fromJson(c))
               .toList() ??
           [], // ← Fixed
-      createdAt: json['createdAt'] != null
-          ? DateTime.tryParse(json['createdAt']) ?? DateTime.now()
-          : null,
-      updatedAt: json['updatedAt'] != null
-          ? DateTime.tryParse(json['updatedAt']) ?? DateTime.now()
-          : null,
+      createdAt: DateTime.tryParse(json['createdAt'] ?? ""),
+      updatedAt: DateTime.tryParse(json['updatedAt'] ?? ''),
     );
   }
 
@@ -201,15 +173,7 @@ class ProductModel {
       'thumbnail': thumbnail,
       'rating': rating,
       'reviewsCount': reviewsCount,
-      'sellerId': sellerId,
-      'sellerName': sellerName,
-      'shippingCost': shippingCost,
-      'freeShipping': freeShipping,
       'isActive': isActive,
-      'isFeatured': isFeatured,
-      'isOnSale': isOnSale,
-      'isInStock': isInStock,
-
       'availableColors': availableColors.map((c) => c.toJson()).toList(),
       'availableSizes': availableSizes, // ← Already strings
       'createdAt': createdAt?.toIso8601String(),
@@ -228,14 +192,9 @@ class ProductModel {
     String? thumbnail,
     double? rating,
     int? reviewsCount,
-    String? sellerId,
-    String? sellerName,
-    double? shippingCost,
-    bool? freeShipping,
+
     bool? isActive,
-    bool? isFeatured,
-    bool? isOnSale,
-    bool? isInStock,
+
     List<ProductVariant>? variants,
     List<ProductColor>? availableColors,
     List<String>? availableSizes,
@@ -253,101 +212,30 @@ class ProductModel {
       thumbnail: thumbnail ?? this.thumbnail,
       rating: rating ?? this.rating,
       reviewsCount: reviewsCount ?? this.reviewsCount,
-      sellerId: sellerId ?? this.sellerId,
-      sellerName: sellerName ?? this.sellerName,
-      shippingCost: shippingCost ?? this.shippingCost,
-      freeShipping: freeShipping ?? this.freeShipping,
       isActive: isActive ?? this.isActive,
-      isFeatured: isFeatured ?? this.isFeatured,
-      isOnSale: isOnSale ?? this.isOnSale,
-      isInStock: isInStock ?? this.isInStock,
       variants: variants ?? this.variants,
       availableColors: availableColors ?? this.availableColors,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
   }
-
-  void printDetails() {
-    print("=========== 🛍️ Product Details ===========");
-    print("ID: $id");
-    print("Name: $name");
-    print("Description: $description");
-    print("Category: $category");
-    print("Price: $price");
-    if (salePrice != null) print("Sale Price: $salePrice");
-    print("Thumbnail: $thumbnail");
-    print("Rating: $rating (${reviewsCount ?? 0} reviews)");
-    print("Seller: $sellerName (ID: $sellerId)");
-    print("Shipping Cost: $shippingCost | Free: $freeShipping");
-    print(
-      "Active: $isActive | Featured: $isFeatured | On Sale: $isOnSale | In Stock: $isInStock",
-    );
-    print("Created At: $createdAt | Updated At: $updatedAt");
-
-    // ✅ اطبع الـ Colors
-    if (availableColors.isNotEmpty) {
-      print("Available Colors:");
-      for (var color in availableColors) {
-        print(
-          " - ${color.name} (${color.colorCode}) | Available: ${color.isAvailable}",
-        );
-        if (color.images.isNotEmpty) {
-          print("   Images: ${color.images.join(", ")}");
-        }
-      }
-    }
-
-    // ✅ اطبع الـ Variants
-    if (variants.isNotEmpty) {
-      print("Variants:");
-      for (var v in variants) {
-        print(
-          " - ${v.displayName} | Stock: ${v.stock} | In Stock: ${v.inStock}",
-        );
-      }
-    }
-
-    // ✅ اطبع باقي البيانات المحسوبة
-    print("Total Stock: $totalStock");
-    print("Final Price: $finalPrice");
-    print(
-      "Has Discount: $hasDiscount | Discount %: ${discountPercentage.toStringAsFixed(1)}%",
-    );
-    print("Available Sizes: ${availableSizes.join(", ")}");
-    print("=========================================");
-  }
 }
 
 class ProductColor {
-  final String name;
   final String colorCode; // '#F5F5F5', '#000000', '#FFFFFF'
   final List<String> images; // ← صور خاصة بالّلون ده
-  final bool isAvailable;
 
-  ProductColor({
-    required this.name,
-    required this.colorCode,
-    this.images = const [],
-    this.isAvailable = true,
-  });
+  ProductColor({required this.colorCode, this.images = const []});
 
   factory ProductColor.fromJson(Map<String, dynamic> json) {
     return ProductColor(
-      name: json['name'] ?? '',
       colorCode: json['colorCode'] ?? '#000000',
       images: List<String>.from(json['images'] ?? []),
-      isAvailable: json['isAvailable'] ?? true,
     );
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'colorCode': colorCode,
-      'images': images,
-      'isAvailable': isAvailable,
-    };
+    return {'colorCode': colorCode, 'images': images};
   }
 
   // تحويل colorCode إلى Color للـ UI
@@ -370,7 +258,7 @@ class ProductVariant {
     required this.id,
     required this.color,
     required this.size,
-    this.stock = 0,
+    this.stock = 1,
   });
 
   factory ProductVariant.fromJson(Map<String, dynamic> json) {
@@ -388,7 +276,7 @@ class ProductVariant {
 
   ProductVariant copyWith({String? color, String? size, int? stock}) {
     return ProductVariant(
-      id: this.id,
+      id: id,
       color: color ?? this.color,
       size: size ?? this.size,
       stock: stock ?? this.stock,
@@ -396,5 +284,4 @@ class ProductVariant {
   }
 
   bool get inStock => stock > 0;
-  String get displayName => '$color - $size';
 }

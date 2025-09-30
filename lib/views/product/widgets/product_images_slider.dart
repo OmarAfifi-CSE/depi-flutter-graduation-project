@@ -52,7 +52,6 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    print(productProvider.currentSliderImage[0]);
     return Stack(
       children: [
         AnimatedSwitcher(
@@ -97,7 +96,7 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
                         ),
                       ],
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ),
           ),
         ),
