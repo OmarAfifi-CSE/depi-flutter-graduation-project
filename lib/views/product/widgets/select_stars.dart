@@ -12,6 +12,12 @@ class SelectStars extends StatefulWidget {
 
 class _SelectStarsState extends State<SelectStars> {
   @override
+  void initState() {
+    SelectStars.numberOfStart = 1;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
