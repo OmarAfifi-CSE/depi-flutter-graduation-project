@@ -8,6 +8,7 @@ class AppRoutes {
   static const String verificationScreen = '/email-verification';
 
   // Main Screens
+  static const String splashScreen = '/';
   static const String wrapperScreen = '/home';
   static const String wishlistScreen = '/wishlist';
   static const String cartScreen = '/cart';

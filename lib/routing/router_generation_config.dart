@@ -1,5 +1,4 @@
 import 'package:animations/animations.dart';
-import 'package:batrina/main.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
 import 'package:batrina/views/auth/create_new_password_screen.dart';
@@ -11,8 +10,8 @@ import 'package:batrina/views/home/category_screen.dart';
 import 'package:batrina/views/home/category_products_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
-import 'package:batrina/views/product/reviews_screen.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
+import 'package:batrina/views/splash_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +33,14 @@ class RouterGenerationConfig {
   RouterGenerationConfig({required this.sharedPreferences}) {
     router = GoRouter(
       refreshListenable: AuthStateListenable(),
-      initialLocation: AppRoutes.wrapperScreen,
+      initialLocation: AppRoutes.splashScreen,
       routes: [
+        GoRoute(
+          path: AppRoutes.splashScreen,
+          name: AppRoutes.splashScreen,
+          builder: (context, state) =>
+              SplashScreen(sharedPreferences: sharedPreferences),
+        ),
         GoRoute(
           path: AppRoutes.onboardingScreen,
           name: AppRoutes.onboardingScreen,
@@ -225,36 +230,6 @@ class RouterGenerationConfig {
             case 'verifyEmail':
               return '${AppRoutes.signInScreen}${AppRoutes.verificationScreen}?oobCode=$oobCode';
           }
-        }
-
-        final currentUser = FirebaseAuth.instance.currentUser;
-        final bool isOnboardingComplete =
-            sharedPreferences.getBool('onboardingComplete') ?? false;
-        final String location = state.matchedLocation;
-        final bool isOnAuthFlow =
-            location.startsWith(AppRoutes.signInScreen) ||
-            location == AppRoutes.signUpScreen ||
-            location == AppRoutes.forgotPasswordScreen;
-        final bool isFullyAuthenticated =
-            currentUser != null && currentUser.emailVerified;
-
-        // A. Check Onboarding
-        if (!isOnboardingComplete) {
-          return location == AppRoutes.onboardingScreen
-              ? null
-              : AppRoutes.onboardingScreen;
-        }
-
-        // B. User is Logged Out or Email is NOT Verified
-        if (!isFullyAuthenticated && !isOnAuthFlow) {
-          if (location != AppRoutes.onboardingScreen) {
-            return AppRoutes.signInScreen;
-          }
-        }
-
-        // c. User is Logged In AND Email is Verified
-        if (isFullyAuthenticated && isOnAuthFlow) {
-          return AppRoutes.wrapperScreen;
         }
         // If no redirection conditions are met, allow navigation.
         return null;
