@@ -171,5 +171,15 @@
   "items" : "items",
   "review":"Review",
   "availableinstock" : "Available in stock",
-  "description":"Description"
+  "description":"Description",
+
+
+
+  "reviewsHeader": "Customer Reviews",
+  "reviewsLoadingError": "Something went wrong. Please try again.",
+  "noReviewsYet": "No reviews yet. Be the first to share your thoughts!",
+
+  "addReviewTitle": "Write a Review",
+  "experienceHint": "How was your experience with this product?",
+  "postButton": "Post"
 }

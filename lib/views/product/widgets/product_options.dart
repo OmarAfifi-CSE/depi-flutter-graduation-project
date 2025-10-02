@@ -42,11 +42,15 @@ class ProductOptions extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 4.h),
-                CustomText(
-                  data: productModel.subtitle,
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w400,
-                  color: appColors.secondaryText,
+                SizedBox(
+                  width: 180.w,
+                  child: CustomText(
+                    data: productModel.subtitle,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w400,
+                    textAlign: TextAlign.start,
+                    color: appColors.secondaryText,
+                  ),
                 ),
                 SizedBox(height: 4.h),
                 GestureDetector(

@@ -348,4 +348,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get description => 'الوصف';
+
+  @override
+  String get reviewsHeader => 'مراجعات العملاء';
+
+  @override
+  String get reviewsLoadingError => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get noReviewsYet => 'لا توجد مراجعات بعد. كن أول من يشارك رأيه!';
+
+  @override
+  String get addReviewTitle => 'اكتب مراجعة';
+
+  @override
+  String get experienceHint => 'كيف كانت تجربتك مع هذا المنتج؟';
+
+  @override
+  String get postButton => 'نشر';
 }

@@ -1,6 +1,7 @@
 import 'package:batrina/controllers/cubit/product/add_button_control_cubit/add_button_control_cubit.dart';
 import 'package:batrina/controllers/cubit/product/product_reviews_cubit/get_product_reviews_cubit.dart';
 import 'package:batrina/controllers/provider/product_provider.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/views/product/widgets/add_review_button.dart';
 import 'package:batrina/views/product/widgets/review_widget.dart';
 import 'package:batrina/widgets/back_arrow.dart';
@@ -24,6 +25,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
     final productModel = context.read<ProductProvider>().productModel;
     return MultiBlocProvider(
       providers: [
@@ -46,7 +48,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                     const CustomHeaderWidget(prefix: BackArrow()),
                     SizedBox(height: 32.h),
                     CustomText(
-                      data: "Reviews Clients",
+                      data: loc!.reviewsHeader,
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
                     ),
@@ -56,7 +58,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                         if (state is AddButtonControlClose) {
                           height = 0;
                         } else {
-                          height = 140.h;
+                          height = 280.h;
                         }
                         return AnimatedContainer(
                           duration: const Duration(milliseconds: 300),
@@ -85,9 +87,9 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                                 >(
                                   builder: (context, state) {
                                     if (state is GetProductReviewsFailure) {
-                                      return const Center(
+                                      return Center(
                                         child: CustomText(
-                                          data: "Error happened!",
+                                          data: loc.reviewsLoadingError,
                                           fontSize: 21,
                                           fontWeight: FontWeight.w400,
                                         ),
@@ -109,8 +111,12 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                                                       SizedBox(height: 18.h),
                                               itemCount: reviews.length,
                                             )
-                                          : const Center(
-                                              child: Text("No reviews yet."),
+                                          : Center(
+                                              child: CustomText(
+                                                data: loc.noReviewsYet,
+                                                fontSize: 22.sp,
+                                                fontWeight: FontWeight.w400,
+                                              ),
                                             );
                                     }
                                     // هذه الحالة تغطي GetProductReviewsInitial و GetProductReviewsLoading

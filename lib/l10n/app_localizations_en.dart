@@ -348,4 +348,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get description => 'Description';
+
+  @override
+  String get reviewsHeader => 'Customer Reviews';
+
+  @override
+  String get reviewsLoadingError => 'Something went wrong. Please try again.';
+
+  @override
+  String get noReviewsYet => 'No reviews yet. Be the first to share your thoughts!';
+
+  @override
+  String get addReviewTitle => 'Write a Review';
+
+  @override
+  String get experienceHint => 'How was your experience with this product?';
+
+  @override
+  String get postButton => 'Post';
 }

@@ -167,5 +167,14 @@
   "items": "عناصر",
   "review": "مراجعة",
   "availableinstock": "متوفر في المخزون",
-  "description": "الوصف"
+  "description": "الوصف",
+
+
+  "reviewsHeader": "مراجعات العملاء",
+  "reviewsLoadingError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "noReviewsYet": "لا توجد مراجعات بعد. كن أول من يشارك رأيه!",
+
+  "addReviewTitle": "اكتب مراجعة",
+  "experienceHint": "كيف كانت تجربتك مع هذا المنتج؟",
+  "postButton": "نشر"
 }

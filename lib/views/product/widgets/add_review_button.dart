@@ -2,15 +2,15 @@ import 'package:batrina/controllers/cubit/product/add_button_control_cubit/add_b
 import 'package:batrina/controllers/cubit/product/add_review_cubit/add_review_cubit.dart';
 import 'package:batrina/controllers/cubit/product/product_reviews_cubit/get_product_reviews_cubit.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/review_model.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/product/widgets/select_stars.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -36,26 +36,19 @@ class _AddReviewButtonState extends State<AddReviewButton>
   final ScrollController scrollController = ScrollController();
   bool _isInit = true;
   bool isOpen = false;
+  bool _showContent = false;
+
+  late final AddReviewCubit _addReviewCubit;
 
   @override
   void initState() {
     super.initState();
+    _addReviewCubit = AddReviewCubit();
+
     moveController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 500),
     );
-
-    moveController.addStatusListener((status) {
-      if (mounted) {
-        setState(() {
-          if (status == AnimationStatus.completed) {
-            isOpen = true;
-          } else if (status == AnimationStatus.dismissed) {
-            isOpen = false;
-          }
-        });
-      }
-    });
   }
 
   @override
@@ -83,16 +76,60 @@ class _AddReviewButtonState extends State<AddReviewButton>
   void dispose() {
     moveController.dispose();
     scrollController.dispose();
+    _addReviewCubit.close();
     super.dispose();
+  }
+
+  Future<void> _startCloseSequence() async {
+    if (!isOpen && !_showContent) return;
+
+    final addButtonControlCubit = context.read<AddButtonControlCubit>();
+    const contentFadeDuration = Duration(milliseconds: 200);
+    const containerShrinkDuration = Duration(milliseconds: 600);
+
+    setState(() => _showContent = false);
+    widget.textEditingController.clear();
+    await Future.delayed(contentFadeDuration);
+    if (!mounted) return;
+
+    setState(() => isOpen = false);
+    await Future.delayed(containerShrinkDuration);
+    if (!mounted) return;
+
+    await moveController.reverse();
+    if (!mounted) return;
+
+    addButtonControlCubit.makeItClose();
+  }
+
+  void _submitReview() {
+    if (widget.textEditingController.text.isNotEmpty) {
+      FocusScope.of(context).unfocus();
+      // Use the single instance of the cubit
+      _addReviewCubit.addReview(
+        reviewModel: ReviewModel(
+          id: "",
+          userId: FirebaseAuth.instance.currentUser!.uid,
+          userName: FireBaseFireStore.currentUser?.name ?? "User",
+          rating: SelectStars.numberOfStart.toDouble(),
+          comment: widget.textEditingController.text.trim(),
+          createdAt: DateTime.now(),
+        ),
+        productModel: widget.productModel,
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    const containerAnimationDuration = Duration(milliseconds: 600);
+    const placeholderShrinkDuration = Duration(milliseconds: 300);
 
-    return BlocProvider(
-      create: (context) => AddReviewCubit(),
+    return BlocProvider.value(
+      value: _addReviewCubit,
       child: AnimatedBuilder(
         animation: moveController,
         builder: (context, child) {
@@ -101,169 +138,182 @@ class _AddReviewButtonState extends State<AddReviewButton>
             left: leftAnimation.value,
             child: AnimatedContainer(
               curve: Curves.easeInOut,
-              duration: const Duration(milliseconds: 1000),
+              duration: containerAnimationDuration,
               width: isOpen ? MediaQuery.of(context).size.width - 50.w : 35.h,
-              height: isOpen ? 140.h : 35.h,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              height: isOpen ? 280.h : 35.h,
+              alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: isOpen
                     ? theme.scaffoldBackgroundColor
                     : theme.primaryColor,
-                borderRadius: BorderRadius.circular(isOpen ? 12.r : 100.r),
-                boxShadow: const [
+                borderRadius: BorderRadius.circular(isOpen ? 16.r : 100.r),
+                boxShadow: [
                   BoxShadow(
-                    blurRadius: 5,
-                    color: Colors.black12,
-                    offset: Offset(0, 3),
+                    blurRadius: isOpen ? 15 : 5,
+                    color: Colors.black.withValues(alpha: 0.15),
+                    offset: const Offset(0, 4),
                   ),
                 ],
               ),
               child: isOpen
-                  ? Material(
-                      color: Colors.transparent,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Flexible(
-                            child: TextFormField(
-                              style: TextStyle(
-                                color: theme.primaryColor,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: AppFonts.mainFontName,
+                  ? AnimatedOpacity(
+                      opacity: _showContent ? 1.0 : 0.0,
+                      duration: const Duration(milliseconds: 400),
+                      curve: Curves.easeIn,
+                      child: Material(
+                        color: Colors.transparent,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16.w,
+                            vertical: 12.h,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    loc!.addReviewTitle,
+                                    style: TextStyle(
+                                      fontFamily: AppFonts.mainFontName,
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: theme.primaryColor,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 30.w,
+                                    height: 30.h,
+                                    child: IconButton(
+                                      onPressed: _startCloseSequence,
+                                      icon: Icon(
+                                        Icons.close_rounded,
+                                        size: 18.sp,
+                                      ),
+                                      color: theme.primaryColor,
+                                      style: IconButton.styleFrom(
+                                        backgroundColor: theme.primaryColor
+                                            .withValues(alpha: 0.1),
+                                      ),
+                                      padding: EdgeInsets.zero,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              controller: widget.textEditingController,
-                              autofocus: true,
-                              expands: true,
-                              maxLines: null,
-                              textAlignVertical: TextAlignVertical.center,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.zero,
-                                hintText: "Add Review...",
-                                hintStyle: TextStyle(
-                                  fontFamily: AppFonts.mainFontName,
-                                  color: appColors.secondaryText,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 13.sp,
+                              SizedBox(height: 12.h),
+                              TextFormField(
+                                controller: widget.textEditingController,
+                                autofocus: true,
+                                maxLines: 5,
+                                style: TextStyle(
+                                  color: theme.primaryColor,
+                                  fontSize: 14.sp,
                                 ),
-                                border: InputBorder.none,
-                                prefixIcon: BlocConsumer<AddReviewCubit, AddReviewState>(
-                                  // ✅ THIS IS THE FINAL, GUARANTEED FIX
-                                  listener: (context, state) {
-                                    if (state is AddReviewSuccess && isOpen) {
-                                      // الخطوة 1: احصل على الـ instances الخاصة بالـ Cubits قبل أي شيء
-                                      // طالما النور ما زال يعمل والـ context صالح
-                                      final getProductReviewsCubit = context
-                                          .read<GetProductReviewsCubit>();
-                                      final addButtonControlCubit = context
-                                          .read<AddButtonControlCubit>();
-
-                                      // الخطوة 2: ابدأ التغييرات في الـ UI والأنيميشن
-                                      setState(() => isOpen = false);
-                                      moveController.reverse().then((_) {
-                                        // الخطوة 3: الآن استخدم الـ instances التي خزنتها، بدون استخدام context
-                                        getProductReviewsCubit.getReviews(
-                                          widget.productModel,
-                                        );
-                                        addButtonControlCubit.makeItClose();
-                                        widget.textEditingController.clear();
-                                      });
-                                    }
-                                  },
-                                  builder: (context, state) {
-                                    return GestureDetector(
-                                      onTap: state is AddReviewLoading
-                                          ? null
-                                          : () {
-                                              if (widget
-                                                  .textEditingController
-                                                  .text
-                                                  .isNotEmpty) {
-                                                context
-                                                    .read<AddReviewCubit>()
-                                                    .addReview(
-                                                      reviewModel: ReviewModel(
-                                                        id: "",
-                                                        userId: FirebaseAuth
-                                                            .instance
-                                                            .currentUser!
-                                                            .uid,
-                                                        userName:
-                                                            FireBaseFireStore
-                                                                .currentUser
-                                                                ?.name ??
-                                                            "User",
-                                                        rating: SelectStars
-                                                            .numberOfStart
-                                                            .toDouble(),
-                                                        comment: widget
-                                                            .textEditingController
-                                                            .text
-                                                            .trim(),
-                                                        createdAt:
-                                                            DateTime.now(),
-                                                      ),
-                                                      productModel:
-                                                          widget.productModel,
-                                                    );
-                                              }
-                                            },
-                                      child: state is AddReviewLoading
-                                          ? CupertinoActivityIndicator(
-                                              color: theme.primaryColor,
-                                            )
-                                          : Icon(
-                                              Icons.add,
-                                              size: 20.sp,
-                                              color: theme.primaryColor,
-                                            ),
-                                    );
-                                  },
-                                ),
-                                prefixIconConstraints: BoxConstraints(
-                                  minWidth: 40.w,
-                                  minHeight: 40.h,
-                                ),
-                                suffixIcon: GestureDetector(
-                                  onTap: () {
-                                    if (isOpen) {
-                                      setState(() => isOpen = false);
-                                      context
-                                          .read<AddButtonControlCubit>()
-                                          .makeItClose();
-                                      widget.textEditingController.clear();
-                                      moveController.reverse();
-                                    }
-                                  },
-                                  child: Icon(
-                                    Icons.close,
-                                    size: 22.sp,
-                                    color: theme.primaryColor,
+                                decoration: InputDecoration(
+                                  hintText: loc.experienceHint,
+                                  hintStyle: TextStyle(
+                                    fontFamily: AppFonts.mainFontName,
+                                    color: appColors.secondaryText,
+                                    fontSize: 13.sp,
+                                  ),
+                                  filled: true,
+                                  fillColor: theme.primaryColor.withValues(
+                                    alpha: 0.05,
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10.r),
+                                    borderSide: BorderSide.none,
+                                  ),
+                                  contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 12.w,
+                                    vertical: 10.h,
                                   ),
                                 ),
-                                suffixIconConstraints: BoxConstraints(
-                                  minWidth: 40.w,
-                                  minHeight: 40.h,
+                              ),
+                              const Spacer(),
+                              BlocListener<AddReviewCubit, AddReviewState>(
+                                listener: (context, state) async {
+                                  if (state is AddReviewSuccess) {
+                                    final getProductReviewsCubit = context
+                                        .read<GetProductReviewsCubit>();
+                                    await _startCloseSequence();
+                                    await Future.delayed(
+                                      placeholderShrinkDuration,
+                                    );
+                                    if (mounted) {
+                                      getProductReviewsCubit.getReviews(
+                                        widget.productModel,
+                                      );
+                                    }
+                                  }
+                                },
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    const SelectStars(),
+                                    BlocBuilder<AddReviewCubit, AddReviewState>(
+                                      builder: (context, state) {
+                                        bool isLoading =
+                                            state is AddReviewLoading;
+                                        return FilledButton.icon(
+                                          onPressed: isLoading
+                                              ? null
+                                              : _submitReview,
+                                          style: FilledButton.styleFrom(
+                                            backgroundColor: theme.primaryColor,
+                                            foregroundColor:
+                                                theme.scaffoldBackgroundColor,
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 16.w,
+                                            ),
+                                          ),
+                                          icon: isLoading
+                                              ? const SizedBox.shrink()
+                                              : Icon(
+                                                  Icons.send_rounded,
+                                                  size: 16.sp,
+                                                ),
+                                          label: isLoading
+                                              ? SizedBox(
+                                                  width: 20.w,
+                                                  height: 20.h,
+                                                  child:
+                                                      const CircularProgressIndicator(
+                                                        strokeWidth: 2.5,
+                                                        color: Colors.white,
+                                                      ),
+                                                )
+                                              : CustomText(
+                                                  data: loc.postButton,
+                                                  color: theme
+                                                      .scaffoldBackgroundColor,
+                                                  fontSize: 14.sp,
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                        );
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
+                            ],
                           ),
-                          const SelectStars()
-                              .animate(
-                                delay: const Duration(milliseconds: 1000),
-                              )
-                              .fadeIn(
-                                duration: const Duration(milliseconds: 500),
-                                curve: Curves.easeInOut,
-                              ),
-                          SizedBox(height: 5.h),
-                        ],
+                        ),
                       ),
                     )
                   : GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         context.read<AddButtonControlCubit>().makeItOpen();
-                        moveController.forward();
+                        await moveController.forward();
+                        if (!mounted) return;
+                        setState(() => isOpen = true);
+                        await Future.delayed(containerAnimationDuration);
+                        if (!mounted) return;
+                        setState(() => _showContent = true);
                       },
                       child: Icon(
                         Icons.add,

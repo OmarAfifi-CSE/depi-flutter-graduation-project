@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
 
@@ -15,6 +14,13 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetailsState extends State<ProductDetails> {
   double _currentSheetSize = 0.16;
+
+  // احسب الحجم المناسب بناءً على ارتفاع الشاشة
+  double get initialSize {
+    final screenHeight = 1.sh; // الارتفاع الكامل للشاشة
+    final desiredHeight = 140.h; // الارتفاع اللي انت عايزه بالبيكسل
+    return desiredHeight / screenHeight; // النسبة المئوية
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +52,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                     return true;
                   },
                   child: DraggableScrollableSheet(
-                    initialChildSize: 0.16,
-                    minChildSize: 0.16,
+                    initialChildSize: initialSize,
+                    minChildSize: initialSize,
                     maxChildSize: 0.6,
-                    snap: true,
-                    snapSizes: const [0.16, 0.6],
                     builder: (context, scrollController) {
                       return Container(
                         decoration: BoxDecoration(
@@ -60,9 +64,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           ),
                           boxShadow: [
                             BoxShadow(
-                              color: theme.primaryColor.withValues(
-                                alpha: .15,
-                              ),
+                              color: theme.primaryColor.withValues(alpha: .15),
                               blurRadius: 10,
                               offset: const Offset(0, -5),
                             ),

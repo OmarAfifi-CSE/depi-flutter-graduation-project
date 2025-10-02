@@ -772,6 +772,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Description'**
   String get description;
+
+  /// No description provided for @reviewsHeader.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Reviews'**
+  String get reviewsHeader;
+
+  /// No description provided for @reviewsLoadingError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Please try again.'**
+  String get reviewsLoadingError;
+
+  /// No description provided for @noReviewsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No reviews yet. Be the first to share your thoughts!'**
+  String get noReviewsYet;
+
+  /// No description provided for @addReviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Write a Review'**
+  String get addReviewTitle;
+
+  /// No description provided for @experienceHint.
+  ///
+  /// In en, this message translates to:
+  /// **'How was your experience with this product?'**
+  String get experienceHint;
+
+  /// No description provided for @postButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Post'**
+  String get postButton;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
