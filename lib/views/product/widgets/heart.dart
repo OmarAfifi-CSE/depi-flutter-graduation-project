@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class Heart extends StatefulWidget {
   const Heart({super.key, required this.productModel});
+
   final ProductModel productModel;
 
   @override
@@ -107,8 +108,8 @@ class _HeartState extends State<Heart> {
                     .animate(key: ValueKey(isAdded))
                     .scale(
                       duration: const Duration(milliseconds: 300),
-                      begin: Offset(.6, .6),
-                      end: Offset(1.3, 1.3),
+                      begin: const Offset(.6, .6),
+                      end: const Offset(1.3, 1.3),
                       curve: Curves.elasticOut,
                     ),
           ),

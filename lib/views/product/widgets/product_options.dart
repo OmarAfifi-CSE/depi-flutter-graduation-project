@@ -1,21 +1,17 @@
-import 'package:batrina/controllers/provider/control_rating_provider.dart';
+import 'package:animations/animations.dart';
+import 'package:batrina/controllers/provider/product_provider.dart';
 import 'package:batrina/models/product_model.dart';
-import 'package:batrina/routing/app_routes.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/product/reviews_screen.dart';
+import 'package:batrina/views/product/widgets/add_to_cart_button.dart';
 import 'package:batrina/views/product/widgets/counter.dart';
 import 'package:batrina/views/product/widgets/product_selection.dart';
-import 'package:batrina/views/product/widgets/size_option.dart';
 import 'package:batrina/views/product/widgets/stars.dart';
 import 'package:batrina/views/product/widgets/stock_count_text.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-
-import '../../../l10n/app_localizations.dart';
-import '../../../styling/app_colors.dart';
-import 'add_to_cart_button.dart';
 
 class ProductOptions extends StatelessWidget {
   const ProductOptions({super.key, required this.productModel});
@@ -24,8 +20,6 @@ class ProductOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +30,6 @@ class ProductOptions extends StatelessWidget {
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-
               mainAxisSize: MainAxisSize.min,
               children: [
                 SizedBox(
@@ -58,32 +51,43 @@ class ProductOptions extends StatelessWidget {
                 SizedBox(height: 4.h),
                 GestureDetector(
                   onTap: () {
-                    context.pushNamed(
-                      AppRoutes.reviewsScreen,
-                      extra: productModel,
+                    final productProvider = context.read<ProductProvider>();
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(milliseconds: 700),
+                        reverseTransitionDuration: const Duration(
+                          milliseconds: 700,
+                        ),
+                        pageBuilder: (context, animation, secondaryAnimation) {
+                          return ChangeNotifierProvider.value(
+                            value: productProvider,
+                            child: const ReviewsScreen(),
+                          );
+                        },
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                              return SharedAxisTransition(
+                                transitionType:
+                                    SharedAxisTransitionType.horizontal,
+                                animation: animation,
+                                secondaryAnimation: secondaryAnimation,
+                                child: child,
+                              );
+                            },
+                      ),
                     );
                   },
-                  child: Consumer<ControlRatingProvider>(
-                    builder: (context, value, child) {
-                      print("hasasasasasa");
-                      print(value.productModel.reviewsCount);
-                      print(value.productModel.rating);
-                      return Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Stars(
-                            numberOfStart: value.productModel.rating!.round(),
-                          ),
-                          SizedBox(width: 4.w),
-                          CustomText(
-                            data:
-                                "(${value.productModel.reviewsCount} Reviews)",
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ],
-                      );
-                    },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Stars(numberOfStart: productModel.rating!.round()),
+                      SizedBox(width: 4.w),
+                      CustomText(
+                        data: "(${productModel.reviewsCount} Reviews)",
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ],
                   ),
                 ),
               ],

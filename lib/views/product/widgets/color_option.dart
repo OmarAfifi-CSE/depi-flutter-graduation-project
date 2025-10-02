@@ -1,14 +1,14 @@
+import 'package:batrina/controllers/provider/product_provider.dart';
 import 'package:batrina/models/product_model.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../controllers/provider/product_provider.dart';
-import '../../../styling/app_colors.dart';
-import '../../../widgets/custom_text.dart';
-
 class ColorOption extends StatefulWidget {
   const ColorOption({super.key, required this.colors});
+
   final List<ProductColor> colors;
 
   @override
@@ -77,7 +77,7 @@ class _ColorOptionState extends State<ColorOption> {
                                     : appColors.containerBorder,
                                 size: 13.sp,
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
                       ),
                     ),
                   );
@@ -91,6 +91,5 @@ class _ColorOptionState extends State<ColorOption> {
             fontWeight: FontWeight.w400,
             color: appColors.secondaryText,
           );
-    ;
   }
 }

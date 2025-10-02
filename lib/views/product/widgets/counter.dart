@@ -1,15 +1,15 @@
 import 'package:batrina/controllers/provider/product_provider.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/product_model.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../l10n/app_localizations.dart';
-import '../../../styling/app_colors.dart' show AppColorTheme;
-
 class Counter extends StatefulWidget {
   const Counter({super.key, required this.productModel});
+
   final ProductModel productModel;
 
   @override
@@ -18,6 +18,7 @@ class Counter extends StatefulWidget {
 
 class _CounterState extends State<Counter> {
   int count = 1;
+
   @override
   Widget build(BuildContext context) {
     ProductProvider productProvider = context.watch<ProductProvider>();
@@ -32,7 +33,6 @@ class _CounterState extends State<Counter> {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     return Container(
       alignment: Alignment.center,
-      // width: 70.w,
       height: 30.h,
       decoration: BoxDecoration(
         color: appColors.card,

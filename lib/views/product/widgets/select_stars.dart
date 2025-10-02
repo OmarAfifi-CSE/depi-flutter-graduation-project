@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SelectStars extends StatefulWidget {
   const SelectStars({super.key});
+
   static int numberOfStart = 1;
 
   @override

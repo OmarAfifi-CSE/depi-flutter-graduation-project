@@ -44,6 +44,278 @@ final List<ProductModel> demoProducts = [
       ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
     ],
   ),
+  ProductModel(
+    id: 'p0111',
+    name: 'Men\'s Casual T-Shirt',
+    subtitle: 'Comfortable Cotton Tee',
+    description: 'Comfortable cotton T-shirt suitable for daily use.',
+    category: 'Clothing',
+    price: 299.0,
+    salePrice: 249.0,
+    thumbnail:
+    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+    availableColors: [
+      ProductColor(
+        colorCode: '#1E88E5',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
+        ],
+      ),
+      ProductColor(
+        colorCode: '#FFFFFF',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927979/5982781e-0c3c-4716-b606-657e5aedc177.jpg?format=webp&width=800',
+        ],
+      ),
+    ],
+    variants: [
+      ProductVariant(color: '#1E88E5', size: 'S', stock: 15, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'M', stock: 25, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'L', stock: 8, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'M', stock: 9, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
+    ],
+  ),
+  ProductModel(
+    id: 'p0112',
+    name: 'Men\'s Casual T-Shirt',
+    subtitle: 'Comfortable Cotton Tee',
+    description: 'Comfortable cotton T-shirt suitable for daily use.',
+    category: 'Clothing',
+    price: 299.0,
+    salePrice: 249.0,
+    thumbnail:
+    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+    availableColors: [
+      ProductColor(
+        colorCode: '#1E88E5',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
+        ],
+      ),
+      ProductColor(
+        colorCode: '#FFFFFF',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927979/5982781e-0c3c-4716-b606-657e5aedc177.jpg?format=webp&width=800',
+        ],
+      ),
+    ],
+    variants: [
+      ProductVariant(color: '#1E88E5', size: 'S', stock: 15, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'M', stock: 25, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'L', stock: 8, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'M', stock: 9, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
+    ],
+  ),
+  ProductModel(
+    id: 'p0113',
+    name: 'Men\'s Casual T-Shirt',
+    subtitle: 'Comfortable Cotton Tee',
+    description: 'Comfortable cotton T-shirt suitable for daily use.',
+    category: 'Clothing',
+    price: 299.0,
+    salePrice: 249.0,
+    thumbnail:
+    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+    availableColors: [
+      ProductColor(
+        colorCode: '#1E88E5',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
+        ],
+      ),
+      ProductColor(
+        colorCode: '#FFFFFF',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927979/5982781e-0c3c-4716-b606-657e5aedc177.jpg?format=webp&width=800',
+        ],
+      ),
+    ],
+    variants: [
+      ProductVariant(color: '#1E88E5', size: 'S', stock: 15, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'M', stock: 25, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'L', stock: 8, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'M', stock: 9, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
+    ],
+  ),
+  ProductModel(
+    id: 'p0114',
+    name: 'Men\'s Casual T-Shirt',
+    subtitle: 'Comfortable Cotton Tee',
+    description: 'Comfortable cotton T-shirt suitable for daily use.',
+    category: 'Clothing',
+    price: 299.0,
+    salePrice: 249.0,
+    thumbnail:
+    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+    availableColors: [
+      ProductColor(
+        colorCode: '#1E88E5',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
+        ],
+      ),
+      ProductColor(
+        colorCode: '#FFFFFF',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927979/5982781e-0c3c-4716-b606-657e5aedc177.jpg?format=webp&width=800',
+        ],
+      ),
+    ],
+    variants: [
+      ProductVariant(color: '#1E88E5', size: 'S', stock: 15, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'M', stock: 25, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'L', stock: 8, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'M', stock: 9, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
+    ],
+  ),
+  ProductModel(
+    id: 'p0115',
+    name: 'Men\'s Casual T-Shirt',
+    subtitle: 'Comfortable Cotton Tee',
+    description: 'Comfortable cotton T-shirt suitable for daily use.',
+    category: 'Clothing',
+    price: 299.0,
+    salePrice: 249.0,
+    thumbnail:
+    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+    availableColors: [
+      ProductColor(
+        colorCode: '#1E88E5',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
+        ],
+      ),
+      ProductColor(
+        colorCode: '#FFFFFF',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927979/5982781e-0c3c-4716-b606-657e5aedc177.jpg?format=webp&width=800',
+        ],
+      ),
+    ],
+    variants: [
+      ProductVariant(color: '#1E88E5', size: 'S', stock: 15, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'M', stock: 25, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'L', stock: 8, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'M', stock: 9, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
+    ],
+  ),
+  ProductModel(
+    id: 'p0116',
+    name: 'Men\'s Casual T-Shirt',
+    subtitle: 'Comfortable Cotton Tee',
+    description: 'Comfortable cotton T-shirt suitable for daily use.',
+    category: 'Clothing',
+    price: 299.0,
+    salePrice: 249.0,
+    thumbnail:
+    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+    availableColors: [
+      ProductColor(
+        colorCode: '#1E88E5',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
+        ],
+      ),
+      ProductColor(
+        colorCode: '#FFFFFF',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927979/5982781e-0c3c-4716-b606-657e5aedc177.jpg?format=webp&width=800',
+        ],
+      ),
+    ],
+    variants: [
+      ProductVariant(color: '#1E88E5', size: 'S', stock: 15, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'M', stock: 25, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'L', stock: 8, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'M', stock: 9, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
+    ],
+  ),
+  ProductModel(
+    id: 'p0117',
+    name: 'Men\'s Casual T-Shirt',
+    subtitle: 'Comfortable Cotton Tee',
+    description: 'Comfortable cotton T-shirt suitable for daily use.',
+    category: 'Clothing',
+    price: 299.0,
+    salePrice: 249.0,
+    thumbnail:
+    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+    availableColors: [
+      ProductColor(
+        colorCode: '#1E88E5',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
+        ],
+      ),
+      ProductColor(
+        colorCode: '#FFFFFF',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927979/5982781e-0c3c-4716-b606-657e5aedc177.jpg?format=webp&width=800',
+        ],
+      ),
+    ],
+    variants: [
+      ProductVariant(color: '#1E88E5', size: 'S', stock: 15, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'M', stock: 25, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'L', stock: 8, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'M', stock: 9, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
+    ],
+  ),
+  ProductModel(
+    id: 'p0118',
+    name: 'Men\'s Casual T-Shirt',
+    subtitle: 'Comfortable Cotton Tee',
+    description: 'Comfortable cotton T-shirt suitable for daily use.',
+    category: 'Clothing',
+    price: 299.0,
+    salePrice: 249.0,
+    thumbnail:
+    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+    availableColors: [
+      ProductColor(
+        colorCode: '#1E88E5',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
+        ],
+      ),
+      ProductColor(
+        colorCode: '#FFFFFF',
+        images: [
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
+          'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927979/5982781e-0c3c-4716-b606-657e5aedc177.jpg?format=webp&width=800',
+        ],
+      ),
+    ],
+    variants: [
+      ProductVariant(color: '#1E88E5', size: 'S', stock: 15, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'M', stock: 25, id: ''),
+      ProductVariant(color: '#1E88E5', size: 'L', stock: 8, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'M', stock: 9, id: ''),
+      ProductVariant(color: '#FFFFFF', size: 'L', stock: 7, id: ''),
+    ],
+  ),
 
   // 2) Hoodie – Dark Blue / White
   ProductModel(

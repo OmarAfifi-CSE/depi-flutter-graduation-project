@@ -11,7 +11,7 @@ class ReviewModel {
     required this.id,
     required this.userId,
     required this.userName,
-    required this.userImage,
+    this.userImage,
     required this.rating,
     required this.comment,
     required this.createdAt,

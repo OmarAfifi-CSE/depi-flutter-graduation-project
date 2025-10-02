@@ -1,7 +1,6 @@
+import 'package:batrina/controllers/cubit/product/add_button_control_cubit/add_button_control_cubit.dart';
 import 'package:batrina/controllers/cubit/product/product_reviews_cubit/get_product_reviews_cubit.dart';
-import 'package:batrina/controllers/provider/control_rating_provider.dart';
-import 'package:batrina/models/product_model.dart';
-import 'package:batrina/models/review_model.dart';
+import 'package:batrina/controllers/provider/product_provider.dart';
 import 'package:batrina/views/product/widgets/add_review_button.dart';
 import 'package:batrina/views/product/widgets/review_widget.dart';
 import 'package:batrina/widgets/back_arrow.dart';
@@ -9,18 +8,11 @@ import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../controllers/cubit/product/add_button_control_cubit/add_button_control_cubit.dart';
-import '../../controllers/provider/product_provider.dart';
-import '../../l10n/app_localizations.dart';
-import '../../styling/app_colors.dart';
-
 class ReviewsScreen extends StatefulWidget {
-  const ReviewsScreen({super.key, required this.productModel});
-  final ProductModel productModel;
+  const ReviewsScreen({super.key});
 
   @override
   State<ReviewsScreen> createState() => _ReviewsScreenState();
@@ -32,13 +24,12 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final productModel = context.read<ProductProvider>().productModel;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) =>
-              GetProductReviewsCubit()..getReviews(widget.productModel),
+              GetProductReviewsCubit()..getReviews(productModel),
         ),
         BlocProvider(create: (context) => AddButtonControlCubit()),
       ],
@@ -76,56 +67,60 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                     SizedBox(height: 15.h),
                     Expanded(
                       child:
-                          BlocBuilder<
+                          BlocListener<
                             GetProductReviewsCubit,
                             GetProductReviewsState
                           >(
-                            builder: (context, state) {
-                              if (state is GetProductReviewsFailure) {
-                                /// toDo
-                                return Center(
-                                  child: CustomText(
-                                    data: "error",
-                                    fontSize: 21,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                );
-                              } else if (state is GetProductReviewsLoading) {
-                                return Center(
-                                  child: CupertinoActivityIndicator(
-                                    color: theme.primaryColor,
-                                  ),
+                            listener: (context, state) {
+                              if (state is GetProductReviewsSuccess) {
+                                context.read<ProductProvider>().updateRating(
+                                  state.reviews,
                                 );
                               }
-                              List<ReviewModel> reviews =
-                                  (state as GetProductReviewsSuccess).reviews;
-
-                              WidgetsBinding.instance.addPostFrameCallback((
-                                timeStamp,
-                              ) {
-                                if (mounted) {
-                                  print(
-                                    "leeaE" + state.reviews.length.toString(),
-                                  );
-                                  context
-                                      .read<ControlRatingProvider>()
-                                      .setRating(state.reviews);
-                                }
-                              });
-                              return reviews.isNotEmpty
-                                  ? ListView.separated(
-                                      padding: EdgeInsets.zero,
-                                      itemBuilder: (context, index) {
-                                        return ReviewWidget(
-                                          reviewModel: reviews[index],
-                                        );
-                                      },
-                                      separatorBuilder: (context, index) =>
-                                          SizedBox(height: 18.h),
-                                      itemCount: reviews.length,
-                                    )
-                                  : Center(child: Text("ermpt"));
                             },
+                            child:
+                                BlocBuilder<
+                                  GetProductReviewsCubit,
+                                  GetProductReviewsState
+                                >(
+                                  builder: (context, state) {
+                                    if (state is GetProductReviewsFailure) {
+                                      return const Center(
+                                        child: CustomText(
+                                          data: "Error happened!",
+                                          fontSize: 21,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      );
+                                    }
+
+                                    if (state is GetProductReviewsSuccess) {
+                                      final reviews = state.reviews;
+                                      return reviews.isNotEmpty
+                                          ? ListView.separated(
+                                              padding: EdgeInsets.zero,
+                                              itemBuilder: (context, index) {
+                                                return ReviewWidget(
+                                                  reviewModel: reviews[index],
+                                                );
+                                              },
+                                              separatorBuilder:
+                                                  (context, index) =>
+                                                      SizedBox(height: 18.h),
+                                              itemCount: reviews.length,
+                                            )
+                                          : const Center(
+                                              child: Text("No reviews yet."),
+                                            );
+                                    }
+                                    // هذه الحالة تغطي GetProductReviewsInitial و GetProductReviewsLoading
+                                    return Center(
+                                      child: CupertinoActivityIndicator(
+                                        color: theme.primaryColor,
+                                      ),
+                                    );
+                                  },
+                                ),
                           ),
                     ),
                   ],
@@ -135,7 +130,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
           ),
           AddReviewButton(
             textEditingController: reviewFieldController,
-            productModel: widget.productModel,
+            productModel: productModel,
           ),
         ],
       ),

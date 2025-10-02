@@ -1,17 +1,13 @@
-import 'dart:convert';
-
 import 'package:batrina/controllers/provider/product_provider.dart';
 import 'package:batrina/models/product_model.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/product/widgets/heart.dart';
 import 'package:batrina/widgets/back_arrow.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../../../l10n/app_localizations.dart';
-import '../../../styling/app_colors.dart';
 
 class ProductImagesSlider extends StatefulWidget {
   const ProductImagesSlider({super.key, required this.productModel});
@@ -24,6 +20,7 @@ class ProductImagesSlider extends StatefulWidget {
 
 class _ProductImagesSliderState extends State<ProductImagesSlider> {
   final PageController _pageController = PageController();
+
   void _moveRight() {
     if (!_pageController.hasClients || _pageController.page == null) return;
     if (_pageController.page! < 2) {
@@ -50,7 +47,6 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
   Widget build(BuildContext context) {
     ProductProvider productProvider = context.watch<ProductProvider>();
     final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     return Stack(
       children: [
@@ -65,7 +61,9 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
             children: List.generate(productProvider.currentSliderImage.length, (
               index,
             ) {
-              return _buildImage(productProvider.currentSliderImage[index]);
+              return BuildDynamicImage(
+                imageUrl: productProvider.currentSliderImage[index],
+              );
             }),
           ),
         ),
@@ -136,56 +134,5 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
         ),
       ],
     );
-  }
-
-  Widget _buildImage(String imageUrl) {
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    final isNetworkImage =
-        imageUrl.startsWith('http://') || imageUrl.startsWith('https://');
-
-    print(isNetworkImage);
-    if (isNetworkImage) {
-      return CachedNetworkImage(
-        imageUrl: imageUrl,
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: double.infinity,
-
-        fadeInDuration: const Duration(milliseconds: 500),
-        fadeOutDuration: const Duration(milliseconds: 500),
-        placeholder: (context, url) => Container(
-          color: appColors.card,
-          child: Center(
-            child: CircularProgressIndicator(
-              strokeWidth: 2.0,
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
-        ),
-        errorWidget: (context, url, error) => Container(
-          color: Colors.grey[200],
-          child: Icon(
-            Icons.image_not_supported,
-            color: Colors.grey[400],
-            size: 48,
-          ),
-        ),
-      );
-    } else {
-      return Image.memory(
-        base64Decode(imageUrl),
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: double.infinity,
-        errorBuilder: (context, error, stackTrace) => Container(
-          color: Colors.grey[200],
-          child: Icon(
-            Icons.image_not_supported,
-            color: Colors.grey[400],
-            size: 48,
-          ),
-        ),
-      );
-    }
   }
 }

@@ -1,11 +1,9 @@
 import 'package:batrina/controllers/provider/product_provider.dart';
-import 'package:batrina/views/product/widgets/color_option.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../styling/app_colors.dart';
 
 class SizeOption extends StatefulWidget {
   const SizeOption({super.key, required this.sizes});
@@ -24,9 +22,6 @@ class _SizeOptionState extends State<SizeOption> {
     ProductProvider productProvider = context.watch<ProductProvider>();
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    print("dsdsdsd");
-    print(productProvider.currentSize);
-
     return productProvider.currentSize != null
         ? Wrap(
             spacing: 8.w,

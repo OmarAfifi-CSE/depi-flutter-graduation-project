@@ -12,9 +12,11 @@ import '../../../styling/app_colors.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({super.key, required this.productModel});
+
   final ProductModel productModel;
 
   void addToCart() {}
+
   @override
   Widget build(BuildContext context) {
     ProductProvider productProvider = context.watch<ProductProvider>();
@@ -60,7 +62,10 @@ class AddToCartButton extends StatelessWidget {
                         SvgPicture.asset(
                           AppAssets.cartIcon2,
                           fit: BoxFit.scaleDown,
-                          color: theme.primaryColor,
+                          colorFilter: ColorFilter.mode(
+                            theme.primaryColor,
+                            BlendMode.srcIn,
+                          ),
                         ),
                         CustomText(
                           data: "Add to cart ",

@@ -1,4 +1,3 @@
-import 'package:batrina/main.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/review_model.dart';
 import 'package:batrina/models/user_model.dart';
@@ -33,6 +32,8 @@ class FireBaseFireStore {
     }
   }
 
+
+
   Future<void> addProduct(ProductModel product) async {
     DocumentReference documentReference = await fireBaseFireStore
         .collection("products")
@@ -52,19 +53,67 @@ class FireBaseFireStore {
     }
   }
 
-  Future<void> getProductVariants({required ProductModel productModel}) async {
-    // جيب الـ variants لكل product
-    final variantsSnapshot = await fireBaseFireStore
+  Future<Map<String, dynamic>> getProductsPaginated({
+    required String category,
+    int limit = 20, // عدد المنتجات اللي هنجيبها كل مرة
+    DocumentSnapshot? lastDocument, // آخر دوكيومنت وصلنا له في المرة اللي فاتت
+  }) async {
+    // بنبني الـ Query الأساسي
+    Query query = fireBaseFireStore
         .collection("products")
-        .doc(productModel.id)
-        .collection("variants")
-        .get();
+        .where("category", isEqualTo: category)
+        .limit(limit);
 
-    List<ProductVariant> variants = variantsSnapshot.docs
-        .map((doc) => ProductVariant.fromJson(doc.data()))
-        .toList();
-    productModel.variants.addAll(variants);
+    // لو دي مش أول مرة، بنقوله يبدأ من بعد آخر مكان وقفنا عنده
+    if (lastDocument != null) {
+      query = query.startAfterDocument(lastDocument);
+    }
+
+    final querySnapshot = await query.get();
+
+    // بنحوّل الداتا لموديلز
+    final List<ProductModel> products = querySnapshot.docs.map((doc) {
+      // مهم: مش هنجيب الـ variants هنا عشان السرعة
+      return ProductModel.fromJson(doc.data() as Map<String, dynamic>);
+    }).toList();
+
+    // بنرجع قايمة المنتجات وآخر دوكيومنت عشان نستخدمه في الطلب الجاي
+    return {
+      'products': products,
+      'lastDoc': querySnapshot.docs.isNotEmpty ? querySnapshot.docs.last : null,
+    };
   }
+
+  Future<ProductModel?> getProductWithVariants({required String productID}) async {
+    try {
+      // 1. جيب الدوكيومنت الرئيسي للمنتج
+      final docSnap = await fireBaseFireStore.collection("products").doc(productID).get();
+
+      if (docSnap.exists) {
+        // 2. حوّل الدوكيومنت لموديل المنتج
+        ProductModel product = ProductModel.fromJson(docSnap.data()!);
+
+        // 3. جيب الـ sub-collection بتاع الـ variants
+        final variantsSnap = await fireBaseFireStore
+            .collection("products")
+            .doc(productID)
+            .collection("variants")
+            .get();
+
+        // 4. حوّل الـ variants لموديلات وأضفهم للمنتج
+        if (variantsSnap.docs.isNotEmpty) {
+          product.variants.addAll(
+              variantsSnap.docs.map((doc) => ProductVariant.fromJson(doc.data())).toList()
+          );
+        }
+        return product;
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
 
   Future<List<ProductModel>> getCategoriesProduct(String category) async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
@@ -81,14 +130,7 @@ class FireBaseFireStore {
     return categoryProduct;
   }
 
-  Future<ProductModel?> getProduct({required String productID}) async {
-    DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
-        await fireBaseFireStore.collection("product").doc(productID).get();
-    if (documentSnapshot.exists) {
-      return ProductModel.fromJson(documentSnapshot.data()!);
-    }
-    return null;
-  }
+
 
   Future<void> addToWishList({required ProductModel productModel}) async {
     await fireBaseFireStore

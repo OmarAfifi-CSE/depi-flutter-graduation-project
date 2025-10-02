@@ -1,7 +1,5 @@
 import 'package:animations/animations.dart';
-import 'package:batrina/controllers/provider/control_rating_provider.dart';
 import 'package:batrina/main.dart';
-import 'package:batrina/models/product_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
 import 'package:batrina/views/auth/create_new_password_screen.dart';
@@ -10,17 +8,15 @@ import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
 import 'package:batrina/views/home/category_screen.dart';
-import 'package:batrina/views/home/home_screen.dart';
+import 'package:batrina/views/home/category_products_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/product/reviews_screen.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthStateListenable extends ChangeNotifier {
@@ -38,7 +34,7 @@ class RouterGenerationConfig {
   RouterGenerationConfig({required this.sharedPreferences}) {
     router = GoRouter(
       refreshListenable: AuthStateListenable(),
-      initialLocation: "/temp",
+      initialLocation: AppRoutes.wrapperScreen,
       routes: [
         GoRoute(
           path: AppRoutes.onboardingScreen,
@@ -152,7 +148,8 @@ class RouterGenerationConfig {
                 GoRoute(
                   path: AppRoutes.wrapperScreen,
                   name: AppRoutes.wrapperScreen,
-                  builder: (context, state) => const HomeScreen(),
+                  builder: (context, state) =>
+                      const CategoryProductsScreen(categoryName: 'Clothing'),
                 ),
               ],
             ),
@@ -185,92 +182,25 @@ class RouterGenerationConfig {
             ),
           ],
         ),
-        ShellRoute(
-          builder: (context, state, child) {
-            return ChangeNotifierProvider(
-              create: (context) => ControlRatingProvider(),
-              child: child,
+        GoRoute(
+          path: AppRoutes.productScreen,
+          name: AppRoutes.productScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: ProductScreen(productId: state.extra as String),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
-          routes: [
-            // صفحة الـ Product
-            GoRoute(
-              path: "/temp",
-              pageBuilder: (context, state) {
-                // final ProductModel product = state.extra as ProductModel;
-
-                return CustomTransitionPage(
-                  child: Scaffold(
-                    body: Center(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          context.push(AppRoutes.productScreen, extra: pr);
-                        },
-                        child: Text("click"),
-                      ),
-                    ),
-                  ),
-                  transitionDuration: const Duration(milliseconds: 1000),
-                  reverseTransitionDuration: const Duration(milliseconds: 1000),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                        return SharedAxisTransition(
-                          transitionType: SharedAxisTransitionType.horizontal,
-                          animation: animation,
-                          secondaryAnimation: secondaryAnimation,
-                          child: child,
-                        );
-                      },
-                );
-              },
-            ),
-            GoRoute(
-              path: AppRoutes.productScreen,
-              name: AppRoutes.productScreen,
-              pageBuilder: (context, state) {
-                // final ProductModel product = state.extra as ProductModel;
-
-                return CustomTransitionPage(
-                  child: ProductScreen(productModel: pr),
-                  transitionDuration: const Duration(milliseconds: 1000),
-                  reverseTransitionDuration: const Duration(milliseconds: 1000),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                        return SharedAxisTransition(
-                          transitionType: SharedAxisTransitionType.horizontal,
-                          animation: animation,
-                          secondaryAnimation: secondaryAnimation,
-                          child: child,
-                        );
-                      },
-                );
-              },
-            ),
-
-            // صفحة الـ Reviews
-            GoRoute(
-              path: AppRoutes.reviewsScreen,
-              name: AppRoutes.reviewsScreen,
-              pageBuilder: (context, state) {
-                final ProductModel product = state.extra as ProductModel;
-
-                return CustomTransitionPage(
-                  child: ReviewsScreen(productModel: product),
-                  transitionDuration: const Duration(milliseconds: 1000),
-                  reverseTransitionDuration: const Duration(milliseconds: 1000),
-                  transitionsBuilder:
-                      (context, animation, secondaryAnimation, child) {
-                        return SharedAxisTransition(
-                          transitionType: SharedAxisTransitionType.horizontal,
-                          animation: animation,
-                          secondaryAnimation: secondaryAnimation,
-                          child: child,
-                        );
-                      },
-                );
-              },
-            ),
-          ],
         ),
       ],
       redirect: (BuildContext context, GoRouterState state) {

@@ -1,13 +1,10 @@
-import 'package:batrina/add_some_products.dart';
 import 'package:batrina/app_initializer.dart';
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
+import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/styling/app_themes.dart';
-import 'package:batrina/views/product/product_screen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -20,14 +17,6 @@ late ProductModel pr;
 
 void main() async {
   final InitializationResult result = await AppInitializer.initialize();
-
-  FireBaseFireStore fireBaseFireStore = FireBaseFireStore();
-  List<ProductModel> prds = await fireBaseFireStore.getCategoriesProduct(
-    "Clothing",
-  );
-  pr = prds[2];
-  print(pr);
-  print(pr.availableColors.length);
 
   runApp(
     MyApp(
@@ -57,6 +46,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
         BlocProvider(create: (_) => AuthCubit()),
+        ChangeNotifierProvider(create: (_) => ProductsProvider()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) =>
@@ -115,7 +105,6 @@ class MyApp extends StatelessWidget {
                   darkTheme: AppThemes.darkTheme,
                   themeMode: themeProvider.themeMode,
                   routerConfig: router,
-                  // home: ProductScreen(productModel: pr),
                 );
               },
             ),
