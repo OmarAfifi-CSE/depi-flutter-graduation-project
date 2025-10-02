@@ -78,6 +78,7 @@ class _HeartState extends State<Heart> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
@@ -99,10 +100,15 @@ class _HeartState extends State<Heart> {
             child:
                 SvgPicture.asset(
                       key: ValueKey(isAdded),
-
                       isAdded ? AppAssets.heartIconFilled : AppAssets.heartIcon,
                       width: 20.w,
                       height: 20.w,
+                      colorFilter: isAdded
+                          ? null
+                          : ColorFilter.mode(
+                              theme.primaryColor,
+                              BlendMode.srcIn,
+                            ),
                       fit: BoxFit.scaleDown,
                     )
                     .animate(key: ValueKey(isAdded))
