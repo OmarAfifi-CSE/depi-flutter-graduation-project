@@ -150,7 +150,9 @@ class _AddReviewButtonState extends State<AddReviewButton>
                 boxShadow: [
                   BoxShadow(
                     blurRadius: isOpen ? 15 : 5,
-                    color: Colors.black.withValues(alpha: 0.15),
+                    color: theme.primaryColor.withValues(
+                      alpha: isOpen ? 0.15 : 0,
+                    ),
                     offset: const Offset(0, 4),
                   ),
                 ],

@@ -1,4 +1,3 @@
-import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/review_model.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/product/widgets/stars.dart';
@@ -21,7 +20,6 @@ class _ReviewWidgetState extends State<ReviewWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     return Container(
       decoration: BoxDecoration(
@@ -31,7 +29,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
           BoxShadow(
             color: theme.primaryColor.withValues(alpha: .15),
             blurRadius: 10,
-            offset: const Offset(0, 5),
+            offset: Offset(0, 5.h),
           ),
         ],
       ),
@@ -99,6 +97,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                           data: widget.reviewModel.createdAt != null
                               ? DateFormat(
                                   'dd MMM, yyyy',
+                                  Localizations.localeOf(context).languageCode,
                                 ).format(widget.reviewModel.createdAt!)
                               : 'Unknown date',
                           fontSize: 12.sp,
