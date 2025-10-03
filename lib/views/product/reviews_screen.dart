@@ -2,6 +2,7 @@ import 'package:batrina/controllers/cubit/product/add_button_control_cubit/add_b
 import 'package:batrina/controllers/cubit/product/product_reviews_cubit/get_product_reviews_cubit.dart';
 import 'package:batrina/controllers/provider/product_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/product/widgets/add_review_button.dart';
 import 'package:batrina/views/product/widgets/review_widget.dart';
 import 'package:batrina/widgets/back_arrow.dart';
@@ -21,10 +22,19 @@ class ReviewsScreen extends StatefulWidget {
 
 class _ReviewsScreenState extends State<ReviewsScreen> {
   final TextEditingController reviewFieldController = TextEditingController();
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    reviewFieldController.dispose();
+    scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final appColors = theme.extension<AppColorTheme>()!;
     final loc = AppLocalizations.of(context);
     final productModel = context.read<ProductProvider>().productModel;
     return MultiBlocProvider(
@@ -40,7 +50,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
           Scaffold(
             body: SafeArea(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.0.w),
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -90,7 +100,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                                       return Center(
                                         child: CustomText(
                                           data: loc.reviewsLoadingError,
-                                          fontSize: 21,
+                                          fontSize: 22.sp,
                                           fontWeight: FontWeight.w400,
                                         ),
                                       );
@@ -99,17 +109,56 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                                     if (state is GetProductReviewsSuccess) {
                                       final reviews = state.reviews;
                                       return reviews.isNotEmpty
-                                          ? ListView.separated(
-                                              padding: EdgeInsets.zero,
-                                              itemBuilder: (context, index) {
-                                                return ReviewWidget(
-                                                  reviewModel: reviews[index],
-                                                );
-                                              },
-                                              separatorBuilder:
-                                                  (context, index) =>
-                                                      SizedBox(height: 18.h),
-                                              itemCount: reviews.length,
+                                          ? Column(
+                                              children: [
+                                                AnimatedBuilder(
+                                                  animation: scrollController,
+                                                  builder: (context, child) {
+                                                    final bool showDivider =
+                                                        scrollController
+                                                            .hasClients &&
+                                                        scrollController
+                                                                .offset >
+                                                            0;
+
+                                                    // Use the pre-built child for efficiency.
+                                                    return AnimatedOpacity(
+                                                      opacity: showDivider
+                                                          ? 1.0
+                                                          : 0.0,
+                                                      duration: const Duration(
+                                                        milliseconds: 250,
+                                                      ),
+                                                      child: child,
+                                                    );
+                                                  },
+                                                  child: Divider(
+                                                    thickness: 1,
+                                                    color:
+                                                        appColors.secondaryText,
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  child: ListView.separated(
+                                                    controller:
+                                                        scrollController,
+                                                    padding: EdgeInsets.zero,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                          return ReviewWidget(
+                                                            reviewModel:
+                                                                reviews[index],
+                                                          );
+                                                        },
+                                                    separatorBuilder:
+                                                        (context, index) =>
+                                                            SizedBox(
+                                                              height: 18.h,
+                                                            ),
+                                                    itemCount: reviews.length,
+                                                  ),
+                                                ),
+                                              ],
                                             )
                                           : Center(
                                               child: CustomText(
