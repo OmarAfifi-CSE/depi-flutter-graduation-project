@@ -314,6 +314,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get darkMode => 'الوضع الداكن';
 
   @override
+  String get lightMode => 'الوضع الفاتح';
+
+  @override
   String get helpCenter => 'مركز المساعدة';
 
   @override

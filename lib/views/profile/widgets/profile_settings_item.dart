@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/styling/app_colors.dart';
 
+import '../../../widgets/custom_text.dart';
+
 class ProfileSettingsItem extends StatelessWidget {
   final IconData icon;
   final String title;
@@ -21,26 +23,31 @@ class ProfileSettingsItem extends StatelessWidget {
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
 
-    return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
-      leading: Container(
-        padding: EdgeInsets.all(8.r),
-        decoration: BoxDecoration(
-          color: appColors.textFieldFill,
-          borderRadius: BorderRadius.circular(8.r),
+    return Row(
+      children: [
+        Container(
+          height: 40.h,
+          width: 40.w,
+          padding: EdgeInsets.all(8.r),
+          decoration: BoxDecoration(
+            color: appColors.card?.withValues(alpha: .7),
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+          child: Icon(icon, size: 22.sp, color: theme.primaryColor),
         ),
-        child: Icon(icon, size: 34.sp, color: appColors.containerBorder),
-      ),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
-          color: theme.primaryColor,
+        Expanded(
+          child: Padding(
+            padding: EdgeInsetsGeometry.directional(start: 12.0.w),
+            child: CustomText(
+              textAlign: TextAlign.start,
+              data: title,
+              fontWeight: FontWeight.w600,
+              fontSize: 15.sp,
+            ),
+          ),
         ),
-      ),
-      trailing: trailing,
-      onTap: onTap,
+        trailing,
+      ],
     );
   }
 }

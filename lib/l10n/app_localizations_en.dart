@@ -314,6 +314,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get darkMode => 'Dark Mode';
 
   @override
+  String get lightMode => 'lightMode';
+
+  @override
   String get helpCenter => 'Help Center';
 
   @override
