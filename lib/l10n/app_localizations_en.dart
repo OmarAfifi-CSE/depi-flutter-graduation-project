@@ -366,4 +366,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get postButton => 'Post';
+
+  @override
+  String get errorHappened => 'Error happened!';
+
+  @override
+  String get reviews => 'Reviews';
+
+  @override
+  String get size => 'Size';
+
+  @override
+  String get addToCart => 'Add to cart';
+
+  @override
+  String get notAvailable => 'Not available';
+
+  @override
+  String get noAvailableSizes => 'No available Sizes';
+
+  @override
+  String get noAvailableColors => 'No available Colors';
 }

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
 
@@ -15,7 +17,6 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   double _currentSheetSize = 0.16;
 
-  // احسب الحجم المناسب بناءً على ارتفاع الشاشة
   double get initialSize {
     final screenHeight = 1.sh; // الارتفاع الكامل للشاشة
     final desiredHeight = 140.h; // الارتفاع اللي انت عايزه بالبيكسل
@@ -25,6 +26,7 @@ class _ProductDetailsState extends State<ProductDetails> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     final product = context.watch<ProductProvider>().productModel;
     return Scaffold(
       body: SafeArea(

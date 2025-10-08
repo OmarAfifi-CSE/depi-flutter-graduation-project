@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../number_localizer.dart';
+
 class Counter extends StatefulWidget {
   const Counter({super.key, required this.productModel});
 
@@ -22,6 +24,8 @@ class _CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     ProductProvider productProvider = context.watch<ProductProvider>();
+    final localeCode = Localizations.localeOf(context).languageCode;
+
     if (count > productProvider.currentVariantStock) {
       count = productProvider.currentVariantStock;
     }
@@ -62,9 +66,14 @@ class _CounterState extends State<Counter> {
                 ),
               ),
             CustomText(
-              data: productProvider.currentVariantStock != 0
-                  ? count.toString()
-                  : "0",
+              forceStrutHeight: true,
+              data: NumberLocalizer.formatNumber(
+                productProvider.currentVariantStock != 0
+                    ? count.toString()
+                    : "0",
+                localeCode,
+              ),
+
               fontSize: 15.sp,
               fontWeight: FontWeight.w500,
             ),

@@ -1,3 +1,4 @@
+import 'package:batrina/views/profile/widgets/profile_info.dart';
 import 'package:batrina/views/profile/widgets/profile_menu_item.dart';
 import 'package:batrina/views/profile/widgets/profile_settings_item.dart';
 import 'package:flutter/material.dart';
@@ -26,75 +27,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
 
     return Scaffold(
-      backgroundColor: appColors.textFieldFill,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: SingleChildScrollView(
-                padding: EdgeInsets.all(24.w),
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
                 child: Column(
                   children: [
-                    ProfileHeader(
-                      name: 'Wello',
-                      email: 'wello6668@gmail.com',
-                      onBack: () {},
-                    ),
                     SizedBox(height: 32.h),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: theme.scaffoldBackgroundColor,
-                        borderRadius: BorderRadius.circular(16.r),
-                        border: Border.all(color: appColors.card!, width: 2),
-                        boxShadow: [
-                          BoxShadow(
-                            color: appColors.containerBorder!.withValues(
-                              alpha: 0.2,
-                            ),
-                            spreadRadius: 1,
-                            blurRadius: 10,
-                            offset: const Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 30),
-                          ProfileMenuItem(
-                            icon: Icons.person,
-                            title: loc.personalDetails,
-                            onTap: () {},
-                          ),
-                          ProfileMenuItem(
-                            icon: Icons.shopping_bag,
-                            title: loc.myOrders,
-                            onTap: () {},
-                          ),
-                          ProfileMenuItem(
-                            icon: Icons.favorite,
-                            title: loc.myFavourites,
-                            onTap: () {},
-                          ),
-                          ProfileMenuItem(
-                            icon: Icons.local_shipping,
-                            title: loc.shippingAddress,
-                            onTap: () {},
-                          ),
-                          ProfileMenuItem(
-                            icon: Icons.credit_card,
-                            title: loc.myCard,
-                            onTap: () {},
-                          ),
-                          ProfileMenuItem(
-                            icon: Icons.settings,
-                            title: loc.settings,
-                            onTap: () {},
-                          ),
-                          SizedBox(height: 30.h),
-                        ],
-                      ),
-                    ),
+                    const ProfileHeader(),
+                    SizedBox(height: 30.h),
+                    const ProfileInfo(),
                     SizedBox(height: 20.h),
                     Padding(
                       padding: EdgeInsets.only(

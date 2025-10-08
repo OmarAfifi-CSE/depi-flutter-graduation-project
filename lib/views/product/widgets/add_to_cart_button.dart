@@ -22,7 +22,6 @@ class AddToCartButton extends StatelessWidget {
     ProductProvider productProvider = context.watch<ProductProvider>();
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
 
     return Container(
       height: 60.h,
@@ -68,7 +67,7 @@ class AddToCartButton extends StatelessWidget {
                           ),
                         ),
                         CustomText(
-                          data: "Add to cart ",
+                          data: loc!.addToCart,
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w400,
                         ),
@@ -76,7 +75,7 @@ class AddToCartButton extends StatelessWidget {
                     )
                   : Center(
                       child: CustomText(
-                        data: "Not available",
+                        data: loc!.notAvailable,
                         fontSize: 15.sp,
                         fontWeight: FontWeight.w400,
                       ),

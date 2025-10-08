@@ -6,7 +6,6 @@ class ProductProvider extends ChangeNotifier {
   final ProductModel productModel;
   late int currentVariantStock;
   late List<String> currentSliderImage;
-
   late String? currentColorName;
   late String? currentSize;
 
@@ -23,7 +22,6 @@ class ProductProvider extends ChangeNotifier {
 
     setVariantStock(colorCode: currentColorName, sizeName: currentSize);
     setSliderImage(currentColorName ?? '');
-
   }
 
   void updateRating(List<ReviewModel> reviews) {

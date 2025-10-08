@@ -181,5 +181,13 @@
 
   "addReviewTitle": "Write a Review",
   "experienceHint": "How was your experience with this product?",
-  "postButton": "Post"
+  "postButton": "Post",
+
+  "errorHappened": "Error happened!",
+  "reviews": "Reviews",
+  "size": "Size",
+  "addToCart": "Add to cart",
+  "notAvailable": "Not available",
+  "noAvailableSizes": "No available Sizes",
+  "noAvailableColors": "No available Colors"
 }

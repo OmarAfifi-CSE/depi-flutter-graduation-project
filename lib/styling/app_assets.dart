@@ -11,5 +11,9 @@ class AppAssets {
   static const String categoryTestImage = 'assets/images/1.png';
   static const String heartIcon = 'assets/icons/heart-icon.svg';
   static const String heartIconFilled = 'assets/icons/heart-icon-filled.svg';
+  static const String heartIconFilledBlack =
+      'assets/icons/heart-icon-filled_black.svg';
+  static const String heartIconFilledWhite =
+      'assets/icons/heart-icon-filled_white.svg';
   static const String cartIcon2 = 'assets/icons/cart-icon2.svg';
 }

@@ -83,7 +83,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
                     }
                     final product = provider.products[index];
                     return GestureDetector(
-                      onTap: () {
+                      onTap: () async {
                         context.push(
                           AppRoutes.productScreen,
                           extra: product.id,

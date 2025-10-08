@@ -4,7 +4,11 @@ import 'package:batrina/models/product_model.dart';
 import 'package:batrina/views/product/widgets/product_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
+import '../../l10n/app_localizations.dart';
+import '../../widgets/custom_text.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key, required this.productId});
@@ -29,6 +33,8 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
+
     return FutureBuilder<ProductModel?>(
       future: _productFuture,
       builder: (context, snapshot) {
@@ -40,11 +46,18 @@ class _ProductScreenState extends State<ProductScreen> {
           );
         }
         if (snapshot.hasError || !snapshot.hasData || snapshot.data == null) {
-          return const Center(child: Text("Error happened!"));
+          return Center(
+            child: CustomText(
+              data: loc!.error_happened,
+              fontSize: 23.sp,
+              fontWeight: FontWeight.w700,
+            ),
+          );
         }
         final product = snapshot.data!;
         return ChangeNotifierProvider(
-          create: (context) => ProductProvider(productModel: product)..initialize(),
+          create: (context) =>
+              ProductProvider(productModel: product)..initialize(),
           child: const ProductDetails(),
         );
       },

@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../l10n/app_localizations.dart';
+import '../../../styling/app_fonts.dart';
+
 class SizeOption extends StatefulWidget {
   const SizeOption({super.key, required this.sizes});
 
@@ -22,6 +25,8 @@ class _SizeOptionState extends State<SizeOption> {
     ProductProvider productProvider = context.watch<ProductProvider>();
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final loc = AppLocalizations.of(context);
+
     return productProvider.currentSize != null
         ? Wrap(
             spacing: 8.w,
@@ -53,6 +58,7 @@ class _SizeOptionState extends State<SizeOption> {
                       color: index != selected
                           ? appColors.secondaryText
                           : theme.scaffoldBackgroundColor,
+                      fontFamily: AppFonts.englishFontFamily,
                     ),
                   ),
                 ),
@@ -61,7 +67,7 @@ class _SizeOptionState extends State<SizeOption> {
           )
         : CustomText(
             textAlign: TextAlign.start,
-            data: "No available Sizes",
+            data: loc!.noAvailableSizes,
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
             color: appColors.secondaryText,

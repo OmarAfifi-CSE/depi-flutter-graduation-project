@@ -808,6 +808,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Post'**
   String get postButton;
+
+  /// No description provided for @errorHappened.
+  ///
+  /// In en, this message translates to:
+  /// **'Error happened!'**
+  String get errorHappened;
+
+  /// No description provided for @reviews.
+  ///
+  /// In en, this message translates to:
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @size.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get size;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addToCart;
+
+  /// No description provided for @notAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get notAvailable;
+
+  /// No description provided for @noAvailableSizes.
+  ///
+  /// In en, this message translates to:
+  /// **'No available Sizes'**
+  String get noAvailableSizes;
+
+  /// No description provided for @noAvailableColors.
+  ///
+  /// In en, this message translates to:
+  /// **'No available Colors'**
+  String get noAvailableColors;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

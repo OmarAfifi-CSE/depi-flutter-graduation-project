@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -53,7 +51,7 @@ final List<ProductModel> demoProducts = [
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
-    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+        'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
     availableColors: [
       ProductColor(
         colorCode: '#1E88E5',
@@ -87,7 +85,7 @@ final List<ProductModel> demoProducts = [
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
-    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+        'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
     availableColors: [
       ProductColor(
         colorCode: '#1E88E5',
@@ -121,7 +119,7 @@ final List<ProductModel> demoProducts = [
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
-    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+        'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
     availableColors: [
       ProductColor(
         colorCode: '#1E88E5',
@@ -155,7 +153,7 @@ final List<ProductModel> demoProducts = [
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
-    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+        'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
     availableColors: [
       ProductColor(
         colorCode: '#1E88E5',
@@ -189,7 +187,7 @@ final List<ProductModel> demoProducts = [
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
-    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+        'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
     availableColors: [
       ProductColor(
         colorCode: '#1E88E5',
@@ -223,7 +221,7 @@ final List<ProductModel> demoProducts = [
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
-    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+        'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
     availableColors: [
       ProductColor(
         colorCode: '#1E88E5',
@@ -257,7 +255,7 @@ final List<ProductModel> demoProducts = [
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
-    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+        'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
     availableColors: [
       ProductColor(
         colorCode: '#1E88E5',
@@ -291,7 +289,7 @@ final List<ProductModel> demoProducts = [
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
-    'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
+        'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
     availableColors: [
       ProductColor(
         colorCode: '#1E88E5',
@@ -595,8 +593,6 @@ final List<ProductModel> demoProducts = [
   ),
 ];
 Future<void> addDemoCategories() async {
-  FireBaseFireStore fireBaseFireStore = FireBaseFireStore();
-
   final List<CategoryModel> demoCategories = [
     CategoryModel(
       name: 'Clothing',

@@ -78,9 +78,9 @@ class AppInitializer {
       await prefs.setString(LocaleProvider.localeKey, localeCode);
     }
     if (localeCode == "ar") {
-      AppFonts.mainFontName = "Tajawal";
+      AppFonts.mainFontName = AppFonts.arabicFontFamily;
     } else {
-      AppFonts.mainFontName = "Poppins";
+      AppFonts.mainFontName = AppFonts.englishFontFamily;
     }
     final initialLocale = Locale(localeCode);
 

@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/styling/app_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../widgets/custom_text.dart';
 
 class ProfileMenuItem extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
+  final String? svg;
   final String title;
   final VoidCallback onTap;
 
   const ProfileMenuItem({
     super.key,
-    required this.icon,
+    this.icon,
     required this.title,
     required this.onTap,
+    this.svg,
   });
 
   @override
@@ -20,27 +25,36 @@ class ProfileMenuItem extends StatelessWidget {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
 
     return ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 2.h),
+      contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
       leading: Container(
+        height: 40.h,
+        width: 40.w,
         padding: EdgeInsets.all(8.r),
         decoration: BoxDecoration(
-          color: appColors.textFieldFill,
+          color: appColors.card?.withValues(alpha: .7),
           borderRadius: BorderRadius.circular(8.r),
         ),
-        child: Icon(icon, size: 34.sp, color: appColors.containerBorder),
+        child: icon != null
+            ? Center(
+                child: Icon(icon, color: theme.primaryColor, size: 22.w),
+              )
+            : SvgPicture.asset(
+                width: 22.w,
+                height: 22.w,
+                svg!,
+                fit: BoxFit.cover,
+              ),
       ),
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
-          color: theme.primaryColor,
-        ),
+      title: CustomText(
+        textAlign: TextAlign.start,
+        data: title,
+        fontWeight: FontWeight.w600,
+        fontSize: 15.sp,
       ),
       trailing: Icon(
         Icons.chevron_right,
-        color: appColors.secondaryText,
-        size: 25.sp,
+        color: theme.primaryColor,
+        size: 22.sp,
       ),
       onTap: onTap,
     );

@@ -176,5 +176,13 @@
 
   "addReviewTitle": "اكتب مراجعة",
   "experienceHint": "كيف كانت تجربتك مع هذا المنتج؟",
-  "postButton": "نشر"
+  "postButton": "نشر",
+
+  "errorHappened": "حدث خطأ!",
+  "reviews": "المراجعات",
+  "size": "المقاس",
+  "addToCart": "أضف إلى السلة",
+  "notAvailable": "غير متوفر",
+  "noAvailableSizes": "لا توجد مقاسات متوفرة",
+  "noAvailableColors": "لا توجد ألوان متوفرة"
 }

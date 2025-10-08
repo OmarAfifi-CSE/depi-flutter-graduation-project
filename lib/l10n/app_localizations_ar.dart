@@ -366,4 +366,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get postButton => 'نشر';
+
+  @override
+  String get errorHappened => 'حدث خطأ!';
+
+  @override
+  String get reviews => 'المراجعات';
+
+  @override
+  String get size => 'المقاس';
+
+  @override
+  String get addToCart => 'أضف إلى السلة';
+
+  @override
+  String get notAvailable => 'غير متوفر';
+
+  @override
+  String get noAvailableSizes => 'لا توجد مقاسات متوفرة';
+
+  @override
+  String get noAvailableColors => 'لا توجد ألوان متوفرة';
 }

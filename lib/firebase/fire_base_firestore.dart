@@ -4,6 +4,8 @@ import 'package:batrina/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../models/cart_model.dart';
+
 class FireBaseFireStore {
   final fireBaseFireStore = FirebaseFirestore.instance;
 
@@ -31,8 +33,6 @@ class FireBaseFireStore {
       await docRef.set(user.toJson());
     }
   }
-
-
 
   Future<void> addProduct(ProductModel product) async {
     DocumentReference documentReference = await fireBaseFireStore
@@ -84,10 +84,15 @@ class FireBaseFireStore {
     };
   }
 
-  Future<ProductModel?> getProductWithVariants({required String productID}) async {
+  Future<ProductModel?> getProductWithVariants({
+    required String productID,
+  }) async {
     try {
       // 1. جيب الدوكيومنت الرئيسي للمنتج
-      final docSnap = await fireBaseFireStore.collection("products").doc(productID).get();
+      final docSnap = await fireBaseFireStore
+          .collection("products")
+          .doc(productID)
+          .get();
 
       if (docSnap.exists) {
         // 2. حوّل الدوكيومنت لموديل المنتج
@@ -103,7 +108,9 @@ class FireBaseFireStore {
         // 4. حوّل الـ variants لموديلات وأضفهم للمنتج
         if (variantsSnap.docs.isNotEmpty) {
           product.variants.addAll(
-              variantsSnap.docs.map((doc) => ProductVariant.fromJson(doc.data())).toList()
+            variantsSnap.docs
+                .map((doc) => ProductVariant.fromJson(doc.data()))
+                .toList(),
           );
         }
         return product;
@@ -113,7 +120,6 @@ class FireBaseFireStore {
       return null;
     }
   }
-
 
   Future<List<ProductModel>> getCategoriesProduct(String category) async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
@@ -130,7 +136,9 @@ class FireBaseFireStore {
     return categoryProduct;
   }
 
-
+  Future<void> getCategories() async {
+    await fireBaseFireStore.collection("categories").get();
+  }
 
   Future<void> addToWishList({required ProductModel productModel}) async {
     await fireBaseFireStore
@@ -213,5 +221,24 @@ class FireBaseFireStore {
       'rating': averageRating,
       'reviewsCount': reviewCount,
     });
+  }
+
+  Future<void> addToCart({required CartModel cartModel}) async {
+    DocumentReference<Map<String, dynamic>> documentReference =
+        await fireBaseFireStore
+            .collection("users")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .collection("userCart")
+            .add(cartModel.toJson());
+    await documentReference.update({"id": documentReference.id});
+  }
+
+  Future<void> removeFromCart({required CartModel cartModel}) async {
+    await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("userCart")
+        .doc(cartModel.id)
+        .delete();
   }
 }

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../l10n/app_localizations.dart';
+
 class ColorOption extends StatefulWidget {
   const ColorOption({super.key, required this.colors});
 
@@ -24,6 +26,7 @@ class _ColorOptionState extends State<ColorOption> {
 
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final loc = AppLocalizations.of(context);
     return productProvider.currentColorName != null
         ? Container(
             // height: 41.h,
@@ -86,7 +89,7 @@ class _ColorOptionState extends State<ColorOption> {
             ),
           )
         : CustomText(
-            data: "No available Colors",
+            data: loc!.noAvailableColors,
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
             color: appColors.secondaryText,
