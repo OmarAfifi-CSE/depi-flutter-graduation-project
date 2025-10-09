@@ -15,6 +15,8 @@ class CartViewBody extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
         // My Cart title
         _buildCartTitle(context),
@@ -42,14 +44,10 @@ class CartViewBody extends StatelessWidget {
 
   Widget _buildCartTitle(BuildContext context) {
     final loc = AppLocalizations.of(context);
-
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: CustomText(
-        data: loc!.mycart,
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-      ),
+    return CustomText(
+      data: loc!.mycart,
+      fontSize: 24,
+      fontWeight: FontWeight.bold,
     );
   }
 

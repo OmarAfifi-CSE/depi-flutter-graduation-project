@@ -12,6 +12,7 @@ import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
 import 'package:batrina/views/splash_screen.dart';
+import 'package:batrina/views/wishlist/wishlist_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -193,6 +194,26 @@ class RouterGenerationConfig {
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: ProductScreen(productId: state.extra as String),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.wishlsitScreen,
+          name: AppRoutes.wishlsitScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const WishlistScreen(),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

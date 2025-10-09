@@ -1,8 +1,10 @@
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/profile/widgets/profile_menu_item.dart';
 import 'package:batrina/views/profile/widgets/profile_settings_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/styling/app_colors.dart';
@@ -74,7 +76,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ProfileMenuItem(
                             icon: Icons.favorite,
                             title: loc.myFavourites,
-                            onTap: () {},
+                            onTap: () {
+                              GoRouter.of(
+                                context,
+                              ).push(AppRoutes.wishlsitScreen);
+                            },
                           ),
                           ProfileMenuItem(
                             icon: Icons.local_shipping,

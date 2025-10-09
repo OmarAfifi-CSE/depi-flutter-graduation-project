@@ -32,8 +32,6 @@ class FireBaseFireStore {
     }
   }
 
-
-
   Future<void> addProduct(ProductModel product) async {
     DocumentReference documentReference = await fireBaseFireStore
         .collection("products")
@@ -84,10 +82,15 @@ class FireBaseFireStore {
     };
   }
 
-  Future<ProductModel?> getProductWithVariants({required String productID}) async {
+  Future<ProductModel?> getProductWithVariants({
+    required String productID,
+  }) async {
     try {
       // 1. جيب الدوكيومنت الرئيسي للمنتج
-      final docSnap = await fireBaseFireStore.collection("products").doc(productID).get();
+      final docSnap = await fireBaseFireStore
+          .collection("products")
+          .doc(productID)
+          .get();
 
       if (docSnap.exists) {
         // 2. حوّل الدوكيومنت لموديل المنتج
@@ -103,7 +106,9 @@ class FireBaseFireStore {
         // 4. حوّل الـ variants لموديلات وأضفهم للمنتج
         if (variantsSnap.docs.isNotEmpty) {
           product.variants.addAll(
-              variantsSnap.docs.map((doc) => ProductVariant.fromJson(doc.data())).toList()
+            variantsSnap.docs
+                .map((doc) => ProductVariant.fromJson(doc.data()))
+                .toList(),
           );
         }
         return product;
@@ -113,7 +118,6 @@ class FireBaseFireStore {
       return null;
     }
   }
-
 
   Future<List<ProductModel>> getCategoriesProduct(String category) async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
@@ -129,8 +133,6 @@ class FireBaseFireStore {
     }).toList();
     return categoryProduct;
   }
-
-
 
   Future<void> addToWishList({required ProductModel productModel}) async {
     await fireBaseFireStore
@@ -213,5 +215,20 @@ class FireBaseFireStore {
       'rating': averageRating,
       'reviewsCount': reviewCount,
     });
+  }
+
+  Future<List<ProductModel>> getUserWishList() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)  //TODO: 
+        .collection("userWishList")
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return [];
+    }
+    List<ProductModel> userWishList = querySnapshot.docs.map((e) {
+      return ProductModel.fromJson(e.data());
+    }).toList();
+    return userWishList;
   }
 }

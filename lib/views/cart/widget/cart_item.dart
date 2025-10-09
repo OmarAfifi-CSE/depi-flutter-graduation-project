@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:batrina/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/views/cart/widget/quant_counter.dart';
 
@@ -10,14 +8,10 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context);
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    final theme = Theme.of(context);
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.cardColor,
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
