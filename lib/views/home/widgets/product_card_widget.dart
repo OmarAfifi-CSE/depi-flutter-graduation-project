@@ -1,3 +1,4 @@
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -37,18 +38,21 @@ class ProductCardWidget extends StatelessWidget {
               maxLines: 1,
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
+              fontFamily: AppFonts.englishFontFamily,
             ),
             CustomText(
               data: subtitle,
               maxLines: 1,
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
+              fontFamily: AppFonts.englishFontFamily,
             ),
             CustomText(
               data: "$price\$",
               maxLines: 1,
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
+              fontFamily: AppFonts.englishFontFamily,
             ),
           ],
         ),

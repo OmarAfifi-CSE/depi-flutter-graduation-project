@@ -704,7 +704,7 @@ abstract class AppLocalizations {
   /// No description provided for @lightMode.
   ///
   /// In en, this message translates to:
-  /// **'lightMode'**
+  /// **'Light Mode'**
   String get lightMode;
 
   /// No description provided for @helpCenter.
@@ -856,6 +856,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No available Colors'**
   String get noAvailableColors;
+
+  /// No description provided for @streetEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Street address is required'**
+  String get streetEmptyDescription;
+
+  /// No description provided for @streetTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Street address is too short'**
+  String get streetTooShortDescription;
+
+  /// No description provided for @cityEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'City is required'**
+  String get cityEmptyDescription;
+
+  /// No description provided for @cityTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'City name is too short'**
+  String get cityTooShortDescription;
+
+  /// No description provided for @countryEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Country is required'**
+  String get countryEmptyDescription;
+
+  /// No description provided for @countryTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Country name is too short'**
+  String get countryTooShortDescription;
+
+  /// No description provided for @phoneEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number is required'**
+  String get phoneEmptyDescription;
+
+  /// No description provided for @phoneInvalidDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must contain only numbers'**
+  String get phoneInvalidDescription;
+
+  /// No description provided for @phoneLengthDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must be between 8 and 15 digits'**
+  String get phoneLengthDescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

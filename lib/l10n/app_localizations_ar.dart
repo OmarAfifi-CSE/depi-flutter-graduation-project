@@ -390,4 +390,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noAvailableColors => 'لا توجد ألوان متوفرة';
+
+  @override
+  String get streetEmptyDescription => 'عنوان الشارع مطلوب';
+
+  @override
+  String get streetTooShortDescription => 'عنوان الشارع قصير جداً';
+
+  @override
+  String get cityEmptyDescription => 'المدينة مطلوبة';
+
+  @override
+  String get cityTooShortDescription => 'اسم المدينة قصير جداً';
+
+  @override
+  String get countryEmptyDescription => 'الدولة مطلوبة';
+
+  @override
+  String get countryTooShortDescription => 'اسم الدولة قصير جداً';
+
+  @override
+  String get phoneEmptyDescription => 'رقم الهاتف مطلوب';
+
+  @override
+  String get phoneInvalidDescription => 'رقم الهاتف يجب أن يحتوي على أرقام فقط';
+
+  @override
+  String get phoneLengthDescription => 'رقم الهاتف يجب أن يكون بين 8 و 15 رقم';
 }

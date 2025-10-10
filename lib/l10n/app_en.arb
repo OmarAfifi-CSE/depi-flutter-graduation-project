@@ -158,7 +158,7 @@
   "settings": "Settings",
   "language": "Language",
   "darkMode": "Dark Mode",
-  "lightMode": "lightMode",
+  "lightMode": "Light Mode",
 
   "helpCenter": "Help Center",
   "english": "English",
@@ -191,5 +191,17 @@
   "addToCart": "Add to cart",
   "notAvailable": "Not available",
   "noAvailableSizes": "No available Sizes",
-  "noAvailableColors": "No available Colors"
+  "noAvailableColors": "No available Colors",
+
+
+  "streetEmptyDescription": "Street address is required",
+  "streetTooShortDescription": "Street address is too short",
+  "cityEmptyDescription": "City is required",
+  "cityTooShortDescription": "City name is too short",
+  "countryEmptyDescription": "Country is required",
+  "countryTooShortDescription": "Country name is too short",
+  "phoneEmptyDescription": "Phone number is required",
+  "phoneInvalidDescription": "Phone number must contain only numbers",
+  "phoneLengthDescription": "Phone number must be between 8 and 15 digits"
+
 }

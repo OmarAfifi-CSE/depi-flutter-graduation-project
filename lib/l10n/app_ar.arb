@@ -185,5 +185,15 @@
   "addToCart": "أضف إلى السلة",
   "notAvailable": "غير متوفر",
   "noAvailableSizes": "لا توجد مقاسات متوفرة",
-  "noAvailableColors": "لا توجد ألوان متوفرة"
+  "noAvailableColors": "لا توجد ألوان متوفرة",
+
+  "streetEmptyDescription": "عنوان الشارع مطلوب",
+  "streetTooShortDescription": "عنوان الشارع قصير جداً",
+  "cityEmptyDescription": "المدينة مطلوبة",
+  "cityTooShortDescription": "اسم المدينة قصير جداً",
+  "countryEmptyDescription": "الدولة مطلوبة",
+  "countryTooShortDescription": "اسم الدولة قصير جداً",
+  "phoneEmptyDescription": "رقم الهاتف مطلوب",
+  "phoneInvalidDescription": "رقم الهاتف يجب أن يحتوي على أرقام فقط",
+  "phoneLengthDescription": "رقم الهاتف يجب أن يكون بين 8 و 15 رقم"
 }

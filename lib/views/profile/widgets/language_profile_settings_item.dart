@@ -23,8 +23,8 @@ class _LanguageProfileSettingsItemState
   double height = 40.h;
   bool viewChooses = false;
 
-  Duration openDuration = const Duration(milliseconds: 500);
-  Duration changeDuration = const Duration(milliseconds: 500);
+  Duration openDuration = const Duration(milliseconds: 300);
+  Duration changeDuration = const Duration(milliseconds: 300);
   bool isClickable = true;
   @override
   void initState() {
@@ -67,12 +67,20 @@ class _LanguageProfileSettingsItemState
           switchOutCurve: Curves.easeInOut,
           transitionBuilder: (child, animation) {
             return FadeTransition(
-              opacity: animation,
+              opacity: Tween<double>(begin: 0, end: 1).animate(
+                CurvedAnimation(parent: animation, curve: Curves.easeInOut),
+              ),
               child: SlideTransition(
-                position: Tween<Offset>(
-                  begin: const Offset(-0.3, 0),
-                  end: Offset.zero,
-                ).animate(animation),
+                position:
+                    Tween<Offset>(
+                      begin: const Offset(-0.3, 0),
+                      end: Offset.zero,
+                    ).animate(
+                      CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
                 child: child,
               ),
             );
@@ -141,6 +149,7 @@ class _LanguageProfileSettingsItemState
                           setState(() {
                             viewChooses = false;
                           });
+                          await Future.delayed(changeDuration);
                           setState(() {
                             height = 40.h;
                           });
@@ -189,6 +198,8 @@ class _LanguageProfileSettingsItemState
                           setState(() {
                             viewChooses = false;
                           });
+                          await Future.delayed(changeDuration);
+
                           setState(() {
                             height = 40.h;
                           });

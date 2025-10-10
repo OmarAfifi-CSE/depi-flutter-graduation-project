@@ -1,3 +1,4 @@
+import 'package:batrina/models/address_model.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/review_model.dart';
 import 'package:batrina/models/user_model.dart';
@@ -240,5 +241,54 @@ class FireBaseFireStore {
         .collection("userCart")
         .doc(cartModel.id)
         .delete();
+  }
+
+  Future<List<AddressModel>> getAddresses() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("userAddresses")
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return [];
+    }
+    List<AddressModel> addresses = querySnapshot.docs.map((e) {
+      return AddressModel.fromJson(e.data());
+    }).toList();
+    return addresses;
+  }
+
+  Future<void> addAddress({required AddressModel address}) async {
+    DocumentReference<Map<String, dynamic>> documentReference =
+        fireBaseFireStore
+            .collection("users")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .collection("userAddresses")
+            .doc();
+    AddressModel addressWithId = address.copyWith(id: documentReference.id);
+    await documentReference.set(addressWithId.toJson());
+  }
+
+  Future<void> removeAddress({required AddressModel address}) async {
+    await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("userAddresses")
+        .doc(address.id)
+        .delete();
+  }
+
+  Future<void> addMainAddressForUser({required AddressModel address}) async {
+    await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set({'mainAddressId': address.id}, SetOptions(merge: true));
+  }
+
+  Future<void> removeMainAddressForUser({required AddressModel address}) async {
+    await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set({'mainAddressId': null}, SetOptions(merge: true));
   }
 }

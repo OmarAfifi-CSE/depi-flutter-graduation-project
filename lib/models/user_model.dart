@@ -4,9 +4,11 @@ class UserModel {
   final String name;
   final String email;
   final String? picture;
+  String? mainAddressId;
 
   UserModel({
     this.picture,
+    this.mainAddressId,
     required this.id,
     required this.role,
     required this.name,
@@ -20,6 +22,7 @@ class UserModel {
       name: json['name'],
       email: json['email'],
       picture: json["picture"],
+      mainAddressId: json['mainAddressId'],
     );
   }
 
@@ -30,6 +33,7 @@ class UserModel {
       'name': name,
       'email': email,
       'picture': picture,
+      'mainAddressId': mainAddressId,
     };
   }
 }

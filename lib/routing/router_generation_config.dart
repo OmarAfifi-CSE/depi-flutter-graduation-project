@@ -10,6 +10,8 @@ import 'package:batrina/views/home/category_screen.dart';
 import 'package:batrina/views/home/category_products_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
+import 'package:batrina/views/profile/add_address_screen.dart';
+import 'package:batrina/views/profile/address_page.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
 import 'package:batrina/views/splash_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
@@ -193,6 +195,46 @@ class RouterGenerationConfig {
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: ProductScreen(productId: state.extra as String),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.addressesScreen,
+          name: AppRoutes.addressesScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const AddressPage(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.addAddressScreen,
+          name: AppRoutes.addAddressScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const AddAddressScreen(),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

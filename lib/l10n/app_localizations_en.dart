@@ -314,7 +314,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get darkMode => 'Dark Mode';
 
   @override
-  String get lightMode => 'lightMode';
+  String get lightMode => 'Light Mode';
 
   @override
   String get helpCenter => 'Help Center';
@@ -390,4 +390,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noAvailableColors => 'No available Colors';
+
+  @override
+  String get streetEmptyDescription => 'Street address is required';
+
+  @override
+  String get streetTooShortDescription => 'Street address is too short';
+
+  @override
+  String get cityEmptyDescription => 'City is required';
+
+  @override
+  String get cityTooShortDescription => 'City name is too short';
+
+  @override
+  String get countryEmptyDescription => 'Country is required';
+
+  @override
+  String get countryTooShortDescription => 'Country name is too short';
+
+  @override
+  String get phoneEmptyDescription => 'Phone number is required';
+
+  @override
+  String get phoneInvalidDescription => 'Phone number must contain only numbers';
+
+  @override
+  String get phoneLengthDescription => 'Phone number must be between 8 and 15 digits';
 }

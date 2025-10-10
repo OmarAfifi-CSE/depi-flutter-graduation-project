@@ -1,7 +1,9 @@
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/views/profile/widgets/profile_menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../../../styling/app_colors.dart';
@@ -49,7 +51,9 @@ class ProfileInfo extends StatelessWidget {
             ProfileMenuItem(
               icon: Icons.local_shipping,
               title: loc.shippingAddress,
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(AppRoutes.addressesScreen);
+              },
             ),
             ProfileMenuItem(
               icon: Icons.credit_card,
