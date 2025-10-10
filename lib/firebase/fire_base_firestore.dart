@@ -291,4 +291,11 @@ class FireBaseFireStore {
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .set({'mainAddressId': null}, SetOptions(merge: true));
   }
+
+  Future<void> editUser({required UserModel userModel}) async {
+    await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .set(userModel.toJson(), SetOptions(merge: true));
+  }
 }

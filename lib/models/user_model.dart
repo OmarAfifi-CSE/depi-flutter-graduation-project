@@ -36,4 +36,22 @@ class UserModel {
       'mainAddressId': mainAddressId,
     };
   }
+
+  UserModel copyWith({
+    String? id,
+    String? role,
+    String? name,
+    String? email,
+    String? picture,
+    String? mainAddressId,
+  }) {
+    return UserModel(
+      id: id ?? this.id,
+      role: role ?? this.role,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      picture: picture ?? this.picture,
+      mainAddressId: mainAddressId ?? this.mainAddressId,
+    );
+  }
 }

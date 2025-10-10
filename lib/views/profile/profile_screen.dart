@@ -1,8 +1,11 @@
+import 'package:batrina/controllers/provider/profile_provider.dart';
+import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/views/profile/widgets/language_profile_settings_item.dart';
 import 'package:batrina/views/profile/widgets/profile_info.dart';
 import 'package:batrina/views/profile/widgets/profile_menu_item.dart';
 import 'package:batrina/views/profile/widgets/profile_settings_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +24,16 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   bool notificationEnabled = true;
+
+  @override
+  void initState() {
+    context.read<ProfileProvider>().initilize(
+      name: FireBaseFireStore.currentUser!.name,
+      image: FireBaseFireStore.currentUser!.picture,
+    );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

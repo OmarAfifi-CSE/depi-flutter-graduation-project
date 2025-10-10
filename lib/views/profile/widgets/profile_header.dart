@@ -1,9 +1,11 @@
+import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/styling/app_colors.dart';
 
@@ -12,9 +14,9 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProfileProvider profileProvider = context.watch<ProfileProvider>();
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    final UserModel currentUser = FireBaseFireStore.currentUser!;
     return Container(
       height: 80.h,
       padding: EdgeInsets.all(12.r),
@@ -32,7 +34,7 @@ class ProfileHeader extends StatelessWidget {
       ),
       child: Row(
         children: [
-          currentUser.picture != null
+          profileProvider.mainImage != null
               ? Container(
                   width: 60.w,
                   height: 60.h,
@@ -42,7 +44,9 @@ class ProfileHeader extends StatelessWidget {
                   child: Material(
                     borderRadius: BorderRadius.circular(12.r),
                     clipBehavior: Clip.antiAlias, // This is the key property
-                    child: BuildDynamicImage(imageUrl: currentUser.picture!),
+                    child: BuildDynamicImage(
+                      imageUrl: profileProvider.mainImage!,
+                    ),
                   ),
                 )
               : Container(
@@ -65,14 +69,15 @@ class ProfileHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  data: currentUser.name,
+                  data: profileProvider.mainName,
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                   fontFamily: AppFonts.englishFontFamily,
                 ),
                 SizedBox(height: 1.h),
+                //still for us constant
                 CustomText(
-                  data: currentUser.email,
+                  data: FireBaseFireStore.currentUser!.email,
                   fontSize: 15.sp,
                   fontWeight: FontWeight.w400,
                   color: appColors.secondaryText,

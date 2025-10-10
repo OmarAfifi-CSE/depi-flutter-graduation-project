@@ -1,9 +1,13 @@
+import 'package:animations/animations.dart';
+import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
+import 'package:batrina/views/profile/personal_details.dart';
 import 'package:batrina/views/profile/widgets/profile_menu_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../../../styling/app_colors.dart';
@@ -34,7 +38,9 @@ class ProfileInfo extends StatelessWidget {
             ProfileMenuItem(
               icon: Icons.person,
               title: loc.personalDetails,
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(AppRoutes.personalDetails);
+              },
             ),
             ProfileMenuItem(
               icon: Icons.shopping_bag,

@@ -150,14 +150,14 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                 BlocConsumer<AddAddressCubit, AddAddressState>(
                   listener: (context, state) {
                     if (state is AddAddressSuccess) {
-                      // CustomSnackBar.showSnackBar(
-                      //   context: context,
-                      //   message: "Address added successfully",
-                      //   color: Colors.green,
-                      // );
+                      CustomSnackBar.showSnackBar(
+                        context: context,
+                        message: "Address added successfully",
+                        color: Colors.green,
+                      );
 
                       context.read<GetAddressesCubit>().getAddresses();
-                      // context.pop();
+                      context.pop();
                     } else if (state is AddAddressFailure) {
                       CustomSnackBar.showSnackBar(
                         context: context,

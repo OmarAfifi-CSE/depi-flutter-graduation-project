@@ -79,7 +79,7 @@ class AddressCard extends StatelessWidget {
         SizedBox(height: 6.h),
 
         CustomText(
-          data: 'Add an address ',
+          data: 'Drag an address ',
           fontSize: 13.sp,
           fontWeight: FontWeight.w400,
           color: appColors.secondaryText,

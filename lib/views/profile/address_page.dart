@@ -76,22 +76,7 @@ class _AddressPageState extends State<AddressPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomHeaderWidget(
-                      prefix: const BackArrow(),
-                      suffix: Container(
-                        width: 35.w,
-                        height: 35.h,
-                        decoration: BoxDecoration(
-                          color: theme.primaryColor,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.add,
-                          size: 20.sp,
-                          color: theme.scaffoldBackgroundColor,
-                        ),
-                      ),
-                    ),
+                    const CustomHeaderWidget(prefix: BackArrow()),
                     SizedBox(height: 20.h),
                     CustomText(
                       data: "main Address",

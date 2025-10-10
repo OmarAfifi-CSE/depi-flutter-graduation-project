@@ -33,6 +33,7 @@ dependencies:
   cached_network_image: ^3.4.1
   card_swiper: ^3.0.1
   flutter_card_swiper: ^6.0.0
+  image_picker: ^1.2.0
 
 
 dev_dependencies:

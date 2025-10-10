@@ -12,6 +12,7 @@ import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/profile/add_address_screen.dart';
 import 'package:batrina/views/profile/address_page.dart';
+import 'package:batrina/views/profile/personal_details.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
 import 'package:batrina/views/splash_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
@@ -235,6 +236,26 @@ class RouterGenerationConfig {
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const AddAddressScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.personalDetails,
+          name: AppRoutes.personalDetails,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const PersonalDetails(),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

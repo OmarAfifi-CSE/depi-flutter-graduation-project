@@ -21,4 +21,5 @@ class AppRoutes {
   static const String reviewsScreen = '/reviews';
   static const String addressesScreen = '/address';
   static const String addAddressScreen = '/addAddress';
+  static const String personalDetails = '/personal';
 }
