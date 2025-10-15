@@ -8,8 +8,12 @@ class ProductProvider extends ChangeNotifier {
   late List<String> currentSliderImage;
   late String? currentColorName;
   late String? currentSize;
+  int quantity = 1;
 
   ProductProvider({required this.productModel});
+
+  ProductVariant? get variant =>
+      productModel.getVariant(currentColorName ?? '', currentSize ?? '');
 
   void initialize() {
     currentColorName = productModel.availableColors.isEmpty

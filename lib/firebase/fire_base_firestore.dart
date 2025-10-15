@@ -224,25 +224,6 @@ class FireBaseFireStore {
     });
   }
 
-  Future<void> addToCart({required CartModel cartModel}) async {
-    DocumentReference<Map<String, dynamic>> documentReference =
-        await fireBaseFireStore
-            .collection("users")
-            .doc(FirebaseAuth.instance.currentUser!.uid)
-            .collection("userCart")
-            .add(cartModel.toJson());
-    await documentReference.update({"id": documentReference.id});
-  }
-
-  Future<void> removeFromCart({required CartModel cartModel}) async {
-    await fireBaseFireStore
-        .collection("users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection("userCart")
-        .doc(cartModel.id)
-        .delete();
-  }
-
   Future<List<AddressModel>> getAddresses() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
         .collection("users")
@@ -297,5 +278,64 @@ class FireBaseFireStore {
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .set(userModel.toJson(), SetOptions(merge: true));
+  }
+
+  Future<CartModel> addToCart({required CartModel cartModel}) async {
+    //هنشوف الاول هل الكوانتيي نظبوطه للتاكيد
+    //هنجيب الفارييانت بالضبط
+    DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
+        await fireBaseFireStore
+            .collection("products")
+            .doc(cartModel.productId)
+            .collection("variants")
+            .doc(cartModel.variantId)
+            .get();
+    if (!documentSnapshot.exists) {
+      throw Exception();
+    }
+    ProductVariant updatedVariant = ProductVariant.fromJson(
+      documentSnapshot.data()!,
+    );
+    if (cartModel.quantity > updatedVariant.stock) {
+      throw Exception("not_available");
+    }
+    DocumentReference<Map<String, dynamic>> documentReference =
+        fireBaseFireStore
+            .collection("users")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .collection("userCart")
+            .doc();
+    CartModel cartModelWithNewID = cartModel.copyWith(id: documentReference.id);
+    await documentReference.set(cartModelWithNewID.toJson());
+    //عملنا كده علشان لما اضيفو لوكال يبقي معايا الايدي الجديد
+    return cartModelWithNewID;
+  }
+
+  Future<void> removeFromCart({required String cartId}) async {
+    await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("userCart")
+        .doc(cartId)
+        .delete();
+  }
+
+  //هنجيب ايدي الفاريانت اللي حاططها في الكارت
+  Future<List<CartModel>> getUserCartForProduct({
+    required ProductModel productModel,
+  }) async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("userCart")
+        .where("productId", isEqualTo: productModel.id)
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return [];
+    }
+    List<CartModel> userCartForProduct = querySnapshot.docs
+        .map((e) => CartModel.fromJson(e.data()))
+        .toList();
+    return userCartForProduct;
   }
 }
