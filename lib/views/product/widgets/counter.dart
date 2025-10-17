@@ -40,7 +40,7 @@ class _CounterState extends State<Counter> {
       alignment: Alignment.center,
       height: 30.h,
       decoration: BoxDecoration(
-        color: appColors.card,
+        color: appColors.countButtonBackground,
         borderRadius: BorderRadius.circular(100.r),
       ),
       child: Padding(

@@ -338,4 +338,21 @@ class FireBaseFireStore {
         .toList();
     return userCartForProduct;
   }
+
+  Future<List<CartModel>> getUserCart() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("userCart")
+        .orderBy("addedAt", descending: true)
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return [];
+    }
+
+    List<CartModel> userCart = querySnapshot.docs
+        .map((e) => CartModel.fromJson(e.data()))
+        .toList();
+    return userCart;
+  }
 }

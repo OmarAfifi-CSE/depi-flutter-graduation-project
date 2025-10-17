@@ -25,14 +25,14 @@ class GetUserCartForProductCubit extends Cubit<GetUserCartForProductState> {
     }
   }
 
-  void addLocale({required CartModel cartModel}) {
+  void addLocal({required CartModel cartModel}) {
     List<CartModel> userCartForProduct = List.from(
       (state as GetUserCartForProductSuccess).userCartForProduct,
     )..add(cartModel);
     emit(GetUserCartForProductSuccess(userCartForProduct: userCartForProduct));
   }
 
-  void deleteLocale({required String cartId}) {
+  void deleteLocal({required String cartId}) {
     List<CartModel> userCartForProduct = List.from(
       (state as GetUserCartForProductSuccess).userCartForProduct,
     )..removeWhere((element) => element.id == cartId);

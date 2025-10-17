@@ -1,7 +1,10 @@
+import 'package:batrina/controllers/provider/cart_price_provider.dart';
+import 'package:batrina/views/cart/widget/price_row.dart';
 import 'package:flutter/material.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckOutDetails extends StatelessWidget {
@@ -9,95 +12,69 @@ class CheckOutDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final CartPriceProvider cartPriceProvider = context
+        .watch<CartPriceProvider>();
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final theme = Theme.of(context);
-
     return Container(
-      padding:  const EdgeInsets.all(20),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
       decoration: BoxDecoration(
         color: theme.scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(12.r),
-        border:  Border.all(color: appColors.containerBorder!, width: .5),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withAlpha((0.1 * 255).toInt()),
-            spreadRadius: 1,
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        border: Border.all(color: appColors.card!, width: 1.r),
       ),
       child: Column(
         children: [
           // Subtotal
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomText(
-                data: loc!.subtotal,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-              const CustomText(
-                data: '\$200',
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ],
+          PriceRow(
+            title: loc!.subtotal,
+            suffix: CustomText(
+              data: '\$${cartPriceProvider.subTotal}',
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          SizedBox(height: 12.h),
-          Container(height: 1.h,color:theme.dividerColor),
-          SizedBox(height: 12.h),
+
+          SizedBox(
+            height: 15.h,
+            child: Divider(color: appColors.card, thickness: 1.h, height: 1.h),
+          ),
 
           // Shipping
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomText(
-                data: loc.shipping,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-              const CustomText(
-                data: '\$4888',
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
-            ],
+          PriceRow(
+            title: loc.shipping,
+            suffix: CustomText(
+              data: '\$${cartPriceProvider.currentShipping}',
+              fontSize: 16.sp,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          SizedBox(height: 16.h),
-
-          // Divider
-          Container(height: 1.h, color:theme.dividerColor),
-          SizedBox(height: 16.h),
+          SizedBox(
+            height: 15.h,
+            child: Divider(color: appColors.card, thickness: 1.h, height: 1.h),
+          ),
 
           // Total
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomText(
-                data: loc.total,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-              Row(
-                children: [
-                  CustomText(
-                    data: '(3 ${loc.items} )',
-                    fontSize: 14,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  SizedBox(width: 8.w),
-                  const CustomText(
-                    data: '\$5000',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ],
-              ),
-            ],
+          PriceRow(
+            title: loc.total,
+            suffix: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomText(
+                  data: '(${cartPriceProvider.count} ${loc.items} )',
+                  fontSize: 13.sp,
+                  color: appColors.containerBorder,
+                  fontWeight: FontWeight.w500,
+                ),
+                SizedBox(width: 8.w),
+                CustomText(
+                  data: '\$${cartPriceProvider.total}',
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
+            ),
           ),
         ],
       ),
