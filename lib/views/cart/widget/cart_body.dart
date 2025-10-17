@@ -110,7 +110,7 @@ class CartViewBody extends StatelessWidget {
 
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
-      padding: EdgeInsetsGeometry.only(top: 9.h, right: 15.w, left: 15.w),
+      padding: EdgeInsetsGeometry.only(top: 9.h),
       separatorBuilder: (context, index) {
         return SizedBox(
           child: Center(

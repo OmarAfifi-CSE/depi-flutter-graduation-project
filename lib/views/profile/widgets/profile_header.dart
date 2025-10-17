@@ -73,6 +73,7 @@ class ProfileHeader extends StatelessWidget {
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w600,
                   fontFamily: AppFonts.englishFontFamily,
+                  maxLines: 1,
                 ),
                 SizedBox(height: 1.h),
                 //still for us constant
@@ -82,6 +83,7 @@ class ProfileHeader extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: appColors.secondaryText,
                   fontFamily: AppFonts.englishFontFamily,
+                  maxLines: 1,
                 ),
               ],
             ),

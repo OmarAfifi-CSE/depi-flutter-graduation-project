@@ -57,6 +57,15 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
       context.read<GetCartCubit>().removeLocal(widget.cartModel.id);
       context.read<CartPriceProvider>().refresh();
     } catch (e) {
+      if (isOpen) {
+        slideAnimationController.reverse();
+        setState(() {
+          isOpen = false;
+          boxShadow = BoxShadow(
+            color: Theme.of(context).scaffoldBackgroundColor,
+          );
+        });
+      }
       setState(() {
         isDeleting = false;
       });
@@ -153,7 +162,7 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                 ),
               ),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.0.h),
+            padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 15.w),
             child: SizedBox(
               height: 100.h,
               width: double.infinity,
