@@ -54,7 +54,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   void initState() {
-    // TODO: implement initState
     profileProvider = context.read<ProfileProvider>();
     nameController = TextEditingController(text: profileProvider.mainName);
 
