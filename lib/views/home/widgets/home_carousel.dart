@@ -30,10 +30,7 @@ final List<Widget> imageSliders = imgList
               left: 0.0,
               right: 0.0,
               child: Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: 10.h,
-                  horizontal: 20.w,
-                ),
+                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
                 child: CustomText(
                   data: "Buy Now",
                   fontSize: 22.sp,

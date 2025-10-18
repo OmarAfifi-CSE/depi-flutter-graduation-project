@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 part 'nav_control_state.dart';
 
 class NavControlCubit extends Cubit<NavControlState> {
-  NavControlCubit() : super(NavControlInitial());
+  NavControlCubit() : super(const NavControlInitial());
 
   void setIndex(int index) {
     emit(NavControlValue(index));

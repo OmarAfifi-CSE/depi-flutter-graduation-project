@@ -1,7 +1,9 @@
 import 'package:batrina/app_initializer.dart';
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
+import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/styling/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'l10n/app_localizations.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 
 void main() async {
   final InitializationResult result = await AppInitializer.initialize();
@@ -43,7 +45,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
         BlocProvider(create: (_) => AuthCubit()),
+        BlocProvider(create: (_) => GetCartCubit()),
         ChangeNotifierProvider(create: (_) => ProductsProvider()),
+        ChangeNotifierProvider(create: (_) => ProfileProvider()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) =>

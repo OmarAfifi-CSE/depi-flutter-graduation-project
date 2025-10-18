@@ -1,5 +1,6 @@
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/routing/app_routes.dart';
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -76,7 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 color: theme.primaryColor,
                 fontSize: 42.sp,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
+                fontFamily: AppFonts.englishFontFamily,
               ),
             ).animate().fade(delay: 200.ms, duration: 400.ms),
           ),

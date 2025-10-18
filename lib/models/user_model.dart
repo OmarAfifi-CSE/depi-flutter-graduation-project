@@ -1,17 +1,14 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 class UserModel {
   final String id;
   final String role;
   final String name;
   final String email;
   final String? picture;
+  String? mainAddressId;
 
   UserModel({
     this.picture,
+    this.mainAddressId,
     required this.id,
     required this.role,
     required this.name,
@@ -25,6 +22,7 @@ class UserModel {
       name: json['name'],
       email: json['email'],
       picture: json["picture"],
+      mainAddressId: json['mainAddressId'],
     );
   }
 
@@ -35,6 +33,25 @@ class UserModel {
       'name': name,
       'email': email,
       'picture': picture,
+      'mainAddressId': mainAddressId,
     };
+  }
+
+  UserModel copyWith({
+    String? id,
+    String? role,
+    String? name,
+    String? email,
+    String? picture,
+    String? mainAddressId,
+  }) {
+    return UserModel(
+      id: id ?? this.id,
+      role: role ?? this.role,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      picture: picture ?? this.picture,
+      mainAddressId: mainAddressId ?? this.mainAddressId,
+    );
   }
 }

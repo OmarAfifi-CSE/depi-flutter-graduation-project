@@ -1,5 +1,5 @@
 import 'package:batrina/controllers/provider/products_provider.dart';
-import 'package:batrina/widgets/product_grid_view.dart';
+import 'package:batrina/widgets/product/product_grid_view.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:flutter/material.dart';

@@ -62,7 +62,8 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale)
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,7 +71,8 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -82,17 +84,18 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('en')
+    Locale('en'),
   ];
 
   /// No description provided for @test.
@@ -641,17 +644,17 @@ abstract class AppLocalizations {
   /// **'Search'**
   String get search;
 
-  /// No description provided for @clothes.
+  /// No description provided for @emptyCategories.
   ///
   /// In en, this message translates to:
-  /// **'Clothes'**
-  String get clothes;
+  /// **'No categories found'**
+  String get emptyCategories;
 
-  /// No description provided for @top_dresses.
+  /// No description provided for @defaultError.
   ///
   /// In en, this message translates to:
-  /// **'Top Dresses'**
-  String get top_dresses;
+  /// **'An unexpected error occurred.'**
+  String get defaultError;
 
   /// No description provided for @personalDetails.
   ///
@@ -700,6 +703,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark Mode'**
   String get darkMode;
+
+  /// No description provided for @lightMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Mode'**
+  String get lightMode;
 
   /// No description provided for @helpCenter.
   ///
@@ -809,20 +818,105 @@ abstract class AppLocalizations {
   /// **'Post'**
   String get postButton;
 
-  /// No description provided for @emptyCategories.
+  /// No description provided for @errorHappened.
   ///
   /// In en, this message translates to:
-  /// **'No categories found'**
-  String get emptyCategories;
+  /// **'Error happened!'**
+  String get errorHappened;
 
-  /// No description provided for @defaultError.
+  /// No description provided for @reviews.
   ///
   /// In en, this message translates to:
-  /// **'An unexpected error occurred.'**
-  String get defaultError;
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @size.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get size;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addToCart;
+
+  /// No description provided for @notAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get notAvailable;
+
+  /// No description provided for @noAvailableSizes.
+  ///
+  /// In en, this message translates to:
+  /// **'No available Sizes'**
+  String get noAvailableSizes;
+
+  /// No description provided for @noAvailableColors.
+  ///
+  /// In en, this message translates to:
+  /// **'No available Colors'**
+  String get noAvailableColors;
+
+  /// No description provided for @streetEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Street address is required'**
+  String get streetEmptyDescription;
+
+  /// No description provided for @streetTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Street address is too short'**
+  String get streetTooShortDescription;
+
+  /// No description provided for @cityEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'City is required'**
+  String get cityEmptyDescription;
+
+  /// No description provided for @cityTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'City name is too short'**
+  String get cityTooShortDescription;
+
+  /// No description provided for @countryEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Country is required'**
+  String get countryEmptyDescription;
+
+  /// No description provided for @countryTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Country name is too short'**
+  String get countryTooShortDescription;
+
+  /// No description provided for @phoneEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number is required'**
+  String get phoneEmptyDescription;
+
+  /// No description provided for @phoneInvalidDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must contain only numbers'**
+  String get phoneInvalidDescription;
+
+  /// No description provided for @phoneLengthDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must be between 8 and 15 digits'**
+  String get phoneLengthDescription;
 }
 
-class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -831,25 +925,26 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['ar', 'en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['ar', 'en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'ar': return AppLocalizationsAr();
-    case 'en': return AppLocalizationsEn();
+    case 'ar':
+      return AppLocalizationsAr();
+    case 'en':
+      return AppLocalizationsEn();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
+    'that was used.',
   );
 }

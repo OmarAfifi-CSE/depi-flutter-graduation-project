@@ -18,11 +18,11 @@ class LocaleProvider extends ChangeNotifier {
       return;
     }
     if (localeName == "ar") {
-      AppFonts.mainFontName = "Tajawal";
+      AppFonts.mainFontName = AppFonts.arabicFontFamily;
       _locale = const Locale("ar");
       notifyListeners();
     } else {
-      AppFonts.mainFontName = "Poppins";
+      AppFonts.mainFontName = AppFonts.englishFontFamily;
       _locale = const Locale("en");
       notifyListeners();
     }

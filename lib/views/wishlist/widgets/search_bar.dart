@@ -19,7 +19,7 @@ class WishListSearchBar extends StatelessWidget {
             ),
             child: TextField(
               decoration: InputDecoration(
-                hintText: '${loc!.search}...', 
+                hintText: '${loc!.search}...',
                 hintStyle: const TextStyle(color: Colors.grey),
                 prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(

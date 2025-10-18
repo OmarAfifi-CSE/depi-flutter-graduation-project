@@ -35,16 +35,16 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     return Padding(
-      padding: EdgeInsets.only(left: 25.w, right: 16.w,),
+      padding: EdgeInsets.only(left: 25.w, right: 16.w),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.r),
           boxShadow: [
             BoxShadow(
-                color: theme.primaryColor.withValues(alpha: .15),
-                blurRadius: 10,
-                offset: Offset(0, 2.h),
-                spreadRadius: 1
+              color: theme.primaryColor.withValues(alpha: .15),
+              blurRadius: 10,
+              offset: Offset(0, 2.h),
+              spreadRadius: 1,
             ),
           ],
         ),

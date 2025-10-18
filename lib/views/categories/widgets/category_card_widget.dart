@@ -1,6 +1,6 @@
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/routing/app_routes.dart';
-import 'package:batrina/widgets/product/build_dynamic_image.dart';
+import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -30,12 +30,12 @@ class CategoryCardWidget extends StatelessWidget {
                 color: theme.primaryColor.withValues(alpha: .15),
                 blurRadius: 5,
                 offset: Offset(0, 5.h),
-                spreadRadius: 1
+                spreadRadius: 1,
               ),
             ],
           ),
           child: SizedBox(
-            height:160.h,
+            height: 160.h,
             child: Stack(
               children: [
                 Material(

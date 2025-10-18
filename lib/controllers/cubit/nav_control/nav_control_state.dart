@@ -4,13 +4,13 @@ part of 'nav_control_cubit.dart';
 sealed class NavControlState {
   final int index;
 
-  NavControlState({required this.index});
+  const NavControlState({required this.index});
 }
 
 final class NavControlInitial extends NavControlState {
-  NavControlInitial() : super(index: 0);
+  const NavControlInitial() : super(index: 0);
 }
 
 final class NavControlValue extends NavControlState {
-  NavControlValue(int index) : super(index: index);
+  const NavControlValue(int index) : super(index: index);
 }

@@ -146,8 +146,9 @@
 
 
   "search": "Search",
-  "clothes": "Clothes",
-  "top_dresses": "Top Dresses",
+  "emptyCategories":"No categories found",
+  "defaultError":"An unexpected error occurred.",
+
 
 
   "personalDetails": "Personal Details",
@@ -158,6 +159,7 @@
   "settings": "Settings",
   "language": "Language",
   "darkMode": "Dark Mode",
+  "lightMode": "Light Mode",
   "helpCenter": "Help Center",
   "english": "English",
 
@@ -183,6 +185,23 @@
   "experienceHint": "How was your experience with this product?",
   "postButton": "Post",
 
-  "emptyCategories":"No categories found",
-  "defaultError":"An unexpected error occurred."
-}
+  "errorHappened": "Error happened!",
+  "reviews": "Reviews",
+  "size": "Size",
+  "addToCart": "Add to cart",
+  "notAvailable": "Not available",
+  "noAvailableSizes": "No available Sizes",
+  "noAvailableColors": "No available Colors",
+
+
+  "streetEmptyDescription": "Street address is required",
+  "streetTooShortDescription": "Street address is too short",
+  "cityEmptyDescription": "City is required",
+  "cityTooShortDescription": "City name is too short",
+  "countryEmptyDescription": "Country is required",
+  "countryTooShortDescription": "Country name is too short",
+  "phoneEmptyDescription": "Phone number is required",
+  "phoneInvalidDescription": "Phone number must contain only numbers",
+  "phoneLengthDescription": "Phone number must be between 8 and 15 digits"
+
+  }

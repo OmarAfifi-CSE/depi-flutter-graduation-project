@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
+import 'package:batrina/styling/app_colors.dart';
 
 class AppThemes {
   static final lightTheme = ThemeData(
@@ -53,7 +53,7 @@ class AppThemes {
         secondaryText: Color(0xffCCCCCC),
         card: Color(0xff1E1E1E),
         containerBorder: Color(0xff555555),
-        countButtonBackground: Color(0xffEEEEEE),
+        countButtonBackground: Color(0xFF424242),
       ),
     ],
   );

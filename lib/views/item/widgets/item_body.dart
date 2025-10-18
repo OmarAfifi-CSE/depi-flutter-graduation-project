@@ -16,7 +16,7 @@ class ItemBody extends StatelessWidget {
         const SliverToBoxAdapter(child: ItemImg()),
 
         // Product details card
-         SliverToBoxAdapter(
+        SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0.w),
             child: const ItemDetails(),

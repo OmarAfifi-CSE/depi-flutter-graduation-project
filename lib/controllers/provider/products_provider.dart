@@ -13,7 +13,8 @@ class ProductsProvider with ChangeNotifier {
 
   // دالة لجلب المنتجات (سواء أول مرة أو الصفحات التالية)
   Future<void> fetchProducts(String category) async {
-    if (isLoading || !hasMore) return; // لو بنحمّل حاليًا أو المنتجات خلصت، منعملش حاجة
+    if (isLoading || !hasMore)
+      return; // لو بنحمّل حاليًا أو المنتجات خلصت، منعملش حاجة
 
     isLoading = true;
     notifyListeners();
