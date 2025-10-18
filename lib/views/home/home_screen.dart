@@ -1,11 +1,13 @@
-import 'package:batrina/l10n/app_localizations.dart';
-import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/controllers/cubit/category/category_cubit.dart';
+import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/views/home/widgets/category_filter.dart';
 import 'package:batrina/views/home/widgets/home_carousel.dart';
-import 'package:batrina/views/home/widgets/product_grid_view.dart';
+import 'package:batrina/widgets/product_grid_view.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,70 +17,96 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String selectedCategory = 'Dresses';
+  final ValueNotifier<String> _selectedCategoryNotifier = ValueNotifier('');
+  final _scrollController = ScrollController();
 
-  final List<String> categories = [
-    'Dresses',
-    'Jackets',
-    'Jeans',
-    'Shoes',
-    'Accessories',
-    'Bags',
-  ];
+  @override
+  void initState() {
+    super.initState();
+    final provider = Provider.of<ProductsProvider>(context, listen: false);
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        if (_selectedCategoryNotifier.value.isNotEmpty) {
+          provider.fetchProducts(_selectedCategoryNotifier.value);
+        }
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _selectedCategoryNotifier.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 30.h),
-              const HomeCarousel(),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 30.h),
-                    CustomText(
-                      data: loc!.categories,
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.w700,
+    return BlocProvider(
+      create: (context) => CategoryCubit()..fetchCategories(),
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            controller: _scrollController,
+            child: Directionality(
+              textDirection: TextDirection.ltr,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const HomeCarousel(),
+                  SizedBox(height: 30.h),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(right: 25.w),
+                          child: CustomText(
+                            data: "Categories",
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                        SizedBox(height: 12.h),
+                        CategoryFilter(
+                          selectedCategoryNotifier: _selectedCategoryNotifier,
+                        ),
+                        SizedBox(height: 24.h),
+                        ValueListenableBuilder<String>(
+                          valueListenable: _selectedCategoryNotifier,
+                          builder: (context, selectedCategory, child) {
+                            if (selectedCategory.isEmpty) {
+                              return const SizedBox.shrink();
+                            }
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(right: 25.w),
+                                  child: CustomText(
+                                    data: 'Top in $selectedCategory',
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'Poppins',
+                                  ),
+                                ),
+                                SizedBox(height: 16.h),
+                                ProductGridView(categoryName: selectedCategory),
+                              ],
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 15.h),
-                    FilterListView(
-                      filters: categories,
-                      initialSelection: 'Dresses',
-                      onFilterSelected: (filter) {
-                        setState(() {
-                          selectedCategory = filter;
-                        });
-                      },
-                      selectedColor: Colors.black,
-                      unselectedColor: Colors.white,
-                      selectedTextColor: Colors.white,
-                      unselectedTextColor: Colors.black87,
-                    ),
-                    SizedBox(height: 15.h),
-                    CustomText(
-                      data: loc.top_dresses,
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ],
-                ),
+                  ),
+                  SizedBox(height: 16.h),
+                ],
               ),
-              SizedBox(height: 15.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: const ProductGridView(),
-              ),
-            ],
+            ),
           ),
         ),
       ),

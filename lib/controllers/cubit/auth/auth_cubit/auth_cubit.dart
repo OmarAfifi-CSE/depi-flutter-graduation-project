@@ -33,6 +33,7 @@ class AuthCubit extends Cubit<AuthState> {
           id: userCredential.user!.uid,
           name: userCredential.user!.displayName!,
           email: userCredential.user!.email!,
+          picture: userCredential.user!.photoURL,
           role: 'user',
         );
 

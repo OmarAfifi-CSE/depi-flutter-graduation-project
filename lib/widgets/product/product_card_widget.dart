@@ -1,5 +1,5 @@
+import 'package:batrina/widgets/product/build_dynamic_image.dart';
 import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,9 +24,8 @@ class ProductCardWidget extends StatelessWidget {
       children: [
         Expanded(
           child: Material(
-            // This provides the high-performance clipping
             borderRadius: BorderRadius.circular(12.r),
-            clipBehavior: Clip.antiAlias, // This is the key property
+            clipBehavior: Clip.antiAlias,
             child: BuildDynamicImage(imageUrl: img),
           ),
         ),

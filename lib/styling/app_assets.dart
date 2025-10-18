@@ -6,6 +6,8 @@ class AppAssets {
   static const String categoriesIcon = 'assets/icons/categories-icon.svg';
   static const String cartIcon = 'assets/icons/cart-icon.svg';
   static const String profileIcon = 'assets/icons/profile-icon.svg';
+  static const String searchIcon = 'assets/icons/search-icon.svg';
+  static const String filterIcon = 'assets/icons/filter-icon.svg';
   static const String favoriteIcon = 'assets/icons/favorite-icon.svg';
   static const String notificationsIcon = 'assets/icons/notifications-icon.svg';
   static const String categoryTestImage = 'assets/images/1.png';

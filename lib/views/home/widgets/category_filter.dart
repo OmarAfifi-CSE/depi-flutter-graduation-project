@@ -1,242 +1,114 @@
+import 'package:batrina/controllers/cubit/category/category_cubit.dart';
+import 'package:batrina/controllers/provider/products_provider.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FilterListView extends StatefulWidget {
-  final List<String> filters;
-  final Function(String)? onFilterSelected;
-  final String? initialSelection;
-  final Color selectedColor;
-  final Color unselectedColor;
-  final Color selectedTextColor;
-  final Color unselectedTextColor;
-  final double borderRadius;
-  final EdgeInsets padding;
-  final double spacing;
+class CategoryFilter extends StatelessWidget {
+  final ValueNotifier<String> selectedCategoryNotifier;
 
-  const FilterListView({
-    super.key,
-    required this.filters,
-    this.onFilterSelected,
-    this.initialSelection,
-    this.selectedColor = Colors.black,
-    this.unselectedColor = Colors.transparent,
-    this.selectedTextColor = Colors.white,
-    this.unselectedTextColor = Colors.black87,
-    this.borderRadius = 25.0,
-    this.padding = const EdgeInsets.symmetric(horizontal: 14.0, vertical: 6.0),
-    this.spacing = 8.0,
-  });
-
-  @override
-  State<FilterListView> createState() => _FilterListViewState();
-}
-
-class _FilterListViewState extends State<FilterListView> {
-  String? selectedFilter;
-
-  @override
-  void initState() {
-    super.initState();
-    selectedFilter = widget.initialSelection ?? widget.filters.first;
-  }
+  const CategoryFilter({super.key, required this.selectedCategoryNotifier});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 34.h,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: widget.filters.length,
-        itemBuilder: (context, index) {
-          final filter = widget.filters[index];
-          final isSelected = selectedFilter == filter;
+    final theme = Theme.of(context);
+    return BlocBuilder<CategoryCubit, CategoryState>(
+      builder: (context, state) {
+        if (state is CategoryLoading) {
+          return SizedBox(
+            height: 40.h,
+            child: const Center(child: CircularProgressIndicator()),
+          );
+        } else if (state is CategoryError) {
+          return SizedBox(
+            height: 40.h,
+            child: Center(child: Text(state.message)),
+          );
+        } else if (state is CategorySuccess) {
+          final categories = state.categories;
+          if (categories.isEmpty) {
+            return SizedBox(
+              height: 40.h,
+              child: const Center(child: Text('No categories found.')),
+            );
+          }
+          if (selectedCategoryNotifier.value.isEmpty && categories.isNotEmpty) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              context.read<ProductsProvider>().refresh(categories.first.name);
+              selectedCategoryNotifier.value = categories.first.name;
+            });
+          }
 
-          return Padding(
-            padding: EdgeInsets.only(
-              right: index < widget.filters.length - 1 ? widget.spacing : 0,
-            ),
-            child: FilterChip(
-              filter: filter,
-              isSelected: isSelected,
-              onTap: () {
-                setState(() {
-                  selectedFilter = filter;
-                });
-                if (widget.onFilterSelected != null) {
-                  widget.onFilterSelected!(filter);
-                }
+          return SizedBox(
+            height: 40.h,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.only(right: 25.w),
+              clipBehavior: Clip.none,
+              itemCount: categories.length,
+              separatorBuilder: (context, index) => SizedBox(width: 15.w),
+              itemBuilder: (context, index) {
+                final category = categories[index];
+                return ValueListenableBuilder<String>(
+                  valueListenable: selectedCategoryNotifier,
+                  builder: (context, selectedCategoryValue, child) {
+                    final isSelected = category.name == selectedCategoryValue;
+                    return GestureDetector(
+                      onTap: () {
+                        context.read<ProductsProvider>().refresh(category.name);
+                        selectedCategoryNotifier.value = category.name;
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 300),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? theme.primaryColor
+                              : theme.scaffoldBackgroundColor,
+                          borderRadius: BorderRadius.circular(20.r),
+                          border: isSelected
+                              ? null
+                              : Border.all(
+                                  color: theme.primaryColor.withValues(
+                                    alpha: 0.2,
+                                  ),
+                                ),
+                          boxShadow: isSelected
+                              ? [
+                                  BoxShadow(
+                                    color: theme.primaryColor.withValues(
+                                      alpha: 0.4,
+                                    ),
+                                    blurRadius: 8,
+                                    offset: Offset(0, 5.h),
+                                  ),
+                                ]
+                              : [],
+                        ),
+                        child: Center(
+                          child: CustomText(
+                            data: category.name,
+                            fontSize: 14.sp,
+                            color: isSelected
+                                ? theme.scaffoldBackgroundColor
+                                : theme.primaryColor,
+                            fontWeight: isSelected
+                                ? FontWeight.bold
+                                : FontWeight.w500,
+                            fontFamily: 'Poppins',
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
               },
-              selectedColor: widget.selectedColor,
-              unselectedColor: widget.unselectedColor,
-              selectedTextColor: widget.selectedTextColor,
-              unselectedTextColor: widget.unselectedTextColor,
-              borderRadius: widget.borderRadius.r,
-              padding: widget.padding,
             ),
           );
-        },
-      ),
-    );
-  }
-}
-
-class FilterChip extends StatelessWidget {
-  final String filter;
-  final bool isSelected;
-  final VoidCallback onTap;
-  final Color selectedColor;
-  final Color unselectedColor;
-  final Color selectedTextColor;
-  final Color unselectedTextColor;
-  final double borderRadius;
-  final EdgeInsets padding;
-
-  const FilterChip({
-    super.key,
-    required this.filter,
-    required this.isSelected,
-    required this.onTap,
-    required this.selectedColor,
-    required this.unselectedColor,
-    required this.selectedTextColor,
-    required this.unselectedTextColor,
-    required this.borderRadius,
-    required this.padding,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeInOut,
-        padding: padding,
-        decoration: BoxDecoration(
-          color: isSelected ? selectedColor : unselectedColor,
-          borderRadius: BorderRadius.circular(borderRadius),
-          border: Border.all(
-            color: isSelected ? selectedColor : Colors.grey.shade300,
-            width: 1.5,
-          ),
-        ),
-        child: Center(
-          child: Text(
-            filter,
-            style: TextStyle(
-              color: isSelected ? selectedTextColor : unselectedTextColor,
-              fontSize: 16.sp,
-              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// مثال على الاستخدام
-class FilterDemo extends StatefulWidget {
-  const FilterDemo({super.key});
-
-  @override
-  State<FilterDemo> createState() => _FilterDemoState();
-}
-
-class _FilterDemoState extends State<FilterDemo> {
-  String selectedCategory = 'Dresses';
-
-  final List<String> categories = [
-    'Dresses',
-    'Jackets',
-    'Jeans',
-    'Shoes',
-    'Accessories',
-    'Bags',
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text('Filter ListView Demo'),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        foregroundColor: Colors.black,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 20),
-
-          // Filter ListView
-          FilterListView(
-            filters: categories,
-            initialSelection: 'Dresses',
-            onFilterSelected: (filter) {
-              setState(() {
-                selectedCategory = filter;
-              });
-            },
-            selectedColor: Colors.black,
-            unselectedColor: Colors.white,
-            selectedTextColor: Colors.white,
-            unselectedTextColor: Colors.black87,
-          ),
-
-          const SizedBox(height: 20),
-
-          // عرض الفئة المختارة
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Selected Category:',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.grey.shade700,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  selectedCategory,
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
-            ),
-          ),
-
-          // محتوى إضافي حسب الفئة المختارة
-          Expanded(
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.all(20),
-                margin: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  'Content for $selectedCategory category will be displayed here',
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey.shade600,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+        }
+        return SizedBox(height: 40.h);
+      },
     );
   }
 }

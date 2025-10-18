@@ -146,8 +146,9 @@
 
 
   "search": "Search",
-  "clothes": "Clothes",
-  "top_dresses": "Top Dresses",
+  "emptyCategories":"No categories found",
+  "defaultError":"An unexpected error occurred.",
+
 
 
   "personalDetails": "Personal Details",
@@ -159,7 +160,6 @@
   "language": "Language",
   "darkMode": "Dark Mode",
   "lightMode": "Light Mode",
-
   "helpCenter": "Help Center",
   "english": "English",
 
@@ -204,4 +204,4 @@
   "phoneInvalidDescription": "Phone number must contain only numbers",
   "phoneLengthDescription": "Phone number must be between 8 and 15 digits"
 
-}
+  }
