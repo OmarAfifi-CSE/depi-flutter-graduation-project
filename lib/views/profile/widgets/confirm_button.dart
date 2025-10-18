@@ -41,7 +41,6 @@ class ConfirmButton extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        print(state);
         return profileProvider.showButton
             ? CustomElevatedButton(
                 onPressed: state is! EditUserLoading ? confirmFunction : () {},
