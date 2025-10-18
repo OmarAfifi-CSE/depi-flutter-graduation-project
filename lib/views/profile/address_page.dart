@@ -61,7 +61,6 @@ class _AddressPageState extends State<AddressPage> {
               mainAddressModel = addresses.firstWhere(
                 (element) => element.id == mainAddress,
               );
-              print("waassppaa");
             } catch (e) {
               mainAddressModel = null;
             }
