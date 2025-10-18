@@ -11,11 +11,9 @@ class CustomText extends StatelessWidget {
     this.textAlign,
     this.color,
     this.maxLines,
-    this.fontFamily,
     this.forceStrutHeight = false,
   });
 
-  final String? fontFamily;
   final String data;
   final double fontSize;
   final FontWeight fontWeight;
@@ -36,7 +34,6 @@ class CustomText extends StatelessWidget {
       strutStyle: forceStrutHeight
           ? const StrutStyle(forceStrutHeight: true)
           : null,
-
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: TextStyle(
         fontSize: fontSize,

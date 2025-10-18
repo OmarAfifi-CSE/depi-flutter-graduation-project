@@ -195,7 +195,6 @@
   "countryTooShortDescription": "اسم الدولة قصير جداً",
   "phoneEmptyDescription": "رقم الهاتف مطلوب",
   "phoneInvalidDescription": "رقم الهاتف يجب أن يحتوي على أرقام فقط",
-  "phoneLengthDescription": "رقم الهاتف يجب أن يكون بين 8 و 15 رقم",
-  "postButton": "نشر",
+  "phoneLengthDescription": "رقم الهاتف يجب أن يكون بين 8 و 15 رقم"
 
 }

@@ -284,10 +284,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search => 'Search';
 
   @override
-  String get clothes => 'Clothes';
+  String get emptyCategories => 'No categories found';
 
   @override
-  String get top_dresses => 'Top Dresses';
+  String get defaultError => 'An unexpected error occurred.';
 
   @override
   String get personalDetails => 'Personal Details';

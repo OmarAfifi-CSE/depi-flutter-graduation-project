@@ -641,17 +641,17 @@ abstract class AppLocalizations {
   /// **'Search'**
   String get search;
 
-  /// No description provided for @clothes.
+  /// No description provided for @emptyCategories.
   ///
   /// In en, this message translates to:
-  /// **'Clothes'**
-  String get clothes;
+  /// **'No categories found'**
+  String get emptyCategories;
 
-  /// No description provided for @top_dresses.
+  /// No description provided for @defaultError.
   ///
   /// In en, this message translates to:
-  /// **'Top Dresses'**
-  String get top_dresses;
+  /// **'An unexpected error occurred.'**
+  String get defaultError;
 
   /// No description provided for @personalDetails.
   ///

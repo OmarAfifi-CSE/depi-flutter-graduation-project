@@ -1,4 +1,4 @@
-import 'package:batrina/widgets/product/build_dynamic_image.dart';
+import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';

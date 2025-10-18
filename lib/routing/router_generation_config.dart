@@ -259,31 +259,31 @@ class RouterGenerationConfig {
             );
           },
         ),
-        GoRoute(
-          path: AppRoutes.productScreen,
-          name: AppRoutes.productScreen,
-          pageBuilder: (context, state) {
-            ProductNavigationData productData =
-            (state.extra) as ProductNavigationData;
-            return CustomTransitionPage(
-              child: ProductScreen(
-                productId: productData.productId,
-                cartModel: productData.cartModel,
-              ),
-              transitionDuration: const Duration(milliseconds: 1000),
-              reverseTransitionDuration: const Duration(milliseconds: 1000),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
-            );
-          },
-        ),
+        // GoRoute(
+        //   path: AppRoutes.productScreen,
+        //   name: AppRoutes.productScreen,
+        //   pageBuilder: (context, state) {
+        //     ProductNavigationData productData =
+        //     (state.extra) as ProductNavigationData;
+        //     return CustomTransitionPage(
+        //       child: ProductScreen(
+        //         productId: productData.productId,
+        //         cartModel: productData.cartModel,
+        //       ),
+        //       transitionDuration: const Duration(milliseconds: 1000),
+        //       reverseTransitionDuration: const Duration(milliseconds: 1000),
+        //       transitionsBuilder:
+        //           (context, animation, secondaryAnimation, child) {
+        //         return SharedAxisTransition(
+        //           transitionType: SharedAxisTransitionType.horizontal,
+        //           animation: animation,
+        //           secondaryAnimation: secondaryAnimation,
+        //           child: child,
+        //         );
+        //       },
+        //     );
+        //   },
+        // ),
         GoRoute(
           path: AppRoutes.addressesScreen,
           name: AppRoutes.addressesScreen,

@@ -2,7 +2,7 @@ import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/views/home/widgets/category_filter.dart';
 import 'package:batrina/views/home/widgets/home_carousel.dart';
-import 'package:batrina/widgets/product_grid_view.dart';
+import 'package:batrina/widgets/product/product_grid_view.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

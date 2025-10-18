@@ -1,6 +1,6 @@
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/routing/app_routes.dart';
-import 'package:batrina/widgets/product/build_dynamic_image.dart';
+import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

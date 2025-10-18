@@ -284,10 +284,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get search => 'بحث';
 
   @override
-  String get clothes => 'ملابس';
+  String get emptyCategories => 'لم يتم العثور على فئات.';
 
   @override
-  String get top_dresses => 'أفضل الفساتين';
+  String get defaultError => 'حدث خطأ غير متوقع.';
 
   @override
   String get personalDetails => 'التفاصيل الشخصية';
