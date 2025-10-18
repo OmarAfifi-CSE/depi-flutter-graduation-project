@@ -76,7 +76,7 @@ class ProfileHeader extends StatelessWidget {
                   maxLines: 1,
                 ),
                 SizedBox(height: 1.h),
-                //still for us constant
+                // The email address is constant because it represents the current authenticated user and does not change during the session.
                 CustomText(
                   data: FireBaseFireStore.currentUser!.email,
                   fontSize: 15.sp,
