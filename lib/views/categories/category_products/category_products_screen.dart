@@ -1,13 +1,9 @@
 import 'package:batrina/controllers/provider/products_provider.dart';
-import 'package:batrina/l10n/app_localizations.dart';
-import 'package:batrina/routing/app_routes.dart';
-import 'package:batrina/views/categories/category_products/widgets/product_card_widget.dart';
+import 'package:batrina/widgets/product_grid_view.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
-import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class CategoryProductsScreen extends StatefulWidget {
@@ -48,7 +44,6 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProductsProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: CustomHeaderWidget(
@@ -71,49 +66,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
           controller: _scrollController,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 25.h),
-            child: Directionality(
-              textDirection: TextDirection.ltr,
-              child: Column(
-                children: [
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.6,
-                      crossAxisSpacing: 18.w,
-                      mainAxisSpacing: 20.h,
-                    ),
-                    // عدد العناصر هو عدد المنتجات + 2 لو لسه فيه تحميل
-                    itemCount:
-                        provider.products.length + (provider.hasMore ? 2 : 0),
-                    itemBuilder: (context, index) {
-                      if (index >= provider.products.length) {
-                        return null;
-                      }
-                      final product = provider.products[index];
-                      return GestureDetector(
-                        onTap: () {
-                          context.pushNamed(
-                            AppRoutes.productScreen,
-                            pathParameters: {
-                              'categoryName': widget.categoryName,
-                              'productId': product.id,
-                            },
-                          );
-                        },
-                        child: ProductCardWidget(
-                          price: product.price,
-                          name: product.name,
-                          subtitle: product.subtitle,
-                          img: product.thumbnail,
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ),
+            child: ProductGridView(categoryName: widget.categoryName),
           ),
         ),
       ),

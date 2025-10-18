@@ -1,7 +1,7 @@
 import 'package:batrina/models/review_model.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/product/widgets/stars.dart';
-import 'package:batrina/widgets/build_dynamic_image.dart';
+import 'package:batrina/widgets/product/build_dynamic_image.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
