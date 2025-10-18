@@ -2,6 +2,8 @@ import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dar
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/cart_model.dart';
+import 'package:batrina/models/product_navigation_data.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/cart/widget/cart_counter.dart';
@@ -15,8 +17,8 @@ import 'package:batrina/l10n/app_localizations.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:batrina/views/cart/widget/quant_counter.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../widgets/build_dynamic_image.dart';
 
@@ -39,10 +41,8 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
 
   BoxShadow? boxShadow;
   bool isOpen = false;
-
   bool isDeleting = false;
 
-  // كده كده هنعمل ريبلد هنا مش فارقه معايا
   Future<void> deleteFromCart() async {
     try {
       setState(() {
@@ -52,28 +52,33 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
 
       // ابدأ انيمشن الخروج
       await exitAnimationController.forward();
-
       await sizeAnimationController.forward();
-      context.read<GetCartCubit>().removeLocal(widget.cartModel.id);
-      context.read<CartPriceProvider>().refresh();
-    } catch (e) {
-      if (isOpen) {
-        slideAnimationController.reverse();
-        setState(() {
-          isOpen = false;
-          boxShadow = BoxShadow(
-            color: Theme.of(context).scaffoldBackgroundColor,
-          );
-        });
+
+      if (mounted) {
+        context.read<GetCartCubit>().removeLocal(widget.cartModel.id);
+        context.read<CartPriceProvider>().refresh();
       }
-      setState(() {
-        isDeleting = false;
-      });
-      CustomSnackBar.showSnackBar(
-        context: context,
-        message: "error happened",
-        color: Colors.green,
-      );
+    } catch (e) {
+      if (mounted) {
+        if (isOpen) {
+          slideAnimationController.reverse();
+          setState(() {
+            isOpen = false;
+            boxShadow = BoxShadow(
+              color: Theme.of(context).scaffoldBackgroundColor,
+            );
+          });
+        }
+        setState(() {
+          isDeleting = false;
+        });
+        exitAnimationController.reverse();
+        CustomSnackBar.showSnackBar(
+          context: context,
+          message: "error happened",
+          color: Colors.red,
+        );
+      }
     }
   }
 
@@ -102,7 +107,6 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
     sizeAnimation = Tween(begin: 1.0, end: 0.0).animate(
       CurvedAnimation(parent: sizeAnimationController, curve: Curves.easeInOut),
     );
-
     exitAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(
       CurvedAnimation(parent: exitAnimationController, curve: Curves.easeInOut),
     );
@@ -123,23 +127,54 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
   }
 
   void _handleSwipe(DragUpdateDetails details) {
-    if (details.delta.dx < -2 && !isOpen) {
-      slideAnimationController.forward();
-      setState(() {
-        isOpen = true;
-        boxShadow = BoxShadow(
-          color: Theme.of(context).primaryColor.withValues(alpha: .15),
-          blurRadius: 10,
-          spreadRadius: 3,
-          offset: const Offset(0, 0),
-        );
-      });
-    } else if (details.delta.dx > 2 && isOpen) {
-      slideAnimationController.reverse();
-      setState(() {
-        isOpen = false;
-        boxShadow = BoxShadow(color: Theme.of(context).scaffoldBackgroundColor);
-      });
+    if (isDeleting) return;
+
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
+
+    if (isRTL) {
+      // RTL: سحب يمين = فتح، سحب شمال = قفل
+      if (details.delta.dx > 2 && !isOpen) {
+        slideAnimationController.forward();
+        setState(() {
+          isOpen = true;
+          boxShadow = BoxShadow(
+            color: Theme.of(context).primaryColor.withValues(alpha: .15),
+            blurRadius: 10,
+            spreadRadius: 3,
+            offset: const Offset(0, 0),
+          );
+        });
+      } else if (details.delta.dx < -2 && isOpen) {
+        slideAnimationController.reverse();
+        setState(() {
+          isOpen = false;
+          boxShadow = BoxShadow(
+            color: Theme.of(context).scaffoldBackgroundColor,
+          );
+        });
+      }
+    } else {
+      // LTR: سحب شمال = فتح، سحب يمين = قفل
+      if (details.delta.dx < -2 && !isOpen) {
+        slideAnimationController.forward();
+        setState(() {
+          isOpen = true;
+          boxShadow = BoxShadow(
+            color: Theme.of(context).primaryColor.withValues(alpha: .15),
+            blurRadius: 10,
+            spreadRadius: 3,
+            offset: const Offset(0, 0),
+          );
+        });
+      } else if (details.delta.dx > 2 && isOpen) {
+        slideAnimationController.reverse();
+        setState(() {
+          isOpen = false;
+          boxShadow = BoxShadow(
+            color: Theme.of(context).scaffoldBackgroundColor,
+          );
+        });
+      }
     }
   }
 
@@ -148,14 +183,21 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final theme = Theme.of(context);
+    final isRTL = Directionality.of(context) == TextDirection.rtl;
 
     return SizeTransition(
       sizeFactor: sizeAnimation,
       child: FadeTransition(
         opacity: exitAnimation,
         child: SlideTransition(
-          position: Tween<Offset>(begin: Offset.zero, end: const Offset(1.5, 0))
-              .animate(
+          position:
+              Tween<Offset>(
+                begin: Offset.zero,
+                end: Offset(
+                  isRTL ? -1.5 : 1.5,
+                  0,
+                ), // RTL: يطلع شمال، LTR: يطلع يمين
+              ).animate(
                 CurvedAnimation(
                   parent: exitAnimationController,
                   curve: Curves.easeInOut,
@@ -174,14 +216,13 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                         borderRadius: BorderRadius.circular(12.r),
                         color: theme.primaryColor,
                       ),
-                      padding: EdgeInsetsGeometry.only(right: 16.w),
-                      alignment: Alignment.centerRight,
+                      padding: EdgeInsets.only(
+                        right: isRTL ? 0 : 16.w,
+                        left: isRTL ? 16.w : 0,
+                      ),
+                      alignment: AlignmentDirectional.centerEnd,
                       child: GestureDetector(
-                        onTap: isDeleting
-                            ? () {}
-                            : () {
-                                deleteFromCart();
-                              },
+                        onTap: isDeleting ? null : deleteFromCart,
                         child: isDeleting
                             ? CupertinoActivityIndicator(
                                 color: theme.scaffoldBackgroundColor,
@@ -200,8 +241,22 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                     animation: slideAnimation,
                     builder: (context, child) {
                       return Transform.translate(
-                        offset: slideAnimation.value,
+                        offset: Offset(
+                          isRTL
+                              ? -slideAnimation.value.dx
+                              : slideAnimation.value.dx,
+                          slideAnimation.value.dy,
+                        ),
                         child: GestureDetector(
+                          onTap: () {
+                            context.push(
+                              AppRoutes.productScreen,
+                              extra: ProductNavigationData(
+                                productId: widget.cartModel.productId,
+                                cartModel: widget.cartModel,
+                              ),
+                            );
+                          },
                           onHorizontalDragUpdate: _handleSwipe,
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
@@ -336,7 +391,6 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
           fontSize: 12.sp,
           fontWeight: FontWeight.w400,
           color: theme.scaffoldBackgroundColor,
-
           fontFamily: AppFonts.englishFontFamily,
         ),
       ),

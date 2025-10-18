@@ -340,19 +340,82 @@ class FireBaseFireStore {
   }
 
   Future<List<CartModel>> getUserCart() async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
         .collection("users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .doc(userId)
         .collection("userCart")
         .orderBy("addedAt", descending: true)
         .get();
+
     if (querySnapshot.docs.isEmpty) {
       return [];
     }
 
+    // جيب الـ cart
     List<CartModel> userCart = querySnapshot.docs
         .map((e) => CartModel.fromJson(e.data()))
         .toList();
+
+    // جمع الـ products IDs
+    Map<String, List<CartModel>> productVariants = {};
+    for (var cart in userCart) {
+      if (!productVariants.containsKey(cart.productId)) {
+        productVariants[cart.productId] = [];
+      }
+      productVariants[cart.productId]!.add(cart);
+    }
+
+    // قائمة الـ items اللي هنحذفها
+    List<String> itemsToRemove = [];
+
+    // لكل product
+    for (var product in productVariants.entries) {
+      // جيب كل الـ variants للـ product ده مرة واحدة
+      final variantsSnapshot = await fireBaseFireStore
+          .collection("products")
+          .doc(product.key)
+          .collection("variants")
+          .get();
+
+      // خزن الـ variants في Map
+      Map<String, ProductVariant> variantsMap = {};
+      for (var doc in variantsSnapshot.docs) {
+        variantsMap[doc.id] = ProductVariant.fromJson(doc.data());
+      }
+
+      // شيك على كل cart item
+      for (var cart in product.value) {
+        final variant = variantsMap[cart.variantId];
+
+        //حتته النال علشان لو اصلا اتشالت م الداتابيز الفارينت ده
+        if (variant == null || variant.stock == 0) {
+          await fireBaseFireStore
+              .collection("users")
+              .doc(userId)
+              .collection("userCart")
+              .doc(cart.id)
+              .delete();
+
+          itemsToRemove.add(cart.id);
+        } else if (variant.stock < cart.quantity) {
+          await fireBaseFireStore
+              .collection("users")
+              .doc(userId)
+              .collection("userCart")
+              .doc(cart.id)
+              .update({"quantity": variant.stock});
+
+          // حدث الـ local cart
+          cart.quantity = variant.stock;
+        }
+      }
+    }
+
+    // امسح الـ items المحذوفة من الـ list
+    userCart.removeWhere((cart) => itemsToRemove.contains(cart.id));
+
     return userCart;
   }
 }

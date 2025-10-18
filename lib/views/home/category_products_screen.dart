@@ -10,6 +10,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
+import '../../models/product_navigation_data.dart';
+
 class CategoryProductsScreen extends StatefulWidget {
   final String categoryName;
 
@@ -86,7 +88,7 @@ class _CategoryProductsScreenState extends State<CategoryProductsScreen> {
                       onTap: () async {
                         context.push(
                           AppRoutes.productScreen,
-                          extra: product.id,
+                          extra: ProductNavigationData(productId: product.id),
                         );
                       },
                       child: ProductCardWidget(

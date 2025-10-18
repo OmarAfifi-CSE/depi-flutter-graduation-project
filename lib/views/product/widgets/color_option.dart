@@ -19,6 +19,18 @@ class ColorOption extends StatefulWidget {
 
 class _ColorOptionState extends State<ColorOption> {
   int selected = 0;
+  @override
+  void initState() {
+    ProductProvider productProvider = context.read<ProductProvider>();
+    selected = widget.colors.indexWhere(
+      (element) => element.colorCode == productProvider.currentColorName,
+    );
+    if (selected == -1) {
+      selected = 0;
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +39,7 @@ class _ColorOptionState extends State<ColorOption> {
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final loc = AppLocalizations.of(context);
+
     return productProvider.currentColorName != null
         ? Container(
             // height: 41.h,

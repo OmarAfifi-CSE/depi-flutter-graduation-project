@@ -15,15 +15,23 @@ class ProductProvider extends ChangeNotifier {
   ProductVariant? get variant =>
       productModel.getVariant(currentColorName ?? '', currentSize ?? '');
 
-  void initialize() {
-    currentColorName = productModel.availableColors.isEmpty
-        ? null
-        : productModel.availableColors[0].colorCode;
+  void initialize({String? color, String? size}) {
+    print(productModel.isVariantAvailable(color ?? "", size ?? ""));
+    if (productModel.isVariantAvailable(color ?? "", size ?? "")) {
+      currentColorName = color;
+      currentSize = size;
+    } else {
+      currentColorName = productModel.availableColors.isEmpty
+          ? null
+          : productModel.availableColors[0].colorCode;
 
-    currentSize = productModel.availableSizes.isEmpty
-        ? null
-        : productModel.availableSizes[0];
+      currentSize = productModel.availableSizes.isEmpty
+          ? null
+          : productModel.availableSizes[0];
+    }
 
+    print(currentColorName);
+    print(currentSize);
     setVariantStock(colorCode: currentColorName, sizeName: currentSize);
     setSliderImage(currentColorName ?? '');
   }

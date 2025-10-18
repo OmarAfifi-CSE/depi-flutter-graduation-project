@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:batrina/models/product_navigation_data.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
 import 'package:batrina/views/auth/create_new_password_screen.dart';
@@ -194,8 +195,13 @@ class RouterGenerationConfig {
           path: AppRoutes.productScreen,
           name: AppRoutes.productScreen,
           pageBuilder: (context, state) {
+            ProductNavigationData productData =
+                (state.extra) as ProductNavigationData;
             return CustomTransitionPage(
-              child: ProductScreen(productId: state.extra as String),
+              child: ProductScreen(
+                productId: productData.productId,
+                cartModel: productData.cartModel,
+              ),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

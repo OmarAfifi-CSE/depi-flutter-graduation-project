@@ -18,6 +18,20 @@ class SizeOption extends StatefulWidget {
 }
 
 class _SizeOptionState extends State<SizeOption> {
+  @override
+  void initState() {
+    ProductProvider productProvider = context.read<ProductProvider>();
+
+    selected = widget.sizes.indexWhere(
+      (element) => element == productProvider.currentSize,
+    );
+
+    if (selected == -1) {
+      selected = 0;
+    }
+    super.initState();
+  }
+
   int selected = 0;
 
   @override
