@@ -16,7 +16,7 @@ class ProductProvider extends ChangeNotifier {
       productModel.getVariant(currentColorName ?? '', currentSize ?? '');
 
   void initialize({String? color, String? size}) {
-    print(productModel.isVariantAvailable(color ?? "", size ?? ""));
+    // Debug print removed
     if (productModel.isVariantAvailable(color ?? "", size ?? "")) {
       currentColorName = color;
       currentSize = size;
