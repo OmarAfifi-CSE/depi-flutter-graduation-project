@@ -1,6 +1,6 @@
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/styling/app_assets.dart';
-import 'package:batrina/views/home/widgets/product_card_widget.dart';
+import 'package:batrina/views/categories/category_products/widgets/product_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -81,10 +81,14 @@ class ProductGridView extends StatelessWidget {
         crossAxisSpacing: 18.w,
         mainAxisSpacing: 20.h,
       ),
-      // itemCount: products.length,
+      itemCount: 10,
       itemBuilder: (context, index) {
         //Product pr = products[index];
-        return SizedBox();
+        return Container(
+          height: 100.h,
+          color: Colors.black,
+          child: Icon(Icons.ac_unit, color: Colors.white),
+        );
         // ProductCardWidget(
         //   price: pr.price,
         //   desc: pr.name,

@@ -23,9 +23,8 @@ class ProductCardWidget extends StatelessWidget {
       children: [
         Expanded(
           child: Material(
-            // This provides the high-performance clipping
             borderRadius: BorderRadius.circular(12.r),
-            clipBehavior: Clip.antiAlias, // This is the key property
+            clipBehavior: Clip.antiAlias,
             child: BuildDynamicImage(imageUrl: img),
           ),
         ),
@@ -37,18 +36,21 @@ class ProductCardWidget extends StatelessWidget {
               maxLines: 1,
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
+              fontFamily: 'Poppins',
             ),
             CustomText(
               data: subtitle,
               maxLines: 1,
               fontSize: 12.sp,
               fontWeight: FontWeight.w400,
+              fontFamily: 'Poppins',
             ),
             CustomText(
               data: "$price\$",
               maxLines: 1,
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
+              fontFamily: 'Poppins',
             ),
           ],
         ),

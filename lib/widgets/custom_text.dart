@@ -7,6 +7,7 @@ class CustomText extends StatelessWidget {
     required this.data,
     required this.fontSize,
     required this.fontWeight,
+    this.fontFamily,
     this.textAlign,
     this.color,
     this.maxLines,
@@ -15,6 +16,7 @@ class CustomText extends StatelessWidget {
   final String data;
   final double fontSize;
   final FontWeight fontWeight;
+  final String? fontFamily;
   final Color? color;
   final TextAlign? textAlign;
   final int? maxLines;
@@ -29,7 +31,7 @@ class CustomText extends StatelessWidget {
       style: TextStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,
-        fontFamily: AppFonts.mainFontName,
+        fontFamily: fontFamily ?? AppFonts.mainFontName,
         color: color ?? Theme.of(context).primaryColor,
       ),
     );

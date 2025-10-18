@@ -366,4 +366,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get postButton => 'نشر';
+
+  @override
+  String get emptyCategories => 'لم يتم العثور على فئات.';
+
+  @override
+  String get defaultError => 'حدث خطأ غير متوقع.';
 }

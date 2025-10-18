@@ -176,5 +176,8 @@
 
   "addReviewTitle": "اكتب مراجعة",
   "experienceHint": "كيف كانت تجربتك مع هذا المنتج؟",
-  "postButton": "نشر"
+  "postButton": "نشر",
+
+  "emptyCategories": "لم يتم العثور على فئات.",
+  "defaultError": "حدث خطأ غير متوقع."
 }

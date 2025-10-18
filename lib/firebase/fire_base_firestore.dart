@@ -1,3 +1,4 @@
+import 'package:batrina/models/category_model.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/review_model.dart';
 import 'package:batrina/models/user_model.dart';
@@ -115,20 +116,22 @@ class FireBaseFireStore {
   }
 
 
-  Future<List<ProductModel>> getCategoriesProduct(String category) async {
-    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
-        .collection("products")
-        .where("category", isEqualTo: category)
-        .get();
-    if (querySnapshot.docs.isEmpty) {
+  Future<List<CategoryModel>> getCategories() async {
+    try {
+      final querySnapshot =
+      await fireBaseFireStore.collection("categories").get();
+      if (querySnapshot.docs.isEmpty) {
+        return [];
+      }
+      return querySnapshot.docs
+          .map((doc) => CategoryModel.fromJson(doc.data()))
+          .toList();
+
+    } catch (e) {
       return [];
     }
-
-    List<ProductModel> categoryProduct = querySnapshot.docs.map((e) {
-      return ProductModel.fromJson(e.data());
-    }).toList();
-    return categoryProduct;
   }
+
 
 
 

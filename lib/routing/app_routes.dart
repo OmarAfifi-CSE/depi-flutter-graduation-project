@@ -10,13 +10,11 @@ class AppRoutes {
   // Main Screens
   static const String splashScreen = '/';
   static const String wrapperScreen = '/home';
-  static const String wishlistScreen = '/wishlist';
+  static const String categoriesScreen = '/categories';
   static const String cartScreen = '/cart';
   static const String profileScreen = '/profile';
 
-  //Home Screens
-  static const String homeScreen = '/home-screen';
-  static const String categoryScreen = '/category';
-  static const String productScreen = '/productScreen';
-  static const String reviewsScreen = '/reviews';
+  // Category and Product Screens (with parameters)
+  static const String categoryProductsScreen = '$categoriesScreen/category-products/:categoryName';
+  static const String productScreen = '$categoryProductsScreen/product/:productId';
 }

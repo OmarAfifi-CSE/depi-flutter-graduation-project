@@ -366,4 +366,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get postButton => 'Post';
+
+  @override
+  String get emptyCategories => 'No categories found';
+
+  @override
+  String get defaultError => 'An unexpected error occurred.';
 }

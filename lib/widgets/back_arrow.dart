@@ -10,10 +10,10 @@ class BackArrow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Material(
       shape: const CircleBorder(),
-      color: Theme.of(context).primaryColor,
-
+      color: theme.primaryColor,
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: () {
@@ -25,10 +25,13 @@ class BackArrow extends StatelessWidget {
           decoration: const BoxDecoration(shape: BoxShape.circle),
           child: Center(
             child: SvgPicture.asset(
-              color: Theme.of(context).scaffoldBackgroundColor,
               AppAssets.arrowBack,
               width: 18.w,
               height: 12.h,
+              colorFilter: ColorFilter.mode(
+                theme.scaffoldBackgroundColor,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ),

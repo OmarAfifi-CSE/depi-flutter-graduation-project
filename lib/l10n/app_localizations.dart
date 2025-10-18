@@ -808,6 +808,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Post'**
   String get postButton;
+
+  /// No description provided for @emptyCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'No categories found'**
+  String get emptyCategories;
+
+  /// No description provided for @defaultError.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred.'**
+  String get defaultError;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

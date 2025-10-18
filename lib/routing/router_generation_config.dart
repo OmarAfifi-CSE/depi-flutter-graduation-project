@@ -6,8 +6,9 @@ import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
-import 'package:batrina/views/home/category_screen.dart';
-import 'package:batrina/views/home/category_products_screen.dart';
+import 'package:batrina/views/categories/categories_screen.dart';
+import 'package:batrina/views/categories/category_products/category_products_screen.dart';
+import 'package:batrina/views/home/home_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
@@ -153,17 +154,16 @@ class RouterGenerationConfig {
                 GoRoute(
                   path: AppRoutes.wrapperScreen,
                   name: AppRoutes.wrapperScreen,
-                  builder: (context, state) =>
-                      const CategoryProductsScreen(categoryName: 'Clothing'),
+                  builder: (context, state) => const HomeScreen(),
                 ),
               ],
             ),
             StatefulShellBranch(
               routes: [
                 GoRoute(
-                  path: AppRoutes.wishlistScreen,
-                  name: AppRoutes.wishlistScreen,
-                  builder: (context, state) => const CategoryScreen(),
+                  path: AppRoutes.categoriesScreen,
+                  name: AppRoutes.categoriesScreen,
+                  builder: (context, state) => const CategoriesScreen(),
                 ),
               ],
             ),
@@ -187,21 +187,71 @@ class RouterGenerationConfig {
             ),
           ],
         ),
+
+        // In your RouterGenerationConfig file...
+        GoRoute(
+          path: AppRoutes.categoryProductsScreen,
+          name: AppRoutes.categoryProductsScreen,
+          pageBuilder: (context, state) {
+            final categoryName = state.pathParameters['categoryName'];
+            return CustomTransitionPage(
+              child: CategoryProductsScreen(categoryName: categoryName!),
+              transitionDuration: const Duration(milliseconds: 500),
+              reverseTransitionDuration: const Duration(milliseconds: 300),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeIn,
+                      ),
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0.3, 0),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                        child: child,
+                      ),
+                    );
+                  },
+            );
+          },
+        ),
         GoRoute(
           path: AppRoutes.productScreen,
           name: AppRoutes.productScreen,
           pageBuilder: (context, state) {
+            final productId = state.pathParameters['productId'];
             return CustomTransitionPage(
-              child: ProductScreen(productId: state.extra as String),
-              transitionDuration: const Duration(milliseconds: 1000),
-              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              child: ProductScreen(productId: productId!),
+              transitionDuration: const Duration(milliseconds: 500),
+              reverseTransitionDuration: const Duration(milliseconds: 300),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeIn,
+                      ),
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0.3, 0),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                        child: child,
+                      ),
                     );
                   },
             );
