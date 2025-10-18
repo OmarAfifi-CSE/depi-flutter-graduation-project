@@ -22,7 +22,7 @@ class CustomText extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLines;
 
-  //سعات العربي بيقي اعلي من اشويه من اللي جنبو
+  // Sometimes Arabic text appears slightly higher than adjacent text
   final bool forceStrutHeight;
 
   @override
