@@ -1,8 +1,6 @@
 import 'package:batrina/controllers/cubit/product/get_product_cubit/get_product_cubit.dart';
 import 'package:batrina/controllers/provider/product_provider.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/cart_model.dart';
-import 'package:batrina/models/product_model.dart';
 import 'package:batrina/views/product/widgets/product_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../l10n/app_localizations.dart';
-import '../../widgets/custom_text.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/widgets/custom_text.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key, required this.productId, this.cartModel});

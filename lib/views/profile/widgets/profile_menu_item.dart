@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../widgets/custom_text.dart';
+import 'package:batrina/widgets/custom_text.dart';
 
 class ProfileMenuItem extends StatelessWidget {
   final IconData? icon;

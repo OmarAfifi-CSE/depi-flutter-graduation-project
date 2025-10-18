@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../widgets/build_dynamic_image.dart';
+import 'package:batrina/widgets/build_dynamic_image.dart';
 
 class ProfileImage extends StatefulWidget {
   const ProfileImage({super.key});

@@ -2,18 +2,16 @@ import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/views/profile/widgets/language_profile_settings_item.dart';
 import 'package:batrina/views/profile/widgets/profile_info.dart';
-import 'package:batrina/views/profile/widgets/profile_menu_item.dart';
 import 'package:batrina/views/profile/widgets/profile_settings_item.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/styling/app_colors.dart';
 
-import '../../widgets/custom_text.dart';
-import 'widgets/profile_header.dart';
+import 'package:batrina/widgets/custom_text.dart';
+import 'package:batrina/views/profile/widgets/profile_header.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

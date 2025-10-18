@@ -1,20 +1,19 @@
 import 'package:batrina/controllers/cubit/profile/get_addresses_cubit/get_addresses_cubit.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/profile/widgets/add_address_container.dart';
 import 'package:batrina/views/profile/widgets/address_card.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../l10n/app_localizations.dart';
-import '../../models/address_model.dart';
-import '../../styling/app_colors.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/models/address_model.dart';
 
 class AddressPage extends StatefulWidget {
   const AddressPage({super.key});

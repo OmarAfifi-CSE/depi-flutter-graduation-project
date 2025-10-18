@@ -9,12 +9,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../l10n/app_localizations.dart';
-import '../../styling/app_colors.dart';
-import '../../widgets/back_arrow.dart';
-import '../../widgets/custom_header_widget.dart';
-import '../../widgets/custom_snack_bar.dart';
-import '../../widgets/custom_text.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/widgets/back_arrow.dart';
+import 'package:batrina/widgets/custom_header_widget.dart';
+import 'package:batrina/widgets/custom_snack_bar.dart';
+import 'package:batrina/widgets/custom_text.dart';
 
 class AddAddressScreen extends StatefulWidget {
   const AddAddressScreen({super.key});

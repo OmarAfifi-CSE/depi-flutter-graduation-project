@@ -13,8 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../l10n/app_localizations.dart';
-import '../../styling/app_colors.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
 
 class ForgetPass extends StatefulWidget {
   const ForgetPass({super.key});

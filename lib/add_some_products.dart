@@ -1,8 +1,8 @@
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'models/category_model.dart';
-import 'models/product_model.dart';
+import 'package:batrina/models/category_model.dart';
+import 'package:batrina/models/product_model.dart';
 
 // Assume ProductModel, ProductColor, ProductVariant are already defined
 

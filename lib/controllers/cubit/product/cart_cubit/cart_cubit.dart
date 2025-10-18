@@ -3,10 +3,8 @@ import 'package:batrina/controllers/cubit/product/get_product_cubit/get_product_
 import 'package:batrina/controllers/cubit/product/get_user_cart_for_product_cubit/get_user_cart_for_product_cubit.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/cart_model.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'cart_state.dart';
 

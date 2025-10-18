@@ -12,10 +12,9 @@ import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
 
-import '../../l10n/app_localizations.dart';
-import '../../styling/app_colors.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
 
 class PersonalDetails extends StatefulWidget {
   const PersonalDetails({super.key});

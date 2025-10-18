@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../controllers/provider/cart_price_provider.dart';
-import '../../../l10n/app_localizations.dart';
-import '../../../number_localizer.dart';
-import '../../../styling/app_colors.dart';
-import '../../../widgets/custom_text.dart';
+import 'package:batrina/controllers/provider/cart_price_provider.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/number_localizer.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/widgets/custom_text.dart';
 
 class CartCounter extends StatefulWidget {
   const CartCounter({super.key, required this.cartModel});

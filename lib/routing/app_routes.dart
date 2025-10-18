@@ -15,8 +15,10 @@ class AppRoutes {
   static const String profileScreen = '/profile';
 
   // Category and Product Screens (with parameters)
-  static const String categoryProductsScreen = '$categoriesScreen/category-products/:categoryName';
-  static const String productScreen = '$categoryProductsScreen/product/:productId';
+  static const String categoryProductsScreen =
+      '$categoriesScreen/category-products/:categoryName';
+  static const String productScreen =
+      '$categoryProductsScreen/product/:productId';
   static const String reviewsScreen = '/reviews';
 
   // Profile Screens

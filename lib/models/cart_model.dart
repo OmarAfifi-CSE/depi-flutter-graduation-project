@@ -67,7 +67,7 @@ class CartModel {
     String? id,
     String? productId,
     String? productName,
-    String? subTitle,
+    String? subtitle,
     String? variantId,
     String? color,
     String? size,
@@ -77,7 +77,7 @@ class CartModel {
     DateTime? addedAt,
   }) {
     return CartModel(
-      subtitle: subTitle ?? this.subtitle,
+      subtitle: subtitle ?? this.subtitle,
       id: id ?? this.id,
       productId: productId ?? this.productId,
       productName: productName ?? this.productName,

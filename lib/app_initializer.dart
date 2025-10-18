@@ -9,7 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:ui' as ui;
 
-import 'firebase_options.dart';
+import 'package:batrina/firebase_options.dart';
 
 // A simple data class to hold the results from the initialization process.
 class InitializationResult {

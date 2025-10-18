@@ -1,5 +1,4 @@
 import 'package:animations/animations.dart';
-import 'package:batrina/models/product_navigation_data.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
 import 'package:batrina/views/auth/create_new_password_screen.dart';
@@ -294,13 +293,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
         ),
@@ -314,13 +313,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
         ),
@@ -334,13 +333,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
         ),

@@ -1,7 +1,6 @@
 import 'package:batrina/app_initializer.dart';
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dart';
-import 'package:batrina/controllers/cubit/profile/edit_user_cubit/edit_user_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/controllers/provider/profile_provider.dart';
@@ -13,7 +12,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'l10n/app_localizations.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 
 void main() async {
   final InitializationResult result = await AppInitializer.initialize();

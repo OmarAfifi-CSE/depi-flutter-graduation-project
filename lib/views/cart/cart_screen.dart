@@ -1,9 +1,7 @@
 import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dart';
-import 'package:batrina/controllers/provider/cart_price_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:batrina/views/cart/widget/cart_body.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {

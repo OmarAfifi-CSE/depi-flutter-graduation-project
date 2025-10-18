@@ -7,20 +7,18 @@ import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/cart/widget/cart_counter.dart';
-import 'package:batrina/views/product/widgets/counter.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:batrina/l10n/app_localizations.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../widgets/build_dynamic_image.dart';
+import 'package:batrina/widgets/build_dynamic_image.dart';
 
 class CardItem extends StatefulWidget {
   const CardItem({super.key, required this.cartModel});

@@ -11,8 +11,8 @@ import 'package:batrina/views/cart/widget/check_out_details.dart';
 import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controllers/provider/cart_price_provider.dart';
-import '../../../styling/app_colors.dart';
+import 'package:batrina/controllers/provider/cart_price_provider.dart';
+import 'package:batrina/styling/app_colors.dart';
 
 class CartViewBody extends StatelessWidget {
   const CartViewBody({super.key});
@@ -86,7 +86,6 @@ class CartViewBody extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 );
-          ;
         },
       ),
     );

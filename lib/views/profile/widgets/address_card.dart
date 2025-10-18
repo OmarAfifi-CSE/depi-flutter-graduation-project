@@ -4,7 +4,7 @@ import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../styling/app_colors.dart';
+import 'package:batrina/styling/app_colors.dart';
 
 class AddressCard extends StatelessWidget {
   const AddressCard({super.key, required this.addressModel, this.onAddAddress});

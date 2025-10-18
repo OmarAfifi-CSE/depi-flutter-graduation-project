@@ -1,13 +1,12 @@
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/views/profile/widgets/profile_settings_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../l10n/app_localizations.dart';
-import '../../../styling/app_colors.dart';
-import '../../../widgets/custom_text.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/widgets/custom_text.dart';
 
 class LanguageProfileSettingsItem extends StatefulWidget {
   const LanguageProfileSettingsItem({super.key});
@@ -145,7 +144,9 @@ class _LanguageProfileSettingsItemState
                         if (isClickable) {
                           isClickable = false;
                           localeProvider.setLocale("en");
-                          await Future.delayed(Duration(milliseconds: 100));
+                          await Future.delayed(
+                            const Duration(milliseconds: 100),
+                          );
                           setState(() {
                             viewChooses = false;
                           });

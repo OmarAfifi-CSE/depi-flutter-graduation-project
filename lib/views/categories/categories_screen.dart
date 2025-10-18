@@ -3,8 +3,8 @@ import 'package:batrina/styling/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'widgets/category_list_view.dart';
-import 'widgets/search_bar.dart';
+import 'package:batrina/views/categories/widgets/category_list_view.dart';
+import 'package:batrina/views/categories/widgets/search_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoriesScreen extends StatelessWidget {

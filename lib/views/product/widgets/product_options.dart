@@ -13,9 +13,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import '../../../l10n/app_localizations.dart';
-import '../../../number_localizer.dart';
-import '../../../styling/app_fonts.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/number_localizer.dart';
+import 'package:batrina/styling/app_fonts.dart';
 
 class ProductOptions extends StatelessWidget {
   const ProductOptions({super.key, required this.productModel});

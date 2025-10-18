@@ -1,6 +1,5 @@
 import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
-import 'package:batrina/models/user_model.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:batrina/widgets/custom_text.dart';

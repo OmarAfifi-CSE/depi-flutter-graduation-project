@@ -2,7 +2,7 @@ import 'package:batrina/models/product_model.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../firebase/fire_base_firestore.dart';
+import 'package:batrina/firebase/fire_base_firestore.dart';
 
 part 'get_product_state.dart';
 

@@ -4,9 +4,8 @@ import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
-import '../../../l10n/app_localizations.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 
 class StockCountText extends StatelessWidget {
   const StockCountText({super.key});

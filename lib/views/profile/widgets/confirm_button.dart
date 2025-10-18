@@ -1,14 +1,13 @@
 import 'package:batrina/controllers/cubit/profile/edit_user_cubit/edit_user_cubit.dart';
 import 'package:batrina/controllers/provider/profile_provider.dart';
-import 'package:batrina/widgets/custom_snack_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../widgets/custom_text.dart';
-import '../../auth/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_text.dart';
+import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
 
 class ConfirmButton extends StatelessWidget {
   const ConfirmButton({

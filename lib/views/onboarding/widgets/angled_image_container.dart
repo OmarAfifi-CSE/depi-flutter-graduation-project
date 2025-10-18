@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class SimpleAngledPainter extends CustomPainter {
   final Color borderColor;
   final double borderWidth;

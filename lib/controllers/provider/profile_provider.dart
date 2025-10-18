@@ -29,10 +29,10 @@ class ProfileProvider extends ChangeNotifier {
   void setImage(String image) async {
     currentImage = image;
     checkDiff();
-    print("currentName" + currentName);
-    print("name" + mainName);
-    print("currentImage${currentImage}");
-    print("image${mainImage}");
+    print("currentName$currentName");
+    print("name$mainName");
+    print("currentImage$currentImage");
+    print("image$mainImage");
     print(showButton);
     notifyListeners();
   }
@@ -40,10 +40,10 @@ class ProfileProvider extends ChangeNotifier {
   void setName(String name) {
     currentName = name;
     checkDiff();
-    print("currentName" + currentName);
-    print("name" + mainName);
-    print("currentImage${currentImage}");
-    print("image${mainImage}");
+    print("currentName$currentName");
+    print("name$mainName");
+    print("currentImage$currentImage");
+    print("image$mainImage");
     print(showButton);
     notifyListeners();
   }

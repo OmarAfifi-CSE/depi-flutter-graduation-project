@@ -13,9 +13,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controllers/cubit/product/cart_cubit/cart_cubit.dart';
-import '../../../l10n/app_localizations.dart';
-import '../../../styling/app_colors.dart';
+import 'package:batrina/controllers/cubit/product/cart_cubit/cart_cubit.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({super.key, required this.productModel});

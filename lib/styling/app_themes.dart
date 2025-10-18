@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
+import 'package:batrina/styling/app_colors.dart';
 
 class AppThemes {
   static final lightTheme = ThemeData(
