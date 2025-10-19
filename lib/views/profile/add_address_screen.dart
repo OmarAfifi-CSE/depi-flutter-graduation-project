@@ -8,9 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:batrina/l10n/app_localizations.dart';
-import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
@@ -36,10 +34,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
   String? streetValidation(String? value) {
     final loc = AppLocalizations.of(context);
     if (value == null || value.trim().isEmpty) {
-      return loc!.streetEmptyDescription; // "Street address is required"
+      return loc!.streetEmptyDescription;
     }
     if (value.trim().length < 5) {
-      return loc!.streetTooShortDescription; // "Street address is too short"
+      return loc!.streetTooShortDescription;
     }
     return null;
   }
@@ -48,10 +46,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     final loc = AppLocalizations.of(context);
 
     if (value == null || value.trim().isEmpty) {
-      return loc!.cityEmptyDescription; // "City is required"
+      return loc!.cityEmptyDescription;
     }
     if (value.trim().length < 2) {
-      return loc!.cityTooShortDescription; // "City name is too short"
+      return loc!.cityTooShortDescription;
     }
     return null;
   }
@@ -60,10 +58,10 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     final loc = AppLocalizations.of(context);
 
     if (value == null || value.trim().isEmpty) {
-      return loc!.countryEmptyDescription; // "Country is required"
+      return loc!.countryEmptyDescription;
     }
     if (value.trim().length < 2) {
-      return loc!.countryTooShortDescription; // "Country name is too short"
+      return loc!.countryTooShortDescription;
     }
     return null;
   }
@@ -72,90 +70,96 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
     final loc = AppLocalizations.of(context);
 
     if (value == null || value.trim().isEmpty) {
-      return loc!.phoneEmptyDescription; // "Phone number is required"
+      return loc!.phoneEmptyDescription;
     }
 
-    // إزالة المسافات والرموز
     final cleanedPhone = value.replaceAll(RegExp(r'[\s\-\(\)]'), '');
 
-    // التحقق من أن كل الأحرف أرقام
     if (!RegExp(r'^[0-9+]+$').hasMatch(cleanedPhone)) {
-      return loc!
-          .phoneInvalidDescription; // "Phone number must contain only numbers"
+      return loc!.phoneInvalidDescription;
     }
 
     // التحقق من الطول (من 8 لـ 15 رقم)
     if (cleanedPhone.length < 8 || cleanedPhone.length > 15) {
-      return loc!
-          .phoneLengthDescription; // "Phone number must be between 8 and 15 digits"
+      return loc!.phoneLengthDescription;
     }
-
     return null;
   }
 
   @override
   Widget build(BuildContext context) {
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
     return BlocProvider(
-      create: (context) => AddAddressCubit(),
+      create: (context) => AddAddressCubit()..loc = loc,
       child: Scaffold(
+        appBar: AppBar(
+          title: CustomHeaderWidget(
+            center: CustomText(
+              data: loc!.addNewAddress,
+              textAlign: TextAlign.center,
+              fontSize: 22.sp,
+              fontWeight: FontWeight.w700,
+            ),
+            prefix: const BackArrow(),
+          ),
+          leading: const SizedBox(),
+          leadingWidth: 0,
+        ),
         body: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 25.0.w, vertical: 25.h),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomHeaderWidget(prefix: BackArrow()),
-                SizedBox(height: 15.h),
-                CustomText(
-                  data: "addNewAddress",
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-                SizedBox(height: 15.h),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      CustomTextFormField(
-                        controller: street,
-                        labelText: "Street",
-                        validator: streetValidation,
-                      ),
-                      SizedBox(height: 20.h),
-                      CustomTextFormField(
-                        controller: city,
-                        labelText: "City",
-                        validator: cityValidation,
-                      ),
-                      SizedBox(height: 20.h),
-                      CustomTextFormField(
-                        controller: phoneNumber,
-                        labelText: "PhoneNumber",
-                        validator: phoneNumberValidation,
-                      ),
-                      SizedBox(height: 20.h),
-                      CustomTextFormField(
-                        controller: country,
-                        labelText: "Country",
-                        validator: countryValidation,
-                      ),
-                    ],
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Form(
+                          key: _formKey,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CustomTextFormField(
+                                controller: street,
+                                labelText: loc.street,
+                                validator: streetValidation,
+                              ),
+                              SizedBox(height: 20.h),
+                              CustomTextFormField(
+                                controller: city,
+                                labelText: loc.city,
+                                validator: cityValidation,
+                              ),
+                              SizedBox(height: 20.h),
+                              CustomTextFormField(
+                                controller: phoneNumber,
+                                labelText: loc.phoneNumber,
+                                validator: phoneNumberValidation,
+                              ),
+                              SizedBox(height: 20.h),
+                              CustomTextFormField(
+                                controller: country,
+                                labelText: loc.country,
+                                validator: countryValidation,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                const Spacer(),
                 BlocConsumer<AddAddressCubit, AddAddressState>(
                   listener: (context, state) {
                     if (state is AddAddressSuccess) {
                       CustomSnackBar.showSnackBar(
                         context: context,
-                        message: "Address added successfully",
+                        message: loc.addressAddedSuccessfully,
                         color: Colors.green,
                       );
-
                       context.read<GetAddressesCubit>().getAddresses();
                       context.pop();
                     } else if (state is AddAddressFailure) {
@@ -185,9 +189,9 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                           : () {},
                       buttonChild: state is! AddAddressLoading
                           ? CustomText(
-                              data: "addAddress",
+                              data: loc.addAddress,
                               fontSize: 18.sp,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w700,
                               color: theme.scaffoldBackgroundColor,
                             )
                           : CupertinoActivityIndicator(
@@ -196,6 +200,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                     );
                   },
                 ),
+                SizedBox(height: 16.h),
               ],
             ),
           ),

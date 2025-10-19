@@ -57,7 +57,7 @@
   "passwordWeakDescription": "Password must contain upper, lower case letters and a number",
 
 
-
+  "pleaseVerifyYourEmail": "Please verify your email first",
 
   "googleSignInCanceledDescription": "Sign-in canceled",
 
@@ -135,8 +135,6 @@
   "confirm": "Confirm",
   "invalid_or_expired_link": "The link is invalid, expired, or has already been used. Please request a new one.",
   "unexpected_error": "An unexpected error occurred. Please try again.",
-  "error_happened": "Error happened",
-
   "home": "Home",
   "categories": "Categories",
   "cart": "Cart",
@@ -194,14 +192,22 @@
   "noAvailableColors": "No available Colors",
 
 
-  "streetEmptyDescription": "Street address is required",
-  "streetTooShortDescription": "Street address is too short",
-  "cityEmptyDescription": "City is required",
-  "cityTooShortDescription": "City name is too short",
-  "countryEmptyDescription": "Country is required",
-  "countryTooShortDescription": "Country name is too short",
-  "phoneEmptyDescription": "Phone number is required",
-  "phoneInvalidDescription": "Phone number must contain only numbers",
-  "phoneLengthDescription": "Phone number must be between 8 and 15 digits"
+  "addNewAddress": "Add New Address",
+  "street": "Street",
+  "city": "City",
+  "phoneNumber": "Phone Number",
+  "country": "Country",
+  "addAddress": "Add Address",
+  "addressAddedSuccessfully": "Address added successfully",
+  "streetEmptyDescription": "Street cannot be empty.",
+  "streetTooShortDescription": "Street is too short, must be at least 5 characters.",
+  "cityEmptyDescription": "City cannot be empty.",
+  "cityTooShortDescription": "City is too short, must be at least 2 characters.",
+  "countryEmptyDescription": "Country cannot be empty.",
+  "countryTooShortDescription": "Country is too short, must be at least 2 characters.",
+  "phoneEmptyDescription": "Phone number cannot be empty.",
+  "phoneInvalidDescription": "Please enter a valid phone number.",
+  "phoneLengthDescription": "Phone number must be between 8 and 15 digits."
+
 
   }

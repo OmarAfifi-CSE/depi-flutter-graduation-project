@@ -50,7 +50,7 @@
   "passwordTooShortDescription": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
   "passwordWeakDescription": "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم",
 
-
+  "pleaseVerifyYourEmail": "من فضلك قم بتأكيد بريدك الإلكتروني أولاً",
 
 
   "googleSignInCanceledDescription": "تم إلغاء تسجيل الدخول",
@@ -130,7 +130,6 @@
   "confirm": "تأكيد",
   "invalid_or_expired_link": "الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.",
   "unexpected_error": "حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.",
-  "error_happened": "حدث خطأ",
 
 
   "home": "الرئيسية",
@@ -187,14 +186,22 @@
   "noAvailableSizes": "لا توجد مقاسات متوفرة",
   "noAvailableColors": "لا توجد ألوان متوفرة",
 
-  "streetEmptyDescription": "عنوان الشارع مطلوب",
-  "streetTooShortDescription": "عنوان الشارع قصير جداً",
-  "cityEmptyDescription": "المدينة مطلوبة",
-  "cityTooShortDescription": "اسم المدينة قصير جداً",
-  "countryEmptyDescription": "الدولة مطلوبة",
-  "countryTooShortDescription": "اسم الدولة قصير جداً",
-  "phoneEmptyDescription": "رقم الهاتف مطلوب",
-  "phoneInvalidDescription": "رقم الهاتف يجب أن يحتوي على أرقام فقط",
-  "phoneLengthDescription": "رقم الهاتف يجب أن يكون بين 8 و 15 رقم"
+
+  "addNewAddress": "إضافة عنوان جديد",
+  "street": "الشارع",
+  "city": "المدينة",
+  "phoneNumber": "رقم الهاتف",
+  "country": "الدولة",
+  "addAddress": "إضافة العنوان",
+  "addressAddedSuccessfully": "تمت إضافة العنوان بنجاح",
+  "streetEmptyDescription": "حقل الشارع مطلوب.",
+  "streetTooShortDescription": "الشارع قصير جدًا، يجب أن لا يقل عن 5 أحرف.",
+  "cityEmptyDescription": "حقل المدينة مطلوب.",
+  "cityTooShortDescription": "المدينة قصيرة جدًا، يجب أن لا تقل عن حرفين.",
+  "countryEmptyDescription": "حقل الدولة مطلوب.",
+  "countryTooShortDescription": "الدولة قصيرة جدًا، يجب أن لا تقل عن حرفين.",
+  "phoneEmptyDescription": "حقل رقم الهاتف مطلوب.",
+  "phoneInvalidDescription": "الرجاء إدخال رقم هاتف صالح.",
+  "phoneLengthDescription": "يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا."
 
 }

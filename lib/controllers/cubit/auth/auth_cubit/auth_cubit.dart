@@ -61,7 +61,7 @@ class AuthCubit extends Cubit<AuthState> {
       }
     } catch (e) {
       if (_currentOperation == googleSignInKeyOperation) {
-        emit(AuthGoogleFailure("Error happened"));
+        emit(AuthGoogleFailure(loc!.errorHappened));
       }
     }
   }
@@ -91,7 +91,7 @@ class AuthCubit extends Cubit<AuthState> {
           }
         } else {
           await fireBaseAuth.signOut();
-          emit(AuthSignInFailure("Please verify your email first"));
+          emit(AuthSignInFailure(loc!.pleaseVerifyYourEmail));
         }
       }
     } on FirebaseAuthException catch (e) {
@@ -100,7 +100,7 @@ class AuthCubit extends Cubit<AuthState> {
       }
     } catch (e) {
       if (_currentOperation == signInKeyOperation) {
-        emit(AuthSignInFailure("Error happened"));
+        emit(AuthSignInFailure(loc!.errorHappened));
       }
     }
   }
@@ -138,7 +138,7 @@ class AuthCubit extends Cubit<AuthState> {
       }
     } catch (e) {
       if (_currentOperation == signUpKeyOperation) {
-        emit(AuthSignUpFailure(loc!.error_happened));
+        emit(AuthSignUpFailure(loc!.errorHappened));
       }
     }
   }

@@ -26,29 +26,25 @@ class AppLocalizationsAr extends AppLocalizations {
   String get discountNewArrivalTitle => 'خصم 20% على المنتجات الجديدة';
 
   @override
-  String get discountNewArrivalDescription =>
-      'اكتشف خصومات مذهلة على أحدث مجموعاتنا. احصل على خصم 20% على جميع المنتجات الجديدة.';
+  String get discountNewArrivalDescription => 'اكتشف خصومات مذهلة على أحدث مجموعاتنا. احصل على خصم 20% على جميع المنتجات الجديدة.';
 
   @override
   String get takeAdvantageShoppingTitle => 'استفد من عروض التسوق';
 
   @override
-  String get takeAdvantageShoppingDescription =>
-      'لا تفوت العروض الحصرية للتسوق. وفر أكثر على العناصر المفضلة لديك مع العروض الخاصة.';
+  String get takeAdvantageShoppingDescription => 'لا تفوت العروض الحصرية للتسوق. وفر أكثر على العناصر المفضلة لديك مع العروض الخاصة.';
 
   @override
   String get allTypesOffersTitle => 'جميع أنواع العروض في متناول يدك';
 
   @override
-  String get allTypesOffersDescription =>
-      'تصفح عبر فئات مختلفة واعثر على أفضل الصفقات التي تناسب احتياجاتك وتفضيلاتك.';
+  String get allTypesOffersDescription => 'تصفح عبر فئات مختلفة واعثر على أفضل الصفقات التي تناسب احتياجاتك وتفضيلاتك.';
 
   @override
   String get welcomeTitle => 'أهلاً وسهلاً!';
 
   @override
-  String get welcomeDescription =>
-      'من فضلك سجل دخول أو أنشئ حساب جديد لمتابعة استخدام التطبيق';
+  String get welcomeDescription => 'من فضلك سجل دخول أو أنشئ حساب جديد لمتابعة استخدام التطبيق';
 
   @override
   String get emailTitle => 'البريد الإلكتروني';
@@ -69,8 +65,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get continueWithGoogleTitle => 'المتابعة مع جوجل';
 
   @override
-  String get continueWithGoogleDescription =>
-      'تسجيل دخول سريع وآمن باستخدام حساب جوجل الخاص بك';
+  String get continueWithGoogleDescription => 'تسجيل دخول سريع وآمن باستخدام حساب جوجل الخاص بك';
 
   @override
   String get forgotPasswordTitle => 'نسيت كلمة المرور؟';
@@ -88,15 +83,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loginFailedTitle => 'فشل تسجيل الدخول';
 
   @override
-  String get loginFailedDescription =>
-      'بريد إلكتروني أو كلمة مرور خاطئة. من فضلك حاول مرة أخرى';
+  String get loginFailedDescription => 'بريد إلكتروني أو كلمة مرور خاطئة. من فضلك حاول مرة أخرى';
 
   @override
   String get loginSuccessTitle => 'تم تسجيل الدخول بنجاح';
 
   @override
-  String get loginSuccessDescription =>
-      'أهلاً بعودتك! جاري التوجه إلى الشاشة الرئيسية';
+  String get loginSuccessDescription => 'أهلاً بعودتك! جاري التوجه إلى الشاشة الرئيسية';
 
   @override
   String get signUpDescription => 'أنشئ حساب جديد';
@@ -126,12 +119,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordEmptyDescription => 'من فضلك أدخل كلمة المرور';
 
   @override
-  String get passwordTooShortDescription =>
-      'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+  String get passwordTooShortDescription => 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
 
   @override
-  String get passwordWeakDescription =>
-      'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم';
+  String get passwordWeakDescription => 'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم';
+
+  @override
+  String get pleaseVerifyYourEmail => 'من فضلك قم بتأكيد بريدك الإلكتروني أولاً';
 
   @override
   String get googleSignInCanceledDescription => 'تم إلغاء تسجيل الدخول';
@@ -188,12 +182,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get internalErrorDescription => 'حدث خطأ داخلي';
 
   @override
-  String get accountExistsWithDifferentCredentialDescription =>
-      'الحساب موجود بطريقة دخول مختلفة';
+  String get accountExistsWithDifferentCredentialDescription => 'الحساب موجود بطريقة دخول مختلفة';
 
   @override
-  String get credentialAlreadyInUseDescription =>
-      'بيانات الدخول مستخدمة في مكان آخر';
+  String get credentialAlreadyInUseDescription => 'بيانات الدخول مستخدمة في مكان آخر';
 
   @override
   String get defaultAuthErrorDescription => 'حدث خطأ غير متوقع';
@@ -205,8 +197,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get resetPasswordLabel =>
-      'أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك رسالة تتضمن التعليمات لإعادة تعيين كلمة المرور';
+  String get resetPasswordLabel => 'أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك رسالة تتضمن التعليمات لإعادة تعيين كلمة المرور';
 
   @override
   String get sendInstruction => 'إرسال التعليمات';
@@ -218,19 +209,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reset => 'إعادة التعيين';
 
   @override
-  String get expiredActionCodeDescription =>
-      'الرابط منتهي الصلاحية. من فضلك اطلب رابط جديد.';
+  String get expiredActionCodeDescription => 'الرابط منتهي الصلاحية. من فضلك اطلب رابط جديد.';
 
   @override
-  String get invalidActionCodeDescription =>
-      'الرابط غير صالح. من فضلك اطلب رابط جديد.';
+  String get invalidActionCodeDescription => 'الرابط غير صالح. من فضلك اطلب رابط جديد.';
 
   @override
   String get emailVerifiedTitle => 'تم تأكيد البريد الإلكتروني!';
 
   @override
-  String get emailVerifiedSubtitle =>
-      'حسابك الآن نشط وجاهز للاستخدام. شكراً لانضمامك إلينا.';
+  String get emailVerifiedSubtitle => 'حسابك الآن نشط وجاهز للاستخدام. شكراً لانضمامك إلينا.';
 
   @override
   String get continueToSignInButton => 'متابعة لتسجيل الدخول';
@@ -245,8 +233,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get signin_success => 'تم تسجيل الدخول بنجاح';
 
   @override
-  String get check_email_activation =>
-      'من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.';
+  String get check_email_activation => 'من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.';
 
   @override
   String get forget_password_sent => 'تم الإرسال بنجاح';
@@ -270,14 +257,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirm => 'تأكيد';
 
   @override
-  String get invalid_or_expired_link =>
-      'الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.';
+  String get invalid_or_expired_link => 'الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.';
 
   @override
   String get unexpected_error => 'حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.';
-
-  @override
-  String get error_happened => 'حدث خطأ';
 
   @override
   String get home => 'الرئيسية';
@@ -409,29 +392,50 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noAvailableColors => 'لا توجد ألوان متوفرة';
 
   @override
-  String get streetEmptyDescription => 'عنوان الشارع مطلوب';
+  String get addNewAddress => 'إضافة عنوان جديد';
 
   @override
-  String get streetTooShortDescription => 'عنوان الشارع قصير جداً';
+  String get street => 'الشارع';
 
   @override
-  String get cityEmptyDescription => 'المدينة مطلوبة';
+  String get city => 'المدينة';
 
   @override
-  String get cityTooShortDescription => 'اسم المدينة قصير جداً';
+  String get phoneNumber => 'رقم الهاتف';
 
   @override
-  String get countryEmptyDescription => 'الدولة مطلوبة';
+  String get country => 'الدولة';
 
   @override
-  String get countryTooShortDescription => 'اسم الدولة قصير جداً';
+  String get addAddress => 'إضافة العنوان';
 
   @override
-  String get phoneEmptyDescription => 'رقم الهاتف مطلوب';
+  String get addressAddedSuccessfully => 'تمت إضافة العنوان بنجاح';
 
   @override
-  String get phoneInvalidDescription => 'رقم الهاتف يجب أن يحتوي على أرقام فقط';
+  String get streetEmptyDescription => 'حقل الشارع مطلوب.';
 
   @override
-  String get phoneLengthDescription => 'رقم الهاتف يجب أن يكون بين 8 و 15 رقم';
+  String get streetTooShortDescription => 'الشارع قصير جدًا، يجب أن لا يقل عن 5 أحرف.';
+
+  @override
+  String get cityEmptyDescription => 'حقل المدينة مطلوب.';
+
+  @override
+  String get cityTooShortDescription => 'المدينة قصيرة جدًا، يجب أن لا تقل عن حرفين.';
+
+  @override
+  String get countryEmptyDescription => 'حقل الدولة مطلوب.';
+
+  @override
+  String get countryTooShortDescription => 'الدولة قصيرة جدًا، يجب أن لا تقل عن حرفين.';
+
+  @override
+  String get phoneEmptyDescription => 'حقل رقم الهاتف مطلوب.';
+
+  @override
+  String get phoneInvalidDescription => 'الرجاء إدخال رقم هاتف صالح.';
+
+  @override
+  String get phoneLengthDescription => 'يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا.';
 }
