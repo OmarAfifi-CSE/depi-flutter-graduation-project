@@ -1,7 +1,7 @@
 import 'package:batrina/controllers/cubit/auth/forget_password_cubit/forget_password__cubit.dart';
 import 'package:batrina/styling/app_assets.dart';
-import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
-import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_text_form_field.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';

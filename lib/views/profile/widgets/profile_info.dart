@@ -21,7 +21,7 @@ class ProfileInfo extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(16.r),
-        border: Border.all(color: appColors.card!, width: 2.r),
+        border: Border.all(color: appColors.dividerColor!, width: 2.r),
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),

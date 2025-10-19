@@ -192,7 +192,18 @@
   "noAvailableColors": "No available Colors",
 
 
+  "shippingAddresses": "Shipping Addresses",
+  "mainAddress": "Main Address",
+  "noMainAddress": "No Main Address",
+  "dragAnAddress": "Drag an address up to set it as main.",
+  "otherAddresses": "Other Addresses",
+  "setMain": "Set Main",
+  "delete": "Delete",
+
+
   "addNewAddress": "Add New Address",
+  "tapToAdd": "Tap to add",
+  "swipeToManage": "Swipe to manage",
   "street": "Street",
   "city": "City",
   "phoneNumber": "Phone Number",
@@ -207,7 +218,12 @@
   "countryTooShortDescription": "Country is too short, must be at least 2 characters.",
   "phoneEmptyDescription": "Phone number cannot be empty.",
   "phoneInvalidDescription": "Please enter a valid phone number.",
-  "phoneLengthDescription": "Phone number must be between 8 and 15 digits."
+  "phoneLengthDescription": "Phone number must be between 8 and 15 digits.",
+
+  "uploadImage": "Upload Image",
+  "name": "Name",
+  "email": "Email",
+  "logOut": "Log Out"
 
 
   }

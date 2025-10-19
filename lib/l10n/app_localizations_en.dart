@@ -392,7 +392,34 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noAvailableColors => 'No available Colors';
 
   @override
+  String get shippingAddresses => 'Shipping Addresses';
+
+  @override
+  String get mainAddress => 'Main Address';
+
+  @override
+  String get noMainAddress => 'No Main Address';
+
+  @override
+  String get dragAnAddress => 'Drag an address up to set it as main.';
+
+  @override
+  String get otherAddresses => 'Other Addresses';
+
+  @override
+  String get setMain => 'Set Main';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
   String get addNewAddress => 'Add New Address';
+
+  @override
+  String get tapToAdd => 'Tap to add';
+
+  @override
+  String get swipeToManage => 'Swipe to manage';
 
   @override
   String get street => 'Street';
@@ -438,4 +465,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get phoneLengthDescription => 'Phone number must be between 8 and 15 digits.';
+
+  @override
+  String get uploadImage => 'Upload Image';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get logOut => 'Log Out';
 }

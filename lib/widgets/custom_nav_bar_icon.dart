@@ -206,7 +206,7 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.r),
-                color: appColors?.card ?? theme.cardColor,
+                color: appColors?.dividerColor ?? theme.cardColor,
               ),
               child: Center(
                 child: AnimatedBuilder(

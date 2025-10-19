@@ -68,7 +68,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         dotHeight: 10.0,
                         paintStyle: PaintingStyle.fill,
                         strokeWidth: 1.5,
-                        dotColor: appColors.card!,
+                        dotColor: appColors.dividerColor!,
                         activeDotColor: theme.primaryColor,
                       ),
                       onDotClicked: (index) {

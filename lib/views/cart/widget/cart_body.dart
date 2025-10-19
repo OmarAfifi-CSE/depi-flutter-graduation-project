@@ -8,7 +8,7 @@ import 'package:batrina/views/cart/widget/cart_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/views/cart/widget/check_out_details.dart';
-import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:provider/provider.dart';
 
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
@@ -88,7 +88,7 @@ class CartViewBody extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Divider(
-                color: appColors.card,
+                color: appColors.dividerColor,
                 thickness: 1.h,
                 height: 1.h,
               ),

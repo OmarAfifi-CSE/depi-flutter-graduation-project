@@ -392,7 +392,34 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noAvailableColors => 'لا توجد ألوان متوفرة';
 
   @override
+  String get shippingAddresses => 'عناوين الشحن';
+
+  @override
+  String get mainAddress => 'العنوان الرئيسي';
+
+  @override
+  String get noMainAddress => 'لا يوجد عنوان رئيسي';
+
+  @override
+  String get dragAnAddress => 'اسحب عنوانًا للأعلى لتعيينه كرئيسي.';
+
+  @override
+  String get otherAddresses => 'العناوين الأخرى';
+
+  @override
+  String get setMain => 'تعيين كعنوان رئيسي';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
   String get addNewAddress => 'إضافة عنوان جديد';
+
+  @override
+  String get tapToAdd => 'اضغط للإضافة';
+
+  @override
+  String get swipeToManage => 'اسحب لإدارة العناوين';
 
   @override
   String get street => 'الشارع';
@@ -438,4 +465,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get phoneLengthDescription => 'يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا.';
+
+  @override
+  String get uploadImage => 'تحميل صورة';
+
+  @override
+  String get name => 'الاسم';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get logOut => 'تسجيل الخروج';
 }

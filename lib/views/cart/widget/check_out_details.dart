@@ -22,7 +22,7 @@ class CheckOutDetails extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(12.r),
-        border: Border.all(color: appColors.card!, width: 1.r),
+        border: Border.all(color: appColors.dividerColor!, width: 1.r),
       ),
       child: Column(
         children: [
@@ -38,7 +38,7 @@ class CheckOutDetails extends StatelessWidget {
 
           SizedBox(
             height: 15.h,
-            child: Divider(color: appColors.card, thickness: 1.h, height: 1.h),
+            child: Divider(color: appColors.dividerColor, thickness: 1.h, height: 1.h),
           ),
 
           // Shipping
@@ -52,7 +52,7 @@ class CheckOutDetails extends StatelessWidget {
           ),
           SizedBox(
             height: 15.h,
-            child: Divider(color: appColors.card, thickness: 1.h, height: 1.h),
+            child: Divider(color: appColors.dividerColor, thickness: 1.h, height: 1.h),
           ),
 
           // Total

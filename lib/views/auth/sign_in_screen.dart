@@ -3,7 +3,7 @@ import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/auth/widgets/custom_divider.dart';
-import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
+import 'package:batrina/widgets/custom_text_form_field.dart';
 import 'package:batrina/views/auth/widgets/google_sign_in_button.dart';
 import 'package:batrina/views/auth/widgets/sign_in_button.dart';
 import 'package:batrina/widgets/custom_text.dart';

@@ -7,7 +7,7 @@ class ProfileProvider extends ChangeNotifier {
   late String currentName;
   bool showButton = false;
 
-  void initilize({String? image, required String name}) {
+  void initialize({String? image, required String name}) {
     currentImage = image;
     currentName = name;
     mainImage = image;

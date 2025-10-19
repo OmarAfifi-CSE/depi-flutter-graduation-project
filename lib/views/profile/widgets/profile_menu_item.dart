@@ -39,7 +39,7 @@ class ProfileMenuItem extends StatelessWidget {
               width: 40.w,
               padding: EdgeInsets.all(8.r),
               decoration: BoxDecoration(
-                color: appColors.card?.withValues(alpha: .7),
+                color: appColors.dividerColor?.withValues(alpha: .7),
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: icon != null

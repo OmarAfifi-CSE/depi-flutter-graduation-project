@@ -23,6 +23,7 @@ class CustomElevatedButton extends StatelessWidget {
         foregroundColor: theme.scaffoldBackgroundColor,
         fixedSize: Size(325.w, 46.h),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+        disabledBackgroundColor: theme.disabledColor,
       ),
       child: buttonChild,
     );

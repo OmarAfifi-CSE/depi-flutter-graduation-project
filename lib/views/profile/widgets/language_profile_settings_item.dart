@@ -93,7 +93,7 @@ class _LanguageProfileSettingsItemState
                       height: 40.h,
                       width: 40.w,
                       decoration: BoxDecoration(
-                        color: appColors.card?.withValues(alpha: .7),
+                        color: appColors.dividerColor?.withValues(alpha: .7),
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: Icon(
@@ -168,7 +168,7 @@ class _LanguageProfileSettingsItemState
                           border: isArabic
                               ? Border.all(
                                   width: 2,
-                                  color: appColors.card!.withValues(alpha: .7),
+                                  color: appColors.dividerColor!.withValues(alpha: .7),
                                 )
                               : null,
                           borderRadius: BorderRadiusGeometry.circular(12.r),
@@ -219,7 +219,7 @@ class _LanguageProfileSettingsItemState
                           border: !isArabic
                               ? Border.all(
                                   width: 2,
-                                  color: appColors.card!.withValues(alpha: .7),
+                                  color: appColors.dividerColor!.withValues(alpha: .7),
                                 )
                               : null,
                           borderRadius: BorderRadiusGeometry.circular(12.r),

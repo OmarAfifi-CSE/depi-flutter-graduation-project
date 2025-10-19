@@ -1,6 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/controllers/cubit/profile/get_addresses_cubit/get_addresses_cubit.dart';
-import 'package:batrina/views/profile/add_address_screen.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/views/profile/shipping_address/add_new_address/add_new_address_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,8 +15,8 @@ class AddAddressContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
     final addressesCubit = context.read<GetAddressesCubit>();
-
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
@@ -24,7 +26,7 @@ class AddAddressContainer extends StatelessWidget {
             pageBuilder: (context, animation, secondaryAnimation) {
               return BlocProvider.value(
                 value: addressesCubit,
-                child: const AddAddressScreen(),
+                child: const AddNewAddressScreen(),
               );
             },
             transitionsBuilder:
@@ -40,24 +42,17 @@ class AddAddressContainer extends StatelessWidget {
         );
       },
       child: Container(
-        width: double.infinity,
+        width: 1.sw,
         padding: EdgeInsets.all(16.r),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              theme.primaryColor,
-              theme.primaryColor.withValues(alpha: 0.6),
-            ],
-          ),
+          borderRadius: BorderRadius.circular(16.r),
+          color: theme.primaryColor,
           boxShadow: [
             BoxShadow(
               color: theme.primaryColor.withValues(alpha: 0.3),
               blurRadius: 15,
               spreadRadius: 0,
-              offset: const Offset(0, 8),
+              offset: Offset(0, 8.h),
             ),
           ],
         ),
@@ -77,18 +72,16 @@ class AddAddressContainer extends StatelessWidget {
                 color: theme.scaffoldBackgroundColor,
               ),
             ),
-
             SizedBox(height: 12.h),
             CustomText(
-              data: 'Add New Address',
+              data: loc!.addNewAddress,
               color: theme.scaffoldBackgroundColor,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
             ),
-
             SizedBox(height: 4.h),
             CustomText(
-              data: 'Tap to add',
+              data: loc.tapToAdd,
               color: theme.scaffoldBackgroundColor.withValues(alpha: 0.7),
               fontSize: 11.sp,
               fontWeight: FontWeight.w400,

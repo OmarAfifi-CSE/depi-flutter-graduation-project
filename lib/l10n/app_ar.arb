@@ -186,8 +186,19 @@
   "noAvailableSizes": "لا توجد مقاسات متوفرة",
   "noAvailableColors": "لا توجد ألوان متوفرة",
 
+  "shippingAddresses": "عناوين الشحن",
+  "mainAddress": "العنوان الرئيسي",
+  "noMainAddress": "لا يوجد عنوان رئيسي",
+  "dragAnAddress": "اسحب عنوانًا للأعلى لتعيينه كرئيسي.",
+  "otherAddresses": "العناوين الأخرى",
+  "setMain": "تعيين كعنوان رئيسي",
+  "delete": "حذف",
+
+
 
   "addNewAddress": "إضافة عنوان جديد",
+  "tapToAdd": "اضغط للإضافة",
+  "swipeToManage": "اسحب لإدارة العناوين",
   "street": "الشارع",
   "city": "المدينة",
   "phoneNumber": "رقم الهاتف",
@@ -202,6 +213,11 @@
   "countryTooShortDescription": "الدولة قصيرة جدًا، يجب أن لا تقل عن حرفين.",
   "phoneEmptyDescription": "حقل رقم الهاتف مطلوب.",
   "phoneInvalidDescription": "الرجاء إدخال رقم هاتف صالح.",
-  "phoneLengthDescription": "يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا."
+  "phoneLengthDescription": "يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا.",
+
+  "uploadImage": "تحميل صورة",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "logOut": "تسجيل الخروج"
 
 }

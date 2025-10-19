@@ -1,8 +1,6 @@
 import 'package:batrina/controllers/cubit/profile/add_address_cubit/add_address_cubit.dart';
 import 'package:batrina/controllers/cubit/profile/get_addresses_cubit/get_addresses_cubit.dart';
 import 'package:batrina/models/address_model.dart';
-import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
-import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,15 +11,17 @@ import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
 import 'package:batrina/widgets/custom_text.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_text_form_field.dart';
 
-class AddAddressScreen extends StatefulWidget {
-  const AddAddressScreen({super.key});
+class AddNewAddressScreen extends StatefulWidget {
+  const AddNewAddressScreen({super.key});
 
   @override
-  State<AddAddressScreen> createState() => _AddAddressScreenState();
+  State<AddNewAddressScreen> createState() => _AddNewAddressScreenState();
 }
 
-class _AddAddressScreenState extends State<AddAddressScreen> {
+class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
   final TextEditingController street = TextEditingController();
 
   final TextEditingController city = TextEditingController();
@@ -148,6 +148,7 @@ class _AddAddressScreenState extends State<AddAddressScreen> {
                             ],
                           ),
                         ),
+                        SizedBox(height: 20.h),
                       ],
                     ),
                   ),

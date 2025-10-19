@@ -857,11 +857,65 @@ abstract class AppLocalizations {
   /// **'No available Colors'**
   String get noAvailableColors;
 
+  /// No description provided for @shippingAddresses.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping Addresses'**
+  String get shippingAddresses;
+
+  /// No description provided for @mainAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Main Address'**
+  String get mainAddress;
+
+  /// No description provided for @noMainAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'No Main Address'**
+  String get noMainAddress;
+
+  /// No description provided for @dragAnAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag an address up to set it as main.'**
+  String get dragAnAddress;
+
+  /// No description provided for @otherAddresses.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Addresses'**
+  String get otherAddresses;
+
+  /// No description provided for @setMain.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Main'**
+  String get setMain;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
   /// No description provided for @addNewAddress.
   ///
   /// In en, this message translates to:
   /// **'Add New Address'**
   String get addNewAddress;
+
+  /// No description provided for @tapToAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to add'**
+  String get tapToAdd;
+
+  /// No description provided for @swipeToManage.
+  ///
+  /// In en, this message translates to:
+  /// **'Swipe to manage'**
+  String get swipeToManage;
 
   /// No description provided for @street.
   ///
@@ -952,6 +1006,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Phone number must be between 8 and 15 digits.'**
   String get phoneLengthDescription;
+
+  /// No description provided for @uploadImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Image'**
+  String get uploadImage;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @logOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get logOut;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

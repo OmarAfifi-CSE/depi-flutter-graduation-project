@@ -11,9 +11,9 @@ import 'package:batrina/views/categories/category_products/category_products_scr
 import 'package:batrina/views/home/home_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
-import 'package:batrina/views/profile/add_address_screen.dart';
-import 'package:batrina/views/profile/address_page.dart';
-import 'package:batrina/views/profile/personal_details.dart';
+import 'package:batrina/views/profile/shipping_address/add_new_address/add_new_address_screen.dart';
+import 'package:batrina/views/profile/shipping_address/shipping_address_screen.dart';
+import 'package:batrina/views/profile/personal_details/personal_details.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
 import 'package:batrina/views/splash_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
@@ -269,7 +269,7 @@ class RouterGenerationConfig {
           name: AppRoutes.addressesScreen,
           pageBuilder: (context, state) {
             return CustomTransitionPage(
-              child: const AddressPage(),
+              child: const ShippingAddressScreen(),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
@@ -289,7 +289,7 @@ class RouterGenerationConfig {
           name: AppRoutes.addAddressScreen,
           pageBuilder: (context, state) {
             return CustomTransitionPage(
-              child: const AddAddressScreen(),
+              child: const AddNewAddressScreen(),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
