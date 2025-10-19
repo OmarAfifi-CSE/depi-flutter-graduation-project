@@ -32,7 +32,7 @@ class _CounterState extends State<Counter> {
     if (count == 0 && productProvider.currentVariantStock > 0) {
       count = 1;
     }
-    productProvider.quantity = count;
+    productProvider.currentQuantity = count;
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
@@ -57,7 +57,7 @@ class _CounterState extends State<Counter> {
                   if (count > 1) {
                     setState(() {
                       count--;
-                      productProvider.quantity = count;
+                      productProvider.currentQuantity = count;
                     });
                   }
                 },
@@ -85,7 +85,7 @@ class _CounterState extends State<Counter> {
                   if (count < productProvider.currentVariantStock) {
                     setState(() {
                       count++;
-                      productProvider.quantity = count;
+                      productProvider.currentQuantity = count;
                     });
                   }
                 },

@@ -8,7 +8,7 @@ class ProductProvider extends ChangeNotifier {
   late List<String> currentSliderImage;
   late String? currentColorName;
   late String? currentSize;
-  int quantity = 1;
+  int currentQuantity = 1;
 
   ProductProvider({required this.productModel});
 

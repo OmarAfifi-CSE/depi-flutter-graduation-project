@@ -10,9 +10,15 @@ import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
 
 class CartCounter extends StatefulWidget {
-  const CartCounter({super.key, required this.cartModel});
+  const CartCounter({
+    super.key,
+    required this.cartModel,
+    required this.deleteFromQuantity,
+  });
 
   final CartModel cartModel;
+
+  final void Function() deleteFromQuantity;
 
   @override
   State<CartCounter> createState() => _CartCounterState();
@@ -55,6 +61,11 @@ class _CartCounterState extends State<CartCounter> {
 
                     count--;
                   });
+                } else if (count == 1) {
+                  setState(() {
+                    count = 0;
+                  });
+                  widget.deleteFromQuantity();
                 }
               },
               child: Icon(Icons.remove, color: theme.primaryColor, size: 16.sp),

@@ -32,7 +32,7 @@ class AddToCartButton extends StatelessWidget {
         subtitle: productProvider.productModel.subtitle,
         productId: productProvider.productModel.id,
         productName: productProvider.productModel.name,
-        quantity: productProvider.quantity,
+        quantity: productProvider.currentQuantity,
         variantId: productProvider.variant?.id ?? "",
         color: productProvider.currentColorName ?? "",
         size: productProvider.currentSize ?? "",
