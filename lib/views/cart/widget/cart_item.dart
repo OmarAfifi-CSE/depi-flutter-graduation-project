@@ -2,7 +2,6 @@ import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dar
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/cart_model.dart';
-import 'package:batrina/models/product_navigation_data.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_fonts.dart';
@@ -247,12 +246,16 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                         ),
                         child: GestureDetector(
                           onTap: () {
-                            context.push(
+                            context.pushNamed(
                               AppRoutes.productScreen,
-                              extra: ProductNavigationData(
-                                productId: widget.cartModel.productId,
-                                cartModel: widget.cartModel,
-                              ),
+                              pathParameters: {
+                                'categoryName': widget.cartModel.categoryName!,
+                                'productId': widget.cartModel.productId,
+                              },
+                              queryParameters: {
+                                'size': widget.cartModel.size,
+                                'color': widget.cartModel.color,
+                              },
                             );
                           },
                           onHorizontalDragUpdate: _handleSwipe,

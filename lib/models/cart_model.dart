@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class CartModel {
   final String id; // ← ID الـ Cart Item
+  final String categoryName;
   final String productId;
   final String productName;
   final String subtitle;
@@ -17,6 +18,7 @@ class CartModel {
   CartModel({
     required this.subtitle,
     required this.id,
+    required this.categoryName,
     required this.productId,
     required this.productName,
     required this.variantId,
@@ -35,6 +37,7 @@ class CartModel {
     return CartModel(
       subtitle: json['subtitle'],
       id: json['id'] ?? '',
+      categoryName: json['categoryName'] ?? '',
       productId: json['productId'] ?? '',
       productName: json['productName'] ?? '',
       variantId: json['variantId'] ?? '',
@@ -50,6 +53,7 @@ class CartModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
+      'categoryName': categoryName,
       'productId': productId,
       'productName': productName,
       'subtitle': subtitle,
@@ -65,6 +69,7 @@ class CartModel {
 
   CartModel copyWith({
     String? id,
+    String? categoryName,
     String? productId,
     String? productName,
     String? subtitle,
@@ -79,6 +84,7 @@ class CartModel {
     return CartModel(
       subtitle: subtitle ?? this.subtitle,
       id: id ?? this.id,
+      categoryName: categoryName ?? this.categoryName,
       productId: productId ?? this.productId,
       productName: productName ?? this.productName,
       variantId: variantId ?? this.variantId,

@@ -13,7 +13,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -47,7 +47,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -81,7 +81,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -115,7 +115,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -149,7 +149,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -183,7 +183,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -217,7 +217,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -251,7 +251,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -285,7 +285,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Casual T-Shirt',
     subtitle: 'Comfortable Cotton Tee',
     description: 'Comfortable cotton T-shirt suitable for daily use.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 299.0,
     salePrice: 249.0,
     thumbnail:
@@ -321,7 +321,7 @@ final List<ProductModel> demoProducts = [
     name: 'Padded Hoodie',
     subtitle: 'Warm & Cozy Outerwear',
     description: 'Warm high-quality hoodie, perfect for evening outings.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 599.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
@@ -353,7 +353,7 @@ final List<ProductModel> demoProducts = [
     name: 'Men\'s Slim Fit Jeans',
     subtitle: 'Durable Denim',
     description: 'Durable and comfortable slim fit denim jeans.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 749.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
@@ -384,7 +384,7 @@ final List<ProductModel> demoProducts = [
     name: 'Lightweight Sneakers',
     subtitle: 'Running & Training Shoes',
     description: 'Comfortable sneakers for running and daily workouts.',
-    category: 'Footwear',
+    categoryName: 'Footwear',
     price: 899.0,
     salePrice: 799.0,
     thumbnail:
@@ -416,7 +416,7 @@ final List<ProductModel> demoProducts = [
     name: 'Everyday Backpack',
     subtitle: 'Water-Resistant Large Capacity',
     description: 'Durable water-resistant backpack with large capacity.',
-    category: 'Accessories',
+    categoryName: 'Accessories',
     price: 399.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
@@ -446,7 +446,7 @@ final List<ProductModel> demoProducts = [
     name: 'Casual Cap',
     subtitle: 'Adjustable Logo Cap',
     description: 'Adjustable fabric cap with a simple logo.',
-    category: 'Accessories',
+    categoryName: 'Accessories',
     price: 129.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',
@@ -476,7 +476,7 @@ final List<ProductModel> demoProducts = [
     name: 'Elegant Summer Dress',
     subtitle: 'Light Casual Dress',
     description: 'Light dress suitable for summer and casual events.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 899.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
@@ -507,7 +507,7 @@ final List<ProductModel> demoProducts = [
     name: 'Swim Shorts',
     subtitle: 'Beach & Water Activities',
     description: 'Light shorts suitable for the beach and water activities.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 199.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235376/1a642c19-bacc-4c95-bf57-2f87d826f973.jpg?format=webp&width=800',
@@ -537,7 +537,7 @@ final List<ProductModel> demoProducts = [
     name: 'Small Handbag',
     subtitle: 'Elegant Occasion Bag',
     description: 'Elegant handbag for small occasions and outings.',
-    category: 'Accessories',
+    categoryName: 'Accessories',
     price: 459.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z1185D42B4C26270C6C11Z/45/1752927980/18d84622-8f63-456e-a798-6c9e3f54f203.jpg?format=webp&width=800',
@@ -567,7 +567,7 @@ final List<ProductModel> demoProducts = [
     name: 'Sports Socks Pack (3 Pairs)',
     subtitle: 'Stretchy & Comfortable',
     description: 'Pack of 3 stretchy and comfortable sports socks.',
-    category: 'Clothing',
+    categoryName: 'Clothing',
     price: 129.0,
     thumbnail:
         'https://f.nooncdn.com/p/pzsku/Z0D8834DCC87D458BCCA9Z/45/1755235375/4be8bff7-f9d8-4da9-992d-734ed8d0e633.jpg?format=webp&width=800',

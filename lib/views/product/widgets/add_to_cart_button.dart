@@ -28,6 +28,7 @@ class AddToCartButton extends StatelessWidget {
     context.read<CartCubit>().addToCart(
       cartModel: CartModel(
         id: "id",
+        categoryName: productProvider.productModel.categoryName,
         subtitle: productProvider.productModel.subtitle,
         productId: productProvider.productModel.id,
         productName: productProvider.productModel.name,

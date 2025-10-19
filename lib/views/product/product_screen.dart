@@ -1,6 +1,5 @@
 import 'package:batrina/controllers/cubit/product/get_product_cubit/get_product_cubit.dart';
 import 'package:batrina/controllers/provider/product_provider.dart';
-import 'package:batrina/models/cart_model.dart';
 import 'package:batrina/views/product/widgets/product_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,12 +11,13 @@ import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/widgets/custom_text.dart';
 
 class ProductScreen extends StatefulWidget {
-  const ProductScreen({super.key, required this.productId, this.cartModel});
+  const ProductScreen({super.key, required this.productId,this.size, this.color});
 
   final String productId;
+  // If coming from cart
+  final String? size;
+  final String? color;
 
-  //لو جاي من كارت
-  final CartModel? cartModel;
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -60,8 +60,8 @@ class _ProductScreenState extends State<ProductScreen> {
           return ChangeNotifierProvider(
             create: (context) => ProductProvider(productModel: product!)
               ..initialize(
-                size: widget.cartModel?.size,
-                color: widget.cartModel?.color,
+                size: widget.size,
+                color: widget.color,
               ),
             child: const ProductDetails(),
           );

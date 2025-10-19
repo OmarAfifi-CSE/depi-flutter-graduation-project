@@ -229,8 +229,14 @@ class RouterGenerationConfig {
           name: AppRoutes.productScreen,
           pageBuilder: (context, state) {
             final productId = state.pathParameters['productId'];
+            final size = state.uri.queryParameters['size'];
+            final color = state.uri.queryParameters['color'];
             return CustomTransitionPage(
-              child: ProductScreen(productId: productId!),
+              child: ProductScreen(
+                productId: productId!,
+                size: size,
+                color: color,
+              ),
               transitionDuration: const Duration(milliseconds: 500),
               reverseTransitionDuration: const Duration(milliseconds: 300),
               transitionsBuilder:
@@ -258,31 +264,6 @@ class RouterGenerationConfig {
             );
           },
         ),
-        // GoRoute(
-        //   path: AppRoutes.productScreen,
-        //   name: AppRoutes.productScreen,
-        //   pageBuilder: (context, state) {
-        //     ProductNavigationData productData =
-        //     (state.extra) as ProductNavigationData;
-        //     return CustomTransitionPage(
-        //       child: ProductScreen(
-        //         productId: productData.productId,
-        //         cartModel: productData.cartModel,
-        //       ),
-        //       transitionDuration: const Duration(milliseconds: 1000),
-        //       reverseTransitionDuration: const Duration(milliseconds: 1000),
-        //       transitionsBuilder:
-        //           (context, animation, secondaryAnimation, child) {
-        //         return SharedAxisTransition(
-        //           transitionType: SharedAxisTransitionType.horizontal,
-        //           animation: animation,
-        //           secondaryAnimation: secondaryAnimation,
-        //           child: child,
-        //         );
-        //       },
-        //     );
-        //   },
-        // ),
         GoRoute(
           path: AppRoutes.addressesScreen,
           name: AppRoutes.addressesScreen,

@@ -31,7 +31,6 @@ dependencies:
   lottie: ^3.3.2
   carousel_slider: ^5.1.1
   cached_network_image: ^3.4.1
-  card_swiper: ^3.0.1
   flutter_card_swiper: ^6.0.0
   image_picker: ^1.2.0
 
