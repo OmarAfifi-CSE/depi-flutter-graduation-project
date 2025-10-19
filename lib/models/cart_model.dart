@@ -13,6 +13,7 @@ class CartModel {
   final double price;
   final String thumbnail;
   int quantity; // ← الكمية
+  int availableStock; // ← الكمية
   final DateTime addedAt;
 
   CartModel({
@@ -27,6 +28,7 @@ class CartModel {
     required this.price,
     required this.thumbnail,
     this.quantity = 1,
+    required this.availableStock,
     required this.addedAt,
   });
 
@@ -46,6 +48,7 @@ class CartModel {
       price: (json['price'] ?? 0).toDouble(),
       thumbnail: json['thumbnail'] ?? '',
       quantity: json['quantity'] ?? 1,
+      availableStock: json['availableStock'] ?? 1,
       addedAt: DateTime.tryParse(json['addedAt'] ?? '') ?? DateTime.now(),
     );
   }
@@ -64,6 +67,7 @@ class CartModel {
       'thumbnail': thumbnail,
       'quantity': quantity,
       'addedAt': addedAt.toIso8601String(),
+      "availableStock": availableStock,
     };
   }
 
@@ -79,6 +83,7 @@ class CartModel {
     double? price,
     String? thumbnail,
     int? quantity,
+    int? availableStock,
     DateTime? addedAt,
   }) {
     return CartModel(
@@ -93,6 +98,7 @@ class CartModel {
       price: price ?? this.price,
       thumbnail: thumbnail ?? this.thumbnail,
       quantity: quantity ?? this.quantity,
+      availableStock: availableStock ?? this.availableStock,
       addedAt: addedAt ?? this.addedAt,
     );
   }

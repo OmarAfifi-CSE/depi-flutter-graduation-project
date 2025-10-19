@@ -349,16 +349,20 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
 
     return Container(
-      width: 20.w,
+      width: widget.cartModel.size != "OneSize" ? 20.w : 70.w,
       height: 20.w,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
+        shape: widget.cartModel.size != "OneSize"
+            ? BoxShape.circle
+            : BoxShape.rectangle,
         color: theme.primaryColor,
         border: Border.all(color: appColors.containerBorder!),
       ),
       child: Center(
         child: CustomText(
-          data: widget.cartModel.size,
+          data: widget.cartModel.size != "OneSize"
+              ? widget.cartModel.size
+              : "Standard",
           fontSize: 12.sp,
           fontWeight: FontWeight.w400,
           color: theme.scaffoldBackgroundColor,

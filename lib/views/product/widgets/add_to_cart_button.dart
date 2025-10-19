@@ -38,6 +38,7 @@ class AddToCartButton extends StatelessWidget {
         size: productProvider.currentSize ?? "",
         price: productProvider.productModel.finalPrice,
         thumbnail: productProvider.currentSliderImage.first,
+        availableStock: productProvider.variant?.stock ?? 1,
         addedAt: DateTime.now(),
       ),
     );

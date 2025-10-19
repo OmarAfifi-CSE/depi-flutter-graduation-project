@@ -55,10 +55,12 @@ class _SizeOptionState extends State<SizeOption> {
                   );
                 },
                 child: Container(
-                  width: 30.w,
+                  width: widget.sizes[index] != "OneSize" ? 30.w : 70.w,
                   height: 30.w,
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                    shape: widget.sizes[index] != "OneSize"
+                        ? BoxShape.circle
+                        : BoxShape.rectangle,
                     color: index != selected
                         ? theme.scaffoldBackgroundColor
                         : theme.primaryColor,
@@ -66,7 +68,9 @@ class _SizeOptionState extends State<SizeOption> {
                   ),
                   child: Center(
                     child: CustomText(
-                      data: widget.sizes[index],
+                      data: widget.sizes[index] != "OneSize"
+                          ? widget.sizes[index]
+                          : "Standard",
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
                       color: index != selected

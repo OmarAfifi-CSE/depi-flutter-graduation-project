@@ -80,10 +80,12 @@ class _CartCounterState extends State<CartCounter> {
             GestureDetector(
               onTap: () {
                 setState(() {
-                  widget.cartModel.quantity++;
-                  context.read<CartPriceProvider>().refresh();
+                  if (count < widget.cartModel.availableStock) {
+                    widget.cartModel.quantity++;
+                    context.read<CartPriceProvider>().refresh();
 
-                  count++;
+                    count++;
+                  }
                 });
               },
               child: Icon(Icons.add, color: theme.primaryColor, size: 16.sp),
