@@ -403,11 +403,22 @@ class FireBaseFireStore {
               .doc(userId)
               .collection("userCart")
               .doc(cart.id)
-              .update({"quantity": variant.stock});
+              .update({
+                "quantity": variant.stock,
+                "availableStock": variant.stock,
+              });
 
           // حدث الـ local cart
           cart.quantity = variant.stock;
+        } else if (cart.availableStock != variant.stock) {
+          await fireBaseFireStore
+              .collection("users")
+              .doc(userId)
+              .collection("userCart")
+              .doc(cart.id)
+              .update({"availableStock": variant.stock});
         }
+        cart.availableStock = variant!.stock;
       }
     }
 

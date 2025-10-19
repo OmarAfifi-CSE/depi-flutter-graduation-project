@@ -1,4 +1,7 @@
+import 'dart:async';
+import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/cart_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +20,6 @@ class CartCounter extends StatefulWidget {
   });
 
   final CartModel cartModel;
-
   final void Function() deleteFromQuantity;
 
   @override
@@ -26,10 +28,46 @@ class CartCounter extends StatefulWidget {
 
 class _CartCounterState extends State<CartCounter> {
   late int count;
+  Timer? _debounceTimer;
+
   @override
   void initState() {
     count = widget.cartModel.quantity;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _debounceTimer?.cancel();
+    super.dispose();
+  }
+
+  void _saveToFirebase() {
+    try {
+      FireBaseFireStore().fireBaseFireStore
+          .collection("users")
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection("userCart")
+          .doc(widget.cartModel.id)
+          .update({"quantity": count});
+    } catch (e) {
+      debugPrint("error happened");
+    }
+  }
+
+  void _updateQuantity(int newCount) {
+    // Cancel التايمر القديم لو في واحد شغال
+    _debounceTimer?.cancel();
+
+    setState(() {
+      count = newCount;
+      widget.cartModel.quantity = newCount;
+      context.read<CartPriceProvider>().refresh();
+    });
+
+    _debounceTimer = Timer(const Duration(milliseconds: 1500), () {
+      _saveToFirebase();
+    });
   }
 
   @override
@@ -55,16 +93,9 @@ class _CartCounterState extends State<CartCounter> {
             GestureDetector(
               onTap: () {
                 if (count > 1) {
-                  setState(() {
-                    widget.cartModel.quantity--;
-                    context.read<CartPriceProvider>().refresh();
-
-                    count--;
-                  });
+                  _updateQuantity(count - 1);
                 } else if (count == 1) {
-                  setState(() {
-                    count = 0;
-                  });
+                  _debounceTimer?.cancel();
                   widget.deleteFromQuantity();
                 }
               },
@@ -73,20 +104,14 @@ class _CartCounterState extends State<CartCounter> {
             CustomText(
               forceStrutHeight: true,
               data: NumberLocalizer.formatNumber(count.toString(), localeCode),
-
               fontSize: 15.sp,
               fontWeight: FontWeight.w500,
             ),
             GestureDetector(
               onTap: () {
-                setState(() {
-                  if (count < widget.cartModel.availableStock) {
-                    widget.cartModel.quantity++;
-                    context.read<CartPriceProvider>().refresh();
-
-                    count++;
-                  }
-                });
+                if (count < widget.cartModel.availableStock) {
+                  _updateQuantity(count + 1);
+                }
               },
               child: Icon(Icons.add, color: theme.primaryColor, size: 16.sp),
             ),
