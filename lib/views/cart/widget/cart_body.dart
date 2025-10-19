@@ -41,32 +41,18 @@ class CartViewBody extends StatelessWidget {
           }
           final List<CartModel> userCart = (state as GetCartSuccess).userCart;
           context.read<CartPriceProvider>().init(cart: userCart, shipping: 50);
-
           return userCart.isNotEmpty
               ? Column(
                   children: [
-                    // My Cart title
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0.w),
-                      child: _buildCartTitle(context),
-                    ),
-
-                    //هنضيف بادينج علي كل واحد لوحدو علشان الانيمشن يظبط
-                    SizedBox(height: 4.h),
-                    // Cart items
                     SizedBox(
-                      height: 350.h,
+                      height: 360.h,
                       child: _buildCartItems(context, userCart),
                     ),
-
-                    SizedBox(height: 30.h),
-
-                    // Order summary
+                    SizedBox(height: 20.h),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                       child: const CheckOutDetails(),
                     ),
-                    // Checkout button
                     const Spacer(),
                     CustomElevatedButton(
                       onPressed: () {},
@@ -77,6 +63,7 @@ class CartViewBody extends StatelessWidget {
                         color: theme.scaffoldBackgroundColor,
                       ),
                     ),
+                    SizedBox(height: 10.h),
                   ],
                 )
               : Center(
@@ -91,30 +78,15 @@ class CartViewBody extends StatelessWidget {
     );
   }
 
-  Widget _buildCartTitle(BuildContext context) {
-    final loc = AppLocalizations.of(context);
-
-    return Align(
-      alignment: AlignmentDirectional.centerStart,
-      child: CustomText(
-        data: loc!.mycart,
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-
   Widget _buildCartItems(BuildContext context, List<CartModel> cart) {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
-      padding: EdgeInsetsGeometry.only(top: 9.h),
       separatorBuilder: (context, index) {
         return SizedBox(
           child: Center(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Divider(
                 color: appColors.card,
                 thickness: 1.h,

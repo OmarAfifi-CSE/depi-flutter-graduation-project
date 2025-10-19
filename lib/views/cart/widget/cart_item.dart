@@ -94,13 +94,12 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
       vsync: this,
       duration: const Duration(milliseconds: 400),
     );
-    slideAnimation = Tween(begin: Offset.zero, end: const Offset(-50, 0))
-        .animate(
-          CurvedAnimation(
-            parent: slideAnimationController,
-            curve: Curves.easeInOut,
-          ),
-        );
+    slideAnimation = Tween(begin: Offset.zero, end: Offset(-50.w, 0)).animate(
+      CurvedAnimation(
+        parent: slideAnimationController,
+        curve: Curves.easeInOut,
+      ),
+    );
     sizeAnimation = Tween(begin: 1.0, end: 0.0).animate(
       CurvedAnimation(parent: sizeAnimationController, curve: Curves.easeInOut),
     );
@@ -249,7 +248,7 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                             context.pushNamed(
                               AppRoutes.productScreen,
                               pathParameters: {
-                                'categoryName': widget.cartModel.categoryName!,
+                                'categoryName': widget.cartModel.categoryName,
                                 'productId': widget.cartModel.productId,
                               },
                               queryParameters: {
@@ -289,72 +288,46 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 6.w),
+                                SizedBox(width: 10.w),
                                 Expanded(
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 6.0.h,
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            CustomText(
-                                              data:
-                                                  widget.cartModel.productName,
-                                              textAlign: TextAlign.start,
-                                              fontSize: 15.sp,
-                                              fontWeight: FontWeight.w700,
-                                              maxLines: 1,
-                                              fontFamily:
-                                                  AppFonts.englishFontFamily,
-                                            ),
-                                            SizedBox(height: 6.h),
-                                            CustomText(
-                                              data: widget.cartModel.subtitle,
-                                              fontSize: 12.sp,
-                                              fontWeight: FontWeight.w400,
-                                              color: appColors.secondaryText,
-                                              maxLines: 1,
-                                              fontFamily:
-                                                  AppFonts.englishFontFamily,
-                                            ),
-                                          ],
-                                        ),
-                                        CustomText(
-                                          data: "\$${widget.cartModel.price}",
-                                          fontSize: 12.sp,
-                                          fontWeight: FontWeight.w700,
-                                          fontFamily:
-                                              AppFonts.englishFontFamily,
-                                        ),
-                                      ],
-                                    ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      CustomText(
+                                        data: widget.cartModel.productName,
+                                        textAlign: TextAlign.start,
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w700,
+                                        maxLines: 1,
+                                        fontFamily: AppFonts.englishFontFamily,
+                                      ),
+                                      CustomText(
+                                        data: widget.cartModel.subtitle,
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w400,
+                                        color: appColors.secondaryText,
+                                        maxLines: 1,
+                                        fontFamily: AppFonts.englishFontFamily,
+                                      ),
+                                      const Spacer(),
+                                      CustomText(
+                                        data: "\$${widget.cartModel.price}",
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.w700,
+                                        fontFamily: AppFonts.englishFontFamily,
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                SizedBox(width: 4.w),
                                 Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        _buildSizeOption(),
-                                        SizedBox(height: 1.h),
-                                        _buildColorOption(),
-                                      ],
-                                    ),
+                                    _buildSizeOption(),
+                                    SizedBox(height: 4.h),
+                                    _buildColorOption(),
+                                    const Spacer(),
                                     CartCounter(cartModel: widget.cartModel),
                                   ],
                                 ),
