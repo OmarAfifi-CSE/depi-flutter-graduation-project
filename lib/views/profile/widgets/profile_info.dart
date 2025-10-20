@@ -47,8 +47,10 @@ class ProfileInfo extends StatelessWidget {
               svg: theme.brightness != Brightness.light
                   ? AppAssets.heartIconFilledWhite
                   : AppAssets.heartIconFilledBlack,
-              title: loc.myFavourites,
-              onTap: () {},
+              title: loc.wishlist,
+              onTap: () {
+                context.pushNamed(AppRoutes.wishlistScreen);
+              },
             ),
             ProfileMenuItem(
               icon: Icons.local_shipping,

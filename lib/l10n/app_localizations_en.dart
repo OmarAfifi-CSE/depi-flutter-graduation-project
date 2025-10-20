@@ -272,9 +272,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get cart => 'Cart';
 
   @override
-  String get favorites => 'Wishlist';
-
-  @override
   String get notifications => 'Notifications';
 
   @override
@@ -296,7 +293,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get myOrders => 'My Order';
 
   @override
-  String get myFavourites => 'My Favourites';
+  String get wishlist => 'Wishlist';
 
   @override
   String get shippingAddress => 'Shipping Address';

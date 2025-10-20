@@ -45,12 +45,9 @@ class _WishlistBodyState extends State<WishlistBody> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SizedBox(height: 20.h),
         // Search bar
         _buildSearch(loc),
-        SizedBox(height: 20.h),
-
-        // Wishlist title
-        _buildWishlistTitle(context),
         SizedBox(height: 20.h),
 
         // Wishlist items
@@ -108,15 +105,6 @@ class _WishlistBodyState extends State<WishlistBody> {
     );
   }
 
-  //! Wishlist Title
-  Widget _buildWishlistTitle(BuildContext context) {
-    final loc = AppLocalizations.of(context);
-    return CustomText(
-      data: loc!.favorites,
-      fontSize: 24.sp,
-      fontWeight: FontWeight.bold,
-    );
-  }
 
   //! Wishlist Items
   Widget _buildWishlistItems() {

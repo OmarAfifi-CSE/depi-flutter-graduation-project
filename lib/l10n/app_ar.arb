@@ -135,7 +135,6 @@
   "home": "الرئيسية",
   "categories": "الفئات",
   "cart": "السلة",
-  "favorites": "المفضلة",
   "notifications": "الإشعارات",
   "profile": "الملف الشخصي",
 
@@ -147,7 +146,7 @@
 
   "personalDetails": "التفاصيل الشخصية",
   "myOrders": "طلباتي",
-  "myFavourites": "مفضلاتي",
+  "wishlist": "قائمة الرغبات",
   "shippingAddress": "عنوان الشحن",
   "myCard": "بطاقاتي",
   "settings": "الإعدادات",

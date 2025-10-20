@@ -22,6 +22,7 @@ class AppRoutes {
   static const String reviewsScreen = '/reviews';
 
   // Profile Screens
+  static const String wishlistScreen = '/wishlist';
   static const String addressesScreen = '/address';
   static const String addAddressScreen = '/addAddress';
   static const String personalDetails = '/personal';

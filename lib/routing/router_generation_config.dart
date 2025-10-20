@@ -326,8 +326,8 @@ class RouterGenerationConfig {
           },
         ),
         GoRoute(
-          path: AppRoutes.wishlsitScreen,
-          name: AppRoutes.wishlsitScreen,
+          path: AppRoutes.wishlistScreen,
+          name: AppRoutes.wishlistScreen,
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const WishlistScreen(),

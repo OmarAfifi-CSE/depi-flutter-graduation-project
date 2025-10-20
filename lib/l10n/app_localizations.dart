@@ -617,12 +617,6 @@ abstract class AppLocalizations {
   /// **'Cart'**
   String get cart;
 
-  /// No description provided for @favorites.
-  ///
-  /// In en, this message translates to:
-  /// **'Wishlist'**
-  String get favorites;
-
   /// No description provided for @notifications.
   ///
   /// In en, this message translates to:
@@ -665,11 +659,11 @@ abstract class AppLocalizations {
   /// **'My Order'**
   String get myOrders;
 
-  /// No description provided for @myFavourites.
+  /// No description provided for @wishlist.
   ///
   /// In en, this message translates to:
-  /// **'My Favourites'**
-  String get myFavourites;
+  /// **'Wishlist'**
+  String get wishlist;
 
   /// No description provided for @shippingAddress.
   ///
