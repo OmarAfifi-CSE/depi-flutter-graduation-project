@@ -25,7 +25,6 @@ class EditUserCubit extends Cubit<EditUserState> {
       FocusScope.of(context).unfocus();
       emit(EditUserSuccess());
     } catch (e) {
-      print("Mario :: $e");
       emit(EditUserFailure(error: "error happened"));
     }
   }

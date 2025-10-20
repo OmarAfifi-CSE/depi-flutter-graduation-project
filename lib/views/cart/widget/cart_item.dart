@@ -11,7 +11,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:batrina/l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -175,7 +174,6 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final theme = Theme.of(context);
 
@@ -210,7 +208,10 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                                 )
                               : SvgPicture.asset(
                                   AppAssets.deleteIcon,
-                                  color: theme.scaffoldBackgroundColor,
+                                  colorFilter: ColorFilter.mode(
+                                    theme.scaffoldBackgroundColor,
+                                    BlendMode.srcIn,
+                                  ),
                                   width: 20.w,
                                   height: 20.h,
                                   fit: BoxFit.scaleDown,

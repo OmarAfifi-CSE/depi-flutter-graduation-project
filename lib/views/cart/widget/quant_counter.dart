@@ -9,7 +9,6 @@ class QuantCounter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    final theme = Theme.of(context);
 
     return Container(
       height: 36.h,

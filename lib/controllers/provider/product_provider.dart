@@ -30,8 +30,6 @@ class ProductProvider extends ChangeNotifier {
           : productModel.availableSizes[0];
     }
 
-    print(currentColorName);
-    print(currentSize);
     setVariantStock(colorCode: currentColorName, sizeName: currentSize);
     setSliderImage(currentColorName ?? '');
   }

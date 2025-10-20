@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
-import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/widgets/custom_text.dart';
 
 class ProductScreen extends StatefulWidget {
@@ -32,7 +31,6 @@ class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
 
     return BlocProvider(
       create: (context) =>

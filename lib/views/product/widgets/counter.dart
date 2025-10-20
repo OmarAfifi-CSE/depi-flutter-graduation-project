@@ -1,5 +1,4 @@
 import 'package:batrina/controllers/provider/product_provider.dart';
-import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
@@ -34,7 +33,6 @@ class _CounterState extends State<Counter> {
     }
     productProvider.currentQuantity = count;
     final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     return Container(
       alignment: Alignment.center,

@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
-import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/number_localizer.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text.dart';
@@ -73,7 +72,6 @@ class _CartCounterState extends State<CartCounter> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final localeCode = Localizations.localeOf(context).languageCode;
 

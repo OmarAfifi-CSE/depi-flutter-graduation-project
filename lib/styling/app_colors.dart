@@ -25,7 +25,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     Color? textFieldFill,
     Color? textField,
     Color? secondaryText,
-    Color? card,
+    Color? dividerColor,
     Color? containerBorder,
     Color? countButtonBackground,
   }) {
@@ -33,7 +33,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       textFieldFill: textFieldFill ?? this.textFieldFill,
       textField: textField ?? this.textField,
       secondaryText: secondaryText ?? this.secondaryText,
-      dividerColor: card ?? this.dividerColor,
+      dividerColor: dividerColor ?? this.dividerColor,
       containerBorder: containerBorder ?? this.containerBorder,
       countButtonBackground:
           countButtonBackground ?? this.countButtonBackground,

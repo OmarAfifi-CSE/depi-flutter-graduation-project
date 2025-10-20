@@ -16,7 +16,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:batrina/l10n/app_localizations.dart';
-import 'package:batrina/styling/app_colors.dart';
 
 class PersonalDetails extends StatefulWidget {
   const PersonalDetails({super.key});
@@ -79,7 +78,6 @@ class _PersonalDetailsState extends State<PersonalDetails> {
 
   @override
   Widget build(BuildContext context) {
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
     return BlocProvider(

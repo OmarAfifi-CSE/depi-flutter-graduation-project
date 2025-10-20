@@ -1,7 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/controllers/cubit/profile/get_addresses_cubit/get_addresses_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
-import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/profile/shipping_address/add_new_address/add_new_address_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
