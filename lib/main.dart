@@ -1,9 +1,7 @@
 import 'package:batrina/app_initializer.dart';
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
-import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
-import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/styling/app_themes.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +46,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => GetCartCubit()),
         ChangeNotifierProvider(create: (_) => ProductsProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
+        ChangeNotifierProvider(create: (_) => FilterProvider()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) =>

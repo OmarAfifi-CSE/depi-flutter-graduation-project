@@ -139,6 +139,83 @@ class FireBaseFireStore {
     }
   }
 
+  Future<List<ProductModel>> getFilteredProducts({
+    required Set<String> categories,
+    required double minPrice,
+    required double maxPrice,
+    //required String sortOrder,
+    int? minRating,
+  }) async {
+    Query<Map<String, dynamic>> query = fireBaseFireStore.collection('products');
+
+    if (categories.isNotEmpty) {
+      query = query.where('category', whereIn: categories.toList());
+    }
+
+    query = query
+        .where('price', isGreaterThanOrEqualTo: minPrice)
+        .where('price', isLessThanOrEqualTo: maxPrice);
+
+    if (minRating != null) {
+      query = query.where('rating', isGreaterThanOrEqualTo: minRating);
+    }
+
+    // if (sortOrder == 'ascending') {
+    //   query = query.orderBy('price', descending: false);
+    // } else {
+    //   query = query.orderBy('price', descending: true);
+    // }
+
+    final snapshot = await query.get();
+
+    if (snapshot.docs.isEmpty) {
+      return [];
+    }
+
+    return snapshot.docs.map((e) => ProductModel.fromJson(e.data())).toList();
+  }
+  Future<List<ProductModel>> getFilteredProductsPaginated({
+    required Set<String> categories,
+    required double minPrice,
+    required double maxPrice,
+    //required String sortOrder,
+    int? minRating,
+    int limit = 5,
+    DocumentSnapshot? lastDocument,
+  }) async {
+    Query<Map<String, dynamic>> query = fireBaseFireStore.collection('products');
+
+    if (categories.isNotEmpty) {
+      query = query.where('category', whereIn: categories.toList());
+    }
+
+    query = query
+        .where('price', isGreaterThanOrEqualTo: minPrice)
+        .where('price', isLessThanOrEqualTo: maxPrice);
+
+    if (minRating != null) {
+      query = query.where('rating', isGreaterThanOrEqualTo: minRating);
+    }
+
+    // if (sortOrder == 'ascending') {
+    //   query = query.orderBy('price', descending: false);
+    // } else {
+    //   query = query.orderBy('price', descending: true);
+    // }
+    if (lastDocument != null) {
+      query = query.startAfterDocument(lastDocument);
+    }
+    query = query.orderBy('price');
+    query = query.limit(limit);
+    final snapshot = await query.get();
+
+    if (snapshot.docs.isEmpty) {
+      return [];
+    }
+
+    return snapshot.docs.map((e) => ProductModel.fromJson(e.data())).toList();
+  }
+
 
   Future<void> addToWishList({required ProductModel productModel}) async {
     await fireBaseFireStore
@@ -444,4 +521,5 @@ class FireBaseFireStore {
 
     return userCart;
   }
+
 }

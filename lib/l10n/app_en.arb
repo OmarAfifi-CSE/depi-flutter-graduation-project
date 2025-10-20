@@ -222,7 +222,12 @@
   "uploadImage": "Upload Image",
   "name": "Name",
   "email": "Email",
-  "logOut": "Log Out"
+  "logOut": "Log Out",
+  "priceRange": "Price Range",
+  "sortBy":"Sort By",
+  "ratting":"Ratting",
+  "applyNow":"Apply Now",
+  "noProductsFound":"noProductsFound",
+  "filteredProducts":"FilteredProducts"
 
-
-  }
+}

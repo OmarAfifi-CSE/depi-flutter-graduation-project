@@ -217,6 +217,13 @@
   "uploadImage": "تحميل صورة",
   "name": "الاسم",
   "email": "البريد الإلكتروني",
-  "logOut": "تسجيل الخروج"
+  "logOut": "تسجيل الخروج",
 
+
+  "priceRange": "نطاق الأسعار",
+  "sortBy":"الترتيب حسب",
+  "ratting":"التقييم",
+  "applyNow":"بحث",
+  "noProductsFound":"لا يوجد منتجات",
+  "filteredProducts":"المنتجات المفلترة"
 }

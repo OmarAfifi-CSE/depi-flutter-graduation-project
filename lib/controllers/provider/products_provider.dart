@@ -7,6 +7,7 @@ class ProductsProvider with ChangeNotifier {
   final FireBaseFireStore _firestoreService = FireBaseFireStore();
 
   List<ProductModel> products = [];
+  List<ProductModel> filteredProducts = [];
   bool isLoading = false;
   bool hasMore = true; // هل لسه فيه منتجات تانية نجيبها؟
   DocumentSnapshot? _lastDocument;
@@ -45,4 +46,36 @@ class ProductsProvider with ChangeNotifier {
     hasMore = true;
     fetchProducts(category);
   }
+
+
+  Future<void> fetchFilteredProducts(
+      Set<String> categories,
+      double minPrice,
+      double maxPrice,
+      ) async {
+    try {
+      isLoading = true;
+      print("OMAR :: Loading");
+      notifyListeners();
+
+      filteredProducts.clear();
+
+      final result = await _firestoreService.getFilteredProducts(
+        categories: categories,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
+      );
+      print("OMAR :: getFilteredProducts Success");
+
+      filteredProducts = result;
+      print("Filtered products: $filteredProducts");
+    } catch (e) {
+      print("Error fetching filtered products: $e");
+    } finally {
+      isLoading = false;
+      notifyListeners();
+    }
+  }
+
+
 }

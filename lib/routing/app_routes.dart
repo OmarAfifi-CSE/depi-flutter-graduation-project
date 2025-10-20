@@ -21,9 +21,13 @@ class AppRoutes {
       '$categoryProductsScreen/product/:productId';
   static const String reviewsScreen = '/reviews';
 
+  // Filter Screens
+  static const String filterScreen = '/filterScreen';
+  static const String filteredProductsScreen = '/filteredProductsScreen';
+
   // Profile Screens
   static const String wishlistScreen = '/wishlist';
   static const String addressesScreen = '/address';
   static const String addAddressScreen = '/addAddress';
   static const String personalDetails = '/personal';
-}
+  }
