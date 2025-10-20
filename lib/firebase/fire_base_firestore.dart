@@ -139,6 +139,7 @@ class FireBaseFireStore {
     }
   }
 
+
   Future<void> addToWishList({required ProductModel productModel}) async {
     await fireBaseFireStore
         .collection("users")
@@ -221,6 +222,22 @@ class FireBaseFireStore {
       'reviewsCount': reviewCount,
     });
   }
+
+  Future<List<ProductModel>> getUserWishList() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)  //TODO:
+        .collection("userWishList")
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return [];
+    }
+    List<ProductModel> userWishList = querySnapshot.docs.map((e) {
+      return ProductModel.fromJson(e.data());
+    }).toList();
+    return userWishList;
+  }
+
 
   Future<List<AddressModel>> getAddresses() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore

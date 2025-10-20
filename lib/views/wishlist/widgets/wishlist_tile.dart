@@ -1,10 +1,12 @@
+import 'package:batrina/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WishlistCard extends StatelessWidget {
-  const WishlistCard({super.key});
+  const WishlistCard({super.key, required this.product});
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,6 @@ class WishlistCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.cardColor,
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
@@ -37,8 +38,8 @@ class WishlistCard extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
-              child: Image.asset(
-                'assets/images/images.jpeg',
+              child: Image.network(
+                product.thumbnail,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
@@ -54,21 +55,21 @@ class WishlistCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomText(
-                  data: 'title',
+                CustomText(
+                  data: product.name,
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
                 ),
                 SizedBox(height: 4.h),
-                const CustomText(
-                  data: 'productName',
+                CustomText(
+                  data: product.subtitle,
                   fontSize: 14,
                   color: Colors.grey,
                   fontWeight: FontWeight.w500,
                 ),
                 SizedBox(height: 8.h),
-                const CustomText(
-                  data: '\$213',
+                CustomText(
+                  data: '\$${product.price}',
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
