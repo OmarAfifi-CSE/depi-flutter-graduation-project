@@ -9,7 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:ui' as ui;
 
-import 'firebase_options.dart';
+import 'package:batrina/firebase_options.dart';
 
 // A simple data class to hold the results from the initialization process.
 class InitializationResult {
@@ -78,9 +78,9 @@ class AppInitializer {
       await prefs.setString(LocaleProvider.localeKey, localeCode);
     }
     if (localeCode == "ar") {
-      AppFonts.mainFontName = "Tajawal";
+      AppFonts.mainFontName = AppFonts.arabicFontFamily;
     } else {
-      AppFonts.mainFontName = "Poppins";
+      AppFonts.mainFontName = AppFonts.englishFontFamily;
     }
     final initialLocale = Locale(localeCode);
 

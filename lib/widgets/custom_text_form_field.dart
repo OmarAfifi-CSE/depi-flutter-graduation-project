@@ -7,6 +7,8 @@ class CustomTextFormField extends StatefulWidget {
   bool obscureText;
   final String labelText;
   final String? Function(String? value) validator;
+  final bool enabled;
+  final Widget? suffixIcon;
 
   CustomTextFormField({
     super.key,
@@ -14,6 +16,8 @@ class CustomTextFormField extends StatefulWidget {
     this.obscureText = false,
     required this.labelText,
     required this.validator,
+    this.enabled = true,
+    this.suffixIcon,
   });
 
   @override
@@ -29,6 +33,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   void initState() {
     super.initState();
     _isObscured = widget.obscureText;
+    isValid = widget.validator(widget.controller.text) == null;
 
     if (!widget.obscureText) {
       _listener = () {
@@ -55,37 +60,46 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     });
   }
 
+  Widget? _buildValidationIcon(ThemeData theme) {
+    if (isValid) {
+      return Icon(Icons.check_circle, color: theme.primaryColor)
+          .animate(key: const ValueKey('check_icon'))
+          .scale(
+            begin: const Offset(0.8, 0.8),
+            end: const Offset(1, 1),
+            duration: 800.ms,
+            curve: Curves.elasticOut,
+          );
+    }
+    if (widget.controller.text.isNotEmpty) {
+      return const Icon(Icons.cancel, color: Colors.red)
+          .animate(key: const ValueKey('cancel_icon'))
+          .scale(
+            begin: const Offset(0.8, 0.8),
+            end: const Offset(1, 1),
+            duration: 800.ms,
+            curve: Curves.elasticOut,
+          );
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUserInteraction,
+      enabled: widget.enabled,
       validator: widget.validator,
       controller: widget.controller,
       obscureText: _isObscured,
       cursorColor: theme.primaryColor,
       decoration: InputDecoration(
-        suffixIcon: widget.obscureText
-            ? _buildPasswordIcon(context)
-            : isValid
-            ? Icon(Icons.check_circle, color: theme.primaryColor)
-                  .animate(key: const ValueKey('check_icon'))
-                  .scale(
-                    begin: const Offset(0.8, 0.8),
-                    end: const Offset(1, 1),
-                    duration: 800.ms,
-                    curve: Curves.elasticOut,
-                  )
-            : widget.controller.text.isEmpty
-            ? null
-            : const Icon(Icons.cancel, color: Colors.red)
-                  .animate(key: const ValueKey('cancel_icon'))
-                  .scale(
-                    begin: const Offset(0.8, 0.8),
-                    end: const Offset(1, 1),
-                    duration: 800.ms,
-                    curve: Curves.elasticOut,
-                  ),
+        suffixIcon:
+            widget.suffixIcon ??
+            (widget.obscureText
+                ? _buildPasswordIcon(context)
+                : _buildValidationIcon(theme)),
         border: UnderlineInputBorder(
           borderSide: BorderSide(color: theme.cardColor),
         ),

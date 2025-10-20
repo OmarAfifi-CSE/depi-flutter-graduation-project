@@ -125,6 +125,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordWeakDescription => 'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم';
 
   @override
+  String get pleaseVerifyYourEmail => 'من فضلك قم بتأكيد بريدك الإلكتروني أولاً';
+
+  @override
   String get googleSignInCanceledDescription => 'تم إلغاء تسجيل الدخول';
 
   @override
@@ -260,9 +263,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get unexpected_error => 'حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.';
 
   @override
-  String get error_happened => 'حدث خطأ';
-
-  @override
   String get home => 'الرئيسية';
 
   @override
@@ -284,10 +284,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get search => 'بحث';
 
   @override
-  String get clothes => 'ملابس';
+  String get emptyCategories => 'لم يتم العثور على فئات.';
 
   @override
-  String get top_dresses => 'أفضل الفساتين';
+  String get defaultError => 'حدث خطأ غير متوقع.';
 
   @override
   String get personalDetails => 'التفاصيل الشخصية';
@@ -312,6 +312,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get darkMode => 'الوضع الداكن';
+
+  @override
+  String get lightMode => 'الوضع الفاتح';
 
   @override
   String get helpCenter => 'مركز المساعدة';
@@ -368,8 +371,110 @@ class AppLocalizationsAr extends AppLocalizations {
   String get postButton => 'نشر';
 
   @override
-  String get emptyCategories => 'لم يتم العثور على فئات.';
+  String get errorHappened => 'حدث خطأ!';
 
   @override
-  String get defaultError => 'حدث خطأ غير متوقع.';
+  String get reviews => 'المراجعات';
+
+  @override
+  String get size => 'المقاس';
+
+  @override
+  String get addToCart => 'أضف إلى السلة';
+
+  @override
+  String get notAvailable => 'غير متوفر';
+
+  @override
+  String get noAvailableSizes => 'لا توجد مقاسات متوفرة';
+
+  @override
+  String get noAvailableColors => 'لا توجد ألوان متوفرة';
+
+  @override
+  String get shippingAddresses => 'عناوين الشحن';
+
+  @override
+  String get mainAddress => 'العنوان الرئيسي';
+
+  @override
+  String get noMainAddress => 'لا يوجد عنوان رئيسي';
+
+  @override
+  String get dragAnAddress => 'اسحب عنوانًا للأعلى لتعيينه كرئيسي.';
+
+  @override
+  String get otherAddresses => 'العناوين الأخرى';
+
+  @override
+  String get setMain => 'تعيين كعنوان رئيسي';
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get addNewAddress => 'إضافة عنوان جديد';
+
+  @override
+  String get tapToAdd => 'اضغط للإضافة';
+
+  @override
+  String get swipeToManage => 'اسحب لإدارة العناوين';
+
+  @override
+  String get street => 'الشارع';
+
+  @override
+  String get city => 'المدينة';
+
+  @override
+  String get phoneNumber => 'رقم الهاتف';
+
+  @override
+  String get country => 'الدولة';
+
+  @override
+  String get addAddress => 'إضافة العنوان';
+
+  @override
+  String get addressAddedSuccessfully => 'تمت إضافة العنوان بنجاح';
+
+  @override
+  String get streetEmptyDescription => 'حقل الشارع مطلوب.';
+
+  @override
+  String get streetTooShortDescription => 'الشارع قصير جدًا، يجب أن لا يقل عن 5 أحرف.';
+
+  @override
+  String get cityEmptyDescription => 'حقل المدينة مطلوب.';
+
+  @override
+  String get cityTooShortDescription => 'المدينة قصيرة جدًا، يجب أن لا تقل عن حرفين.';
+
+  @override
+  String get countryEmptyDescription => 'حقل الدولة مطلوب.';
+
+  @override
+  String get countryTooShortDescription => 'الدولة قصيرة جدًا، يجب أن لا تقل عن حرفين.';
+
+  @override
+  String get phoneEmptyDescription => 'حقل رقم الهاتف مطلوب.';
+
+  @override
+  String get phoneInvalidDescription => 'الرجاء إدخال رقم هاتف صالح.';
+
+  @override
+  String get phoneLengthDescription => 'يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا.';
+
+  @override
+  String get uploadImage => 'تحميل صورة';
+
+  @override
+  String get name => 'الاسم';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get logOut => 'تسجيل الخروج';
 }

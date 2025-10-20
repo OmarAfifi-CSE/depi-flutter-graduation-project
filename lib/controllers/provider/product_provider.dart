@@ -6,24 +6,34 @@ class ProductProvider extends ChangeNotifier {
   final ProductModel productModel;
   late int currentVariantStock;
   late List<String> currentSliderImage;
-
   late String? currentColorName;
   late String? currentSize;
+  int currentQuantity = 1;
 
   ProductProvider({required this.productModel});
 
-  void initialize() {
-    currentColorName = productModel.availableColors.isEmpty
-        ? null
-        : productModel.availableColors[0].colorCode;
+  ProductVariant? get variant =>
+      productModel.getVariant(currentColorName ?? '', currentSize ?? '');
 
-    currentSize = productModel.availableSizes.isEmpty
-        ? null
-        : productModel.availableSizes[0];
+  void initialize({String? color, String? size}) {
+    // Debug print removed
+    if (productModel.isVariantAvailable(color ?? "", size ?? "")) {
+      currentColorName = color;
+      currentSize = size;
+    } else {
+      currentColorName = productModel.availableColors.isEmpty
+          ? null
+          : productModel.availableColors[0].colorCode;
 
+      currentSize = productModel.availableSizes.isEmpty
+          ? null
+          : productModel.availableSizes[0];
+    }
+
+    print(currentColorName);
+    print(currentSize);
     setVariantStock(colorCode: currentColorName, sizeName: currentSize);
     setSliderImage(currentColorName ?? '');
-
   }
 
   void updateRating(List<ReviewModel> reviews) {

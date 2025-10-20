@@ -323,6 +323,12 @@ abstract class AppLocalizations {
   /// **'Password must contain upper, lower case letters and a number'**
   String get passwordWeakDescription;
 
+  /// No description provided for @pleaseVerifyYourEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Please verify your email first'**
+  String get pleaseVerifyYourEmail;
+
   /// No description provided for @googleSignInCanceledDescription.
   ///
   /// In en, this message translates to:
@@ -593,12 +599,6 @@ abstract class AppLocalizations {
   /// **'An unexpected error occurred. Please try again.'**
   String get unexpected_error;
 
-  /// No description provided for @error_happened.
-  ///
-  /// In en, this message translates to:
-  /// **'Error happened'**
-  String get error_happened;
-
   /// No description provided for @home.
   ///
   /// In en, this message translates to:
@@ -641,17 +641,17 @@ abstract class AppLocalizations {
   /// **'Search'**
   String get search;
 
-  /// No description provided for @clothes.
+  /// No description provided for @emptyCategories.
   ///
   /// In en, this message translates to:
-  /// **'Clothes'**
-  String get clothes;
+  /// **'No categories found'**
+  String get emptyCategories;
 
-  /// No description provided for @top_dresses.
+  /// No description provided for @defaultError.
   ///
   /// In en, this message translates to:
-  /// **'Top Dresses'**
-  String get top_dresses;
+  /// **'An unexpected error occurred.'**
+  String get defaultError;
 
   /// No description provided for @personalDetails.
   ///
@@ -700,6 +700,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark Mode'**
   String get darkMode;
+
+  /// No description provided for @lightMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Mode'**
+  String get lightMode;
 
   /// No description provided for @helpCenter.
   ///
@@ -809,17 +815,221 @@ abstract class AppLocalizations {
   /// **'Post'**
   String get postButton;
 
-  /// No description provided for @emptyCategories.
+  /// No description provided for @errorHappened.
   ///
   /// In en, this message translates to:
-  /// **'No categories found'**
-  String get emptyCategories;
+  /// **'Error happened!'**
+  String get errorHappened;
 
-  /// No description provided for @defaultError.
+  /// No description provided for @reviews.
   ///
   /// In en, this message translates to:
-  /// **'An unexpected error occurred.'**
-  String get defaultError;
+  /// **'Reviews'**
+  String get reviews;
+
+  /// No description provided for @size.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get size;
+
+  /// No description provided for @addToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Add to cart'**
+  String get addToCart;
+
+  /// No description provided for @notAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Not available'**
+  String get notAvailable;
+
+  /// No description provided for @noAvailableSizes.
+  ///
+  /// In en, this message translates to:
+  /// **'No available Sizes'**
+  String get noAvailableSizes;
+
+  /// No description provided for @noAvailableColors.
+  ///
+  /// In en, this message translates to:
+  /// **'No available Colors'**
+  String get noAvailableColors;
+
+  /// No description provided for @shippingAddresses.
+  ///
+  /// In en, this message translates to:
+  /// **'Shipping Addresses'**
+  String get shippingAddresses;
+
+  /// No description provided for @mainAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Main Address'**
+  String get mainAddress;
+
+  /// No description provided for @noMainAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'No Main Address'**
+  String get noMainAddress;
+
+  /// No description provided for @dragAnAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag an address up to set it as main.'**
+  String get dragAnAddress;
+
+  /// No description provided for @otherAddresses.
+  ///
+  /// In en, this message translates to:
+  /// **'Other Addresses'**
+  String get otherAddresses;
+
+  /// No description provided for @setMain.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Main'**
+  String get setMain;
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @addNewAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Address'**
+  String get addNewAddress;
+
+  /// No description provided for @tapToAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to add'**
+  String get tapToAdd;
+
+  /// No description provided for @swipeToManage.
+  ///
+  /// In en, this message translates to:
+  /// **'Swipe to manage'**
+  String get swipeToManage;
+
+  /// No description provided for @street.
+  ///
+  /// In en, this message translates to:
+  /// **'Street'**
+  String get street;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @phoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneNumber;
+
+  /// No description provided for @country.
+  ///
+  /// In en, this message translates to:
+  /// **'Country'**
+  String get country;
+
+  /// No description provided for @addAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Address'**
+  String get addAddress;
+
+  /// No description provided for @addressAddedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Address added successfully'**
+  String get addressAddedSuccessfully;
+
+  /// No description provided for @streetEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Street cannot be empty.'**
+  String get streetEmptyDescription;
+
+  /// No description provided for @streetTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Street is too short, must be at least 5 characters.'**
+  String get streetTooShortDescription;
+
+  /// No description provided for @cityEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'City cannot be empty.'**
+  String get cityEmptyDescription;
+
+  /// No description provided for @cityTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'City is too short, must be at least 2 characters.'**
+  String get cityTooShortDescription;
+
+  /// No description provided for @countryEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Country cannot be empty.'**
+  String get countryEmptyDescription;
+
+  /// No description provided for @countryTooShortDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Country is too short, must be at least 2 characters.'**
+  String get countryTooShortDescription;
+
+  /// No description provided for @phoneEmptyDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number cannot be empty.'**
+  String get phoneEmptyDescription;
+
+  /// No description provided for @phoneInvalidDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid phone number.'**
+  String get phoneInvalidDescription;
+
+  /// No description provided for @phoneLengthDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must be between 8 and 15 digits.'**
+  String get phoneLengthDescription;
+
+  /// No description provided for @uploadImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Image'**
+  String get uploadImage;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @logOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get logOut;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

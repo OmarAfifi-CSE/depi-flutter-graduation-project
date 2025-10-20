@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../styling/app_colors.dart';
-import 'custom_text.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/widgets/custom_text.dart';
 
 class CustomNavBarIcon extends StatefulWidget {
   static bool isAnimating = false;
@@ -206,7 +206,7 @@ class CustomNavBarIconState extends State<CustomNavBarIcon>
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.r),
-                color: appColors?.card ?? theme.cardColor,
+                color: appColors?.dividerColor ?? theme.cardColor,
               ),
               child: Center(
                 child: AnimatedBuilder(

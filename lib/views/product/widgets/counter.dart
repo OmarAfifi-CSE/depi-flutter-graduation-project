@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:batrina/number_localizer.dart';
+
 class Counter extends StatefulWidget {
   const Counter({super.key, required this.productModel});
 
@@ -22,12 +24,15 @@ class _CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     ProductProvider productProvider = context.watch<ProductProvider>();
+    final localeCode = Localizations.localeOf(context).languageCode;
+
     if (count > productProvider.currentVariantStock) {
       count = productProvider.currentVariantStock;
     }
     if (count == 0 && productProvider.currentVariantStock > 0) {
       count = 1;
     }
+    productProvider.currentQuantity = count;
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
@@ -35,7 +40,7 @@ class _CounterState extends State<Counter> {
       alignment: Alignment.center,
       height: 30.h,
       decoration: BoxDecoration(
-        color: appColors.card,
+        color: appColors.countButtonBackground,
         borderRadius: BorderRadius.circular(100.r),
       ),
       child: Padding(
@@ -52,6 +57,7 @@ class _CounterState extends State<Counter> {
                   if (count > 1) {
                     setState(() {
                       count--;
+                      productProvider.currentQuantity = count;
                     });
                   }
                 },
@@ -62,9 +68,14 @@ class _CounterState extends State<Counter> {
                 ),
               ),
             CustomText(
-              data: productProvider.currentVariantStock != 0
-                  ? count.toString()
-                  : "0",
+              forceStrutHeight: true,
+              data: NumberLocalizer.formatNumber(
+                productProvider.currentVariantStock != 0
+                    ? count.toString()
+                    : "0",
+                localeCode,
+              ),
+
               fontSize: 15.sp,
               fontWeight: FontWeight.w500,
             ),
@@ -74,6 +85,7 @@ class _CounterState extends State<Counter> {
                   if (count < productProvider.currentVariantStock) {
                     setState(() {
                       count++;
+                      productProvider.currentQuantity = count;
                     });
                   }
                 },

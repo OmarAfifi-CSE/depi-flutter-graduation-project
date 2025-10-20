@@ -1,7 +1,7 @@
 import 'package:batrina/controllers/cubit/auth/verify_create_new_password_cubit/verify_create_new_password_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/views/auth/widgets/create_new_password.dart';
-import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

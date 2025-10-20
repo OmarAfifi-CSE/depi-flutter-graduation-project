@@ -50,7 +50,7 @@
   "passwordTooShortDescription": "كلمة المرور يجب أن تكون 6 أحرف على الأقل",
   "passwordWeakDescription": "كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم",
 
-
+  "pleaseVerifyYourEmail": "من فضلك قم بتأكيد بريدك الإلكتروني أولاً",
 
 
   "googleSignInCanceledDescription": "تم إلغاء تسجيل الدخول",
@@ -130,7 +130,6 @@
   "confirm": "تأكيد",
   "invalid_or_expired_link": "الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.",
   "unexpected_error": "حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.",
-  "error_happened": "حدث خطأ",
 
 
   "home": "الرئيسية",
@@ -142,8 +141,8 @@
 
 
   "search": "بحث",
-  "clothes": "ملابس",
-  "top_dresses": "أفضل الفساتين",
+  "emptyCategories": "لم يتم العثور على فئات.",
+  "defaultError": "حدث خطأ غير متوقع.",
 
 
   "personalDetails": "التفاصيل الشخصية",
@@ -154,6 +153,7 @@
   "settings": "الإعدادات",
   "language": "اللغة",
   "darkMode": "الوضع الداكن",
+  "lightMode": "الوضع الفاتح",
   "helpCenter": "مركز المساعدة",
   "english": "الإنجليزية",
 
@@ -178,6 +178,46 @@
   "experienceHint": "كيف كانت تجربتك مع هذا المنتج؟",
   "postButton": "نشر",
 
-  "emptyCategories": "لم يتم العثور على فئات.",
-  "defaultError": "حدث خطأ غير متوقع."
+  "errorHappened": "حدث خطأ!",
+  "reviews": "المراجعات",
+  "size": "المقاس",
+  "addToCart": "أضف إلى السلة",
+  "notAvailable": "غير متوفر",
+  "noAvailableSizes": "لا توجد مقاسات متوفرة",
+  "noAvailableColors": "لا توجد ألوان متوفرة",
+
+  "shippingAddresses": "عناوين الشحن",
+  "mainAddress": "العنوان الرئيسي",
+  "noMainAddress": "لا يوجد عنوان رئيسي",
+  "dragAnAddress": "اسحب عنوانًا للأعلى لتعيينه كرئيسي.",
+  "otherAddresses": "العناوين الأخرى",
+  "setMain": "تعيين كعنوان رئيسي",
+  "delete": "حذف",
+
+
+
+  "addNewAddress": "إضافة عنوان جديد",
+  "tapToAdd": "اضغط للإضافة",
+  "swipeToManage": "اسحب لإدارة العناوين",
+  "street": "الشارع",
+  "city": "المدينة",
+  "phoneNumber": "رقم الهاتف",
+  "country": "الدولة",
+  "addAddress": "إضافة العنوان",
+  "addressAddedSuccessfully": "تمت إضافة العنوان بنجاح",
+  "streetEmptyDescription": "حقل الشارع مطلوب.",
+  "streetTooShortDescription": "الشارع قصير جدًا، يجب أن لا يقل عن 5 أحرف.",
+  "cityEmptyDescription": "حقل المدينة مطلوب.",
+  "cityTooShortDescription": "المدينة قصيرة جدًا، يجب أن لا تقل عن حرفين.",
+  "countryEmptyDescription": "حقل الدولة مطلوب.",
+  "countryTooShortDescription": "الدولة قصيرة جدًا، يجب أن لا تقل عن حرفين.",
+  "phoneEmptyDescription": "حقل رقم الهاتف مطلوب.",
+  "phoneInvalidDescription": "الرجاء إدخال رقم هاتف صالح.",
+  "phoneLengthDescription": "يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا.",
+
+  "uploadImage": "تحميل صورة",
+  "name": "الاسم",
+  "email": "البريد الإلكتروني",
+  "logOut": "تسجيل الخروج"
+
 }

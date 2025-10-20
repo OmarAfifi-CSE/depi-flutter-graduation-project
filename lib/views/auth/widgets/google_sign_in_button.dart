@@ -2,7 +2,7 @@ import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

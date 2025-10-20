@@ -1,7 +1,7 @@
 import 'package:batrina/controllers/cubit/auth/forget_password_cubit/forget_password__cubit.dart';
 import 'package:batrina/styling/app_assets.dart';
-import 'package:batrina/views/auth/widgets/custom_elevated_button.dart';
-import 'package:batrina/views/auth/widgets/custom_text_form_field.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_text_form_field.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
@@ -13,8 +13,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../l10n/app_localizations.dart';
-import '../../styling/app_colors.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
 
 class ForgetPass extends StatefulWidget {
   const ForgetPass({super.key});

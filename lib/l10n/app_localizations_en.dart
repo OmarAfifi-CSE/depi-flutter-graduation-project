@@ -125,6 +125,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordWeakDescription => 'Password must contain upper, lower case letters and a number';
 
   @override
+  String get pleaseVerifyYourEmail => 'Please verify your email first';
+
+  @override
   String get googleSignInCanceledDescription => 'Sign-in canceled';
 
   @override
@@ -260,9 +263,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unexpected_error => 'An unexpected error occurred. Please try again.';
 
   @override
-  String get error_happened => 'Error happened';
-
-  @override
   String get home => 'Home';
 
   @override
@@ -284,10 +284,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get search => 'Search';
 
   @override
-  String get clothes => 'Clothes';
+  String get emptyCategories => 'No categories found';
 
   @override
-  String get top_dresses => 'Top Dresses';
+  String get defaultError => 'An unexpected error occurred.';
 
   @override
   String get personalDetails => 'Personal Details';
@@ -312,6 +312,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get darkMode => 'Dark Mode';
+
+  @override
+  String get lightMode => 'Light Mode';
 
   @override
   String get helpCenter => 'Help Center';
@@ -368,8 +371,110 @@ class AppLocalizationsEn extends AppLocalizations {
   String get postButton => 'Post';
 
   @override
-  String get emptyCategories => 'No categories found';
+  String get errorHappened => 'Error happened!';
 
   @override
-  String get defaultError => 'An unexpected error occurred.';
+  String get reviews => 'Reviews';
+
+  @override
+  String get size => 'Size';
+
+  @override
+  String get addToCart => 'Add to cart';
+
+  @override
+  String get notAvailable => 'Not available';
+
+  @override
+  String get noAvailableSizes => 'No available Sizes';
+
+  @override
+  String get noAvailableColors => 'No available Colors';
+
+  @override
+  String get shippingAddresses => 'Shipping Addresses';
+
+  @override
+  String get mainAddress => 'Main Address';
+
+  @override
+  String get noMainAddress => 'No Main Address';
+
+  @override
+  String get dragAnAddress => 'Drag an address up to set it as main.';
+
+  @override
+  String get otherAddresses => 'Other Addresses';
+
+  @override
+  String get setMain => 'Set Main';
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get addNewAddress => 'Add New Address';
+
+  @override
+  String get tapToAdd => 'Tap to add';
+
+  @override
+  String get swipeToManage => 'Swipe to manage';
+
+  @override
+  String get street => 'Street';
+
+  @override
+  String get city => 'City';
+
+  @override
+  String get phoneNumber => 'Phone Number';
+
+  @override
+  String get country => 'Country';
+
+  @override
+  String get addAddress => 'Add Address';
+
+  @override
+  String get addressAddedSuccessfully => 'Address added successfully';
+
+  @override
+  String get streetEmptyDescription => 'Street cannot be empty.';
+
+  @override
+  String get streetTooShortDescription => 'Street is too short, must be at least 5 characters.';
+
+  @override
+  String get cityEmptyDescription => 'City cannot be empty.';
+
+  @override
+  String get cityTooShortDescription => 'City is too short, must be at least 2 characters.';
+
+  @override
+  String get countryEmptyDescription => 'Country cannot be empty.';
+
+  @override
+  String get countryTooShortDescription => 'Country is too short, must be at least 2 characters.';
+
+  @override
+  String get phoneEmptyDescription => 'Phone number cannot be empty.';
+
+  @override
+  String get phoneInvalidDescription => 'Please enter a valid phone number.';
+
+  @override
+  String get phoneLengthDescription => 'Phone number must be between 8 and 15 digits.';
+
+  @override
+  String get uploadImage => 'Upload Image';
+
+  @override
+  String get name => 'Name';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get logOut => 'Log Out';
 }

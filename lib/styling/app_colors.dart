@@ -5,7 +5,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
   final Color? textFieldFill;
   final Color? textField;
   final Color? secondaryText;
-  final Color? card;
+  final Color? dividerColor;
   final Color? containerBorder;
   final Color? countButtonBackground;
 
@@ -14,7 +14,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
     required this.textFieldFill,
     required this.textField,
     required this.secondaryText,
-    required this.card,
+    required this.dividerColor,
     required this.containerBorder,
     required this.countButtonBackground,
   });
@@ -33,7 +33,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       textFieldFill: textFieldFill ?? this.textFieldFill,
       textField: textField ?? this.textField,
       secondaryText: secondaryText ?? this.secondaryText,
-      card: card ?? this.card,
+      dividerColor: card ?? this.dividerColor,
       containerBorder: containerBorder ?? this.containerBorder,
       countButtonBackground:
           countButtonBackground ?? this.countButtonBackground,
@@ -50,7 +50,7 @@ class AppColorTheme extends ThemeExtension<AppColorTheme> {
       textFieldFill: Color.lerp(textFieldFill, other.textFieldFill, t),
       textField: Color.lerp(textField, other.textField, t),
       secondaryText: Color.lerp(secondaryText, other.secondaryText, t),
-      card: Color.lerp(card, other.card, t),
+      dividerColor: Color.lerp(dividerColor, other.dividerColor, t),
       containerBorder: Color.lerp(containerBorder, other.containerBorder, t),
       countButtonBackground: Color.lerp(
         countButtonBackground,

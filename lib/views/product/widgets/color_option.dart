@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:batrina/l10n/app_localizations.dart';
+
 class ColorOption extends StatefulWidget {
   const ColorOption({super.key, required this.colors});
 
@@ -17,6 +19,18 @@ class ColorOption extends StatefulWidget {
 
 class _ColorOptionState extends State<ColorOption> {
   int selected = 0;
+  @override
+  void initState() {
+    ProductProvider productProvider = context.read<ProductProvider>();
+    selected = widget.colors.indexWhere(
+      (element) => element.colorCode == productProvider.currentColorName,
+    );
+    if (selected == -1) {
+      selected = 0;
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +38,8 @@ class _ColorOptionState extends State<ColorOption> {
 
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final loc = AppLocalizations.of(context);
+
     return productProvider.currentColorName != null
         ? Container(
             // height: 41.h,
@@ -86,7 +102,7 @@ class _ColorOptionState extends State<ColorOption> {
             ),
           )
         : CustomText(
-            data: "No available Colors",
+            data: loc!.noAvailableColors,
             fontSize: 12.sp,
             fontWeight: FontWeight.w400,
             color: appColors.secondaryText,

@@ -5,7 +5,7 @@ class ProductModel {
   final String name;
   final String description;
   final String subtitle;
-  final String category;
+  final String categoryName;
   final double price;
   final double? salePrice;
   final String thumbnail;
@@ -23,7 +23,7 @@ class ProductModel {
     required this.name,
     required this.description,
     required this.subtitle,
-    required this.category,
+    required this.categoryName,
     required this.price,
     this.salePrice,
     required this.thumbnail,
@@ -141,7 +141,7 @@ class ProductModel {
       name: json['name'] ?? '',
       description: json['description'] ?? '',
       subtitle: json['subtitle'] ?? '',
-      category: json['category'] ?? '',
+      categoryName: json['category'] ?? '',
       price: (json['price'] ?? 0).toDouble(),
       salePrice: json['salePrice'] != null
           ? (json['salePrice']).toDouble()
@@ -166,7 +166,7 @@ class ProductModel {
       'id': id,
       'name': name,
       'description': description,
-      'category': category,
+      'category': categoryName,
       'subtitle': subtitle,
       'price': price,
       'salePrice': salePrice,
@@ -185,16 +185,14 @@ class ProductModel {
     String? id,
     String? name,
     String? description,
-    String? subTitle,
+    String? subtitle,
     String? category,
     double? price,
     double? salePrice,
     String? thumbnail,
     double? rating,
     int? reviewsCount,
-
     bool? isActive,
-
     List<ProductVariant>? variants,
     List<ProductColor>? availableColors,
     List<String>? availableSizes,
@@ -205,8 +203,8 @@ class ProductModel {
       id: id ?? this.id,
       name: name ?? this.name,
       description: description ?? this.description,
-      subtitle: subTitle ?? this.subtitle,
-      category: category ?? this.category,
+      subtitle: subtitle ?? this.subtitle,
+      categoryName: category ?? this.categoryName,
       price: price ?? this.price,
       salePrice: salePrice ?? this.salePrice,
       thumbnail: thumbnail ?? this.thumbnail,

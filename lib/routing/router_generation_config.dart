@@ -11,6 +11,9 @@ import 'package:batrina/views/categories/category_products/category_products_scr
 import 'package:batrina/views/home/home_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
+import 'package:batrina/views/profile/shipping_address/add_new_address/add_new_address_screen.dart';
+import 'package:batrina/views/profile/shipping_address/shipping_address_screen.dart';
+import 'package:batrina/views/profile/personal_details/personal_details.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
 import 'package:batrina/views/splash_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
@@ -187,8 +190,6 @@ class RouterGenerationConfig {
             ),
           ],
         ),
-
-        // In your RouterGenerationConfig file...
         GoRoute(
           path: AppRoutes.categoryProductsScreen,
           name: AppRoutes.categoryProductsScreen,
@@ -228,8 +229,14 @@ class RouterGenerationConfig {
           name: AppRoutes.productScreen,
           pageBuilder: (context, state) {
             final productId = state.pathParameters['productId'];
+            final size = state.uri.queryParameters['size'];
+            final color = state.uri.queryParameters['color'];
             return CustomTransitionPage(
-              child: ProductScreen(productId: productId!),
+              child: ProductScreen(
+                productId: productId!,
+                size: size,
+                color: color,
+              ),
               transitionDuration: const Duration(milliseconds: 500),
               reverseTransitionDuration: const Duration(milliseconds: 300),
               transitionsBuilder:
@@ -252,6 +259,66 @@ class RouterGenerationConfig {
                             ),
                         child: child,
                       ),
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.addressesScreen,
+          name: AppRoutes.addressesScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const ShippingAddressScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.addAddressScreen,
+          name: AppRoutes.addAddressScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const AddNewAddressScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.personalDetails,
+          name: AppRoutes.personalDetails,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const PersonalDetails(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
                     );
                   },
             );

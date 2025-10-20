@@ -21,15 +21,13 @@ class ProductGridView extends StatelessWidget {
       child: GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        gridDelegate:
-        SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 0.6,
           crossAxisSpacing: 18.w,
           mainAxisSpacing: 20.h,
         ),
-        itemCount: provider.products.length +
-            (provider.hasMore ? 2 : 0),
+        itemCount: provider.products.length + (provider.hasMore ? 2 : 0),
         itemBuilder: (context, index) {
           if (index >= provider.products.length) {
             return Center(

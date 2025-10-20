@@ -13,6 +13,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/number_localizer.dart';
+import 'package:batrina/styling/app_fonts.dart';
+
 class ProductOptions extends StatelessWidget {
   const ProductOptions({super.key, required this.productModel});
 
@@ -21,6 +25,8 @@ class ProductOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final loc = AppLocalizations.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -39,6 +45,7 @@ class ProductOptions extends StatelessWidget {
                     data: productModel.name,
                     fontSize: 18.sp,
                     fontWeight: FontWeight.w700,
+                    fontFamily: AppFonts.englishFontFamily,
                   ),
                 ),
                 SizedBox(height: 4.h),
@@ -50,6 +57,7 @@ class ProductOptions extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     textAlign: TextAlign.start,
                     color: appColors.secondaryText,
+                    fontFamily: AppFonts.englishFontFamily,
                   ),
                 ),
                 SizedBox(height: 4.h),
@@ -87,7 +95,9 @@ class ProductOptions extends StatelessWidget {
                       Stars(numberOfStart: productModel.rating!.round()),
                       SizedBox(width: 4.w),
                       CustomText(
-                        data: "(${productModel.reviewsCount} Reviews)",
+                        forceStrutHeight: true,
+                        data:
+                            "( ${NumberLocalizer.formatNumber(productModel.reviewsCount, Localizations.localeOf(context).languageCode)} ${loc!.reviews} )",
                         fontSize: 13.sp,
                         fontWeight: FontWeight.w400,
                       ),
@@ -109,12 +119,16 @@ class ProductOptions extends StatelessWidget {
           ],
         ),
         SizedBox(height: 30.h),
-        CustomText(data: "Size", fontSize: 17.sp, fontWeight: FontWeight.w700),
+        CustomText(
+          data: loc.size,
+          fontSize: 17.sp,
+          fontWeight: FontWeight.w700,
+        ),
         SizedBox(height: 17.h),
         ProductSelection(productModel: productModel),
         SizedBox(height: 27.h),
         CustomText(
-          data: "Description",
+          data: loc.description,
           fontSize: 18.sp,
           fontWeight: FontWeight.w700,
         ),

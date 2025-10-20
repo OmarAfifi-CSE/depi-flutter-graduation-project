@@ -3,7 +3,7 @@ import 'package:batrina/models/product_model.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/product/widgets/heart.dart';
 import 'package:batrina/widgets/back_arrow.dart';
-import 'package:batrina/widgets/product/build_dynamic_image.dart';
+import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -113,7 +113,7 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
                       dotHeight: 10.0,
                       paintStyle: PaintingStyle.fill,
                       strokeWidth: 1.5,
-                      dotColor: appColors.card!,
+                      dotColor: appColors.dividerColor!,
                       activeDotColor: theme.primaryColor,
                     ),
                     onDotClicked: (index) {

@@ -27,7 +27,7 @@ class BuildDynamicImage extends StatelessWidget {
         fadeInDuration: const Duration(milliseconds: 500),
         fadeOutDuration: const Duration(milliseconds: 500),
         placeholder: (context, url) => Container(
-          color: appColors.card,
+          color: appColors.dividerColor,
           child: Center(
             child: CupertinoActivityIndicator(color: theme.primaryColor),
           ),
