@@ -1,10 +1,9 @@
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:flutter/material.dart';
-import 'package:batrina/widgets/custom_text.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:batrina/views/wishlist/widgets/wishlist_tile.dart';
+import 'package:batrina/views/profile/wishlist//widgets/wishlist_tile.dart';
 
 class WishlistBody extends StatefulWidget {
   const WishlistBody({super.key});

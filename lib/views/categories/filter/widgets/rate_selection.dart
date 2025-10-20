@@ -1,4 +1,4 @@
-import 'package:batrina/views/filter/widgets/rating_row.dart';
+import 'package:batrina/views/categories/filter/widgets/rating_row.dart';
 import 'package:flutter/material.dart';
 
 class RateSelection extends StatelessWidget {

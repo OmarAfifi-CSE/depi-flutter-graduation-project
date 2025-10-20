@@ -17,14 +17,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:batrina/l10n/app_localizations.dart';
 
-class PersonalDetails extends StatefulWidget {
-  const PersonalDetails({super.key});
+class PersonalDetailsScreen extends StatefulWidget {
+  const PersonalDetailsScreen({super.key});
 
   @override
-  State<PersonalDetails> createState() => _PersonalDetailsState();
+  State<PersonalDetailsScreen> createState() => _PersonalDetailsScreenState();
 }
 
-class _PersonalDetailsState extends State<PersonalDetails> {
+class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
   late ProfileProvider profileProvider;
   late TextEditingController nameController;
   late TextEditingController emailController;

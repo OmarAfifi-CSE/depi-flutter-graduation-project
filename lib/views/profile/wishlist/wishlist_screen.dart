@@ -4,7 +4,7 @@ import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:batrina/views/wishlist/widgets/wishlist_body.dart';
+import 'package:batrina/views/profile/wishlist/widgets/wishlist_body.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});

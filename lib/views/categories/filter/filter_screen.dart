@@ -1,10 +1,10 @@
 import 'package:batrina/controllers/provider/filter_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_colors.dart';
-import 'package:batrina/views/filter/widgets/apply_filter_button.dart';
-import 'package:batrina/views/filter/widgets/price_slider.dart';
-import 'package:batrina/views/filter/widgets/rate_selection.dart';
-import 'package:batrina/views/filter/widgets/sortby_options.dart';
+import 'package:batrina/views/categories/filter/widgets/apply_filter_button.dart';
+import 'package:batrina/views/categories/filter/widgets/price_slider.dart';
+import 'package:batrina/views/categories/filter/widgets/rate_selection.dart';
+import 'package:batrina/views/categories/filter/widgets/sortby_options.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_text.dart';

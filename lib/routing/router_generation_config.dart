@@ -8,17 +8,17 @@ import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
 import 'package:batrina/views/categories/categories_screen.dart';
 import 'package:batrina/views/categories/category_products/category_products_screen.dart';
+import 'package:batrina/views/categories/filter/filter_screen.dart';
+import 'package:batrina/views/categories/filter/filtered_products/filtered_products_screen.dart';
 import 'package:batrina/views/home/home_screen.dart';
-import 'package:batrina/views/filter/filter_screen.dart';
-import 'package:batrina/views/filter/filtered_producs_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/profile/shipping_address/add_new_address/add_new_address_screen.dart';
 import 'package:batrina/views/profile/shipping_address/shipping_address_screen.dart';
-import 'package:batrina/views/profile/personal_details/personal_details.dart';
+import 'package:batrina/views/profile/personal_details/personal_details_screen.dart';
 import 'package:batrina/views/profile/profile_screen.dart';
+import 'package:batrina/views/profile/wishlist/wishlist_screen.dart';
 import 'package:batrina/views/splash_screen.dart';
-import 'package:batrina/views/wishlist/wishlist_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -387,7 +387,7 @@ class RouterGenerationConfig {
           name: AppRoutes.personalDetails,
           pageBuilder: (context, state) {
             return CustomTransitionPage(
-              child: const PersonalDetails(),
+              child: const PersonalDetailsScreen(),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
