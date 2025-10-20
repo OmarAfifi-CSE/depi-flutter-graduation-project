@@ -181,5 +181,14 @@
 
   "addReviewTitle": "Write a Review",
   "experienceHint": "How was your experience with this product?",
-  "postButton": "Post"
+  "postButton": "Post",
+
+  "priceRange": "Price Range",
+  "sortBy":"Sort By",
+  "ratting":"Ratting",
+  "applyNow":"Apply Now",
+  "noProductsFound":"noProductsFound",
+  "filteredProducts":"FilteredProducts"
+
+
 }

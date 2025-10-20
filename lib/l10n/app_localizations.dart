@@ -808,6 +808,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Post'**
   String get postButton;
+
+  /// No description provided for @priceRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Range'**
+  String get priceRange;
+
+  /// No description provided for @sortBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort By'**
+  String get sortBy;
+
+  /// No description provided for @ratting.
+  ///
+  /// In en, this message translates to:
+  /// **'Ratting'**
+  String get ratting;
+
+  /// No description provided for @applyNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Now'**
+  String get applyNow;
+
+  /// No description provided for @noProductsFound.
+  ///
+  /// In en, this message translates to:
+  /// **'noProductsFound'**
+  String get noProductsFound;
+
+  /// No description provided for @filteredProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'FilteredProducts'**
+  String get filteredProducts;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

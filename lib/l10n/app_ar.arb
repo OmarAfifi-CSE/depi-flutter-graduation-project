@@ -176,5 +176,13 @@
 
   "addReviewTitle": "اكتب مراجعة",
   "experienceHint": "كيف كانت تجربتك مع هذا المنتج؟",
-  "postButton": "نشر"
+  "postButton": "نشر",
+
+
+  "priceRange": "نطاق الأسعار",
+  "sortBy":"الترتيب حسب",
+  "ratting":"التقييم",
+  "applyNow":"بحث",
+  "noProductsFound":"لا يوجد منتجات",
+  "filteredProducts":"المنتجات المفلترة"
 }

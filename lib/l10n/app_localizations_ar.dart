@@ -366,4 +366,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get postButton => 'نشر';
+
+  @override
+  String get priceRange => 'نطاق الأسعار';
+
+  @override
+  String get sortBy => 'الترتيب حسب';
+
+  @override
+  String get ratting => 'التقييم';
+
+  @override
+  String get applyNow => 'بحث';
+
+  @override
+  String get noProductsFound => 'لا يوجد منتجات';
+
+  @override
+  String get filteredProducts => 'المنتجات المفلترة';
 }

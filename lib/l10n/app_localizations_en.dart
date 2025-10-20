@@ -366,4 +366,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get postButton => 'Post';
+
+  @override
+  String get priceRange => 'Price Range';
+
+  @override
+  String get sortBy => 'Sort By';
+
+  @override
+  String get ratting => 'Ratting';
+
+  @override
+  String get applyNow => 'Apply Now';
+
+  @override
+  String get noProductsFound => 'noProductsFound';
+
+  @override
+  String get filteredProducts => 'FilteredProducts';
 }

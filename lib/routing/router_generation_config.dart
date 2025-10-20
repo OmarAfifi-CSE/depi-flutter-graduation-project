@@ -6,6 +6,8 @@ import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
+import 'package:batrina/views/filter/filter_screen.dart';
+import 'package:batrina/views/filter/filtered_producs_screen.dart';
 import 'package:batrina/views/home/category_screen.dart';
 import 'package:batrina/views/home/category_products_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
@@ -33,7 +35,7 @@ class RouterGenerationConfig {
   RouterGenerationConfig({required this.sharedPreferences}) {
     router = GoRouter(
       refreshListenable: AuthStateListenable(),
-      initialLocation: AppRoutes.splashScreen,
+      initialLocation: AppRoutes.filterScreen,
       routes: [
         GoRoute(
           path: AppRoutes.splashScreen,
@@ -193,6 +195,46 @@ class RouterGenerationConfig {
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: ProductScreen(productId: state.extra as String),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.filterScreen,
+          name: AppRoutes.filterScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const FilterScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.filteredProductsScreen,
+          name: AppRoutes.filteredProductsScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const FilteredProductsScreen(),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

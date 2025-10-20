@@ -1,5 +1,6 @@
 import 'package:batrina/app_initializer.dart';
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/provider/filter_provider.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
         BlocProvider(create: (_) => AuthCubit()),
         ChangeNotifierProvider(create: (_) => ProductsProvider()),
+        ChangeNotifierProvider(create: (_) => FilterProvider()),
       ],
       child: Consumer2<ThemeProvider, LocaleProvider>(
         builder: (context, themeProvider, localeProvider, child) =>

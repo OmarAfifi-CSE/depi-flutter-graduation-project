@@ -19,4 +19,6 @@ class AppRoutes {
   static const String categoryScreen = '/category';
   static const String productScreen = '/productScreen';
   static const String reviewsScreen = '/reviews';
+  static const String filterScreen = '/filterScreen';
+  static const String filteredProductsScreen = '/filteredProductsScreen';
 }
