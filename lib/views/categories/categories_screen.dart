@@ -1,4 +1,5 @@
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:batrina/views/categories/widgets/category_list_view.dart';
 import 'package:batrina/views/categories/widgets/search_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -59,7 +61,7 @@ class CategoriesScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50.r),
                             child: InkWell(
                               onTap: () {
-                                // TODO: Go to filter screen
+                                context.pushNamed(AppRoutes.filterScreen);
                               },
                               borderRadius: BorderRadius.circular(50.r),
                               splashColor: theme.scaffoldBackgroundColor

@@ -20,28 +20,8 @@ class ApplyFilterButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {
         final filter = Provider.of<FilterProvider>(context, listen: false);
-
-        // ProductsProvider().fetchFilteredProducts(
-        //   filter.selectedCategories,
-        //   filter.priceRange.start,
-        //   filter.priceRange.end,
-        //   filter.selectedSort,
-        // );
-        // ProductsProvider().fetchFilteredProducts(
-        //   filter.selectedCategories,
-        //   filter.priceRange.start,
-        //   filter.priceRange.end,
-        //   //filter.selectedSort,
-        // );
-
         context.pushNamed(AppRoutes.filteredProductsScreen);
 
-        // print('Filters Applied:');
-        // print('Categories: ${filter.selectedCategories}');
-        // print(
-        //     'Price Range: \$${filter.priceRange.start.toInt()} - \$${filter.priceRange.end.toInt()}');
-        // print('Sort By: ${filter.selectedSort}');
-        // print('Rating: ${filter.rating} stars');
       },
       style: ElevatedButton.styleFrom(
         //backgroundColor: Colors.black,

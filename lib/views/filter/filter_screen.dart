@@ -5,6 +5,8 @@ import 'package:batrina/views/filter/widgets/apply_filter_button.dart';
 import 'package:batrina/views/filter/widgets/price_slider.dart';
 import 'package:batrina/views/filter/widgets/rate_selection.dart';
 import 'package:batrina/views/filter/widgets/sortby_options.dart';
+import 'package:batrina/widgets/back_arrow.dart';
+import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,34 +27,52 @@ class _FilterScreenState extends State<FilterScreen> {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final filter = Provider.of<FilterProvider>(context);
     return Scaffold(
+      appBar: AppBar(
+        title: const CustomHeaderWidget(prefix: BackArrow()),
+        leading: const SizedBox(),
+        leadingWidth: 0,
+      ),
       body: SafeArea(
         child: Column(
           children: [
-            // Padding(
-            //   padding: const EdgeInsets.all(16.0),
-            //   child: CustomAppbar(),
-            // ),
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomText(data: loc!.categories, fontSize: 20, fontWeight: FontWeight.bold),
-                     SizedBox(height: 15.h),
+                    SizedBox(height: 20.h),
+                    CustomText(
+                      data: loc!.categories,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(height: 15.h),
                     _buildCategoryChips(),
-                     SizedBox(height: 30.h),
-                    CustomText(data: loc.priceRange, fontSize: 20, fontWeight: FontWeight.bold),
+                    SizedBox(height: 30.h),
+                    CustomText(
+                      data: loc.priceRange,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                     SizedBox(height: 15.h),
                     const PriceSlider(),
                     SizedBox(height: 30.h),
 
-                   CustomText(data: loc.sortBy, fontSize: 20, fontWeight: FontWeight.bold),
+                    CustomText(
+                      data: loc.sortBy,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                     const SizedBox(height: 15),
                     const SortbyOptions(),
                     const SizedBox(height: 30),
 
-                    CustomText(data: loc.ratting, fontSize: 20, fontWeight: FontWeight.bold),
+                    CustomText(
+                      data: loc.ratting,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
 
                     const SizedBox(height: 15),
                     const RateSelection(),
@@ -88,7 +108,7 @@ class _FilterScreenState extends State<FilterScreen> {
             filter.toggleCategory(category);
           },
           child: Container(
-            padding:  EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             decoration: BoxDecoration(
               color: isSelected ? Colors.black : Colors.white,
               borderRadius: BorderRadius.circular(20.r),

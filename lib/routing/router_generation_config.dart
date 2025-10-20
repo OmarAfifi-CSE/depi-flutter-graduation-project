@@ -268,6 +268,81 @@ class RouterGenerationConfig {
           },
         ),
         GoRoute(
+          path: AppRoutes.filterScreen,
+          name: AppRoutes.filterScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const FilterScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.filteredProductsScreen,
+          name: AppRoutes.filteredProductsScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const FilteredProductsScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+
+        GoRoute(
+          path: AppRoutes.filteredProduct,
+          name: AppRoutes.filteredProduct,
+          pageBuilder: (context, state) {
+            final productId = state.pathParameters['productId'];
+            return CustomTransitionPage(
+              child: ProductScreen(productId: productId!),
+              transitionDuration: const Duration(milliseconds: 500),
+              reverseTransitionDuration: const Duration(milliseconds: 300),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeIn,
+                      ),
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0.3, 0),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                        child: child,
+                      ),
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
           path: AppRoutes.addressesScreen,
           name: AppRoutes.addressesScreen,
           pageBuilder: (context, state) {
@@ -333,46 +408,6 @@ class RouterGenerationConfig {
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const WishlistScreen(),
-              transitionDuration: const Duration(milliseconds: 1000),
-              reverseTransitionDuration: const Duration(milliseconds: 1000),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
-                    );
-                  },
-            );
-          },
-        ),
-        GoRoute(
-          path: AppRoutes.filterScreen,
-          name: AppRoutes.filterScreen,
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              child: const FilterScreen(),
-              transitionDuration: const Duration(milliseconds: 1000),
-              reverseTransitionDuration: const Duration(milliseconds: 1000),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
-                    );
-                  },
-            );
-          },
-        ),
-        GoRoute(
-          path: AppRoutes.filteredProductsScreen,
-          name: AppRoutes.filteredProductsScreen,
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              child: const FilteredProductsScreen(),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

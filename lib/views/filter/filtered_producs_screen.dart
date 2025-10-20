@@ -1,14 +1,13 @@
 import 'package:batrina/controllers/provider/filter_provider.dart';
+import 'package:batrina/widgets/product/product_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-
-import '../../controllers/provider/products_provider.dart';
-import '../../l10n/app_localizations.dart';
-import '../../routing/app_routes.dart';
-import '../../widgets/custom_text.dart';
-import '../home/widgets/product_card_widget.dart';
+import 'package:batrina/controllers/provider/products_provider.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/routing/app_routes.dart';
+import 'package:batrina/widgets/custom_text.dart';
 
 class FilteredProductsScreen extends StatefulWidget {
   const FilteredProductsScreen({super.key});
@@ -35,6 +34,7 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProductsProvider>(context);
+    final filterProvider = Provider.of<FilterProvider>(context);
     final loc = AppLocalizations.of(context);
     return Scaffold(
       body: SafeArea(
@@ -44,7 +44,8 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
             ? Center(
                 child: CustomText(
                   data: loc!.noProductsFound,
-                  fontSize: 18.sp, fontWeight: FontWeight.bold,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
                 ),
               )
             : SingleChildScrollView(
@@ -77,9 +78,9 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
                           final product = provider.filteredProducts[index];
                           return GestureDetector(
                             onTap: () {
-                              context.push(
-                                AppRoutes.productScreen,
-                                extra: product.id,
+                              context.pushNamed(
+                                AppRoutes.filteredProduct,
+                                pathParameters: {'productId': product.id},
                               );
                             },
                             child: ProductCardWidget(
