@@ -21,14 +21,13 @@ class ApplyFilterButton extends StatelessWidget {
       onPressed: () {
         final filter = Provider.of<FilterProvider>(context, listen: false);
         context.pushNamed(AppRoutes.filteredProductsScreen);
-
       },
       style: ElevatedButton.styleFrom(
         //backgroundColor: Colors.black,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28.r)),
         elevation: 0,
       ),
-      child: CustomText(data: loc!.applyNow, fontSize: 16.sp, fontWeight: FontWeight.w600)
+      child: CustomText(data:loc!.applyNow, fontSize: 16.sp, fontWeight: FontWeight.w600)
     );
   }
 }
