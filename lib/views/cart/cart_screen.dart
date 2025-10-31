@@ -20,6 +20,6 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: CartViewBody());
+    return const CartViewBody();
   }
 }

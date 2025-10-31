@@ -52,50 +52,35 @@ class CartViewBody extends StatelessWidget {
                           height: 360.h,
                           child: _buildCartItems(context, userCart),
                         ),
-                        SizedBox(height: 20.h),
+                        SizedBox(height: 25.h),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25.0.w),
-                          // child: const CheckOutDetails(),
                           child: const PromoCodeTextField(),
                         ),
                       ],
                     ),
                     Consumer<OpenDetailsProvider>(
                       builder: (context, value, child) {
-                        return TweenAnimationBuilder(
+                        return AnimatedOpacity(
+                          opacity: value.isOpen ? 0.6 : 0.0,
                           duration: const Duration(milliseconds: 500),
                           curve: Curves.easeInOut,
-                          tween: !value.isOpen
-                              ? Tween<double>(begin: .6, end: 0)
-                              : Tween<double>(begin: 0, end: .6),
-                          builder: (context, val, _) {
-                            return IgnorePointer(
-                              ignoring: !context
-                                  .read<OpenDetailsProvider>()
-                                  .isOpen,
-                              child: GestureDetector(
-                                onTap: () {
-                                  context
-                                      .read<OpenDetailsProvider>()
-                                      .closeDetails();
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.black12.withValues(
-                                      alpha: val,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
+                          child: IgnorePointer(
+                            ignoring: !value.isOpen,
+                            child: GestureDetector(
+                              onTap: () {
+                                value.closeDetails();
+                              },
+                              child: Container(color: theme.scaffoldBackgroundColor),
+                            ),
+                          ),
                         );
                       },
                     ),
                     Positioned(
-                      left: 0,
-                      right: 0,
                       bottom: 0,
+                      right: 0,
+                      left: 0,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [

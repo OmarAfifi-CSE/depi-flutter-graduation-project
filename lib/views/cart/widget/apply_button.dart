@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ApplyButton extends StatefulWidget {
   const ApplyButton({super.key, required this.textEditingController});
+
   final TextEditingController textEditingController;
 
   @override
@@ -17,6 +18,7 @@ class ApplyButton extends StatefulWidget {
 class _ApplyButtonState extends State<ApplyButton> {
   bool showResult = false;
   int lastTextLength = 0;
+
   @override
   void initState() {
     widget.textEditingController.addListener(() {
@@ -77,6 +79,7 @@ class _ApplyButtonState extends State<ApplyButton> {
               child: GestureDetector(
                 onTap: state is! CheckPromoCodeLoading
                     ? () {
+                        FocusManager.instance.primaryFocus?.unfocus();
                         context.read<CheckPromoCodeCubit>().isDiscounted(
                           code: widget.textEditingController.text,
                         );
