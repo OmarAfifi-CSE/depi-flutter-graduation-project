@@ -1,16 +1,21 @@
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
 import 'package:batrina/controllers/provider/open_details_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/models/cart_model.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/cart/widget/price_row.dart';
 import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class CheckOutButton extends StatelessWidget {
-  const CheckOutButton({super.key});
+  final List<CartModel> cartItems;
+
+  const CheckOutButton({super.key, required this.cartItems});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,7 @@ class CheckOutButton extends StatelessWidget {
     final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-
+    final cartPriceProvider = context.read<CartPriceProvider>();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 25.0.w),
       child: Column(
@@ -138,8 +143,6 @@ class CheckOutButton extends StatelessWidget {
                                 )
                               : const SizedBox(),
                         ),
-
-                        // Total
                         // Total
                         PriceRow(
                           title: loc!.total,
@@ -200,7 +203,12 @@ class CheckOutButton extends StatelessWidget {
                 bottomRight: Radius.circular(8.r),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(AppRoutes.checkoutScreen, extra: {
+                'cartItems': cartItems,
+                'cartPriceProvider': cartPriceProvider,
+              });
+            },
             buttonChild: CustomText(
               data: loc!.processtocheckout,
               fontSize: 16,

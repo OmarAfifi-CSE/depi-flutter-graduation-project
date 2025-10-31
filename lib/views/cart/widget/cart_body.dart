@@ -71,7 +71,9 @@ class CartViewBody extends StatelessWidget {
                               onTap: () {
                                 value.closeDetails();
                               },
-                              child: Container(color: theme.scaffoldBackgroundColor),
+                              child: Container(
+                                color: theme.scaffoldBackgroundColor,
+                              ),
                             ),
                           ),
                         );
@@ -84,7 +86,7 @@ class CartViewBody extends StatelessWidget {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const CheckOutButton(),
+                          CheckOutButton(cartItems: userCart),
                           SizedBox(height: 16.h),
                         ],
                       ),

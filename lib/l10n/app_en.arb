@@ -228,6 +228,11 @@
   "ratting":"Ratting",
   "applyNow":"Apply Now",
   "noProductsFound":"noProductsFound",
-  "filteredProducts":"FilteredProducts"
+  "filteredProducts":"FilteredProducts",
+
+  "checkout": "Checkout",
+  "deliveryAddress": "Delivery Address",
+  "products": "Products",
+  "placeOrder": "Place Order"
 
 }

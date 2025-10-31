@@ -492,4 +492,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get filteredProducts => 'FilteredProducts';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get deliveryAddress => 'Delivery Address';
+
+  @override
+  String get products => 'Products';
+
+  @override
+  String get placeOrder => 'Place Order';
 }

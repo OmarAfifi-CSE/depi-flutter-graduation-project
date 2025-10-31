@@ -492,4 +492,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get filteredProducts => 'المنتجات المفلترة';
+
+  @override
+  String get checkout => 'الدفع';
+
+  @override
+  String get deliveryAddress => 'عنوان التوصيل';
+
+  @override
+  String get products => 'المنتجات';
+
+  @override
+  String get placeOrder => 'إتمام الطلب';
 }

@@ -22,10 +22,10 @@ class CustomText extends StatelessWidget {
   final Color? color;
   final TextAlign? textAlign;
   final int? maxLines;
+  final bool lined;
 
   // Sometimes Arabic text appears slightly higher than adjacent text
   final bool forceStrutHeight;
-  final bool lined;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,6 @@ class CustomText extends StatelessWidget {
       data,
       textAlign: textAlign ?? TextAlign.center,
       maxLines: maxLines,
-
       strutStyle: forceStrutHeight
           ? const StrutStyle(forceStrutHeight: true)
           : null,

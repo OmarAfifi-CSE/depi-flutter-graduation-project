@@ -225,5 +225,10 @@
   "ratting":"التقييم",
   "applyNow":"بحث",
   "noProductsFound":"لا يوجد منتجات",
-  "filteredProducts":"المنتجات المفلترة"
+  "filteredProducts":"المنتجات المفلترة",
+
+  "checkout": "الدفع",
+  "deliveryAddress": "عنوان التوصيل",
+  "products": "المنتجات",
+  "placeOrder": "إتمام الطلب"
 }
