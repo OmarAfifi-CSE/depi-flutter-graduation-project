@@ -16,6 +16,8 @@ class CartPriceProvider extends ChangeNotifier {
     }
   }
 
+  double get totalNoDis => subTotal + currentShipping;
+
   void setPrice(List<CartModel> cart) {
     subTotal = cart.fold(
       0,

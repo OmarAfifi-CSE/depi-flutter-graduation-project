@@ -140,23 +140,47 @@ class CheckOutButton extends StatelessWidget {
                         ),
 
                         // Total
+                        // Total
                         PriceRow(
                           title: loc!.total,
                           suffix: Row(
                             mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              CustomText(
-                                data:
-                                    '(${cartPriceProvider.count} ${loc.items} )',
-                                fontSize: 13.sp,
-                                color: appColors.containerBorder,
-                                fontWeight: FontWeight.w500,
+                              Flexible(
+                                child: CustomText(
+                                  data:
+                                      '(${cartPriceProvider.count} ${loc.items} )',
+                                  fontSize: 13.sp,
+                                  color: appColors.containerBorder,
+                                  fontWeight: FontWeight.w500,
+                                  maxLines: 1,
+                                ),
                               ),
                               SizedBox(width: 8.w),
-                              CustomText(
-                                data: '\$${cartPriceProvider.total}',
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.bold,
+                              if (cartPriceProvider.discount != 0) ...[
+                                Flexible(
+                                  child: CustomText(
+                                    data: '\$${cartPriceProvider.total}',
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.green,
+                                    maxLines: 1,
+                                  ),
+                                ),
+                                SizedBox(width: 5.w),
+                              ],
+                              Flexible(
+                                child: CustomText(
+                                  lined: cartPriceProvider.discount != 0,
+                                  data: '\$${cartPriceProvider.totalNoDis}',
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.bold,
+                                  color: cartPriceProvider.discount != 0
+                                      ? theme.dividerColor
+                                      : null,
+                                  maxLines: 1,
+                                ),
                               ),
                             ],
                           ),
