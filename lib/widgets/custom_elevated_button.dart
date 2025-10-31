@@ -7,11 +7,15 @@ class CustomElevatedButton extends StatelessWidget {
     required this.onPressed,
     required this.buttonChild,
     this.backgroundColor,
+    this.outlinedBorder,
+    this.extend = false,
   });
 
   final VoidCallback? onPressed;
   final Widget buttonChild;
   final Color? backgroundColor;
+  final OutlinedBorder? outlinedBorder;
+  final bool extend;
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +25,18 @@ class CustomElevatedButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor ?? theme.primaryColor,
         foregroundColor: theme.scaffoldBackgroundColor,
-        fixedSize: Size(325.w, 46.h),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+        fixedSize: extend == false ? Size(325.w, 46.h) : null,
+        shape:
+            outlinedBorder ??
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
         disabledBackgroundColor: theme.disabledColor,
       ),
-      child: buttonChild,
+      child: extend
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [buttonChild],
+            )
+          : buttonChild,
     );
   }
 }

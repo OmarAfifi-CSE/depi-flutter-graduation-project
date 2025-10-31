@@ -1,6 +1,7 @@
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/models/address_model.dart';
 import 'package:batrina/models/product_model.dart';
+import 'package:batrina/models/promo_model.dart';
 import 'package:batrina/models/review_model.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -146,7 +147,9 @@ class FireBaseFireStore {
     //required String sortOrder,
     int? minRating,
   }) async {
-    Query<Map<String, dynamic>> query = fireBaseFireStore.collection('products');
+    Query<Map<String, dynamic>> query = fireBaseFireStore.collection(
+      'products',
+    );
 
     if (categories.isNotEmpty) {
       query = query.where('category', whereIn: categories.toList());
@@ -174,6 +177,7 @@ class FireBaseFireStore {
 
     return snapshot.docs.map((e) => ProductModel.fromJson(e.data())).toList();
   }
+
   Future<List<ProductModel>> getFilteredProductsPaginated({
     required Set<String> categories,
     required double minPrice,
@@ -183,7 +187,9 @@ class FireBaseFireStore {
     int limit = 5,
     DocumentSnapshot? lastDocument,
   }) async {
-    Query<Map<String, dynamic>> query = fireBaseFireStore.collection('products');
+    Query<Map<String, dynamic>> query = fireBaseFireStore.collection(
+      'products',
+    );
 
     if (categories.isNotEmpty) {
       query = query.where('category', whereIn: categories.toList());
@@ -215,7 +221,6 @@ class FireBaseFireStore {
 
     return snapshot.docs.map((e) => ProductModel.fromJson(e.data())).toList();
   }
-
 
   Future<void> addToWishList({required ProductModel productModel}) async {
     await fireBaseFireStore
@@ -303,7 +308,7 @@ class FireBaseFireStore {
   Future<List<ProductModel>> getUserWishList() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
         .collection("users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)  //TODO:
+        .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("userWishList")
         .get();
     if (querySnapshot.docs.isEmpty) {
@@ -314,7 +319,6 @@ class FireBaseFireStore {
     }).toList();
     return userWishList;
   }
-
 
   Future<List<AddressModel>> getAddresses() async {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
@@ -522,4 +526,14 @@ class FireBaseFireStore {
     return userCart;
   }
 
+  Future<PromoCodeModel?> isDiscounted({required String code}) async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
+        .collection("promos")
+        .where("code", isEqualTo: code)
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return null;
+    }
+    return PromoCodeModel.fromJson(querySnapshot.docs.first.data());
+  }
 }

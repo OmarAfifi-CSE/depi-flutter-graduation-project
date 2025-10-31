@@ -1,14 +1,14 @@
 import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dart';
+import 'package:batrina/controllers/provider/open_details_provider.dart';
 import 'package:batrina/models/cart_model.dart';
+import 'package:batrina/views/cart/widget/check_out_button.dart';
+import 'package:batrina/views/cart/widget/promo_code_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/views/cart/widget/cart_item.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:batrina/views/cart/widget/check_out_details.dart';
-import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:provider/provider.dart';
 
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
@@ -19,11 +19,13 @@ class CartViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
-    return ChangeNotifierProvider(
-      create: (context) => CartPriceProvider(),
+    return MultiBlocProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CartPriceProvider()),
+        ChangeNotifierProvider(create: (context) => OpenDetailsProvider()),
+      ],
       child: BlocBuilder<GetCartCubit, GetCartState>(
         builder: (context, state) {
           if (state is GetCartFailure) {
@@ -42,28 +44,66 @@ class CartViewBody extends StatelessWidget {
           final List<CartModel> userCart = (state as GetCartSuccess).userCart;
           context.read<CartPriceProvider>().init(cart: userCart, shipping: 50);
           return userCart.isNotEmpty
-              ? Column(
+              ? Stack(
                   children: [
-                    SizedBox(
-                      height: 360.h,
-                      child: _buildCartItems(context, userCart),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 360.h,
+                          child: _buildCartItems(context, userCart),
+                        ),
+                        SizedBox(height: 20.h),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 25.0.w),
+                          // child: const CheckOutDetails(),
+                          child: const PromoCodeTextField(),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 20.h),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 25.0.w),
-                      child: const CheckOutDetails(),
+                    Consumer<OpenDetailsProvider>(
+                      builder: (context, value, child) {
+                        return TweenAnimationBuilder(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeInOut,
+                          tween: !value.isOpen
+                              ? Tween<double>(begin: .6, end: 0)
+                              : Tween<double>(begin: 0, end: .6),
+                          builder: (context, val, _) {
+                            return IgnorePointer(
+                              ignoring: !context
+                                  .read<OpenDetailsProvider>()
+                                  .isOpen,
+                              child: GestureDetector(
+                                onTap: () {
+                                  context
+                                      .read<OpenDetailsProvider>()
+                                      .closeDetails();
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.black12.withValues(
+                                      alpha: val,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
-                    const Spacer(),
-                    CustomElevatedButton(
-                      onPressed: () {},
-                      buttonChild: CustomText(
-                        data: loc!.processtocheckout,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: theme.scaffoldBackgroundColor,
+                    Positioned(
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const CheckOutButton(),
+                          SizedBox(height: 16.h),
+                        ],
                       ),
                     ),
-                    SizedBox(height: 10.h),
                   ],
                 )
               : Center(
