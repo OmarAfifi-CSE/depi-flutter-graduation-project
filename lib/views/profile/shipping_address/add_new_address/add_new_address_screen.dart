@@ -186,7 +186,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                                   ),
                                 );
                               }
-                              FocusManager.instance.primaryFocus?.unfocus();
+                              FocusScope.of(context).unfocus();
                             }
                           : () {},
                       buttonChild: state is! AddAddressLoading

@@ -38,14 +38,17 @@ class CheckoutScreen extends StatefulWidget {
 }
 
 class _CheckoutScreenState extends State<CheckoutScreen> {
+  late GetAddressesCubit getAddressesCubit;
+
   @override
   void initState() {
     super.initState();
+    getAddressesCubit = GetAddressesCubit();
   }
 
   void _showAddressSelectionSheet(
     ControlPlaceOrderProvider controlPlaceOrderButtonProvider,
-    List<AddressModel> availableAddresses,
+    GetAddressesCubit getAddressesCubit,
   ) {
     final theme = Theme.of(context);
 
@@ -57,14 +60,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
       ),
       builder: (bottomSheetContext) {
-        return ChangeNotifierProvider.value(
-          value: controlPlaceOrderButtonProvider,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.8,
-            ),
-            child: AddressSelectionSheet(
-              availableAddresses: availableAddresses,
+        return BlocProvider.value(
+          value: getAddressesCubit,
+          child: ChangeNotifierProvider.value(
+            value: controlPlaceOrderButtonProvider,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height * 0.8,
+              ),
+              child: AddressSelectionSheet(
+                getAddressesCubit: getAddressesCubit,
+              ),
             ),
           ),
         );
@@ -80,7 +86,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
 
     return MultiProvider(
       providers: [
-        BlocProvider(create: (context) => GetAddressesCubit()..getAddresses()),
+        BlocProvider(create: (context) => getAddressesCubit..getAddresses()),
         ChangeNotifierProvider(
           create: (context) => ControlPlaceOrderProvider(),
         ),
@@ -158,14 +164,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                                 ),
                               );
                             }
-
-                            // **THE FIX**: Watch the provider for changes. This ensures the UI rebuilds
-                            // when a new address is selected from the bottom sheet.
                             final displayedAddress = context
                                 .watch<ControlPlaceOrderProvider>()
                                 .currentAddress;
 
-                            // Show a loader until the listener sets the initial address.
                             if (displayedAddress == null) {
                               return SizedBox(
                                 height: 180.h,
@@ -184,7 +186,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                               onTap: () {
                                 _showAddressSelectionSheet(
                                   context.read<ControlPlaceOrderProvider>(),
-                                  addresses,
+                                  getAddressesCubit,
                                 );
                               },
                               child: Stack(
@@ -356,12 +358,12 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final loc = AppLocalizations.of(context);
     return GestureDetector(
-        onTap: () async {
-          await context.pushNamed(AppRoutes.addressesScreen);
-          if (mounted) {
-            context.read<GetAddressesCubit>().getAddresses();
-          }
-        },
+      onTap: () async {
+        await context.pushNamed(AppRoutes.addressesScreen);
+        if (mounted) {
+          context.read<GetAddressesCubit>().getAddresses();
+        }
+      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
