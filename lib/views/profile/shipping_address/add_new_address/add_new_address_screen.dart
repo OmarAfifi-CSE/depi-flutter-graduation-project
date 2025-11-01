@@ -186,6 +186,7 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                                   ),
                                 );
                               }
+                              FocusScope.of(context).unfocus();
                             }
                           : () {},
                       buttonChild: state is! AddAddressLoading

@@ -5,9 +5,18 @@ class CartPriceProvider extends ChangeNotifier {
   late double currentShipping;
   late double subTotal;
   late int count;
+  double discount = 0;
   late List<CartModel> currentCart;
 
-  double get total => subTotal + currentShipping;
+  double get total {
+    if (subTotal + currentShipping - discount > 0) {
+      return subTotal + currentShipping - discount;
+    } else {
+      return 0.0;
+    }
+  }
+
+  double get totalNoDis => subTotal + currentShipping;
 
   void setPrice(List<CartModel> cart) {
     subTotal = cart.fold(
@@ -25,6 +34,11 @@ class CartPriceProvider extends ChangeNotifier {
 
   void refresh() {
     setPrice(currentCart);
+    notifyListeners();
+  }
+
+  void setDiscount({required double dis}) {
+    discount = dis;
     notifyListeners();
   }
 }

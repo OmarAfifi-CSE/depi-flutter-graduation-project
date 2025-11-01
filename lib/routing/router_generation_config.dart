@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:batrina/models/cart_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
 import 'package:batrina/views/auth/create_new_password_screen.dart';
@@ -6,6 +7,7 @@ import 'package:batrina/views/auth/sign_in_screen.dart';
 import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
+import 'package:batrina/views/cart/checkout/checkout_screen.dart';
 import 'package:batrina/views/categories/categories_screen.dart';
 import 'package:batrina/views/categories/category_products/category_products_screen.dart';
 import 'package:batrina/views/categories/filter/filter_screen.dart';
@@ -408,6 +410,27 @@ class RouterGenerationConfig {
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const WishlistScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.checkoutScreen,
+          name: AppRoutes.checkoutScreen,
+          pageBuilder: (context, state) {
+            final  extras = state.extra as Map<String, dynamic>;
+            return CustomTransitionPage(
+              child: CheckoutScreen(cartItems: extras['cartItems'], cartPriceProvider: extras['cartPriceProvider'],),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

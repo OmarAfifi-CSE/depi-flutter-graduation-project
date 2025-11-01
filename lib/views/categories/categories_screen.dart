@@ -17,83 +17,78 @@ class CategoriesScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return BlocProvider(
       create: (context) => CategoryCubit()..fetchCategories(),
-      child: Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              Directionality(
-                textDirection: TextDirection.ltr,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 12.h),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Builder(
-                          builder: (context) {
-                            return SearchBarWidget(
-                              onChanged: (query) {
-                                context.read<CategoryCubit>().searchCategories(
-                                  query,
-                                );
-                              },
+      child: Column(
+        children: [
+          Directionality(
+            textDirection: TextDirection.ltr,
+            child: Padding(
+              padding: EdgeInsets.only(top: 12.h),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Builder(
+                      builder: (context) {
+                        return SearchBarWidget(
+                          onChanged: (query) {
+                            context.read<CategoryCubit>().searchCategories(
+                              query,
                             );
                           },
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 25.w),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30.r),
-                            boxShadow: [
-                              BoxShadow(
-                                color: theme.primaryColor.withValues(
-                                  alpha: .15,
-                                ),
-                                blurRadius: 10,
-                                offset: Offset(0, 2.h),
-                                spreadRadius: 1,
-                              ),
-                            ],
+                        );
+                      },
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 25.w),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30.r),
+                        boxShadow: [
+                          BoxShadow(
+                            color: theme.primaryColor.withValues(alpha: .15),
+                            blurRadius: 10,
+                            offset: Offset(0, 2.h),
+                            spreadRadius: 1,
                           ),
-                          child: Material(
-                            color: theme.primaryColor,
-                            borderRadius: BorderRadius.circular(50.r),
-                            child: InkWell(
-                              onTap: () {
-                                context.pushNamed(AppRoutes.filterScreen);
-                              },
+                        ],
+                      ),
+                      child: Material(
+                        color: theme.primaryColor,
+                        borderRadius: BorderRadius.circular(50.r),
+                        child: InkWell(
+                          onTap: () {
+                            context.pushNamed(AppRoutes.filterScreen);
+                          },
+                          borderRadius: BorderRadius.circular(50.r),
+                          splashColor: theme.scaffoldBackgroundColor.withValues(
+                            alpha: 0.2,
+                          ),
+                          child: Container(
+                            width: 50.w,
+                            height: 50.w,
+                            decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50.r),
-                              splashColor: theme.scaffoldBackgroundColor
-                                  .withValues(alpha: 0.2),
-                              child: Container(
-                                width: 50.w,
-                                height: 50.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50.r),
-                                ),
-                                child: SvgPicture.asset(
-                                  AppAssets.filterIcon,
-                                  fit: BoxFit.scaleDown,
-                                  colorFilter: ColorFilter.mode(
-                                    theme.scaffoldBackgroundColor,
-                                    BlendMode.srcIn,
-                                  ),
-                                ),
+                            ),
+                            child: SvgPicture.asset(
+                              AppAssets.filterIcon,
+                              fit: BoxFit.scaleDown,
+                              colorFilter: ColorFilter.mode(
+                                theme.scaffoldBackgroundColor,
+                                BlendMode.srcIn,
                               ),
                             ),
                           ),
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                ],
               ),
-              SizedBox(height: 22.h),
-              const CategoryListView(),
-            ],
+            ),
           ),
-        ),
+          SizedBox(height: 22.h),
+          const CategoryListView(),
+        ],
       ),
     );
   }

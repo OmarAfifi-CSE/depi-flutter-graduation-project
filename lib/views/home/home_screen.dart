@@ -46,67 +46,63 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => CategoryCubit()..fetchCategories(),
-      child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Directionality(
-              textDirection: TextDirection.ltr,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const HomeCarousel(),
-                  SizedBox(height: 30.h),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 25.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(right: 25.w),
-                          child: CustomText(
-                            data: "Categories",
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                        SizedBox(height: 12.h),
-                        CategoryFilter(
-                          selectedCategoryNotifier: _selectedCategoryNotifier,
-                        ),
-                        SizedBox(height: 24.h),
-                        ValueListenableBuilder<String>(
-                          valueListenable: _selectedCategoryNotifier,
-                          builder: (context, selectedCategory, child) {
-                            if (selectedCategory.isEmpty) {
-                              return const SizedBox.shrink();
-                            }
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(right: 25.w),
-                                  child: CustomText(
-                                    data: 'Top in $selectedCategory',
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: 'Poppins',
-                                  ),
-                                ),
-                                SizedBox(height: 16.h),
-                                ProductGridView(categoryName: selectedCategory),
-                              ],
-                            );
-                          },
-                        ),
-                      ],
+      child: SingleChildScrollView(
+        controller: _scrollController,
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HomeCarousel(),
+              SizedBox(height: 30.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 25.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 25.w),
+                      child: CustomText(
+                        data: "Categories",
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'Poppins',
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 16.h),
-                ],
+                    SizedBox(height: 12.h),
+                    CategoryFilter(
+                      selectedCategoryNotifier: _selectedCategoryNotifier,
+                    ),
+                    SizedBox(height: 24.h),
+                    ValueListenableBuilder<String>(
+                      valueListenable: _selectedCategoryNotifier,
+                      builder: (context, selectedCategory, child) {
+                        if (selectedCategory.isEmpty) {
+                          return const SizedBox.shrink();
+                        }
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(right: 25.w),
+                              child: CustomText(
+                                data: 'Top in $selectedCategory',
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
+                            SizedBox(height: 16.h),
+                            ProductGridView(categoryName: selectedCategory),
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
               ),
-            ),
+              SizedBox(height: 16.h),
+            ],
           ),
         ),
       ),

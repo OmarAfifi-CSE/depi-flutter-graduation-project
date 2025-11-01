@@ -25,6 +25,7 @@ class WrapperScreen extends StatelessWidget {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: CustomText(
             data: pageTitles[navigationShell.currentIndex],

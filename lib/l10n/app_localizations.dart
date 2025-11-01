@@ -713,6 +713,24 @@ abstract class AppLocalizations {
   /// **'English'**
   String get english;
 
+  /// No description provided for @emptyCartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Cart is Empty'**
+  String get emptyCartTitle;
+
+  /// No description provided for @emptyCartSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks like you haven\'t added anything to your cart yet. Let\'s go find something you\'ll love!'**
+  String get emptyCartSubtitle;
+
+  /// No description provided for @continueShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Shopping'**
+  String get continueShopping;
+
   /// No description provided for @addtocard.
   ///
   /// In en, this message translates to:
@@ -1060,6 +1078,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'FilteredProducts'**
   String get filteredProducts;
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
+
+  /// No description provided for @deliveryAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Address'**
+  String get deliveryAddress;
+
+  /// No description provided for @products.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get products;
+
+  /// No description provided for @placeOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get placeOrder;
+
+  /// No description provided for @selectDeliveryAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Delivery Address'**
+  String get selectDeliveryAddress;
+
+  /// No description provided for @noAddressFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Address Found'**
+  String get noAddressFound;
+
+  /// No description provided for @pleaseAddAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please add an address to proceed.'**
+  String get pleaseAddAddress;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

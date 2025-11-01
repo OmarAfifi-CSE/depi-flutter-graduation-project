@@ -320,6 +320,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get english => 'الإنجليزية';
 
   @override
+  String get emptyCartTitle => 'عربة التسوق فارغة';
+
+  @override
+  String get emptyCartSubtitle => 'يبدو أنك لم تقم بإضافة أي شيء إلى عربة التسوق بعد. هيا نجد شيئًا ستحبه!';
+
+  @override
+  String get continueShopping => 'متابعة التسوق';
+
+  @override
   String get addtocard => 'إضافة إلى السلة';
 
   @override
@@ -492,4 +501,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get filteredProducts => 'المنتجات المفلترة';
+
+  @override
+  String get checkout => 'الدفع';
+
+  @override
+  String get deliveryAddress => 'عنوان التوصيل';
+
+  @override
+  String get products => 'المنتجات';
+
+  @override
+  String get placeOrder => 'إتمام الطلب';
+
+  @override
+  String get selectDeliveryAddress => 'اختر عنوان التوصيل';
+
+  @override
+  String get noAddressFound => 'لم يتم العثور على عنوان';
+
+  @override
+  String get pleaseAddAddress => 'يرجى إضافة عنوان للمتابعة.';
 }

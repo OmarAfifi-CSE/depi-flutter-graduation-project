@@ -320,6 +320,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get english => 'English';
 
   @override
+  String get emptyCartTitle => 'Your Cart is Empty';
+
+  @override
+  String get emptyCartSubtitle => 'Looks like you haven\'t added anything to your cart yet. Let\'s go find something you\'ll love!';
+
+  @override
+  String get continueShopping => 'Continue Shopping';
+
+  @override
   String get addtocard => 'Add to Card';
 
   @override
@@ -492,4 +501,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get filteredProducts => 'FilteredProducts';
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get deliveryAddress => 'Delivery Address';
+
+  @override
+  String get products => 'Products';
+
+  @override
+  String get placeOrder => 'Place Order';
+
+  @override
+  String get selectDeliveryAddress => 'Select Delivery Address';
+
+  @override
+  String get noAddressFound => 'No Address Found';
+
+  @override
+  String get pleaseAddAddress => 'Please add an address to proceed.';
 }

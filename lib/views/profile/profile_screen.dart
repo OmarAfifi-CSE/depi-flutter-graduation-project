@@ -38,104 +38,93 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final loc = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 25.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(height: 12.h),
-              const ProfileHeader(),
-              SizedBox(height: 30.h),
-              const ProfileInfo(),
-              SizedBox(height: 30.h),
-              CustomText(
-                data: loc.settings,
-                fontWeight: FontWeight.w700,
-                fontSize: 20.sp,
-              ),
-              SizedBox(height: 5.h),
-              Container(
-                decoration: BoxDecoration(
-                  color: theme.scaffoldBackgroundColor,
-                  borderRadius: BorderRadius.circular(16.r),
-                  border: Border.all(color: appColors.dividerColor!, width: 2.r),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: Column(
-                    spacing: 10.h,
-                    children: [
-                      SizedBox(height: 30.h),
-                      const LanguageProfileSettingsItem(),
-                      ProfileSettingsItem(
-                        icon: Icons.notifications,
-                        title: loc.notifications,
-                        trailing: Transform.scale(
-                          scale: 0.8,
-                          child: Switch(
-                            value: notificationEnabled,
-                            onChanged: (value) {
-                              setState(() {
-                                notificationEnabled = value;
-                              });
-                            },
-                            activeThumbColor: theme.primaryColor,
-                            inactiveThumbColor: appColors.secondaryText,
-                            inactiveTrackColor: appColors.dividerColor,
-                          ),
-                        ),
-                      ),
-                      Consumer<ThemeProvider>(
-                        builder: (context, themeProvider, _) {
-                          final isDark =
-                              themeProvider.themeMode == ThemeMode.dark;
-                          return ProfileSettingsItem(
-                            icon:
-                                themeProvider.themeMode == ThemeMode.dark
-                                ? Icons.dark_mode
-                                : Icons.light_mode,
-                            title:
-                                themeProvider.themeMode == ThemeMode.dark
-                                ? loc.darkMode
-                                : loc.lightMode,
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Transform.scale(
-                                  scale: 0.8,
-                                  child: Switch(
-                                    value: isDark,
-                                    onChanged: (value) {
-                                      themeProvider.setTheme(
-                                        value
-                                            ? ThemeMode.dark
-                                            : ThemeMode.light,
-                                      );
-                                    },
-                                    activeThumbColor: theme.primaryColor,
-                                    inactiveThumbColor:
-                                        appColors.secondaryText,
-                                    inactiveTrackColor: appColors.dividerColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                      SizedBox(height: 30.h),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 10.h),
-            ],
+    return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: 25.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SizedBox(height: 12.h),
+          const ProfileHeader(),
+          SizedBox(height: 30.h),
+          const ProfileInfo(),
+          SizedBox(height: 30.h),
+          CustomText(
+            data: loc.settings,
+            fontWeight: FontWeight.w700,
+            fontSize: 20.sp,
           ),
-        ),
+          SizedBox(height: 5.h),
+          Container(
+            decoration: BoxDecoration(
+              color: theme.scaffoldBackgroundColor,
+              borderRadius: BorderRadius.circular(16.r),
+              border: Border.all(color: appColors.dividerColor!, width: 2.r),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                spacing: 10.h,
+                children: [
+                  SizedBox(height: 30.h),
+                  const LanguageProfileSettingsItem(),
+                  ProfileSettingsItem(
+                    icon: Icons.notifications,
+                    title: loc.notifications,
+                    trailing: Transform.scale(
+                      scale: 0.8,
+                      child: Switch(
+                        value: notificationEnabled,
+                        onChanged: (value) {
+                          setState(() {
+                            notificationEnabled = value;
+                          });
+                        },
+                        activeThumbColor: theme.primaryColor,
+                        inactiveThumbColor: appColors.secondaryText,
+                        inactiveTrackColor: appColors.dividerColor,
+                      ),
+                    ),
+                  ),
+                  Consumer<ThemeProvider>(
+                    builder: (context, themeProvider, _) {
+                      final isDark = themeProvider.themeMode == ThemeMode.dark;
+                      return ProfileSettingsItem(
+                        icon: themeProvider.themeMode == ThemeMode.dark
+                            ? Icons.dark_mode
+                            : Icons.light_mode,
+                        title: themeProvider.themeMode == ThemeMode.dark
+                            ? loc.darkMode
+                            : loc.lightMode,
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Transform.scale(
+                              scale: 0.8,
+                              child: Switch(
+                                value: isDark,
+                                onChanged: (value) {
+                                  themeProvider.setTheme(
+                                    value ? ThemeMode.dark : ThemeMode.light,
+                                  );
+                                },
+                                activeThumbColor: theme.primaryColor,
+                                inactiveThumbColor: appColors.secondaryText,
+                                inactiveTrackColor: appColors.dividerColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 30.h),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 10.h),
+        ],
       ),
     );
   }
