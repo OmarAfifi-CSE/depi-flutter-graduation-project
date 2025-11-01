@@ -1,6 +1,7 @@
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,32 +37,20 @@ class EmptyCartView extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
           CustomText(
-            data:loc.emptyCartSubtitle,
-            fontSize: 14.sp,
+            data: loc.emptyCartSubtitle,
+            fontSize: 16.sp,
             fontWeight: FontWeight.w400,
             textAlign: TextAlign.center,
             color: theme.primaryColor.withValues(alpha: 0.7),
           ),
           SizedBox(height: 40.h),
           SizedBox(
-            width: MediaQuery.of(context).size.width,
-            child: ElevatedButton(
+            height: 50.h,
+            child: CustomElevatedButton(
               onPressed: () {
                 context.go(AppRoutes.wrapperScreen);
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: theme.primaryColor,
-                foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 16.h),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.r),
-                ),
-                textStyle: TextStyle(
-                  fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              child: Row(
+              buttonChild: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
@@ -72,10 +61,10 @@ class EmptyCartView extends StatelessWidget {
                   SizedBox(width: 8.w),
                   CustomText(
                     data: loc.continueShopping,
-                    fontSize: 18.sp,
+                    fontSize: 20.sp,
                     fontWeight: FontWeight.w400,
                     color: theme.scaffoldBackgroundColor,
-                    forceStrutHeight: true,
+                    forceStrutHeight: loc.localeName == "ar" ? true : false,
                   ),
                 ],
               ),
