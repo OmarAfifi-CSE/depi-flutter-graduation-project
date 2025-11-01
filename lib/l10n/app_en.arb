@@ -160,6 +160,10 @@
   "helpCenter": "Help Center",
   "english": "English",
 
+  "emptyCartTitle": "Your Cart is Empty",
+  "emptyCartSubtitle": "Looks like you haven't added anything to your cart yet. Let's go find something you'll love!",
+  "continueShopping": "Continue Shopping",
+
 
   "addtocard" :"Add to Card",
   "processtocheckout" :"Proceed to Checkout",

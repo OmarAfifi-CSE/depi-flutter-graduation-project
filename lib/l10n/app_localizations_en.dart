@@ -320,6 +320,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get english => 'English';
 
   @override
+  String get emptyCartTitle => 'Your Cart is Empty';
+
+  @override
+  String get emptyCartSubtitle => 'Looks like you haven\'t added anything to your cart yet. Let\'s go find something you\'ll love!';
+
+  @override
+  String get continueShopping => 'Continue Shopping';
+
+  @override
   String get addtocard => 'Add to Card';
 
   @override

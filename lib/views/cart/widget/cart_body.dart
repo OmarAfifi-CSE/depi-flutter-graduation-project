@@ -2,6 +2,7 @@ import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dar
 import 'package:batrina/controllers/provider/open_details_provider.dart';
 import 'package:batrina/models/cart_model.dart';
 import 'package:batrina/views/cart/widget/check_out_button.dart';
+import 'package:batrina/views/cart/widget/empty_cart_view.dart';
 import 'package:batrina/views/cart/widget/promo_code_text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,6 @@ class CartViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     return MultiBlocProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => CartPriceProvider()),
@@ -43,8 +43,9 @@ class CartViewBody extends StatelessWidget {
           }
           final List<CartModel> userCart = (state as GetCartSuccess).userCart;
           context.read<CartPriceProvider>().init(cart: userCart, shipping: 50);
-          return userCart.isNotEmpty
-              ? Stack(
+          return userCart.isEmpty
+              ? const EmptyCartView()
+              : Stack(
                   children: [
                     Column(
                       children: [
@@ -92,13 +93,6 @@ class CartViewBody extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
-              : Center(
-                  child: CustomText(
-                    data: "Empty",
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
                 );
         },
       ),

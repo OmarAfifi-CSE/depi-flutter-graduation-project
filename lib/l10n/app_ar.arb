@@ -156,6 +156,10 @@
   "helpCenter": "مركز المساعدة",
   "english": "الإنجليزية",
 
+  "emptyCartTitle": "عربة التسوق فارغة",
+  "emptyCartSubtitle": "يبدو أنك لم تقم بإضافة أي شيء إلى عربة التسوق بعد. هيا نجد شيئًا ستحبه!",
+  "continueShopping": "متابعة التسوق",
+
 
   "addtocard": "إضافة إلى السلة",
   "processtocheckout": "المتابعة للدفع",

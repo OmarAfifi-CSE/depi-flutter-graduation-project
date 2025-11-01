@@ -713,6 +713,24 @@ abstract class AppLocalizations {
   /// **'English'**
   String get english;
 
+  /// No description provided for @emptyCartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Cart is Empty'**
+  String get emptyCartTitle;
+
+  /// No description provided for @emptyCartSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks like you haven\'t added anything to your cart yet. Let\'s go find something you\'ll love!'**
+  String get emptyCartSubtitle;
+
+  /// No description provided for @continueShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue Shopping'**
+  String get continueShopping;
+
   /// No description provided for @addtocard.
   ///
   /// In en, this message translates to:
