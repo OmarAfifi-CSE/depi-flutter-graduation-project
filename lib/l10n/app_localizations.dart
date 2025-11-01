@@ -641,6 +641,12 @@ abstract class AppLocalizations {
   /// **'No categories found'**
   String get emptyCategories;
 
+  /// No description provided for @couldNotLoadCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load categories'**
+  String get couldNotLoadCategories;
+
   /// No description provided for @defaultError.
   ///
   /// In en, this message translates to:

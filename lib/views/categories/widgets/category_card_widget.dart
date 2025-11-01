@@ -8,8 +8,9 @@ import 'package:go_router/go_router.dart';
 
 class CategoryCardWidget extends StatelessWidget {
   final CategoryModel category;
+  final EdgeInsetsGeometry? padding;
 
-  const CategoryCardWidget({super.key, required this.category});
+  const CategoryCardWidget({super.key, required this.category, this.padding});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CategoryCardWidget extends StatelessWidget {
         );
       },
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25.w),
+        padding: padding ?? EdgeInsets.symmetric(horizontal: 25.w),
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.r),
@@ -60,7 +61,9 @@ class CategoryCardWidget extends StatelessWidget {
                               vertical: 4.h,
                             ),
                             decoration: BoxDecoration(
-                              color: theme.scaffoldBackgroundColor.withValues(alpha: 0.8),
+                              color: theme.scaffoldBackgroundColor.withValues(
+                                alpha: 0.8,
+                              ),
                               borderRadius: BorderRadius.circular(8.r),
                             ),
                             child: Text(

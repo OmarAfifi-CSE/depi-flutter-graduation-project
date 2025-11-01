@@ -284,6 +284,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emptyCategories => 'No categories found';
 
   @override
+  String get couldNotLoadCategories => 'Could not load categories';
+
+  @override
   String get defaultError => 'An unexpected error occurred.';
 
   @override

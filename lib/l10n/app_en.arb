@@ -144,6 +144,7 @@
 
   "search": "Search",
   "emptyCategories":"No categories found",
+  "couldNotLoadCategories":"Could not load categories",
   "defaultError":"An unexpected error occurred.",
 
 

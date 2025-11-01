@@ -284,6 +284,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emptyCategories => 'لم يتم العثور على فئات.';
 
   @override
+  String get couldNotLoadCategories => 'تعذر تحميل الفئات.';
+
+  @override
   String get defaultError => 'حدث خطأ غير متوقع.';
 
   @override

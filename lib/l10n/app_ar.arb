@@ -141,6 +141,7 @@
 
   "search": "بحث",
   "emptyCategories": "لم يتم العثور على فئات.",
+  "couldNotLoadCategories": "تعذر تحميل الفئات.",
   "defaultError": "حدث خطأ غير متوقع.",
 
 
