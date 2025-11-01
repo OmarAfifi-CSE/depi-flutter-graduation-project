@@ -240,6 +240,11 @@
   "placeOrder": "Place Order",
   "selectDeliveryAddress": "Select Delivery Address",
   "noAddressFound": "No Address Found",
-  "pleaseAddAddress": "Please add an address to proceed."
+  "pleaseAddAddress": "Please add an address to proceed.",
+
+
+
+  "nothingFound": "Nothing Found",
+  "emptyCategoryDescription": "We couldn't find any products in the '{categoryName}' category right now. Try checking back later or exploring other categories."
 
 }

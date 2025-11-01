@@ -237,5 +237,10 @@
   "placeOrder": "إتمام الطلب",
   "selectDeliveryAddress": "اختر عنوان التوصيل",
   "noAddressFound": "لم يتم العثور على عنوان",
-  "pleaseAddAddress": "يرجى إضافة عنوان للمتابعة."
+  "pleaseAddAddress": "يرجى إضافة عنوان للمتابعة.",
+
+
+
+  "nothingFound": "لم يتم العثور على شيء",
+  "emptyCategoryDescription": "لم نتمكن من العثور على أي منتجات في فئة '{categoryName}' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى."
 }
