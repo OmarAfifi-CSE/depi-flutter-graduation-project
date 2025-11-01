@@ -8,7 +8,7 @@ import 'package:batrina/models/cart_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/views/cart/checkout/address_selection/widgets/address_selection_sheet.dart';
+import 'package:batrina/views/cart/checkout/address_selection/address_selection_sheet.dart';
 import 'package:batrina/views/cart/checkout/widgets/product_card.dart';
 import 'package:batrina/views/profile/shipping_address/widgets/address_card.dart';
 import 'package:batrina/widgets/back_arrow.dart';
