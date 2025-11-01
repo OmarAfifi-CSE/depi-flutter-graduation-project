@@ -68,9 +68,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               constraints: BoxConstraints(
                 maxHeight: MediaQuery.of(context).size.height * 0.8,
               ),
-              child: AddressSelectionSheet(
-                getAddressesCubit: getAddressesCubit,
-              ),
+              child: const AddressSelectionSheet(),
             ),
           ),
         );

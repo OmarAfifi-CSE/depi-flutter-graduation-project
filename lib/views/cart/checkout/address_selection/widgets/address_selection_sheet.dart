@@ -14,9 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class AddressSelectionSheet extends StatefulWidget {
-  final GetAddressesCubit getAddressesCubit;
-
-  const AddressSelectionSheet({super.key, required this.getAddressesCubit});
+  const AddressSelectionSheet({super.key});
 
   @override
   State<AddressSelectionSheet> createState() => _AddressSelectionSheetState();
