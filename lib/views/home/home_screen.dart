@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/home/widgets/category_filter.dart';
 import 'package:batrina/views/home/widgets/home_carousel.dart';
 import 'package:batrina/widgets/product/product_grid_view.dart';
@@ -54,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const HomeCarousel(),
-              SizedBox(height: 30.h),
+              SizedBox(height: 14.h),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 25.w),
                 child: Column(
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         data: "Categories",
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
-                        fontFamily: 'Poppins',
+                        fontFamily: AppFonts.englishFontFamily,
                       ),
                     ),
                     SizedBox(height: 12.h),
@@ -89,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 data: 'Top in $selectedCategory',
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w700,
-                                fontFamily: 'Poppins',
+                                fontFamily: AppFonts.englishFontFamily,
                               ),
                             ),
                             SizedBox(height: 16.h),

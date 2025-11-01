@@ -18,6 +18,9 @@ class AppAssets {
   static const String heartIconFilledWhite =
       'assets/icons/heart-icon-filled_white.svg';
   static const String cartIcon2 = 'assets/icons/cart-icon2.svg';
-  static const String emptyCartAnimation = 'assets/lottie/Cart Empty State.json';
+  static const String emptyCartAnimation =
+      'assets/lottie/Cart Empty State.json';
   static const String deleteIcon = 'assets/icons/delete.svg';
+  static const String noDataFoundAnimation = 'assets/lottie/No Data Found.json';
+  static const String noDataFoundAnimationWhite = 'assets/lottie/No Data Found White.json';
 }

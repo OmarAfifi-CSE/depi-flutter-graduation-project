@@ -641,6 +641,12 @@ abstract class AppLocalizations {
   /// **'No categories found'**
   String get emptyCategories;
 
+  /// No description provided for @couldNotLoadCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not load categories'**
+  String get couldNotLoadCategories;
+
   /// No description provided for @defaultError.
   ///
   /// In en, this message translates to:
@@ -1120,6 +1126,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Please add an address to proceed.'**
   String get pleaseAddAddress;
+
+  /// No description provided for @nothingFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing Found'**
+  String get nothingFound;
+
+  /// No description provided for @emptyCategoryDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We couldn\'t find any products in the \'{categoryName}\' category right now. Try checking back later or exploring other categories.'**
+  String emptyCategoryDescription(Object categoryName);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

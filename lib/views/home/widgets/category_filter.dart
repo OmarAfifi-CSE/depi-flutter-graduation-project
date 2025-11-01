@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +45,6 @@ class CategoryFilter extends StatelessWidget {
             height: 40.h,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.only(right: 25.w),
               clipBehavior: Clip.none,
               itemCount: categories.length,
               separatorBuilder: (context, index) => SizedBox(width: 15.w),
@@ -96,7 +96,7 @@ class CategoryFilter extends StatelessWidget {
                             fontWeight: isSelected
                                 ? FontWeight.bold
                                 : FontWeight.w500,
-                            fontFamily: 'Poppins',
+                            fontFamily: AppFonts.englishFontFamily,
                           ),
                         ),
                       ),

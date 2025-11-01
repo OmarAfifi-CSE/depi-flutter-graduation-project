@@ -284,6 +284,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emptyCategories => 'لم يتم العثور على فئات.';
 
   @override
+  String get couldNotLoadCategories => 'تعذر تحميل الفئات.';
+
+  @override
   String get defaultError => 'حدث خطأ غير متوقع.';
 
   @override
@@ -522,4 +525,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get pleaseAddAddress => 'يرجى إضافة عنوان للمتابعة.';
+
+  @override
+  String get nothingFound => 'لم يتم العثور على شيء';
+
+  @override
+  String emptyCategoryDescription(Object categoryName) {
+    return 'لم نتمكن من العثور على أي منتجات في فئة \'$categoryName\' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.';
+  }
 }

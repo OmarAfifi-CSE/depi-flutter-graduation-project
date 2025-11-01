@@ -284,6 +284,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emptyCategories => 'No categories found';
 
   @override
+  String get couldNotLoadCategories => 'Could not load categories';
+
+  @override
   String get defaultError => 'An unexpected error occurred.';
 
   @override
@@ -522,4 +525,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pleaseAddAddress => 'Please add an address to proceed.';
+
+  @override
+  String get nothingFound => 'Nothing Found';
+
+  @override
+  String emptyCategoryDescription(Object categoryName) {
+    return 'We couldn\'t find any products in the \'$categoryName\' category right now. Try checking back later or exploring other categories.';
+  }
 }
