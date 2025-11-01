@@ -504,4 +504,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get placeOrder => 'Place Order';
+
+  @override
+  String get selectDeliveryAddress => 'Select Delivery Address';
+
+  @override
+  String get noAddressFound => 'No Address Found';
+
+  @override
+  String get pleaseAddAddress => 'Please add an address to proceed.';
 }

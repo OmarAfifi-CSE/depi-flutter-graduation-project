@@ -230,5 +230,8 @@
   "checkout": "الدفع",
   "deliveryAddress": "عنوان التوصيل",
   "products": "المنتجات",
-  "placeOrder": "إتمام الطلب"
+  "placeOrder": "إتمام الطلب",
+  "selectDeliveryAddress": "اختر عنوان التوصيل",
+  "noAddressFound": "لم يتم العثور على عنوان",
+  "pleaseAddAddress": "يرجى إضافة عنوان للمتابعة."
 }

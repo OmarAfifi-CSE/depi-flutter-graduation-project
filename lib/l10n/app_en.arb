@@ -233,6 +233,9 @@
   "checkout": "Checkout",
   "deliveryAddress": "Delivery Address",
   "products": "Products",
-  "placeOrder": "Place Order"
+  "placeOrder": "Place Order",
+  "selectDeliveryAddress": "Select Delivery Address",
+  "noAddressFound": "No Address Found",
+  "pleaseAddAddress": "Please add an address to proceed."
 
 }

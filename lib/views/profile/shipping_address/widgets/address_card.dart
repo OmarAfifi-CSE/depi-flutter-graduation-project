@@ -7,10 +7,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/styling/app_colors.dart';
 
 class AddressCard extends StatelessWidget {
-  const AddressCard({super.key, required this.addressModel, this.onAddAddress});
+  const AddressCard({
+    super.key,
+    required this.addressModel,
+    this.onAddAddress,
+    this.customChild,
+  });
 
   final AddressModel? addressModel;
   final VoidCallback? onAddAddress;
+  final Widget? customChild;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +42,23 @@ class AddressCard extends StatelessWidget {
           ),
         ],
       ),
-      child: addressModel == null
-          ? _buildEmptyState(context)
-          : Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildRow(loc!.street, addressModel!.street, context),
-                _buildRow(loc.city, addressModel!.city, context),
-                _buildRow(loc.phoneNumber, addressModel!.phoneNumber, context),
-                _buildRow(loc.country, addressModel!.country, context),
-              ],
-            ),
+      child:
+          customChild ??
+          (addressModel == null
+              ? _buildEmptyState(context)
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _buildRow(loc!.street, addressModel!.street, context),
+                    _buildRow(loc.city, addressModel!.city, context),
+                    _buildRow(
+                      loc.phoneNumber,
+                      addressModel!.phoneNumber,
+                      context,
+                    ),
+                    _buildRow(loc.country, addressModel!.country, context),
+                  ],
+                )),
     );
   }
 

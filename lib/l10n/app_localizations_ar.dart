@@ -504,4 +504,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get placeOrder => 'إتمام الطلب';
+
+  @override
+  String get selectDeliveryAddress => 'اختر عنوان التوصيل';
+
+  @override
+  String get noAddressFound => 'لم يتم العثور على عنوان';
+
+  @override
+  String get pleaseAddAddress => 'يرجى إضافة عنوان للمتابعة.';
 }

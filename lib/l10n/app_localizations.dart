@@ -1084,6 +1084,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Place Order'**
   String get placeOrder;
+
+  /// No description provided for @selectDeliveryAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Delivery Address'**
+  String get selectDeliveryAddress;
+
+  /// No description provided for @noAddressFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Address Found'**
+  String get noAddressFound;
+
+  /// No description provided for @pleaseAddAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please add an address to proceed.'**
+  String get pleaseAddAddress;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

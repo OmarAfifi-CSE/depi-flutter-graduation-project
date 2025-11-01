@@ -1,5 +1,6 @@
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/routing/app_routes.dart';
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -46,26 +47,33 @@ class CategoryCardWidget extends StatelessWidget {
                 Directionality(
                   textDirection: TextDirection.ltr,
                   child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 16.w),
-                      child: SizedBox(
-                        width: 180.w,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
+                    alignment: Alignment.center,
+                    child: SizedBox(
+                      width: 180.w,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.w,
+                              vertical: 4.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: theme.scaffoldBackgroundColor.withValues(alpha: 0.8),
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: Text(
                               category.name,
                               style: TextStyle(
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
-                                color: Colors.black,
+                                fontFamily: AppFonts.englishFontFamily,
+                                color: theme.primaryColor,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
