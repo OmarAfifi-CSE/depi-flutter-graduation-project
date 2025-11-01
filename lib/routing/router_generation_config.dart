@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/models/cart_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
@@ -25,6 +26,7 @@ import 'package:batrina/views/wrapper_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthStateListenable extends ChangeNotifier {
@@ -201,7 +203,10 @@ class RouterGenerationConfig {
           pageBuilder: (context, state) {
             final categoryName = state.pathParameters['categoryName'];
             return CustomTransitionPage(
-              child: CategoryProductsScreen(categoryName: categoryName!),
+              child: ChangeNotifierProvider(
+                create: (_) => ProductsProvider(),
+                child: CategoryProductsScreen(categoryName: categoryName!),
+              ),
               transitionDuration: const Duration(milliseconds: 500),
               reverseTransitionDuration: const Duration(milliseconds: 300),
               transitionsBuilder:
@@ -428,9 +433,12 @@ class RouterGenerationConfig {
           path: AppRoutes.checkoutScreen,
           name: AppRoutes.checkoutScreen,
           pageBuilder: (context, state) {
-            final  extras = state.extra as Map<String, dynamic>;
+            final extras = state.extra as Map<String, dynamic>;
             return CustomTransitionPage(
-              child: CheckoutScreen(cartItems: extras['cartItems'], cartPriceProvider: extras['cartPriceProvider'],),
+              child: CheckoutScreen(
+                cartItems: extras['cartItems'],
+                cartPriceProvider: extras['cartPriceProvider'],
+              ),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
