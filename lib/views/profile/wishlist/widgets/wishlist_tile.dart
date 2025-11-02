@@ -34,7 +34,6 @@ class WishlistCard extends StatelessWidget {
             height: 80.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
-              color: Colors.grey[200],
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.r),
@@ -86,7 +85,9 @@ class WishlistCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(18.r),
             ),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                //TODO:
+              },
               child: CustomText(
                 data: loc!.addtocard,
                 fontSize: 12,

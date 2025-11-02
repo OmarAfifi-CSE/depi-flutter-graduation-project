@@ -104,7 +104,6 @@ class _WishlistBodyState extends State<WishlistBody> {
     );
   }
 
-
   //! Wishlist Items
   Widget _buildWishlistItems() {
     return FutureBuilder<List<ProductModel>>(
@@ -131,21 +130,7 @@ class _WishlistBodyState extends State<WishlistBody> {
           return ListView.builder(
             itemCount: _filteredWishlistItems.length,
             itemBuilder: (context, index) {
-              return Dismissible( // swap item to remove from list
-                key: Key(_filteredWishlistItems[index].id),
-                background: Container(
-                  color: Colors.red,
-                  alignment: Alignment.centerRight,
-                  padding: EdgeInsets.only(right: 20.w),
-                  child: const Icon(Icons.delete, color: Colors.white),
-                ),
-                direction: DismissDirection.endToStart,
-                onDismissed: (direction) {
-                  //TODO : Remove item from wishlist in Firestore
-                },
-
-                child: WishlistCard(product: _filteredWishlistItems[index]),
-              );
+              return WishlistCard(product: _filteredWishlistItems[index]);
             },
           );
         } else {
