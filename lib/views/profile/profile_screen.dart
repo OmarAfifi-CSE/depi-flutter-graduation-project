@@ -1,11 +1,15 @@
 import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/profile/widgets/language_profile_settings_item.dart';
 import 'package:batrina/views/profile/widgets/profile_info.dart';
 import 'package:batrina/views/profile/widgets/profile_settings_item.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:batrina/controllers/provider/theme_provider.dart';
 import 'package:batrina/styling/app_colors.dart';
@@ -31,6 +35,74 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
 
     super.initState();
+  }
+
+  Future<void> _handleLogout() async {
+    final loc = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+
+    final bool? didConfirm = await showDialog<bool>(
+      context: context,
+      builder: (alertDialogContext) => AlertDialog(
+        backgroundColor: theme.scaffoldBackgroundColor,
+        title: CustomText(
+          data: loc.logOut,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w600,
+        ),
+        content: CustomText(
+          data: loc.areYouSureToLogout,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w500,
+        ),
+        actions: [
+          CustomElevatedButton(
+            onPressed: () => Navigator.of(alertDialogContext).pop(false),
+            buttonChild: CustomText(
+              data: loc.cancel,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: theme.scaffoldBackgroundColor,
+              forceStrutHeight: true,
+            ),
+          ),
+          CustomElevatedButton(
+            onPressed: () => Navigator.of(alertDialogContext).pop(true),
+            backgroundColor: Colors.red,
+            buttonChild: CustomText(
+              data: loc.logOut,
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w600,
+              color: theme.scaffoldBackgroundColor,
+              forceStrutHeight: true,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    if (didConfirm == true && mounted) {
+      try {
+        await FirebaseAuth.instance.signOut();
+        context.read<ProfileProvider>().clearData();
+        if (mounted) {
+          context.go(AppRoutes.signInScreen);
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: CustomText(
+                data: loc.failedToLogout(e),
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+              ),
+              backgroundColor: theme.colorScheme.error,
+            ),
+          );
+        }
+      }
+    }
   }
 
   @override
@@ -68,34 +140,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   SizedBox(height: 30.h),
                   const LanguageProfileSettingsItem(),
-                  ProfileSettingsItem(
-                    icon: Icons.notifications,
-                    title: loc.notifications,
-                    trailing: Transform.scale(
-                      scale: 0.8,
-                      child: Switch(
-                        value: notificationEnabled,
-                        onChanged: (value) {
-                          setState(() {
-                            notificationEnabled = value;
-                          });
-                        },
-                        activeThumbColor: theme.primaryColor,
-                        inactiveThumbColor: appColors.secondaryText,
-                        inactiveTrackColor: appColors.dividerColor,
-                      ),
-                    ),
-                  ),
                   Consumer<ThemeProvider>(
                     builder: (context, themeProvider, _) {
                       final isDark = themeProvider.themeMode == ThemeMode.dark;
                       return ProfileSettingsItem(
-                        icon: themeProvider.themeMode == ThemeMode.dark
-                            ? Icons.dark_mode
-                            : Icons.light_mode,
-                        title: themeProvider.themeMode == ThemeMode.dark
-                            ? loc.darkMode
-                            : loc.lightMode,
+                        icon: Icons.dark_mode,
+                        title: loc.darkMode,
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -117,6 +167,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                       );
                     },
+                  ),
+                  GestureDetector(
+                    onTap: _handleLogout,
+                    child: ProfileSettingsItem(
+                      icon: Icons.logout,
+                      title: loc.logOut,
+                      trailing: const Icon(Icons.arrow_forward_ios),
+                    ),
                   ),
                   SizedBox(height: 30.h),
                 ],

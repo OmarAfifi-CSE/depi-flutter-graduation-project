@@ -1,3 +1,4 @@
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -27,7 +28,7 @@ class CustomTextFormField extends StatefulWidget {
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   late bool _isObscured;
   bool isValid = false;
-  VoidCallback? _listener;
+  TextDirection? _textDirection;
 
   @override
   void initState() {
@@ -35,26 +36,36 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     _isObscured = widget.obscureText;
     isValid = widget.validator(widget.controller.text) == null;
 
-    if (!widget.obscureText) {
-      _listener = () {
-        if (!mounted) return; // حماية من الكراش
-        setState(() {
-          isValid = widget.validator(widget.controller.text) == null;
-        });
-      };
-      widget.controller.addListener(_listener!);
-    }
+
   }
 
   @override
   void dispose() {
-    if (_listener != null) {
-      widget.controller.removeListener(_listener!);
-    }
     super.dispose();
   }
 
+  TextDirection? _getTextDirection(String text,BuildContext context) {
+    if (text.isEmpty) {
+      if (AppLocalizations.of(context)?.localeName == 'ar') {
+        _textDirection =TextDirection.rtl;
+      }else{
+        _textDirection =TextDirection.ltr;
+      }
+      return _textDirection;
+    }
+    // Simple regex to check for Arabic characters in the Unicode range
+    final RegExp arabicRegex = RegExp(r'[\u0600-\u06FF]');
+
+    // Check the first character
+    if (arabicRegex.hasMatch(text[0])) {
+      return TextDirection.rtl;
+    } else {
+      return TextDirection.ltr;
+    }
+  }
+
   toggleObscure() {
+    if (!mounted) return;
     setState(() {
       _isObscured = !_isObscured;
     });
@@ -88,6 +99,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return TextFormField(
+      onChanged: (text) {
+        if (!mounted) return;
+        setState(() {
+          _textDirection = _getTextDirection(text, context);
+          if (!widget.obscureText) {
+            isValid = widget.validator(text) == null;
+          }
+        });
+      },
+      textDirection: _textDirection,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       enabled: widget.enabled,
       validator: widget.validator,

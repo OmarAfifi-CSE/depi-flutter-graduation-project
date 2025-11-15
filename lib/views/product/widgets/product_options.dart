@@ -125,7 +125,10 @@ class ProductOptions extends StatelessWidget {
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 17.h),
-        ProductSelection(productModel: productModel),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 2.w),
+          child: ProductSelection(productModel: productModel),
+        ),
         SizedBox(height: 27.h),
         CustomText(
           data: loc.description,

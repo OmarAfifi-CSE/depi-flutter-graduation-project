@@ -163,7 +163,7 @@ class _ReviewsScreenState extends State<ReviewsScreen> {
                                           : Center(
                                               child: CustomText(
                                                 data: loc.noReviewsYet,
-                                                fontSize: 22.sp,
+                                                fontSize: 20.sp,
                                                 fontWeight: FontWeight.w400,
                                               ),
                                             );

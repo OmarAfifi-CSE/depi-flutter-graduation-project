@@ -857,6 +857,12 @@ abstract class AppLocalizations {
   /// **'Add to cart'**
   String get addToCart;
 
+  /// No description provided for @removeFromCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove from cart'**
+  String get removeFromCart;
+
   /// No description provided for @notAvailable.
   ///
   /// In en, this message translates to:
@@ -874,6 +880,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No available Colors'**
   String get noAvailableColors;
+
+  /// No description provided for @productAddedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Product added to cart'**
+  String get productAddedToCart;
+
+  /// No description provided for @productRemovedFromCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Product removed from cart'**
+  String get productRemovedFromCart;
 
   /// No description provided for @shippingAddresses.
   ///
@@ -1127,6 +1145,36 @@ abstract class AppLocalizations {
   /// **'Please add an address to proceed.'**
   String get pleaseAddAddress;
 
+  /// No description provided for @orderPlacedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Placed!'**
+  String get orderPlacedSuccessfully;
+
+  /// No description provided for @orderSuccessSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your order will be delivered soon.\nThank you for shopping with us!'**
+  String get orderSuccessSubtitle;
+
+  /// No description provided for @backToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get backToHome;
+
+  /// No description provided for @trackYourOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Track Your Order'**
+  String get trackYourOrder;
+
+  /// No description provided for @orderFailedError.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong, please try again.'**
+  String get orderFailedError;
+
   /// No description provided for @nothingFound.
   ///
   /// In en, this message translates to:
@@ -1138,6 +1186,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn\'t find any products in the \'{categoryName}\' category right now. Try checking back later or exploring other categories.'**
   String emptyCategoryDescription(Object categoryName);
+
+  /// No description provided for @areYouSureToLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to log out?'**
+  String get areYouSureToLogout;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @failedToLogout.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to log out: \'{errorMessage}\''**
+  String failedToLogout(Object errorMessage);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

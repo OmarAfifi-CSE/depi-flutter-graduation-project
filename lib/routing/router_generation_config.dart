@@ -1,6 +1,5 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
-import 'package:batrina/models/cart_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
 import 'package:batrina/views/auth/create_new_password_screen.dart';
@@ -9,6 +8,7 @@ import 'package:batrina/views/auth/sign_up_screen.dart';
 import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
 import 'package:batrina/views/cart/checkout/checkout_screen.dart';
+import 'package:batrina/views/cart/checkout/order_successful/order_successful_screen.dart';
 import 'package:batrina/views/categories/categories_screen.dart';
 import 'package:batrina/views/categories/category_products/category_products_screen.dart';
 import 'package:batrina/views/categories/filter/filter_screen.dart';
@@ -16,6 +16,7 @@ import 'package:batrina/views/categories/filter/filtered_products/filtered_produ
 import 'package:batrina/views/home/home_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
+import 'package:batrina/views/profile/orders/orders_screen.dart';
 import 'package:batrina/views/profile/shipping_address/add_new_address/add_new_address_screen.dart';
 import 'package:batrina/views/profile/shipping_address/shipping_address_screen.dart';
 import 'package:batrina/views/profile/personal_details/personal_details_screen.dart';
@@ -316,8 +317,8 @@ class RouterGenerationConfig {
         ),
 
         GoRoute(
-          path: AppRoutes.filteredProduct,
-          name: AppRoutes.filteredProduct,
+          path: AppRoutes.filteredProductScreen,
+          name: AppRoutes.filteredProductScreen,
           pageBuilder: (context, state) {
             final productId = state.pathParameters['productId'];
             return CustomTransitionPage(
@@ -390,8 +391,8 @@ class RouterGenerationConfig {
           },
         ),
         GoRoute(
-          path: AppRoutes.personalDetails,
-          name: AppRoutes.personalDetails,
+          path: AppRoutes.personalDetailsScreen,
+          name: AppRoutes.personalDetailsScreen,
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const PersonalDetailsScreen(),
@@ -450,6 +451,46 @@ class RouterGenerationConfig {
                       child: child,
                     );
                   },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.orderSuccessfulScreen,
+          name: AppRoutes.orderSuccessfulScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const OrderSuccessfulScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return SharedAxisTransition(
+                  transitionType: SharedAxisTransitionType.horizontal,
+                  animation: animation,
+                  secondaryAnimation: secondaryAnimation,
+                  child: child,
+                );
+              },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.ordersScreen,
+          name: AppRoutes.ordersScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const OrdersScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return SharedAxisTransition(
+                  transitionType: SharedAxisTransitionType.horizontal,
+                  animation: animation,
+                  secondaryAnimation: secondaryAnimation,
+                  child: child,
+                );
+              },
             );
           },
         ),

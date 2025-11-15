@@ -1,70 +1,70 @@
-import 'package:batrina/widgets/custom_text.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSnackBar {
-  static void showSnackBar({
+  static Future<dynamic> showSnackBar({
     required BuildContext context,
     required String message,
     required Color color,
   }) {
+    if (!context.mounted) return Future.value();
     final theme = Theme.of(context);
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        margin: EdgeInsets.only(bottom: MediaQuery.heightOf(context) - 120.h),
-        content:
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(8.r),
+    final Widget snackBarContent = Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(8.r),
+      ),
+      child: FittedBox(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 1.sw - 32.w, maxHeight: 0.1.sh),
+          child: Row(
+            children: [
+              Icon(
+                color == Colors.green
+                    ? Icons.check_circle
+                    : color == Colors.red
+                    ? Icons.remove_circle
+                    : Icons.info,
+                color: theme.primaryColor,
               ),
-              child: FittedBox(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: 1.sw - 32.w,
-                    maxHeight: 0.1.sh,
-                  ),
-                  child: Row(
-                    children: [
-                      Icon(
-                        color == Colors.green
-                            ? Icons.check_circle
-                            : color == Colors.red
-                            ? Icons.remove_circle
-                            : Icons.info,
-                        color: theme.primaryColor,
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: FittedBox(
-                          alignment: AlignmentDirectional.centerStart,
-                          fit: BoxFit.scaleDown,
-                          child: CustomText(
-                            data: message,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
+              const SizedBox(width: 8),
+              Expanded(
+                child: FittedBox(
+                  alignment: AlignmentDirectional.centerStart,
+                  fit: BoxFit.scaleDown,
+                  child: CustomText(
+                    data: message,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    forceStrutHeight: true,
                   ),
                 ),
               ),
-            ).animate().slideY(
-              begin: 3,
-              end: 0,
-              duration: 1000.ms,
-              curve: Curves.elasticOut,
-            ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        duration: const Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            ],
+          ),
+        ),
       ),
     );
+
+    return Flushbar(
+      messageText: snackBarContent,
+      isDismissible: false,
+      flushbarPosition: FlushbarPosition.TOP,
+      flushbarStyle: FlushbarStyle.FLOATING,
+      backgroundColor: Colors.transparent,
+      padding: EdgeInsets.zero,
+
+      margin: EdgeInsets.only(top: 20.h, left: 16.w, right: 16.w),
+      borderRadius: BorderRadius.circular(8.r),
+
+      // --- Animation & Duration ---
+      duration: const Duration(milliseconds: 1200),
+      animationDuration: 1000.ms,
+      forwardAnimationCurve: Curves.fastEaseInToSlowEaseOut,
+    ).show(context);
   }
 }

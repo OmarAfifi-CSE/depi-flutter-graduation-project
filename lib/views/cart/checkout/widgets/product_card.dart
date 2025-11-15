@@ -34,62 +34,65 @@ class _ProductCardState extends State<ProductCard> {
           ),
         ],
       ),
-      child: Row(
-        children: [
-          Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12.r),
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Row(
+          children: [
+            Container(
+              width: 80.w,
+              height: 80.h,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12.r),
+              ),
+              child: Material(
+                borderRadius: BorderRadius.circular(12.r),
+                clipBehavior: Clip.antiAlias,
+                child: BuildDynamicImage(imageUrl: widget.cartModel.thumbnail),
+              ),
             ),
-            child: Material(
-              borderRadius: BorderRadius.circular(12.r),
-              clipBehavior: Clip.antiAlias,
-              child: BuildDynamicImage(imageUrl: widget.cartModel.thumbnail),
+            SizedBox(width: 10.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomText(
+                    data: widget.cartModel.productName,
+                    textAlign: TextAlign.start,
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w700,
+                    maxLines: 1,
+                    fontFamily: AppFonts.englishFontFamily,
+                  ),
+                  CustomText(
+                    data: widget.cartModel.subtitle,
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: appColors.secondaryText,
+                    maxLines: 1,
+                    fontFamily: AppFonts.englishFontFamily,
+                  ),
+                  const Spacer(),
+                  CustomText(
+                    data: "\$${widget.cartModel.price}",
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: AppFonts.englishFontFamily,
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(width: 10.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                CustomText(
-                  data: widget.cartModel.productName,
-                  textAlign: TextAlign.start,
-                  fontSize: 15.sp,
-                  fontWeight: FontWeight.w700,
-                  maxLines: 1,
-                  fontFamily: AppFonts.englishFontFamily,
-                ),
-                CustomText(
-                  data: widget.cartModel.subtitle,
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                  color: appColors.secondaryText,
-                  maxLines: 1,
-                  fontFamily: AppFonts.englishFontFamily,
-                ),
-                SizedBox(height: 16.h),
-                CustomText(
-                  data: "\$${widget.cartModel.price}",
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: AppFonts.englishFontFamily,
-                ),
+                SizedBox(height: 6.h),
+                _buildSizeOption(),
+                SizedBox(height: 4.h),
+                _buildColorOption(),
               ],
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              SizedBox(height: 6.h),
-              _buildSizeOption(),
-              SizedBox(height: 4.h),
-              _buildColorOption(),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

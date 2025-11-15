@@ -392,6 +392,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get addToCart => 'Add to cart';
 
   @override
+  String get removeFromCart => 'Remove from cart';
+
+  @override
   String get notAvailable => 'Not available';
 
   @override
@@ -399,6 +402,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noAvailableColors => 'No available Colors';
+
+  @override
+  String get productAddedToCart => 'Product added to cart';
+
+  @override
+  String get productRemovedFromCart => 'Product removed from cart';
 
   @override
   String get shippingAddresses => 'Shipping Addresses';
@@ -527,10 +536,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get pleaseAddAddress => 'Please add an address to proceed.';
 
   @override
+  String get orderPlacedSuccessfully => 'Order Placed!';
+
+  @override
+  String get orderSuccessSubtitle => 'Your order will be delivered soon.\nThank you for shopping with us!';
+
+  @override
+  String get backToHome => 'Back to Home';
+
+  @override
+  String get trackYourOrder => 'Track Your Order';
+
+  @override
+  String get orderFailedError => 'Something went wrong, please try again.';
+
+  @override
   String get nothingFound => 'Nothing Found';
 
   @override
   String emptyCategoryDescription(Object categoryName) {
     return 'We couldn\'t find any products in the \'$categoryName\' category right now. Try checking back later or exploring other categories.';
+  }
+
+  @override
+  String get areYouSureToLogout => 'Are you sure you want to log out?';
+
+  @override
+  String get cancel => 'Cancel';
+
+  @override
+  String failedToLogout(Object errorMessage) {
+    return 'Failed to log out: \'$errorMessage\'';
   }
 }
