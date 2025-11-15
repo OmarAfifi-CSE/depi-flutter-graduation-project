@@ -374,27 +374,49 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
   }
 
   Widget _buildColorOption() {
-    final theme = Theme.of(context);
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    // Colors for LIGHT product variants
+    const Color lightCheckmark = Colors.black87;
+    final Color lightBorder = Colors.black.withValues(alpha: 0.2);
+    final Color lightShadow = Colors.black.withValues(alpha: 0.15);
+
+    // Colors for DARK product variants
+    const Color darkCheckmark = Colors.white;
+    final Color darkBorder = Colors.white.withValues(alpha: 0.3);
+    final Color darkShadow = Colors.black.withValues(alpha: 0.2);
+    final productColor = widget.cartModel.colorWidget;
+    // Check its luminance (0.0 = black, 1.0 = white)
+    final bool isLightColor =
+        productColor.computeLuminance() > 0.5;
+
+    final Color checkmarkColor = isLightColor
+        ? lightCheckmark
+        : darkCheckmark;
+    final Color borderColor = isLightColor
+        ? lightBorder
+        : darkBorder;
+    final Color shadowColor = isLightColor
+        ? lightShadow
+        : darkShadow;
     return Container(
       width: 20.w,
       height: 20.h,
       decoration: BoxDecoration(
-        border: Border.all(
-          color: widget.cartModel.color == "#FFFFFF"
-              ? appColors.containerBorder!
-              : Colors.transparent,
-        ),
-        color: widget.cartModel.colorWidget,
+        color: productColor,
         shape: BoxShape.circle,
+        border: Border.all(color: borderColor, width: 1.w),
+        boxShadow: [
+          BoxShadow(
+            color: shadowColor,
+            blurRadius: 2,
+            spreadRadius: 1,
+          ),
+        ],
       ),
       child: Center(
         child: Icon(
           Icons.check,
-          color: widget.cartModel.color != "#FFFFFF"
-              ? theme.scaffoldBackgroundColor
-              : appColors.containerBorder,
-          size: 13.sp,
+          color: checkmarkColor,
+          size: 14.sp,
         ),
       ),
     );
