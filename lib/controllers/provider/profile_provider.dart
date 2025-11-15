@@ -45,4 +45,12 @@ class ProfileProvider extends ChangeNotifier {
       showButton = true;
     }
   }
+
+  void clearData() {
+    mainImage = null;
+    mainName = '';
+    currentImage = null;
+    currentName = '';
+    showButton = false;
+  }
 }

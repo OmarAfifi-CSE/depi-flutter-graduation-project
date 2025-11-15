@@ -9,6 +9,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.backgroundColor,
     this.outlinedBorder,
     this.extend = false,
+    this.padding,
   });
 
   final VoidCallback? onPressed;
@@ -16,6 +17,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final OutlinedBorder? outlinedBorder;
   final bool extend;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class CustomElevatedButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
+        padding: padding,
         backgroundColor: backgroundColor ?? theme.primaryColor,
         foregroundColor: theme.scaffoldBackgroundColor,
         fixedSize: extend == false ? Size(325.w, 46.h) : null,

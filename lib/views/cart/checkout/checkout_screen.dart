@@ -155,7 +155,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             List<AddressModel> addresses = (state).addresses;
                             if (addresses.isEmpty) {
                               return SizedBox(
-                                height: 180.h,
+                                height: 200.h,
                                 child: AddressCard(
                                   addressModel: null,
                                   customChild: _buildEmptyState(context),
@@ -262,60 +262,68 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              CustomText(
-                                data: loc.total,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              SizedBox(width: 8.w),
-                              CustomText(
-                                data:
-                                    '(${widget.cartPriceProvider.count} ${loc.items})',
-                                fontSize: 13.sp,
-                                color: appColors.containerBorder,
-                                fontWeight: FontWeight.w500,
-                                maxLines: 1,
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (widget.cartPriceProvider.discount != 0) ...[
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                CustomText(
+                                  data: loc.total,
+                                  fontSize: 16.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                SizedBox(width: 8.w),
                                 Flexible(
                                   child: CustomText(
-                                    data: '\$${widget.cartPriceProvider.total}',
+                                    data:
+                                        '(${widget.cartPriceProvider.count} ${loc.items})',
+                                    fontSize: 13.sp,
+                                    color: appColors.containerBorder,
+                                    fontWeight: FontWeight.w500,
+                                    maxLines: 1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (widget.cartPriceProvider.discount != 0) ...[
+                                  Flexible(
+                                    child: CustomText(
+                                      data:
+                                          '\$${widget.cartPriceProvider.total}',
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green,
+                                      maxLines: 1,
+                                      fontFamily: AppFonts.englishFontFamily,
+                                    ),
+                                  ),
+                                  SizedBox(width: 5.w),
+                                ],
+                                Flexible(
+                                  child: CustomText(
+                                    lined:
+                                        widget.cartPriceProvider.discount != 0,
+                                    data:
+                                        '\$${widget.cartPriceProvider.totalNoDis}',
                                     fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.green,
+                                    color:
+                                        widget.cartPriceProvider.discount != 0
+                                        ? theme.dividerColor
+                                        : null,
                                     maxLines: 1,
                                     fontFamily: AppFonts.englishFontFamily,
                                   ),
                                 ),
-                                SizedBox(width: 5.w),
                               ],
-                              Flexible(
-                                child: CustomText(
-                                  lined: widget.cartPriceProvider.discount != 0,
-                                  data:
-                                      '\$${widget.cartPriceProvider.totalNoDis}',
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.bold,
-                                  color: widget.cartPriceProvider.discount != 0
-                                      ? theme.dividerColor
-                                      : null,
-                                  maxLines: 1,
-                                  fontFamily: AppFonts.englishFontFamily,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                            ),
+                          ],
+                        ),
                       ),
                       SizedBox(
                         height: 50.h,
@@ -324,8 +332,38 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             return CustomElevatedButton(
                               onPressed: value.currentAddress == null
                                   ? null
-                                  : () {},
+                                  : () async {
+                                      // --- YOUR LOGIC TO PLACE THE ORDER GOES HERE ---
+                                      // For example:
+                                      // bool success = await placeOrder(
+                                      //   cartItems: widget.cartItems,
+                                      //   address: value.currentAddress!,
+                                      // );
+
+                                      // --- MOCK SUCCESS FOR DEMO ---
+                                      bool success = true;
+
+                                      if (success && mounted) {
+                                        // *** NAVIGATE TO THE NEW SCREEN ***
+                                        // We use pushNamed so it appears on top.
+                                        // The new screen will use context.go() to clear
+                                        // the cart/checkout stack when done.
+                                        context.pushNamed(
+                                          AppRoutes.orderSuccessfulScreen,
+                                        );
+                                      } else if (mounted) {
+                                        CustomSnackBar.showSnackBar(
+                                          context: context,
+                                          message: loc.orderFailedError,
+                                          color: Colors.red,
+                                        );
+                                      }
+                                    },
                               extend: true,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 16.w,
+                                vertical: 12.h,
+                              ),
                               outlinedBorder: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50.r),
                               ),

@@ -19,6 +19,7 @@ class ColorOption extends StatefulWidget {
 
 class _ColorOptionState extends State<ColorOption> {
   int selected = 0;
+
   @override
   void initState() {
     ProductProvider productProvider = context.read<ProductProvider>();
@@ -40,26 +41,49 @@ class _ColorOptionState extends State<ColorOption> {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final loc = AppLocalizations.of(context);
 
+    // Colors for LIGHT product variants
+    const Color lightCheckmark = Colors.black87;
+    final Color lightBorder = Colors.black.withValues(alpha: 0.2);
+    final Color lightShadow = Colors.black.withValues(alpha: 0.15);
+
+    // Colors for DARK product variants
+    const Color darkCheckmark = Colors.white;
+    final Color darkBorder = Colors.white.withValues(alpha: 0.3);
+    final Color darkShadow = Colors.black.withValues(alpha: 0.2);
+
     return productProvider.currentColorName != null
         ? Container(
-            // height: 41.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100.r),
               color: theme.scaffoldBackgroundColor,
               boxShadow: [
                 BoxShadow(
-                  color: theme.primaryColor.withValues(alpha: .15),
+                  color: theme.primaryColor.withValues(alpha: .3),
                   blurRadius: 2,
                   offset: const Offset(0, 0),
                 ),
               ],
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 13.0.w, vertical: 11.h),
+              padding: EdgeInsets.symmetric(horizontal: 12.0.w, vertical: 10.h),
               child: Wrap(
                 spacing: 8.w,
                 runSpacing: 8.h,
                 children: List.generate(widget.colors.length, (index) {
+                  final productColor = widget.colors[index].color;
+                  // Check its luminance (0.0 = black, 1.0 = white)
+                  final bool isLightColor =
+                      productColor.computeLuminance() > 0.5;
+
+                  final Color checkmarkColor = isLightColor
+                      ? lightCheckmark
+                      : darkCheckmark;
+                  final Color borderColor = isLightColor
+                      ? lightBorder
+                      : darkBorder;
+                  final Color shadowColor = isLightColor
+                      ? lightShadow
+                      : darkShadow;
                   return GestureDetector(
                     onTap: () {
                       selected = index;
@@ -75,23 +99,23 @@ class _ColorOptionState extends State<ColorOption> {
                       width: 20.w,
                       height: 20.h,
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: widget.colors[index].colorCode == "#FFFFFF"
-                              ? appColors.containerBorder!
-                              : Colors.transparent,
-                        ),
-                        color: widget.colors[index].color,
+                        color: productColor,
                         shape: BoxShape.circle,
+                        border: Border.all(color: borderColor, width: 1.w),
+                        boxShadow: [
+                          BoxShadow(
+                            color: shadowColor,
+                            blurRadius: 2,
+                            spreadRadius: 1,
+                          ),
+                        ],
                       ),
                       child: Center(
                         child: selected == index
                             ? Icon(
                                 Icons.check,
-                                color:
-                                    widget.colors[index].colorCode != "#FFFFFF"
-                                    ? theme.scaffoldBackgroundColor
-                                    : appColors.containerBorder,
-                                size: 13.sp,
+                                color: checkmarkColor,
+                                size: 14.sp,
                               )
                             : const SizedBox(),
                       ),

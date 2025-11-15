@@ -36,13 +36,7 @@ class WrapperScreen extends StatelessWidget {
         body: SafeArea(
           child: navigationShell
               .animate(key: ValueKey(navigationShell.currentIndex))
-              .fadeIn(duration: 500.ms, curve: Curves.easeInOut)
-              .slideY(
-                begin: 1,
-                end: 0,
-                duration: 500.ms,
-                curve: Curves.easeInOut,
-              ),
+              .fadeIn(begin: 0.3, duration: 400.ms, curve: Curves.easeInOut),
         ),
         bottomNavigationBar: CustomNavBar(navigationShell: navigationShell),
       ),

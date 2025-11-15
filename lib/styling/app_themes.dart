@@ -16,7 +16,12 @@ class AppThemes {
       elevation: 0,
       scrolledUnderElevation: 0,
     ),
-    // Add the extension with your LIGHT theme colors
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionColor: Colors.black38,
+      selectionHandleColor: Colors.black,
+      cursorColor: Colors.black,
+    ),
+
     extensions: const <ThemeExtension<dynamic>>[
       AppColorTheme(
         textFieldFill: Color(0xffF3F4F5),
@@ -44,8 +49,12 @@ class AppThemes {
       elevation: 0,
       scrolledUnderElevation: 0,
     ),
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionColor: Colors.white38,
+      selectionHandleColor: Colors.white,
+      cursorColor: Colors.white,
+    ),
 
-    // Add the extension with your DARK theme colors
     extensions: const <ThemeExtension<dynamic>>[
       AppColorTheme(
         textFieldFill: Color(0xff2A2A2A),

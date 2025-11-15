@@ -96,14 +96,14 @@ class AddToCartButton extends StatelessWidget {
                                   if (state is AddToCartSuccess) {
                                     CustomSnackBar.showSnackBar(
                                       context: context,
-                                      message: "added To Cart",
+                                      message: loc!.productAddedToCart,
                                       color: Colors.green,
                                     );
                                   } else if (state is RemoveFromCartSuccess) {
                                     CustomSnackBar.showSnackBar(
                                       context: context,
-                                      message: "remove from Cart",
-                                      color: Colors.green,
+                                      message: loc!.productRemovedFromCart,
+                                      color: Colors.red,
                                     );
                                   } else if (state is CartFailure) {
                                     CustomSnackBar.showSnackBar(
@@ -182,7 +182,7 @@ class AddToCartButton extends StatelessWidget {
                                                       CustomText(
                                                         data: cartItem == null
                                                             ? loc!.addToCart
-                                                            : "Remove From Cart",
+                                                            : loc!.removeFromCart,
                                                         fontSize: 15.sp,
                                                         fontWeight:
                                                             FontWeight.w400,

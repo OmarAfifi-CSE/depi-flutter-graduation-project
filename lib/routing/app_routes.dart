@@ -24,14 +24,16 @@ class AppRoutes {
   // Filter Screens
   static const String filterScreen = '/filterScreen';
   static const String filteredProductsScreen = '/filteredProductsScreen';
-  static const String filteredProduct = '$filteredProductsScreen/filteredProduct/:productId';
+  static const String filteredProductScreen = '$filteredProductsScreen/filteredProduct/:productId';
 
   // Profile Screens
   static const String wishlistScreen = '/wishlist';
   static const String addressesScreen = '/address';
   static const String addAddressScreen = '/addAddress';
-  static const String personalDetails = '/personal';
+  static const String personalDetailsScreen = '/personalDetails';
+  static const String ordersScreen = '/orders';
 
   // Cart Screens
   static const String checkoutScreen = '/checkout';
+  static const String orderSuccessfulScreen = '/order-successful';
 }

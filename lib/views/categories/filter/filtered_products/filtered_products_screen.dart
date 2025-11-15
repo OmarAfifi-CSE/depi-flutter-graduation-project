@@ -79,7 +79,7 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
                           return GestureDetector(
                             onTap: () {
                               context.pushNamed(
-                                AppRoutes.filteredProduct,
+                                AppRoutes.filteredProductScreen,
                                 pathParameters: {'productId': product.id},
                               );
                             },

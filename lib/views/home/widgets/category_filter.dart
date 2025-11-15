@@ -2,6 +2,7 @@ import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/custom_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +20,9 @@ class CategoryFilter extends StatelessWidget {
         if (state is CategoryLoading) {
           return SizedBox(
             height: 40.h,
-            child: const Center(child: CircularProgressIndicator()),
+            child: Center(
+              child: CupertinoActivityIndicator(color: theme.primaryColor),
+            ),
           );
         } else if (state is CategoryError) {
           return SizedBox(

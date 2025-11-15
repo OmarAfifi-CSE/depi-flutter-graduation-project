@@ -392,6 +392,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addToCart => 'أضف إلى السلة';
 
   @override
+  String get removeFromCart => 'إزالة من السلة';
+
+  @override
   String get notAvailable => 'غير متوفر';
 
   @override
@@ -399,6 +402,12 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noAvailableColors => 'لا توجد ألوان متوفرة';
+
+  @override
+  String get productAddedToCart => 'تمت إضافة المنتج إلى السلة';
+
+  @override
+  String get productRemovedFromCart => 'تمت إزالة المنتج من السلة';
 
   @override
   String get shippingAddresses => 'عناوين الشحن';
@@ -527,10 +536,36 @@ class AppLocalizationsAr extends AppLocalizations {
   String get pleaseAddAddress => 'يرجى إضافة عنوان للمتابعة.';
 
   @override
+  String get orderPlacedSuccessfully => 'تم إرسال الطلب بنجاح!';
+
+  @override
+  String get orderSuccessSubtitle => 'سيتم توصيل طلبك قريباً.\nشكراً لتسوقك معنا!';
+
+  @override
+  String get backToHome => 'العودة للرئيسية';
+
+  @override
+  String get trackYourOrder => 'تتبع طلبك';
+
+  @override
+  String get orderFailedError => 'حدث خطأ ما، يرجى المحاولة مرة أخرى.';
+
+  @override
   String get nothingFound => 'لم يتم العثور على شيء';
 
   @override
   String emptyCategoryDescription(Object categoryName) {
     return 'لم نتمكن من العثور على أي منتجات في فئة \'$categoryName\' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.';
+  }
+
+  @override
+  String get areYouSureToLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';
+
+  @override
+  String get cancel => 'إلغاء';
+
+  @override
+  String failedToLogout(Object errorMessage) {
+    return 'فشل تسجيل الخروج: \'$errorMessage\'';
   }
 }

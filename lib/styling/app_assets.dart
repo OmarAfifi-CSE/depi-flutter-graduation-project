@@ -22,5 +22,9 @@ class AppAssets {
       'assets/lottie/Cart Empty State.json';
   static const String deleteIcon = 'assets/icons/delete.svg';
   static const String noDataFoundAnimation = 'assets/lottie/No Data Found.json';
-  static const String noDataFoundAnimationWhite = 'assets/lottie/No Data Found White.json';
+  static const String noDataFoundAnimationWhite =
+      'assets/lottie/No Data Found White.json';
+
+  static const String successAnimation = 'assets/lottie/success.json';
+  static const String failureAnimation = 'assets/lottie/failure.json';
 }

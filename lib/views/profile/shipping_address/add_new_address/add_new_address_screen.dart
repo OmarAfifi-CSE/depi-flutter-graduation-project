@@ -156,19 +156,28 @@ class _AddNewAddressScreenState extends State<AddNewAddressScreen> {
                 BlocConsumer<AddAddressCubit, AddAddressState>(
                   listener: (context, state) {
                     if (state is AddAddressSuccess) {
-                      CustomSnackBar.showSnackBar(
-                        context: context,
-                        message: loc.addressAddedSuccessfully,
-                        color: Colors.green,
-                      );
                       context.read<GetAddressesCubit>().getAddresses();
-                      context.pop();
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        if (!mounted) return;
+                        CustomSnackBar.showSnackBar(
+                          context: context,
+                          message: loc.addressAddedSuccessfully,
+                          color: Colors.green,
+                        ).then((_) {
+                          if (mounted) {
+                            context.pop();
+                          }
+                        });
+                      });
                     } else if (state is AddAddressFailure) {
-                      CustomSnackBar.showSnackBar(
-                        context: context,
-                        message: state.error,
-                        color: Colors.red,
-                      );
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        if (!mounted) return;
+                        CustomSnackBar.showSnackBar(
+                          context: context,
+                          message: state.error,
+                          color: Colors.red,
+                        );
+                      });
                     }
                   },
                   builder: (context, state) {

@@ -143,6 +143,7 @@
 
 
   "search": "Search",
+  "search": "Search",
   "emptyCategories":"No categories found",
   "couldNotLoadCategories":"Could not load categories",
   "defaultError":"An unexpected error occurred.",
@@ -191,9 +192,12 @@
   "reviews": "Reviews",
   "size": "Size",
   "addToCart": "Add to cart",
+  "removeFromCart": "Remove from cart",
   "notAvailable": "Not available",
   "noAvailableSizes": "No available Sizes",
   "noAvailableColors": "No available Colors",
+  "productAddedToCart": "Product added to cart",
+  "productRemovedFromCart": "Product removed from cart",
 
 
   "shippingAddresses": "Shipping Addresses",
@@ -242,10 +246,18 @@
   "selectDeliveryAddress": "Select Delivery Address",
   "noAddressFound": "No Address Found",
   "pleaseAddAddress": "Please add an address to proceed.",
+  "orderPlacedSuccessfully": "Order Placed!",
+  "orderSuccessSubtitle": "Your order will be delivered soon.\nThank you for shopping with us!",
+  "backToHome": "Back to Home",
+  "trackYourOrder": "Track Your Order",
+  "orderFailedError": "Something went wrong, please try again.",
 
 
 
   "nothingFound": "Nothing Found",
-  "emptyCategoryDescription": "We couldn't find any products in the '{categoryName}' category right now. Try checking back later or exploring other categories."
+  "emptyCategoryDescription": "We couldn't find any products in the '{categoryName}' category right now. Try checking back later or exploring other categories.",
 
+  "areYouSureToLogout": "Are you sure you want to log out?",
+  "cancel": "Cancel",
+  "failedToLogout": "Failed to log out: '{errorMessage}'"
 }

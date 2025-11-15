@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/auth/verify_email_cubit/verify_email_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 class EmailVerificationScreen extends StatelessWidget {
   const EmailVerificationScreen({super.key, required this.oobCode});
@@ -26,7 +28,9 @@ class EmailVerificationScreen extends StatelessWidget {
         body: BlocBuilder<VerifyEmailCubit, VerifyEmailState>(
           builder: (context, state) {
             if (state is VerifyEmailLoading || state is VerifyEmailInitial) {
-              return const Center(child: CupertinoActivityIndicator());
+              return Center(
+                child: CupertinoActivityIndicator(color: theme.primaryColor),
+              );
             }
             if (state is VerifyEmailFailure) {
               return _buildStatusUI(
@@ -68,27 +72,29 @@ Widget _buildStatusUI({
             Container(
                   padding: EdgeInsets.all(24.w),
                   decoration: BoxDecoration(
-                    color: theme.cardColor,
+                    color: theme.scaffoldBackgroundColor.withValues(alpha: 0.9),
                     borderRadius: BorderRadius.circular(12.r),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.1),
+                        color: theme.primaryColor.withValues(alpha: 0.2),
                         blurRadius: 10.r,
-                        offset: Offset(0, 5.h),
+                        spreadRadius: 2.r,
                       ),
                     ],
                   ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
+                      Lottie.asset(
                         isSuccess
-                            ? Icons.check_circle_outline_rounded
-                            : Icons.error_outline_rounded,
-                        color: isSuccess ? Colors.green : Colors.red,
-                        size: 80.r,
+                            ? AppAssets.successAnimation
+                            : AppAssets.failureAnimation,
+                        width: 150.w,
+                        height: 150.h,
+                        fit: BoxFit.scaleDown,
+                        repeat: false,
                       ),
-                      SizedBox(height: 30.h),
+                      SizedBox(height: 20.h),
                       CustomText(
                         data: isSuccess
                             ? loc.emailVerifiedTitle
@@ -105,20 +111,18 @@ Widget _buildStatusUI({
                         fontWeight: FontWeight.w500,
                       ),
                       SizedBox(height: 50.h),
-                      SizedBox(
-                        width: double.infinity,
-                        child: CustomElevatedButton(
-                          onPressed: () {
-                            if (context.canPop()) context.pop();
-                          },
-                          buttonChild: CustomText(
-                            data: isSuccess
-                                ? loc.continueToSignInButton
-                                : loc.backToSignInButton,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w500,
-                            color: theme.scaffoldBackgroundColor,
-                          ),
+                      CustomElevatedButton(
+                        onPressed: () {
+                          if (context.canPop()) context.pop();
+                        },
+                        buttonChild: CustomText(
+                          data: isSuccess
+                              ? loc.continueToSignInButton
+                              : loc.backToSignInButton,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: theme.scaffoldBackgroundColor,
+                          forceStrutHeight: true,
                         ),
                       ),
                     ],

@@ -35,7 +35,7 @@ class ProfileInfo extends StatelessWidget {
               icon: Icons.person,
               title: loc.personalDetails,
               onTap: () {
-                context.pushNamed(AppRoutes.personalDetails);
+                context.pushNamed(AppRoutes.personalDetailsScreen);
               },
             ),
             ProfileMenuItem(

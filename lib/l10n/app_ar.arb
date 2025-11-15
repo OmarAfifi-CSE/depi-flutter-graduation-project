@@ -186,9 +186,12 @@
   "reviews": "المراجعات",
   "size": "المقاس",
   "addToCart": "أضف إلى السلة",
+  "removeFromCart": "إزالة من السلة",
   "notAvailable": "غير متوفر",
   "noAvailableSizes": "لا توجد مقاسات متوفرة",
   "noAvailableColors": "لا توجد ألوان متوفرة",
+  "productAddedToCart": "تمت إضافة المنتج إلى السلة",
+  "productRemovedFromCart": "تمت إزالة المنتج من السلة",
 
   "shippingAddresses": "عناوين الشحن",
   "mainAddress": "العنوان الرئيسي",
@@ -239,9 +242,18 @@
   "selectDeliveryAddress": "اختر عنوان التوصيل",
   "noAddressFound": "لم يتم العثور على عنوان",
   "pleaseAddAddress": "يرجى إضافة عنوان للمتابعة.",
+  "orderPlacedSuccessfully": "تم إرسال الطلب بنجاح!",
+  "orderSuccessSubtitle": "سيتم توصيل طلبك قريباً.\nشكراً لتسوقك معنا!",
+  "backToHome": "العودة للرئيسية",
+  "trackYourOrder": "تتبع طلبك",
+  "orderFailedError": "حدث خطأ ما، يرجى المحاولة مرة أخرى.",
 
 
 
   "nothingFound": "لم يتم العثور على شيء",
-  "emptyCategoryDescription": "لم نتمكن من العثور على أي منتجات في فئة '{categoryName}' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى."
+  "emptyCategoryDescription": "لم نتمكن من العثور على أي منتجات في فئة '{categoryName}' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.",
+
+  "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "cancel": "إلغاء",
+  "failedToLogout": "فشل تسجيل الخروج: '{errorMessage}'"
 }
