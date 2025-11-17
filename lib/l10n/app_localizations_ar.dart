@@ -533,4 +533,87 @@ class AppLocalizationsAr extends AppLocalizations {
   String emptyCategoryDescription(Object categoryName) {
     return 'لم نتمكن من العثور على أي منتجات في فئة \'$categoryName\' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.';
   }
+
+  @override
+  String get newChatRequest => 'طلب محادثة جديد';
+
+  @override
+  String get accept => 'قبول';
+
+  @override
+  String get online => 'متصل';
+
+  @override
+  String get offline => 'غير متصل';
+
+  @override
+  String get typing => 'يكتب...';
+
+  @override
+  String get noConnection => 'لا يوجد اتصال';
+
+  @override
+  String get sayHi => 'قل مرحباً!';
+
+  @override
+  String get typeMessage => 'اكتب رسالة...';
+
+  @override
+  String get searchByEmail => 'ابحث بالبريد الإلكتروني لبدء محادثة جديدة';
+
+  @override
+  String get chats => 'المحادثات';
+
+  @override
+  String get newUsers => 'مستخدمون جدد';
+
+  @override
+  String get error => 'خطأ';
+
+  @override
+  String get noNewUsersFound => 'لم يتم العثور على مستخدمين جدد';
+
+  @override
+  String get startNewChat => 'ابدأ محادثة جديدة';
+
+  @override
+  String get messages => 'الرسائل';
+
+  @override
+  String get chatsTab => 'المحادثات';
+
+  @override
+  String get requestsTab => 'الطلبات';
+
+  @override
+  String get justNow => 'الآن';
+
+  @override
+  String secondsAgo(Object seconds) {
+    return 'منذ $secondsث';
+  }
+
+  @override
+  String minutesAgo(Object minutes) {
+    return 'منذ $minutesد';
+  }
+
+  @override
+  String hoursAgo(Object hours) {
+    return 'منذ $hoursس';
+  }
+
+  @override
+  String get yesterday => 'أمس';
+
+  @override
+  String daysAgo(Object days) {
+    return 'منذ $daysي';
+  }
+
+  @override
+  String get noChatsYet => 'لا توجد محادثات بعد';
+
+  @override
+  String get noRequestsYet => 'لا توجد طلبات بعد';
 }

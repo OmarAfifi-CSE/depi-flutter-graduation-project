@@ -39,9 +39,11 @@ class ProfileInfo extends StatelessWidget {
               },
             ),
             ProfileMenuItem(
-              icon: Icons.shopping_bag,
-              title: loc.myOrders,
-              onTap: () {},
+              icon: Icons.chat_bubble,
+              title: loc.messages,
+              onTap: () {
+                context.push(AppRoutes.chatsScreen);
+              },
             ),
             ProfileMenuItem(
               svg: theme.brightness != Brightness.light

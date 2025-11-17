@@ -1,12 +1,20 @@
+import 'package:batrina/controllers/cubit/chat/get_messages_cubit/get_messages_cubit.dart';
 import 'package:batrina/controllers/provider/product_provider.dart';
+import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/product_model.dart';
+import 'package:batrina/models/user_model.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/product/widgets/heart.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/build_dynamic_image.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
+import 'package:batrina/widgets/custom_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductImagesSlider extends StatefulWidget {
@@ -43,6 +51,211 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
     }
   }
 
+  String getCompositeChatId(String userId1, String userId2) {
+    if (userId1.compareTo(userId2) > 0) {
+      return '${userId2}_$userId1';
+    } else {
+      return '${userId1}_$userId2';
+    }
+  }
+
+  void _shareProduct() {
+    final theme = Theme.of(context);
+    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    ProductProvider productProvider = context.read<ProductProvider>();
+    showModalBottomSheet(
+      backgroundColor: theme.scaffoldBackgroundColor,
+      context: context,
+
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(25.r)),
+      ),
+      isScrollControlled: true,
+
+      builder: (context) {
+        return BlocProvider(
+          create: (context) => GetMessagesCubit()..getMessages(),
+          child: BlocBuilder<GetMessagesCubit, GetMessagesState>(
+            builder: (context, state) {
+              return Container(
+                padding: EdgeInsets.all(20.r),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 50.w,
+                        height: 5.h,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 15.h),
+
+                    CustomText(
+                      data: "Send to...",
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                    SizedBox(height: 20.h),
+
+                    _buildShareList(context, state, appColors, productProvider),
+
+                    SizedBox(height: 20.h),
+                    CustomElevatedButton(
+                      onPressed: () {},
+                      buttonChild: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomText(
+                            data: "Share to other apps",
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w700,
+                            color: theme.scaffoldBackgroundColor,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildShareList(
+    BuildContext context,
+    GetMessagesState state,
+    AppColorTheme appColors,
+    ProductProvider productProvider,
+  ) {
+    final theme = Theme.of(context);
+
+    if (state is! GetMessagesSuccess) {
+      return SizedBox(
+        height: 120.h,
+        child: Center(
+          child: CupertinoActivityIndicator(color: theme.primaryColor),
+        ),
+      );
+    }
+
+    if (state.conversations.isEmpty) {
+      return SizedBox(
+        height: 120.h,
+        child: Center(
+          child: CustomText(
+            data: "You have no chats yet.",
+            fontSize: 14.sp,
+            color: appColors.secondaryText,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      );
+    }
+
+    return SizedBox(
+      height: 120.h,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final otherUser = state.conversations[index].otherUser;
+
+          return SizedBox(
+            width: 80.w,
+            child: GestureDetector(
+              onTap: () {
+                final String myId = FirebaseAuth.instance.currentUser!.uid;
+                final String otherUserId = state
+                    .conversations[index]
+                    .participants
+                    .firstWhere((id) => id != myId);
+
+                final String chatId = getCompositeChatId(myId, otherUserId);
+                context.push(
+                  '/chatScreen/$chatId/$otherUserId',
+                  extra: {
+                    "anotherUserModel": UserModel(
+                      id: otherUserId,
+                      name: otherUser.name,
+                      email: otherUser.email,
+                      role: otherUser.role,
+                      picture: otherUser.photoUrl,
+                    ),
+                    "isPending": false,
+                    'initialMessage': MessageModel(
+                      id: "",
+                      senderId: "",
+                      text: productProvider.productModel.name,
+                      type: "image",
+                      pId: productProvider.productModel.id,
+                      imageUrl: productProvider.productModel.thumbnail,
+                      readBy: [],
+                    ),
+                  },
+                );
+              },
+              child: Column(
+                children: [
+                  otherUser.photoUrl != null && otherUser.photoUrl!.isNotEmpty
+                      ? SizedBox(
+                          width: 60.w,
+                          height: 60.h,
+                          child: Material(
+                            borderRadius: BorderRadius.circular(100.r),
+                            clipBehavior: Clip.antiAlias,
+                            child: BuildDynamicImage(
+                              imageUrl: otherUser.photoUrl!,
+                            ),
+                          ),
+                        )
+                      : Container(
+                          width: 60.w,
+                          height: 60.h,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadiusGeometry.circular(100.r),
+                            image: const DecorationImage(
+                              image: NetworkImage(
+                                "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                  SizedBox(height: 8.h),
+
+                  CustomText(
+                    data: otherUser.name,
+                    fontSize: 10.sp,
+                    fontWeight: FontWeight.w700,
+                    maxLines: 1,
+                  ),
+                  SizedBox(height: 8.h),
+
+                  CustomText(
+                    data: otherUser.email,
+                    fontSize: 10.sp,
+                    fontWeight: FontWeight.w500,
+                    color: appColors.secondaryText,
+                    maxLines: 1,
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+        separatorBuilder: (context, index) => SizedBox(width: 15.w),
+        itemCount: state.conversations.length,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     ProductProvider productProvider = context.watch<ProductProvider>();
@@ -67,7 +280,35 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
             }),
           ),
         ),
-        Positioned(left: 25.w, top: 35.h, child: const BackArrow()),
+        Positioned(
+          left: 25.w,
+          top: 35.h,
+          right: 25.w,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const BackArrow(),
+              GestureDetector(
+                onTap: () => _shareProduct(),
+                child: Container(
+                  width: 35.w,
+                  height: 35.w,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: theme.primaryColor,
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.share_sharp,
+                      color: theme.scaffoldBackgroundColor,
+                      size: 20.sp,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
         Positioned.fill(
           child: Center(
             child: Padding(

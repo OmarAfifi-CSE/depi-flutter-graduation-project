@@ -231,7 +231,7 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                             onTap: !isDeleting
                                 ? () {
                                     context.pushNamed(
-                                      AppRoutes.productScreen,
+                                      AppRoutes.categoryProductScreen,
                                       pathParameters: {
                                         'categoryName':
                                             widget.cartModel.categoryName,

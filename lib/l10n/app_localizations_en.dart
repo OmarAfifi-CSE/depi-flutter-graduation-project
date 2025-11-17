@@ -533,4 +533,87 @@ class AppLocalizationsEn extends AppLocalizations {
   String emptyCategoryDescription(Object categoryName) {
     return 'We couldn\'t find any products in the \'$categoryName\' category right now. Try checking back later or exploring other categories.';
   }
+
+  @override
+  String get newChatRequest => 'New chat request';
+
+  @override
+  String get accept => 'Accept';
+
+  @override
+  String get online => 'Online';
+
+  @override
+  String get offline => 'Offline';
+
+  @override
+  String get typing => 'typing...';
+
+  @override
+  String get noConnection => 'No Connection';
+
+  @override
+  String get sayHi => 'Say hi!';
+
+  @override
+  String get typeMessage => 'Type Message...';
+
+  @override
+  String get searchByEmail => 'Search by email to start a new chat';
+
+  @override
+  String get chats => 'Chats';
+
+  @override
+  String get newUsers => 'New Users';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get noNewUsersFound => 'No New Users Found';
+
+  @override
+  String get startNewChat => 'Start a new chat';
+
+  @override
+  String get messages => 'Messages';
+
+  @override
+  String get chatsTab => 'Chats';
+
+  @override
+  String get requestsTab => 'Requests';
+
+  @override
+  String get justNow => 'Just now';
+
+  @override
+  String secondsAgo(Object seconds) {
+    return '${seconds}s ago';
+  }
+
+  @override
+  String minutesAgo(Object minutes) {
+    return '${minutes}m ago';
+  }
+
+  @override
+  String hoursAgo(Object hours) {
+    return '${hours}h ago';
+  }
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
+  String daysAgo(Object days) {
+    return '${days}d ago';
+  }
+
+  @override
+  String get noChatsYet => 'No chats yet';
+
+  @override
+  String get noRequestsYet => 'No requests yet';
 }

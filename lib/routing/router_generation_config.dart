@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
-import 'package:batrina/models/cart_model.dart';
+import 'package:batrina/models/chat_page_models/message_model.dart';
+import 'package:batrina/models/user_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
 import 'package:batrina/views/auth/create_new_password_screen.dart';
@@ -13,6 +14,9 @@ import 'package:batrina/views/categories/categories_screen.dart';
 import 'package:batrina/views/categories/category_products/category_products_screen.dart';
 import 'package:batrina/views/categories/filter/filter_screen.dart';
 import 'package:batrina/views/categories/filter/filtered_products/filtered_products_screen.dart';
+import 'package:batrina/views/chat/chat_screen.dart';
+import 'package:batrina/views/chat/chats_screen.dart';
+import 'package:batrina/views/chat/chat_search_screen.dart';
 import 'package:batrina/views/home/home_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
@@ -206,6 +210,46 @@ class RouterGenerationConfig {
               child: ChangeNotifierProvider(
                 create: (_) => ProductsProvider(),
                 child: CategoryProductsScreen(categoryName: categoryName!),
+              ),
+              transitionDuration: const Duration(milliseconds: 500),
+              reverseTransitionDuration: const Duration(milliseconds: 300),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeIn,
+                      ),
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0.3, 0),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                        child: child,
+                      ),
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.categoryProductScreen,
+          name: AppRoutes.categoryProductScreen,
+          pageBuilder: (context, state) {
+            final productId = state.pathParameters['productId'];
+            final size = state.uri.queryParameters['size'];
+            final color = state.uri.queryParameters['color'];
+            return CustomTransitionPage(
+              child: ProductScreen(
+                productId: productId!,
+                size: size,
+                color: color,
               ),
               transitionDuration: const Duration(milliseconds: 500),
               reverseTransitionDuration: const Duration(milliseconds: 300),
@@ -453,10 +497,83 @@ class RouterGenerationConfig {
             );
           },
         ),
+        GoRoute(
+          path: AppRoutes.chatsScreen,
+          name: AppRoutes.chatsScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const ChatsScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.chatSearchScreen,
+          name: AppRoutes.chatSearchScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const ChatSearchScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.chatScreen,
+          name: AppRoutes.chatScreen,
+          pageBuilder: (context, state) {
+            final String? chatId = state.pathParameters['chatId'];
+            final String? otherUserId = state.pathParameters['otherUserId'];
+            final extras = state.extra as Map<String, dynamic>;
+            final bool isPending = extras['isPending'];
+            final UserModel anotherUserModel = extras['anotherUserModel'];
+            final MessageModel? messageModel = extras['initialMessage'];
+            return CustomTransitionPage(
+              child: ChatScreen(
+                chatId: chatId!,
+                otherUserId: otherUserId!,
+                anotherUser: anotherUserModel,
+                isPending: isPending,
+                initialMessage: messageModel,
+              ),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
       ],
       redirect: (BuildContext context, GoRouterState state) {
         String? mode;
         String? oobCode;
+
         if (state.uri.path == '/__/auth/links') {
           final innerLinkString = state.uri.queryParameters['link'];
           if (innerLinkString != null) {

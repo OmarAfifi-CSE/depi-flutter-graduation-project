@@ -246,6 +246,32 @@
 
 
   "nothingFound": "Nothing Found",
-  "emptyCategoryDescription": "We couldn't find any products in the '{categoryName}' category right now. Try checking back later or exploring other categories."
+  "emptyCategoryDescription": "We couldn't find any products in the '{categoryName}' category right now. Try checking back later or exploring other categories.",
+
+  "newChatRequest": "New chat request",
+  "accept": "Accept",
+  "online": "Online",
+  "offline": "Offline",
+  "typing": "typing...",
+  "noConnection": "No Connection",
+  "sayHi": "Say hi!",
+  "typeMessage": "Type Message...",
+  "searchByEmail": "Search by email to start a new chat",
+  "chats": "Chats",
+  "newUsers": "New Users",
+  "error": "Error",
+  "noNewUsersFound": "No New Users Found",
+  "startNewChat": "Start a new chat",
+  "messages": "Messages",
+  "chatsTab": "Chats",
+  "requestsTab": "Requests",
+  "justNow": "Just now",
+  "secondsAgo": "{seconds}s ago",
+  "minutesAgo": "{minutes}m ago",
+  "hoursAgo": "{hours}h ago",
+  "yesterday": "Yesterday",
+  "daysAgo": "{days}d ago",
+  "noChatsYet": "No chats yet",
+  "noRequestsYet": "No requests yet"
 
 }

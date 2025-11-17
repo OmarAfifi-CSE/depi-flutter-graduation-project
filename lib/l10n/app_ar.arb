@@ -243,5 +243,32 @@
 
 
   "nothingFound": "لم يتم العثور على شيء",
-  "emptyCategoryDescription": "لم نتمكن من العثور على أي منتجات في فئة '{categoryName}' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى."
+  "emptyCategoryDescription": "لم نتمكن من العثور على أي منتجات في فئة '{categoryName}' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.",
+
+
+  "newChatRequest": "طلب محادثة جديد",
+  "accept": "قبول",
+  "online": "متصل",
+  "offline": "غير متصل",
+  "typing": "يكتب...",
+  "noConnection": "لا يوجد اتصال",
+  "sayHi": "قل مرحباً!",
+  "typeMessage": "اكتب رسالة...",
+  "searchByEmail": "ابحث بالبريد الإلكتروني لبدء محادثة جديدة",
+  "chats": "المحادثات",
+  "newUsers": "مستخدمون جدد",
+  "error": "خطأ",
+  "noNewUsersFound": "لم يتم العثور على مستخدمين جدد",
+  "startNewChat": "ابدأ محادثة جديدة",
+  "messages": "الرسائل",
+  "chatsTab": "المحادثات",
+  "requestsTab": "الطلبات",
+  "justNow": "الآن",
+  "secondsAgo": "منذ {seconds}ث",
+  "minutesAgo": "منذ {minutes}د",
+  "hoursAgo": "منذ {hours}س",
+  "yesterday": "أمس",
+  "daysAgo": "منذ {days}ي",
+  "noChatsYet": "لا توجد محادثات بعد",
+  "noRequestsYet": "لا توجد طلبات بعد"
 }

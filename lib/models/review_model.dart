@@ -4,6 +4,8 @@ class ReviewModel {
   final String userName;
   final String? userImage;
   final double rating;
+  final String? role;
+  final String email;
   final String comment;
   final DateTime? createdAt;
 
@@ -15,6 +17,8 @@ class ReviewModel {
     required this.rating,
     required this.comment,
     required this.createdAt,
+    required this.email,
+    this.role,
   });
 
   factory ReviewModel.fromJson(Map<String, dynamic> json) {
@@ -26,6 +30,8 @@ class ReviewModel {
       rating: (json['rating'] ?? 0.0).toDouble(),
       comment: json['comment'] ?? '',
       createdAt: DateTime.tryParse(json['createdAt']),
+      email: json['email'] ?? '',
+      role: json['role'] ?? '',
     );
   }
 
@@ -38,6 +44,8 @@ class ReviewModel {
       'rating': rating,
       'comment': comment,
       'createdAt': createdAt?.toIso8601String(),
+      'email': email,
+      'role': role,
     };
   }
 }
