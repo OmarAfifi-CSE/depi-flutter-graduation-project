@@ -1,15 +1,18 @@
 import 'package:batrina/controllers/provider/filter_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
-import 'package:batrina/views/categories/filter/widgets/apply_filter_button.dart';
+import 'package:batrina/views/categories/filter/widgets/category_chip.dart';
 import 'package:batrina/views/categories/filter/widgets/price_slider.dart';
 import 'package:batrina/views/categories/filter/widgets/rate_selection.dart';
 import 'package:batrina/views/categories/filter/widgets/sortby_options.dart';
 import 'package:batrina/widgets/back_arrow.dart';
+import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class FilterScreen extends StatefulWidget {
@@ -20,6 +23,13 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      Provider.of<FilterProvider>(context, listen: false).fetchCategories();
+    });
+  }
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -48,7 +58,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                     SizedBox(height: 15.h),
-                    _buildCategoryChips(),
+                    const CategoryChip(),
                     SizedBox(height: 30.h),
                     CustomText(
                       data: loc.priceRange,
@@ -82,7 +92,16 @@ class _FilterScreenState extends State<FilterScreen> {
                       child: SizedBox(
                         width: double.infinity,
                         height: 50.h,
-                        child: const ApplyFilterButton(),
+                        child: CustomElevatedButton(
+                          onPressed: () {
+                            final filter = Provider.of<FilterProvider>(
+                              context,
+                              listen: false,
+                            );
+                            context.pushNamed(AppRoutes.filteredProductsScreen);
+                          },
+                          buttonChild: Text(loc.applyNow),
+                        ),
                       ),
                     ),
                     SizedBox(height: 50.h),
@@ -96,38 +115,4 @@ class _FilterScreenState extends State<FilterScreen> {
     );
   }
 
-  Widget _buildCategoryChips() {
-    final filter = Provider.of<FilterProvider>(context);
-    return Wrap(
-      spacing: 12.w,
-      runSpacing: 10.h,
-      children: filter.categories.map((category) {
-        final isSelected = filter.selectedCategories.contains(category);
-        return GestureDetector(
-          onTap: () {
-            filter.toggleCategory(category);
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
-            decoration: BoxDecoration(
-              color: isSelected ? Colors.black : Colors.white,
-              borderRadius: BorderRadius.circular(20.r),
-              border: Border.all(
-                color: isSelected ? Colors.black : Colors.grey[300]!,
-                width: 1,
-              ),
-            ),
-            child: Text(
-              category,
-              style: TextStyle(
-                color: isSelected ? Colors.white : Colors.black,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        );
-      }).toList(),
-    );
-  }
 }

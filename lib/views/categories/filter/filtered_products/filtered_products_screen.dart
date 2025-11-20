@@ -1,4 +1,6 @@
 import 'package:batrina/controllers/provider/filter_provider.dart';
+import 'package:batrina/widgets/back_arrow.dart';
+import 'package:batrina/widgets/custom_header_widget.dart';
 import 'package:batrina/widgets/product/product_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,6 +29,7 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
         filterProvider.selectedCategories,
         filterProvider.priceRange.start,
         filterProvider.priceRange.end,
+        filterProvider.rating,
       );
     });
   }
@@ -37,6 +40,11 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
     final filterProvider = Provider.of<FilterProvider>(context);
     final loc = AppLocalizations.of(context);
     return Scaffold(
+      appBar: AppBar(
+        title: const CustomHeaderWidget(prefix: BackArrow()),
+        leading: const SizedBox(),
+        leadingWidth: 0,
+      ),
       body: SafeArea(
         child: provider.isLoading
             ? const Center(child: CircularProgressIndicator())

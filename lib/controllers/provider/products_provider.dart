@@ -52,6 +52,7 @@ class ProductsProvider with ChangeNotifier {
       Set<String> categories,
       double minPrice,
       double maxPrice,
+      int? minRating,
       ) async {
     try {
       isLoading = true;

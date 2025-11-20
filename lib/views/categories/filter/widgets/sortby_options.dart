@@ -1,5 +1,8 @@
 import 'package:batrina/controllers/provider/filter_provider.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 class SortbyOptions extends StatelessWidget {
@@ -7,6 +10,9 @@ class SortbyOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context);
+    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final theme = Theme.of(context);
     final filter = Provider.of<FilterProvider>(context);
     return Row(
       children: filter.options.map((option) {
@@ -23,17 +29,17 @@ class SortbyOptions extends StatelessWidget {
                 vertical: 10,
               ),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.black : Colors.white,
-                borderRadius: BorderRadius.circular(20),
+                color: isSelected ? theme.primaryColor : theme.cardColor,
+                borderRadius: BorderRadius.circular(20.r),
                 border: Border.all(
-                  color: isSelected ? Colors.black : Colors.grey[300]!,
+                  color:theme.primaryColor.withAlpha(50),
                   width: 1,
                 ),
               ),
               child: Text(
                 option,
                 style: TextStyle(
-                  color: isSelected ? Colors.white : Colors.black,
+                  color: isSelected ? theme.cardColor :theme.primaryColor,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

@@ -1,4 +1,6 @@
 import 'package:batrina/controllers/provider/filter_provider.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart' show Provider;
@@ -8,14 +10,16 @@ class PriceSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final theme = Theme.of(context);
     final filter = Provider.of<FilterProvider>(context);
     return Column(
       children: [
         SliderTheme(
           data: SliderThemeData(
-            activeTrackColor: Colors.black,
+            activeTrackColor: theme.primaryColor,
             inactiveTrackColor: Colors.grey[300],
-            thumbColor: Colors.white,
+            thumbColor: theme.primaryColor,
             overlayColor: Colors.black.withOpacity(0.1),
             thumbShape: const RoundSliderThumbShape(
               enabledThumbRadius: 12,
@@ -24,7 +28,7 @@ class PriceSlider extends StatelessWidget {
             trackHeight: 3,
           ),
           child: RangeSlider(
-            values: Provider.of<FilterProvider>(context).priceRange ,
+            values: Provider.of<FilterProvider>(context).priceRange,
             min: 0,
             max: 1750,
             divisions: 35,
@@ -32,25 +36,19 @@ class PriceSlider extends StatelessWidget {
           ),
         ),
         Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 8.w),
+          padding: EdgeInsets.symmetric(horizontal: 8.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                '\$${filter.priceRange.start.toInt()}',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.grey[600],
-                  fontWeight: FontWeight.w500,
-                ),
+              CustomText(
+                data: '\$${filter.priceRange.start.toInt()}',
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
               ),
-              Text(
-                '\$${filter.priceRange.end.toInt()}',
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                ),
+              CustomText(
+                data: '\$${filter.priceRange.end.toInt()}',
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
               ),
               Text(
                 '\$1750',

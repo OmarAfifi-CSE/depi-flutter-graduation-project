@@ -52,13 +52,13 @@ class RouterGenerationConfig {
   RouterGenerationConfig({required this.sharedPreferences}) {
     router = GoRouter(
       refreshListenable: AuthStateListenable(),
-      initialLocation: AppRoutes.splashScreen,
+      initialLocation: AppRoutes.filterScreen,
       routes: [
         GoRoute(
-          path: AppRoutes.splashScreen,
-          name: AppRoutes.splashScreen,
+          path: AppRoutes.filterScreen,
+          name: AppRoutes.filterScreen,
           builder: (context, state) =>
-              SplashScreen(sharedPreferences: sharedPreferences),
+              const FilterScreen(),
         ),
         GoRoute(
           path: AppRoutes.onboardingScreen,
@@ -317,26 +317,6 @@ class RouterGenerationConfig {
                             ),
                         child: child,
                       ),
-                    );
-                  },
-            );
-          },
-        ),
-        GoRoute(
-          path: AppRoutes.filterScreen,
-          name: AppRoutes.filterScreen,
-          pageBuilder: (context, state) {
-            return CustomTransitionPage(
-              child: const FilterScreen(),
-              transitionDuration: const Duration(milliseconds: 1000),
-              reverseTransitionDuration: const Duration(milliseconds: 1000),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
                     );
                   },
             );
