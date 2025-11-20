@@ -17,9 +17,10 @@ class AppRoutes {
   // Category and Product Screens (with parameters)
   static const String categoryProductsScreen =
       '$categoriesScreen/category-products/:categoryName';
-  static const String productScreen =
+  static const String categoryProductScreen =
       '$categoryProductsScreen/product/:productId';
   static const String reviewsScreen = '/reviews';
+  static const String productScreen = '/product/:productId';
 
   // Filter Screens
   static const String filterScreen = '/filterScreen';
@@ -35,5 +36,8 @@ class AppRoutes {
 
   // Cart Screens
   static const String checkoutScreen = '/checkout';
+  static const String chatsScreen = '/chatsScreen';
+  static const String chatScreen = '/chatScreen/:chatId/:otherUserId';
+  static const String chatSearchScreen = '/chatSearchScreen';
   static const String orderSuccessfulScreen = '/order-successful';
 }

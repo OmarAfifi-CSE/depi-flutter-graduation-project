@@ -27,4 +27,7 @@ class AppAssets {
 
   static const String successAnimation = 'assets/lottie/success.json';
   static const String failureAnimation = 'assets/lottie/failure.json';
+  static const String noDataFoundAnimationWhite =
+      'assets/lottie/No Data Found White.json';
+  static const String sendIcon = 'assets/icons/send.svg';
 }

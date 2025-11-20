@@ -18,9 +18,7 @@ class ProductGridView extends StatelessWidget {
     final provider = Provider.of<ProductsProvider>(context);
     final theme = Theme.of(context);
     return provider.products.isEmpty && !provider.isLoading
-        ? Center(
-            child: EmptyCategoryWidget(categoryName: categoryName),
-          )
+        ? Center(child: EmptyCategoryWidget(categoryName: categoryName))
         : Directionality(
             textDirection: TextDirection.ltr,
             child: GridView.builder(
@@ -45,7 +43,7 @@ class ProductGridView extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {
                     context.pushNamed(
-                      AppRoutes.productScreen,
+                      AppRoutes.categoryProductScreen,
                       pathParameters: {
                         'categoryName': categoryName,
                         'productId': product.id,

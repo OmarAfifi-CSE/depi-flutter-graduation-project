@@ -1,5 +1,6 @@
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/models/address_model.dart';
+import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/promo_model.dart';
 import 'package:batrina/models/review_model.dart';
@@ -535,5 +536,19 @@ class FireBaseFireStore {
       return null;
     }
     return PromoCodeModel.fromJson(querySnapshot.docs.first.data());
+  }
+
+  Future<List<ConversationModel>> getMessages() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
+        .collection("conversations")
+        .where("participants", arrayContains: FireBaseFireStore.currentUser!.id)
+        .orderBy('lastMessageTime', descending: true)
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return [];
+    }
+    return querySnapshot.docs.map((e) {
+      return ConversationModel.fromJson(e.data());
+    }).toList();
   }
 }
