@@ -1,5 +1,7 @@
 import 'package:animations/animations.dart';
+import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
+import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:batrina/routing/app_routes.dart';
@@ -521,8 +523,18 @@ class RouterGenerationConfig {
           path: AppRoutes.chatSearchScreen,
           name: AppRoutes.chatSearchScreen,
           pageBuilder: (context, state) {
+            Map data = state.extra as Map<String, dynamic>;
+            MessageModel? initialMessage = data['initialMessage'];
+            List<ConversationModel>? initialList = data['initialList'];
+            LocalChatController localChatController = data['provider'];
             return CustomTransitionPage(
-              child: const ChatSearchScreen(),
+              child: ChangeNotifierProvider.value(
+                value: localChatController,
+                child: ChatSearchScreen(
+                  messageModel: initialMessage,
+                  initialList: initialList,
+                ),
+              ),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

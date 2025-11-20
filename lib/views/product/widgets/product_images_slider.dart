@@ -1,9 +1,14 @@
 import 'package:batrina/controllers/cubit/chat/get_messages_cubit/get_messages_cubit.dart';
+import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/controllers/provider/product_provider.dart';
+import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/user_model.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/product/widgets/heart.dart';
 import 'package:batrina/widgets/back_arrow.dart';
 import 'package:batrina/widgets/build_dynamic_image.dart';
@@ -63,6 +68,7 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     ProductProvider productProvider = context.read<ProductProvider>();
+    final loc = AppLocalizations.of(context);
     showModalBottomSheet(
       backgroundColor: theme.scaffoldBackgroundColor,
       context: context,
@@ -96,7 +102,7 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
                     SizedBox(height: 15.h),
 
                     CustomText(
-                      data: "Send to...",
+                      data: loc!.sendTo,
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w700,
                     ),
@@ -111,7 +117,7 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomText(
-                            data: "Share to other apps",
+                            data: loc.shareToOtherApps,
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w700,
                             color: theme.scaffoldBackgroundColor,
@@ -136,6 +142,7 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
     ProductProvider productProvider,
   ) {
     final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
 
     if (state is! GetMessagesSuccess) {
       return SizedBox(
@@ -146,76 +153,126 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
       );
     }
 
-    if (state.conversations.isEmpty) {
-      return SizedBox(
-        height: 120.h,
-        child: Center(
-          child: CustomText(
-            data: "You have no chats yet.",
-            fontSize: 14.sp,
-            color: appColors.secondaryText,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      );
-    }
-
     return SizedBox(
       height: 120.h,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
-          final otherUser = state.conversations[index].otherUser;
+          ParticipantData? otherUser;
+          if (index < state.conversations.length) {
+            otherUser = state.conversations[index].otherUser;
+          }
 
           return SizedBox(
             width: 80.w,
             child: GestureDetector(
-              onTap: () {
-                final String myId = FirebaseAuth.instance.currentUser!.uid;
-                final String otherUserId = state
-                    .conversations[index]
-                    .participants
-                    .firstWhere((id) => id != myId);
+              onTap: () async {
+                if (index < state.conversations.length) {
+                  final String myId = FirebaseAuth.instance.currentUser!.uid;
+                  final String otherUserId = state
+                      .conversations[index]
+                      .participants
+                      .firstWhere((id) => id != myId);
 
-                final String chatId = getCompositeChatId(myId, otherUserId);
-                context.push(
-                  '/chatScreen/$chatId/$otherUserId',
-                  extra: {
-                    "anotherUserModel": UserModel(
-                      id: otherUserId,
-                      name: otherUser.name,
-                      email: otherUser.email,
-                      role: otherUser.role,
-                      picture: otherUser.photoUrl,
-                    ),
-                    "isPending": false,
-                    'initialMessage': MessageModel(
-                      id: "",
-                      senderId: "",
-                      text: productProvider.productModel.name,
-                      type: "image",
-                      pId: productProvider.productModel.id,
-                      imageUrl: productProvider.productModel.thumbnail,
-                      readBy: [],
-                    ),
-                  },
-                );
+                  final String chatId = getCompositeChatId(myId, otherUserId);
+                  await context.push(
+                    '/chatScreen/$chatId/$otherUserId',
+                    extra: {
+                      "anotherUserModel": UserModel(
+                        id: otherUserId,
+                        name: otherUser!.name,
+                        email: otherUser.email,
+                        role: otherUser.role,
+                        picture: otherUser.photoUrl,
+                      ),
+                      "isPending": false,
+                      'initialMessage': MessageModel(
+                        id: "",
+                        senderId: "",
+                        text: productProvider.productModel.name,
+                        type: "image",
+                        pId: productProvider.productModel.id,
+                        imageUrl: productProvider.productModel.thumbnail,
+                        readBy: [],
+                      ),
+                    },
+                  );
+                  context.read<GetMessagesCubit>().getMessages();
+                } else {
+                  await context.pushNamed(
+                    AppRoutes.chatSearchScreen,
+                    extra: {
+                      'provider': LocalChatController(),
+                      'initialMessage': MessageModel(
+                        id: "",
+                        senderId: "",
+                        text: productProvider.productModel.name,
+                        type: "image",
+                        pId: productProvider.productModel.id,
+                        imageUrl: productProvider.productModel.thumbnail,
+                        readBy: [],
+                      ),
+                      'initialList': state.conversations,
+                    },
+                  );
+                  context.read<GetMessagesCubit>().getMessages();
+                }
               },
-              child: Column(
-                children: [
-                  otherUser.photoUrl != null && otherUser.photoUrl!.isNotEmpty
-                      ? SizedBox(
-                          width: 60.w,
-                          height: 60.h,
-                          child: Material(
-                            borderRadius: BorderRadius.circular(100.r),
-                            clipBehavior: Clip.antiAlias,
-                            child: BuildDynamicImage(
-                              imageUrl: otherUser.photoUrl!,
-                            ),
-                          ),
-                        )
-                      : Container(
+              child: index < state.conversations.length
+                  ? Column(
+                      children: [
+                        otherUser!.photoUrl != null &&
+                                otherUser.photoUrl!.isNotEmpty
+                            ? SizedBox(
+                                width: 60.w,
+                                height: 60.h,
+                                child: Material(
+                                  borderRadius: BorderRadius.circular(100.r),
+                                  clipBehavior: Clip.antiAlias,
+                                  child: BuildDynamicImage(
+                                    imageUrl: otherUser.photoUrl!,
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: 60.w,
+                                height: 60.h,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadiusGeometry.circular(
+                                    100.r,
+                                  ),
+                                  image: const DecorationImage(
+                                    image: NetworkImage(
+                                      "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              ),
+                        SizedBox(height: 8.h),
+
+                        CustomText(
+                          data: otherUser.name,
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w700,
+                          maxLines: 1,
+                          fontFamily: AppFonts.englishFontFamily,
+                        ),
+                        SizedBox(height: 8.h),
+
+                        CustomText(
+                          data: otherUser.email,
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w500,
+                          color: appColors.secondaryText,
+                          maxLines: 1,
+                          fontFamily: AppFonts.englishFontFamily,
+                        ),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        Container(
                           width: 60.w,
                           height: 60.h,
                           decoration: BoxDecoration(
@@ -228,30 +285,24 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
                             ),
                           ),
                         ),
-                  SizedBox(height: 8.h),
+                        SizedBox(height: 8.h),
 
-                  CustomText(
-                    data: otherUser.name,
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.w700,
-                    maxLines: 1,
-                  ),
-                  SizedBox(height: 8.h),
-
-                  CustomText(
-                    data: otherUser.email,
-                    fontSize: 10.sp,
-                    fontWeight: FontWeight.w500,
-                    color: appColors.secondaryText,
-                    maxLines: 1,
-                  ),
-                ],
-              ),
+                        CustomText(
+                          data: loc!.startNewChat,
+                          textAlign: TextAlign.center,
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w700,
+                          maxLines: 2,
+                          color: theme.primaryColor,
+                          forceStrutHeight: true,
+                        ),
+                      ],
+                    ),
             ),
           );
         },
         separatorBuilder: (context, index) => SizedBox(width: 15.w),
-        itemCount: state.conversations.length,
+        itemCount: state.conversations.length + 1,
       ),
     );
   }

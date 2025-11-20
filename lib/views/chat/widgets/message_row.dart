@@ -1,4 +1,5 @@
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
+import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:batrina/number_localizer.dart';
 import 'package:batrina/styling/app_colors.dart';
@@ -11,8 +12,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class MessageRow extends StatelessWidget {
-  const MessageRow({super.key, required this.conversationModel});
+  const MessageRow({
+    super.key,
+    required this.conversationModel,
+    this.messageModel,
+  });
   final ConversationModel conversationModel;
+  final MessageModel? messageModel;
   String getCompositeChatId(String userId1, String userId2) {
     if (userId1.compareTo(userId2) > 0) {
       return '${userId2}_$userId1';
@@ -36,6 +42,7 @@ class MessageRow extends StatelessWidget {
           role: conversationModel.otherUser.role,
           name: conversationModel.otherUser.name,
           email: conversationModel.otherUser.email,
+          picture: conversationModel.otherUser.photoUrl,
         );
 
         final String chatId = getCompositeChatId(myId, otherUserId);
@@ -49,7 +56,11 @@ class MessageRow extends StatelessWidget {
 
         context.push(
           '/chatScreen/$chatId/$otherUserId',
-          extra: {"anotherUserModel": userModel, "isPending": isPending},
+          extra: {
+            "anotherUserModel": userModel,
+            "isPending": isPending,
+            'initialMessage': messageModel,
+          },
         );
       },
       child: SizedBox(

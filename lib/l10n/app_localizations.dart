@@ -1288,6 +1288,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No requests yet'**
   String get noRequestsYet;
+
+  /// No description provided for @sendTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Send to...'**
+  String get sendTo;
+
+  /// No description provided for @shareToOtherApps.
+  ///
+  /// In en, this message translates to:
+  /// **'Share to other apps'**
+  String get shareToOtherApps;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

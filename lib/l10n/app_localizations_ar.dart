@@ -616,4 +616,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get noRequestsYet => 'لا توجد طلبات بعد';
+
+  @override
+  String get sendTo => 'أرسل إلى...';
+
+  @override
+  String get shareToOtherApps => 'شارك مع تطبيقات أخرى';
 }

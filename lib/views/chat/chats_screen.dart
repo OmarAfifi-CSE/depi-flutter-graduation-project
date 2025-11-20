@@ -1,11 +1,10 @@
-import 'package:animations/animations.dart';
 import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/number_localizer.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/views/chat/chat_search_screen.dart';
 import 'package:batrina/views/chat/widgets/message_row.dart';
 import 'package:batrina/views/chat/widgets/search_field.dart';
 import 'package:batrina/widgets/back_arrow.dart';
@@ -16,6 +15,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class ChatsScreen extends StatelessWidget {
@@ -59,38 +59,9 @@ class ChatsScreen extends StatelessWidget {
                         onTap: () {
                           final localChatController = newContext
                               .read<LocalChatController>();
-
-                          Navigator.of(context).push(
-                            PageRouteBuilder(
-                              transitionDuration: const Duration(
-                                milliseconds: 700,
-                              ),
-                              reverseTransitionDuration: const Duration(
-                                milliseconds: 700,
-                              ),
-                              pageBuilder:
-                                  (context, animation, secondaryAnimation) {
-                                    return ChangeNotifierProvider.value(
-                                      value: localChatController,
-                                      child: const ChatSearchScreen(),
-                                    );
-                                  },
-                              transitionsBuilder:
-                                  (
-                                    context,
-                                    animation,
-                                    secondaryAnimation,
-                                    child,
-                                  ) {
-                                    return SharedAxisTransition(
-                                      transitionType:
-                                          SharedAxisTransitionType.horizontal,
-                                      animation: animation,
-                                      secondaryAnimation: secondaryAnimation,
-                                      child: child,
-                                    );
-                                  },
-                            ),
+                          context.pushNamed(
+                            AppRoutes.chatSearchScreen,
+                            extra: {'provider': localChatController},
                           );
                         },
                         child: const AbsorbPointer(child: SearchField()),

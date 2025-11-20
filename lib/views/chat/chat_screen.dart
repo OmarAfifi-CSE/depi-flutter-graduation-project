@@ -2,6 +2,7 @@ import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/user_model.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/styling/app_fonts.dart';
@@ -17,6 +18,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class ChatScreen extends StatefulWidget {
   final String chatId;
@@ -82,13 +84,9 @@ class _ChatScreenState extends State<ChatScreen> {
         .doc(widget.chatId)
         .collection('presence')
         .doc(_myId)
-        .set({
-          'online': isOnline,
-          'typing': false, // دايمًا بنوقف كتابة وإحنا بنفتح/نقفل
-        }, SetOptions(merge: true));
+        .set({'online': isOnline, 'typing': false}, SetOptions(merge: true));
   }
 
-  // --- 2. ميثود تصفير العداد ---
   void _markAsRead() {
     _firestore
         .collection('conversations')
@@ -216,7 +214,30 @@ class _ChatScreenState extends State<ChatScreen> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         appBar: AppBar(
-          title: const CustomHeaderWidget(prefix: BackArrow()),
+          title: CustomHeaderWidget(
+            prefix: BackArrow(
+              additionalFun: () {
+                final router = GoRouter.of(context);
+                final matches =
+                    router.routerDelegate.currentConfiguration.matches;
+
+                if (matches.length < 2) {
+                  return;
+                }
+
+                final previousMatch = matches[matches.length - 2];
+
+                bool searchScreenExists = previousMatch.matchedLocation
+                    .contains(AppRoutes.chatSearchScreen);
+                if (searchScreenExists) {
+                  context.pop();
+                  context.pop();
+                } else {
+                  context.pop();
+                }
+              },
+            ),
+          ),
           leading: const SizedBox(),
           leadingWidth: 0,
         ),

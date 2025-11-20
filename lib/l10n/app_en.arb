@@ -272,6 +272,9 @@
   "yesterday": "Yesterday",
   "daysAgo": "{days}d ago",
   "noChatsYet": "No chats yet",
-  "noRequestsYet": "No requests yet"
+  "noRequestsYet": "No requests yet",
+
+  "sendTo": "Send to...",
+  "shareToOtherApps": "Share to other apps"
 
 }

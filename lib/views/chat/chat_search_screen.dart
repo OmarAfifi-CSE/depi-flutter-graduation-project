@@ -1,6 +1,7 @@
 import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
+import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_colors.dart';
@@ -19,8 +20,10 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class ChatSearchScreen extends StatefulWidget {
-  const ChatSearchScreen({super.key});
+  const ChatSearchScreen({super.key, this.messageModel, this.initialList});
 
+  final MessageModel? messageModel;
+  final List<ConversationModel>? initialList;
   @override
   State<ChatSearchScreen> createState() => _ChatSearchScreenState();
 }
@@ -180,36 +183,67 @@ class _ChatSearchScreenState extends State<ChatSearchScreen> {
                               fontWeight: FontWeight.w500,
                               color: appColors.secondaryText,
                             ),
-                            Consumer<LocalChatController>(
-                              builder: (context, value, child) {
-                                List<ConversationModel> searchedList = value
-                                    .conversationModels
-                                    .where(
-                                      (element) => element.otherUser.email
-                                          .toLowerCase()
-                                          .contains(
-                                            editingController.text
-                                                .trim()
-                                                .toLowerCase(),
-                                          ),
-                                    )
-                                    .toList();
-                                print(searchedList.length);
-                                return ListView.separated(
-                                  itemCount: searchedList.length > 3
-                                      ? 3
-                                      : searchedList.length,
-                                  separatorBuilder: (context, index) =>
-                                      SizedBox(height: 10.h),
-                                  shrinkWrap: true,
-                                  itemBuilder: (context, index) {
-                                    return _buildChatResultItem(
-                                      searchedList[index],
+                            widget.initialList == null
+                                ? Consumer<LocalChatController>(
+                                    builder: (context, value, child) {
+                                      List<ConversationModel> searchedList =
+                                          value.conversationModels
+                                              .where(
+                                                (element) => element
+                                                    .otherUser
+                                                    .email
+                                                    .toLowerCase()
+                                                    .contains(
+                                                      editingController.text
+                                                          .trim()
+                                                          .toLowerCase(),
+                                                    ),
+                                              )
+                                              .toList();
+                                      return ListView.separated(
+                                        itemCount: searchedList.length > 3
+                                            ? 3
+                                            : searchedList.length,
+                                        separatorBuilder: (context, index) =>
+                                            SizedBox(height: 10.h),
+                                        shrinkWrap: true,
+                                        itemBuilder: (context, index) {
+                                          return _buildChatResultItem(
+                                            searchedList[index],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  )
+                                : () {
+                                    List<ConversationModel> searchedList =
+                                        widget.initialList!
+                                            .where(
+                                              (element) => element
+                                                  .otherUser
+                                                  .email
+                                                  .toLowerCase()
+                                                  .contains(
+                                                    editingController.text
+                                                        .trim()
+                                                        .toLowerCase(),
+                                                  ),
+                                            )
+                                            .toList();
+                                    return ListView.separated(
+                                      itemCount: searchedList.length > 3
+                                          ? 3
+                                          : searchedList.length,
+                                      separatorBuilder: (context, index) =>
+                                          SizedBox(height: 10.h),
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) {
+                                        return _buildChatResultItem(
+                                          searchedList[index],
+                                        );
+                                      },
                                     );
-                                  },
-                                );
-                              },
-                            ),
+                                  }(),
                             SizedBox(height: 20.h),
                             CustomText(
                               data: loc.newUsers,
@@ -220,60 +254,116 @@ class _ChatSearchScreenState extends State<ChatSearchScreen> {
                               color: appColors.secondaryText,
                             ),
                             SizedBox(height: 4.h),
-                            Expanded(
-                              child: Consumer<LocalChatController>(
-                                builder: (context, value, child) {
-                                  return FutureBuilder<List<UserModel>>(
-                                    future: searchForNewUsers(
-                                      editingController.text,
-                                      value.conversationModels,
+                            widget.initialList == null
+                                ? Expanded(
+                                    child: Consumer<LocalChatController>(
+                                      builder: (context, value, child) {
+                                        return FutureBuilder<List<UserModel>>(
+                                          future: searchForNewUsers(
+                                            editingController.text,
+                                            value.conversationModels,
+                                          ),
+                                          builder: (context, snapshot) {
+                                            if (snapshot.connectionState ==
+                                                ConnectionState.waiting) {
+                                              return Center(
+                                                child:
+                                                    CupertinoActivityIndicator(
+                                                      color: theme.primaryColor,
+                                                    ),
+                                              );
+                                            }
+
+                                            if (snapshot.hasError) {
+                                              return Center(
+                                                child: CustomText(
+                                                  data: loc.error,
+                                                  fontSize: 12.sp,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              );
+                                            }
+
+                                            if (!snapshot.hasData ||
+                                                snapshot.data!.isEmpty) {
+                                              return Center(
+                                                child: CustomText(
+                                                  data: loc.noNewUsersFound,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 15.sp,
+                                                ),
+                                              );
+                                            }
+                                            final List<UserModel> userResults =
+                                                snapshot.data!;
+                                            return ListView.separated(
+                                              separatorBuilder:
+                                                  (context, index) =>
+                                                      SizedBox(height: 10.h),
+                                              itemCount: userResults.length,
+                                              itemBuilder: (context, index) {
+                                                UserModel user =
+                                                    userResults[index];
+                                                return _buildUserResultItem(
+                                                  user,
+                                                );
+                                              },
+                                            );
+                                          },
+                                        );
+                                      },
                                     ),
-                                    builder: (context, snapshot) {
-                                      if (snapshot.connectionState ==
-                                          ConnectionState.waiting) {
-                                        return Center(
-                                          child: CupertinoActivityIndicator(
-                                            color: theme.primaryColor,
-                                          ),
-                                        );
-                                      }
+                                  )
+                                : Expanded(
+                                    child: FutureBuilder<List<UserModel>>(
+                                      future: searchForNewUsers(
+                                        editingController.text,
+                                        widget.initialList!,
+                                      ),
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.waiting) {
+                                          return Center(
+                                            child: CupertinoActivityIndicator(
+                                              color: theme.primaryColor,
+                                            ),
+                                          );
+                                        }
 
-                                      if (snapshot.hasError) {
-                                        return Center(
-                                          child: CustomText(
-                                            data: loc.error,
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        );
-                                      }
+                                        if (snapshot.hasError) {
+                                          return Center(
+                                            child: CustomText(
+                                              data: loc.error,
+                                              fontSize: 12.sp,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          );
+                                        }
 
-                                      if (!snapshot.hasData ||
-                                          snapshot.data!.isEmpty) {
-                                        return Center(
-                                          child: CustomText(
-                                            data: loc.noNewUsersFound,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15.sp,
-                                          ),
+                                        if (!snapshot.hasData ||
+                                            snapshot.data!.isEmpty) {
+                                          return Center(
+                                            child: CustomText(
+                                              data: loc.noNewUsersFound,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 15.sp,
+                                            ),
+                                          );
+                                        }
+                                        final List<UserModel> userResults =
+                                            snapshot.data!;
+                                        return ListView.separated(
+                                          separatorBuilder: (context, index) =>
+                                              SizedBox(height: 10.h),
+                                          itemCount: userResults.length,
+                                          itemBuilder: (context, index) {
+                                            UserModel user = userResults[index];
+                                            return _buildUserResultItem(user);
+                                          },
                                         );
-                                      }
-                                      final List<UserModel> userResults =
-                                          snapshot.data!;
-                                      return ListView.separated(
-                                        separatorBuilder: (context, index) =>
-                                            SizedBox(height: 10.h),
-                                        itemCount: userResults.length,
-                                        itemBuilder: (context, index) {
-                                          UserModel user = userResults[index];
-                                          return _buildUserResultItem(user);
-                                        },
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ),
+                                      },
+                                    ),
+                                  ),
                           ],
                         ),
                 ),
@@ -286,7 +376,10 @@ class _ChatSearchScreenState extends State<ChatSearchScreen> {
   }
 
   Widget _buildChatResultItem(ConversationModel conversation) {
-    return MessageRow(conversationModel: conversation);
+    return MessageRow(
+      conversationModel: conversation,
+      messageModel: widget.messageModel,
+    );
   }
 
   Widget _buildUserResultItem(UserModel user) {
@@ -300,7 +393,11 @@ class _ChatSearchScreenState extends State<ChatSearchScreen> {
         final String chatId = getCompositeChatId(myId, otherUserId);
         context.push(
           '/chatScreen/$chatId/$otherUserId',
-          extra: {"anotherUserModel": user, "isPending": false},
+          extra: {
+            "anotherUserModel": user,
+            "isPending": false,
+            'initialMessage': widget.messageModel,
+          },
         );
       },
       child: Directionality(

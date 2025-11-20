@@ -542,6 +542,7 @@ class FireBaseFireStore {
     QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
         .collection("conversations")
         .where("participants", arrayContains: FireBaseFireStore.currentUser!.id)
+        .orderBy('lastMessageTime', descending: true)
         .get();
     if (querySnapshot.docs.isEmpty) {
       return [];

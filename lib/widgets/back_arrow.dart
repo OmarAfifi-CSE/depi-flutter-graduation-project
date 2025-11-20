@@ -5,7 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class BackArrow extends StatelessWidget {
-  const BackArrow({super.key});
+  const BackArrow({super.key, this.additionalFun});
+  final void Function()? additionalFun;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,11 @@ class BackArrow extends StatelessWidget {
       child: InkWell(
         customBorder: const CircleBorder(),
         onTap: () {
-          context.pop();
+          if (additionalFun != null) {
+            additionalFun!();
+          } else {
+            context.pop();
+          }
         },
         child: Container(
           width: 35.w,

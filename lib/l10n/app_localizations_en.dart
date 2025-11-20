@@ -616,4 +616,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get noRequestsYet => 'No requests yet';
+
+  @override
+  String get sendTo => 'Send to...';
+
+  @override
+  String get shareToOtherApps => 'Share to other apps';
 }
