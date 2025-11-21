@@ -26,25 +26,29 @@ class AppLocalizationsAr extends AppLocalizations {
   String get discountNewArrivalTitle => 'خصم 20% على المنتجات الجديدة';
 
   @override
-  String get discountNewArrivalDescription => 'اكتشف خصومات مذهلة على أحدث مجموعاتنا. احصل على خصم 20% على جميع المنتجات الجديدة.';
+  String get discountNewArrivalDescription =>
+      'اكتشف خصومات مذهلة على أحدث مجموعاتنا. احصل على خصم 20% على جميع المنتجات الجديدة.';
 
   @override
   String get takeAdvantageShoppingTitle => 'استفد من عروض التسوق';
 
   @override
-  String get takeAdvantageShoppingDescription => 'لا تفوت العروض الحصرية للتسوق. وفر أكثر على العناصر المفضلة لديك مع العروض الخاصة.';
+  String get takeAdvantageShoppingDescription =>
+      'لا تفوت العروض الحصرية للتسوق. وفر أكثر على العناصر المفضلة لديك مع العروض الخاصة.';
 
   @override
   String get allTypesOffersTitle => 'جميع أنواع العروض في متناول يدك';
 
   @override
-  String get allTypesOffersDescription => 'تصفح عبر فئات مختلفة واعثر على أفضل الصفقات التي تناسب احتياجاتك وتفضيلاتك.';
+  String get allTypesOffersDescription =>
+      'تصفح عبر فئات مختلفة واعثر على أفضل الصفقات التي تناسب احتياجاتك وتفضيلاتك.';
 
   @override
   String get welcomeTitle => 'أهلاً وسهلاً!';
 
   @override
-  String get welcomeDescription => 'من فضلك سجل دخول أو أنشئ حساب جديد لمتابعة استخدام التطبيق';
+  String get welcomeDescription =>
+      'من فضلك سجل دخول أو أنشئ حساب جديد لمتابعة استخدام التطبيق';
 
   @override
   String get emailTitle => 'البريد الإلكتروني';
@@ -65,7 +69,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get continueWithGoogleTitle => 'المتابعة مع جوجل';
 
   @override
-  String get continueWithGoogleDescription => 'تسجيل دخول سريع وآمن باستخدام حساب جوجل الخاص بك';
+  String get continueWithGoogleDescription =>
+      'تسجيل دخول سريع وآمن باستخدام حساب جوجل الخاص بك';
 
   @override
   String get forgotPasswordTitle => 'نسيت كلمة المرور؟';
@@ -83,13 +88,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get loginFailedTitle => 'فشل تسجيل الدخول';
 
   @override
-  String get loginFailedDescription => 'بريد إلكتروني أو كلمة مرور خاطئة. من فضلك حاول مرة أخرى';
+  String get loginFailedDescription =>
+      'بريد إلكتروني أو كلمة مرور خاطئة. من فضلك حاول مرة أخرى';
 
   @override
   String get loginSuccessTitle => 'تم تسجيل الدخول بنجاح';
 
   @override
-  String get loginSuccessDescription => 'أهلاً بعودتك! جاري التوجه إلى الشاشة الرئيسية';
+  String get loginSuccessDescription =>
+      'أهلاً بعودتك! جاري التوجه إلى الشاشة الرئيسية';
 
   @override
   String get signUpDescription => 'أنشئ حساب جديد';
@@ -119,13 +126,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get passwordEmptyDescription => 'من فضلك أدخل كلمة المرور';
 
   @override
-  String get passwordTooShortDescription => 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
+  String get passwordTooShortDescription =>
+      'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
 
   @override
-  String get passwordWeakDescription => 'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم';
+  String get passwordWeakDescription =>
+      'كلمة المرور يجب أن تحتوي على حروف كبيرة وصغيرة ورقم';
 
   @override
-  String get pleaseVerifyYourEmail => 'من فضلك قم بتأكيد بريدك الإلكتروني أولاً';
+  String get pleaseVerifyYourEmail =>
+      'من فضلك قم بتأكيد بريدك الإلكتروني أولاً';
 
   @override
   String get googleSignInCanceledDescription => 'تم إلغاء تسجيل الدخول';
@@ -182,10 +192,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get internalErrorDescription => 'حدث خطأ داخلي';
 
   @override
-  String get accountExistsWithDifferentCredentialDescription => 'الحساب موجود بطريقة دخول مختلفة';
+  String get accountExistsWithDifferentCredentialDescription =>
+      'الحساب موجود بطريقة دخول مختلفة';
 
   @override
-  String get credentialAlreadyInUseDescription => 'بيانات الدخول مستخدمة في مكان آخر';
+  String get credentialAlreadyInUseDescription =>
+      'بيانات الدخول مستخدمة في مكان آخر';
 
   @override
   String get defaultAuthErrorDescription => 'حدث خطأ غير متوقع';
@@ -197,7 +209,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetPassword => 'إعادة تعيين كلمة المرور';
 
   @override
-  String get resetPasswordLabel => 'أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك رسالة تتضمن التعليمات لإعادة تعيين كلمة المرور';
+  String get resetPasswordLabel =>
+      'أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك رسالة تتضمن التعليمات لإعادة تعيين كلمة المرور';
 
   @override
   String get sendInstruction => 'إرسال التعليمات';
@@ -209,16 +222,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get reset => 'إعادة التعيين';
 
   @override
-  String get expiredActionCodeDescription => 'الرابط منتهي الصلاحية. من فضلك اطلب رابط جديد.';
+  String get expiredActionCodeDescription =>
+      'الرابط منتهي الصلاحية. من فضلك اطلب رابط جديد.';
 
   @override
-  String get invalidActionCodeDescription => 'الرابط غير صالح. من فضلك اطلب رابط جديد.';
+  String get invalidActionCodeDescription =>
+      'الرابط غير صالح. من فضلك اطلب رابط جديد.';
 
   @override
   String get emailVerifiedTitle => 'تم تأكيد البريد الإلكتروني!';
 
   @override
-  String get emailVerifiedSubtitle => 'حسابك الآن نشط وجاهز للاستخدام. شكراً لانضمامك إلينا.';
+  String get emailVerifiedSubtitle =>
+      'حسابك الآن نشط وجاهز للاستخدام. شكراً لانضمامك إلينا.';
 
   @override
   String get continueToSignInButton => 'متابعة لتسجيل الدخول';
@@ -233,7 +249,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get signin_success => 'تم تسجيل الدخول بنجاح';
 
   @override
-  String get check_email_activation => 'من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.';
+  String get check_email_activation =>
+      'من فضلك تفقد بريدك الإلكتروني لتفعيل الحساب.';
 
   @override
   String get forget_password_sent => 'تم الإرسال بنجاح';
@@ -257,7 +274,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirm => 'تأكيد';
 
   @override
-  String get invalid_or_expired_link => 'الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.';
+  String get invalid_or_expired_link =>
+      'الرابط غير صالح أو منتهي الصلاحية أو تم استخدامه مسبقًا. من فضلك اطلب رابطًا جديدًا.';
 
   @override
   String get unexpected_error => 'حدث خطأ غير متوقع. من فضلك حاول مرة أخرى.';
@@ -326,7 +344,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emptyCartTitle => 'عربة التسوق فارغة';
 
   @override
-  String get emptyCartSubtitle => 'يبدو أنك لم تقم بإضافة أي شيء إلى عربة التسوق بعد. هيا نجد شيئًا ستحبه!';
+  String get emptyCartSubtitle =>
+      'يبدو أنك لم تقم بإضافة أي شيء إلى عربة التسوق بعد. هيا نجد شيئًا ستحبه!';
 
   @override
   String get continueShopping => 'متابعة التسوق';
@@ -461,19 +480,22 @@ class AppLocalizationsAr extends AppLocalizations {
   String get streetEmptyDescription => 'حقل الشارع مطلوب.';
 
   @override
-  String get streetTooShortDescription => 'الشارع قصير جدًا، يجب أن لا يقل عن 5 أحرف.';
+  String get streetTooShortDescription =>
+      'الشارع قصير جدًا، يجب أن لا يقل عن 5 أحرف.';
 
   @override
   String get cityEmptyDescription => 'حقل المدينة مطلوب.';
 
   @override
-  String get cityTooShortDescription => 'المدينة قصيرة جدًا، يجب أن لا تقل عن حرفين.';
+  String get cityTooShortDescription =>
+      'المدينة قصيرة جدًا، يجب أن لا تقل عن حرفين.';
 
   @override
   String get countryEmptyDescription => 'حقل الدولة مطلوب.';
 
   @override
-  String get countryTooShortDescription => 'الدولة قصيرة جدًا، يجب أن لا تقل عن حرفين.';
+  String get countryTooShortDescription =>
+      'الدولة قصيرة جدًا، يجب أن لا تقل عن حرفين.';
 
   @override
   String get phoneEmptyDescription => 'حقل رقم الهاتف مطلوب.';
@@ -482,7 +504,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get phoneInvalidDescription => 'الرجاء إدخال رقم هاتف صالح.';
 
   @override
-  String get phoneLengthDescription => 'يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا.';
+  String get phoneLengthDescription =>
+      'يجب أن يتكون رقم الهاتف من 8 إلى 15 رقمًا.';
 
   @override
   String get uploadImage => 'تحميل صورة';
@@ -539,7 +562,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get orderPlacedSuccessfully => 'تم إرسال الطلب بنجاح!';
 
   @override
-  String get orderSuccessSubtitle => 'سيتم توصيل طلبك قريباً.\nشكراً لتسوقك معنا!';
+  String get orderSuccessSubtitle =>
+      'سيتم توصيل طلبك قريباً.\nشكراً لتسوقك معنا!';
 
   @override
   String get backToHome => 'العودة للرئيسية';
@@ -557,6 +581,95 @@ class AppLocalizationsAr extends AppLocalizations {
   String emptyCategoryDescription(Object categoryName) {
     return 'لم نتمكن من العثور على أي منتجات في فئة \'$categoryName\' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.';
   }
+
+  @override
+  String get newChatRequest => 'طلب محادثة جديد';
+
+  @override
+  String get accept => 'قبول';
+
+  @override
+  String get online => 'متصل';
+
+  @override
+  String get offline => 'غير متصل';
+
+  @override
+  String get typing => 'يكتب...';
+
+  @override
+  String get noConnection => 'لا يوجد اتصال';
+
+  @override
+  String get sayHi => 'قل مرحباً!';
+
+  @override
+  String get typeMessage => 'اكتب رسالة...';
+
+  @override
+  String get searchByEmail => 'ابحث بالبريد الإلكتروني لبدء محادثة جديدة';
+
+  @override
+  String get chats => 'المحادثات';
+
+  @override
+  String get newUsers => 'مستخدمون جدد';
+
+  @override
+  String get error => 'خطأ';
+
+  @override
+  String get noNewUsersFound => 'لم يتم العثور على مستخدمين جدد';
+
+  @override
+  String get startNewChat => 'ابدأ محادثة جديدة';
+
+  @override
+  String get messages => 'الرسائل';
+
+  @override
+  String get chatsTab => 'المحادثات';
+
+  @override
+  String get requestsTab => 'الطلبات';
+
+  @override
+  String get justNow => 'الآن';
+
+  @override
+  String secondsAgo(Object seconds) {
+    return 'منذ $secondsث';
+  }
+
+  @override
+  String minutesAgo(Object minutes) {
+    return 'منذ $minutesد';
+  }
+
+  @override
+  String hoursAgo(Object hours) {
+    return 'منذ $hoursس';
+  }
+
+  @override
+  String get yesterday => 'أمس';
+
+  @override
+  String daysAgo(Object days) {
+    return 'منذ $daysي';
+  }
+
+  @override
+  String get noChatsYet => 'لا توجد محادثات بعد';
+
+  @override
+  String get noRequestsYet => 'لا توجد طلبات بعد';
+
+  @override
+  String get sendTo => 'أرسل إلى...';
+
+  @override
+  String get shareToOtherApps => 'شارك مع تطبيقات أخرى';
 
   @override
   String get areYouSureToLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';

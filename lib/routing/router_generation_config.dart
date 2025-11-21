@@ -52,13 +52,18 @@ class RouterGenerationConfig {
   RouterGenerationConfig({required this.sharedPreferences}) {
     router = GoRouter(
       refreshListenable: AuthStateListenable(),
-      initialLocation: AppRoutes.filterScreen,
+      initialLocation: AppRoutes.splashScreen,
       routes: [
+        GoRoute(
+          path: AppRoutes.splashScreen,
+          name: AppRoutes.splashScreen,
+          builder: (context, state) =>
+              SplashScreen(sharedPreferences: sharedPreferences),
+        ),
         GoRoute(
           path: AppRoutes.filterScreen,
           name: AppRoutes.filterScreen,
-          builder: (context, state) =>
-              const FilterScreen(),
+          builder: (context, state) => const FilterScreen(),
         ),
         GoRoute(
           path: AppRoutes.onboardingScreen,
@@ -573,13 +578,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
         ),
@@ -593,13 +598,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
         ),
