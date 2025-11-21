@@ -1,5 +1,6 @@
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:batrina/routing/app_routes.dart';
@@ -121,7 +122,6 @@ class _ChatScreenState extends State<ChatScreen> {
         .runTransaction((transaction) async {
           final convoSnapshot = await transaction.get(convoRef);
 
-          String currentStatus = "pending";
           int newUnreadCount = 1;
 
           String finalMessageText = messageText;
@@ -137,8 +137,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
           if (convoSnapshot.exists) {
             final data = convoSnapshot.data() as Map<String, dynamic>;
-
-            currentStatus = data['status'] ?? 'pending';
 
             newUnreadCount =
                 (data['participantsData']?[widget
@@ -174,7 +172,7 @@ class _ChatScreenState extends State<ChatScreen> {
             'lastMessageSenderId': _myId,
             'lastMessageTime': FieldValue.serverTimestamp(),
             'participants': [_myId, widget.otherUserId],
-            'status': currentStatus,
+
             'participantsData': {
               _myId: {
                 'name': FireBaseFireStore.currentUser!.name,
@@ -182,6 +180,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 'email': FireBaseFireStore.currentUser!.email,
                 'role': FireBaseFireStore.currentUser!.role,
                 'unreadCount': 0,
+                'conversationState': 'accepted',
               },
               widget.otherUserId: {
                 'name': widget.anotherUser.name,

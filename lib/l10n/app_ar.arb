@@ -251,6 +251,7 @@
 
 
   "nothingFound": "لم يتم العثور على شيء",
+  "emptyCategoryDescription": "لم نتمكن من العثور على أي منتجات في فئة '{categoryName}' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.",
 
 
   "newChatRequest": "طلب محادثة جديد",
@@ -280,8 +281,9 @@
   "noRequestsYet": "لا توجد طلبات بعد",
 
   "sendTo": "أرسل إلى...",
+
+  "moveToRequests": "نقل إلى الطلبات",
   "shareToOtherApps": "شارك مع تطبيقات أخرى",
-  "emptyCategoryDescription": "لم نتمكن من العثور على أي منتجات في فئة '{categoryName}' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.",
 
   "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "cancel": "إلغاء",

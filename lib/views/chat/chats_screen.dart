@@ -113,15 +113,15 @@ class ChatsScreen extends StatelessWidget {
 
                           final List<ConversationModel> acceptedChats =
                               allConversations.where((convo) {
-                                return convo.status == 'accepted' ||
-                                    (convo.status == 'pending' &&
-                                        convo.lastMessageSenderId == myId);
+                                return convo.me.conversationState == 'accepted';
                               }).toList();
 
                           final List<ConversationModel> pendingRequests =
                               allConversations.where((convo) {
-                                return convo.status == 'pending' &&
-                                    convo.lastMessageSenderId != myId;
+                                return convo.me.conversationState ==
+                                        'pending' ||
+                                    convo.me.conversationState == null ||
+                                    convo.me.conversationState == 'restricted';
                               }).toList();
 
                           return DefaultTabController(
@@ -188,7 +188,7 @@ class ChatsScreen extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: 20.h),
+                                SizedBox(height: 10.h),
                                 Expanded(
                                   child: TabBarView(
                                     children: [
@@ -202,6 +202,7 @@ class ChatsScreen extends StatelessWidget {
                                                 return MessageRow(
                                                   conversationModel:
                                                       acceptedChats[index],
+                                                  openRestrictOption: true,
                                                 );
                                               },
                                             )

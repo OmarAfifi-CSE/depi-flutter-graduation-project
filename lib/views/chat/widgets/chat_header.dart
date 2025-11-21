@@ -50,9 +50,8 @@ class _ChatHeaderState extends State<ChatHeader> {
           .collection('conversations')
           .doc(widget.chatId)
           .set({
-            'status': 'accepted',
             'participantsData': {
-              myId: {'unreadCount': 0},
+              myId: {'unreadCount': 0, 'conversationState': 'accepted'},
             },
           }, SetOptions(merge: true));
 
