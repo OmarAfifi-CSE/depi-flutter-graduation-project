@@ -26,30 +26,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get discountNewArrivalTitle => '20% Discount New Arrival Product';
 
   @override
-  String get discountNewArrivalDescription =>
-      'Discover amazing discounts on our latest collection. Get 20% off on all new arrival products.';
+  String get discountNewArrivalDescription => 'Discover amazing discounts on our latest collection. Get 20% off on all new arrival products.';
 
   @override
-  String get takeAdvantageShoppingTitle =>
-      'Take Advantage Of The Offer Shopping';
+  String get takeAdvantageShoppingTitle => 'Take Advantage Of The Offer Shopping';
 
   @override
-  String get takeAdvantageShoppingDescription =>
-      'Don\'t miss out on exclusive shopping deals. Save more on your favorite items with special offers.';
+  String get takeAdvantageShoppingDescription => 'Don\'t miss out on exclusive shopping deals. Save more on your favorite items with special offers.';
 
   @override
   String get allTypesOffersTitle => 'All Types Offers Within Your Reach';
 
   @override
-  String get allTypesOffersDescription =>
-      'Browse through various categories and find the best deals that match your needs and preferences.';
+  String get allTypesOffersDescription => 'Browse through various categories and find the best deals that match your needs and preferences.';
 
   @override
   String get welcomeTitle => 'Welcome!';
 
   @override
-  String get welcomeDescription =>
-      'Please login or sign up to continue our app';
+  String get welcomeDescription => 'Please login or sign up to continue our app';
 
   @override
   String get emailTitle => 'Email';
@@ -70,8 +65,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get continueWithGoogleTitle => 'Continue with Google';
 
   @override
-  String get continueWithGoogleDescription =>
-      'Fast and secure login with your Google account';
+  String get continueWithGoogleDescription => 'Fast and secure login with your Google account';
 
   @override
   String get forgotPasswordTitle => 'Forgot Password?';
@@ -89,15 +83,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginFailedTitle => 'Login Failed';
 
   @override
-  String get loginFailedDescription =>
-      'Invalid email or password. Please try again';
+  String get loginFailedDescription => 'Invalid email or password. Please try again';
 
   @override
   String get loginSuccessTitle => 'Login Successful';
 
   @override
-  String get loginSuccessDescription =>
-      'Welcome back! Redirecting to home screen';
+  String get loginSuccessDescription => 'Welcome back! Redirecting to home screen';
 
   @override
   String get signUpDescription => 'Create an new account';
@@ -127,12 +119,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordEmptyDescription => 'Please enter your password';
 
   @override
-  String get passwordTooShortDescription =>
-      'Password must be at least 6 characters long';
+  String get passwordTooShortDescription => 'Password must be at least 6 characters long';
 
   @override
-  String get passwordWeakDescription =>
-      'Password must contain upper, lower case letters and a number';
+  String get passwordWeakDescription => 'Password must contain upper, lower case letters and a number';
 
   @override
   String get pleaseVerifyYourEmail => 'Please verify your email first';
@@ -147,8 +137,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get googleSignInFailedDescription => 'Sign-in failed';
 
   @override
-  String get googleConfigErrorDescription =>
-      'Google Sign-In configuration error';
+  String get googleConfigErrorDescription => 'Google Sign-In configuration error';
 
   @override
   String get googleUnexpectedErrorDescription => 'Unexpected error occurred';
@@ -193,8 +182,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get internalErrorDescription => 'Internal error occurred';
 
   @override
-  String get accountExistsWithDifferentCredentialDescription =>
-      'Account exists with different login';
+  String get accountExistsWithDifferentCredentialDescription => 'Account exists with different login';
 
   @override
   String get credentialAlreadyInUseDescription => 'Credentials used elsewhere';
@@ -209,8 +197,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetPassword => 'Reset Password';
 
   @override
-  String get resetPasswordLabel =>
-      'Enter the email assoicated wth your account and we\'ll send an email with instuction to reset your password';
+  String get resetPasswordLabel => 'Enter the email assoicated wth your account and we\'ll send an email with instuction to reset your password';
 
   @override
   String get sendInstruction => 'Send Instruction';
@@ -222,19 +209,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reset => 'Reset';
 
   @override
-  String get expiredActionCodeDescription =>
-      'The link has expired. Please request a new one.';
+  String get expiredActionCodeDescription => 'The link has expired. Please request a new one.';
 
   @override
-  String get invalidActionCodeDescription =>
-      'The link is invalid. Please request a new one.';
+  String get invalidActionCodeDescription => 'The link is invalid. Please request a new one.';
 
   @override
   String get emailVerifiedTitle => 'Email Verified!';
 
   @override
-  String get emailVerifiedSubtitle =>
-      'Your account is now active and ready to use. Thank you for joining us.';
+  String get emailVerifiedSubtitle => 'Your account is now active and ready to use. Thank you for joining us.';
 
   @override
   String get continueToSignInButton => 'Continue to Sign In';
@@ -249,8 +233,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signin_success => 'Signed in successfully';
 
   @override
-  String get check_email_activation =>
-      'Please check your email to activate your account.';
+  String get check_email_activation => 'Please check your email to activate your account.';
 
   @override
   String get forget_password_sent => 'Sent successfully';
@@ -274,12 +257,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get confirm => 'Confirm';
 
   @override
-  String get invalid_or_expired_link =>
-      'The link is invalid, expired, or has already been used. Please request a new one.';
+  String get invalid_or_expired_link => 'The link is invalid, expired, or has already been used. Please request a new one.';
 
   @override
-  String get unexpected_error =>
-      'An unexpected error occurred. Please try again.';
+  String get unexpected_error => 'An unexpected error occurred. Please try again.';
 
   @override
   String get home => 'Home';
@@ -345,8 +326,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emptyCartTitle => 'Your Cart is Empty';
 
   @override
-  String get emptyCartSubtitle =>
-      'Looks like you haven\'t added anything to your cart yet. Let\'s go find something you\'ll love!';
+  String get emptyCartSubtitle => 'Looks like you haven\'t added anything to your cart yet. Let\'s go find something you\'ll love!';
 
   @override
   String get continueShopping => 'Continue Shopping';
@@ -388,8 +368,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get reviewsLoadingError => 'Something went wrong. Please try again.';
 
   @override
-  String get noReviewsYet =>
-      'No reviews yet. Be the first to share your thoughts!';
+  String get noReviewsYet => 'No reviews yet. Be the first to share your thoughts!';
 
   @override
   String get addReviewTitle => 'Write a Review';
@@ -482,22 +461,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get streetEmptyDescription => 'Street cannot be empty.';
 
   @override
-  String get streetTooShortDescription =>
-      'Street is too short, must be at least 5 characters.';
+  String get streetTooShortDescription => 'Street is too short, must be at least 5 characters.';
 
   @override
   String get cityEmptyDescription => 'City cannot be empty.';
 
   @override
-  String get cityTooShortDescription =>
-      'City is too short, must be at least 2 characters.';
+  String get cityTooShortDescription => 'City is too short, must be at least 2 characters.';
 
   @override
   String get countryEmptyDescription => 'Country cannot be empty.';
 
   @override
-  String get countryTooShortDescription =>
-      'Country is too short, must be at least 2 characters.';
+  String get countryTooShortDescription => 'Country is too short, must be at least 2 characters.';
 
   @override
   String get phoneEmptyDescription => 'Phone number cannot be empty.';
@@ -506,8 +482,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get phoneInvalidDescription => 'Please enter a valid phone number.';
 
   @override
-  String get phoneLengthDescription =>
-      'Phone number must be between 8 and 15 digits.';
+  String get phoneLengthDescription => 'Phone number must be between 8 and 15 digits.';
 
   @override
   String get uploadImage => 'Upload Image';
@@ -564,8 +539,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get orderPlacedSuccessfully => 'Order Placed!';
 
   @override
-  String get orderSuccessSubtitle =>
-      'Your order will be delivered soon.\nThank you for shopping with us!';
+  String get orderSuccessSubtitle => 'Your order will be delivered soon.\nThank you for shopping with us!';
 
   @override
   String get backToHome => 'Back to Home';
@@ -672,6 +646,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shareToOtherApps => 'Share to other apps';
+
+  @override
+  String get moveToRequests => 'Move to Requests';
 
   @override
   String get areYouSureToLogout => 'Are you sure you want to log out?';
