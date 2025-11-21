@@ -642,6 +642,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get noRequestsYet => 'لا توجد طلبات بعد';
 
   @override
+  String get youRestricted => 'لقد حظرت هذا المستخدم';
+
+  @override
+  String get youRestrictedBy => 'أنت محظور من هذا المستخدم';
+
+  @override
+  String get moveToChats => 'إلغاء الحظر والعودة للمحادثات';
+
+  @override
+  String get restrictedTab => 'المحظورون';
+
+  @override
+  String get noRestrictedYet => 'لا يوجد مستخدمون محظورون';
+
+  @override
   String get sendTo => 'أرسل إلى...';
 
   @override
@@ -649,6 +664,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get moveToRequests => 'نقل إلى الطلبات';
+
+  @override
+  String get moveToRestricted => 'حظر ونقل للمحظورين';
 
   @override
   String get areYouSureToLogout => 'هل أنت متأكد أنك تريد تسجيل الخروج؟';

@@ -281,11 +281,16 @@
   "daysAgo": "{days}d ago",
   "noChatsYet": "No chats yet",
   "noRequestsYet": "No requests yet",
-
+  "youRestricted": "You restricted this user",
+  "youRestrictedBy": "You're restricted by this user",
+  "moveToChats": "Unblock & move to chats",
+  "restrictedTab": "Blocked",
+  "noRestrictedYet": "No blocked users",
   "sendTo": "Send to...",
   "shareToOtherApps": "Share to other apps",
-
   "moveToRequests": "Move to Requests",
+  "moveToRestricted": "move to restricted",
+
 
   "areYouSureToLogout": "Are you sure you want to log out?",
   "cancel": "Cancel",

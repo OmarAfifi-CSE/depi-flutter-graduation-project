@@ -120,18 +120,23 @@ class ChatsScreen extends StatelessWidget {
                               allConversations.where((convo) {
                                 return convo.me.conversationState ==
                                         'pending' ||
-                                    convo.me.conversationState == null ||
-                                    convo.me.conversationState == 'restricted';
+                                    convo.me.conversationState == null;
                               }).toList();
-
+                          final List<ConversationModel> restricted =
+                              allConversations.where((convo) {
+                                return convo.me.conversationState ==
+                                    'restricted';
+                              }).toList();
                           return DefaultTabController(
-                            length: 2,
+                            length: restricted.isEmpty ? 2 : 3,
                             child: Column(
                               children: [
                                 TabBar(
                                   labelColor: theme.primaryColor,
                                   unselectedLabelColor: appColors.secondaryText,
                                   indicatorColor: theme.primaryColor,
+                                  padding: EdgeInsets.zero,
+                                  labelPadding: EdgeInsets.zero,
                                   labelStyle: TextStyle(
                                     fontFamily: AppFonts.mainFontName,
                                     fontSize: 14.sp,
@@ -186,6 +191,50 @@ class ChatsScreen extends StatelessWidget {
                                         ],
                                       ),
                                     ),
+                                    if (restricted.isNotEmpty)
+                                      Tab(
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            Text(
+                                              loc.restrictedTab,
+                                              strutStyle: const StrutStyle(
+                                                forceStrutHeight: true,
+                                              ),
+                                            ),
+                                            if (restricted.isNotEmpty) ...[
+                                              SizedBox(width: 8.w),
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                  horizontal: 8.w,
+                                                  vertical: 2.h,
+                                                ),
+                                                decoration: BoxDecoration(
+                                                  color: theme.primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        12.r,
+                                                      ),
+                                                ),
+                                                child: CustomText(
+                                                  data:
+                                                      NumberLocalizer.formatNumber(
+                                                        restricted.length,
+                                                        Localizations.localeOf(
+                                                          context,
+                                                        ).languageCode,
+                                                      ),
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 11.sp,
+                                                  forceStrutHeight: true,
+                                                  color: theme
+                                                      .scaffoldBackgroundColor,
+                                                ),
+                                              ),
+                                            ],
+                                          ],
+                                        ),
+                                      ),
                                   ],
                                 ),
                                 SizedBox(height: 10.h),
@@ -224,6 +273,7 @@ class ChatsScreen extends StatelessWidget {
                                                 return MessageRow(
                                                   conversationModel:
                                                       pendingRequests[index],
+                                                  openRestrictOption: true,
                                                 );
                                               },
                                             )
@@ -235,6 +285,19 @@ class ChatsScreen extends StatelessWidget {
                                                 color: appColors.secondaryText,
                                               ),
                                             ),
+                                      if (restricted.isNotEmpty)
+                                        ListView.separated(
+                                          separatorBuilder: (context, index) =>
+                                              SizedBox(height: 20.h),
+                                          itemCount: restricted.length,
+                                          itemBuilder: (context, index) {
+                                            return MessageRow(
+                                              conversationModel:
+                                                  restricted[index],
+                                              openRestrictOption: false,
+                                            );
+                                          },
+                                        ),
                                     ],
                                   ),
                                 ),

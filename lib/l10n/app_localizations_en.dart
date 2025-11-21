@@ -642,6 +642,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noRequestsYet => 'No requests yet';
 
   @override
+  String get youRestricted => 'You restricted this user';
+
+  @override
+  String get youRestrictedBy => 'You\'re restricted by this user';
+
+  @override
+  String get moveToChats => 'Unblock & move to chats';
+
+  @override
+  String get restrictedTab => 'Blocked';
+
+  @override
+  String get noRestrictedYet => 'No blocked users';
+
+  @override
   String get sendTo => 'Send to...';
 
   @override
@@ -649,6 +664,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get moveToRequests => 'Move to Requests';
+
+  @override
+  String get moveToRestricted => 'move to restricted';
 
   @override
   String get areYouSureToLogout => 'Are you sure you want to log out?';

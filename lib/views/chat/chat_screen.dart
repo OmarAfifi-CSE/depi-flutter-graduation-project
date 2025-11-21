@@ -1,12 +1,13 @@
+import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
-import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/styling/app_fonts.dart';
+import 'package:batrina/views/chat/users_state.dart';
 import 'package:batrina/views/chat/widgets/chat_header.dart';
 import 'package:batrina/views/chat/widgets/message.dart';
 import 'package:batrina/widgets/back_arrow.dart';
@@ -17,6 +18,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -24,16 +26,13 @@ import 'package:go_router/go_router.dart';
 class ChatScreen extends StatefulWidget {
   final String chatId;
   final String otherUserId;
-
   final UserModel anotherUser;
-  final bool isPending;
   final MessageModel? initialMessage;
   const ChatScreen({
     super.key,
     required this.chatId,
     required this.otherUserId,
     required this.anotherUser,
-    required this.isPending,
     this.initialMessage,
   });
 
@@ -46,7 +45,6 @@ class _ChatScreenState extends State<ChatScreen> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   late final String _myId;
-  late bool isPending;
   // to avoid loading when rebuild
   late final Stream<QuerySnapshot> _messagesStream;
 
@@ -55,7 +53,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    isPending = widget.isPending;
     showImage = widget.initialMessage != null;
     _messagesStream = _firestore
         .collection('messages')
@@ -166,13 +163,14 @@ class _ChatScreenState extends State<ChatScreen> {
           }
 
           transaction.set(messageRef, newMessage.toJson());
+          print(widget.chatId);
 
           transaction.set(convoRef, {
             'lastMessage': finalMessageText,
             'lastMessageSenderId': _myId,
             'lastMessageTime': FieldValue.serverTimestamp(),
             'participants': [_myId, widget.otherUserId],
-
+            'id': widget.chatId,
             'participantsData': {
               _myId: {
                 'name': FireBaseFireStore.currentUser!.name,
@@ -198,17 +196,32 @@ class _ChatScreenState extends State<ChatScreen> {
         });
   }
 
-  void reset() {
-    setState(() {
-      isPending = false;
-    });
-  }
+  // void reset() {
+  //   setState(() {
+  //     widget.userStates.isPending = false;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
+    LocalChatController localChatController = context
+        .watch<LocalChatController>();
     final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    UserStates? userStates;
+    userStates = localChatController.getUserStates(chatId: widget.chatId);
+    print("user state is" + userStates.toString());
+
+    if (userStates == null) {
+      userStates = UserStates(
+        isPending: false,
+        isAnotherUserRestricted: false,
+        isAnotherUserPending: true,
+        isRestricted: false,
+      );
+    }
+    print(userStates.isAnotherUserPending);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -323,15 +336,16 @@ class _ChatScreenState extends State<ChatScreen> {
                           chatId: widget.chatId,
                           otherId: widget.otherUserId,
                           otherUser: widget.anotherUser,
-                          isPending: isPending,
-                          resetChatPage: reset,
+                          userStates: userStates,
                         ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 10.h),
-                isPending
+                userStates.isPending ||
+                        userStates.isRestricted ||
+                        userStates.isAnotherUserRestricted
                     ? const SizedBox()
                     : SafeArea(
                         child: Row(

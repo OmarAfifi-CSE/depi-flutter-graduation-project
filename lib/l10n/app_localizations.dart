@@ -1337,6 +1337,36 @@ abstract class AppLocalizations {
   /// **'No requests yet'**
   String get noRequestsYet;
 
+  /// No description provided for @youRestricted.
+  ///
+  /// In en, this message translates to:
+  /// **'You restricted this user'**
+  String get youRestricted;
+
+  /// No description provided for @youRestrictedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re restricted by this user'**
+  String get youRestrictedBy;
+
+  /// No description provided for @moveToChats.
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock & move to chats'**
+  String get moveToChats;
+
+  /// No description provided for @restrictedTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked'**
+  String get restrictedTab;
+
+  /// No description provided for @noRestrictedYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No blocked users'**
+  String get noRestrictedYet;
+
   /// No description provided for @sendTo.
   ///
   /// In en, this message translates to:
@@ -1354,6 +1384,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Move to Requests'**
   String get moveToRequests;
+
+  /// No description provided for @moveToRestricted.
+  ///
+  /// In en, this message translates to:
+  /// **'move to restricted'**
+  String get moveToRestricted;
 
   /// No description provided for @areYouSureToLogout.
   ///

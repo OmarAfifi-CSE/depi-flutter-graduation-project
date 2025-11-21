@@ -187,19 +187,19 @@ class _ChatSearchScreenState extends State<ChatSearchScreen> {
                                 ? Consumer<LocalChatController>(
                                     builder: (context, value, child) {
                                       List<ConversationModel> searchedList =
-                                          value.conversationModels
-                                              .where(
-                                                (element) => element
-                                                    .otherUser
-                                                    .email
+                                          value.conversationModels.where((
+                                            element,
+                                          ) {
+                                            return element.otherUser.email
                                                     .toLowerCase()
                                                     .contains(
                                                       editingController.text
                                                           .trim()
                                                           .toLowerCase(),
-                                                    ),
-                                              )
-                                              .toList();
+                                                    ) &&
+                                                element.me.conversationState ==
+                                                    'accepted';
+                                          }).toList();
                                       return ListView.separated(
                                         itemCount: searchedList.length > 3
                                             ? 3
@@ -391,12 +391,16 @@ class _ChatSearchScreenState extends State<ChatSearchScreen> {
         final String otherUserId = user.id;
 
         final String chatId = getCompositeChatId(myId, otherUserId);
+        final LocalChatController localChatController = context
+            .read<LocalChatController>();
+
         context.push(
           '/chatScreen/$chatId/$otherUserId',
           extra: {
             "anotherUserModel": user,
-            "isPending": false,
+
             'initialMessage': widget.messageModel,
+            'provider': localChatController,
           },
         );
       },

@@ -543,16 +543,19 @@ class RouterGenerationConfig {
             final String? chatId = state.pathParameters['chatId'];
             final String? otherUserId = state.pathParameters['otherUserId'];
             final extras = state.extra as Map<String, dynamic>;
-            final bool isPending = extras['isPending'];
             final UserModel anotherUserModel = extras['anotherUserModel'];
             final MessageModel? messageModel = extras['initialMessage'];
+            final LocalChatController? refreshChatScreen = extras['provider'];
+            print(refreshChatScreen);
             return CustomTransitionPage(
-              child: ChatScreen(
-                chatId: chatId!,
-                otherUserId: otherUserId!,
-                anotherUser: anotherUserModel,
-                isPending: isPending,
-                initialMessage: messageModel,
+              child: ChangeNotifierProvider.value(
+                value: refreshChatScreen,
+                child: ChatScreen(
+                  chatId: chatId!,
+                  otherUserId: otherUserId!,
+                  anotherUser: anotherUserModel,
+                  initialMessage: messageModel,
+                ),
               ),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),

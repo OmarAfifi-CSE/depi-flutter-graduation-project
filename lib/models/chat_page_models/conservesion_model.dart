@@ -71,6 +71,12 @@ class ConversationModel {
     return 0;
   }
 
+  String get otherUserId {
+    final myId = FirebaseAuth.instance.currentUser!.uid;
+
+    return participants.firstWhere((id) => id != myId);
+  }
+
   String timeAgo(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
     final localeCode = Localizations.localeOf(context).languageCode;

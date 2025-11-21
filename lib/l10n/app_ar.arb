@@ -279,11 +279,16 @@
   "daysAgo": "منذ {days}ي",
   "noChatsYet": "لا توجد محادثات بعد",
   "noRequestsYet": "لا توجد طلبات بعد",
-
+  "youRestricted": "لقد حظرت هذا المستخدم",
+  "youRestrictedBy": "أنت محظور من هذا المستخدم",
+  "moveToChats": "إلغاء الحظر والعودة للمحادثات",
+  "restrictedTab": "المحظورون",
+  "noRestrictedYet": "لا يوجد مستخدمون محظورون",
   "sendTo": "أرسل إلى...",
-
   "moveToRequests": "نقل إلى الطلبات",
   "shareToOtherApps": "شارك مع تطبيقات أخرى",
+  "moveToRestricted": "حظر ونقل للمحظورين",
+
 
   "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "cancel": "إلغاء",
