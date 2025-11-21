@@ -275,6 +275,8 @@
   "noRequestsYet": "No requests yet",
 
   "sendTo": "Send to...",
-  "shareToOtherApps": "Share to other apps"
+  "shareToOtherApps": "Share to other apps",
+
+  "moveToRequests": "Move to Requests"
 
 }

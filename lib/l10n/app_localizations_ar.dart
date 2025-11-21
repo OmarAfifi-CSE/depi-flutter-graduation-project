@@ -622,4 +622,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get shareToOtherApps => 'شارك مع تطبيقات أخرى';
+
+  @override
+  String get moveToRequests => 'نقل إلى الطلبات';
 }

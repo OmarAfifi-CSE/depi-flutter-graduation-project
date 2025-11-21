@@ -622,4 +622,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shareToOtherApps => 'Share to other apps';
+
+  @override
+  String get moveToRequests => 'Move to Requests';
 }

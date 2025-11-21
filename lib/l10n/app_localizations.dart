@@ -1300,6 +1300,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Share to other apps'**
   String get shareToOtherApps;
+
+  /// No description provided for @moveToRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Move to Requests'**
+  String get moveToRequests;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

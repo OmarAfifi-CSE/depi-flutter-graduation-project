@@ -10,6 +10,7 @@ class ParticipantData {
   final String email;
   final String role;
   final int unreadCount;
+  final String? conversationState;
 
   ParticipantData({
     required this.name,
@@ -17,6 +18,7 @@ class ParticipantData {
     required this.unreadCount,
     required this.email,
     required this.role,
+    required this.conversationState,
   });
 
   factory ParticipantData.fromMap(Map<String, dynamic> json) {
@@ -26,6 +28,7 @@ class ParticipantData {
       name: json['name'] ?? '',
       photoUrl: json['photoUrl'] ?? '',
       unreadCount: json['unreadCount'] ?? 0,
+      conversationState: json['conversationState'],
     );
   }
 
@@ -36,6 +39,7 @@ class ParticipantData {
       'unreadCount': unreadCount,
       'role': role,
       'email': email,
+      'conversationState': conversationState,
     };
   }
 }
@@ -47,7 +51,6 @@ class ConversationModel {
   final String lastMessage;
   final String lastMessageSenderId;
   final DateTime? lastMessageTime;
-  final String status;
 
   ConversationModel({
     required this.id,
@@ -56,7 +59,6 @@ class ConversationModel {
     required this.lastMessage,
     required this.lastMessageSenderId,
     required this.lastMessageTime,
-    required this.status,
   });
 
   int get myUnreadCount {
@@ -140,6 +142,14 @@ class ConversationModel {
         .value;
   }
 
+  ParticipantData get me {
+    return participantsData.entries
+        .firstWhere(
+          (entry) => entry.key == FirebaseAuth.instance.currentUser!.uid,
+        )
+        .value;
+  }
+
   factory ConversationModel.fromJson(Map<String, dynamic> json) {
     Map<String, ParticipantData> participantsMap = {};
     (json['participantsData'] as Map<String, dynamic>).forEach((key, value) {
@@ -153,7 +163,6 @@ class ConversationModel {
       lastMessage: json['lastMessage'] ?? '',
       lastMessageSenderId: json['lastMessageSenderId'] ?? '',
       lastMessageTime: (json['lastMessageTime'] as Timestamp?)?.toDate(),
-      status: json['status'],
     );
   }
 
@@ -171,7 +180,6 @@ class ConversationModel {
       'lastMessage': lastMessage,
       'lastMessageSenderId': lastMessageSenderId,
       'lastMessageTime': lastMessageTime, // تحويل لـ Timestamp
-      'status': status,
     };
   }
 }

@@ -34,6 +34,8 @@ dependencies:
   flutter_card_swiper: ^6.0.0
   image_picker: ^1.2.0
   share_plus: ^12.0.1
+  focused_menu: ^1.0.5
+  pull_down_button: ^0.10.2
 
 
 dev_dependencies:

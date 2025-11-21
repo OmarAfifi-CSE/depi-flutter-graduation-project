@@ -273,5 +273,7 @@
   "noRequestsYet": "لا توجد طلبات بعد",
 
   "sendTo": "أرسل إلى...",
-  "shareToOtherApps": "شارك مع تطبيقات أخرى"
+  "shareToOtherApps": "شارك مع تطبيقات أخرى",
+
+  "moveToRequests": "نقل إلى الطلبات"
 }
