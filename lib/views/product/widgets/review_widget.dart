@@ -48,6 +48,7 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                 role: widget.reviewModel.role ?? '',
                 name: widget.reviewModel.userName,
                 email: widget.reviewModel.email,
+                picture: widget.reviewModel.userImage,
               );
 
               final String otherUserId = user.id;
@@ -64,11 +65,11 @@ class _ReviewWidgetState extends State<ReviewWidget> {
                 imageUrl: productProvider.productModel.thumbnail,
                 readBy: [],
               );
+
               context.push(
                 '/chatScreen/$chatId/$otherUserId',
                 extra: {
                   "anotherUserModel": user,
-                  "isPending": false,
                   'initialMessage': messageModel,
                 },
               );

@@ -1,6 +1,6 @@
-import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:batrina/routing/app_routes.dart';
@@ -18,7 +18,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -47,6 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
   late final String _myId;
   // to avoid loading when rebuild
   late final Stream<QuerySnapshot> _messagesStream;
+  late final Stream<DocumentSnapshot<Map<String, dynamic>>> _conversationStream;
 
   bool showImage = false;
 
@@ -61,6 +61,11 @@ class _ChatScreenState extends State<ChatScreen> {
         .orderBy('timestamp', descending: true)
         .snapshots();
     _myId = FirebaseAuth.instance.currentUser!.uid;
+    _conversationStream = _firestore
+        .collection('conversations')
+        .doc(widget.chatId)
+        .snapshots()
+        .asBroadcastStream();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _updateMyPresence(true);
@@ -196,32 +201,12 @@ class _ChatScreenState extends State<ChatScreen> {
         });
   }
 
-  // void reset() {
-  //   setState(() {
-  //     widget.userStates.isPending = false;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
-    LocalChatController localChatController = context
-        .watch<LocalChatController>();
     final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
-    UserStates? userStates;
-    userStates = localChatController.getUserStates(chatId: widget.chatId);
-    print("user state is" + userStates.toString());
 
-    if (userStates == null) {
-      userStates = UserStates(
-        isPending: false,
-        isAnotherUserRestricted: false,
-        isAnotherUserPending: true,
-        isRestricted: false,
-      );
-    }
-    print(userStates.isAnotherUserPending);
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -330,215 +315,325 @@ class _ChatScreenState extends State<ChatScreen> {
                           );
                         },
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0.r),
-                        child: ChatHeader(
-                          chatId: widget.chatId,
-                          otherId: widget.otherUserId,
-                          otherUser: widget.anotherUser,
-                          userStates: userStates,
-                        ),
+                      StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                        stream: _conversationStream,
+                        builder: (context, snapshot) {
+                          UserStates userStates;
+                          ConversationModel? conversationModel;
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const SizedBox();
+                          }
+                          if (snapshot.hasError) {
+                            return const SizedBox();
+                          }
+                          if (!snapshot.hasData || !snapshot.data!.exists) {
+                            userStates = UserStates(
+                              isPending: false,
+                              isAnotherUserRestricted: false,
+                              isAnotherUserPending: true,
+                              isRestricted: false,
+                            );
+                            print("here");
+                            print(widget.anotherUser.picture);
+                          } else {
+                            conversationModel = ConversationModel.fromJson(
+                              snapshot.data!.data()!,
+                            );
+                            userStates = UserStates.fromConvModel(
+                              conversationModel,
+                            );
+                            UserModel userModel = UserModel(
+                              id: conversationModel.otherUserId,
+                              role: conversationModel.otherUser.role,
+                              name: conversationModel.otherUser.name,
+                              email: conversationModel.otherUser.email,
+                              picture: conversationModel.otherUser.photoUrl,
+                            );
+                            return Padding(
+                              padding: EdgeInsets.all(8.0.r),
+                              child: ChatHeader(
+                                chatId: widget.chatId,
+                                otherId: userModel.id,
+                                otherUser: userModel,
+                                userStates: userStates,
+                              ),
+                            );
+                          }
+                          return Padding(
+                            padding: EdgeInsets.all(8.0.r),
+                            child: ChatHeader(
+                              chatId: widget.chatId,
+                              otherId: widget.anotherUser.id,
+                              otherUser: widget.anotherUser,
+                              userStates: userStates,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: 10.h),
-                userStates.isPending ||
-                        userStates.isRestricted ||
-                        userStates.isAnotherUserRestricted
-                    ? const SizedBox()
-                    : SafeArea(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  showImage
-                                      ? Container(
-                                          decoration: BoxDecoration(
-                                            color:
-                                                theme.scaffoldBackgroundColor,
-                                            borderRadius: BorderRadius.vertical(
-                                              top: Radius.circular(20.r),
-                                            ),
-                                            boxShadow: [
-                                              BoxShadow(
-                                                color: theme.primaryColor
-                                                    .withValues(alpha: .15),
-                                                blurRadius: 10,
-                                                spreadRadius: -3,
-                                                offset: const Offset(0, -5),
-                                              ),
-                                            ],
-                                          ),
-                                          padding: EdgeInsets.all(10.r),
-                                          child: Row(
-                                            children: [
-                                              widget.initialMessage?.imageUrl !=
-                                                          null &&
-                                                      widget
-                                                          .initialMessage!
-                                                          .imageUrl!
-                                                          .isNotEmpty
-                                                  ? SizedBox(
-                                                      width: 30.w,
-                                                      height: 30.h,
-                                                      child: Material(
-                                                        borderRadius:
-                                                            BorderRadius.circular(
-                                                              12.r,
-                                                            ),
-                                                        clipBehavior:
-                                                            Clip.antiAlias,
-                                                        child: BuildDynamicImage(
-                                                          imageUrl:
-                                                              widget
-                                                                  .initialMessage
-                                                                  ?.imageUrl ??
-                                                              "",
-                                                        ),
-                                                      ),
-                                                    )
-                                                  : Container(
-                                                      width: 30.w,
-                                                      height: 30.h,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadiusGeometry.circular(
-                                                              12.r,
-                                                            ),
-                                                        image: const DecorationImage(
-                                                          image: NetworkImage(
-                                                            "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+
+                StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
+                  stream: _conversationStream,
+                  builder: (context, snapshot) {
+                    UserStates userStates;
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const SizedBox();
+                    }
+                    if (snapshot.hasError) {
+                      return const SizedBox();
+                    }
+                    if (!snapshot.hasData || !snapshot.data!.exists) {
+                      userStates = UserStates(
+                        isPending: false,
+                        isAnotherUserRestricted: false,
+                        isAnotherUserPending: true,
+                        isRestricted: false,
+                      );
+                    } else {
+                      ConversationModel conversation =
+                          ConversationModel.fromJson(snapshot.data!.data()!);
+                      userStates = UserStates.fromConvModel(conversation);
+                    }
+
+                    return Column(
+                      children: [
+                        userStates.isPending ||
+                                userStates.isRestricted ||
+                                userStates.isAnotherUserRestricted
+                            ? const SizedBox()
+                            : SafeArea(
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          showImage
+                                              ? Container(
+                                                  decoration: BoxDecoration(
+                                                    color: theme
+                                                        .scaffoldBackgroundColor,
+                                                    borderRadius:
+                                                        BorderRadius.vertical(
+                                                          top: Radius.circular(
+                                                            20.r,
                                                           ),
-                                                          fit: BoxFit.cover,
+                                                        ),
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                        color: theme
+                                                            .primaryColor
+                                                            .withValues(
+                                                              alpha: .15,
+                                                            ),
+                                                        blurRadius: 10,
+                                                        spreadRadius: -3,
+                                                        offset: const Offset(
+                                                          0,
+                                                          -5,
                                                         ),
                                                       ),
-                                                    ),
-                                              SizedBox(width: 5.w),
-                                              Expanded(
-                                                child: CustomText(
-                                                  textAlign: TextAlign.start,
-                                                  data: widget
-                                                      .initialMessage!
-                                                      .text,
-                                                  fontSize: 12.sp,
-                                                  fontWeight: FontWeight.w500,
-                                                  maxLines: 1,
-                                                  forceStrutHeight: true,
+                                                    ],
+                                                  ),
+                                                  padding: EdgeInsets.all(10.r),
+                                                  child: Row(
+                                                    children: [
+                                                      widget.initialMessage?.imageUrl !=
+                                                                  null &&
+                                                              widget
+                                                                  .initialMessage!
+                                                                  .imageUrl!
+                                                                  .isNotEmpty
+                                                          ? SizedBox(
+                                                              width: 30.w,
+                                                              height: 30.h,
+                                                              child: Material(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                      12.r,
+                                                                    ),
+                                                                clipBehavior: Clip
+                                                                    .antiAlias,
+                                                                child: BuildDynamicImage(
+                                                                  imageUrl:
+                                                                      widget
+                                                                          .initialMessage
+                                                                          ?.imageUrl ??
+                                                                      "",
+                                                                ),
+                                                              ),
+                                                            )
+                                                          : Container(
+                                                              width: 30.w,
+                                                              height: 30.h,
+                                                              decoration: BoxDecoration(
+                                                                borderRadius:
+                                                                    BorderRadiusGeometry.circular(
+                                                                      12.r,
+                                                                    ),
+                                                                image: const DecorationImage(
+                                                                  image: NetworkImage(
+                                                                    "https://as2.ftcdn.net/v2/jpg/00/64/67/63/1000_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+                                                                  ),
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                      SizedBox(width: 5.w),
+                                                      Expanded(
+                                                        child: CustomText(
+                                                          textAlign:
+                                                              TextAlign.start,
+                                                          data: widget
+                                                              .initialMessage!
+                                                              .text,
+                                                          fontSize: 12.sp,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          maxLines: 1,
+                                                          forceStrutHeight:
+                                                              true,
+                                                          fontFamily: AppFonts
+                                                              .englishFontFamily,
+                                                        ),
+                                                      ),
+                                                      SizedBox(width: 5.w),
+
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          setState(() {
+                                                            showImage = false;
+                                                          });
+                                                        },
+                                                        child: const Icon(
+                                                          Icons.close,
+                                                          color: Colors.red,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                )
+                                              : const SizedBox(),
+                                          SizedBox(
+                                            child: TextField(
+                                              controller: _messageController,
+                                              maxLines: 5,
+                                              minLines: 1,
+                                              keyboardType:
+                                                  TextInputType.multiline,
+                                              style: TextStyle(
+                                                fontFamily:
+                                                    AppFonts.englishFontFamily,
+                                                color: theme.primaryColor,
+                                                fontSize: 14.sp,
+                                              ),
+
+                                              decoration: InputDecoration(
+                                                hintText: loc!.typeMessage,
+                                                hintStyle: TextStyle(
                                                   fontFamily: AppFonts
                                                       .englishFontFamily,
+                                                  color: theme.dividerColor,
+                                                  fontSize: 14.sp,
                                                 ),
-                                              ),
-                                              SizedBox(width: 5.w),
-
-                                              GestureDetector(
-                                                onTap: () {
-                                                  setState(() {
-                                                    showImage = false;
-                                                  });
-                                                },
-                                                child: const Icon(
-                                                  Icons.close,
-                                                  color: Colors.red,
+                                                contentPadding:
+                                                    EdgeInsets.symmetric(
+                                                      horizontal: 20.w,
+                                                      vertical: 10.h,
+                                                    ),
+                                                border: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: appColors.textField!,
+                                                    width: 1.2.w,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                        Radius.circular(30.r),
+                                                      ),
                                                 ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color: appColors
+                                                            .textField!,
+                                                        width: 1.2.w,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                            Radius.circular(
+                                                              30.r,
+                                                            ),
+                                                          ),
+                                                    ),
+                                                disabledBorder:
+                                                    OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color: appColors
+                                                            .textField!,
+                                                        width: 1.2.w,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                            Radius.circular(
+                                                              30.r,
+                                                            ),
+                                                          ),
+                                                    ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color: appColors
+                                                            .textField!,
+                                                        width: 1.2.w,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                            Radius.circular(
+                                                              30.r,
+                                                            ),
+                                                          ),
+                                                    ),
                                               ),
-                                            ],
+                                            ),
                                           ),
-                                        )
-                                      : const SizedBox(),
-                                  SizedBox(
-                                    child: TextField(
-                                      controller: _messageController,
-                                      maxLines: 5,
-                                      minLines: 1,
-                                      keyboardType: TextInputType.multiline,
-                                      style: TextStyle(
-                                        fontFamily: AppFonts.englishFontFamily,
-                                        color: theme.primaryColor,
-                                        fontSize: 14.sp,
+                                        ],
                                       ),
+                                    ),
+                                    SizedBox(width: 10.w),
+                                    GestureDetector(
+                                      onTap: _sendMessage,
 
-                                      decoration: InputDecoration(
-                                        hintText: loc!.typeMessage,
-                                        hintStyle: TextStyle(
-                                          fontFamily:
-                                              AppFonts.englishFontFamily,
-                                          color: theme.dividerColor,
-                                          fontSize: 14.sp,
+                                      child: Container(
+                                        width: 50.w,
+                                        height: 50.h,
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: theme.primaryColor,
                                         ),
-                                        contentPadding: EdgeInsets.symmetric(
-                                          horizontal: 20.w,
-                                          vertical: 10.h,
-                                        ),
-                                        border: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: appColors.textField!,
-                                            width: 1.2.w,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(30.r),
-                                          ),
-                                        ),
-                                        enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: appColors.textField!,
-                                            width: 1.2.w,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(30.r),
-                                          ),
-                                        ),
-                                        disabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: appColors.textField!,
-                                            width: 1.2.w,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(30.r),
-                                          ),
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: appColors.textField!,
-                                            width: 1.2.w,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(30.r),
+                                        child: Center(
+                                          child: SvgPicture.asset(
+                                            AppAssets.sendIcon,
+                                            colorFilter: ColorFilter.mode(
+                                              theme.scaffoldBackgroundColor,
+                                              BlendMode.srcIn,
+                                            ),
+                                            fit: BoxFit.scaleDown,
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            SizedBox(width: 10.w),
-                            GestureDetector(
-                              onTap: _sendMessage,
+                      ],
+                    );
+                  },
+                ),
 
-                              child: Container(
-                                width: 50.w,
-                                height: 50.h,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: theme.primaryColor,
-                                ),
-                                child: Center(
-                                  child: SvgPicture.asset(
-                                    AppAssets.sendIcon,
-                                    colorFilter: ColorFilter.mode(
-                                      theme.scaffoldBackgroundColor,
-                                      BlendMode.srcIn,
-                                    ),
-                                    fit: BoxFit.scaleDown,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                 SizedBox(height: 5.h),
               ],
             ),

@@ -153,9 +153,15 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
         ),
       );
     }
-    final acceptedList = state.conversations.where(
-      (element) => element.me.conversationState == 'accepted',
-    );
+    for (var p in state.conversations) {
+      print(p.me.conversationState);
+    }
+    final acceptedList = state.conversations
+        .where((element) => element.me.conversationState == 'accepted')
+        .toList();
+    for (var p in acceptedList) {
+      print(p.otherUser.name);
+    }
 
     return ChangeNotifierProvider(
       create: (context) => LocalChatController(),
@@ -165,8 +171,8 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) {
             ParticipantData? otherUser;
-            if (index < state.conversations.length) {
-              otherUser = state.conversations[index].otherUser;
+            if (index < acceptedList.length) {
+              otherUser = acceptedList[index].otherUser;
             }
 
             return SizedBox(
@@ -175,15 +181,10 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
                 onTap: () async {
                   if (index < acceptedList.length) {
                     final String myId = FirebaseAuth.instance.currentUser!.uid;
-                    final String otherUserId = state
-                        .conversations[index]
-                        .participants
+                    final String otherUserId = acceptedList[index].participants
                         .firstWhere((id) => id != myId);
 
                     final String chatId = getCompositeChatId(myId, otherUserId);
-                    LocalChatController localChatController = context
-                        .read<LocalChatController>();
-                    localChatController.updateList(state.conversations);
                     await context.push(
                       '/chatScreen/$chatId/$otherUserId',
                       extra: {
@@ -203,7 +204,6 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
                           imageUrl: productProvider.productModel.thumbnail,
                           readBy: [],
                         ),
-                        'provider': localChatController,
                       },
                     );
                     context.read<GetMessagesCubit>().getMessages();

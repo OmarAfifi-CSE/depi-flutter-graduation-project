@@ -1,4 +1,3 @@
-import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
@@ -6,13 +5,11 @@ import 'package:batrina/models/user_model.dart';
 import 'package:batrina/number_localizer.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/views/chat/users_state.dart';
 import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pull_down_button/pull_down_button.dart';
@@ -90,19 +87,11 @@ class MessageRow extends StatelessWidget {
 
                 final String chatId = getCompositeChatId(myId, otherUserId);
 
-                UserStates userStates = UserStates.fromConvModel(
-                  conversationModel,
-                );
-                LocalChatController localChatController = context
-                    .read<LocalChatController>();
-
                 context.push(
                   '/chatScreen/$chatId/$otherUserId',
                   extra: {
                     "anotherUserModel": userModel,
-                    "userStates": userStates,
                     'initialMessage': messageModel,
-                    'provider': localChatController,
                   },
                 );
               },
