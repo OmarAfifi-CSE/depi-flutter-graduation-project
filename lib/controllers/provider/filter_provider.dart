@@ -30,25 +30,12 @@ class FilterProvider with ChangeNotifier {
 
   String get selectedSort => _selectedSort;
 
-  int? _selectedRating;
+  int? _selectedRating=1;
 
   int? get rating => _selectedRating;
 
   final options = ['descending', 'ascending'];
 
-  // final categories = [
-  //   'Dresses',
-  //   'Jackets',
-  //   'Jeans',
-  //   'Shoes',
-  //   'Bags',
-  //   'Clothing',
-  //   'Shorts',
-  //   'Tops',
-  //   'Sneakers',
-  //   'Cots',
-  //   'Lingeries',
-  // ];
 
   void toggleCategory(String category) {
     if (_selectedCategories.contains(category)) {

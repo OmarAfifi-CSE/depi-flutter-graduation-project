@@ -30,6 +30,7 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
         filterProvider.priceRange.start,
         filterProvider.priceRange.end,
         filterProvider.rating,
+        filterProvider.selectedSort,
       );
     });
   }
