@@ -42,7 +42,9 @@ class _EditProductScreenState extends State<EditProductScreen> {
           title: CustomHeaderWidget(
             prefix: const BackArrow(),
             center: CustomText(
-              data: loc!.editProduct,
+              data: widget.productModel == null
+                  ? loc!.addProduct
+                  : loc!.editProduct,
               textAlign: TextAlign.center,
               fontSize: 22.sp,
               fontWeight: FontWeight.w700,

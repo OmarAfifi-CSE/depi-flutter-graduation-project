@@ -64,6 +64,16 @@ class FireBaseFireStore {
         );
       }
     } else {
+      QuerySnapshot<Map<String, dynamic>> oldVariants = await fireBaseFireStore
+          .collection("products")
+          .doc(product.id)
+          .collection("variants")
+          .get();
+
+      for (var doc in oldVariants.docs) {
+        await doc.reference.delete();
+      }
+
       await fireBaseFireStore
           .collection("products")
           .doc(product.id)
@@ -76,7 +86,6 @@ class FireBaseFireStore {
             .collection("variants")
             .doc(variant.id)
             .set(variant.toJson(), SetOptions(merge: true));
-        ;
       }
     }
   }

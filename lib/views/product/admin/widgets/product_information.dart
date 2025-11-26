@@ -108,6 +108,7 @@ class _ProductInformationState extends State<ProductInformation> {
           hint: loc.enterDescription,
           title: loc.description,
           onChanges: (value) => productFormProvider.setDescription(value!),
+          isEmail: true,
         ),
         SizedBox(height: 10.h),
 

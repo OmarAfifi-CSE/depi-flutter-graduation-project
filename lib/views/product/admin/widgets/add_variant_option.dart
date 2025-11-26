@@ -57,11 +57,11 @@ class _AddVariantOptionState extends State<AddVariantOption> {
           if (widget.productVariant == null)
             CustomText(
               data:
-                  "Add ${variantType == 'Clothing'
-                      ? loc!.size
+                  "${loc!.add} ${variantType == 'Clothing'
+                      ? loc.size
                       : variantType == 'Numeric'
-                      ? loc!.number
-                      : loc!.stock}",
+                      ? loc.number
+                      : loc.stock}",
               fontSize: 16.sp,
               fontWeight: FontWeight.bold,
             ),
@@ -73,7 +73,7 @@ class _AddVariantOptionState extends State<AddVariantOption> {
               children: [
                 CustomText(
                   data:
-                      "Select ${variantType == 'Clothing' ? loc!.size : loc!.number}",
+                      "${loc!.select} ${variantType == 'Clothing' ? loc!.size : loc!.number}",
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w500,
                 ),

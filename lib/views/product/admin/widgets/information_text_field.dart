@@ -32,43 +32,58 @@ class InformationTextField extends StatelessWidget {
       children: [
         CustomText(data: title, fontSize: 12.sp, fontWeight: FontWeight.w400),
         SizedBox(height: 5.h),
-        TextField(
-          controller: textEditingController,
-          maxLines: isEmail ? 5 : 1,
-          minLines: isEmail ? 1 : null,
-          keyboardType: isEmail ? TextInputType.multiline : null,
-          style: TextStyle(
-            fontFamily: AppFonts.englishFontFamily,
-            color: theme.primaryColor,
-            fontSize: 14.sp,
-          ),
-          onChanged: onChanges,
-          decoration: InputDecoration(
-            hintText: hint,
-            hintStyle: TextStyle(
+        Directionality(
+          textDirection: TextDirection.ltr,
+          child: TextField(
+            controller: textEditingController,
+            maxLines: isEmail ? 5 : 1,
+            minLines: isEmail ? 1 : null,
+            keyboardType: isEmail ? TextInputType.multiline : null,
+            style: TextStyle(
               fontFamily: AppFonts.englishFontFamily,
-              color: theme.dividerColor,
+              color: theme.primaryColor,
               fontSize: 14.sp,
             ),
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: 20.w,
-              vertical: 10.h,
-            ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide(color: appColors.textField!, width: 1.2.w),
-              borderRadius: BorderRadius.all(Radius.circular(12.r)),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: appColors.textField!, width: 1.2.w),
-              borderRadius: BorderRadius.all(Radius.circular(12.r)),
-            ),
-            disabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: appColors.textField!, width: 1.2.w),
-              borderRadius: BorderRadius.all(Radius.circular(12.r)),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: appColors.textField!, width: 1.2.w),
-              borderRadius: BorderRadius.all(Radius.circular(12.r)),
+            onChanged: onChanges,
+            decoration: InputDecoration(
+              hintText: hint,
+              hintStyle: TextStyle(
+                fontFamily: AppFonts.englishFontFamily,
+                color: theme.dividerColor,
+                fontSize: 14.sp,
+              ),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 20.w,
+                vertical: 10.h,
+              ),
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: appColors.textField!,
+                  width: 1.2.w,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(12.r)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: appColors.textField!,
+                  width: 1.2.w,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(12.r)),
+              ),
+              disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: appColors.textField!,
+                  width: 1.2.w,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(12.r)),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: appColors.textField!,
+                  width: 1.2.w,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(12.r)),
+              ),
             ),
           ),
         ),

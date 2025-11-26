@@ -47,6 +47,7 @@ class BuildDynamicImage extends StatelessWidget {
         fit: BoxFit.cover,
         width: width,
         height: height,
+        gaplessPlayback: true,
         errorBuilder: (context, error, stackTrace) => Container(
           color: Colors.grey[200],
           child: Icon(
