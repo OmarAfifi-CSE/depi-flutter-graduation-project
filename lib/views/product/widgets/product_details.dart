@@ -16,15 +16,14 @@ class _ProductDetailsState extends State<ProductDetails> {
   double _currentSheetSize = 0.16;
 
   double get initialSize {
-    final screenHeight = 1.sh; // الارتفاع الكامل للشاشة
-    final desiredHeight = 140.h; // الارتفاع اللي انت عايزه بالبيكسل
-    return desiredHeight / screenHeight; // النسبة المئوية
+    final screenHeight = 1.sh;
+    final desiredHeight = 140.h;
+    return desiredHeight / screenHeight;
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-
     final product = context.watch<ProductProvider>().productModel;
     return Scaffold(
       body: SafeArea(

@@ -9,6 +9,7 @@ class ProductProvider extends ChangeNotifier {
   late String? currentColorName;
   late String? currentSize;
   int currentQuantity = 1;
+  bool preview = false;
 
   ProductProvider({required this.productModel});
 

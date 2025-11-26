@@ -39,21 +39,45 @@ class FireBaseFireStore {
   }
 
   Future<void> addProduct(ProductModel product) async {
-    DocumentReference documentReference = await fireBaseFireStore
-        .collection("products")
-        .add(product.toJson());
+    if (product.id.isEmpty) {
+      DocumentReference<Map<String, dynamic>> documentReference =
+          fireBaseFireStore.collection("products").doc();
+      ProductModel productModelWithId = product.copyWith(
+        id: documentReference.id,
+      );
+      await documentReference.set(
+        productModelWithId.toJson(),
+        SetOptions(merge: true),
+      );
+      DocumentReference variantDocumentReference;
 
-    await documentReference.update({"id": documentReference.id});
+      for (var variant in product.variants) {
+        variantDocumentReference = documentReference
+            .collection("variants")
+            .doc();
+        ProductVariant productVariant = variant.copyWith(
+          id: variantDocumentReference.id,
+        );
+        await variantDocumentReference.set(
+          productVariant.toJson(),
+          SetOptions(merge: true),
+        );
+      }
+    } else {
+      await fireBaseFireStore
+          .collection("products")
+          .doc(product.id)
+          .set(product.toJson(), SetOptions(merge: true));
 
-    DocumentReference variantDocumentReference;
-
-    for (var variant in product.variants) {
-      variantDocumentReference = await documentReference
-          .collection("variants")
-          .add(variant.toJson());
-      await variantDocumentReference.update({
-        "id": variantDocumentReference.id,
-      });
+      for (var variant in product.variants) {
+        await fireBaseFireStore
+            .collection("products")
+            .doc(product.id)
+            .collection("variants")
+            .doc(variant.id)
+            .set(variant.toJson(), SetOptions(merge: true));
+        ;
+      }
     }
   }
 
@@ -108,7 +132,7 @@ class FireBaseFireStore {
             .doc(productID)
             .collection("variants")
             .get();
-
+        print(variantsSnap.docs.length);
         // 4. حوّل الـ variants لموديلات وأضفهم للمنتج
         if (variantsSnap.docs.isNotEmpty) {
           product.variants.addAll(
@@ -121,6 +145,7 @@ class FireBaseFireStore {
       }
       return null;
     } catch (e) {
+      print(e.toString());
       return null;
     }
   }

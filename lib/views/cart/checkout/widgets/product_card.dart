@@ -102,10 +102,10 @@ class _ProductCardState extends State<ProductCard> {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
 
     return Container(
-      width: widget.cartModel.size != "OneSize" ? 20.w : 70.w,
+      width: widget.cartModel.size != "Standard" ? 20.w : 70.w,
       height: 20.w,
       decoration: BoxDecoration(
-        shape: widget.cartModel.size != "OneSize"
+        shape: widget.cartModel.size != "Standard"
             ? BoxShape.circle
             : BoxShape.rectangle,
         color: theme.primaryColor,
@@ -113,7 +113,7 @@ class _ProductCardState extends State<ProductCard> {
       ),
       child: Center(
         child: CustomText(
-          data: widget.cartModel.size != "OneSize"
+          data: widget.cartModel.size != "Standard"
               ? widget.cartModel.size
               : "Standard",
           fontSize: 12.sp,
@@ -137,18 +137,11 @@ class _ProductCardState extends State<ProductCard> {
     final Color darkShadow = Colors.black.withValues(alpha: 0.2);
     final productColor = widget.cartModel.colorWidget;
     // Check its luminance (0.0 = black, 1.0 = white)
-    final bool isLightColor =
-        productColor.computeLuminance() > 0.5;
+    final bool isLightColor = productColor.computeLuminance() > 0.5;
 
-    final Color checkmarkColor = isLightColor
-        ? lightCheckmark
-        : darkCheckmark;
-    final Color borderColor = isLightColor
-        ? lightBorder
-        : darkBorder;
-    final Color shadowColor = isLightColor
-        ? lightShadow
-        : darkShadow;
+    final Color checkmarkColor = isLightColor ? lightCheckmark : darkCheckmark;
+    final Color borderColor = isLightColor ? lightBorder : darkBorder;
+    final Color shadowColor = isLightColor ? lightShadow : darkShadow;
     return Container(
       width: 20.w,
       height: 20.h,
@@ -157,19 +150,11 @@ class _ProductCardState extends State<ProductCard> {
         shape: BoxShape.circle,
         border: Border.all(color: borderColor, width: 1.w),
         boxShadow: [
-          BoxShadow(
-            color: shadowColor,
-            blurRadius: 2,
-            spreadRadius: 1,
-          ),
+          BoxShadow(color: shadowColor, blurRadius: 2, spreadRadius: 1),
         ],
       ),
       child: Center(
-        child: Icon(
-          Icons.check,
-          color: checkmarkColor,
-          size: 14.sp,
-        ),
+        child: Icon(Icons.check, color: checkmarkColor, size: 14.sp),
       ),
     );
   }

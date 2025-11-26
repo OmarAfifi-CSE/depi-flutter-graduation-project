@@ -1408,6 +1408,306 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to log out: \'{errorMessage}\''**
   String failedToLogout(Object errorMessage);
+
+  /// No description provided for @pleaseEnterUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a URL'**
+  String get pleaseEnterUrl;
+
+  /// No description provided for @invalidUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid URL'**
+  String get invalidUrl;
+
+  /// No description provided for @pasteImagesUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Paste image URLs'**
+  String get pasteImagesUrl;
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @select.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get select;
+
+  /// No description provided for @addSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Add size'**
+  String get addSize;
+
+  /// No description provided for @addNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Add number'**
+  String get addNumber;
+
+  /// No description provided for @addStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Add stock'**
+  String get addStock;
+
+  /// No description provided for @selectSize.
+  ///
+  /// In en, this message translates to:
+  /// **'Select size'**
+  String get selectSize;
+
+  /// No description provided for @selectNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Select number'**
+  String get selectNumber;
+
+  /// No description provided for @quantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity'**
+  String get quantity;
+
+  /// No description provided for @enterQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter quantity'**
+  String get enterQuantity;
+
+  /// No description provided for @choose.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose...'**
+  String get choose;
+
+  /// No description provided for @add.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get add;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @addImageFrom.
+  ///
+  /// In en, this message translates to:
+  /// **'Add image from'**
+  String get addImageFrom;
+
+  /// No description provided for @gallery.
+  ///
+  /// In en, this message translates to:
+  /// **'Gallery'**
+  String get gallery;
+
+  /// No description provided for @urlLink.
+  ///
+  /// In en, this message translates to:
+  /// **'URL link'**
+  String get urlLink;
+
+  /// No description provided for @productThumbnail.
+  ///
+  /// In en, this message translates to:
+  /// **'Product thumbnail'**
+  String get productThumbnail;
+
+  /// No description provided for @mainImage.
+  ///
+  /// In en, this message translates to:
+  /// **'Main image (Cover)'**
+  String get mainImage;
+
+  /// No description provided for @editProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Product'**
+  String get editProduct;
+
+  /// No description provided for @productColors.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Colors'**
+  String get productColors;
+
+  /// No description provided for @addNewColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Color'**
+  String get addNewColor;
+
+  /// No description provided for @enterProductName.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Name'**
+  String get enterProductName;
+
+  /// No description provided for @productNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Product name is required'**
+  String get productNameRequired;
+
+  /// No description provided for @productNameMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Product name must be at least 3 characters'**
+  String get productNameMinLength;
+
+  /// No description provided for @enterSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Product subTitle'**
+  String get enterSubTitle;
+
+  /// No description provided for @subTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'subTitle'**
+  String get subTitle;
+
+  /// No description provided for @subtitleRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtitle is required'**
+  String get subtitleRequired;
+
+  /// No description provided for @subtitleMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtitle must be at least 2 characters'**
+  String get subtitleMinLength;
+
+  /// No description provided for @enterDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Description'**
+  String get enterDescription;
+
+  /// No description provided for @descriptionRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Description is required'**
+  String get descriptionRequired;
+
+  /// No description provided for @descriptionMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Description must be at least 10 characters'**
+  String get descriptionMinLength;
+
+  /// No description provided for @enterPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Price'**
+  String get enterPrice;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @priceRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Price is required'**
+  String get priceRequired;
+
+  /// No description provided for @pleaseEnterValidPrice.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid price'**
+  String get pleaseEnterValidPrice;
+
+  /// No description provided for @priceGreaterThanZero.
+  ///
+  /// In en, this message translates to:
+  /// **'Price must be greater than 0'**
+  String get priceGreaterThanZero;
+
+  /// No description provided for @errorFetchingCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Error while fetching categories'**
+  String get errorFetchingCategories;
+
+  /// No description provided for @sizesAndStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Sizes & Stock'**
+  String get sizesAndStock;
+
+  /// No description provided for @noSizesAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'No sizes added yet.'**
+  String get noSizesAdded;
+
+  /// No description provided for @pleaseAddColorsFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Please add colors first to manage variants.'**
+  String get pleaseAddColorsFirst;
+
+  /// No description provided for @manageStockAndSizes.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage Stock & Sizes'**
+  String get manageStockAndSizes;
+
+  /// No description provided for @preview.
+  ///
+  /// In en, this message translates to:
+  /// **'Preview'**
+  String get preview;
+
+  /// No description provided for @productAddedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Product added successfully'**
+  String get productAddedSuccessfully;
+
+  /// No description provided for @productEditedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Product edited successfully'**
+  String get productEditedSuccessfully;
+
+  /// No description provided for @addProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Product'**
+  String get addProduct;
+
+  /// No description provided for @stock.
+  ///
+  /// In en, this message translates to:
+  /// **'Stock'**
+  String get stock;
+
+  /// No description provided for @number.
+  ///
+  /// In en, this message translates to:
+  /// **'Number'**
+  String get number;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -46,6 +46,7 @@ class _SizeOptionState extends State<SizeOption> {
             spacing: 8.w,
             runSpacing: 8.h,
             children: List.generate(widget.sizes.length, (index) {
+              print(widget.sizes[index]);
               return GestureDetector(
                 onTap: () {
                   selected = index;
@@ -55,10 +56,10 @@ class _SizeOptionState extends State<SizeOption> {
                   );
                 },
                 child: Container(
-                  width: widget.sizes[index] != "OneSize" ? 30.w : 70.w,
+                  width: widget.sizes[index] != "Standard" ? 30.w : 70.w,
                   height: 30.w,
                   decoration: BoxDecoration(
-                    shape: widget.sizes[index] != "OneSize"
+                    shape: widget.sizes[index] != "Standard"
                         ? BoxShape.circle
                         : BoxShape.rectangle,
                     color: index != selected
@@ -68,7 +69,7 @@ class _SizeOptionState extends State<SizeOption> {
                   ),
                   child: Center(
                     child: CustomText(
-                      data: widget.sizes[index] != "OneSize"
+                      data: widget.sizes[index] != "Standard"
                           ? widget.sizes[index]
                           : "Standard",
                       fontSize: 12.sp,

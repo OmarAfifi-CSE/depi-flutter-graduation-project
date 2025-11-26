@@ -37,6 +37,8 @@ dependencies:
   share_plus: ^12.0.1
   focused_menu: ^1.0.5
   pull_down_button: ^0.10.2
+  reorderable_grid_view: ^2.2.8
+  flutter_colorpicker: ^1.1.0
 
 
 dev_dependencies:

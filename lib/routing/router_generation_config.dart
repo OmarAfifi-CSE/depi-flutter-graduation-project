@@ -3,6 +3,7 @@ import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
+import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/user_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/views/auth/forgot_password_screen.dart';
@@ -21,6 +22,7 @@ import 'package:batrina/views/chat/chat_screen.dart';
 import 'package:batrina/views/chat/chats_screen.dart';
 import 'package:batrina/views/chat/chat_search_screen.dart';
 import 'package:batrina/views/home/home_screen.dart';
+import 'package:batrina/views/product/admin/edit_product_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
 import 'package:batrina/views/profile/orders/orders_screen.dart';
@@ -294,11 +296,13 @@ class RouterGenerationConfig {
             final productId = state.pathParameters['productId'];
             final size = state.uri.queryParameters['size'];
             final color = state.uri.queryParameters['color'];
+            final ProductModel? previewModel = state.extra as ProductModel?;
             return CustomTransitionPage(
               child: ProductScreen(
                 productId: productId!,
                 size: size,
                 color: color,
+                previewModel: previewModel,
               ),
               transitionDuration: const Duration(milliseconds: 500),
               reverseTransitionDuration: const Duration(milliseconds: 300),
@@ -592,6 +596,27 @@ class RouterGenerationConfig {
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const OrdersScreen(),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.editProductScreen,
+          name: AppRoutes.editProductScreen,
+          pageBuilder: (context, state) {
+            final ProductModel? productModel = state.extra as ProductModel?;
+            return CustomTransitionPage(
+              child: EditProductScreen(productModel: productModel),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:

@@ -678,4 +678,154 @@ class AppLocalizationsAr extends AppLocalizations {
   String failedToLogout(Object errorMessage) {
     return 'فشل تسجيل الخروج: \'$errorMessage\'';
   }
+
+  @override
+  String get pleaseEnterUrl => 'من فضلك أدخل رابط';
+
+  @override
+  String get invalidUrl => 'رابط غير صحيح';
+
+  @override
+  String get pasteImagesUrl => 'الصق روابط الصور';
+
+  @override
+  String get save => 'حفظ';
+
+  @override
+  String get select => 'اختيار';
+
+  @override
+  String get addSize => 'إضافة مقاس';
+
+  @override
+  String get addNumber => 'إضافة رقم';
+
+  @override
+  String get addStock => 'إضافة مخزون';
+
+  @override
+  String get selectSize => 'اختر مقاس';
+
+  @override
+  String get selectNumber => 'اختر رقم';
+
+  @override
+  String get quantity => 'الكمية';
+
+  @override
+  String get enterQuantity => 'أدخل الكمية';
+
+  @override
+  String get choose => 'اختر...';
+
+  @override
+  String get add => 'إضافة';
+
+  @override
+  String get edit => 'تعديل';
+
+  @override
+  String get addImageFrom => 'أضف صورة من';
+
+  @override
+  String get gallery => 'المعرض';
+
+  @override
+  String get urlLink => 'رابط الإنترنت';
+
+  @override
+  String get productThumbnail => 'صورة المنتج الرئيسية';
+
+  @override
+  String get mainImage => 'الصورة الرئيسية (الغلاف)';
+
+  @override
+  String get editProduct => 'تعديل المنتج';
+
+  @override
+  String get productColors => 'ألوان المنتج';
+
+  @override
+  String get addNewColor => 'إضافة لون جديد';
+
+  @override
+  String get enterProductName => 'اسم المنتج';
+
+  @override
+  String get productNameRequired => 'اسم المنتج مطلوب';
+
+  @override
+  String get productNameMinLength => 'اسم المنتج يجب أن يكون 3 أحرف على الأقل';
+
+  @override
+  String get enterSubTitle => 'العنوان الفرعي للمنتج';
+
+  @override
+  String get subTitle => 'العنوان الفرعي';
+
+  @override
+  String get subtitleRequired => 'العنوان الفرعي مطلوب';
+
+  @override
+  String get subtitleMinLength => 'العنوان الفرعي يجب أن يكون حرفين على الأقل';
+
+  @override
+  String get enterDescription => 'وصف المنتح';
+
+  @override
+  String get descriptionRequired => 'الوصف مطلوب';
+
+  @override
+  String get descriptionMinLength => 'الوصف يجب أن يكون 10 أحرف على الأقل';
+
+  @override
+  String get enterPrice => 'أدخل السعر';
+
+  @override
+  String get price => 'السعر';
+
+  @override
+  String get priceRequired => 'السعر مطلوب';
+
+  @override
+  String get pleaseEnterValidPrice => 'من فضلك أدخل سعر صحيح';
+
+  @override
+  String get priceGreaterThanZero => 'السعر يجب أن يكون أكبر من 0';
+
+  @override
+  String get errorFetchingCategories => 'خطأ أثناء جلب الفئات';
+
+  @override
+  String get sizesAndStock => 'المقاسات والمخزون';
+
+  @override
+  String get noSizesAdded => 'لم تتم إضافة مقاسات بعد.';
+
+  @override
+  String get pleaseAddColorsFirst => 'من فضلك أضف الألوان أولاً لإدارة المتغيرات.';
+
+  @override
+  String get manageStockAndSizes => 'إدارة المخزون والمقاسات';
+
+  @override
+  String get preview => 'معاينة';
+
+  @override
+  String get productAddedSuccessfully => 'تمت إضافة المنتج بنجاح';
+
+  @override
+  String get productEditedSuccessfully => 'تم تعديل المنتج بنجاح';
+
+  @override
+  String get addProduct => 'إضافة منتج';
+
+  @override
+  String get stock => 'المخزون';
+
+  @override
+  String get number => 'الرقم';
+
+  @override
+  String get category => 'الفئة';
 }

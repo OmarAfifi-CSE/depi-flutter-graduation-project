@@ -25,7 +25,8 @@ class AppRoutes {
   // Filter Screens
   static const String filterScreen = '/filterScreen';
   static const String filteredProductsScreen = '/filteredProductsScreen';
-  static const String filteredProductScreen = '$filteredProductsScreen/filteredProduct/:productId';
+  static const String filteredProductScreen =
+      '$filteredProductsScreen/filteredProduct/:productId';
 
   // Profile Screens
   static const String wishlistScreen = '/wishlist';
@@ -40,4 +41,5 @@ class AppRoutes {
   static const String chatScreen = '/chatScreen/:chatId/:otherUserId';
   static const String chatSearchScreen = '/chatSearchScreen';
   static const String orderSuccessfulScreen = '/order-successful';
+  static const String editProductScreen = '/editProduct';
 }

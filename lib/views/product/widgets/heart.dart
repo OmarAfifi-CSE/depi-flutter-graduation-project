@@ -1,8 +1,10 @@
+import 'package:batrina/controllers/provider/product_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -79,48 +81,78 @@ class _HeartState extends State<Heart> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-      opacity: loading == true ? 0 : 1,
-      child: GestureDetector(
-        onTap: isClickable
-            ? () {
-                toggleButton();
-              }
-            : () {},
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
+    final ProductProvider productProvider = context.read<ProductProvider>();
+    return !productProvider.preview
+        ? AnimatedOpacity(
+            duration: const Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+            opacity: loading == true ? 0 : 1,
+            child: GestureDetector(
+              onTap: isClickable
+                  ? () {
+                      toggleButton();
+                    }
+                  : () {},
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                ),
 
-          child: Padding(
-            padding: EdgeInsets.all(7.5.w),
-            child:
-                SvgPicture.asset(
-                      key: ValueKey(isAdded),
-                      isAdded ? AppAssets.heartIconFilled : AppAssets.heartIcon,
-                      width: 20.w,
-                      height: 20.w,
-                      colorFilter: isAdded
-                          ? null
-                          : ColorFilter.mode(
-                              theme.primaryColor,
-                              BlendMode.srcIn,
-                            ),
-                      fit: BoxFit.scaleDown,
-                    )
-                    .animate(key: ValueKey(isAdded))
-                    .scale(
-                      duration: const Duration(milliseconds: 300),
-                      begin: const Offset(.6, .6),
-                      end: const Offset(1.3, 1.3),
-                      curve: Curves.elasticOut,
-                    ),
-          ),
-        ),
-      ),
-    );
+                child: Padding(
+                  padding: EdgeInsets.all(7.5.w),
+                  child:
+                      SvgPicture.asset(
+                            key: ValueKey(isAdded),
+                            isAdded
+                                ? AppAssets.heartIconFilled
+                                : AppAssets.heartIcon,
+                            width: 20.w,
+                            height: 20.w,
+                            colorFilter: isAdded
+                                ? null
+                                : ColorFilter.mode(
+                                    theme.primaryColor,
+                                    BlendMode.srcIn,
+                                  ),
+                            fit: BoxFit.scaleDown,
+                          )
+                          .animate(key: ValueKey(isAdded))
+                          .scale(
+                            duration: const Duration(milliseconds: 300),
+                            begin: const Offset(.6, .6),
+                            end: const Offset(1.3, 1.3),
+                            curve: Curves.elasticOut,
+                          ),
+                ),
+              ),
+            ),
+          )
+        : Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Theme.of(context).scaffoldBackgroundColor,
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(7.5.w),
+              child:
+                  SvgPicture.asset(
+                        key: ValueKey(isAdded),
+                        AppAssets.heartIconFilled,
+                        width: 20.w,
+                        height: 20.w,
+                        colorFilter: null,
+
+                        fit: BoxFit.scaleDown,
+                      )
+                      .animate(key: ValueKey(isAdded))
+                      .scale(
+                        duration: const Duration(milliseconds: 300),
+                        begin: const Offset(.6, .6),
+                        end: const Offset(1.3, 1.3),
+                        curve: Curves.elasticOut,
+                      ),
+            ),
+          );
   }
 }

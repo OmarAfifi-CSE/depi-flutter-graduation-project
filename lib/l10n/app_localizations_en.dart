@@ -678,4 +678,154 @@ class AppLocalizationsEn extends AppLocalizations {
   String failedToLogout(Object errorMessage) {
     return 'Failed to log out: \'$errorMessage\'';
   }
+
+  @override
+  String get pleaseEnterUrl => 'Please enter a URL';
+
+  @override
+  String get invalidUrl => 'Invalid URL';
+
+  @override
+  String get pasteImagesUrl => 'Paste image URLs';
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get select => 'Select';
+
+  @override
+  String get addSize => 'Add size';
+
+  @override
+  String get addNumber => 'Add number';
+
+  @override
+  String get addStock => 'Add stock';
+
+  @override
+  String get selectSize => 'Select size';
+
+  @override
+  String get selectNumber => 'Select number';
+
+  @override
+  String get quantity => 'Quantity';
+
+  @override
+  String get enterQuantity => 'Enter quantity';
+
+  @override
+  String get choose => 'Choose...';
+
+  @override
+  String get add => 'Add';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get addImageFrom => 'Add image from';
+
+  @override
+  String get gallery => 'Gallery';
+
+  @override
+  String get urlLink => 'URL link';
+
+  @override
+  String get productThumbnail => 'Product thumbnail';
+
+  @override
+  String get mainImage => 'Main image (Cover)';
+
+  @override
+  String get editProduct => 'Edit Product';
+
+  @override
+  String get productColors => 'Product Colors';
+
+  @override
+  String get addNewColor => 'Add New Color';
+
+  @override
+  String get enterProductName => 'Product Name';
+
+  @override
+  String get productNameRequired => 'Product name is required';
+
+  @override
+  String get productNameMinLength => 'Product name must be at least 3 characters';
+
+  @override
+  String get enterSubTitle => 'Product subTitle';
+
+  @override
+  String get subTitle => 'subTitle';
+
+  @override
+  String get subtitleRequired => 'Subtitle is required';
+
+  @override
+  String get subtitleMinLength => 'Subtitle must be at least 2 characters';
+
+  @override
+  String get enterDescription => 'Product Description';
+
+  @override
+  String get descriptionRequired => 'Description is required';
+
+  @override
+  String get descriptionMinLength => 'Description must be at least 10 characters';
+
+  @override
+  String get enterPrice => 'Enter Price';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get priceRequired => 'Price is required';
+
+  @override
+  String get pleaseEnterValidPrice => 'Please enter a valid price';
+
+  @override
+  String get priceGreaterThanZero => 'Price must be greater than 0';
+
+  @override
+  String get errorFetchingCategories => 'Error while fetching categories';
+
+  @override
+  String get sizesAndStock => 'Sizes & Stock';
+
+  @override
+  String get noSizesAdded => 'No sizes added yet.';
+
+  @override
+  String get pleaseAddColorsFirst => 'Please add colors first to manage variants.';
+
+  @override
+  String get manageStockAndSizes => 'Manage Stock & Sizes';
+
+  @override
+  String get preview => 'Preview';
+
+  @override
+  String get productAddedSuccessfully => 'Product added successfully';
+
+  @override
+  String get productEditedSuccessfully => 'Product edited successfully';
+
+  @override
+  String get addProduct => 'Add Product';
+
+  @override
+  String get stock => 'Stock';
+
+  @override
+  String get number => 'Number';
+
+  @override
+  String get category => 'Category';
 }

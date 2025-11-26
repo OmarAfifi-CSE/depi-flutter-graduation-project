@@ -211,8 +211,9 @@ class ProductModel {
       rating: rating ?? this.rating,
       reviewsCount: reviewsCount ?? this.reviewsCount,
       isActive: isActive ?? this.isActive,
-      variants: variants ?? this.variants,
-      availableColors: availableColors ?? this.availableColors,
+      variants: variants ?? List.from(this.variants),
+      availableColors: availableColors ?? List.from(this.availableColors),
+
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -272,9 +273,14 @@ class ProductVariant {
     return {'color': color, 'size': size, 'stock': stock, "id": id};
   }
 
-  ProductVariant copyWith({String? color, String? size, int? stock}) {
+  ProductVariant copyWith({
+    String? id,
+    String? color,
+    String? size,
+    int? stock,
+  }) {
     return ProductVariant(
-      id: id,
+      id: id ?? this.id,
       color: color ?? this.color,
       size: size ?? this.size,
       stock: stock ?? this.stock,
