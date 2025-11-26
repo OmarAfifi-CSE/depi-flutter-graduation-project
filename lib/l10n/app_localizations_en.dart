@@ -678,4 +678,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String failedToLogout(Object errorMessage) {
     return 'Failed to log out: \'$errorMessage\'';
   }
+
+  @override
+  String get emptyWishlistTitle => 'Your Wishlist is Empty';
+
+  @override
+  String get emptyWishlistSubtitle => 'Looks like you haven\'t added anything to your wishlist yet. Let\'s go find something you\'ll love!';
 }

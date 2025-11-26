@@ -294,5 +294,8 @@
 
   "areYouSureToLogout": "Are you sure you want to log out?",
   "cancel": "Cancel",
-  "failedToLogout": "Failed to log out: '{errorMessage}'"
+  "failedToLogout": "Failed to log out: '{errorMessage}'",
+  "emptyWishlistTitle":"Your Wishlist is Empty",
+  "emptyWishlistSubtitle": "Looks like you haven't added anything to your wishlist yet. Let's go find something you'll love!"
+
 }

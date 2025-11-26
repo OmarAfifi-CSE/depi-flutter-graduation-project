@@ -1,101 +1,207 @@
+import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/product_model.dart';
+import 'package:batrina/routing/app_routes.dart';
+import 'package:batrina/styling/app_fonts.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:batrina/widgets/custom_text.dart';
-import 'package:batrina/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
-class WishlistCard extends StatelessWidget {
+class WishlistCard extends StatefulWidget {
   const WishlistCard({super.key, required this.product});
   final ProductModel product;
 
   @override
+  State<WishlistCard> createState() => _WishlistCardState();
+}
+
+class _WishlistCardState extends State<WishlistCard>
+    with TickerProviderStateMixin {
+  late AnimationController sizeAnimationController;
+  late Animation<double> sizeAnimation;
+  late AnimationController exitAnimationController;
+  late Animation<double> fadeAnimation;
+  late Animation<Offset> slideOutAnimation;
+
+  bool isDeleting = false;
+
+  Future<void> deleteFromWishlist() async {
+    try {
+      setState(() {
+        isDeleting = true;
+      });
+      await FireBaseFireStore().removeFromWishList(
+        productModel: widget.product,
+      );
+
+      // Start exit animation
+      await exitAnimationController.forward();
+      await sizeAnimationController.forward();
+
+      if (mounted) {
+        // Optional: Refresh wishlist if you have a provider/cubit
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          isDeleting = false;
+        });
+        exitAnimationController.reverse();
+        sizeAnimationController.reverse();
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Error removing from wishlist"),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    sizeAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+    exitAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+    sizeAnimation = Tween(begin: 1.0, end: 0.0).animate(
+      CurvedAnimation(parent: sizeAnimationController, curve: Curves.easeInOut),
+    );
+    fadeAnimation = Tween<double>(begin: 1.0, end: 0.0).animate(
+      CurvedAnimation(parent: exitAnimationController, curve: Curves.easeInOut),
+    );
+    slideOutAnimation =
+        Tween<Offset>(
+          begin: const Offset(0, 0),
+          end: const Offset(1, 0),
+        ).animate(
+          CurvedAnimation(
+            parent: exitAnimationController,
+            curve: Curves.easeInOut,
+          ),
+        );
+  }
+
+  @override
+  void dispose() {
+    sizeAnimationController.dispose();
+    exitAnimationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
-
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withAlpha((0.1 * 255).toInt()),
-            spreadRadius: 1,
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 80.w,
-            height: 80.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.r),
+    return SizeTransition(
+      sizeFactor: sizeAnimation,
+      child: FadeTransition(
+        opacity: fadeAnimation,
+        child: SlideTransition(
+          position: slideOutAnimation,
+          child: Card(
+            margin: EdgeInsets.only(bottom: 12.h),
+            color: theme.scaffoldBackgroundColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12.r),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.r),
-              child: Image.network(
-                product.thumbnail,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: Colors.grey[300],
-                    child: const Icon(Icons.image, color: Colors.grey),
-                  );
-                },
+            elevation: 0,
+            clipBehavior: Clip.antiAlias,
+            child: GestureDetector(
+              onTap: isDeleting
+                  ? null
+                  : () {
+                      GoRouter.of(context).pushNamed(
+                        AppRoutes.productScreen,
+                        pathParameters: {'productId': widget.product.id},
+                      );
+                    },
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12.r),
+                      child: SizedBox(
+                        width: 80.w,
+                        height: 80.h,
+                        child: Image.network(
+                          widget.product.thumbnail,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: Colors.grey[300],
+                              child: const Icon(
+                                Icons.image,
+                                color: Colors.grey,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 12.w),
+                    Expanded(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText(
+                            data: widget.product.name,
+                            textAlign: TextAlign.start,
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w700,
+                            maxLines: 1,
+                            fontFamily: AppFonts.englishFontFamily,
+                          ),
+                          SizedBox(height: 4.h),
+                          CustomText(
+                            data: widget.product.subtitle,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400,
+                            maxLines: 1,
+                            fontFamily: AppFonts.englishFontFamily,
+                          ),
+                          SizedBox(height: 8.h),
+                          CustomText(
+                            data: "\$${widget.product.price}",
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: AppFonts.englishFontFamily,
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(width: 8.w),
+                    AbsorbPointer(
+                      absorbing: isDeleting,
+                      child: GestureDetector(
+                        onTap: deleteFromWishlist,
+                        child: isDeleting
+                            ? CupertinoActivityIndicator(
+                                color: theme.primaryColor,
+                              )
+                            : SvgPicture.asset(
+                                'assets/icons/delete-wishlist-com.svg',
+                                width: 30.w,
+                                height: 30.h,
+                                fit: BoxFit.cover,
+                              ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-          SizedBox(width: 16.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomText(
-                  data: product.name,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-                SizedBox(height: 4.h),
-                CustomText(
-                  data: product.subtitle,
-                  fontSize: 14,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.w500,
-                ),
-                SizedBox(height: 8.h),
-                CustomText(
-                  data: '\$${product.price}',
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ],
-            ),
-          ),
-
-          // Add to cart button
-          Container(
-            height: 36.h,
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            decoration: BoxDecoration(
-              color: theme.disabledColor,
-              borderRadius: BorderRadius.circular(18.r),
-            ),
-            child: TextButton(
-              onPressed: () {
-                //TODO:
-              },
-              child: CustomText(
-                data: loc!.addtocard,
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -678,4 +678,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String failedToLogout(Object errorMessage) {
     return 'فشل تسجيل الخروج: \'$errorMessage\'';
   }
+
+  @override
+  String get emptyWishlistTitle => 'قائمة الرغبات فارغة';
+
+  @override
+  String get emptyWishlistSubtitle => 'يبدو أنك لم تقم بإضافة أي شيء إلى قائمة الرغبات بعد. هيا نجد شيئًا ستحبه!';
 }

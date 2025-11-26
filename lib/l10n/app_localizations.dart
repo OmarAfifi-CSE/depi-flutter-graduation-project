@@ -1408,6 +1408,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to log out: \'{errorMessage}\''**
   String failedToLogout(Object errorMessage);
+
+  /// No description provided for @emptyWishlistTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Wishlist is Empty'**
+  String get emptyWishlistTitle;
+
+  /// No description provided for @emptyWishlistSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks like you haven\'t added anything to your wishlist yet. Let\'s go find something you\'ll love!'**
+  String get emptyWishlistSubtitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -292,5 +292,7 @@
 
   "areYouSureToLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "cancel": "إلغاء",
-  "failedToLogout": "فشل تسجيل الخروج: '{errorMessage}'"
+  "failedToLogout": "فشل تسجيل الخروج: '{errorMessage}'",
+  "emptyWishlistTitle": "قائمة الرغبات فارغة",
+  "emptyWishlistSubtitle": "يبدو أنك لم تقم بإضافة أي شيء إلى قائمة الرغبات بعد. هيا نجد شيئًا ستحبه!"
 }

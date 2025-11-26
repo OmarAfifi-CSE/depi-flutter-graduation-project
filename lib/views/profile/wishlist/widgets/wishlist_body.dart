@@ -1,5 +1,8 @@
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/product_model.dart';
+import 'package:batrina/views/profile/wishlist/widgets/empty_wishlist.dart';
+import 'package:batrina/views/profile/wishlist/widgets/no_product_found.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,10 +31,13 @@ class _WishlistBodyState extends State<WishlistBody> {
       if (query.isEmpty) {
         _filteredWishlistItems = _allWishlistItems;
       } else {
+        final lowerQuery = query.toLowerCase().trim();
         _filteredWishlistItems = _allWishlistItems
             .where(
               (product) =>
-                  product.name.toLowerCase().contains(query.toLowerCase()),
+                  product.name.toLowerCase().contains(lowerQuery) ||
+                  product.subtitle.toLowerCase().contains(lowerQuery) ||
+                  product.price.toString().contains(lowerQuery),
             )
             .toList();
       }
@@ -41,6 +47,7 @@ class _WishlistBodyState extends State<WishlistBody> {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -72,6 +79,10 @@ class _WishlistBodyState extends State<WishlistBody> {
                 hintText: '${loc!.search}...',
                 hintStyle: const TextStyle(color: Colors.grey),
                 prefixIcon: const Icon(Icons.search),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(50.r),
+                  borderSide: const BorderSide(color: Colors.black, width: 1.0),
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(50.r),
                 ),
@@ -106,28 +117,38 @@ class _WishlistBodyState extends State<WishlistBody> {
 
   //! Wishlist Items
   Widget _buildWishlistItems() {
+    final theme = Theme.of(context);
     return FutureBuilder<List<ProductModel>>(
       future: FireBaseFireStore().getUserWishList(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          ); // TODO : Shimmer
+          return Center(
+            child: CupertinoActivityIndicator(color: theme.primaryColor),
+          );
         } else if (snapshot.hasError) {
           return const Center(child: Text('Error loading wishlist.'));
         } else if (snapshot.hasData) {
           // Store all items when data is first loaded
           _allWishlistItems = snapshot.data!;
           // Initialize filtered items if not already done
-          if (_filteredWishlistItems.isEmpty) {
+          if (_filteredWishlistItems.isEmpty &&
+              _searchController.text.isEmpty) {
             _filteredWishlistItems = _allWishlistItems;
           }
 
-          if (_filteredWishlistItems.isEmpty) {
-            return const Center(child: Text('No matching items found.'));
+          // Handle empty wishlist
+          if (_allWishlistItems.isEmpty) {
+            return const EmptyWishlist();
+          }
+
+          // Handle no search results
+          if (_filteredWishlistItems.isEmpty &&
+              _searchController.text.isNotEmpty) {
+            return const NoProductFoundView();
           }
 
           return ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: _filteredWishlistItems.length,
             itemBuilder: (context, index) {
               return WishlistCard(product: _filteredWishlistItems[index]);
