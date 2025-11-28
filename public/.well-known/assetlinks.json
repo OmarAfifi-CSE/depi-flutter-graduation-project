@@ -7,7 +7,8 @@
       "namespace": "android_app",
       "package_name": "com.oamao.batrina.batrina",
       "sha256_cert_fingerprints": [
-        "90:A4:3E:77:B4:87:16:A7:4C:2F:80:53:A4:92:15:10:A3:35:64:FF:25:26:D3:A2:00:47:03:4C:6C:4E:34:25"
+        "90:A4:3E:77:B4:87:16:A7:4C:2F:80:53:A4:92:15:10:A3:35:64:FF:25:26:D3:A2:00:47:03:4C:6C:4E:34:25",
+        "15:B2:B9:9B:82:3E:C0:D9:D1:60:5F:C7:9C:7C:94:A1:2E:E9:8D:E9:EE:86:35:29:14:A9:31:30:6B:04:F8:A5"
       ]
     }
   }

@@ -49,6 +49,24 @@
                     android:host="batrina-76502.web.app"
                     android:pathPrefix="/action" />
             </intent-filter>
+            <!-- Why this one -> because if u open link in gmail or whats its ok but in chrome he know your app with ./well-known but he will open the page in it because its his job but if u didn't give him link that he understand he will give it to system to handle so we added it  -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="batrina"
+                    android:host="app"
+                    android:pathPrefix="/product" />
+            </intent-filter>
+            <!-- Intent filter للـ product -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https"
+                    android:host="batrina-76502.web.app"
+                    android:pathPrefix="/product" />
+            </intent-filter>
 
             <!-- Intent filter للـ firebaseapp.com -->
             <intent-filter android:autoVerify="true">

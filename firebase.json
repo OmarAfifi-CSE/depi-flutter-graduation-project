@@ -31,6 +31,10 @@
         "destination": "/action.html"
       },
       {
+        "source": "/product",
+        "destination": "/product.html"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }

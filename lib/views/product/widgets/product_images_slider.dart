@@ -22,6 +22,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductImagesSlider extends StatefulWidget {
@@ -55,6 +56,40 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
       );
+    }
+  }
+
+  Future<void> shareProductTextOnly(ProductModel product) async {
+    try {
+      final String productLink =
+          'https://batrina-76502.web.app/product?id=${product.id}';
+
+      String priceSection = '';
+      if (product.salePrice != null && product.salePrice! < product.price) {
+        double discount =
+            ((product.price - product.salePrice!) / product.price) * 100;
+        priceSection =
+            '\nPrice: \$${product.salePrice} (Save ${discount.toStringAsFixed(0)}%)\nWas: \$${product.price}';
+      } else {
+        priceSection = '\nPrice: \$${product.price}';
+      }
+
+      final String shareText =
+          '''${product.name}
+
+${product.description}$priceSection
+
+$productLink''';
+
+      final result = await SharePlus.instance.share(
+        ShareParams(text: shareText, subject: product.name),
+      );
+
+      if (result.status == ShareResultStatus.success) {
+        print('✅ Shared successfully');
+      }
+    } catch (e) {
+      print('❌ Error sharing: $e');
     }
   }
 
@@ -114,7 +149,8 @@ class _ProductImagesSliderState extends State<ProductImagesSlider> {
 
                     SizedBox(height: 20.h),
                     CustomElevatedButton(
-                      onPressed: () {},
+                      onPressed: () =>
+                          shareProductTextOnly(widget.productModel),
                       buttonChild: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

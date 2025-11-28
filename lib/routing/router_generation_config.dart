@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:batrina/controllers/provider/deep_link_provider.dart';
 import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
@@ -655,9 +656,18 @@ class RouterGenerationConfig {
               return '${AppRoutes.signInScreen}${AppRoutes.verificationScreen}?oobCode=$oobCode';
           }
         }
+        if (state.uri.path == "/product") {
+          if (state.uri.queryParameters['id'] != null) {
+            context.read<DeepLinkProvider>().setDeepLink(
+              state.uri.queryParameters['id']!,
+            );
+          }
+          return AppRoutes.splashScreen;
+        }
         // If no redirection conditions are met, allow navigation.
         return null;
       },
+      debugLogDiagnostics: true,
     );
   }
 }

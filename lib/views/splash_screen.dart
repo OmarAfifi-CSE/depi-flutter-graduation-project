@@ -1,9 +1,11 @@
+import 'package:batrina/controllers/provider/deep_link_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -49,8 +51,19 @@ class _SplashScreenState extends State<SplashScreen> {
         FireBaseFireStore.currentUser = userModel;
 
         // Now that the user data is ready, navigate to the main app screen
-        if (mounted) context.go(AppRoutes.wrapperScreen);
+        DeepLinkProvider deepLinkProvider = context.read<DeepLinkProvider>();
+        final deepLink = deepLinkProvider.consumeDeepLink();
+        if (deepLink != null) {
+          if (mounted) context.go(AppRoutes.wrapperScreen);
+          context.pushNamed(
+            AppRoutes.productScreen,
+            pathParameters: {'productId': deepLink},
+          );
+        } else {
+          if (mounted) context.go(AppRoutes.wrapperScreen);
+        }
       } catch (e) {
+        print(e.toString());
         // Handle a rare error where user is in Auth but not Firestore
         await FirebaseAuth.instance.signOut();
         if (mounted) context.go(AppRoutes.signInScreen);

@@ -1,4 +1,5 @@
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/provider/deep_link_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_colors.dart';
@@ -60,7 +61,17 @@ class _SignInScreenState extends State<SignInScreen> {
         email: emailController.text.trim(),
         pass: passwordController.text.trim(),
       );
-      context.pushReplacementNamed(AppRoutes.wrapperScreen);
+      DeepLinkProvider deepLinkProvider = context.read<DeepLinkProvider>();
+      final deepLink = deepLinkProvider.consumeDeepLink();
+      if (deepLink != null) {
+        if (mounted) context.go(AppRoutes.wrapperScreen);
+        context.pushNamed(
+          AppRoutes.productScreen,
+          pathParameters: {'productId': deepLink},
+        );
+      } else {
+        if (mounted) context.go(AppRoutes.wrapperScreen);
+      }
     }
   }
 
