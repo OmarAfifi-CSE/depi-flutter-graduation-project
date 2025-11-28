@@ -263,11 +263,20 @@
     }
 
     // --- 🚀 الميثود اللي بتعمل اللينك اللي إنت طلبته ---
-    function setupOpenAppButton(id) {
+function setupOpenAppButton(id) {
         const btn = document.getElementById('open-in-app-btn');
+
         btn.onclick = function() {
-            // اللينك: batrina://app/product?id=123
-            window.location.href = `batrina://app/product?id=${id}`;
+            // 1. ده المسار اللي التطبيق مستنيه
+            // (شيلنا ?id= وخليناها path parameter عشان تطابق الراوتر بتاعك)
+            const path = `product?id=${id}`;
+
+            // 2. الطريقة الرسمية للأندرويد (Intent URL)
+            // الصيغة: intent://<path>#Intent;scheme=<scheme>;package=<package_name>;end
+            const intentUrl = `intent://app/${path}#Intent;scheme=batrina;package=com.oamao.batrina.batrina;end`;
+
+            // 3. افتح الـ Intent
+            window.location.href = intentUrl;
         };
     }
 
