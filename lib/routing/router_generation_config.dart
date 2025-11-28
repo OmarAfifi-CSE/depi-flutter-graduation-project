@@ -656,9 +656,7 @@ class RouterGenerationConfig {
               return '${AppRoutes.signInScreen}${AppRoutes.verificationScreen}?oobCode=$oobCode';
           }
         }
-        print(state.uri.path + "a7aaaaaaaaaaaaaaaaaaaaaaa");
         if (state.uri.path == "/product") {
-          print("heredwdwdkwdwhdjdhwj");
           if (state.uri.queryParameters['id'] != null) {
             context.read<DeepLinkProvider>().setDeepLink(
               state.uri.queryParameters['id']!,
