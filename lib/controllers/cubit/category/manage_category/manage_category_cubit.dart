@@ -19,12 +19,15 @@ class ManageCategoryCubit extends Cubit<ManageCategoryState> {
   bool _isEditMode = false;
   DateTime? _createdAt;
 
+  String? _originalName;
+
   ManageCategoryCubit() : super(ManageCategoryInitial());
 
   void initForm(CategoryModel? category) {
     if (category != null) {
       _id = category.id;
       _name = category.name;
+      _originalName = category.name;
       _image = category.image;
       _isActive = category.isActive;
       _createdAt = category.createdAt;
@@ -33,6 +36,7 @@ class ManageCategoryCubit extends Cubit<ManageCategoryState> {
       _id = '';
       _name = '';
       _image = null;
+      _originalName = null;
       _isActive = true;
       _createdAt = null;
       _isEditMode = false;
@@ -103,7 +107,10 @@ class ManageCategoryCubit extends Cubit<ManageCategoryState> {
         isActive: _isActive,
         createdAt: _isEditMode ? _createdAt : DateTime.now(),
       );
-      await _fireStoreService.addOrUpdateCategory(category: categoryModel);
+      await _fireStoreService.addOrUpdateCategory(
+        category: categoryModel,
+        oldName: _isEditMode ? _originalName : null,
+      );
       emit(ManageCategorySuccess(message: loc!.categorySavedSuccessfully));
     } catch (e) {
       emit(ManageCategoryError(e.toString()));
@@ -115,7 +122,7 @@ class ManageCategoryCubit extends Cubit<ManageCategoryState> {
     if (_id.isEmpty) return;
     emit(ManageCategoryLoading());
     try {
-      await _fireStoreService.deleteCategory(_id);
+      await _fireStoreService.deleteCategory(_id, _name);
       emit(ManageCategorySuccess(message: loc!.categoryDeletedSuccessfully));
     } catch (e) {
       emit(ManageCategoryError(e.toString()));

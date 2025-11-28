@@ -39,54 +39,50 @@ class FireBaseFireStore {
   }
 
   Future<void> addProduct(ProductModel product) async {
-    if (product.id.isEmpty) {
-      DocumentReference<Map<String, dynamic>> documentReference =
-          fireBaseFireStore.collection("products").doc();
-      ProductModel productModelWithId = product.copyWith(
-        id: documentReference.id,
-      );
-      await documentReference.set(
-        productModelWithId.toJson(),
-        SetOptions(merge: true),
-      );
-      DocumentReference variantDocumentReference;
+    // 1. Determine Product Reference (New or Existing)
+    DocumentReference<Map<String, dynamic>> productRef;
 
-      for (var variant in product.variants) {
-        variantDocumentReference = documentReference
-            .collection("variants")
-            .doc();
-        ProductVariant productVariant = variant.copyWith(
-          id: variantDocumentReference.id,
-        );
-        await variantDocumentReference.set(
-          productVariant.toJson(),
-          SetOptions(merge: true),
-        );
-      }
+    if (product.id.isEmpty) {
+      // Create new document reference
+      productRef = fireBaseFireStore.collection("products").doc();
     } else {
-      QuerySnapshot<Map<String, dynamic>> oldVariants = await fireBaseFireStore
-          .collection("products")
-          .doc(product.id)
+      // Use existing document reference
+      productRef = fireBaseFireStore.collection("products").doc(product.id);
+    }
+
+    // 2. Save Product Data (Ensuring the ID is set in the model)
+    ProductModel productToSave = product.copyWith(id: productRef.id);
+
+    await productRef.set(productToSave.toJson(), SetOptions(merge: true));
+
+    // 3. Handle Variants
+    // If this was an existing product, delete old variants first to prevent duplicates/stale data.
+    if (product.id.isNotEmpty) {
+      QuerySnapshot<Map<String, dynamic>> oldVariants = await productRef
           .collection("variants")
           .get();
 
       for (var doc in oldVariants.docs) {
         await doc.reference.delete();
       }
+    }
 
-      await fireBaseFireStore
-          .collection("products")
-          .doc(product.id)
-          .set(product.toJson(), SetOptions(merge: true));
-
-      for (var variant in product.variants) {
-        await fireBaseFireStore
-            .collection("products")
-            .doc(product.id)
-            .collection("variants")
-            .doc(variant.id)
-            .set(variant.toJson(), SetOptions(merge: true));
+    // 4. Add/Re-add Variants
+    for (var variant in product.variants) {
+      DocumentReference variantRef;
+      // Check if variant ID is empty
+      if (variant.id.isEmpty) {
+        // If empty, auto-generate a new ID
+        variantRef = productRef.collection("variants").doc();
+      } else {
+        // If exists, use the specific ID
+        variantRef = productRef.collection("variants").doc(variant.id);
       }
+
+      // Ensure the variant model has the correct ID (new or existing)
+      ProductVariant variantToSave = variant.copyWith(id: variantRef.id);
+
+      await variantRef.set(variantToSave.toJson(), SetOptions(merge: true));
     }
   }
 
@@ -161,12 +157,16 @@ class FireBaseFireStore {
 
   Future<List<CategoryModel>> getCategories(bool isAdmin) async {
     try {
-      Query<Map<String, dynamic>> query = fireBaseFireStore.collection("categories");
+      Query<Map<String, dynamic>> query = fireBaseFireStore.collection(
+        "categories",
+      );
 
       if (!isAdmin) {
         query = query.where("isActive", isEqualTo: true);
       }
-      query = query.orderBy('rank', descending: false).orderBy('createdAt', descending: true);
+      query = query
+          .orderBy('rank', descending: false)
+          .orderBy('createdAt', descending: true);
 
       final querySnapshot = await query.get();
       return querySnapshot.docs.map((doc) {
@@ -182,32 +182,97 @@ class FireBaseFireStore {
     WriteBatch batch = fireBaseFireStore.batch();
 
     for (var category in categories) {
-      DocumentReference docRef = fireBaseFireStore.collection("categories").doc(category.id);
+      DocumentReference docRef = fireBaseFireStore
+          .collection("categories")
+          .doc(category.id);
       batch.update(docRef, {'rank': category.rank});
     }
 
     await batch.commit();
   }
 
-  Future<void> addOrUpdateCategory({required CategoryModel category}) async {
+  Future<void> addOrUpdateCategory({
+    required CategoryModel category,
+    String? oldName,
+  }) async {
     if (category.id.isEmpty) {
-      // Create New
       DocumentReference docRef = fireBaseFireStore
           .collection("categories")
           .doc();
       CategoryModel newCategory = category.copyWith(id: docRef.id);
-      await docRef.set(newCategory.toJson());
+      await docRef.set(newCategory.toJson(), SetOptions(merge: true));
     } else {
-      // Update
       await fireBaseFireStore
           .collection("categories")
           .doc(category.id)
           .set(category.toJson(), SetOptions(merge: true));
+
+      if (oldName != null && oldName != category.name) {
+        QuerySnapshot productsSnapshot = await fireBaseFireStore
+            .collection("products")
+            .where("category", isEqualTo: oldName)
+            .get();
+
+        if (productsSnapshot.docs.isNotEmpty) {
+          await _updateProductsListInBatches(
+            productsSnapshot.docs,
+            category.name,
+          );
+        }
+      }
     }
   }
 
-  Future<void> deleteCategory(String id) async {
-    await fireBaseFireStore.collection("categories").doc(id).delete();
+  Future<void> _updateProductsListInBatches(
+    List<QueryDocumentSnapshot> productDocs,
+    String newCategoryName,
+  ) async {
+    const int batchSize = 500;
+    for (int i = 0; i < productDocs.length; i += batchSize) {
+      WriteBatch batch = fireBaseFireStore.batch();
+      int end = (i + batchSize < productDocs.length)
+          ? i + batchSize
+          : productDocs.length;
+      List<QueryDocumentSnapshot> chunk = productDocs.sublist(i, end);
+      for (var doc in chunk) {
+        batch.update(doc.reference, {'category': newCategoryName});
+      }
+      await batch.commit();
+    }
+  }
+
+  Future<void> deleteCategory(String categoryId, String categoryName) async {
+    List<DocumentReference> allReferencesToDelete = [];
+    allReferencesToDelete.add(
+      fireBaseFireStore.collection("categories").doc(categoryId),
+    );
+    QuerySnapshot productsSnapshot = await fireBaseFireStore
+        .collection("products")
+        .where("category", isEqualTo: categoryName)
+        .get();
+    for (var productDoc in productsSnapshot.docs) {
+      allReferencesToDelete.add(productDoc.reference);
+      QuerySnapshot variantsSnapshot = await productDoc.reference
+          .collection('variants')
+          .get();
+      for (var variantDoc in variantsSnapshot.docs) {
+        allReferencesToDelete.add(variantDoc.reference);
+      }
+    }
+    await _deleteListInBatches(allReferencesToDelete);
+  }
+
+  Future<void> _deleteListInBatches(List<DocumentReference> refs) async {
+    const int batchSize = 500;
+    for (int i = 0; i < refs.length; i += batchSize) {
+      WriteBatch batch = fireBaseFireStore.batch();
+      int end = (i + batchSize < refs.length) ? i + batchSize : refs.length;
+      List<DocumentReference> chunk = refs.sublist(i, end);
+      for (var ref in chunk) {
+        batch.delete(ref);
+      }
+      await batch.commit();
+    }
   }
 
   Future<List<ProductModel>> getFilteredProducts({
