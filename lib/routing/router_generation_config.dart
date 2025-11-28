@@ -1,7 +1,9 @@
 import 'package:animations/animations.dart';
+import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/provider/deep_link_provider.dart';
 import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
+import 'package:batrina/models/category_model.dart';
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
 import 'package:batrina/models/product_model.dart';
@@ -15,6 +17,7 @@ import 'package:batrina/views/auth/email_verification_screen.dart';
 import 'package:batrina/views/cart/cart_screen.dart';
 import 'package:batrina/views/cart/checkout/checkout_screen.dart';
 import 'package:batrina/views/cart/checkout/order_successful/order_successful_screen.dart';
+import 'package:batrina/views/categories/admin/manage_category/manage_category_screen.dart';
 import 'package:batrina/views/categories/categories_screen.dart';
 import 'package:batrina/views/categories/category_products/category_products_screen.dart';
 import 'package:batrina/views/categories/filter/filter_screen.dart';
@@ -36,6 +39,7 @@ import 'package:batrina/views/splash_screen.dart';
 import 'package:batrina/views/wrapper_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -222,6 +226,55 @@ class RouterGenerationConfig {
               child: ChangeNotifierProvider(
                 create: (_) => ProductsProvider(),
                 child: CategoryProductsScreen(categoryName: categoryName!),
+              ),
+              transitionDuration: const Duration(milliseconds: 500),
+              reverseTransitionDuration: const Duration(milliseconds: 300),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeIn,
+                      ),
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0.3, 0),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                        child: child,
+                      ),
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.manageCategoryScreen,
+          name: AppRoutes.manageCategoryScreen,
+          pageBuilder: (context, state) {
+            CategoryCubit categoryCubit;
+            CategoryModel? categoryModel;
+            if (state.extra is Map) {
+              final params = state.extra as Map;
+              categoryCubit = params['cubit'];
+              categoryModel = params['category'];
+            } else {
+              categoryCubit = state.extra as CategoryCubit;
+              categoryModel = null;
+            }
+            return CustomTransitionPage(
+              child: ChangeNotifierProvider(
+                create: (_) => ProductsProvider(),
+                child: BlocProvider.value(
+                  value: categoryCubit,
+                  child: ManageCategoryScreen(categoryModel: categoryModel),
+                ),
               ),
               transitionDuration: const Duration(milliseconds: 500),
               reverseTransitionDuration: const Duration(milliseconds: 300),

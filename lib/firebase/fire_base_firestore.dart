@@ -159,20 +159,55 @@ class FireBaseFireStore {
     }
   }
 
-  Future<List<CategoryModel>> getCategories() async {
+  Future<List<CategoryModel>> getCategories(bool isAdmin) async {
     try {
-      final querySnapshot = await fireBaseFireStore
-          .collection("categories")
-          .get();
-      if (querySnapshot.docs.isEmpty) {
-        return [];
+      Query<Map<String, dynamic>> query = fireBaseFireStore.collection("categories");
+
+      if (!isAdmin) {
+        query = query.where("isActive", isEqualTo: true);
       }
-      return querySnapshot.docs
-          .map((doc) => CategoryModel.fromJson(doc.data()))
-          .toList();
+      query = query.orderBy('rank', descending: false).orderBy('createdAt', descending: true);
+
+      final querySnapshot = await query.get();
+      return querySnapshot.docs.map((doc) {
+        var data = doc.data();
+        return CategoryModel.fromJson(data);
+      }).toList();
     } catch (e) {
       return [];
     }
+  }
+
+  Future<void> updateCategoriesOrder(List<CategoryModel> categories) async {
+    WriteBatch batch = fireBaseFireStore.batch();
+
+    for (var category in categories) {
+      DocumentReference docRef = fireBaseFireStore.collection("categories").doc(category.id);
+      batch.update(docRef, {'rank': category.rank});
+    }
+
+    await batch.commit();
+  }
+
+  Future<void> addOrUpdateCategory({required CategoryModel category}) async {
+    if (category.id.isEmpty) {
+      // Create New
+      DocumentReference docRef = fireBaseFireStore
+          .collection("categories")
+          .doc();
+      CategoryModel newCategory = category.copyWith(id: docRef.id);
+      await docRef.set(newCategory.toJson());
+    } else {
+      // Update
+      await fireBaseFireStore
+          .collection("categories")
+          .doc(category.id)
+          .set(category.toJson(), SetOptions(merge: true));
+    }
+  }
+
+  Future<void> deleteCategory(String id) async {
+    await fireBaseFireStore.collection("categories").doc(id).delete();
   }
 
   Future<List<ProductModel>> getFilteredProducts({

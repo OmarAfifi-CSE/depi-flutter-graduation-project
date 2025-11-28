@@ -252,7 +252,21 @@
 
   "nothingFound": "لم يتم العثور على شيء",
   "emptyCategoryDescription": "لم نتمكن من العثور على أي منتجات في فئة '{categoryName}' في الوقت الحالي. حاول العودة لاحقًا أو استكشاف فئات أخرى.",
-
+  "addCategory": "إضافة قسم جديد",
+  "editCategory": "تعديل القسم",
+  "categoryName": "اسم القسم",
+  "enterCategoryName": "أدخل اسم القسم",
+  "isActive": "مفعّل",
+  "savedSuccessfully": "تم الحفظ بنجاح",
+  "fillAllFields": "يرجى ملء جميع الحقول المطلوبة",
+  "reorderCategories": "إعادة ترتيب الأقسام",
+  "saveChanges": "حفظ التغييرات",
+  "areYouSureToSaveCategoryOrder": "هل أنت متأكد أنك تريد حفظ ترتيب الأقسام الجديد؟",
+  "categoryOrderUpdatedSuccessfully": "تم تحديث ترتيب الأقسام بنجاح",
+  "deleteCategory": "حذف القسم",
+  "areYouSureToDeleteCategory": "هل أنت متأكد أنك تريد حذف هذا القسم؟ هذا الإجراء لا يمكن التراجع عنه.",
+  "categoryDeletedSuccessfully": "تم حذف القسم بنجاح",
+  "categorySavedSuccessfully": "تم حفظ القسم بنجاح",
 
   "newChatRequest": "طلب محادثة جديد",
   "accept": "قبول",

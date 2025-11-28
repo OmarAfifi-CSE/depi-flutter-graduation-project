@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
+import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/home/widgets/category_filter.dart';
 import 'package:batrina/views/home/widgets/home_carousel.dart';
@@ -45,8 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isAdmin = FireBaseFireStore.currentUser!.isAdmin;
     return BlocProvider(
-      create: (context) => CategoryCubit()..fetchCategories(),
+      create: (context) => CategoryCubit()..fetchCategories(isAdmin: isAdmin),
       child: SingleChildScrollView(
         controller: _scrollController,
         child: Directionality(

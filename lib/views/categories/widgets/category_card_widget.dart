@@ -1,8 +1,13 @@
+import 'dart:ui';
+
+import 'package:batrina/controllers/cubit/category/category_cubit.dart';
+import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/build_dynamic_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,6 +20,7 @@ class CategoryCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isAdmin = FireBaseFireStore.currentUser!.isAdmin;
     return GestureDetector(
       onTap: () {
         context.pushNamed(
@@ -55,24 +61,34 @@ class CategoryCardWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 8.w,
-                              vertical: 4.h,
-                            ),
-                            decoration: BoxDecoration(
-                              color: theme.scaffoldBackgroundColor.withValues(
-                                alpha: 0.8,
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8.r),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(
+                                sigmaX: 10.w,
+                                sigmaY: 10.h,
                               ),
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                            child: Text(
-                              category.name,
-                              style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: AppFonts.englishFontFamily,
-                                color: theme.primaryColor,
+                              child: Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 8.w,
+                                  vertical: 4.h,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: theme.primaryColor.withValues(
+                                    alpha: 0.3,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.r),
+                                ),
+                                child: Text(
+                                  category.name,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: AppFonts.englishFontFamily,
+                                    color: theme.scaffoldBackgroundColor,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -81,6 +97,38 @@ class CategoryCardWidget extends StatelessWidget {
                     ),
                   ),
                 ),
+                if (isAdmin)
+                  Positioned(
+                    top: 10.h,
+                    right: 10.w,
+                    child: GestureDetector(
+                      onTap: () {
+                        final categoryCubit = context.read<CategoryCubit>();
+                        context.pushNamed(
+                          AppRoutes.manageCategoryScreen,
+                          extra: {'cubit': categoryCubit, 'category': category},
+                        );
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.r),
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10.w, sigmaY: 10.h),
+                          child: Container(
+                            padding: EdgeInsets.all(6.r),
+                            decoration: BoxDecoration(
+                              color: theme.primaryColor.withValues(alpha: 0.3),
+                              borderRadius: BorderRadius.circular(8.r),
+                            ),
+                            child: Icon(
+                              Icons.edit,
+                              color: theme.scaffoldBackgroundColor,
+                              size: 18.sp,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
               ],
             ),
           ),

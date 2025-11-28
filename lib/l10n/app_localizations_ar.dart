@@ -559,6 +559,51 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get addCategory => 'إضافة قسم جديد';
+
+  @override
+  String get editCategory => 'تعديل القسم';
+
+  @override
+  String get categoryName => 'اسم القسم';
+
+  @override
+  String get enterCategoryName => 'أدخل اسم القسم';
+
+  @override
+  String get isActive => 'مفعّل';
+
+  @override
+  String get savedSuccessfully => 'تم الحفظ بنجاح';
+
+  @override
+  String get fillAllFields => 'يرجى ملء جميع الحقول المطلوبة';
+
+  @override
+  String get reorderCategories => 'إعادة ترتيب الأقسام';
+
+  @override
+  String get saveChanges => 'حفظ التغييرات';
+
+  @override
+  String get areYouSureToSaveCategoryOrder => 'هل أنت متأكد أنك تريد حفظ ترتيب الأقسام الجديد؟';
+
+  @override
+  String get categoryOrderUpdatedSuccessfully => 'تم تحديث ترتيب الأقسام بنجاح';
+
+  @override
+  String get deleteCategory => 'حذف القسم';
+
+  @override
+  String get areYouSureToDeleteCategory => 'هل أنت متأكد أنك تريد حذف هذا القسم؟ هذا الإجراء لا يمكن التراجع عنه.';
+
+  @override
+  String get categoryDeletedSuccessfully => 'تم حذف القسم بنجاح';
+
+  @override
+  String get categorySavedSuccessfully => 'تم حفظ القسم بنجاح';
+
+  @override
   String get newChatRequest => 'طلب محادثة جديد';
 
   @override

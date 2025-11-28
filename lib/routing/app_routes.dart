@@ -19,6 +19,7 @@ class AppRoutes {
       '$categoriesScreen/category-products/:categoryName';
   static const String categoryProductScreen =
       '$categoryProductsScreen/product/:productId';
+  static const String manageCategoryScreen = '/manage-category';
   static const String reviewsScreen = '/reviews';
   static const String productScreen = '/product/:productId';
 

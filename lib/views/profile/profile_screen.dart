@@ -66,6 +66,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               forceStrutHeight: true,
             ),
           ),
+          SizedBox(height: 8.h,),
           CustomElevatedButton(
             onPressed: () => Navigator.of(alertDialogContext).pop(true),
             backgroundColor: Colors.red,

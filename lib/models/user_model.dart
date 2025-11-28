@@ -15,6 +15,8 @@ class UserModel {
     required this.email,
   });
 
+  bool get isAdmin => role.toLowerCase() == 'admin';
+
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'],

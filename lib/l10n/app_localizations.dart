@@ -662,7 +662,7 @@ abstract class AppLocalizations {
   /// No description provided for @myOrders.
   ///
   /// In en, this message translates to:
-  /// **'My Order'**
+  /// **'My Orders'**
   String get myOrders;
 
   /// No description provided for @wishlist.
@@ -1186,6 +1186,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'We couldn\'t find any products in the \'{categoryName}\' category right now. Try checking back later or exploring other categories.'**
   String emptyCategoryDescription(Object categoryName);
+
+  /// No description provided for @addCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Add New Category'**
+  String get addCategory;
+
+  /// No description provided for @editCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Category'**
+  String get editCategory;
+
+  /// No description provided for @categoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Category Name'**
+  String get categoryName;
+
+  /// No description provided for @enterCategoryName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter category name'**
+  String get enterCategoryName;
+
+  /// No description provided for @isActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Is Active'**
+  String get isActive;
+
+  /// No description provided for @savedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved successfully'**
+  String get savedSuccessfully;
+
+  /// No description provided for @fillAllFields.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill all required fields'**
+  String get fillAllFields;
+
+  /// No description provided for @reorderCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder Categories'**
+  String get reorderCategories;
+
+  /// No description provided for @saveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get saveChanges;
+
+  /// No description provided for @areYouSureToSaveCategoryOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to save the new order of categories?'**
+  String get areYouSureToSaveCategoryOrder;
+
+  /// No description provided for @categoryOrderUpdatedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Category order updated successfully'**
+  String get categoryOrderUpdatedSuccessfully;
+
+  /// No description provided for @deleteCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Category'**
+  String get deleteCategory;
+
+  /// No description provided for @areYouSureToDeleteCategory.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this category? This action cannot be undone.'**
+  String get areYouSureToDeleteCategory;
+
+  /// No description provided for @categoryDeletedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Category deleted successfully'**
+  String get categoryDeletedSuccessfully;
+
+  /// No description provided for @categorySavedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Category saved successfully'**
+  String get categorySavedSuccessfully;
 
   /// No description provided for @newChatRequest.
   ///

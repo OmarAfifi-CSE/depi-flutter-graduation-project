@@ -293,7 +293,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get personalDetails => 'Personal Details';
 
   @override
-  String get myOrders => 'My Order';
+  String get myOrders => 'My Orders';
 
   @override
   String get wishlist => 'Wishlist';
@@ -557,6 +557,51 @@ class AppLocalizationsEn extends AppLocalizations {
   String emptyCategoryDescription(Object categoryName) {
     return 'We couldn\'t find any products in the \'$categoryName\' category right now. Try checking back later or exploring other categories.';
   }
+
+  @override
+  String get addCategory => 'Add New Category';
+
+  @override
+  String get editCategory => 'Edit Category';
+
+  @override
+  String get categoryName => 'Category Name';
+
+  @override
+  String get enterCategoryName => 'Enter category name';
+
+  @override
+  String get isActive => 'Is Active';
+
+  @override
+  String get savedSuccessfully => 'Saved successfully';
+
+  @override
+  String get fillAllFields => 'Please fill all required fields';
+
+  @override
+  String get reorderCategories => 'Reorder Categories';
+
+  @override
+  String get saveChanges => 'Save Changes';
+
+  @override
+  String get areYouSureToSaveCategoryOrder => 'Are you sure you want to save the new order of categories?';
+
+  @override
+  String get categoryOrderUpdatedSuccessfully => 'Category order updated successfully';
+
+  @override
+  String get deleteCategory => 'Delete Category';
+
+  @override
+  String get areYouSureToDeleteCategory => 'Are you sure you want to delete this category? This action cannot be undone.';
+
+  @override
+  String get categoryDeletedSuccessfully => 'Category deleted successfully';
+
+  @override
+  String get categorySavedSuccessfully => 'Category saved successfully';
 
   @override
   String get newChatRequest => 'New chat request';

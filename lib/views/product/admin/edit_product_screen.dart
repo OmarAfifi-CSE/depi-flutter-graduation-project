@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/provider/product_form_provide.dart';
+import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/views/product/admin/widgets/edit_button.dart';
@@ -27,9 +28,13 @@ class _EditProductScreenState extends State<EditProductScreen> {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context);
+    final isAdmin = FireBaseFireStore.currentUser!.isAdmin;
     return MultiProvider(
       providers: [
-        BlocProvider(create: (context) => CategoryCubit()..fetchCategories()),
+        BlocProvider(
+          create: (context) =>
+              CategoryCubit()..fetchCategories(isAdmin: isAdmin),
+        ),
         ChangeNotifierProvider(
           create: (context) => ProductFormProvider()
             ..initProduct(widget.productModel)

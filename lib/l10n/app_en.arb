@@ -150,7 +150,7 @@
 
 
   "personalDetails": "Personal Details",
-  "myOrders": "My Order",
+  "myOrders": "My Orders",
   "wishlist": "Wishlist",
   "shippingAddress": "Shipping Address",
   "myCard": "My Card",
@@ -255,6 +255,22 @@
 
   "nothingFound": "Nothing Found",
   "emptyCategoryDescription": "We couldn't find any products in the '{categoryName}' category right now. Try checking back later or exploring other categories.",
+
+  "addCategory": "Add New Category",
+  "editCategory": "Edit Category",
+  "categoryName": "Category Name",
+  "enterCategoryName": "Enter category name",
+  "isActive": "Is Active",
+  "savedSuccessfully": "Saved successfully",
+  "fillAllFields": "Please fill all required fields",
+  "reorderCategories": "Reorder Categories",
+  "saveChanges": "Save Changes",
+  "areYouSureToSaveCategoryOrder": "Are you sure you want to save the new order of categories?",
+  "categoryOrderUpdatedSuccessfully": "Category order updated successfully",
+  "deleteCategory": "Delete Category",
+  "areYouSureToDeleteCategory": "Are you sure you want to delete this category? This action cannot be undone.",
+  "categoryDeletedSuccessfully": "Category deleted successfully",
+  "categorySavedSuccessfully": "Category saved successfully",
 
   "newChatRequest": "New chat request",
   "accept": "Accept",
