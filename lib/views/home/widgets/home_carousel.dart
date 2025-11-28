@@ -1,5 +1,4 @@
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/views/categories/widgets/category_card_widget.dart';
 import 'package:batrina/widgets/custom_text.dart';
@@ -15,67 +14,63 @@ class HomeCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context)!;
-    final isAdmin = FireBaseFireStore.currentUser!.isAdmin;
-    return BlocProvider(
-      create: (context) => CategoryCubit()..fetchCategories(isAdmin: isAdmin),
-      child: BlocBuilder<CategoryCubit, CategoryState>(
-        builder: (context, state) {
-          switch (state) {
-            case CategoryLoading() || CategoryInitial():
-              return SizedBox(
-                height: 180.h,
-                child: Center(
-                  child: CupertinoActivityIndicator(
-                    color: Theme.of(context).primaryColor,
-                  ),
+    return BlocBuilder<CategoryCubit, CategoryState>(
+      builder: (context, state) {
+        switch (state) {
+          case CategoryLoading() || CategoryInitial():
+            return SizedBox(
+              height: 180.h,
+              child: Center(
+                child: CupertinoActivityIndicator(
+                  color: Theme.of(context).primaryColor,
                 ),
-              );
-            case CategoryError():
+              ),
+            );
+          case CategoryError():
+            return SizedBox(
+              height: 180.h,
+              child: Center(
+                child: CustomText(
+                  data: loc.couldNotLoadCategories,
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
+
+          case CategorySuccess():
+            if (state.categories.isEmpty) {
               return SizedBox(
                 height: 180.h,
                 child: Center(
                   child: CustomText(
-                    data: loc.couldNotLoadCategories,
+                    data: loc.emptyCategories,
                     fontSize: 16.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               );
-
-            case CategorySuccess():
-              if (state.categories.isEmpty) {
-                return SizedBox(
-                  height: 180.h,
-                  child: Center(
-                    child: CustomText(
-                      data: loc.emptyCategories,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
+            }
+            return CarouselSlider(
+              options: CarouselOptions(
+                height: 180.h,
+                viewportFraction: 0.8,
+                autoPlay: true,
+                aspectRatio: 2.0,
+                enlargeCenterPage: true,
+              ),
+              items: state.categories.map((category) {
+                return Padding(
+                  padding: EdgeInsets.only(bottom: 16.h),
+                  child: CategoryCardWidget(
+                    category: category,
+                    padding: EdgeInsets.zero,
                   ),
                 );
-              }
-              return CarouselSlider(
-                options: CarouselOptions(
-                  height: 180.h,
-                  viewportFraction: 0.8,
-                  autoPlay: true,
-                  aspectRatio: 2.0,
-                  enlargeCenterPage: true,
-                ),
-                items: state.categories.map((category) {
-                  return Padding(
-                    padding: EdgeInsets.only(bottom: 16.h),
-                    child: CategoryCardWidget(
-                      category: category,
-                      padding: EdgeInsets.zero,
-                    ),
-                  );
-                }).toList(),
-              );
-          }
-        },
-      ),
+              }).toList(),
+            );
+        }
+      },
     );
   }
 }

@@ -25,7 +25,6 @@ class ManageCategoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
-    final isAdmin = FireBaseFireStore.currentUser!.isAdmin;
     return BlocProvider(
       create: (context) => ManageCategoryCubit()
         ..initForm(categoryModel)
@@ -33,7 +32,6 @@ class ManageCategoryScreen extends StatelessWidget {
       child: BlocListener<ManageCategoryCubit, ManageCategoryState>(
         listener: (context, state) {
           if (state is ManageCategorySuccess) {
-            context.read<CategoryCubit>().fetchCategories(isAdmin: isAdmin);
             Navigator.pop(context);
             CustomSnackBar.showSnackBar(
               context: context,

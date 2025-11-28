@@ -155,27 +155,26 @@ class FireBaseFireStore {
     }
   }
 
-  Future<List<CategoryModel>> getCategories(bool isAdmin) async {
-    try {
-      Query<Map<String, dynamic>> query = fireBaseFireStore.collection(
-        "categories",
-      );
+  Stream<List<CategoryModel>> getCategoriesStream(bool isAdmin) {
+    Query<Map<String, dynamic>> query = fireBaseFireStore.collection(
+      "categories",
+    );
 
-      if (!isAdmin) {
-        query = query.where("isActive", isEqualTo: true);
-      }
-      query = query
-          .orderBy('rank', descending: false)
-          .orderBy('createdAt', descending: true);
+    if (!isAdmin) {
+      query = query.where("isActive", isEqualTo: true);
+    }
 
-      final querySnapshot = await query.get();
-      return querySnapshot.docs.map((doc) {
+    query = query
+        .orderBy('rank', descending: false)
+        .orderBy('createdAt', descending: true);
+
+    return query.snapshots().map((snapshot) {
+      return snapshot.docs.map((doc) {
         var data = doc.data();
+        data['id'] = doc.id;
         return CategoryModel.fromJson(data);
       }).toList();
-    } catch (e) {
-      return [];
-    }
+    });
   }
 
   Future<void> updateCategoriesOrder(List<CategoryModel> categories) async {

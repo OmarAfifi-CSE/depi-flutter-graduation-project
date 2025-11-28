@@ -37,11 +37,21 @@ class CategoryFilter extends StatelessWidget {
               child: const Center(child: Text('No categories found.')),
             );
           }
-          if (selectedCategoryNotifier.value.isEmpty && categories.isNotEmpty) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              context.read<ProductsProvider>().refresh(categories.first.name);
-              selectedCategoryNotifier.value = categories.first.name;
-            });
+          // If nothing selected, or selected category doesn't exist anymore (deleted), select first.
+          final bool isSelectedValid = categories.any(
+            (c) => c.name == selectedCategoryNotifier.value,
+          );
+
+          if (selectedCategoryNotifier.value.isEmpty || !isSelectedValid) {
+            if (categories.isNotEmpty) {
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                final first = categories.first.name;
+                if (selectedCategoryNotifier.value != first) {
+                  selectedCategoryNotifier.value = first;
+                  context.read<ProductsProvider>().refresh(first);
+                }
+              });
+            }
           }
 
           return SizedBox(
