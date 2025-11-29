@@ -882,4 +882,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get category => 'Category';
+
+  @override
+  String get areYouSureToDeleteProduct => 'Are you sure you want to delete this product? This action cannot be undone.';
+
+  @override
+  String get productDeletedSuccessfully => 'Product deleted successfully';
+
+  @override
+  String get deleteProduct => 'Delete Product';
 }

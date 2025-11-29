@@ -86,6 +86,30 @@ class FireBaseFireStore {
     }
   }
 
+  Future<void> deleteProduct(String pId) async {
+    QuerySnapshot<Map<String, dynamic>> variants = await fireBaseFireStore
+        .collection('products')
+        .doc(pId)
+        .collection("variants")
+        .get();
+    if (variants.docs.isNotEmpty) {
+      for (QueryDocumentSnapshot queryDocumentSnapshot in variants.docs) {
+        await queryDocumentSnapshot.reference.delete();
+      }
+    }
+    QuerySnapshot<Map<String, dynamic>> reviews = await fireBaseFireStore
+        .collection('products')
+        .doc(pId)
+        .collection("productReviews")
+        .get();
+    if (reviews.docs.isNotEmpty) {
+      for (QueryDocumentSnapshot queryDocumentSnapshot in reviews.docs) {
+        await queryDocumentSnapshot.reference.delete();
+      }
+    }
+    await fireBaseFireStore.collection('products').doc(pId).delete();
+  }
+
   Future<Map<String, dynamic>> getProductsPaginated({
     required String category,
     int limit = 20, // عدد المنتجات اللي هنجيبها كل مرة

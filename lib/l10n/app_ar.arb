@@ -361,5 +361,8 @@
   "addProduct": "إضافة منتج",
   "stock": "المخزون",
   "number": "الرقم",
-  "category": "الفئة"
+  "category": "الفئة",
+  "areYouSureToDeleteProduct": "هل أنت متأكد أنك تريد حذف هذا النتج؟ هذا الإجراء لا يمكن التراجع عنه.",
+  "productDeletedSuccessfully": "تم حذف المنتج بنجاح",
+  "deleteProduct": "حذف المنتج"
 }

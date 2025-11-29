@@ -882,4 +882,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get category => 'الفئة';
+
+  @override
+  String get areYouSureToDeleteProduct => 'هل أنت متأكد أنك تريد حذف هذا النتج؟ هذا الإجراء لا يمكن التراجع عنه.';
+
+  @override
+  String get productDeletedSuccessfully => 'تم حذف المنتج بنجاح';
+
+  @override
+  String get deleteProduct => 'حذف المنتج';
 }

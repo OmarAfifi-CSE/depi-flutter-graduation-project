@@ -1816,6 +1816,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Category'**
   String get category;
+
+  /// No description provided for @areYouSureToDeleteProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this product? This action cannot be undone.'**
+  String get areYouSureToDeleteProduct;
+
+  /// No description provided for @productDeletedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Product deleted successfully'**
+  String get productDeletedSuccessfully;
+
+  /// No description provided for @deleteProduct.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Product'**
+  String get deleteProduct;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
