@@ -1,6 +1,6 @@
 import 'dart:ui';
+import 'package:batrina/controllers/cubit/admin/admin_mode/admin_mode_cubit.dart';
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/views/categories/admin/manage_category/add_category_card.dart';
 import 'package:batrina/views/categories/admin/widgets/confirmation_dialog.dart';
@@ -26,12 +26,11 @@ class _CategoryListViewState extends State<CategoryListView> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
-    final isAdmin = FireBaseFireStore.currentUser?.isAdmin ?? false;
-
+    final isAdminMode = context.watch<AdminModeCubit>().state;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (isAdmin)
+        if (isAdminMode)
           Padding(
             padding: EdgeInsets.only(right: 25.w, left: 25.w, bottom: 0.h),
             child: AnimatedSwitcher(
@@ -83,7 +82,7 @@ class _CategoryListViewState extends State<CategoryListView> {
                                 isReorderMode = false;
                               });
                               context.read<CategoryCubit>().fetchCategories(
-                                isAdmin: isAdmin,
+                                isAdmin: isAdminMode,
                               );
                             },
                             icon: const Icon(Icons.close, color: Colors.red),
@@ -183,12 +182,12 @@ class _CategoryListViewState extends State<CategoryListView> {
                 return Expanded(child: Center(child: Text(state.message)));
 
               case CategorySuccess():
-                if (state.categories.isEmpty && !isAdmin) {
+                if (state.categories.isEmpty && !isAdminMode) {
                   return Expanded(
                     child: Center(child: Text(loc!.emptyCategories)),
                   );
                 }
-                if (isAdmin && isReorderMode) {
+                if (isAdminMode && isReorderMode) {
                   return Expanded(
                     child: ReorderableListView.builder(
                       padding: EdgeInsets.only(bottom: 20.h),
@@ -320,12 +319,12 @@ class _CategoryListViewState extends State<CategoryListView> {
 
                 return Expanded(
                   child: ListView.separated(
-                    itemCount: state.categories.length + (isAdmin ? 1 : 0),
+                    itemCount: state.categories.length + (isAdminMode ? 1 : 0),
                     separatorBuilder: (context, index) =>
                         SizedBox(height: 16.h),
                     padding: EdgeInsets.only(bottom: 20.h),
                     itemBuilder: (context, i) {
-                      if (isAdmin && i == state.categories.length) {
+                      if (isAdminMode && i == state.categories.length) {
                         return const AddCategoryCard();
                       }
                       return CategoryCardWidget(category: state.categories[i]);

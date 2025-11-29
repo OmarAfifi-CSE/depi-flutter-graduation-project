@@ -290,6 +290,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get defaultError => 'حدث خطأ غير متوقع.';
 
   @override
+  String get adminDashboard => 'لوحة الإدارة';
+
+  @override
+  String get activeEditingMode => 'وضع التعديل مفعل';
+
+  @override
+  String get viewAsCustomer => 'تصفح كعميل';
+
+  @override
   String get personalDetails => 'التفاصيل الشخصية';
 
   @override

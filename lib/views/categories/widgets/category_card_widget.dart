@@ -1,7 +1,6 @@
 import 'dart:ui';
-
+import 'package:batrina/controllers/cubit/admin/admin_mode/admin_mode_cubit.dart';
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_fonts.dart';
@@ -20,7 +19,7 @@ class CategoryCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isAdmin = FireBaseFireStore.currentUser!.isAdmin;
+    final isAdminMode = context.watch<AdminModeCubit>().state;
     return GestureDetector(
       onTap: () {
         context.pushNamed(
@@ -97,7 +96,7 @@ class CategoryCardWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (isAdmin)
+                if (isAdminMode)
                   Positioned(
                     top: 10.h,
                     right: 10.w,

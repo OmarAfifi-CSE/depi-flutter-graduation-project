@@ -24,13 +24,11 @@ class ProfileInfo extends StatelessWidget {
         border: Border.all(color: appColors.dividerColor!, width: 2.r),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.w),
         child: Column(
           spacing: 10.h,
-
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(height: 30),
             ProfileMenuItem(
               icon: Icons.person,
               title: loc.personalDetails,
@@ -66,17 +64,11 @@ class ProfileInfo extends StatelessWidget {
                 context.pushNamed(AppRoutes.addressesScreen);
               },
             ),
-            ProfileMenuItem(
-              icon: Icons.credit_card,
-              title: loc.myCard,
-              onTap: () {},
-            ),
-            ProfileMenuItem(
-              icon: Icons.settings,
-              title: loc.settings,
-              onTap: () {},
-            ),
-            SizedBox(height: 30.h),
+            // ProfileMenuItem(
+            //   icon: Icons.credit_card,
+            //   title: loc.myCard,
+            //   onTap: () {},
+            // ),
           ],
         ),
       ),

@@ -33,7 +33,7 @@ class ConfirmButton extends StatelessWidget {
         if (state is EditUserSuccess) {
           CustomSnackBar.showSnackBar(
             context: context,
-            message: "Edited successfully",
+            message: loc!.savedSuccessfully,
             color: Colors.green,
           );
         } else if (state is EditUserFailure) {

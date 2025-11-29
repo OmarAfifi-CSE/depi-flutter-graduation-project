@@ -148,6 +148,9 @@
   "defaultError":"An unexpected error occurred.",
 
 
+  "adminDashboard": "Admin Dashboard",
+  "activeEditingMode": "Active Editing Mode",
+  "viewAsCustomer": "View as Customer",
 
   "personalDetails": "Personal Details",
   "myOrders": "My Orders",

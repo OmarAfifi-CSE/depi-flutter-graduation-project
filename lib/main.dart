@@ -1,4 +1,5 @@
 import 'package:batrina/app_initializer.dart';
+import 'package:batrina/controllers/cubit/admin/admin_mode/admin_mode_cubit.dart';
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dart';
 import 'package:batrina/controllers/provider/deep_link_provider.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => ThemeProvider(initialThemeMode)),
         ChangeNotifierProvider(create: (_) => LocaleProvider(initialLocale)),
+        BlocProvider(create: (context) => AdminModeCubit()),
         BlocProvider(create: (_) => AuthCubit()),
         BlocProvider(create: (_) => GetCartCubit()),
         ChangeNotifierProvider(create: (_) => ProductsProvider()),

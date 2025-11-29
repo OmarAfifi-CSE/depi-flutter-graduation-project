@@ -1,6 +1,4 @@
-import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/cubit/category/manage_category/manage_category_cubit.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/styling/app_assets.dart';

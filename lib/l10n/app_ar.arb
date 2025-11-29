@@ -144,6 +144,9 @@
   "couldNotLoadCategories": "تعذر تحميل الفئات.",
   "defaultError": "حدث خطأ غير متوقع.",
 
+  "adminDashboard": "لوحة الإدارة",
+  "activeEditingMode": "وضع التعديل مفعل",
+  "viewAsCustomer": "تصفح كعميل",
 
   "personalDetails": "التفاصيل الشخصية",
   "myOrders": "طلباتي",

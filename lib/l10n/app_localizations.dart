@@ -653,6 +653,24 @@ abstract class AppLocalizations {
   /// **'An unexpected error occurred.'**
   String get defaultError;
 
+  /// No description provided for @adminDashboard.
+  ///
+  /// In en, this message translates to:
+  /// **'Admin Dashboard'**
+  String get adminDashboard;
+
+  /// No description provided for @activeEditingMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Editing Mode'**
+  String get activeEditingMode;
+
+  /// No description provided for @viewAsCustomer.
+  ///
+  /// In en, this message translates to:
+  /// **'View as Customer'**
+  String get viewAsCustomer;
+
   /// No description provided for @personalDetails.
   ///
   /// In en, this message translates to:

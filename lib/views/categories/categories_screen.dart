@@ -1,3 +1,4 @@
+import 'package:batrina/controllers/cubit/admin/admin_mode/admin_mode_cubit.dart';
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/routing/app_routes.dart';
@@ -16,9 +17,9 @@ class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isAdmin = FireBaseFireStore.currentUser!.isAdmin;
+    final isAdminMode = context.watch<AdminModeCubit>().state;
     return BlocProvider(
-      create: (context) => CategoryCubit()..fetchCategories(isAdmin: isAdmin),
+      create: (context) => CategoryCubit()..fetchCategories(isAdmin: isAdminMode),
       child: Column(
         children: [
           Directionality(
@@ -88,7 +89,7 @@ class CategoriesScreen extends StatelessWidget {
               ),
             ),
           ),
-          isAdmin ? const SizedBox.shrink() : SizedBox(height: 22.h),
+          isAdminMode ? const SizedBox.shrink() : SizedBox(height: 22.h),
           const Expanded(child: CategoryListView()),
         ],
       ),

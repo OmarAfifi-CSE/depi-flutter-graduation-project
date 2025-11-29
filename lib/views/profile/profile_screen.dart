@@ -1,6 +1,7 @@
 import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/routing/app_routes.dart';
+import 'package:batrina/views/profile/widgets/admin_control_card.dart';
 import 'package:batrina/views/profile/widgets/language_profile_settings_item.dart';
 import 'package:batrina/views/profile/widgets/profile_info.dart';
 import 'package:batrina/views/profile/widgets/profile_settings_item.dart';
@@ -66,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               forceStrutHeight: true,
             ),
           ),
-          SizedBox(height: 8.h,),
+          SizedBox(height: 8.h),
           CustomElevatedButton(
             onPressed: () => Navigator.of(alertDialogContext).pop(true),
             backgroundColor: Colors.red,
@@ -111,6 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final loc = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final isRealAdmin = FireBaseFireStore.currentUser!.isAdmin;
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 25.w),
       child: Column(
@@ -118,8 +120,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(height: 12.h),
-          const ProfileHeader(),
+          GestureDetector(
+            onTap: () {
+              context.pushNamed(AppRoutes.personalDetailsScreen);
+            },
+            child: const ProfileHeader(),
+          ),
           SizedBox(height: 30.h),
+          if (isRealAdmin) const AdminControlCard(),
           const ProfileInfo(),
           SizedBox(height: 30.h),
           CustomText(
@@ -135,11 +143,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               border: Border.all(color: appColors.dividerColor!, width: 2.r),
             ),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.w),
               child: Column(
                 spacing: 10.h,
                 children: [
-                  SizedBox(height: 30.h),
                   const LanguageProfileSettingsItem(),
                   Consumer<ThemeProvider>(
                     builder: (context, themeProvider, _) {
@@ -177,7 +184,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       trailing: const Icon(Icons.arrow_forward_ios),
                     ),
                   ),
-                  SizedBox(height: 30.h),
                 ],
               ),
             ),

@@ -290,6 +290,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get defaultError => 'An unexpected error occurred.';
 
   @override
+  String get adminDashboard => 'Admin Dashboard';
+
+  @override
+  String get activeEditingMode => 'Active Editing Mode';
+
+  @override
+  String get viewAsCustomer => 'View as Customer';
+
+  @override
   String get personalDetails => 'Personal Details';
 
   @override
