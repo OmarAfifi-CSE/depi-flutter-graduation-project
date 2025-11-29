@@ -62,7 +62,6 @@ class ProductFormProvider extends ChangeNotifier {
       map.remove('updatedAt');
       map.remove('createdAt');
     }
-
     return jsonEncode(aMap) == jsonEncode(bMap);
   }
 

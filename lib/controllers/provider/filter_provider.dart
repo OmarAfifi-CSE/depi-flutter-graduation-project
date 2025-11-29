@@ -9,7 +9,6 @@ class FilterProvider with ChangeNotifier {
     final snapshot = await FirebaseFirestore.instance
         .collection('categories')
         .get();
-    print("OMAR :: getCategories Success");
     _categories = snapshot.docs
         .map((doc) {
           final data = doc.data();

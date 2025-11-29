@@ -164,10 +164,10 @@ class ProductModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'name': name,
-      'description': description,
-      'category': categoryName,
-      'subtitle': subtitle,
+      'name': name.trim(),
+      'description': description.trim(),
+      'category': categoryName.trim(),
+      'subtitle': subtitle.trim(),
       'price': price,
       'salePrice': salePrice,
       'thumbnail': thumbnail,

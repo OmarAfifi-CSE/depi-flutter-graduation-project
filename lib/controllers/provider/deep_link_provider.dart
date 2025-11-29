@@ -7,7 +7,6 @@ class DeepLinkProvider extends ChangeNotifier {
 
   void setDeepLink(String link) {
     _pendingLink = link;
-    print("🔗 Deep Link Saved in Safe Box: $_pendingLink");
     notifyListeners();
   }
 
@@ -17,7 +16,6 @@ class DeepLinkProvider extends ChangeNotifier {
     final String linkToReturn = _pendingLink!;
     _pendingLink = null;
 
-    print("🚀 Deep Link Consumed: $linkToReturn");
     return linkToReturn;
   }
 }

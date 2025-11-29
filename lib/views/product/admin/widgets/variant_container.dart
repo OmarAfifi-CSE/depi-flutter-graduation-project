@@ -120,6 +120,7 @@ class _VariantContainerState extends State<VariantContainer> {
                     data: loc!.sizesAndStock,
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w700,
+                    forceStrutHeight: true,
                   ),
                 ],
               ),
@@ -188,6 +189,7 @@ class _VariantContainerState extends State<VariantContainer> {
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w700,
                           fontFamily: AppFonts.englishFontFamily,
+                          forceStrutHeight: true,
                         ),
                         CustomText(
                           data:
@@ -195,6 +197,7 @@ class _VariantContainerState extends State<VariantContainer> {
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
                           color: appColors.secondaryText,
+                          forceStrutHeight: true,
                         ),
                       ],
                     ),

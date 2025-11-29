@@ -214,10 +214,45 @@
                 }
 
                 const imgEl = document.getElementById('p-image');
-                if (imageUrl && imageUrl.startsWith('http')) {
+
+                if (!imageUrl) {
+                    // ما فيش صورة خالص
+                    imgEl.src = 'https://via.placeholder.com/400x400/f0f0f0/cccccc?text=No+Preview';
+                } else if (imageUrl.startsWith('http')) {
+                    // 🎯 HTTP URL
+                    imgEl.src = imageUrl;
+                } else if (imageUrl.startsWith('/')) {
+                    // 🎯 Base64 بيبدأ بـ / أو بـ iVBO... أو /9j/
+                    imgEl.src = `data:image/jpeg;base64,${imageUrl}`;
+                } else if (imageUrl.startsWith('data:')) {
+                    // 🎯 بالفعل data URL
                     imgEl.src = imageUrl;
                 } else {
+                    // ❌ صيغة غير معروفة
                     imgEl.src = 'https://via.placeholder.com/400x400/f0f0f0/cccccc?text=No+Preview';
+                }
+
+                // 🚀 تحديث og:image للشير (سواء URL أو base64)
+                if (imageUrl) {
+                    let ogImage = document.querySelector('meta[property="og:image"]');
+                    if (!ogImage) {
+                        ogImage = document.createElement('meta');
+                        ogImage.setAttribute('property', 'og:image');
+                        document.head.appendChild(ogImage);
+                    }
+                    ogImage.setAttribute('content', imageUrl);
+
+                    // تحديث الـ description كمان
+                    document.querySelector('meta[property="og:description"]').setAttribute(
+                        'content',
+                        `${data.name} - $${data.salePrice || data.price} on Batrina`
+                    );
+
+                    // تحديث الـ title
+                    document.querySelector('meta[property="og:title"]').setAttribute(
+                        'content',
+                        data.name
+                    );
                 }
 
                 // --- عرض البيانات ---
@@ -263,16 +298,14 @@
     }
 
     // --- 🚀 الميثود اللي بتعمل اللينك اللي إنت طلبته ---
-function setupOpenAppButton(id) {
+    function setupOpenAppButton(id) {
         const btn = document.getElementById('open-in-app-btn');
 
         btn.onclick = function() {
             // 1. ده المسار اللي التطبيق مستنيه
-            // (شيلنا ?id= وخليناها path parameter عشان تطابق الراوتر بتاعك)
             const path = `product?id=${id}`;
 
             // 2. الطريقة الرسمية للأندرويد (Intent URL)
-            // الصيغة: intent://<path>#Intent;scheme=<scheme>;package=<package_name>;end
             const intentUrl = `intent://app/${path}#Intent;scheme=batrina;package=com.oamao.batrina.batrina;end`;
 
             // 3. افتح الـ Intent

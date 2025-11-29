@@ -1,7 +1,7 @@
+import 'package:batrina/controllers/cubit/admin/admin_mode/admin_mode_cubit.dart';
 import 'package:batrina/controllers/cubit/chat/get_messages_cubit/get_messages_cubit.dart';
 import 'package:batrina/controllers/provider/local_chats_provider.dart';
 import 'package:batrina/controllers/provider/product_provider.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
 import 'package:batrina/models/chat_page_models/message_model.dart';
@@ -416,28 +416,32 @@ $productLink''';
                     ),
                     SizedBox(height: 10.h),
 
-                    if (FireBaseFireStore.currentUser?.role == "admin")
-                      GestureDetector(
-                        onTap: () => context.pushNamed(
-                          AppRoutes.editProductScreen,
-                          extra: productProvider.productModel.copyWith(),
-                        ),
-                        child: Container(
-                          width: 35.w,
-                          height: 35.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: theme.primaryColor,
-                          ),
-                          child: Center(
-                            child: Icon(
-                              Icons.edit,
-                              color: theme.scaffoldBackgroundColor,
-                              size: 20.sp,
-                            ),
-                          ),
-                        ),
-                      ),
+                    () {
+                      bool isAdmin = context.read<AdminModeCubit>().state;
+                      return isAdmin
+                          ? GestureDetector(
+                              onTap: () => context.pushNamed(
+                                AppRoutes.editProductScreen,
+                                extra: productProvider.productModel.copyWith(),
+                              ),
+                              child: Container(
+                                width: 35.w,
+                                height: 35.w,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: theme.primaryColor,
+                                ),
+                                child: Center(
+                                  child: Icon(
+                                    Icons.edit,
+                                    color: theme.scaffoldBackgroundColor,
+                                    size: 20.sp,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : const SizedBox();
+                    }(),
                   ],
                 ),
             ],
