@@ -1,6 +1,6 @@
+import 'package:batrina/controllers/cubit/admin/admin_mode/admin_mode_cubit.dart';
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/provider/products_provider.dart';
-import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/home/widgets/category_filter.dart';
 import 'package:batrina/views/home/widgets/home_carousel.dart';
@@ -46,66 +46,72 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isAdmin = FireBaseFireStore.currentUser!.isAdmin;
+    final initialAdminMode = context.read<AdminModeCubit>().state;
     return BlocProvider(
-      create: (context) => CategoryCubit()..fetchCategories(isAdmin: isAdmin),
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        child: Directionality(
-          textDirection: TextDirection.ltr,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const HomeCarousel(),
-              SizedBox(height: 14.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(right: 25.w),
-                      child: CustomText(
-                        data: "Categories",
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w700,
-                        fontFamily: AppFonts.englishFontFamily,
+      create: (context) =>
+          CategoryCubit()..fetchCategories(isAdmin: initialAdminMode),
+      child: BlocListener<AdminModeCubit, bool>(
+        listener: (context, isAdminMode) {
+          context.read<CategoryCubit>().fetchCategories(isAdmin: isAdminMode);
+        },
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Directionality(
+            textDirection: TextDirection.ltr,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const HomeCarousel(),
+                SizedBox(height: 14.h),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(right: 25.w),
+                        child: CustomText(
+                          data: "Categories",
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: AppFonts.englishFontFamily,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 12.h),
-                    CategoryFilter(
-                      selectedCategoryNotifier: _selectedCategoryNotifier,
-                    ),
-                    SizedBox(height: 24.h),
-                    ValueListenableBuilder<String>(
-                      valueListenable: _selectedCategoryNotifier,
-                      builder: (context, selectedCategory, child) {
-                        if (selectedCategory.isEmpty) {
-                          return const SizedBox.shrink();
-                        }
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(right: 25.w),
-                              child: CustomText(
-                                data: 'Top in $selectedCategory',
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: AppFonts.englishFontFamily,
+                      SizedBox(height: 12.h),
+                      CategoryFilter(
+                        selectedCategoryNotifier: _selectedCategoryNotifier,
+                      ),
+                      SizedBox(height: 24.h),
+                      ValueListenableBuilder<String>(
+                        valueListenable: _selectedCategoryNotifier,
+                        builder: (context, selectedCategory, child) {
+                          if (selectedCategory.isEmpty) {
+                            return const SizedBox.shrink();
+                          }
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right: 25.w),
+                                child: CustomText(
+                                  data: 'Top in $selectedCategory',
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: AppFonts.englishFontFamily,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 16.h),
-                            ProductGridView(categoryName: selectedCategory),
-                          ],
-                        );
-                      },
-                    ),
-                  ],
+                              SizedBox(height: 16.h),
+                              ProductGridView(categoryName: selectedCategory),
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(height: 16.h),
-            ],
+                SizedBox(height: 16.h),
+              ],
+            ),
           ),
         ),
       ),
