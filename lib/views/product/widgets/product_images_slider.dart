@@ -417,7 +417,7 @@ $productLink''';
                       return isAdmin
                           ? GestureDetector(
                               onTap: () => context.pushNamed(
-                                AppRoutes.editProductScreen,
+                                AppRoutes.manageProductScreen,
                                 extra: productProvider.productModel.copyWith(),
                               ),
                               child: Container(

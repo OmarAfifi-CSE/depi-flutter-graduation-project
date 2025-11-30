@@ -1134,13 +1134,13 @@ abstract class AppLocalizations {
   /// No description provided for @noProductsFound.
   ///
   /// In en, this message translates to:
-  /// **'noProductsFound'**
+  /// **'No Products Found'**
   String get noProductsFound;
 
   /// No description provided for @filteredProducts.
   ///
   /// In en, this message translates to:
-  /// **'FilteredProducts'**
+  /// **'Filtered Products'**
   String get filteredProducts;
 
   /// No description provided for @checkout.

@@ -13,7 +13,11 @@ class RatingRow extends StatelessWidget {
     final isSelected = filter.rating == stars;
     return GestureDetector(
       onTap: () {
-        filter.setRating(stars);
+        if (isSelected) {
+          filter.setRating(null);
+        } else {
+          filter.setRating(stars);
+        }
       },
       child: Container(
         color: Colors.transparent,

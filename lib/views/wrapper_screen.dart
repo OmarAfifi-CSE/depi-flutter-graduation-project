@@ -43,7 +43,7 @@ class WrapperScreen extends StatelessWidget {
                 suffix: isAdmin && navigationShell.currentIndex == 0
                     ? GestureDetector(
                         onTap: () =>
-                            context.pushNamed(AppRoutes.editProductScreen),
+                            context.pushNamed(AppRoutes.manageProductScreen),
                         child: Container(
                           width: 32.w,
                           height: 32.w,

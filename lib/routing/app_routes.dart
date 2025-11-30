@@ -43,5 +43,5 @@ class AppRoutes {
   static const String chatScreen = '/chatScreen/:chatId/:otherUserId';
   static const String chatSearchScreen = '/chatSearchScreen';
   static const String orderSuccessfulScreen = '/order-successful';
-  static const String editProductScreen = '/editProduct';
+  static const String manageProductScreen = '/manageProduct';
 }

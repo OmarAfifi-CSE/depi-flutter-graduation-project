@@ -238,8 +238,8 @@
   "sortBy":"Sort By",
   "ratting":"Ratting",
   "applyNow":"Apply Now",
-  "noProductsFound":"noProductsFound",
-  "filteredProducts":"FilteredProducts",
+  "noProductsFound":"No Products Found",
+  "filteredProducts":"Filtered Products",
 
   "checkout": "Checkout",
   "deliveryAddress": "Delivery Address",

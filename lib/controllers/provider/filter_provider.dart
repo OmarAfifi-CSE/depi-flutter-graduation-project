@@ -3,20 +3,23 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class FilterProvider with ChangeNotifier {
-
   List<String> _categories = [];
+
   List<String> get categories => _categories;
 
   Future<void> fetchCategories() async {
-    final snapshot = await FirebaseFirestore.instance.collection('categories').get();
-    print("OMAR :: getCategories Success");
-    _categories = snapshot.docs.map((doc) {
-      final data = doc.data();
-      return data['name']?.toString() ?? '';
-    }).where((name) => name.isNotEmpty).toList();
+    final snapshot = await FirebaseFirestore.instance
+        .collection('categories')
+        .get();
+    _categories = snapshot.docs
+        .map((doc) {
+          final data = doc.data();
+          return data['name']?.toString() ?? '';
+        })
+        .where((name) => name.isNotEmpty)
+        .toList();
     notifyListeners();
   }
-
 
   Set<String> _selectedCategories = {''};
 
@@ -26,16 +29,15 @@ class FilterProvider with ChangeNotifier {
 
   RangeValues get priceRange => _priceRange;
 
-  String _selectedSort = 'descending';
+  String? _selectedSort;
 
-  String get selectedSort => _selectedSort;
+  String? get selectedSort => _selectedSort;
 
-  int? _selectedRating=1;
+  int? _selectedRating;
 
   int? get rating => _selectedRating;
 
-  final options = ['descending', 'ascending'];
-
+  final options = ['Descending', 'Ascending'];
 
   void toggleCategory(String category) {
     if (_selectedCategories.contains(category)) {
@@ -51,7 +53,7 @@ class FilterProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setSort(String sort) {
+  void setSort(String? sort) {
     _selectedSort = sort;
     notifyListeners();
   }

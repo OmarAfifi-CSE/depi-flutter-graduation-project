@@ -1,10 +1,10 @@
 import 'package:batrina/l10n/app_localizations.dart';
-import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/styling/app_fonts.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:batrina/controllers/provider/filter_provider.dart';
 import 'package:provider/provider.dart';
-
 
 class CategoryChip extends StatelessWidget {
   const CategoryChip({super.key});
@@ -26,20 +26,19 @@ class CategoryChip extends StatelessWidget {
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             decoration: BoxDecoration(
-              color: isSelected ? theme.primaryColor: theme.cardColor,
+              color: isSelected ? theme.primaryColor : theme.cardColor,
               borderRadius: BorderRadius.circular(20.r),
               border: Border.all(
-                color:theme.primaryColor.withAlpha(80),
+                color: theme.primaryColor.withAlpha(80),
                 width: 1,
               ),
             ),
-            child: Text(
-              category,
-              style: TextStyle(
-                color: isSelected ? theme.cardColor : theme.primaryColor,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
+            child: CustomText(
+              data: category,
+              fontWeight: FontWeight.w500,
+              fontSize: 14.sp,
+              color: isSelected ? theme.cardColor : theme.primaryColor,
+              fontFamily: AppFonts.englishFontFamily,
             ),
           ),
         );

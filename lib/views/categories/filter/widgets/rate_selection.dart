@@ -8,13 +8,15 @@ class RateSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-         RatingRow(stars: 5),
-         SizedBox(height: 12),
-         RatingRow(stars: 4),
-         SizedBox(height: 12),
-         RatingRow(stars: 3),
-         SizedBox(height: 12),
-         RatingRow(stars: 2),
+        RatingRow(stars: 5),
+        SizedBox(height: 12),
+        RatingRow(stars: 4),
+        SizedBox(height: 12),
+        RatingRow(stars: 3),
+        SizedBox(height: 12),
+        RatingRow(stars: 2),
+        SizedBox(height: 12),
+        RatingRow(stars: 1),
       ],
     );
   }

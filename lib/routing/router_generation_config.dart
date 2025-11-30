@@ -69,11 +69,6 @@ class RouterGenerationConfig {
               SplashScreen(sharedPreferences: sharedPreferences),
         ),
         GoRoute(
-          path: AppRoutes.filterScreen,
-          name: AppRoutes.filterScreen,
-          builder: (context, state) => const FilterScreen(),
-        ),
-        GoRoute(
           path: AppRoutes.onboardingScreen,
           name: AppRoutes.onboardingScreen,
           builder: (context, state) => const OnboardingScreen(),
@@ -387,22 +382,68 @@ class RouterGenerationConfig {
           },
         ),
         GoRoute(
+          path: AppRoutes.filterScreen,
+          name: AppRoutes.filterScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const FilterScreen(),
+              transitionDuration: const Duration(milliseconds: 500),
+              reverseTransitionDuration: const Duration(milliseconds: 300),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return FadeTransition(
+                  opacity: CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.easeIn,
+                  ),
+                  child: SlideTransition(
+                    position:
+                    Tween<Offset>(
+                      begin: const Offset(0.3, 0),
+                      end: Offset.zero,
+                    ).animate(
+                      CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
+                    child: child,
+                  ),
+                );
+              },
+            );
+          },
+        ),
+        GoRoute(
           path: AppRoutes.filteredProductsScreen,
           name: AppRoutes.filteredProductsScreen,
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const FilteredProductsScreen(),
-              transitionDuration: const Duration(milliseconds: 1000),
-              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionDuration: const Duration(milliseconds: 500),
+              reverseTransitionDuration: const Duration(milliseconds: 300),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
-                    );
-                  },
+                return FadeTransition(
+                  opacity: CurvedAnimation(
+                    parent: animation,
+                    curve: Curves.easeIn,
+                  ),
+                  child: SlideTransition(
+                    position:
+                    Tween<Offset>(
+                      begin: const Offset(0.3, 0),
+                      end: Offset.zero,
+                    ).animate(
+                      CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeInOut,
+                      ),
+                    ),
+                    child: child,
+                  ),
+                );
+              },
             );
           },
         ),
@@ -554,30 +595,6 @@ class RouterGenerationConfig {
           },
         ),
         GoRoute(
-          path: AppRoutes.checkoutScreen,
-          name: AppRoutes.checkoutScreen,
-          pageBuilder: (context, state) {
-            final extras = state.extra as Map<String, dynamic>;
-            return CustomTransitionPage(
-              child: CheckoutScreen(
-                cartItems: extras['cartItems'],
-                cartPriceProvider: extras['cartPriceProvider'],
-              ),
-              transitionDuration: const Duration(milliseconds: 1000),
-              reverseTransitionDuration: const Duration(milliseconds: 1000),
-              transitionsBuilder:
-                  (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
-                    );
-                  },
-            );
-          },
-        ),
-        GoRoute(
           path: AppRoutes.chatsScreen,
           name: AppRoutes.chatsScreen,
           pageBuilder: (context, state) {
@@ -587,13 +604,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
-                    );
-                  },
+                return SharedAxisTransition(
+                  transitionType: SharedAxisTransitionType.horizontal,
+                  animation: animation,
+                  secondaryAnimation: secondaryAnimation,
+                  child: child,
+                );
+              },
             );
           },
         ),
@@ -617,13 +634,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                    return SharedAxisTransition(
-                      transitionType: SharedAxisTransitionType.horizontal,
-                      animation: animation,
-                      secondaryAnimation: secondaryAnimation,
-                      child: child,
-                    );
-                  },
+                return SharedAxisTransition(
+                  transitionType: SharedAxisTransitionType.horizontal,
+                  animation: animation,
+                  secondaryAnimation: secondaryAnimation,
+                  child: child,
+                );
+              },
             );
           },
         ),
@@ -642,6 +659,30 @@ class RouterGenerationConfig {
                 otherUserId: otherUserId!,
                 anotherUser: anotherUserModel,
                 initialMessage: messageModel,
+              ),
+              transitionDuration: const Duration(milliseconds: 1000),
+              reverseTransitionDuration: const Duration(milliseconds: 1000),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                return SharedAxisTransition(
+                  transitionType: SharedAxisTransitionType.horizontal,
+                  animation: animation,
+                  secondaryAnimation: secondaryAnimation,
+                  child: child,
+                );
+              },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.checkoutScreen,
+          name: AppRoutes.checkoutScreen,
+          pageBuilder: (context, state) {
+            final extras = state.extra as Map<String, dynamic>;
+            return CustomTransitionPage(
+              child: CheckoutScreen(
+                cartItems: extras['cartItems'],
+                cartPriceProvider: extras['cartPriceProvider'],
               ),
               transitionDuration: const Duration(milliseconds: 1000),
               reverseTransitionDuration: const Duration(milliseconds: 1000),
@@ -698,8 +739,8 @@ class RouterGenerationConfig {
           },
         ),
         GoRoute(
-          path: AppRoutes.editProductScreen,
-          name: AppRoutes.editProductScreen,
+          path: AppRoutes.manageProductScreen,
+          name: AppRoutes.manageProductScreen,
           pageBuilder: (context, state) {
             final ProductModel? productModel = state.extra as ProductModel?;
             return CustomTransitionPage(

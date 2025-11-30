@@ -162,7 +162,6 @@ class FireBaseFireStore {
             .doc(productID)
             .collection("variants")
             .get();
-        print(variantsSnap.docs.length);
         // 4. حوّل الـ variants لموديلات وأضفهم للمنتج
         if (variantsSnap.docs.isNotEmpty) {
           product.variants.addAll(
@@ -304,7 +303,7 @@ class FireBaseFireStore {
     required double minPrice,
     required double maxPrice,
     int? rating,
-    required String sortOrder,
+    String? sortOrder,
   }) async {
     Query<Map<String, dynamic>> query = fireBaseFireStore.collection(
       'products',
@@ -317,7 +316,6 @@ class FireBaseFireStore {
     query = query
         .where('price', isGreaterThanOrEqualTo: minPrice)
         .where('price', isLessThanOrEqualTo: maxPrice);
-    print("OMAR :: rateF $rating");
     if (rating != null) {
       query = query.where('rating', isGreaterThanOrEqualTo: rating);
     }

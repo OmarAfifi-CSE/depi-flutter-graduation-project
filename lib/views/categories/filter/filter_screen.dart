@@ -27,14 +27,12 @@ class _FilterScreenState extends State<FilterScreen> {
   void initState() {
     super.initState();
     Future.microtask(() {
-      Provider.of<FilterProvider>(context, listen: false).fetchCategories();
+      Provider.of<FilterProvider>(context, listen: false)..fetchCategories();
     });
   }
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
-    final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final filter = Provider.of<FilterProvider>(context);
     return Scaffold(
       appBar: AppBar(
@@ -75,7 +73,7 @@ class _FilterScreenState extends State<FilterScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                     const SizedBox(height: 15),
-                    const SortbyOptions(),
+                    const SortByOptions(),
                     const SizedBox(height: 30),
 
                     CustomText(

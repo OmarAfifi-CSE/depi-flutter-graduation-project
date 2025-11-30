@@ -47,18 +47,15 @@ class ProductsProvider with ChangeNotifier {
     fetchProducts(category);
   }
 
-
   Future<void> fetchFilteredProducts(
-       Set<String> categories,
-       double minPrice,
-       double maxPrice,
-       int? rating,
-       String sortOrder,
-      ) async {
+    Set<String> categories,
+    double minPrice,
+    double maxPrice,
+    int? rating,
+    String? sortOrder,
+  ) async {
     try {
       isLoading = true;
-      print("OMAR :: Loading");
-      print("OMAR :: rate $rating");
       notifyListeners();
 
       filteredProducts.clear();
@@ -70,17 +67,11 @@ class ProductsProvider with ChangeNotifier {
         rating: rating,
         sortOrder: sortOrder,
       );
-      print("OMAR :: getFilteredProducts Success");
-
       filteredProducts = result;
-      print("OMAR :: Filtered products: $filteredProducts");
     } catch (e) {
-      print("OMAR :: Error fetching filtered products: $e");
     } finally {
       isLoading = false;
       notifyListeners();
     }
   }
-
-
 }

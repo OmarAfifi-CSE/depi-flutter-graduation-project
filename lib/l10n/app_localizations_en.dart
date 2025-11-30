@@ -518,10 +518,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get applyNow => 'Apply Now';
 
   @override
-  String get noProductsFound => 'noProductsFound';
+  String get noProductsFound => 'No Products Found';
 
   @override
-  String get filteredProducts => 'FilteredProducts';
+  String get filteredProducts => 'Filtered Products';
 
   @override
   String get checkout => 'Checkout';
