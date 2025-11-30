@@ -3,7 +3,7 @@ import 'package:batrina/models/review_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductProvider extends ChangeNotifier {
-  final ProductModel productModel;
+  ProductModel productModel;
   late int currentVariantStock;
   late List<String> currentSliderImage;
   late String? currentColorName;
@@ -29,6 +29,29 @@ class ProductProvider extends ChangeNotifier {
       currentSize = productModel.availableSizes.isEmpty
           ? null
           : productModel.availableSizes[0];
+    }
+
+    setVariantStock(colorCode: currentColorName, sizeName: currentSize);
+    setSliderImage(currentColorName ?? '');
+  }
+
+  void reInitialize(
+    ProductModel newProductModel, {
+    String? color,
+    String? size,
+  }) {
+    productModel = newProductModel;
+    if (newProductModel.isVariantAvailable(color ?? "", size ?? "")) {
+      currentColorName = color;
+      currentSize = size;
+    } else {
+      currentColorName = newProductModel.availableColors.isEmpty
+          ? null
+          : newProductModel.availableColors[0].colorCode;
+
+      currentSize = newProductModel.availableSizes.isEmpty
+          ? null
+          : newProductModel.availableSizes[0];
     }
 
     setVariantStock(colorCode: currentColorName, sizeName: currentSize);

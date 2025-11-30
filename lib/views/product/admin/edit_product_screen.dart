@@ -2,9 +2,9 @@ import 'package:batrina/controllers/cubit/admin/admin_mode/admin_mode_cubit.dart
 import 'package:batrina/controllers/cubit/category/category_cubit.dart';
 import 'package:batrina/controllers/cubit/product/delete_product_cubit/delete_product_cubit.dart';
 import 'package:batrina/controllers/provider/product_form_provide.dart';
+import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/product_model.dart';
-import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/views/categories/admin/widgets/confirmation_dialog.dart';
 import 'package:batrina/views/product/admin/widgets/edit_button.dart';
@@ -75,20 +75,21 @@ class _EditProductScreenState extends State<EditProductScreen> {
             );
           } else if (state is DeleteProductSuccess) {
             context.pop();
+            context.pop();
+            context.pop();
+            context.read<ProductsProvider>().refreshSameCategory();
             CustomSnackBar.showSnackBar(
               context: context,
               message: loc.productDeletedSuccessfully,
               color: Colors.green,
             );
-            context.goNamed(AppRoutes.splashScreen);
           } else if (state is DeleteProductFailure) {
             context.pop();
             CustomSnackBar.showSnackBar(
               context: context,
               message: state.error,
-              color: Colors.green,
+              color: Colors.red,
             );
-            context.goNamed(AppRoutes.splashScreen);
           }
         },
         child: Scaffold(

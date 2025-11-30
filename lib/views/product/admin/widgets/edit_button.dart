@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/admin/add_edit_product_cubit/add_edit_product_cubit.dart';
 import 'package:batrina/controllers/provider/product_form_provide.dart';
+import 'package:batrina/controllers/provider/products_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/widgets/custom_elevated_button.dart';
@@ -28,6 +29,13 @@ class EditButton extends StatelessWidget {
       child: BlocConsumer<AddEditProductCubit, AddEditProductState>(
         listener: (context, state) {
           if (state is AddEditProductSuccess) {
+            if (productFormProvider.addMode) {
+              context.pop(productFormProvider.product);
+              context.read<ProductsProvider>().refreshSameCategory();
+            } else {
+              context.pop(productFormProvider.product);
+              context.read<ProductsProvider>().refreshSameCategory();
+            }
             CustomSnackBar.showSnackBar(
               context: context,
               message: productFormProvider.addMode
@@ -35,7 +43,6 @@ class EditButton extends StatelessWidget {
                   : loc!.productEditedSuccessfully,
               color: Colors.green,
             );
-            context.goNamed(AppRoutes.splashScreen);
           } else if (state is AddEditProductFailure) {
             CustomSnackBar.showSnackBar(
               context: context,

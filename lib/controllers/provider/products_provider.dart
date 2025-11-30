@@ -11,8 +11,14 @@ class ProductsProvider with ChangeNotifier {
   bool isLoading = false;
   bool hasMore = true; // هل لسه فيه منتجات تانية نجيبها؟
   DocumentSnapshot? _lastDocument;
+  String currentCategory = '';
 
   // دالة لجلب المنتجات (سواء أول مرة أو الصفحات التالية)
+
+  Future<void> refreshSameCategory() async {
+    refresh(currentCategory);
+  }
+
   Future<void> fetchProducts(String category) async {
     if (isLoading || !hasMore)
       return; // لو بنحمّل حاليًا أو المنتجات خلصت، منعملش حاجة
@@ -41,6 +47,7 @@ class ProductsProvider with ChangeNotifier {
 
   // دالة عشان نعمل ريفرش ونبدأ من الأول
   void refresh(String category) {
+    currentCategory = category;
     products.clear();
     _lastDocument = null;
     hasMore = true;

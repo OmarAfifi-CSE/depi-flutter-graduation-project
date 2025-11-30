@@ -81,7 +81,7 @@ ${product.description}$priceSection
 
 $productLink''';
 
-      final result = await SharePlus.instance.share(
+      await SharePlus.instance.share(
         ShareParams(text: shareText, subject: product.name),
       );
     } catch (e) {
@@ -416,10 +416,18 @@ $productLink''';
                       bool isAdmin = context.read<AdminModeCubit>().state;
                       return isAdmin
                           ? GestureDetector(
-                              onTap: () => context.pushNamed(
-                                AppRoutes.manageProductScreen,
-                                extra: productProvider.productModel.copyWith(),
-                              ),
+                              onTap: () async {
+                                ProductModel? pr = await context.pushNamed(
+                                  AppRoutes.manageProductScreen,
+                                  extra: productProvider.productModel
+                                      .copyWith(),
+                                );
+                                if (pr != null) {
+                                  context.read<ProductProvider>().reInitialize(
+                                    pr,
+                                  );
+                                }
+                              },
                               child: Container(
                                 width: 35.w,
                                 height: 35.w,
