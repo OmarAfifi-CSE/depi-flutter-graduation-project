@@ -45,17 +45,17 @@ class WrapperScreen extends StatelessWidget {
                         onTap: () =>
                             context.pushNamed(AppRoutes.editProductScreen),
                         child: Container(
-                          width: 30.w,
-                          height: 30.w,
+                          width: 32.w,
+                          height: 32.w,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Theme.of(
                               context,
-                            ).primaryColor.withValues(alpha: 0.5),
+                            ).primaryColor,
                           ),
                           child: Icon(
                             Icons.add_rounded,
-                            size: 20.sp,
+                            size: 24.sp,
                             color: Theme.of(context).scaffoldBackgroundColor,
                           ),
                         ),

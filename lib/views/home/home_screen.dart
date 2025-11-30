@@ -61,6 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 12.h),
                 const HomeCarousel(),
                 SizedBox(height: 14.h),
                 Padding(
