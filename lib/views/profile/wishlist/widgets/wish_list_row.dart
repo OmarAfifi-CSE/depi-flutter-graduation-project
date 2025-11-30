@@ -405,7 +405,7 @@ class _WishListRowState extends State<WishListRow>
                                                                 .variantId,
                                                   );
                                             } catch (e) {
-                                              cartItem = null; // مش موجود
+                                              cartItem = null;
                                             }
 
                                             final bool isInCart =

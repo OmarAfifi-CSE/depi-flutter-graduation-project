@@ -51,6 +51,7 @@ class _HeartState extends State<Heart> {
   Future toggleButton() async {
     FireBaseFireStore fireBaseFireStore = FireBaseFireStore();
     ProductVariant? productVariant = context.read<ProductProvider>().variant;
+    final ProductProvider productProvider = context.read<ProductProvider>();
 
     if (isAdded) {
       setState(() {
@@ -59,12 +60,14 @@ class _HeartState extends State<Heart> {
       });
 
       try {
-        final wishlistModels = userWishList.where((element) {
-          return element.variantId == productVariant?.id;
+        final wishListCommonStats = userWishList.where((element) {
+          return element.color == productProvider.currentColorName &&
+              element.size == productProvider.currentSize &&
+              element.productId == productProvider.productModel.id;
         });
-        if (wishlistModels.isNotEmpty) {
+        if (wishListCommonStats.isNotEmpty) {
           await fireBaseFireStore.removeFromWishList(
-            wishListModel: wishlistModels.first,
+            wishListModel: wishListCommonStats.first,
           );
           final router = GoRouter.of(context);
           final matches = router.routerDelegate.currentConfiguration.matches;
@@ -77,13 +80,12 @@ class _HeartState extends State<Heart> {
             }
             return false;
           });
-          print(wishScreenExists.toString() + "abolo");
           if (wishScreenExists) {
             context.read<GetWishListCubit>().removeLocal(
-              wishlistModels.first.id,
+              wishListCommonStats.first.id,
             );
           }
-          userWishList.remove(wishlistModels.first);
+          userWishList.remove(wishListCommonStats.first);
         }
       } catch (e) {
         isAdded = true;
@@ -106,12 +108,11 @@ class _HeartState extends State<Heart> {
           price: widget.productModel.price,
           thumbnail: widget.productModel.thumbnail,
           variantId: productVariant?.id ?? '',
-          color: productVariant?.color ?? '',
-          size: productVariant?.size ?? '',
+          color: productProvider.currentColorName ?? '',
+          size: productProvider.currentSize ?? '',
           availableStock: context.read<ProductProvider>().currentVariantStock,
           addedAt: null,
         );
-
         String newWishListId = await fireBaseFireStore.addToWishList(
           wishListModel: wishlistModel,
         );
@@ -127,8 +128,6 @@ class _HeartState extends State<Heart> {
           }
           return false;
         });
-        print(wishScreenExists.toString() + "abolo");
-
         if (wishScreenExists) {
           context.read<GetWishListCubit>().addLocal(
             wishlistModel.copyWith(id: newWishListId),
@@ -147,11 +146,12 @@ class _HeartState extends State<Heart> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final ProductProvider productProvider = context.watch<ProductProvider>();
-    final wishlistModels = userWishList.where((element) {
-      return element.variantId == productProvider.variant?.id;
+    final wishListCommonStats = userWishList.where((element) {
+      return element.color == productProvider.currentColorName &&
+          element.size == productProvider.currentSize &&
+          element.productId == productProvider.productModel.id;
     });
-    print(productProvider.variant!.id);
-    if (wishlistModels.isNotEmpty) {
+    if (wishListCommonStats.isNotEmpty) {
       isAdded = true;
     } else {
       isAdded = false;
