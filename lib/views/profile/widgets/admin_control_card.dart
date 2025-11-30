@@ -64,7 +64,7 @@ class AdminControlCard extends StatelessWidget {
                   children: [
                     CustomText(
                       data: loc!.adminDashboard,
-                      fontSize: 16.sp,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                       color: isAdminMode ? Colors.orange : null,
                     ),
