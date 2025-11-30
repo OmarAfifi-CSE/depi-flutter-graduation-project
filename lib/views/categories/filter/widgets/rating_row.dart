@@ -11,6 +11,7 @@ class RatingRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final filter = Provider.of<FilterProvider>(context);
     final isSelected = filter.rating == stars;
+    final theme = Theme.of(context);
     return GestureDetector(
       onTap: () {
         if (isSelected) {
@@ -38,10 +39,16 @@ class RatingRow extends StatelessWidget {
               height: 24,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: isSelected ? Colors.black : Colors.grey[300],
+                color: isSelected
+                    ? theme.primaryColor
+                    : theme.primaryColor.withValues(alpha: 0.2),
               ),
               child: isSelected
-                  ? const Icon(Icons.check, color: Colors.white, size: 16)
+                  ? Icon(
+                      Icons.check,
+                      color: theme.scaffoldBackgroundColor,
+                      size: 16,
+                    )
                   : null,
             ),
           ],

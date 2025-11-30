@@ -192,6 +192,7 @@ class _EditProductScreenState extends State<EditProductScreen> {
                   ),
                   SizedBox(height: 15.h),
                   const EditButton(),
+                  SizedBox(height: 10.h),
                 ],
               ),
             ),

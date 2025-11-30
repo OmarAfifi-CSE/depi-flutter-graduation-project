@@ -320,9 +320,9 @@ class FireBaseFireStore {
       query = query.where('rating', isGreaterThanOrEqualTo: rating);
     }
 
-    if (sortOrder == 'ascending') {
+    if (sortOrder == 'Ascending') {
       query = query.orderBy('price', descending: false);
-    } else if (sortOrder == 'descending') {
+    } else if (sortOrder == 'Descending') {
       query = query.orderBy('price', descending: true);
     }
 
