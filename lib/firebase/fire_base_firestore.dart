@@ -5,6 +5,7 @@ import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/promo_model.dart';
 import 'package:batrina/models/review_model.dart';
 import 'package:batrina/models/user_model.dart';
+import 'package:batrina/models/wish_list_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -380,21 +381,25 @@ class FireBaseFireStore {
     return snapshot.docs.map((e) => ProductModel.fromJson(e.data())).toList();
   }
 
-  Future<void> addToWishList({required ProductModel productModel}) async {
-    await fireBaseFireStore
-        .collection("users")
-        .doc(FirebaseAuth.instance.currentUser!.uid)
-        .collection("userWishList")
-        .doc(productModel.id)
-        .set(productModel.toJson(), SetOptions(merge: true));
+  Future<String> addToWishList({required WishlistModel wishListModel}) async {
+    DocumentReference<Map<String, dynamic>> documentReference =
+        await fireBaseFireStore
+            .collection("users")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .collection("userWishList")
+            .doc();
+    await documentReference.set(wishListModel.toJson());
+    return documentReference.id;
   }
 
-  Future<void> removeFromWishList({required ProductModel productModel}) async {
+  Future<void> removeFromWishList({
+    required WishlistModel wishListModel,
+  }) async {
     await fireBaseFireStore
         .collection("users")
         .doc(FirebaseAuth.instance.currentUser!.uid)
         .collection("userWishList")
-        .doc(productModel.id)
+        .doc(wishListModel.id)
         .delete();
   }
 
@@ -706,6 +711,20 @@ class FireBaseFireStore {
     }
     return querySnapshot.docs.map((e) {
       return ConversationModel.fromJson(e.data());
+    }).toList();
+  }
+
+  Future<List<WishlistModel>> getWishList() async {
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection('userWishList')
+        .get();
+    if (querySnapshot.docs.isEmpty) {
+      return [];
+    }
+    return querySnapshot.docs.map((e) {
+      return WishlistModel.fromJson(e.data()).copyWith(id: e.id);
     }).toList();
   }
 }

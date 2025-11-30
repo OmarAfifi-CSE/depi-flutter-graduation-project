@@ -891,4 +891,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get deleteProduct => 'Delete Product';
+
+  @override
+  String get yourWishlistIsEmpty => 'Your wishlist is empty';
+
+  @override
+  String get wishlistEmptyMessage => 'Looks like you haven\'t added anything to your wishlist yet. Let\'s go find something you\'ll love!';
+
+  @override
+  String get noItemsMatchSearch => 'No items match your search';
+
+  @override
+  String get itemAddedToCart => 'Item added to cart!';
+
+  @override
+  String get itemRemovedFromCart => 'Item removed from cart';
+
+  @override
+  String get productNotFound => 'Product not found';
+
+  @override
+  String get productNotFoundMessage => 'Sorry, this product is no longer available. Let\'s go find something else you\'ll love!';
 }

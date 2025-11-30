@@ -367,5 +367,15 @@
   "category": "Category",
   "areYouSureToDeleteProduct": "Are you sure you want to delete this product? This action cannot be undone.",
   "productDeletedSuccessfully": "Product deleted successfully",
-  "deleteProduct": "Delete Product"
+  "deleteProduct": "Delete Product",
+
+
+  "yourWishlistIsEmpty": "Your wishlist is empty",
+  "wishlistEmptyMessage": "Looks like you haven't added anything to your wishlist yet. Let's go find something you'll love!",
+  "noItemsMatchSearch": "No items match your search",
+  "itemAddedToCart": "Item added to cart!",
+  "itemRemovedFromCart": "Item removed from cart",
+
+  "productNotFound": "Product not found",
+  "productNotFoundMessage": "Sorry, this product is no longer available. Let's go find something else you'll love!"
 }

@@ -364,5 +364,14 @@
   "category": "الفئة",
   "areYouSureToDeleteProduct": "هل أنت متأكد أنك تريد حذف هذا النتج؟ هذا الإجراء لا يمكن التراجع عنه.",
   "productDeletedSuccessfully": "تم حذف المنتج بنجاح",
-  "deleteProduct": "حذف المنتج"
+  "deleteProduct": "حذف المنتج",
+
+  "yourWishlistIsEmpty": "قائمة أمنياتك فارغة",
+  "wishlistEmptyMessage": "يبدو أنك لم تضف أي شيء لقائمة أمنياتك بعد. لنبحث عن شيء ستحبه!",
+  "noItemsMatchSearch": "لا توجد عناصر مطابقة لبحثك",
+  "itemAddedToCart": "تمت إضافة المنتج للسلة!",
+  "itemRemovedFromCart": "تم إزالة المنتج من السلة",
+
+  "productNotFound": "المنتج غير موجود",
+  "productNotFoundMessage": "عذراً، هذا المنتج لم يعد متاحاً. لنبحث عن شيء آخر ستحبه!"
 }

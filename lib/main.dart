@@ -2,6 +2,7 @@ import 'package:batrina/app_initializer.dart';
 import 'package:batrina/controllers/cubit/admin/admin_mode/admin_mode_cubit.dart';
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dart';
+import 'package:batrina/controllers/cubit/profile/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:batrina/controllers/provider/deep_link_provider.dart';
 import 'package:batrina/controllers/provider/filter_provider.dart';
 import 'package:batrina/controllers/provider/locale_provider.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => AdminModeCubit()),
         BlocProvider(create: (_) => AuthCubit()),
         BlocProvider(create: (_) => GetCartCubit()),
+        BlocProvider(create: (_) => GetWishListCubit()),
         ChangeNotifierProvider(create: (_) => ProductsProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
         ChangeNotifierProvider(create: (_) => FilterProvider()),

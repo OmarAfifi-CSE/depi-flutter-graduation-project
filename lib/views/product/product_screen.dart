@@ -2,6 +2,7 @@ import 'package:batrina/controllers/cubit/product/get_product_cubit/get_product_
 import 'package:batrina/controllers/provider/product_provider.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/views/product/widgets/product_details.dart';
+import 'package:batrina/views/product/widgets/product_not_found_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,9 +68,15 @@ class _ProductScreenState extends State<ProductScreen> {
                 }
                 final product = (state as GetProductSuccess).productModel;
 
+                if (product == null) {
+                  return const Scaffold(
+                    body: Center(child: ProductNotFoundView()),
+                  );
+                }
+
                 return ChangeNotifierProvider(
                   create: (context) =>
-                      ProductProvider(productModel: product!)
+                      ProductProvider(productModel: product)
                         ..initialize(size: widget.size, color: widget.color),
                   child: const ProductDetails(),
                 );
