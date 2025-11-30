@@ -84,10 +84,6 @@ $productLink''';
       final result = await SharePlus.instance.share(
         ShareParams(text: shareText, subject: product.name),
       );
-
-      if (result.status == ShareResultStatus.success) {
-        print('✅ Shared successfully');
-      }
     } catch (e) {
       print('❌ Error sharing: $e');
     }

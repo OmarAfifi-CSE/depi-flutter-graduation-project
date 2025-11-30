@@ -192,7 +192,7 @@ class ProductOptions extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       SvgPicture.asset(
-                                        AppAssets.cartIcon2,
+                                        AppAssets.cartIcon,
                                         fit: BoxFit.scaleDown,
                                         colorFilter: ColorFilter.mode(
                                           theme.primaryColor,

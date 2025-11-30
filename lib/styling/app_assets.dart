@@ -5,6 +5,7 @@ class AppAssets {
   static const String homeIcon = 'assets/icons/home-icon.svg';
   static const String categoriesIcon = 'assets/icons/categories-icon.svg';
   static const String cartIcon = 'assets/icons/cart-icon.svg';
+  static const String removeCartIcon = 'assets/icons/remove-cart-icon.svg';
   static const String profileIcon = 'assets/icons/profile-icon.svg';
   static const String searchIcon = 'assets/icons/search-icon.svg';
   static const String filterIcon = 'assets/icons/filter-icon.svg';
@@ -17,7 +18,6 @@ class AppAssets {
       'assets/icons/heart-icon-filled_black.svg';
   static const String heartIconFilledWhite =
       'assets/icons/heart-icon-filled_white.svg';
-  static const String cartIcon2 = 'assets/icons/cart-icon2.svg';
   static const String emptyCartAnimation =
       'assets/lottie/Cart Empty State.json';
   static const String deleteIcon = 'assets/icons/delete.svg';

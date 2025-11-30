@@ -1,6 +1,7 @@
 import 'package:batrina/controllers/cubit/profile/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/views/categories/widgets/search_bar.dart';
 import 'package:batrina/views/profile/wishlist/widgets/empty_wish_list_view.dart';
 import 'package:batrina/views/profile/wishlist/widgets/wish_list_row.dart';
 import 'package:batrina/views/profile/wishlist/widgets/wish_list_search_field.dart';
@@ -33,25 +34,18 @@ class _WishlistBodyState extends State<WishlistBody> {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 20.h),
         // Search bar
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0.w),
-          child: WishListSearchField(
-            controller: _searchController,
-            onChanged: (text) {
-              setState(() {
-                _searchText = text;
-              });
-            },
-          ),
+        SearchBarWidget(
+          onChanged: (text) {
+            setState(() {
+              _searchText = text;
+            });
+          },
         ),
-        SizedBox(height: 20.h),
-
         // Wishlist items
         Expanded(
           child: BlocBuilder<GetWishListCubit, GetWishListState>(
@@ -69,9 +63,7 @@ class _WishlistBodyState extends State<WishlistBody> {
                   child: CupertinoActivityIndicator(color: theme.primaryColor),
                 );
               }
-
               final allWishList = (state as GetWishListSuccess).userWishList;
-
               final filteredList = allWishList.where((item) {
                 return item.productName.toLowerCase().contains(
                   _searchText.toLowerCase(),

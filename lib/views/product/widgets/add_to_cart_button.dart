@@ -162,7 +162,7 @@ class AddToCartButton extends StatelessWidget {
                                                       cartItem == null
                                                           ? SvgPicture.asset(
                                                               AppAssets
-                                                                  .cartIcon2,
+                                                                  .cartIcon,
                                                               fit: BoxFit
                                                                   .scaleDown,
                                                               colorFilter:

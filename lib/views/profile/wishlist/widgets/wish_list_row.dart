@@ -21,6 +21,7 @@ import 'package:go_router/go_router.dart';
 
 class WishListRow extends StatefulWidget {
   const WishListRow({super.key, required this.wishlistModel});
+
   final WishlistModel wishlistModel;
 
   @override
@@ -49,7 +50,7 @@ class _WishListRowState extends State<WishListRow>
 
   bool isDeleting = false;
 
-  Future<void> deleteFromWishList() async {
+  Future<void> deleteFromWishList(AppLocalizations? loc) async {
     try {
       setState(() {
         isDeleting = true;
@@ -82,7 +83,7 @@ class _WishListRowState extends State<WishListRow>
         exitAnimationController.reverse();
         CustomSnackBar.showSnackBar(
           context: context,
-          message: "error happened",
+          message: loc!.errorHappened,
           color: Colors.red,
         );
       }
@@ -194,7 +195,7 @@ class _WishListRowState extends State<WishListRow>
                   horizontal: 15.w,
                 ),
                 child: SizedBox(
-                  height: 100.h,
+                  height: 140.h,
                   width: double.infinity,
                   child: Stack(
                     children: [
@@ -207,7 +208,11 @@ class _WishListRowState extends State<WishListRow>
                           padding: EdgeInsets.only(right: 16.w),
                           alignment: Alignment.centerRight,
                           child: GestureDetector(
-                            onTap: isDeleting ? null : deleteFromWishList,
+                            onTap: isDeleting
+                                ? null
+                                : () {
+                                    deleteFromWishList(loc);
+                                  },
                             child: isDeleting
                                 ? CupertinoActivityIndicator(
                                     color: theme.scaffoldBackgroundColor,
@@ -267,8 +272,8 @@ class _WishListRowState extends State<WishListRow>
                                 child: Row(
                                   children: [
                                     Container(
-                                      width: 80.w,
-                                      height: 80.h,
+                                      width: 100.w,
+                                      height: 100.h,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(
                                           12.r,
@@ -291,20 +296,21 @@ class _WishListRowState extends State<WishListRow>
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
+                                          SizedBox(height: 4.h),
                                           CustomText(
                                             data: widget
                                                 .wishlistModel
                                                 .productName,
                                             textAlign: TextAlign.start,
-                                            fontSize: 15.sp,
+                                            fontSize: 16.sp,
                                             fontWeight: FontWeight.w700,
-                                            maxLines: 1,
+                                            maxLines: 2,
                                             fontFamily:
                                                 AppFonts.englishFontFamily,
                                           ),
                                           CustomText(
                                             data: widget.wishlistModel.subtitle,
-                                            fontSize: 12.sp,
+                                            fontSize: 14.sp,
                                             fontWeight: FontWeight.w400,
                                             color: appColors.secondaryText,
                                             maxLines: 1,
@@ -315,19 +321,56 @@ class _WishListRowState extends State<WishListRow>
                                           CustomText(
                                             data:
                                                 "\$${widget.wishlistModel.price}",
-                                            fontSize: 12.sp,
+                                            fontSize: 16.sp,
                                             fontWeight: FontWeight.w700,
                                             fontFamily:
                                                 AppFonts.englishFontFamily,
                                           ),
+                                          SizedBox(height: 4.h),
                                         ],
                                       ),
                                     ),
+                                    SizedBox(width: 8.w),
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                          CrossAxisAlignment.center,
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
+                                        SizedBox(height: 4.h),
+                                        GestureDetector(
+                                          onTap: isDeleting
+                                              ? null
+                                              : () {
+                                                  deleteFromWishList(loc);
+                                                },
+                                          child: Container(
+                                            width: 28.w,
+                                            height: 28.w,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: theme.primaryColor,
+                                              border: Border.all(
+                                                color:
+                                                    appColors.containerBorder!,
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: isDeleting
+                                                  ? CupertinoActivityIndicator(
+                                                      radius: 8.w,
+                                                      color: theme
+                                                          .scaffoldBackgroundColor,
+                                                    )
+                                                  : SvgPicture.asset(
+                                                      AppAssets.heartIconFilled,
+                                                      width: 16.w,
+                                                      height: 16.w,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 4.h),
                                         _buildSizeOption(),
                                         SizedBox(height: 4.h),
                                         _buildColorOption(),
@@ -468,29 +511,26 @@ class _WishListRowState extends State<WishListRow>
                                                           );
                                                     }
                                                   },
-                                                  child: isInCart
-                                                      ? Icon(
-                                                          Icons
-                                                              .remove_shopping_cart,
-                                                          color: Colors.red,
-                                                          size: 24.sp,
-                                                        )
-                                                      : SvgPicture.asset(
-                                                          AppAssets.cartIcon2,
-                                                          colorFilter:
-                                                              ColorFilter.mode(
-                                                                theme
-                                                                    .primaryColor,
-                                                                BlendMode.srcIn,
-                                                              ),
-                                                          width: 24.w,
-                                                          height: 24.h,
-                                                        ),
+                                                  child: SvgPicture.asset(
+                                                    isInCart
+                                                        ? AppAssets
+                                                              .removeCartIcon
+                                                        : AppAssets.cartIcon,
+                                                    colorFilter: ColorFilter.mode(
+                                                      isInCart
+                                                          ? Colors.red
+                                                          : theme.primaryColor,
+                                                      BlendMode.srcIn,
+                                                    ),
+                                                    width: 24.w,
+                                                    height: 24.h,
+                                                  ),
                                                 );
                                               },
                                             );
                                           },
                                         ),
+                                        SizedBox(height: 4.h),
                                       ],
                                     ),
                                   ],
