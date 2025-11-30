@@ -512,7 +512,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get sortBy => '정렬 기준';
 
   @override
-  String get ratting => '평점';
+  String get rating => '평점';
 
   @override
   String get applyNow => '적용하기';

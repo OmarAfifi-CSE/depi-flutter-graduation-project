@@ -512,7 +512,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get sortBy => '並び替え';
 
   @override
-  String get ratting => '評価';
+  String get rating => '評価';
 
   @override
   String get applyNow => '適用する';
