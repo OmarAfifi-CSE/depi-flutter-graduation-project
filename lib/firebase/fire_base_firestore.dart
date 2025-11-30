@@ -304,7 +304,7 @@ class FireBaseFireStore {
     required double minPrice,
     required double maxPrice,
     int? rating,
-    //required String sortOrder,
+    required String sortOrder,
   }) async {
     Query<Map<String, dynamic>> query = fireBaseFireStore.collection(
       'products',
@@ -317,16 +317,16 @@ class FireBaseFireStore {
     query = query
         .where('price', isGreaterThanOrEqualTo: minPrice)
         .where('price', isLessThanOrEqualTo: maxPrice);
-
+    print("OMAR :: rateF $rating");
     if (rating != null) {
-      query = query.where('rating', isEqualTo: rating);
+      query = query.where('rating', isGreaterThanOrEqualTo: rating);
     }
 
-    // if (sortOrder == 'ascending') {
-    //   query = query.orderBy('price', descending: false);
-    // } else {
-    //   query = query.orderBy('price', descending: true);
-    // }
+    if (sortOrder == 'ascending') {
+      query = query.orderBy('price', descending: false);
+    } else if (sortOrder == 'descending') {
+      query = query.orderBy('price', descending: true);
+    }
 
     final snapshot = await query.get();
 
