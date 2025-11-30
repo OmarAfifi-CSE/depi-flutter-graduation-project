@@ -98,7 +98,7 @@ class MyApp extends StatelessWidget {
                       ],
                     );
                   },
-                  supportedLocales: const [Locale("ar"), Locale("en")],
+                  supportedLocales: AppLocalizations.supportedLocales,
                   localizationsDelegates: const [
                     AppLocalizations.delegate,
                     GlobalMaterialLocalizations.delegate,

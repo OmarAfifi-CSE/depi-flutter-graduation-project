@@ -377,5 +377,12 @@
   "itemRemovedFromCart": "Item removed from cart",
 
   "productNotFound": "Product not found",
-  "productNotFoundMessage": "Sorry, this product is no longer available. Let's go find something else you'll love!"
+  "productNotFoundMessage": "Sorry, this product is no longer available. Let's go find something else you'll love!",
+
+
+
+  "orderSummary": "Order Summary",
+  "discount": "Discount",
+  "promoCode": "Promo Code",
+  "apply": "Apply"
 }

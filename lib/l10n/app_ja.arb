@@ -1,0 +1,388 @@
+{
+  "@@locale": "ja",
+  "test": "テスト",
+
+  "hello": "こんにちは",
+  "welcome": "ようこそ",
+  "userName": "名前",
+  "discountNewArrivalTitle": "新着商品 20% OFF",
+  "discountNewArrivalDescription": "最新コレクションが驚きの割引価格で。すべての新着商品が20% OFFになります。",
+
+  "takeAdvantageShoppingTitle": "お得なショッピングを楽しもう",
+  "takeAdvantageShoppingDescription": "限定のショッピング情報をお見逃しなく。特別オファーでお気に入りのアイテムをさらにお得に。",
+
+  "allTypesOffersTitle": "あらゆるオファーがあなたの手に",
+  "allTypesOffersDescription": "様々なカテゴリーを閲覧して、あなたのニーズや好みに合った最高の情報を探しましょう。",
+
+
+  "welcomeTitle": "ようこそ！",
+  "welcomeDescription": "続けるにはログインまたは登録してください",
+
+  "emailTitle": "メールアドレス",
+  "passwordTitle": "パスワード",
+
+  "loginTitle": "ログイン",
+  "signInTitle": "サインイン",
+  "orTitle": "または",
+
+
+  "continueWithGoogleTitle": "Googleで続ける",
+  "continueWithGoogleDescription": "Googleアカウントですばやく安全にログイン",
+
+
+  "forgotPasswordTitle": "パスワードをお忘れですか？",
+  "dontHaveAccountTitle": "アカウントをお持ちでないですか？",
+  "alreadyAUserTitle": "すでにアカウントをお持ちですか？",
+  "signUpTitle": "新規登録",
+
+  "loginFailedTitle": "ログイン失敗",
+  "loginFailedDescription": "メールアドレスまたはパスワードが無効です。もう一度お試しください",
+
+  "loginSuccessTitle": "ログイン成功",
+  "loginSuccessDescription": "おかえりなさい！ホーム画面へ移動します",
+
+  "signUpDescription": "新しいアカウントを作成",
+  "userNameTitle": "ユーザー名",
+  "confirmPasswordTitle": "パスワード（確認）",
+
+  "emailEmptyTitle": "メールアドレスが必要です",
+  "emailEmptyDescription": "メールアドレスを入力してください",
+  "emailInvalidDescription": "有効なメールアドレスを入力してください",
+
+  "nameEmptyDescription": "名前は必須です",
+  "nameTooShortDescription": "名前が短すぎます",
+
+  "passwordEmptyDescription": "パスワードを入力してください",
+  "passwordTooShortDescription": "パスワードは6文字以上である必要があります",
+  "passwordWeakDescription": "パスワードには大文字、小文字、数字を含める必要があります",
+
+
+  "pleaseVerifyYourEmail": "まずメールアドレスを確認してください",
+
+  "googleSignInCanceledDescription": "サインインがキャンセルされました",
+
+  "googleNetworkErrorDescription": "ネットワーク接続の問題",
+
+  "googleSignInFailedDescription": "サインインに失敗しました",
+
+  "googleConfigErrorDescription": "Googleサインイン設定エラー",
+
+  "googleUnexpectedErrorDescription": "予期せぬエラーが発生しました",
+
+  "emailAlreadyInUseDescription": "このメールアドレスは既に登録されています",
+
+  "invalidEmailDescription": "無効なメールアドレス",
+
+  "operationNotAllowedDescription": "サインイン方法が無効です",
+
+  "weakPasswordDescription": "パスワードが弱すぎます",
+
+  "userDisabledDescription": "アカウントが無効になっています",
+
+  "userNotFoundDescription": "ユーザーが見つかりません",
+
+  "wrongPasswordDescription": "パスワードが間違っています",
+
+  "invalidCredentialDescription": "無効な認証情報",
+
+  "networkRequestFailedDescription": "接続に失敗しました",
+
+  "invalidVerificationCodeDescription": "無効な確認コード",
+
+  "invalidVerificationIdDescription": "無効な確認ID",
+
+  "tooManyRequestsDescription": "リクエストが多すぎます。後でもう一度お試しください",
+
+  "internalErrorDescription": "内部エラーが発生しました",
+
+  "accountExistsWithDifferentCredentialDescription": "別のアカウント情報で既に登録されています",
+
+  "credentialAlreadyInUseDescription": "この認証情報は既に使用されています",
+
+  "defaultAuthErrorDescription": "予期せぬエラーが発生しました",
+  "passwordMustMatch": "パスワードが一致しません",
+
+
+  "resetPassword": "パスワードをリセット",
+  "resetPasswordLabel": "アカウントに関連付けられたメールアドレスを入力してください。パスワードリセットの手順を送信します",
+  "sendInstruction": "手順を送信",
+
+
+  "forgotPassword": "パスワードをお忘れですか？",
+  "reset": "リセット",
+
+  "expiredActionCodeDescription": "リンクの有効期限が切れています。新しいリンクをリクエストしてください。",
+  "invalidActionCodeDescription": "リンクが無効です。新しいリンクをリクエストしてください。",
+
+  "emailVerifiedTitle": "メール確認完了！",
+  "emailVerifiedSubtitle": "アカウントが有効になり、使用準備が整いました。ご登録ありがとうございます。",
+  "continueToSignInButton": "ログインへ進む",
+
+  "verificationFailedTitle": "確認失敗",
+  "backToSignInButton": "ログインへ戻る",
+
+
+
+
+  "signin_success": "サインインしました",
+  "check_email_activation": "メールを確認してアカウントを有効化してください。",
+  "forget_password_sent": "送信されました",
+  "something_went_wrong": "問題が発生しました。",
+  "close": "閉じる",
+  "login_success": "サインインしました",
+  "create_new_password": "新しいパスワードを作成",
+  "password_changed_success": "パスワードが変更されました",
+  "confirm": "確認",
+  "invalid_or_expired_link": "リンクが無効か、期限切れか、既に使用されています。新しいリンクをリクエストしてください。",
+  "unexpected_error": "予期せぬエラーが発生しました。もう一度お試しください。",
+  "home": "ホーム",
+  "categories": "カテゴリー",
+  "cart": "カート",
+  "notifications": "通知",
+  "profile": "プロフィール",
+
+
+  "search": "検索",
+  "emptyCategories":"カテゴリーが見つかりません",
+  "couldNotLoadCategories":"カテゴリーを読み込めませんでした",
+  "defaultError":"予期せぬエラーが発生しました。",
+
+
+  "adminDashboard": "管理ダッシュボード",
+  "activeEditingMode": "編集モード中",
+  "viewAsCustomer": "顧客として表示",
+
+  "personalDetails": "個人情報",
+  "myOrders": "注文履歴",
+  "wishlist": "お気に入り",
+  "shippingAddress": "配送先住所",
+  "myCard": "マイカード",
+  "settings": "設定",
+  "language": "言語",
+  "darkMode": "ダークモード",
+  "lightMode": "ライトモード",
+  "helpCenter": "ヘルプセンター",
+  "english": "英語",
+
+  "emptyCartTitle": "カートは空です",
+  "emptyCartSubtitle": "まだカートに商品がないようです。お気に入りを見つけに行きましょう！",
+  "continueShopping": "買い物を続ける",
+
+
+  "addtocard" :"カートに追加",
+  "processtocheckout" :"レジに進む",
+  "mycart" : "マイカート",
+  "subtotal" : "小計",
+  "shipping" : "送料",
+  "total" : "合計",
+  "items" : "点",
+  "review":"レビュー",
+  "availableinstock" : "在庫あり",
+  "description":"説明",
+
+
+
+  "reviewsHeader": "カスタマーレビュー",
+  "reviewsLoadingError": "問題が発生しました。もう一度お試しください。",
+  "noReviewsYet": "レビューはまだありません。最初のレビューを投稿しましょう！",
+
+  "addReviewTitle": "レビューを書く",
+  "experienceHint": "この商品の体験はいかがでしたか？",
+  "postButton": "投稿",
+
+  "errorHappened": "エラーが発生しました！",
+  "reviews": "レビュー",
+  "size": "サイズ",
+  "addToCart": "カートに追加",
+  "removeFromCart": "カートから削除",
+  "notAvailable": "利用不可",
+  "noAvailableSizes": "利用可能なサイズがありません",
+  "noAvailableColors": "利用可能なカラーがありません",
+  "productAddedToCart": "商品をカートに追加しました",
+  "productRemovedFromCart": "商品をカートから削除しました",
+
+
+  "shippingAddresses": "配送先住所一覧",
+  "mainAddress": "メインの住所",
+  "noMainAddress": "メインの住所がありません",
+  "dragAnAddress": "住所を上にドラッグしてメインに設定します。",
+  "otherAddresses": "その他の住所",
+  "setMain": "メインに設定",
+  "delete": "削除",
+
+
+  "addNewAddress": "新しい住所を追加",
+  "tapToAdd": "タップして追加",
+  "swipeToManage": "スワイプして管理",
+  "street": "住所（番地など）",
+  "city": "市区町村",
+  "phoneNumber": "電話番号",
+  "country": "国",
+  "addAddress": "住所を追加",
+  "addressAddedSuccessfully": "住所が正常に追加されました",
+  "streetEmptyDescription": "住所は空にできません。",
+  "streetTooShortDescription": "住所が短すぎます。5文字以上入力してください。",
+  "cityEmptyDescription": "市区町村は空にできません。",
+  "cityTooShortDescription": "市区町村が短すぎます。2文字以上入力してください。",
+  "countryEmptyDescription": "国名は空にできません。",
+  "countryTooShortDescription": "国名が短すぎます。2文字以上入力してください。",
+  "phoneEmptyDescription": "電話番号は空にできません。",
+  "phoneInvalidDescription": "有効な電話番号を入力してください。",
+  "phoneLengthDescription": "電話番号は8〜15桁である必要があります。",
+
+  "uploadImage": "画像をアップロード",
+  "name": "名前",
+  "email": "メールアドレス",
+  "logOut": "ログアウト",
+  "priceRange": "価格帯",
+  "sortBy":"並び替え",
+  "ratting":"評価",
+  "applyNow":"適用する",
+  "noProductsFound":"商品が見つかりません",
+  "filteredProducts":"絞り込み結果",
+
+  "checkout": "会計",
+  "deliveryAddress": "お届け先住所",
+  "products": "商品",
+  "placeOrder": "注文を確定する",
+  "selectDeliveryAddress": "お届け先を選択",
+  "noAddressFound": "住所が見つかりません",
+  "pleaseAddAddress": "続行するには住所を追加してください。",
+  "orderPlacedSuccessfully": "注文完了！",
+  "orderSuccessSubtitle": "ご注文の商品はまもなく発送されます。\nご利用ありがとうございます！",
+  "backToHome": "ホームに戻る",
+  "trackYourOrder": "注文を追跡",
+  "orderFailedError": "問題が発生しました。もう一度お試しください。",
+
+
+
+  "nothingFound": "見つかりませんでした",
+  "emptyCategoryDescription": "現在「{categoryName}」カテゴリーには商品がありません。後でもう一度確認するか、他のカテゴリーをご覧ください。",
+
+  "addCategory": "新しいカテゴリーを追加",
+  "editCategory": "カテゴリーを編集",
+  "categoryName": "カテゴリー名",
+  "enterCategoryName": "カテゴリー名を入力",
+  "isActive": "有効",
+  "savedSuccessfully": "保存しました",
+  "fillAllFields": "必須項目をすべて入力してください",
+  "reorderCategories": "カテゴリーを並べ替え",
+  "saveChanges": "変更を保存",
+  "areYouSureToSaveCategoryOrder": "新しいカテゴリー順序を保存してもよろしいですか？",
+  "categoryOrderUpdatedSuccessfully": "カテゴリー順序を更新しました",
+  "deleteCategory": "カテゴリーを削除",
+  "areYouSureToDeleteCategory": "本当にこのカテゴリーを削除しますか？この操作は取り消せません。",
+  "categoryDeletedSuccessfully": "カテゴリーを削除しました",
+  "categorySavedSuccessfully": "カテゴリーを保存しました",
+
+  "newChatRequest": "新しいチャットリクエスト",
+  "accept": "承認",
+  "online": "オンライン",
+  "offline": "オフライン",
+  "typing": "入力中...",
+  "noConnection": "接続がありません",
+  "sayHi": "挨拶しましょう！",
+  "typeMessage": "メッセージを入力...",
+  "searchByEmail": "メールで検索してチャットを開始",
+  "chats": "チャット",
+  "newUsers": "新規ユーザー",
+  "error": "エラー",
+  "noNewUsersFound": "新規ユーザーは見つかりませんでした",
+  "startNewChat": "新しいチャットを開始",
+  "messages": "メッセージ",
+  "chatsTab": "チャット",
+  "requestsTab": "リクエスト",
+  "justNow": "たった今",
+  "secondsAgo": "{seconds}秒前",
+  "minutesAgo": "{minutes}分前",
+  "hoursAgo": "{hours}時間前",
+  "yesterday": "昨日",
+  "daysAgo": "{days}日前",
+  "noChatsYet": "チャットはまだありません",
+  "noRequestsYet": "リクエストはまだありません",
+  "youRestricted": "このユーザーを制限しました",
+  "youRestrictedBy": "このユーザーによって制限されています",
+  "moveToChats": "ブロック解除してチャットへ移動",
+  "restrictedTab": "ブロック中",
+  "noRestrictedYet": "ブロック中のユーザーはいません",
+  "sendTo": "送信先...",
+  "shareToOtherApps": "他のアプリで共有",
+  "moveToRequests": "リクエストへ移動",
+  "moveToRestricted": "制限リストへ移動",
+
+
+  "areYouSureToLogout": "ログアウトしてもよろしいですか？",
+  "cancel": "キャンセル",
+  "failedToLogout": "ログアウトに失敗しました: '{errorMessage}'",
+
+  "pleaseEnterUrl": "URLを入力してください",
+  "invalidUrl": "無効なURL",
+  "pasteImagesUrl": "画像のURLを貼り付け",
+  "save": "保存",
+  "select": "選択",
+  "addSize": "サイズを追加",
+  "addNumber": "番号を追加",
+  "addStock": "在庫を追加",
+  "selectSize": "サイズを選択",
+  "selectNumber": "番号を選択",
+  "quantity": "数量",
+  "enterQuantity": "数量を入力",
+  "choose": "選択...",
+  "add": "追加",
+  "edit": "編集",
+  "addImageFrom": "画像の追加元",
+  "gallery": "ギャラリー",
+  "urlLink": "URLリンク",
+  "productThumbnail": "商品サムネイル",
+  "mainImage": "メイン画像（カバー）",
+  "editProduct": "商品を編集",
+  "productColors": "商品カラー",
+  "addNewColor": "新しいカラーを追加",
+  "enterProductName": "商品名",
+  "productNameRequired": "商品名は必須です",
+  "productNameMinLength": "商品名は3文字以上である必要があります",
+  "enterSubTitle": "商品サブタイトル",
+  "subTitle": "サブタイトル",
+  "subtitleRequired": "サブタイトルは必須です",
+  "subtitleMinLength": "サブタイトルは2文字以上である必要があります",
+  "enterDescription": "商品説明",
+  "descriptionRequired": "説明は必須です",
+  "descriptionMinLength": "説明は10文字以上である必要があります",
+  "enterPrice": "価格を入力",
+  "price": "価格",
+  "priceRequired": "価格は必須です",
+  "pleaseEnterValidPrice": "有効な価格を入力してください",
+  "priceGreaterThanZero": "価格は0より大きい必要があります",
+  "errorFetchingCategories": "カテゴリーの取得中にエラーが発生しました",
+  "sizesAndStock": "サイズと在庫",
+  "noSizesAdded": "サイズはまだ追加されていません。",
+  "pleaseAddColorsFirst": "バリエーションを管理するには、先にカラーを追加してください。",
+  "manageStockAndSizes": "在庫とサイズの管理",
+  "preview": "プレビュー",
+  "productAddedSuccessfully": "商品を追加しました",
+  "productEditedSuccessfully": "商品を編集しました",
+  "addProduct": "商品を追加",
+  "stock": "在庫",
+  "number": "番号",
+  "category": "カテゴリー",
+  "areYouSureToDeleteProduct": "本当にこの商品を削除しますか？この操作は取り消せません。",
+  "productDeletedSuccessfully": "商品を削除しました",
+  "deleteProduct": "商品を削除",
+
+
+  "yourWishlistIsEmpty": "お気に入りは空です",
+  "wishlistEmptyMessage": "まだお気に入りに商品を追加していないようです。素敵な商品を見つけに行きましょう！",
+  "noItemsMatchSearch": "検索条件に一致する商品はありません",
+  "itemAddedToCart": "商品をカートに追加しました！",
+  "itemRemovedFromCart": "商品をカートから削除しました",
+
+  "productNotFound": "商品が見つかりません",
+  "productNotFoundMessage": "申し訳ありませんが、この商品は現在利用できません。他の商品を探してみましょう！",
+
+
+
+  "orderSummary": "注文概要",
+  "discount": "割引",
+  "promoCode": "プロモーションコード",
+  "apply": "適用"
+}

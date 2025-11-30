@@ -181,7 +181,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: ProfileSettingsItem(
                       icon: Icons.logout,
                       title: loc.logOut,
-                      trailing: const Icon(Icons.arrow_forward_ios),
+                      trailing: const Icon(Icons.chevron_right),
                     ),
                   ),
                 ],

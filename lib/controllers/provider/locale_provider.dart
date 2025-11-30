@@ -1,9 +1,9 @@
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocaleProvider extends ChangeNotifier {
-  static List<String> supporterLocales = const ["ar", "en"];
   static const _localeKey = "loc";
 
   static String get localeKey => _localeKey;
@@ -14,7 +14,7 @@ class LocaleProvider extends ChangeNotifier {
   LocaleProvider(this._locale);
 
   Future setLocale(String localeName) async {
-    if (!supporterLocales.contains(localeName)) {
+    if (AppLocalizations.supportedLocales.contains(localeName)) {
       return;
     }
     if (localeName == "ar") {
@@ -23,7 +23,7 @@ class LocaleProvider extends ChangeNotifier {
       notifyListeners();
     } else {
       AppFonts.mainFontName = AppFonts.englishFontFamily;
-      _locale = const Locale("en");
+      _locale = Locale(localeName);
       notifyListeners();
     }
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

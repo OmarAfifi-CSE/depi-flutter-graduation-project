@@ -1,0 +1,388 @@
+{
+  "@@locale": "fr",
+  "test": "Test",
+
+  "hello": "Bonjour",
+  "welcome": "Bienvenue",
+  "userName": "Nom",
+  "discountNewArrivalTitle": "20% de réduction sur les nouveaux arrivages",
+  "discountNewArrivalDescription": "Découvrez des remises incroyables sur notre dernière collection. Obtenez 20% de réduction sur tous les nouveaux produits.",
+
+  "takeAdvantageShoppingTitle": "Profitez des offres shopping",
+  "takeAdvantageShoppingDescription": "Ne manquez pas les offres exclusives. Économisez davantage sur vos articles préférés avec des offres spéciales.",
+
+  "allTypesOffersTitle": "Toutes sortes d'offres à votre portée",
+  "allTypesOffersDescription": "Parcourez diverses catégories et trouvez les meilleures offres adaptées à vos besoins et préférences.",
+
+
+  "welcomeTitle": "Bienvenue !",
+  "welcomeDescription": "Veuillez vous connecter ou vous inscrire pour continuer",
+
+  "emailTitle": "E-mail",
+  "passwordTitle": "Mot de passe",
+
+  "loginTitle": "Connexion",
+  "signInTitle": "Se connecter",
+  "orTitle": "ou",
+
+
+  "continueWithGoogleTitle": "Continuer avec Google",
+  "continueWithGoogleDescription": "Connexion rapide et sécurisée avec votre compte Google",
+
+
+  "forgotPasswordTitle": "Mot de passe oublié ?",
+  "dontHaveAccountTitle": "Pas encore de compte ?",
+  "alreadyAUserTitle": "Déjà utilisateur ?",
+  "signUpTitle": "S'inscrire",
+
+  "loginFailedTitle": "Échec de la connexion",
+  "loginFailedDescription": "E-mail ou mot de passe invalide. Veuillez réessayer",
+
+  "loginSuccessTitle": "Connexion réussie",
+  "loginSuccessDescription": "Bon retour ! Redirection vers l'accueil",
+
+  "signUpDescription": "Créer un nouveau compte",
+  "userNameTitle": "Nom d'utilisateur",
+  "confirmPasswordTitle": "Confirmer le mot de passe",
+
+  "emailEmptyTitle": "E-mail requis",
+  "emailEmptyDescription": "Veuillez entrer votre e-mail",
+  "emailInvalidDescription": "Veuillez entrer une adresse e-mail valide",
+
+  "nameEmptyDescription": "Le nom est requis",
+  "nameTooShortDescription": "Le nom est trop court",
+
+  "passwordEmptyDescription": "Veuillez entrer votre mot de passe",
+  "passwordTooShortDescription": "Le mot de passe doit contenir au moins 6 caractères",
+  "passwordWeakDescription": "Le mot de passe doit contenir des majuscules, des minuscules et un chiffre",
+
+
+  "pleaseVerifyYourEmail": "Veuillez d'abord vérifier votre e-mail",
+
+  "googleSignInCanceledDescription": "Connexion annulée",
+
+  "googleNetworkErrorDescription": "Problème de connexion réseau",
+
+  "googleSignInFailedDescription": "Échec de la connexion",
+
+  "googleConfigErrorDescription": "Erreur de configuration Google Sign-In",
+
+  "googleUnexpectedErrorDescription": "Une erreur inattendue s'est produite",
+
+  "emailAlreadyInUseDescription": "E-mail déjà enregistré",
+
+  "invalidEmailDescription": "Adresse e-mail invalide",
+
+  "operationNotAllowedDescription": "Méthode de connexion désactivée",
+
+  "weakPasswordDescription": "Mot de passe trop faible",
+
+  "userDisabledDescription": "Compte désactivé",
+
+  "userNotFoundDescription": "Utilisateur introuvable",
+
+  "wrongPasswordDescription": "Mot de passe incorrect",
+
+  "invalidCredentialDescription": "Identifiants invalides",
+
+  "networkRequestFailedDescription": "Échec de la connexion",
+
+  "invalidVerificationCodeDescription": "Code de vérification invalide",
+
+  "invalidVerificationIdDescription": "ID de vérification invalide",
+
+  "tooManyRequestsDescription": "Trop de demandes, réessayez plus tard",
+
+  "internalErrorDescription": "Une erreur interne s'est produite",
+
+  "accountExistsWithDifferentCredentialDescription": "Un compte existe déjà avec des identifiants différents",
+
+  "credentialAlreadyInUseDescription": "Identifiants utilisés ailleurs",
+
+  "defaultAuthErrorDescription": "Une erreur inattendue s'est produite",
+  "passwordMustMatch": "Les mots de passe ne correspondent pas",
+
+
+  "resetPassword": "Réinitialiser le mot de passe",
+  "resetPasswordLabel": "Entrez l'e-mail associé à votre compte et nous vous enverrons un e-mail avec les instructions pour réinitialiser votre mot de passe",
+  "sendInstruction": "Envoyer les instructions",
+
+
+  "forgotPassword": "Mot de passe oublié ?",
+  "reset": "Réinitialiser",
+
+  "expiredActionCodeDescription": "Le lien a expiré. Veuillez en demander un nouveau.",
+  "invalidActionCodeDescription": "Le lien est invalide. Veuillez en demander un nouveau.",
+
+  "emailVerifiedTitle": "E-mail vérifié !",
+  "emailVerifiedSubtitle": "Votre compte est maintenant actif et prêt à être utilisé. Merci de nous avoir rejoint.",
+  "continueToSignInButton": "Continuer vers la connexion",
+
+  "verificationFailedTitle": "Échec de la vérification",
+  "backToSignInButton": "Retour à la connexion",
+
+
+
+
+  "signin_success": "Connexion réussie",
+  "check_email_activation": "Veuillez vérifier votre e-mail pour activer votre compte.",
+  "forget_password_sent": "Envoyé avec succès",
+  "something_went_wrong": "Une erreur s'est produite.",
+  "close": "Fermer",
+  "login_success": "Connexion réussie",
+  "create_new_password": "Créer un nouveau mot de passe",
+  "password_changed_success": "Mot de passe modifié avec succès",
+  "confirm": "Confirmer",
+  "invalid_or_expired_link": "Le lien est invalide, a expiré ou a déjà été utilisé. Veuillez en demander un nouveau.",
+  "unexpected_error": "Une erreur inattendue s'est produite. Veuillez réessayer.",
+  "home": "Accueil",
+  "categories": "Catégories",
+  "cart": "Panier",
+  "notifications": "Notifications",
+  "profile": "Profil",
+
+
+  "search": "Rechercher",
+  "emptyCategories":"Aucune catégorie trouvée",
+  "couldNotLoadCategories":"Impossible de charger les catégories",
+  "defaultError":"Une erreur inattendue s'est produite.",
+
+
+  "adminDashboard": "Tableau de bord Admin",
+  "activeEditingMode": "Mode édition actif",
+  "viewAsCustomer": "Voir en tant que client",
+
+  "personalDetails": "Détails personnels",
+  "myOrders": "Mes commandes",
+  "wishlist": "Liste de souhaits",
+  "shippingAddress": "Adresse de livraison",
+  "myCard": "Ma carte",
+  "settings": "Paramètres",
+  "language": "Langue",
+  "darkMode": "Mode sombre",
+  "lightMode": "Mode clair",
+  "helpCenter": "Centre d'aide",
+  "english": "Anglais",
+
+  "emptyCartTitle": "Votre panier est vide",
+  "emptyCartSubtitle": "Il semble que vous n'ayez encore rien ajouté à votre panier. Allons trouver quelque chose que vous aimerez !",
+  "continueShopping": "Continuer vos achats",
+
+
+  "addtocard" :"Ajouter au panier",
+  "processtocheckout" :"Passer à la caisse",
+  "mycart" : "Mon panier",
+  "subtotal" : "Sous-total",
+  "shipping" : "Livraison",
+  "total" : "Total",
+  "items" : "articles",
+  "review":"Avis",
+  "availableinstock" : "Disponible en stock",
+  "description":"Description",
+
+
+
+  "reviewsHeader": "Avis clients",
+  "reviewsLoadingError": "Une erreur s'est produite. Veuillez réessayer.",
+  "noReviewsYet": "Pas encore d'avis. Soyez le premier à partager votre opinion !",
+
+  "addReviewTitle": "Écrire un avis",
+  "experienceHint": "Comment s'est passée votre expérience avec ce produit ?",
+  "postButton": "Publier",
+
+  "errorHappened": "Une erreur est survenue !",
+  "reviews": "Avis",
+  "size": "Taille",
+  "addToCart": "Ajouter au panier",
+  "removeFromCart": "Retirer du panier",
+  "notAvailable": "Indisponible",
+  "noAvailableSizes": "Aucune taille disponible",
+  "noAvailableColors": "Aucune couleur disponible",
+  "productAddedToCart": "Produit ajouté au panier",
+  "productRemovedFromCart": "Produit retiré du panier",
+
+
+  "shippingAddresses": "Adresses de livraison",
+  "mainAddress": "Adresse principale",
+  "noMainAddress": "Aucune adresse principale",
+  "dragAnAddress": "Faites glisser une adresse vers le haut pour la définir comme principale.",
+  "otherAddresses": "Autres adresses",
+  "setMain": "Définir comme principale",
+  "delete": "Supprimer",
+
+
+  "addNewAddress": "Ajouter une nouvelle adresse",
+  "tapToAdd": "Appuyer pour ajouter",
+  "swipeToManage": "Glisser pour gérer",
+  "street": "Rue",
+  "city": "Ville",
+  "phoneNumber": "Numéro de téléphone",
+  "country": "Pays",
+  "addAddress": "Ajouter l'adresse",
+  "addressAddedSuccessfully": "Adresse ajoutée avec succès",
+  "streetEmptyDescription": "La rue ne peut pas être vide.",
+  "streetTooShortDescription": "La rue est trop courte, doit comporter au moins 5 caractères.",
+  "cityEmptyDescription": "La ville ne peut pas être vide.",
+  "cityTooShortDescription": "La ville est trop courte, doit comporter au moins 2 caractères.",
+  "countryEmptyDescription": "Le pays ne peut pas être vide.",
+  "countryTooShortDescription": "Le pays est trop court, doit comporter au moins 2 caractères.",
+  "phoneEmptyDescription": "Le numéro de téléphone ne peut pas être vide.",
+  "phoneInvalidDescription": "Veuillez entrer un numéro de téléphone valide.",
+  "phoneLengthDescription": "Le numéro de téléphone doit comporter entre 8 et 15 chiffres.",
+
+  "uploadImage": "Télécharger une image",
+  "name": "Nom",
+  "email": "E-mail",
+  "logOut": "Se déconnecter",
+  "priceRange": "Fourchette de prix",
+  "sortBy":"Trier par",
+  "ratting":"Évaluation",
+  "applyNow":"Appliquer maintenant",
+  "noProductsFound":"Aucun produit trouvé",
+  "filteredProducts":"Produits filtrés",
+
+  "checkout": "Paiement",
+  "deliveryAddress": "Adresse de livraison",
+  "products": "Produits",
+  "placeOrder": "Passer la commande",
+  "selectDeliveryAddress": "Sélectionner l'adresse de livraison",
+  "noAddressFound": "Aucune adresse trouvée",
+  "pleaseAddAddress": "Veuillez ajouter une adresse pour continuer.",
+  "orderPlacedSuccessfully": "Commande passée !",
+  "orderSuccessSubtitle": "Votre commande sera bientôt livrée.\nMerci d'avoir acheté chez nous !",
+  "backToHome": "Retour à l'accueil",
+  "trackYourOrder": "Suivre votre commande",
+  "orderFailedError": "Une erreur s'est produite, veuillez réessayer.",
+
+
+
+  "nothingFound": "Rien trouvé",
+  "emptyCategoryDescription": "Nous n'avons trouvé aucun produit dans la catégorie '{categoryName}' pour le moment. Réessayez plus tard ou explorez d'autres catégories.",
+
+  "addCategory": "Ajouter une catégorie",
+  "editCategory": "Modifier la catégorie",
+  "categoryName": "Nom de la catégorie",
+  "enterCategoryName": "Entrer le nom de la catégorie",
+  "isActive": "Est active",
+  "savedSuccessfully": "Enregistré avec succès",
+  "fillAllFields": "Veuillez remplir tous les champs requis",
+  "reorderCategories": "Réorganiser les catégories",
+  "saveChanges": "Enregistrer les modifications",
+  "areYouSureToSaveCategoryOrder": "Êtes-vous sûr de vouloir enregistrer le nouvel ordre des catégories ?",
+  "categoryOrderUpdatedSuccessfully": "Ordre des catégories mis à jour avec succès",
+  "deleteCategory": "Supprimer la catégorie",
+  "areYouSureToDeleteCategory": "Êtes-vous sûr de vouloir supprimer cette catégorie ? Cette action est irréversible.",
+  "categoryDeletedSuccessfully": "Catégorie supprimée avec succès",
+  "categorySavedSuccessfully": "Catégorie enregistrée avec succès",
+
+  "newChatRequest": "Nouvelle demande de chat",
+  "accept": "Accepter",
+  "online": "En ligne",
+  "offline": "Hors ligne",
+  "typing": "écrit...",
+  "noConnection": "Pas de connexion",
+  "sayHi": "Dites bonjour !",
+  "typeMessage": "Tapez votre message...",
+  "searchByEmail": "Rechercher par e-mail pour commencer un chat",
+  "chats": "Chats",
+  "newUsers": "Nouveaux utilisateurs",
+  "error": "Erreur",
+  "noNewUsersFound": "Aucun nouvel utilisateur trouvé",
+  "startNewChat": "Commencer un nouveau chat",
+  "messages": "Messages",
+  "chatsTab": "Discussions",
+  "requestsTab": "Demandes",
+  "justNow": "À l'instant",
+  "secondsAgo": "Il y a {seconds}s",
+  "minutesAgo": "Il y a {minutes}m",
+  "hoursAgo": "Il y a {hours}h",
+  "yesterday": "Hier",
+  "daysAgo": "Il y a {days}j",
+  "noChatsYet": "Pas encore de discussions",
+  "noRequestsYet": "Pas encore de demandes",
+  "youRestricted": "Vous avez restreint cet utilisateur",
+  "youRestrictedBy": "Vous êtes restreint par cet utilisateur",
+  "moveToChats": "Débloquer et déplacer vers les chats",
+  "restrictedTab": "Bloqué",
+  "noRestrictedYet": "Aucun utilisateur bloqué",
+  "sendTo": "Envoyer à...",
+  "shareToOtherApps": "Partager vers d'autres applis",
+  "moveToRequests": "Déplacer vers les demandes",
+  "moveToRestricted": "Déplacer vers restreint",
+
+
+  "areYouSureToLogout": "Êtes-vous sûr de vouloir vous déconnecter ?",
+  "cancel": "Annuler",
+  "failedToLogout": "Échec de la déconnexion : '{errorMessage}'",
+
+  "pleaseEnterUrl": "Veuillez entrer une URL",
+  "invalidUrl": "URL invalide",
+  "pasteImagesUrl": "Coller les URL des images",
+  "save": "Enregistrer",
+  "select": "Sélectionner",
+  "addSize": "Ajouter une taille",
+  "addNumber": "Ajouter un nombre",
+  "addStock": "Ajouter du stock",
+  "selectSize": "Sélectionner une taille",
+  "selectNumber": "Sélectionner un nombre",
+  "quantity": "Quantité",
+  "enterQuantity": "Entrer la quantité",
+  "choose": "Choisir...",
+  "add": "Ajouter",
+  "edit": "Modifier",
+  "addImageFrom": "Ajouter une image depuis",
+  "gallery": "Galerie",
+  "urlLink": "Lien URL",
+  "productThumbnail": "Miniature du produit",
+  "mainImage": "Image principale (Couverture)",
+  "editProduct": "Modifier le produit",
+  "productColors": "Couleurs du produit",
+  "addNewColor": "Ajouter une nouvelle couleur",
+  "enterProductName": "Nom du produit",
+  "productNameRequired": "Le nom du produit est requis",
+  "productNameMinLength": "Le nom du produit doit comporter au moins 3 caractères",
+  "enterSubTitle": "Sous-titre du produit",
+  "subTitle": "Sous-titre",
+  "subtitleRequired": "Le sous-titre est requis",
+  "subtitleMinLength": "Le sous-titre doit comporter au moins 2 caractères",
+  "enterDescription": "Description du produit",
+  "descriptionRequired": "La description est requise",
+  "descriptionMinLength": "La description doit comporter au moins 10 caractères",
+  "enterPrice": "Entrer le prix",
+  "price": "Prix",
+  "priceRequired": "Le prix est requis",
+  "pleaseEnterValidPrice": "Veuillez entrer un prix valide",
+  "priceGreaterThanZero": "Le prix doit être supérieur à 0",
+  "errorFetchingCategories": "Erreur lors de la récupération des catégories",
+  "sizesAndStock": "Tailles et Stock",
+  "noSizesAdded": "Aucune taille ajoutée pour le moment.",
+  "pleaseAddColorsFirst": "Veuillez d'abord ajouter des couleurs pour gérer les variantes.",
+  "manageStockAndSizes": "Gérer le Stock et les Tailles",
+  "preview": "Aperçu",
+  "productAddedSuccessfully": "Produit ajouté avec succès",
+  "productEditedSuccessfully": "Produit modifié avec succès",
+  "addProduct": "Ajouter un produit",
+  "stock": "Stock",
+  "number": "Nombre",
+  "category": "Catégorie",
+  "areYouSureToDeleteProduct": "Êtes-vous sûr de vouloir supprimer ce produit ? Cette action est irréversible.",
+  "productDeletedSuccessfully": "Produit supprimé avec succès",
+  "deleteProduct": "Supprimer le produit",
+
+
+  "yourWishlistIsEmpty": "Votre liste de souhaits est vide",
+  "wishlistEmptyMessage": "Il semble que vous n'ayez encore rien ajouté à votre liste de souhaits. Allons trouver quelque chose que vous aimerez !",
+  "noItemsMatchSearch": "Aucun article ne correspond à votre recherche",
+  "itemAddedToCart": "Article ajouté au panier !",
+  "itemRemovedFromCart": "Article retiré du panier",
+
+  "productNotFound": "Produit non trouvé",
+  "productNotFoundMessage": "Désolé, ce produit n'est plus disponible. Allons trouver autre chose que vous aimerez !",
+
+
+
+  "orderSummary": "Résumé de la commande",
+  "discount": "Remise",
+  "promoCode": "Code promo",
+  "apply": "Appliquer"
+}

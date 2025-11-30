@@ -1,0 +1,388 @@
+{
+  "@@locale": "zh",
+  "test": "测试",
+
+  "hello": "你好",
+  "welcome": "欢迎",
+  "userName": "姓名",
+  "discountNewArrivalTitle": "新品 20% 折扣",
+  "discountNewArrivalDescription": "探索我们最新系列的惊人折扣。所有新品均可享受 20% 的优惠。",
+
+  "takeAdvantageShoppingTitle": "把握购物优惠",
+  "takeAdvantageShoppingDescription": "不要错过独家购物优惠。通过特别优惠在您喜爱的商品上节省更多。",
+
+  "allTypesOffersTitle": "各类优惠触手可及",
+  "allTypesOffersDescription": "浏览各种分类，找到最符合您需求和偏好的超值优惠。",
+
+
+  "welcomeTitle": "欢迎！",
+  "welcomeDescription": "请登录或注册以继续使用我们的应用",
+
+  "emailTitle": "邮箱",
+  "passwordTitle": "密码",
+
+  "loginTitle": "登录",
+  "signInTitle": "登录",
+  "orTitle": "或",
+
+
+  "continueWithGoogleTitle": "通过 Google 继续",
+  "continueWithGoogleDescription": "使用您的 Google 账号快速安全登录",
+
+
+  "forgotPasswordTitle": "忘记密码？",
+  "dontHaveAccountTitle": "还没有账号？",
+  "alreadyAUserTitle": "已经是用户？",
+  "signUpTitle": "注册",
+
+  "loginFailedTitle": "登录失败",
+  "loginFailedDescription": "邮箱或密码无效。请重试",
+
+  "loginSuccessTitle": "登录成功",
+  "loginSuccessDescription": "欢迎回来！正在跳转至主屏幕",
+
+  "signUpDescription": "创建一个新账号",
+  "userNameTitle": "用户名",
+  "confirmPasswordTitle": "确认密码",
+
+  "emailEmptyTitle": "需要邮箱",
+  "emailEmptyDescription": "请输入您的邮箱",
+  "emailInvalidDescription": "请输入有效的邮箱地址",
+
+  "nameEmptyDescription": "姓名为必填项",
+  "nameTooShortDescription": "姓名太短",
+
+  "passwordEmptyDescription": "请输入您的密码",
+  "passwordTooShortDescription": "密码长度至少为 6 个字符",
+  "passwordWeakDescription": "密码必须包含大写字母、小写字母和数字",
+
+
+  "pleaseVerifyYourEmail": "请先验证您的邮箱",
+
+  "googleSignInCanceledDescription": "登录已取消",
+
+  "googleNetworkErrorDescription": "网络连接问题",
+
+  "googleSignInFailedDescription": "登录失败",
+
+  "googleConfigErrorDescription": "Google 登录配置错误",
+
+  "googleUnexpectedErrorDescription": "发生意外错误",
+
+  "emailAlreadyInUseDescription": "邮箱已被注册",
+
+  "invalidEmailDescription": "无效的邮箱地址",
+
+  "operationNotAllowedDescription": "登录方式已禁用",
+
+  "weakPasswordDescription": "密码太弱",
+
+  "userDisabledDescription": "账号已禁用",
+
+  "userNotFoundDescription": "用户未找到",
+
+  "wrongPasswordDescription": "密码错误",
+
+  "invalidCredentialDescription": "无效的凭据",
+
+  "networkRequestFailedDescription": "连接失败",
+
+  "invalidVerificationCodeDescription": "无效的验证码",
+
+  "invalidVerificationIdDescription": "无效的验证 ID",
+
+  "tooManyRequestsDescription": "请求过多，请稍后再试",
+
+  "internalErrorDescription": "发生内部错误",
+
+  "accountExistsWithDifferentCredentialDescription": "账号已存在但使用了不同的登录方式",
+
+  "credentialAlreadyInUseDescription": "凭据已在别处使用",
+
+  "defaultAuthErrorDescription": "发生意外错误",
+  "passwordMustMatch": "密码不匹配",
+
+
+  "resetPassword": "重置密码",
+  "resetPasswordLabel": "输入与您的账号关联的邮箱，我们将发送一封包含重置密码说明的邮件",
+  "sendInstruction": "发送说明",
+
+
+  "forgotPassword": "忘记密码？",
+  "reset": "重置",
+
+  "expiredActionCodeDescription": "链接已过期。请重新请求。",
+  "invalidActionCodeDescription": "链接无效。请重新请求。",
+
+  "emailVerifiedTitle": "邮箱已验证！",
+  "emailVerifiedSubtitle": "您的账号现已激活并可以使用。感谢您的加入。",
+  "continueToSignInButton": "继续登录",
+
+  "verificationFailedTitle": "验证失败",
+  "backToSignInButton": "返回登录",
+
+
+
+
+  "signin_success": "登录成功",
+  "check_email_activation": "请检查您的邮箱以激活账号。",
+  "forget_password_sent": "发送成功",
+  "something_went_wrong": "出错了。",
+  "close": "关闭",
+  "login_success": "登录成功",
+  "create_new_password": "创建新密码",
+  "password_changed_success": "密码修改成功",
+  "confirm": "确认",
+  "invalid_or_expired_link": "链接无效、已过期或已被使用。请重新请求。",
+  "unexpected_error": "发生意外错误。请重试。",
+  "home": "首页",
+  "categories": "分类",
+  "cart": "购物车",
+  "notifications": "通知",
+  "profile": "我的",
+
+
+  "search": "搜索",
+  "emptyCategories":"未找到分类",
+  "couldNotLoadCategories":"无法加载分类",
+  "defaultError":"发生意外错误。",
+
+
+  "adminDashboard": "管理员仪表盘",
+  "activeEditingMode": "编辑模式已激活",
+  "viewAsCustomer": "以顾客视角查看",
+
+  "personalDetails": "个人详情",
+  "myOrders": "我的订单",
+  "wishlist": "心愿单",
+  "shippingAddress": "收货地址",
+  "myCard": "我的银行卡",
+  "settings": "设置",
+  "language": "语言",
+  "darkMode": "深色模式",
+  "lightMode": "浅色模式",
+  "helpCenter": "帮助中心",
+  "english": "英语",
+
+  "emptyCartTitle": "您的购物车是空的",
+  "emptyCartSubtitle": "看来您还没有添加任何商品到购物车。去挑点您喜欢的东西吧！",
+  "continueShopping": "继续购物",
+
+
+  "addtocard" :"加入购物车",
+  "processtocheckout" :"去结算",
+  "mycart" : "我的购物车",
+  "subtotal" : "小计",
+  "shipping" : "运费",
+  "total" : "总计",
+  "items" : "件商品",
+  "review":"评价",
+  "availableinstock" : "有库存",
+  "description":"描述",
+
+
+
+  "reviewsHeader": "顾客评价",
+  "reviewsLoadingError": "出错了。请重试。",
+  "noReviewsYet": "暂无评价。快来抢先发表您的看法吧！",
+
+  "addReviewTitle": "写评价",
+  "experienceHint": "您对该产品的体验如何？",
+  "postButton": "发布",
+
+  "errorHappened": "发生错误！",
+  "reviews": "评价",
+  "size": "尺码",
+  "addToCart": "加入购物车",
+  "removeFromCart": "移出购物车",
+  "notAvailable": "不可用",
+  "noAvailableSizes": "无可用尺码",
+  "noAvailableColors": "无可用颜色",
+  "productAddedToCart": "商品已加入购物车",
+  "productRemovedFromCart": "商品已从购物车移除",
+
+
+  "shippingAddresses": "收货地址",
+  "mainAddress": "默认地址",
+  "noMainAddress": "无默认地址",
+  "dragAnAddress": "向上拖动地址以将其设为默认。",
+  "otherAddresses": "其他地址",
+  "setMain": "设为默认",
+  "delete": "删除",
+
+
+  "addNewAddress": "添加新地址",
+  "tapToAdd": "点击添加",
+  "swipeToManage": "滑动管理",
+  "street": "街道",
+  "city": "城市",
+  "phoneNumber": "电话号码",
+  "country": "国家",
+  "addAddress": "添加地址",
+  "addressAddedSuccessfully": "地址添加成功",
+  "streetEmptyDescription": "街道不能为空。",
+  "streetTooShortDescription": "街道太短，至少需要 5 个字符。",
+  "cityEmptyDescription": "城市不能为空。",
+  "cityTooShortDescription": "城市太短，至少需要 2 个字符。",
+  "countryEmptyDescription": "国家不能为空。",
+  "countryTooShortDescription": "国家太短，至少需要 2 个字符。",
+  "phoneEmptyDescription": "电话号码不能为空。",
+  "phoneInvalidDescription": "请输入有效的电话号码。",
+  "phoneLengthDescription": "电话号码必须在 8 到 15 位数字之间。",
+
+  "uploadImage": "上传图片",
+  "name": "名称",
+  "email": "邮箱",
+  "logOut": "退出登录",
+  "priceRange": "价格范围",
+  "sortBy":"排序方式",
+  "ratting":"评分",
+  "applyNow":"立即应用",
+  "noProductsFound":"未找到商品",
+  "filteredProducts":"筛选后的商品",
+
+  "checkout": "结算",
+  "deliveryAddress": "配送地址",
+  "products": "商品",
+  "placeOrder": "提交订单",
+  "selectDeliveryAddress": "选择配送地址",
+  "noAddressFound": "未找到地址",
+  "pleaseAddAddress": "请添加地址以继续。",
+  "orderPlacedSuccessfully": "下单成功！",
+  "orderSuccessSubtitle": "您的订单将很快送达。\n感谢您的购买！",
+  "backToHome": "返回首页",
+  "trackYourOrder": "追踪订单",
+  "orderFailedError": "出错了，请重试。",
+
+
+
+  "nothingFound": "未找到内容",
+  "emptyCategoryDescription": "目前我们在“{categoryName}”类别中找不到任何商品。请稍后再来看看或浏览其他分类。",
+
+  "addCategory": "添加新分类",
+  "editCategory": "编辑分类",
+  "categoryName": "分类名称",
+  "enterCategoryName": "输入分类名称",
+  "isActive": "是否激活",
+  "savedSuccessfully": "保存成功",
+  "fillAllFields": "请填写所有必填字段",
+  "reorderCategories": "重新排序分类",
+  "saveChanges": "保存更改",
+  "areYouSureToSaveCategoryOrder": "您确定要保存新的分类顺序吗？",
+  "categoryOrderUpdatedSuccessfully": "分类顺序更新成功",
+  "deleteCategory": "删除分类",
+  "areYouSureToDeleteCategory": "您确定要删除此分类吗？此操作无法撤销。",
+  "categoryDeletedSuccessfully": "分类删除成功",
+  "categorySavedSuccessfully": "分类保存成功",
+
+  "newChatRequest": "新聊天请求",
+  "accept": "接受",
+  "online": "在线",
+  "offline": "离线",
+  "typing": "正在输入...",
+  "noConnection": "无网络连接",
+  "sayHi": "打个招呼！",
+  "typeMessage": "输入消息...",
+  "searchByEmail": "通过邮箱搜索以开始新聊天",
+  "chats": "聊天",
+  "newUsers": "新用户",
+  "error": "错误",
+  "noNewUsersFound": "未找到新用户",
+  "startNewChat": "开始新聊天",
+  "messages": "消息",
+  "chatsTab": "聊天",
+  "requestsTab": "请求",
+  "justNow": "刚刚",
+  "secondsAgo": "{seconds}秒前",
+  "minutesAgo": "{minutes}分钟前",
+  "hoursAgo": "{hours}小时前",
+  "yesterday": "昨天",
+  "daysAgo": "{days}天前",
+  "noChatsYet": "暂无聊天",
+  "noRequestsYet": "暂无请求",
+  "youRestricted": "您限制了该用户",
+  "youRestrictedBy": "您被该用户限制了",
+  "moveToChats": "解除屏蔽并移至聊天",
+  "restrictedTab": "已屏蔽",
+  "noRestrictedYet": "无屏蔽用户",
+  "sendTo": "发送给...",
+  "shareToOtherApps": "分享到其他应用",
+  "moveToRequests": "移至请求",
+  "moveToRestricted": "移至受限",
+
+
+  "areYouSureToLogout": "您确定要退出登录吗？",
+  "cancel": "取消",
+  "failedToLogout": "退出登录失败：'{errorMessage}'",
+
+  "pleaseEnterUrl": "请输入 URL",
+  "invalidUrl": "无效的 URL",
+  "pasteImagesUrl": "粘贴图片 URL",
+  "save": "保存",
+  "select": "选择",
+  "addSize": "添加尺码",
+  "addNumber": "添加号码",
+  "addStock": "添加库存",
+  "selectSize": "选择尺码",
+  "selectNumber": "选择号码",
+  "quantity": "数量",
+  "enterQuantity": "输入数量",
+  "choose": "选择...",
+  "add": "添加",
+  "edit": "编辑",
+  "addImageFrom": "添加图片来源",
+  "gallery": "相册",
+  "urlLink": "URL 链接",
+  "productThumbnail": "商品缩略图",
+  "mainImage": "主图 (封面)",
+  "editProduct": "编辑商品",
+  "productColors": "商品颜色",
+  "addNewColor": "添加新颜色",
+  "enterProductName": "商品名称",
+  "productNameRequired": "商品名称为必填项",
+  "productNameMinLength": "商品名称至少需要 3 个字符",
+  "enterSubTitle": "商品副标题",
+  "subTitle": "副标题",
+  "subtitleRequired": "副标题为必填项",
+  "subtitleMinLength": "副标题至少需要 2 个字符",
+  "enterDescription": "商品描述",
+  "descriptionRequired": "描述为必填项",
+  "descriptionMinLength": "描述至少需要 10 个字符",
+  "enterPrice": "输入价格",
+  "price": "价格",
+  "priceRequired": "价格为必填项",
+  "pleaseEnterValidPrice": "请输入有效的价格",
+  "priceGreaterThanZero": "价格必须大于 0",
+  "errorFetchingCategories": "获取分类时出错",
+  "sizesAndStock": "尺码与库存",
+  "noSizesAdded": "暂未添加尺码。",
+  "pleaseAddColorsFirst": "请先添加颜色以管理变体。",
+  "manageStockAndSizes": "管理库存与尺码",
+  "preview": "预览",
+  "productAddedSuccessfully": "商品添加成功",
+  "productEditedSuccessfully": "商品编辑成功",
+  "addProduct": "添加商品",
+  "stock": "库存",
+  "number": "号码",
+  "category": "分类",
+  "areYouSureToDeleteProduct": "您确定要删除此商品吗？此操作无法撤销。",
+  "productDeletedSuccessfully": "商品删除成功",
+  "deleteProduct": "删除商品",
+
+
+  "yourWishlistIsEmpty": "您的心愿单是空的",
+  "wishlistEmptyMessage": "看来您还没有添加任何商品到心愿单。去挑点您喜欢的东西吧！",
+  "noItemsMatchSearch": "没有匹配您搜索的商品",
+  "itemAddedToCart": "商品已加入购物车！",
+  "itemRemovedFromCart": "商品已从购物车移除",
+
+  "productNotFound": "未找到商品",
+  "productNotFoundMessage": "抱歉，该商品已不再提供。去看看其他您可能喜欢的东西吧！",
+
+
+
+  "orderSummary": "订单摘要",
+  "discount": "折扣",
+  "promoCode": "优惠码",
+  "apply": "应用"
+}

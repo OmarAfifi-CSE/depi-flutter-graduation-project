@@ -912,4 +912,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get productNotFoundMessage => 'عذراً، هذا المنتج لم يعد متاحاً. لنبحث عن شيء آخر ستحبه!';
+
+  @override
+  String get orderSummary => 'ملخص الطلب';
+
+  @override
+  String get discount => 'خصم';
+
+  @override
+  String get promoCode => 'رمز ترويجي';
+
+  @override
+  String get apply => 'تطبيق';
 }

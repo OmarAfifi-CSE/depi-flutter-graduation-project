@@ -1,0 +1,388 @@
+{
+  "@@locale": "ru",
+  "test": "Тест",
+
+  "hello": "Привет",
+  "welcome": "Добро пожаловать",
+  "userName": "Имя",
+  "discountNewArrivalTitle": "Скидка 20% на новые поступления",
+  "discountNewArrivalDescription": "Откройте для себя потрясающие скидки на нашу последнюю коллекцию. Получите скидку 20% на все новые товары.",
+
+  "takeAdvantageShoppingTitle": "Воспользуйтесь выгодным предложением",
+  "takeAdvantageShoppingDescription": "Не пропустите эксклюзивные предложения. Экономьте больше на любимых товарах благодаря специальным акциям.",
+
+  "allTypesOffersTitle": "Все виды предложений у вас под рукой",
+  "allTypesOffersDescription": "Просматривайте различные категории и находите лучшие предложения, соответствующие вашим потребностям и предпочтениям.",
+
+
+  "welcomeTitle": "Добро пожаловать!",
+  "welcomeDescription": "Пожалуйста, войдите или зарегистрируйтесь, чтобы продолжить",
+
+  "emailTitle": "Email",
+  "passwordTitle": "Пароль",
+
+  "loginTitle": "Вход",
+  "signInTitle": "Войти",
+  "orTitle": "или",
+
+
+  "continueWithGoogleTitle": "Продолжить с Google",
+  "continueWithGoogleDescription": "Быстрый и безопасный вход через аккаунт Google",
+
+
+  "forgotPasswordTitle": "Забыли пароль?",
+  "dontHaveAccountTitle": "Нет аккаунта?",
+  "alreadyAUserTitle": "Уже зарегистрированы?",
+  "signUpTitle": "Регистрация",
+
+  "loginFailedTitle": "Ошибка входа",
+  "loginFailedDescription": "Неверный email или пароль. Пожалуйста, попробуйте снова",
+
+  "loginSuccessTitle": "Вход выполнен",
+  "loginSuccessDescription": "С возвращением! Перенаправление на главный экран",
+
+  "signUpDescription": "Создать новый аккаунт",
+  "userNameTitle": "Имя пользователя",
+  "confirmPasswordTitle": "Подтвердите пароль",
+
+  "emailEmptyTitle": "Email обязателен",
+  "emailEmptyDescription": "Пожалуйста, введите ваш email",
+  "emailInvalidDescription": "Пожалуйста, введите корректный адрес email",
+
+  "nameEmptyDescription": "Имя обязательно",
+  "nameTooShortDescription": "Имя слишком короткое",
+
+  "passwordEmptyDescription": "Пожалуйста, введите пароль",
+  "passwordTooShortDescription": "Пароль должен содержать не менее 6 символов",
+  "passwordWeakDescription": "Пароль должен содержать заглавные и строчные буквы, а также цифру",
+
+
+  "pleaseVerifyYourEmail": "Пожалуйста, сначала подтвердите ваш email",
+
+  "googleSignInCanceledDescription": "Вход отменен",
+
+  "googleNetworkErrorDescription": "Проблема с сетевым подключением",
+
+  "googleSignInFailedDescription": "Ошибка входа",
+
+  "googleConfigErrorDescription": "Ошибка конфигурации Google Sign-In",
+
+  "googleUnexpectedErrorDescription": "Произошла непредвиденная ошибка",
+
+  "emailAlreadyInUseDescription": "Email уже зарегистрирован",
+
+  "invalidEmailDescription": "Неверный адрес email",
+
+  "operationNotAllowedDescription": "Метод входа отключен",
+
+  "weakPasswordDescription": "Пароль слишком слабый",
+
+  "userDisabledDescription": "Аккаунт отключен",
+
+  "userNotFoundDescription": "Пользователь не найден",
+
+  "wrongPasswordDescription": "Неверный пароль",
+
+  "invalidCredentialDescription": "Неверные учетные данные",
+
+  "networkRequestFailedDescription": "Ошибка подключения",
+
+  "invalidVerificationCodeDescription": "Неверный код подтверждения",
+
+  "invalidVerificationIdDescription": "Неверный ID подтверждения",
+
+  "tooManyRequestsDescription": "Слишком много запросов, попробуйте позже",
+
+  "internalErrorDescription": "Произошла внутренняя ошибка",
+
+  "accountExistsWithDifferentCredentialDescription": "Аккаунт уже существует с другими учетными данными",
+
+  "credentialAlreadyInUseDescription": "Учетные данные используются в другом месте",
+
+  "defaultAuthErrorDescription": "Произошла непредвиденная ошибка",
+  "passwordMustMatch": "Пароли не совпадают",
+
+
+  "resetPassword": "Сброс пароля",
+  "resetPasswordLabel": "Введите email, связанный с вашим аккаунтом, и мы отправим письмо с инструкциями по сбросу пароля",
+  "sendInstruction": "Отправить инструкцию",
+
+
+  "forgotPassword": "Забыли пароль?",
+  "reset": "Сбросить",
+
+  "expiredActionCodeDescription": "Срок действия ссылки истек. Пожалуйста, запросите новую.",
+  "invalidActionCodeDescription": "Ссылка недействительна. Пожалуйста, запросите новую.",
+
+  "emailVerifiedTitle": "Email подтвержден!",
+  "emailVerifiedSubtitle": "Ваш аккаунт активен и готов к использованию. Спасибо, что присоединились к нам.",
+  "continueToSignInButton": "Перейти ко входу",
+
+  "verificationFailedTitle": "Ошибка подтверждения",
+  "backToSignInButton": "Вернуться ко входу",
+
+
+
+
+  "signin_success": "Вход выполнен успешно",
+  "check_email_activation": "Пожалуйста, проверьте почту для активации аккаунта.",
+  "forget_password_sent": "Отправлено успешно",
+  "something_went_wrong": "Что-то пошло не так.",
+  "close": "Закрыть",
+  "login_success": "Вход выполнен успешно",
+  "create_new_password": "Создать новый пароль",
+  "password_changed_success": "Пароль успешно изменен",
+  "confirm": "Подтвердить",
+  "invalid_or_expired_link": "Ссылка недействительна, просрочена или уже использована. Пожалуйста, запросите новую.",
+  "unexpected_error": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте снова.",
+  "home": "Главная",
+  "categories": "Категории",
+  "cart": "Корзина",
+  "notifications": "Уведомления",
+  "profile": "Профиль",
+
+
+  "search": "Поиск",
+  "emptyCategories":"Категории не найдены",
+  "couldNotLoadCategories":"Не удалось загрузить категории",
+  "defaultError":"Произошла непредвиденная ошибка.",
+
+
+  "adminDashboard": "Панель администратора",
+  "activeEditingMode": "Режим редактирования активен",
+  "viewAsCustomer": "Просмотр как покупатель",
+
+  "personalDetails": "Личные данные",
+  "myOrders": "Мои заказы",
+  "wishlist": "Список желаний",
+  "shippingAddress": "Адрес доставки",
+  "myCard": "Мои карты",
+  "settings": "Настройки",
+  "language": "Язык",
+  "darkMode": "Темная тема",
+  "lightMode": "Светлая тема",
+  "helpCenter": "Центр помощи",
+  "english": "Английский",
+
+  "emptyCartTitle": "Ваша корзина пуста",
+  "emptyCartSubtitle": "Похоже, вы еще ничего не добавили в корзину. Давайте найдем то, что вам понравится!",
+  "continueShopping": "Продолжить покупки",
+
+
+  "addtocard" :"Добавить в корзину",
+  "processtocheckout" :"Оформить заказ",
+  "mycart" : "Моя корзина",
+  "subtotal" : "Подытог",
+  "shipping" : "Доставка",
+  "total" : "Итого",
+  "items" : "товаров",
+  "review":"Отзыв",
+  "availableinstock" : "В наличии",
+  "description":"Описание",
+
+
+
+  "reviewsHeader": "Отзывы клиентов",
+  "reviewsLoadingError": "Что-то пошло не так. Пожалуйста, попробуйте снова.",
+  "noReviewsYet": "Отзывов пока нет. Будьте первым, кто поделится мнением!",
+
+  "addReviewTitle": "Написать отзыв",
+  "experienceHint": "Каковы ваши впечатления от этого продукта?",
+  "postButton": "Опубликовать",
+
+  "errorHappened": "Произошла ошибка!",
+  "reviews": "Отзывы",
+  "size": "Размер",
+  "addToCart": "В корзину",
+  "removeFromCart": "Убрать из корзины",
+  "notAvailable": "Нет в наличии",
+  "noAvailableSizes": "Нет доступных размеров",
+  "noAvailableColors": "Нет доступных цветов",
+  "productAddedToCart": "Товар добавлен в корзину",
+  "productRemovedFromCart": "Товар удален из корзины",
+
+
+  "shippingAddresses": "Адреса доставки",
+  "mainAddress": "Основной адрес",
+  "noMainAddress": "Нет основного адреса",
+  "dragAnAddress": "Перетащите адрес вверх, чтобы сделать его основным.",
+  "otherAddresses": "Другие адреса",
+  "setMain": "Сделать основным",
+  "delete": "Удалить",
+
+
+  "addNewAddress": "Добавить новый адрес",
+  "tapToAdd": "Нажмите, чтобы добавить",
+  "swipeToManage": "Свайп для управления",
+  "street": "Улица",
+  "city": "Город",
+  "phoneNumber": "Номер телефона",
+  "country": "Страна",
+  "addAddress": "Добавить адрес",
+  "addressAddedSuccessfully": "Адрес успешно добавлен",
+  "streetEmptyDescription": "Улица не может быть пустой.",
+  "streetTooShortDescription": "Название улицы слишком короткое, минимум 5 символов.",
+  "cityEmptyDescription": "Город не может быть пустым.",
+  "cityTooShortDescription": "Название города слишком короткое, минимум 2 символа.",
+  "countryEmptyDescription": "Страна не может быть пустой.",
+  "countryTooShortDescription": "Название страны слишком короткое, минимум 2 символа.",
+  "phoneEmptyDescription": "Номер телефона не может быть пустым.",
+  "phoneInvalidDescription": "Пожалуйста, введите корректный номер телефона.",
+  "phoneLengthDescription": "Номер телефона должен содержать от 8 до 15 цифр.",
+
+  "uploadImage": "Загрузить изображение",
+  "name": "Имя",
+  "email": "Email",
+  "logOut": "Выйти",
+  "priceRange": "Диапазон цены",
+  "sortBy":"Сортировать по",
+  "ratting":"Рейтинг",
+  "applyNow":"Применить",
+  "noProductsFound":"Товары не найдены",
+  "filteredProducts":"Отфильтрованные товары",
+
+  "checkout": "Оформление",
+  "deliveryAddress": "Адрес доставки",
+  "products": "Товары",
+  "placeOrder": "Разместить заказ",
+  "selectDeliveryAddress": "Выбрать адрес доставки",
+  "noAddressFound": "Адрес не найден",
+  "pleaseAddAddress": "Пожалуйста, добавьте адрес для продолжения.",
+  "orderPlacedSuccessfully": "Заказ оформлен!",
+  "orderSuccessSubtitle": "Ваш заказ будет доставлен в ближайшее время.\nСпасибо за покупку!",
+  "backToHome": "На главную",
+  "trackYourOrder": "Отследить заказ",
+  "orderFailedError": "Что-то пошло не так, пожалуйста, попробуйте снова.",
+
+
+
+  "nothingFound": "Ничего не найдено",
+  "emptyCategoryDescription": "Мы не нашли товаров в категории '{categoryName}' на данный момент. Попробуйте зайти позже или посмотрите другие категории.",
+
+  "addCategory": "Добавить категорию",
+  "editCategory": "Редактировать категорию",
+  "categoryName": "Название категории",
+  "enterCategoryName": "Введите название категории",
+  "isActive": "Активна",
+  "savedSuccessfully": "Успешно сохранено",
+  "fillAllFields": "Пожалуйста, заполните все обязательные поля",
+  "reorderCategories": "Изменить порядок категорий",
+  "saveChanges": "Сохранить изменения",
+  "areYouSureToSaveCategoryOrder": "Вы уверены, что хотите сохранить новый порядок категорий?",
+  "categoryOrderUpdatedSuccessfully": "Порядок категорий успешно обновлен",
+  "deleteCategory": "Удалить категорию",
+  "areYouSureToDeleteCategory": "Вы уверены, что хотите удалить эту категорию? Это действие нельзя отменить.",
+  "categoryDeletedSuccessfully": "Категория успешно удалена",
+  "categorySavedSuccessfully": "Категория успешно сохранена",
+
+  "newChatRequest": "Новый запрос чата",
+  "accept": "Принять",
+  "online": "В сети",
+  "offline": "Не в сети",
+  "typing": "печатает...",
+  "noConnection": "Нет соединения",
+  "sayHi": "Скажите привет!",
+  "typeMessage": "Введите сообщение...",
+  "searchByEmail": "Ищите по email, чтобы начать чат",
+  "chats": "Чаты",
+  "newUsers": "Новые пользователи",
+  "error": "Ошибка",
+  "noNewUsersFound": "Новые пользователи не найдены",
+  "startNewChat": "Начать новый чат",
+  "messages": "Сообщения",
+  "chatsTab": "Чаты",
+  "requestsTab": "Запросы",
+  "justNow": "Только что",
+  "secondsAgo": "{seconds} сек. назад",
+  "minutesAgo": "{minutes} мин. назад",
+  "hoursAgo": "{hours} ч. назад",
+  "yesterday": "Вчера",
+  "daysAgo": "{days} д. назад",
+  "noChatsYet": "Чатов пока нет",
+  "noRequestsYet": "Запросов пока нет",
+  "youRestricted": "Вы ограничили этого пользователя",
+  "youRestrictedBy": "Вы ограничены этим пользователем",
+  "moveToChats": "Разблокировать и вернуть в чаты",
+  "restrictedTab": "Заблокированные",
+  "noRestrictedYet": "Нет заблокированных пользователей",
+  "sendTo": "Отправить...",
+  "shareToOtherApps": "Поделиться в других приложениях",
+  "moveToRequests": "Переместить в запросы",
+  "moveToRestricted": "Переместить в ограниченные",
+
+
+  "areYouSureToLogout": "Вы уверены, что хотите выйти?",
+  "cancel": "Отмена",
+  "failedToLogout": "Не удалось выйти: '{errorMessage}'",
+
+  "pleaseEnterUrl": "Пожалуйста, введите URL",
+  "invalidUrl": "Неверный URL",
+  "pasteImagesUrl": "Вставить URL изображений",
+  "save": "Сохранить",
+  "select": "Выбрать",
+  "addSize": "Добавить размер",
+  "addNumber": "Добавить номер",
+  "addStock": "Добавить запас",
+  "selectSize": "Выбрать размер",
+  "selectNumber": "Выбрать номер",
+  "quantity": "Количество",
+  "enterQuantity": "Введите количество",
+  "choose": "Выбрать...",
+  "add": "Добавить",
+  "edit": "Редактировать",
+  "addImageFrom": "Добавить изображение из",
+  "gallery": "Галереи",
+  "urlLink": "URL ссылки",
+  "productThumbnail": "Миниатюра товара",
+  "mainImage": "Главное изображение (Обложка)",
+  "editProduct": "Редактировать товар",
+  "productColors": "Цвета товара",
+  "addNewColor": "Добавить новый цвет",
+  "enterProductName": "Название товара",
+  "productNameRequired": "Название товара обязательно",
+  "productNameMinLength": "Название товара должно содержать минимум 3 символа",
+  "enterSubTitle": "Подзаголовок товара",
+  "subTitle": "Подзаголовок",
+  "subtitleRequired": "Подзаголовок обязателен",
+  "subtitleMinLength": "Подзаголовок должен содержать минимум 2 символа",
+  "enterDescription": "Описание товара",
+  "descriptionRequired": "Описание обязательно",
+  "descriptionMinLength": "Описание должно содержать минимум 10 символов",
+  "enterPrice": "Введите цену",
+  "price": "Цена",
+  "priceRequired": "Цена обязательна",
+  "pleaseEnterValidPrice": "Пожалуйста, введите корректную цену",
+  "priceGreaterThanZero": "Цена должна быть больше 0",
+  "errorFetchingCategories": "Ошибка при загрузке категорий",
+  "sizesAndStock": "Размеры и Запас",
+  "noSizesAdded": "Размеры еще не добавлены.",
+  "pleaseAddColorsFirst": "Пожалуйста, сначала добавьте цвета для управления вариантами.",
+  "manageStockAndSizes": "Управление запасами и размерами",
+  "preview": "Предпросмотр",
+  "productAddedSuccessfully": "Товар успешно добавлен",
+  "productEditedSuccessfully": "Товар успешно отредактирован",
+  "addProduct": "Добавить товар",
+  "stock": "Запас",
+  "number": "Номер",
+  "category": "Категория",
+  "areYouSureToDeleteProduct": "Вы уверены, что хотите удалить этот товар? Это действие нельзя отменить.",
+  "productDeletedSuccessfully": "Товар успешно удален",
+  "deleteProduct": "Удалить товар",
+
+
+  "yourWishlistIsEmpty": "Ваш список желаний пуст",
+  "wishlistEmptyMessage": "Похоже, вы еще ничего не добавили в список желаний. Давайте найдем то, что вам понравится!",
+  "noItemsMatchSearch": "Нет товаров, соответствующих вашему поиску",
+  "itemAddedToCart": "Товар добавлен в корзину!",
+  "itemRemovedFromCart": "Товар удален из корзины",
+
+  "productNotFound": "Товар не найден",
+  "productNotFoundMessage": "Извините, этот товар больше недоступен. Давайте найдем что-нибудь другое, что вам понравится!",
+
+
+
+  "orderSummary": "Сводка заказа",
+  "discount": "Скидка",
+  "promoCode": "Промокод",
+  "apply": "Применить"
+}

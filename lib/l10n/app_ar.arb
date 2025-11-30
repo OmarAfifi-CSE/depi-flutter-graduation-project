@@ -373,5 +373,12 @@
   "itemRemovedFromCart": "تم إزالة المنتج من السلة",
 
   "productNotFound": "المنتج غير موجود",
-  "productNotFoundMessage": "عذراً، هذا المنتج لم يعد متاحاً. لنبحث عن شيء آخر ستحبه!"
+  "productNotFoundMessage": "عذراً، هذا المنتج لم يعد متاحاً. لنبحث عن شيء آخر ستحبه!",
+
+
+
+  "orderSummary": "ملخص الطلب",
+  "discount": "خصم",
+  "promoCode": "رمز ترويجي",
+  "apply": "تطبيق"
 }

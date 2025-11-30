@@ -56,7 +56,7 @@ class CheckOutButton extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomText(
-                        data: "Order Summery",
+                        data: loc!.orderSummary,
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
                       ),
@@ -87,7 +87,7 @@ class CheckOutButton extends StatelessWidget {
                                   children: [
                                     // Subtotal
                                     PriceRow(
-                                      title: loc!.subtotal,
+                                      title: loc.subtotal,
                                       suffix: CustomText(
                                         data: '\$${cartPriceProvider.subTotal}',
                                         fontSize: 16.sp,
@@ -104,7 +104,7 @@ class CheckOutButton extends StatelessWidget {
                                       ),
                                     ),
                                     PriceRow(
-                                      title: "Discount",
+                                      title: loc.discount,
                                       suffix: CustomText(
                                         data: '\$${cartPriceProvider.discount}',
                                         fontSize: 16.sp,
@@ -145,7 +145,7 @@ class CheckOutButton extends StatelessWidget {
                         ),
                         // Total
                         PriceRow(
-                          title: loc!.total,
+                          title: loc.total,
                           suffix: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.end,
@@ -204,13 +204,16 @@ class CheckOutButton extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              context.pushNamed(AppRoutes.checkoutScreen, extra: {
-                'cartItems': cartItems,
-                'cartPriceProvider': cartPriceProvider,
-              });
+              context.pushNamed(
+                AppRoutes.checkoutScreen,
+                extra: {
+                  'cartItems': cartItems,
+                  'cartPriceProvider': cartPriceProvider,
+                },
+              );
             },
             buttonChild: CustomText(
-              data: loc!.processtocheckout,
+              data: loc.processtocheckout,
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: theme.scaffoldBackgroundColor,

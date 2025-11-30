@@ -29,6 +29,7 @@ import 'package:batrina/views/home/home_screen.dart';
 import 'package:batrina/views/product/admin/edit_product_screen.dart';
 import 'package:batrina/views/product/product_screen.dart';
 import 'package:batrina/views/onboarding/onboarding_screen.dart';
+import 'package:batrina/views/profile/language_selection/language_selection_screen.dart';
 import 'package:batrina/views/profile/orders/orders_screen.dart';
 import 'package:batrina/views/profile/shipping_address/add_new_address/add_new_address_screen.dart';
 import 'package:batrina/views/profile/shipping_address/shipping_address_screen.dart';
@@ -405,7 +406,6 @@ class RouterGenerationConfig {
             );
           },
         ),
-
         GoRoute(
           path: AppRoutes.filteredProductScreen,
           name: AppRoutes.filteredProductScreen,
@@ -515,6 +515,39 @@ class RouterGenerationConfig {
                       animation: animation,
                       secondaryAnimation: secondaryAnimation,
                       child: child,
+                    );
+                  },
+            );
+          },
+        ),
+        GoRoute(
+          path: AppRoutes.languageSelectionScreen,
+          name: AppRoutes.languageSelectionScreen,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const LanguageSelectionScreen(),
+              transitionDuration: const Duration(milliseconds: 500),
+              reverseTransitionDuration: const Duration(milliseconds: 300),
+              transitionsBuilder:
+                  (context, animation, secondaryAnimation, child) {
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
+                        parent: animation,
+                        curve: Curves.easeIn,
+                      ),
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0.3, 0),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                        child: child,
+                      ),
                     );
                   },
             );

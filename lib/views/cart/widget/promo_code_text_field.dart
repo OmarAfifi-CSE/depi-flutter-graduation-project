@@ -1,3 +1,4 @@
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/views/cart/widget/apply_button.dart';
@@ -18,6 +19,7 @@ class _PromoCodeTextFieldState extends State<PromoCodeTextField> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final loc = AppLocalizations.of(context);
     return SizedBox(
       height: 50.h,
       child: TextField(
@@ -34,7 +36,7 @@ class _PromoCodeTextFieldState extends State<PromoCodeTextField> {
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(10.r),
           ),
-          hintText: "Promo Code",
+          hintText: loc!.promoCode,
           fillColor: appColors.dividerColor,
           filled: true,
           hintStyle: TextStyle(

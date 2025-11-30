@@ -1,0 +1,388 @@
+{
+  "@@locale": "tr",
+  "test": "Test",
+
+  "hello": "Merhaba",
+  "welcome": "Hoş Geldiniz",
+  "userName": "İsim",
+  "discountNewArrivalTitle": "Yeni Gelen Ürünlerde %20 İndirim",
+  "discountNewArrivalDescription": "En yeni koleksiyonumuzda harika indirimleri keşfedin. Tüm yeni gelen ürünlerde %20 indirim kazanın.",
+
+  "takeAdvantageShoppingTitle": "Alışveriş Fırsatından Yararlanın",
+  "takeAdvantageShoppingDescription": "Özel alışveriş fırsatlarını kaçırmayın. Özel tekliflerle favori ürünlerinizde daha fazla tasarruf edin.",
+
+  "allTypesOffersTitle": "Her Türlü Teklif Elinizin Altında",
+  "allTypesOffersDescription": "Çeşitli kategorilere göz atın ve ihtiyaçlarınıza ve tercihlerinize uygun en iyi fırsatları bulun.",
+
+
+  "welcomeTitle": "Hoş Geldiniz!",
+  "welcomeDescription": "Uygulamamıza devam etmek için lütfen giriş yapın veya kaydolun",
+
+  "emailTitle": "E-posta",
+  "passwordTitle": "Şifre",
+
+  "loginTitle": "Giriş",
+  "signInTitle": "Oturum Aç",
+  "orTitle": "veya",
+
+
+  "continueWithGoogleTitle": "Google ile devam et",
+  "continueWithGoogleDescription": "Google hesabınızla hızlı ve güvenli giriş",
+
+
+  "forgotPasswordTitle": "Şifremi Unuttum?",
+  "dontHaveAccountTitle": "Hesabınız yok mu?",
+  "alreadyAUserTitle": "Zaten üye misiniz?",
+  "signUpTitle": "Kaydol",
+
+  "loginFailedTitle": "Giriş Başarısız",
+  "loginFailedDescription": "Geçersiz e-posta veya şifre. Lütfen tekrar deneyin",
+
+  "loginSuccessTitle": "Giriş Başarılı",
+  "loginSuccessDescription": "Tekrar hoş geldiniz! Ana ekrana yönlendiriliyorsunuz",
+
+  "signUpDescription": "Yeni bir hesap oluşturun",
+  "userNameTitle": "Kullanıcı Adı",
+  "confirmPasswordTitle": "Şifreyi Onayla",
+
+  "emailEmptyTitle": "E-posta Gerekli",
+  "emailEmptyDescription": "Lütfen e-postanızı girin",
+  "emailInvalidDescription": "Lütfen geçerli bir e-posta adresi girin",
+
+  "nameEmptyDescription": "İsim gereklidir",
+  "nameTooShortDescription": "İsim çok kısa",
+
+  "passwordEmptyDescription": "Lütfen şifrenizi girin",
+  "passwordTooShortDescription": "Şifre en az 6 karakter uzunluğunda olmalıdır",
+  "passwordWeakDescription": "Şifre büyük harf, küçük harf ve bir rakam içermelidir",
+
+
+  "pleaseVerifyYourEmail": "Lütfen önce e-postanızı doğrulayın",
+
+  "googleSignInCanceledDescription": "Giriş iptal edildi",
+
+  "googleNetworkErrorDescription": "Ağ bağlantısı sorunu",
+
+  "googleSignInFailedDescription": "Giriş başarısız",
+
+  "googleConfigErrorDescription": "Google Giriş yapılandırma hatası",
+
+  "googleUnexpectedErrorDescription": "Beklenmeyen bir hata oluştu",
+
+  "emailAlreadyInUseDescription": "E-posta zaten kayıtlı",
+
+  "invalidEmailDescription": "Geçersiz e-posta adresi",
+
+  "operationNotAllowedDescription": "Giriş yöntemi devre dışı",
+
+  "weakPasswordDescription": "Şifre çok zayıf",
+
+  "userDisabledDescription": "Hesap devre dışı bırakıldı",
+
+  "userNotFoundDescription": "Kullanıcı bulunamadı",
+
+  "wrongPasswordDescription": "Yanlış şifre",
+
+  "invalidCredentialDescription": "Geçersiz kimlik bilgileri",
+
+  "networkRequestFailedDescription": "Bağlantı başarısız",
+
+  "invalidVerificationCodeDescription": "Geçersiz doğrulama kodu",
+
+  "invalidVerificationIdDescription": "Geçersiz doğrulama kimliği",
+
+  "tooManyRequestsDescription": "Çok fazla istek, daha sonra deneyin",
+
+  "internalErrorDescription": "Dahili hata oluştu",
+
+  "accountExistsWithDifferentCredentialDescription": "Hesap farklı bir giriş yöntemiyle mevcut",
+
+  "credentialAlreadyInUseDescription": "Kimlik bilgileri başka yerde kullanılıyor",
+
+  "defaultAuthErrorDescription": "Beklenmeyen bir hata oluştu",
+  "passwordMustMatch": "Şifreler eşleşmiyor",
+
+
+  "resetPassword": "Şifreyi Sıfırla",
+  "resetPasswordLabel": "Hesabınızla ilişkili e-postayı girin, size şifrenizi sıfırlama talimatlarını içeren bir e-posta gönderelim",
+  "sendInstruction": "Talimat Gönder",
+
+
+  "forgotPassword": "Şifremi Unuttum?",
+  "reset": "Sıfırla",
+
+  "expiredActionCodeDescription": "Bağlantının süresi doldu. Lütfen yeni bir tane isteyin.",
+  "invalidActionCodeDescription": "Bağlantı geçersiz. Lütfen yeni bir tane isteyin.",
+
+  "emailVerifiedTitle": "E-posta Doğrulandı!",
+  "emailVerifiedSubtitle": "Hesabınız artık aktif ve kullanıma hazır. Bize katıldığınız için teşekkürler.",
+  "continueToSignInButton": "Giriş Yapmaya Devam Et",
+
+  "verificationFailedTitle": "Doğrulama Başarısız",
+  "backToSignInButton": "Giriş Ekranına Dön",
+
+
+
+
+  "signin_success": "Başarıyla giriş yapıldı",
+  "check_email_activation": "Hesabınızı etkinleştirmek için lütfen e-postanızı kontrol edin.",
+  "forget_password_sent": "Başarıyla gönderildi",
+  "something_went_wrong": "Bir şeyler ters gitti.",
+  "close": "Kapat",
+  "login_success": "Başarıyla giriş yapıldı",
+  "create_new_password": "Yeni Şifre Oluştur",
+  "password_changed_success": "Şifre başarıyla değiştirildi",
+  "confirm": "Onayla",
+  "invalid_or_expired_link": "Bağlantı geçersiz, süresi dolmuş veya zaten kullanılmış. Lütfen yeni bir tane isteyin.",
+  "unexpected_error": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+  "home": "Ana Sayfa",
+  "categories": "Kategoriler",
+  "cart": "Sepet",
+  "notifications": "Bildirimler",
+  "profile": "Profil",
+
+
+  "search": "Ara",
+  "emptyCategories":"Kategori bulunamadı",
+  "couldNotLoadCategories":"Kategoriler yüklenemedi",
+  "defaultError":"Beklenmeyen bir hata oluştu.",
+
+
+  "adminDashboard": "Yönetici Paneli",
+  "activeEditingMode": "Aktif Düzenleme Modu",
+  "viewAsCustomer": "Müşteri Olarak Görüntüle",
+
+  "personalDetails": "Kişisel Bilgiler",
+  "myOrders": "Siparişlerim",
+  "wishlist": "İstek Listesi",
+  "shippingAddress": "Teslimat Adresi",
+  "myCard": "Kartım",
+  "settings": "Ayarlar",
+  "language": "Dil",
+  "darkMode": "Karanlık Mod",
+  "lightMode": "Aydınlık Mod",
+  "helpCenter": "Yardım Merkezi",
+  "english": "İngilizce",
+
+  "emptyCartTitle": "Sepetiniz Boş",
+  "emptyCartSubtitle": "Görünüşe göre sepetinize henüz bir şey eklememişsiniz. Hadi seveceğiniz bir şeyler bulalım!",
+  "continueShopping": "Alışverişe Devam Et",
+
+
+  "addtocard" :"Sepete Ekle",
+  "processtocheckout" :"Ödemeye Geç",
+  "mycart" : "Sepetim",
+  "subtotal" : "Ara Toplam",
+  "shipping" : "Kargo",
+  "total" : "Toplam",
+  "items" : "ürün",
+  "review":"Yorum",
+  "availableinstock" : "Stokta mevcut",
+  "description":"Açıklama",
+
+
+
+  "reviewsHeader": "Müşteri Yorumları",
+  "reviewsLoadingError": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+  "noReviewsYet": "Henüz yorum yok. Düşüncelerinizi paylaşan ilk kişi olun!",
+
+  "addReviewTitle": "Yorum Yaz",
+  "experienceHint": "Bu ürünle deneyiminiz nasıldı?",
+  "postButton": "Gönder",
+
+  "errorHappened": "Hata oluştu!",
+  "reviews": "Yorumlar",
+  "size": "Beden",
+  "addToCart": "Sepete ekle",
+  "removeFromCart": "Sepetten çıkar",
+  "notAvailable": "Mevcut değil",
+  "noAvailableSizes": "Mevcut Beden Yok",
+  "noAvailableColors": "Mevcut Renk Yok",
+  "productAddedToCart": "Ürün sepete eklendi",
+  "productRemovedFromCart": "Ürün sepetten çıkarıldı",
+
+
+  "shippingAddresses": "Teslimat Adresleri",
+  "mainAddress": "Ana Adres",
+  "noMainAddress": "Ana Adres Yok",
+  "dragAnAddress": "Ana adres olarak ayarlamak için bir adresi yukarı sürükleyin.",
+  "otherAddresses": "Diğer Adresler",
+  "setMain": "Ana Adres Yap",
+  "delete": "Sil",
+
+
+  "addNewAddress": "Yeni Adres Ekle",
+  "tapToAdd": "Eklemek için dokun",
+  "swipeToManage": "Yönetmek için kaydır",
+  "street": "Sokak/Cadde",
+  "city": "Şehir",
+  "phoneNumber": "Telefon Numarası",
+  "country": "Ülke",
+  "addAddress": "Adres Ekle",
+  "addressAddedSuccessfully": "Adres başarıyla eklendi",
+  "streetEmptyDescription": "Sokak boş olamaz.",
+  "streetTooShortDescription": "Sokak adı çok kısa, en az 5 karakter olmalı.",
+  "cityEmptyDescription": "Şehir boş olamaz.",
+  "cityTooShortDescription": "Şehir adı çok kısa, en az 2 karakter olmalı.",
+  "countryEmptyDescription": "Ülke boş olamaz.",
+  "countryTooShortDescription": "Ülke adı çok kısa, en az 2 karakter olmalı.",
+  "phoneEmptyDescription": "Telefon numarası boş olamaz.",
+  "phoneInvalidDescription": "Lütfen geçerli bir telefon numarası girin.",
+  "phoneLengthDescription": "Telefon numarası 8 ile 15 hane arasında olmalıdır.",
+
+  "uploadImage": "Görsel Yükle",
+  "name": "İsim",
+  "email": "E-posta",
+  "logOut": "Çıkış Yap",
+  "priceRange": "Fiyat Aralığı",
+  "sortBy":"Sırala",
+  "ratting":"Değerlendirme",
+  "applyNow":"Uygula",
+  "noProductsFound":"Ürün bulunamadı",
+  "filteredProducts":"Filtrelenen Ürünler",
+
+  "checkout": "Ödeme",
+  "deliveryAddress": "Teslimat Adresi",
+  "products": "Ürünler",
+  "placeOrder": "Siparişi Ver",
+  "selectDeliveryAddress": "Teslimat Adresi Seç",
+  "noAddressFound": "Adres Bulunamadı",
+  "pleaseAddAddress": "Devam etmek için lütfen bir adres ekleyin.",
+  "orderPlacedSuccessfully": "Sipariş Alındı!",
+  "orderSuccessSubtitle": "Siparişiniz yakında teslim edilecek.\nBizden alışveriş yaptığınız için teşekkürler!",
+  "backToHome": "Ana Sayfaya Dön",
+  "trackYourOrder": "Siparişi Takip Et",
+  "orderFailedError": "Bir şeyler ters gitti, lütfen tekrar deneyin.",
+
+
+
+  "nothingFound": "Hiçbir Şey Bulunamadı",
+  "emptyCategoryDescription": "Şu anda '{categoryName}' kategorisinde herhangi bir ürün bulamadık. Daha sonra tekrar kontrol edin veya diğer kategorileri keşfedin.",
+
+  "addCategory": "Yeni Kategori Ekle",
+  "editCategory": "Kategoriyi Düzenle",
+  "categoryName": "Kategori Adı",
+  "enterCategoryName": "Kategori adı girin",
+  "isActive": "Aktif mi",
+  "savedSuccessfully": "Başarıyla kaydedildi",
+  "fillAllFields": "Lütfen tüm zorunlu alanları doldurun",
+  "reorderCategories": "Kategorileri Yeniden Sırala",
+  "saveChanges": "Değişiklikleri Kaydet",
+  "areYouSureToSaveCategoryOrder": "Yeni kategori sıralamasını kaydetmek istediğinizden emin misiniz?",
+  "categoryOrderUpdatedSuccessfully": "Kategori sıralaması başarıyla güncellendi",
+  "deleteCategory": "Kategoriyi Sil",
+  "areYouSureToDeleteCategory": "Bu kategoriyi silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+  "categoryDeletedSuccessfully": "Kategori başarıyla silindi",
+  "categorySavedSuccessfully": "Kategori başarıyla kaydedildi",
+
+  "newChatRequest": "Yeni sohbet isteği",
+  "accept": "Kabul Et",
+  "online": "Çevrimiçi",
+  "offline": "Çevrimdışı",
+  "typing": "yazıyor...",
+  "noConnection": "Bağlantı Yok",
+  "sayHi": "Selam ver!",
+  "typeMessage": "Mesaj Yaz...",
+  "searchByEmail": "Yeni bir sohbet başlatmak için e-posta ile ara",
+  "chats": "Sohbetler",
+  "newUsers": "Yeni Kullanıcılar",
+  "error": "Hata",
+  "noNewUsersFound": "Yeni Kullanıcı Bulunamadı",
+  "startNewChat": "Yeni sohbet başlat",
+  "messages": "Mesajlar",
+  "chatsTab": "Sohbetler",
+  "requestsTab": "İstekler",
+  "justNow": "Az önce",
+  "secondsAgo": "{seconds}sn önce",
+  "minutesAgo": "{minutes}dk önce",
+  "hoursAgo": "{hours}sa önce",
+  "yesterday": "Dün",
+  "daysAgo": "{days}g önce",
+  "noChatsYet": "Henüz sohbet yok",
+  "noRequestsYet": "Henüz istek yok",
+  "youRestricted": "Bu kullanıcıyı kısıtladınız",
+  "youRestrictedBy": "Bu kullanıcı tarafından kısıtlandınız",
+  "moveToChats": "Engeli kaldır & sohbetlere taşı",
+  "restrictedTab": "Engellenenler",
+  "noRestrictedYet": "Engellenen kullanıcı yok",
+  "sendTo": "Gönder...",
+  "shareToOtherApps": "Diğer uygulamalarda paylaş",
+  "moveToRequests": "İsteklere Taşı",
+  "moveToRestricted": "Kısıtlananlara taşı",
+
+
+  "areYouSureToLogout": "Çıkış yapmak istediğinizden emin misiniz?",
+  "cancel": "İptal",
+  "failedToLogout": "Çıkış yapılamadı: '{errorMessage}'",
+
+  "pleaseEnterUrl": "Lütfen bir URL girin",
+  "invalidUrl": "Geçersiz URL",
+  "pasteImagesUrl": "Görsel URL'lerini yapıştır",
+  "save": "Kaydet",
+  "select": "Seç",
+  "addSize": "Beden ekle",
+  "addNumber": "Numara ekle",
+  "addStock": "Stok ekle",
+  "selectSize": "Beden seç",
+  "selectNumber": "Numara seç",
+  "quantity": "Miktar",
+  "enterQuantity": "Miktar girin",
+  "choose": "Seç...",
+  "add": "Ekle",
+  "edit": "Düzenle",
+  "addImageFrom": "Şuradan görsel ekle",
+  "gallery": "Galeri",
+  "urlLink": "URL bağlantısı",
+  "productThumbnail": "Ürün küçük resmi",
+  "mainImage": "Ana görsel (Kapak)",
+  "editProduct": "Ürünü Düzenle",
+  "productColors": "Ürün Renkleri",
+  "addNewColor": "Yeni Renk Ekle",
+  "enterProductName": "Ürün Adı",
+  "productNameRequired": "Ürün adı gereklidir",
+  "productNameMinLength": "Ürün adı en az 3 karakter olmalıdır",
+  "enterSubTitle": "Ürün alt başlığı",
+  "subTitle": "Alt Başlık",
+  "subtitleRequired": "Alt başlık gereklidir",
+  "subtitleMinLength": "Alt başlık en az 2 karakter olmalıdır",
+  "enterDescription": "Ürün Açıklaması",
+  "descriptionRequired": "Açıklama gereklidir",
+  "descriptionMinLength": "Açıklama en az 10 karakter olmalıdır",
+  "enterPrice": "Fiyat Girin",
+  "price": "Fiyat",
+  "priceRequired": "Fiyat gereklidir",
+  "pleaseEnterValidPrice": "Lütfen geçerli bir fiyat girin",
+  "priceGreaterThanZero": "Fiyat 0'dan büyük olmalıdır",
+  "errorFetchingCategories": "Kategoriler getirilirken hata oluştu",
+  "sizesAndStock": "Bedenler & Stok",
+  "noSizesAdded": "Henüz beden eklenmedi.",
+  "pleaseAddColorsFirst": "Varyantları yönetmek için lütfen önce renk ekleyin.",
+  "manageStockAndSizes": "Stok & Beden Yönetimi",
+  "preview": "Önizleme",
+  "productAddedSuccessfully": "Ürün başarıyla eklendi",
+  "productEditedSuccessfully": "Ürün başarıyla düzenlendi",
+  "addProduct": "Ürün Ekle",
+  "stock": "Stok",
+  "number": "Numara",
+  "category": "Kategori",
+  "areYouSureToDeleteProduct": "Bu ürünü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+  "productDeletedSuccessfully": "Ürün başarıyla silindi",
+  "deleteProduct": "Ürünü Sil",
+
+
+  "yourWishlistIsEmpty": "İstek listeniz boş",
+  "wishlistEmptyMessage": "Görünüşe göre istek listenize henüz bir şey eklememişsiniz. Hadi seveceğiniz bir şeyler bulalım!",
+  "noItemsMatchSearch": "Aramanızla eşleşen öge yok",
+  "itemAddedToCart": "Öge sepete eklendi!",
+  "itemRemovedFromCart": "Öge sepetten çıkarıldı",
+
+  "productNotFound": "Ürün bulunamadı",
+  "productNotFoundMessage": "Üzgünüz, bu ürün artık mevcut değil. Hadi seveceğiniz başka bir şey bulalım!",
+
+
+
+  "orderSummary": "Sipariş Özeti",
+  "discount": "İndirim",
+  "promoCode": "Promosyon Kodu",
+  "apply": "Uygula"
+}

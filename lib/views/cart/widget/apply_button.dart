@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/cart/check_promo_code_cubit/check_promo_code_cubit.dart';
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ class _ApplyButtonState extends State<ApplyButton> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
     return BlocProvider(
       create: (context) => CheckPromoCodeCubit(),
       child: BlocListener<CheckPromoCodeCubit, CheckPromoCodeState>(
@@ -125,7 +127,7 @@ class _ApplyButtonState extends State<ApplyButton> {
                               )
                             : CustomText(
                                 key: const ValueKey('normal'),
-                                data: "Apply",
+                                data: loc!.apply,
                                 fontSize: 13.sp,
                                 fontWeight: FontWeight.w700,
                                 color: theme.scaffoldBackgroundColor,

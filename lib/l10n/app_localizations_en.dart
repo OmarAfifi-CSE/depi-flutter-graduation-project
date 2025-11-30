@@ -912,4 +912,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get productNotFoundMessage => 'Sorry, this product is no longer available. Let\'s go find something else you\'ll love!';
+
+  @override
+  String get orderSummary => 'Order Summary';
+
+  @override
+  String get discount => 'Discount';
+
+  @override
+  String get promoCode => 'Promo Code';
+
+  @override
+  String get apply => 'Apply';
 }

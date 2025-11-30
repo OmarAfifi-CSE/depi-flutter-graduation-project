@@ -114,94 +114,146 @@ class AddToCartButton extends StatelessWidget {
                                   }
                                 },
                                 builder: (context, state) {
-                                  return state is! CartLoading
-                                      ? SizedBox(
-                                          height: 40.h,
-                                          child: ElevatedButton(
-                                            style: ElevatedButton.styleFrom(
-                                              padding: EdgeInsets.symmetric(
-                                                horizontal: 16.w,
-                                              ),
-                                              backgroundColor:
-                                                  theme.scaffoldBackgroundColor,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadiusGeometry.circular(
-                                                      12.r,
-                                                    ),
-                                              ),
+                                  final bool isLoading = state is CartLoading;
+
+                                  return AnimatedSwitcher(
+                                    duration: const Duration(milliseconds: 300),
+                                    transitionBuilder:
+                                        (
+                                          Widget child,
+                                          Animation<double> animation,
+                                        ) {
+                                          return FadeTransition(
+                                            opacity: animation,
+                                            child: child,
+                                          );
+                                        },
+                                    layoutBuilder:
+                                        (
+                                          Widget? currentChild,
+                                          List<Widget> previousChildren,
+                                        ) {
+                                          return Stack(
+                                            alignment:
+                                                AlignmentDirectional.centerEnd,
+                                            children: <Widget>[
+                                              ...previousChildren,
+                                              if (currentChild != null)
+                                                currentChild,
+                                            ],
+                                          );
+                                        },
+                                    child: !isLoading
+                                        ? SizedBox(
+                                            key: const ValueKey(
+                                              'addToCartButton',
                                             ),
-                                            onPressed:
-                                                productProvider
-                                                        .currentVariantStock !=
-                                                    0
-                                                ? () {
-                                                    if (cartItem != null) {
-                                                      context
-                                                          .read<CartCubit>()
-                                                          .removeFromCart(
-                                                            cartId: cartItem.id,
-                                                          );
-                                                    } else {
-                                                      addToCart(
-                                                        productProvider:
-                                                            productProvider,
-                                                        context: context,
-                                                      );
+                                            height: 40.h,
+                                            child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                padding: EdgeInsets.symmetric(
+                                                  horizontal: 16.w,
+                                                ),
+                                                backgroundColor: theme
+                                                    .scaffoldBackgroundColor,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadiusGeometry.circular(
+                                                        12.r,
+                                                      ),
+                                                ),
+                                              ),
+                                              onPressed:
+                                                  productProvider
+                                                          .currentVariantStock !=
+                                                      0
+                                                  ? () {
+                                                      if (cartItem != null) {
+                                                        context
+                                                            .read<CartCubit>()
+                                                            .removeFromCart(
+                                                              cartId:
+                                                                  cartItem.id,
+                                                            );
+                                                      } else {
+                                                        addToCart(
+                                                          productProvider:
+                                                              productProvider,
+                                                          context: context,
+                                                        );
+                                                      }
                                                     }
-                                                  }
-                                                : () {},
-                                            child:
-                                                productProvider
-                                                        .currentVariantStock !=
-                                                    0
-                                                ? Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    children: [
-                                                      cartItem == null
-                                                          ? SvgPicture.asset(
-                                                              AppAssets
-                                                                  .cartIcon,
-                                                              fit: BoxFit
-                                                                  .scaleDown,
-                                                              colorFilter:
-                                                                  ColorFilter.mode(
-                                                                    theme
-                                                                        .primaryColor,
-                                                                    BlendMode
-                                                                        .srcIn,
-                                                                  ),
-                                                            )
-                                                          : const Icon(
-                                                              Icons
-                                                                  .remove_shopping_cart,
-                                                              color: Colors.red,
-                                                            ),
-                                                      SizedBox(width: 4.w),
-                                                      CustomText(
-                                                        data: cartItem == null
-                                                            ? loc!.addToCart
-                                                            : loc!.removeFromCart,
+                                                  : () {},
+                                              child:
+                                                  productProvider
+                                                          .currentVariantStock !=
+                                                      0
+                                                  ? Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.min,
+                                                      children: [
+                                                        SvgPicture.asset(
+                                                          cartItem == null
+                                                              ? AppAssets
+                                                                    .cartIcon
+                                                              : AppAssets
+                                                                    .removeCartIcon,
+                                                          fit: BoxFit.scaleDown,
+                                                          colorFilter:
+                                                              ColorFilter.mode(
+                                                                cartItem == null
+                                                                    ? theme
+                                                                          .primaryColor
+                                                                    : Colors
+                                                                          .red,
+                                                                BlendMode.srcIn,
+                                                              ),
+                                                        ),
+                                                        SizedBox(width: 4.w),
+                                                        CustomText(
+                                                          data: cartItem == null
+                                                              ? loc!.addToCart
+                                                              : loc!.removeFromCart,
+                                                          fontSize: 15.sp,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                        ),
+                                                      ],
+                                                    )
+                                                  : Center(
+                                                      child: CustomText(
+                                                        data: loc!.notAvailable,
                                                         fontSize: 15.sp,
                                                         fontWeight:
                                                             FontWeight.w400,
                                                       ),
-                                                    ],
-                                                  )
-                                                : Center(
-                                                    child: CustomText(
-                                                      data: loc!.notAvailable,
-                                                      fontSize: 15.sp,
-                                                      fontWeight:
-                                                          FontWeight.w400,
                                                     ),
-                                                  ),
+                                            ),
+                                          )
+                                        : Container(
+                                            key: const ValueKey(
+                                              'loadingIndicator',
+                                            ),
+                                            height: 40.h,
+                                            constraints: BoxConstraints(
+                                              minWidth: 150.w,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  theme.scaffoldBackgroundColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(12.r),
+                                            ),
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: 8.w,
+                                            ),
+                                            child: Center(
+                                              child: CupertinoActivityIndicator(
+                                                color: theme.primaryColor,
+                                              ),
+                                            ),
                                           ),
-                                        )
-                                      : CupertinoActivityIndicator(
-                                          color: theme.scaffoldBackgroundColor,
-                                        );
+                                  );
                                 },
                               )
                               .animate()

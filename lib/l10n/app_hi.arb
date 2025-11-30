@@ -1,0 +1,387 @@
+{
+  "@@locale": "hi",
+  "test": "टेस्ट",
+
+  "hello": "नमस्ते",
+  "welcome": "स्वागत है",
+  "userName": "नाम",
+  "discountNewArrivalTitle": "नए आगमन पर 20% की छूट",
+  "discountNewArrivalDescription": "हमारे नवीनतम संग्रह पर अद्भुत छूट प्राप्त करें। सभी नए आगमन उत्पादों पर 20% की छूट पाएं।",
+
+  "takeAdvantageShoppingTitle": "खरीदारी ऑफर का लाभ उठाएं",
+  "takeAdvantageShoppingDescription": "विशेष खरीदारी सौदों को न चूकें। विशेष प्रस्तावों के साथ अपनी पसंदीदा वस्तुओं पर अधिक बचत करें।",
+
+  "allTypesOffersTitle": "सभी प्रकार के ऑफर आपकी पहुंच में",
+  "allTypesOffersDescription": "विभिन्न श्रेणियों को ब्राउज़ करें और अपनी आवश्यकताओं और प्राथमिकताओं से मेल खाने वाले सर्वोत्तम सौदे खोजें।",
+
+
+  "welcomeTitle": "स्वागत है!",
+  "welcomeDescription": "हमारे ऐप को जारी रखने के लिए कृपया लॉगिन या साइन अप करें",
+
+  "emailTitle": "ईमेल",
+  "passwordTitle": "पासवर्ड",
+
+  "loginTitle": "लॉगिन",
+  "signInTitle": "साइन इन",
+  "orTitle": "या",
+
+
+  "continueWithGoogleTitle": "Google के साथ जारी रखें",
+  "continueWithGoogleDescription": "अपने Google खाते के साथ तेज़ और सुरक्षित लॉगिन",
+
+
+  "forgotPasswordTitle": "पासवर्ड भूल गए?",
+  "dontHaveAccountTitle": "क्या आपके पास खाता नहीं है?",
+  "alreadyAUserTitle": "क्या आप पहले से उपयोगकर्ता हैं?",
+  "signUpTitle": "साइन अप",
+
+  "loginFailedTitle": "लॉगिन विफल",
+  "loginFailedDescription": "अमान्य ईमेल या पासवर्ड। कृपया पुनः प्रयास करें",
+
+  "loginSuccessTitle": "लॉगिन सफल",
+  "loginSuccessDescription": "वापसी पर स्वागत है! होम स्क्रीन पर निर्देशित किया जा रहा है",
+
+  "signUpDescription": "नया खाता बनाएं",
+  "userNameTitle": "उपयोगकर्ता नाम",
+  "confirmPasswordTitle": "पासवर्ड की पुष्टि करें",
+
+  "emailEmptyTitle": "ईमेल आवश्यक",
+  "emailEmptyDescription": "कृपया अपना ईमेल दर्ज करें",
+  "emailInvalidDescription": "कृपया एक मान्य ईमेल पता दर्ज करें",
+
+  "nameEmptyDescription": "नाम आवश्यक है",
+  "nameTooShortDescription": "नाम बहुत छोटा है",
+
+  "passwordEmptyDescription": "कृपया अपना पासवर्ड दर्ज करें",
+  "passwordTooShortDescription": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए",
+  "passwordWeakDescription": "पासवर्ड में अपरकेस, लोअरकेस अक्षर और एक संख्या होनी चाहिए",
+
+
+  "pleaseVerifyYourEmail": "कृपया पहले अपना ईमेल सत्यापित करें",
+
+  "googleSignInCanceledDescription": "साइन-इन रद्द कर दिया गया",
+
+  "googleNetworkErrorDescription": "नेटवर्क कनेक्शन की समस्या",
+
+  "googleSignInFailedDescription": "साइन-इन विफल",
+
+  "googleConfigErrorDescription": "Google साइन-इन कॉन्फ़िगरेशन त्रुटि",
+
+  "googleUnexpectedErrorDescription": "एक अप्रत्याशित त्रुटि हुई",
+
+  "emailAlreadyInUseDescription": "ईमेल पहले से पंजीकृत है",
+
+  "invalidEmailDescription": "अमान्य ईमेल पता",
+
+  "operationNotAllowedDescription": "साइन-इन विधि अक्षम है",
+
+  "weakPasswordDescription": "पासवर्ड बहुत कमजोर है",
+
+  "userDisabledDescription": "खाता अक्षम कर दिया गया है",
+
+  "userNotFoundDescription": "उपयोगकर्ता नहीं मिला",
+
+  "wrongPasswordDescription": "गलत पासवर्ड",
+
+  "invalidCredentialDescription": "अमान्य क्रेडेंशियल्स",
+
+  "networkRequestFailedDescription": "कनेक्शन विफल",
+
+  "invalidVerificationCodeDescription": "अमान्य सत्यापन कोड",
+
+  "invalidVerificationIdDescription": "अमान्य सत्यापन आईडी",
+
+  "tooManyRequestsDescription": "बहुत सारे अनुरोध, बाद में प्रयास करें",
+
+  "internalErrorDescription": "आंतरिक त्रुटि हुई",
+
+  "accountExistsWithDifferentCredentialDescription": "खाता अलग लॉगिन के साथ मौजूद है",
+
+  "credentialAlreadyInUseDescription": "क्रेडेंशियल्स कहीं और उपयोग किए जा रहे हैं",
+
+  "defaultAuthErrorDescription": "एक अप्रत्याशित त्रुटि हुई",
+  "passwordMustMatch": "पासवर्ड मेल नहीं खाते",
+
+
+  "resetPassword": "पासवर्ड रीसेट करें",
+  "resetPasswordLabel": "अपने खाते से जुड़े ईमेल को दर्ज करें और हम आपको पासवर्ड रीसेट करने के निर्देशों के साथ एक ईमेल भेजेंगे",
+  "sendInstruction": "निर्देश भेजें",
+
+
+  "forgotPassword": "पासवर्ड भूल गए?",
+  "reset": "रीसेट",
+
+  "expiredActionCodeDescription": "लिंक समाप्त हो गया है। कृपया एक नए लिंक का अनुरोध करें।",
+  "invalidActionCodeDescription": "लिंक अमान्य है। कृपया एक नए लिंक का अनुरोध करें।",
+
+  "emailVerifiedTitle": "ईमेल सत्यापित!",
+  "emailVerifiedSubtitle": "आपका खाता अब सक्रिय है और उपयोग के लिए तैयार है। हमारे साथ जुड़ने के लिए धन्यवाद।",
+  "continueToSignInButton": "साइन इन करना जारी रखें",
+
+  "verificationFailedTitle": "सत्यापन विफल",
+  "backToSignInButton": "साइन इन पर वापस जाएं",
+
+
+
+
+  "signin_success": "सफलतापूर्वक साइन इन किया",
+  "check_email_activation": "कृपया अपना खाता सक्रिय करने के लिए अपना ईमेल चेक करें।",
+  "forget_password_sent": "सफलतापूर्वक भेजा गया",
+  "something_went_wrong": "कुछ गलत हो गया।",
+  "close": "बंद करें",
+  "login_success": "सफलतापूर्वक साइन इन किया",
+  "create_new_password": "नया पासवर्ड बनाएं",
+  "password_changed_success": "पासवर्ड सफलतापूर्वक बदला गया",
+  "confirm": "पुष्टि करें",
+  "invalid_or_expired_link": "लिंक अमान्य है, समाप्त हो गया है, या पहले ही उपयोग किया जा चुका है। कृपया एक नए लिंक का अनुरोध करें।",
+  "unexpected_error": "एक अप्रत्याशित त्रुटि हुई। कृपया पुनः प्रयास करें।",
+  "home": "होम",
+  "categories": "श्रेणियाँ",
+  "cart": "कार्ट",
+  "notifications": "सूचनाएं",
+  "profile": "प्रोफ़ाइल",
+
+
+  "search": "खोजें",
+  "emptyCategories":"कोई श्रेणी नहीं मिली",
+  "couldNotLoadCategories":"श्रेणियां लोड नहीं की जा सकीं",
+  "defaultError":"एक अप्रत्याशित त्रुटि हुई।",
+
+
+  "adminDashboard": "एडमिन डैशबोर्ड",
+  "activeEditingMode": "सक्रिय संपादन मोड",
+  "viewAsCustomer": "ग्राहक के रूप में देखें",
+
+  "personalDetails": "व्यक्तिगत विवरण",
+  "myOrders": "मेरे ऑर्डर",
+  "wishlist": "विशलिस्ट",
+  "shippingAddress": "शिपिंग पता",
+  "myCard": "मेरा कार्ड",
+  "settings": "सेटिंग्स",
+  "language": "भाषा",
+  "darkMode": "डार्क मोड",
+  "lightMode": "लाइट मोड",
+  "helpCenter": "सहायता केंद्र",
+  "english": "अंग्रेज़ी",
+
+  "emptyCartTitle": "आपकी कार्ट खाली है",
+  "emptyCartSubtitle": "ऐसा लगता है कि आपने अभी तक अपनी कार्ट में कुछ भी नहीं जोड़ा है। चलिए कुछ ऐसा ढूंढते हैं जो आपको पसंद आए!",
+  "continueShopping": "खरीदारी जारी रखें",
+
+
+  "addtocard" :"कार्ट में जोड़ें",
+  "processtocheckout" :"चेकआउट के लिए आगे बढ़ें",
+  "mycart" : "मेरी कार्ट",
+  "subtotal" : "उप-योग",
+  "shipping" : "शिपिंग",
+  "total" : "कुल",
+  "items" : "आइटम",
+  "review":"समीक्षा",
+  "availableinstock" : "स्टॉक में उपलब्ध",
+  "description":"विवरण",
+
+
+
+  "reviewsHeader": "ग्राहक समीक्षाएं",
+  "reviewsLoadingError": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
+  "noReviewsYet": "अभी तक कोई समीक्षा नहीं। अपने विचार साझा करने वाले पहले व्यक्ति बनें!",
+
+  "addReviewTitle": "समीक्षा लिखें",
+  "experienceHint": "इस उत्पाद के साथ आपका अनुभव कैसा रहा?",
+  "postButton": "पोस्ट करें",
+
+  "errorHappened": "त्रुटि हुई!",
+  "reviews": "समीक्षाएं",
+  "size": "साइज़",
+  "addToCart": "कार्ट में जोड़ें",
+  "removeFromCart": "कार्ट से हटाएं",
+  "notAvailable": "उपलब्ध नहीं",
+  "noAvailableSizes": "कोई साइज़ उपलब्ध नहीं",
+  "noAvailableColors": "कोई रंग उपलब्ध नहीं",
+  "productAddedToCart": "उत्पाद कार्ट में जोड़ा गया",
+  "productRemovedFromCart": "उत्पाद कार्ट से हटाया गया",
+
+
+  "shippingAddresses": "शिपिंग पते",
+  "mainAddress": "मुख्य पता",
+  "noMainAddress": "कोई मुख्य पता नहीं",
+  "dragAnAddress": "मुख्य पता सेट करने के लिए पते को ऊपर खींचें।",
+  "otherAddresses": "अन्य पते",
+  "setMain": "मुख्य सेट करें",
+  "delete": "हटाएं",
+
+
+  "addNewAddress": "नया पता जोड़ें",
+  "tapToAdd": "जोड़ने के लिए टैप करें",
+  "swipeToManage": "प्रबंधित करने के लिए स्वाइप करें",
+  "street": "सड़क/गली",
+  "city": "शहर",
+  "phoneNumber": "फ़ोन नंबर",
+  "country": "देश",
+  "addAddress": "पता जोड़ें",
+  "addressAddedSuccessfully": "पता सफलतापूर्वक जोड़ा गया",
+  "streetEmptyDescription": "सड़क खाली नहीं हो सकती।",
+  "streetTooShortDescription": "सड़क का नाम बहुत छोटा है, कम से कम 5 अक्षर होने चाहिए।",
+  "cityEmptyDescription": "शहर खाली नहीं हो सकता।",
+  "cityTooShortDescription": "शहर का नाम बहुत छोटा है, कम से कम 2 अक्षर होने चाहिए।",
+  "countryEmptyDescription": "देश खाली नहीं हो सकता।",
+  "countryTooShortDescription": "देश का नाम बहुत छोटा है, कम से कम 2 अक्षर होने चाहिए।",
+  "phoneEmptyDescription": "फ़ोन नंबर खाली नहीं हो सकता।",
+  "phoneInvalidDescription": "कृपया एक मान्य फ़ोन नंबर दर्ज करें।",
+  "phoneLengthDescription": "फ़ोन नंबर 8 से 15 अंकों के बीच होना चाहिए।",
+
+  "uploadImage": "छवि अपलोड करें",
+  "name": "नाम",
+  "email": "ईमेल",
+  "logOut": "लॉग आउट",
+  "priceRange": "कीमत सीमा",
+  "sortBy":"क्रमबद्ध करें",
+  "ratting":"रेटिंग",
+  "applyNow":"अभी लागू करें",
+  "noProductsFound":"कोई उत्पाद नहीं मिला",
+  "filteredProducts":"फ़िल्टर किए गए उत्पाद",
+
+  "checkout": "चेकआउट",
+  "deliveryAddress": "डिलीवरी पता",
+  "products": "उत्पाद",
+  "placeOrder": "ऑर्डर दें",
+  "selectDeliveryAddress": "डिलीवरी पता चुनें",
+  "noAddressFound": "कोई पता नहीं मिला",
+  "pleaseAddAddress": "आगे बढ़ने के लिए कृपया एक पता जोड़ें।",
+  "orderPlacedSuccessfully": "ऑर्डर दिया गया!",
+  "orderSuccessSubtitle": "आपका ऑर्डर जल्द ही डिलीवर किया जाएगा।\nहमारे साथ खरीदारी करने के लिए धन्यवाद!",
+  "backToHome": "होम पर वापस जाएं",
+  "trackYourOrder": "अपना ऑर्डर ट्रैक करें",
+  "orderFailedError": "कुछ गलत हो गया, कृपया पुनः प्रयास करें।",
+
+
+
+  "nothingFound": "कुछ नहीं मिला",
+  "emptyCategoryDescription": "हमें अभी '{categoryName}' श्रेणी में कोई उत्पाद नहीं मिला। बाद में वापस आएं या अन्य श्रेणियां देखें।",
+
+  "addCategory": "नई श्रेणी जोड़ें",
+  "editCategory": "श्रेणी संपादित करें",
+  "categoryName": "श्रेणी का नाम",
+  "enterCategoryName": "श्रेणी का नाम दर्ज करें",
+  "isActive": "सक्रिय है",
+  "savedSuccessfully": "सफलतापूर्वक सहेजा गया",
+  "fillAllFields": "कृपया सभी आवश्यक फ़ील्ड भरें",
+  "reorderCategories": "श्रेणियों को पुनः व्यवस्थित करें",
+  "saveChanges": "परिवर्तन सहेजें",
+  "areYouSureToSaveCategoryOrder": "क्या आप वाकई श्रेणियों के नए क्रम को सहेजना चाहते हैं?",
+  "categoryOrderUpdatedSuccessfully": "श्रेणी क्रम सफलतापूर्वक अपडेट किया गया",
+  "deleteCategory": "श्रेणी हटाएं",
+  "areYouSureToDeleteCategory": "क्या आप वाकई इस श्रेणी को हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।",
+  "categoryDeletedSuccessfully": "श्रेणी सफलतापूर्वक हटाई गई",
+  "categorySavedSuccessfully": "श्रेणी सफलतापूर्वक सहेजी गई",
+
+  "newChatRequest": "नया चैट अनुरोध",
+  "accept": "स्वीकार करें",
+  "online": "ऑनलाइन",
+  "offline": "ऑफ़लाइन",
+  "typing": "टाइप कर रहा है...",
+  "noConnection": "कोई कनेक्शन नहीं",
+  "sayHi": "नमस्ते कहें!",
+  "typeMessage": "संदेश टाइप करें...",
+  "searchByEmail": "नई चैट शुरू करने के लिए ईमेल द्वारा खोजें",
+  "chats": "चैट",
+  "newUsers": "नए उपयोगकर्ता",
+  "error": "त्रुटि",
+  "noNewUsersFound": "कोई नया उपयोगकर्ता नहीं मिला",
+  "startNewChat": "नई चैट शुरू करें",
+  "messages": "संदेश",
+  "chatsTab": "चैट",
+  "requestsTab": "अनुरोध",
+  "justNow": "अभी",
+  "secondsAgo": "{seconds} सेकंड पहले",
+  "minutesAgo": "{minutes} मिनट पहले",
+  "hoursAgo": "{hours} घंटे पहले",
+  "yesterday": "कल",
+  "daysAgo": "{days} दिन पहले",
+  "noChatsYet": "अभी तक कोई चैट नहीं",
+  "noRequestsYet": "अभी तक कोई अनुरोध नहीं",
+  "youRestricted": "आपने इस उपयोगकर्ता को प्रतिबंधित किया",
+  "youRestrictedBy": "आप इस उपयोगकर्ता द्वारा प्रतिबंधित हैं",
+  "moveToChats": "अनब्लॉक करें और चैट में ले जाएं",
+  "restrictedTab": "ब्लॉक किए गए",
+  "noRestrictedYet": "कोई ब्लॉक किया गया उपयोगकर्ता नहीं",
+  "sendTo": "को भेजें...",
+  "shareToOtherApps": "अन्य ऐप्स पर साझा करें",
+  "moveToRequests": "अनुरोधों में ले जाएं",
+  "moveToRestricted": "प्रतिबंधित में ले जाएं",
+
+
+  "areYouSureToLogout": "क्या आप वाकई लॉग आउट करना चाहते हैं?",
+  "cancel": "रद्द करें",
+  "failedToLogout": "लॉग आउट करने में विफल: '{errorMessage}'",
+
+  "pleaseEnterUrl": "कृपया एक URL दर्ज करें",
+  "invalidUrl": "अमान्य URL",
+  "pasteImagesUrl": "छवि URL पेस्ट करें",
+  "save": "सहेजें",
+  "select": "चुनें",
+  "addSize": "साइज़ जोड़ें",
+  "addNumber": "संख्या जोड़ें",
+  "addStock": "स्टॉक जोड़ें",
+  "selectSize": "साइज़ चुनें",
+  "selectNumber": "संख्या चुनें",
+  "quantity": "मात्रा",
+  "enterQuantity": "मात्रा दर्ज करें",
+  "choose": "चुनें...",
+  "add": "जोड़ें",
+  "edit": "संपादित करें",
+  "addImageFrom": "यहाँ से छवि जोड़ें",
+  "gallery": "गैलरी",
+  "urlLink": "URL लिंक",
+  "productThumbnail": "उत्पाद थंबनेल",
+  "mainImage": "मुख्य छवि (कवर)",
+  "editProduct": "उत्पाद संपादित करें",
+  "productColors": "उत्पाद रंग",
+  "addNewColor": "नया रंग जोड़ें",
+  "enterProductName": "उत्पाद का नाम",
+  "productNameRequired": "उत्पाद का नाम आवश्यक है",
+  "productNameMinLength": "उत्पाद का नाम कम से कम 3 अक्षर का होना चाहिए",
+  "enterSubTitle": "उत्पाद उपशीर्षक",
+  "subTitle": "उपशीर्षक",
+  "subtitleRequired": "उपशीर्षक आवश्यक है",
+  "subtitleMinLength": "उपशीर्षक कम से कम 2 अक्षर का होना चाहिए",
+  "enterDescription": "उत्पाद विवरण",
+  "descriptionRequired": "विवरण आवश्यक है",
+  "descriptionMinLength": "विवरण कम से कम 10 अक्षरों का होना चाहिए",
+  "enterPrice": "कीमत दर्ज करें",
+  "price": "कीमत",
+  "priceRequired": "कीमत आवश्यक है",
+  "pleaseEnterValidPrice": "कृपया एक मान्य कीमत दर्ज करें",
+  "priceGreaterThanZero": "कीमत 0 से अधिक होनी चाहिए",
+  "errorFetchingCategories": "श्रेणियां प्राप्त करते समय त्रुटि",
+  "sizesAndStock": "साइज़ और स्टॉक",
+  "noSizesAdded": "अभी तक कोई साइज़ नहीं जोड़ा गया।",
+  "pleaseAddColorsFirst": "वेरिएंट प्रबंधित करने के लिए कृपया पहले रंग जोड़ें।",
+  "manageStockAndSizes": "स्टॉक और साइज़ प्रबंधित करें",
+  "preview": "पूर्वावलोकन",
+  "productAddedSuccessfully": "उत्पाद सफलतापूर्वक जोड़ा गया",
+  "productEditedSuccessfully": "उत्पाद सफलतापूर्वक संपादित किया गया",
+  "addProduct": "उत्पाद जोड़ें",
+  "stock": "स्टॉक",
+  "number": "संख्या",
+  "category": "श्रेणी",
+  "areYouSureToDeleteProduct": "क्या आप वाकई इस उत्पाद को हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।",
+  "productDeletedSuccessfully": "उत्पाद सफलतापूर्वक हटाया गया",
+  "deleteProduct": "उत्पाद हटाएं",
+
+
+  "yourWishlistIsEmpty": "आपकी विशलिस्ट खाली है",
+  "wishlistEmptyMessage": "ऐसा लगता है कि आपने अभी तक अपनी विशलिस्ट में कुछ भी नहीं जोड़ा है। चलिए कुछ ऐसा ढूंढते हैं जो आपको पसंद आए!",
+  "noItemsMatchSearch": "आपकी खोज से कोई आइटम मेल नहीं खाता",
+  "itemAddedToCart": "आइटम कार्ट में जोड़ा गया!",
+  "itemRemovedFromCart": "आइटम कार्ट से हटाया गया",
+
+  "productNotFound": "उत्पाद नहीं मिला",
+  "productNotFoundMessage": "क्षमा करें, यह उत्पाद अब उपलब्ध नहीं है। चलिए कुछ और ढूंढते हैं जो आपको पसंद आए!",
+
+
+  "orderSummary": "ऑर्डर सारांश",
+  "discount": "छूट",
+  "promoCode": "प्रोमो कोड",
+  "apply": "लागू करें"
+}
