@@ -1,9 +1,14 @@
-import 'package:batrina/firebase/fire_base_firestore.dart';
-import 'package:batrina/models/product_model.dart';
-import 'package:flutter/material.dart';
+import 'package:batrina/controllers/cubit/profile/get_wish_list_cubit/get_wish_list_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_colors.dart';
+import 'package:batrina/views/profile/wishlist/widgets/empty_wish_list_view.dart';
+import 'package:batrina/views/profile/wishlist/widgets/wish_list_row.dart';
+import 'package:batrina/views/profile/wishlist/widgets/wish_list_search_field.dart';
+import 'package:batrina/widgets/custom_text.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:batrina/views/profile/wishlist//widgets/wishlist_tile.dart';
 
 class WishlistBody extends StatefulWidget {
   const WishlistBody({super.key});
@@ -14,8 +19,8 @@ class WishlistBody extends StatefulWidget {
 
 class _WishlistBodyState extends State<WishlistBody> {
   final TextEditingController _searchController = TextEditingController();
-  List<ProductModel> _allWishlistItems = [];
-  List<ProductModel> _filteredWishlistItems = [];
+
+  String _searchText = "";
 
   @override
   void dispose() {
@@ -23,120 +28,94 @@ class _WishlistBodyState extends State<WishlistBody> {
     super.dispose();
   }
 
-  void _filterWishlist(String query) {
-    setState(() {
-      if (query.isEmpty) {
-        _filteredWishlistItems = _allWishlistItems;
-      } else {
-        _filteredWishlistItems = _allWishlistItems
-            .where(
-              (product) =>
-                  product.name.toLowerCase().contains(query.toLowerCase()),
-            )
-            .toList();
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final appColors = Theme.of(context).extension<AppColorTheme>()!;
+    final theme = Theme.of(context);
     final loc = AppLocalizations.of(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: 20.h),
         // Search bar
-        _buildSearch(loc),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.0.w),
+          child: WishListSearchField(
+            controller: _searchController,
+            onChanged: (text) {
+              setState(() {
+                _searchText = text;
+              });
+            },
+          ),
+        ),
         SizedBox(height: 20.h),
 
         // Wishlist items
-        Expanded(child: _buildWishlistItems()),
-      ],
-    );
-  }
-
-  //! Seach Bar
-  Row _buildSearch(AppLocalizations? loc) {
-    return Row(
-      children: [
         Expanded(
-          child: Container(
-            height: 50.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25.r),
-            ),
-            child: TextField(
-              controller: _searchController,
-              onChanged: _filterWishlist,
-              decoration: InputDecoration(
-                hintText: '${loc!.search}...',
-                hintStyle: const TextStyle(color: Colors.grey),
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(50.r),
-                ),
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal: 20.w,
-                  vertical: 15.h,
-                ),
-              ),
-            ),
-          ),
-        ),
-        SizedBox(width: 12.w),
-        Container(
-          width: 50.w,
-          height: 50.h,
-          decoration: const BoxDecoration(
-            color: Colors.black,
-            shape: BoxShape.circle,
-          ),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.qr_code_rounded,
-              color: Colors.white,
-              size: 20,
-            ),
+          child: BlocBuilder<GetWishListCubit, GetWishListState>(
+            builder: (context, state) {
+              if (state is GetWishListFailure) {
+                return Center(
+                  child: CustomText(
+                    data: state.error,
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                );
+              } else if (state is GetWishListLoading) {
+                return Center(
+                  child: CupertinoActivityIndicator(color: theme.primaryColor),
+                );
+              }
+
+              final allWishList = (state as GetWishListSuccess).userWishList;
+
+              final filteredList = allWishList.where((item) {
+                return item.productName.toLowerCase().contains(
+                  _searchText.toLowerCase(),
+                );
+              }).toList();
+
+              return filteredList.isNotEmpty
+                  ? ListView.separated(
+                      physics: const BouncingScrollPhysics(),
+                      separatorBuilder: (context, index) {
+                        return SizedBox(
+                          child: Center(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.w),
+                              child: Divider(
+                                color: appColors.dividerColor,
+                                thickness: 1.h,
+                                height: 1.h,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      itemCount: filteredList.length,
+                      itemBuilder: (context, index) {
+                        return WishListRow(
+                          key: ValueKey(filteredList[index].id),
+                          wishlistModel: filteredList[index],
+                        );
+                      },
+                    )
+                  : Center(
+                      child: !_searchText.isEmpty
+                          ? CustomText(
+                              data: loc!.noItemsMatchSearch,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w700,
+                            )
+                          : const EmptyWishListView(),
+                    );
+            },
           ),
         ),
       ],
-    );
-  }
-
-  //! Wishlist Items
-  Widget _buildWishlistItems() {
-    return FutureBuilder<List<ProductModel>>(
-      future: FireBaseFireStore().getUserWishList(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          ); // TODO : Shimmer
-        } else if (snapshot.hasError) {
-          return const Center(child: Text('Error loading wishlist.'));
-        } else if (snapshot.hasData) {
-          // Store all items when data is first loaded
-          _allWishlistItems = snapshot.data!;
-          // Initialize filtered items if not already done
-          if (_filteredWishlistItems.isEmpty) {
-            _filteredWishlistItems = _allWishlistItems;
-          }
-
-          if (_filteredWishlistItems.isEmpty) {
-            return const Center(child: Text('No matching items found.'));
-          }
-
-          return ListView.builder(
-            itemCount: _filteredWishlistItems.length,
-            itemBuilder: (context, index) {
-              return WishlistCard(product: _filteredWishlistItems[index]);
-            },
-          );
-        } else {
-          return const Center(child: Text('No data available.'));
-        }
-      },
     );
   }
 }

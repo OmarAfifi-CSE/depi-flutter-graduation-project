@@ -18,9 +18,13 @@ class CartCubit extends Cubit<CartState> {
       CartModel cartModelWithNewId = await fireBaseFireStore.addToCart(
         cartModel: cartModel,
       );
-      context.read<GetUserCartForProductCubit>().addLocal(
-        cartModel: cartModelWithNewId,
-      );
+      try {
+        context.read<GetUserCartForProductCubit>().addLocal(
+          cartModel: cartModelWithNewId,
+        );
+      } catch (e) {
+        debugPrint("this provider not available here");
+      }
       context.read<GetCartCubit>().addLocal(cartModelWithNewId);
       emit(AddToCartSuccess());
     } catch (e) {
@@ -39,7 +43,11 @@ class CartCubit extends Cubit<CartState> {
     try {
       emit(CartLoading());
       await fireBaseFireStore.removeFromCart(cartId: cartId);
-      context.read<GetUserCartForProductCubit>().deleteLocal(cartId: cartId);
+      try {
+        context.read<GetUserCartForProductCubit>().deleteLocal(cartId: cartId);
+      } catch (e) {
+        debugPrint("this provider not available here");
+      }
       context.read<GetCartCubit>().removeLocal(cartId);
       emit(RemoveFromCartSuccess());
     } catch (e) {

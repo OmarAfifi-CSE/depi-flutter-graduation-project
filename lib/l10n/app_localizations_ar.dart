@@ -891,4 +891,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get deleteProduct => 'حذف المنتج';
+
+  @override
+  String get yourWishlistIsEmpty => 'قائمة أمنياتك فارغة';
+
+  @override
+  String get wishlistEmptyMessage => 'يبدو أنك لم تضف أي شيء لقائمة أمنياتك بعد. لنبحث عن شيء ستحبه!';
+
+  @override
+  String get noItemsMatchSearch => 'لا توجد عناصر مطابقة لبحثك';
+
+  @override
+  String get itemAddedToCart => 'تمت إضافة المنتج للسلة!';
+
+  @override
+  String get itemRemovedFromCart => 'تم إزالة المنتج من السلة';
+
+  @override
+  String get productNotFound => 'المنتج غير موجود';
+
+  @override
+  String get productNotFoundMessage => 'عذراً، هذا المنتج لم يعد متاحاً. لنبحث عن شيء آخر ستحبه!';
 }

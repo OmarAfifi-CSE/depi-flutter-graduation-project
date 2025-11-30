@@ -1834,6 +1834,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete Product'**
   String get deleteProduct;
+
+  /// No description provided for @yourWishlistIsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your wishlist is empty'**
+  String get yourWishlistIsEmpty;
+
+  /// No description provided for @wishlistEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks like you haven\'t added anything to your wishlist yet. Let\'s go find something you\'ll love!'**
+  String get wishlistEmptyMessage;
+
+  /// No description provided for @noItemsMatchSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'No items match your search'**
+  String get noItemsMatchSearch;
+
+  /// No description provided for @itemAddedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Item added to cart!'**
+  String get itemAddedToCart;
+
+  /// No description provided for @itemRemovedFromCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Item removed from cart'**
+  String get itemRemovedFromCart;
+
+  /// No description provided for @productNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Product not found'**
+  String get productNotFound;
+
+  /// No description provided for @productNotFoundMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, this product is no longer available. Let\'s go find something else you\'ll love!'**
+  String get productNotFoundMessage;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
