@@ -512,7 +512,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sortBy => 'Sırala';
 
   @override
-  String get ratting => 'Değerlendirme';
+  String get rating => 'Değerlendirme';
 
   @override
   String get applyNow => 'Uygula';

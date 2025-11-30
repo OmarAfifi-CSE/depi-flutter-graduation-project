@@ -1,7 +1,6 @@
 import 'package:batrina/controllers/provider/filter_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/routing/app_routes.dart';
-import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/categories/filter/widgets/category_chip.dart';
 import 'package:batrina/views/categories/filter/widgets/price_slider.dart';
 import 'package:batrina/views/categories/filter/widgets/rate_selection.dart';
@@ -30,6 +29,7 @@ class _FilterScreenState extends State<FilterScreen> {
       Provider.of<FilterProvider>(context, listen: false)..fetchCategories();
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final loc = AppLocalizations.of(context);
@@ -77,7 +77,7 @@ class _FilterScreenState extends State<FilterScreen> {
                     const SizedBox(height: 30),
 
                     CustomText(
-                      data: loc.ratting,
+                      data: loc.rating,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
@@ -112,5 +112,4 @@ class _FilterScreenState extends State<FilterScreen> {
       ),
     );
   }
-
 }

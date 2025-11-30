@@ -512,7 +512,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get sortBy => '排序方式';
 
   @override
-  String get ratting => '评分';
+  String get rating => '评分';
 
   @override
   String get applyNow => '立即应用';

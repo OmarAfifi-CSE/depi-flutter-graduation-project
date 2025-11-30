@@ -1119,11 +1119,11 @@ abstract class AppLocalizations {
   /// **'Sort By'**
   String get sortBy;
 
-  /// No description provided for @ratting.
+  /// No description provided for @rating.
   ///
   /// In en, this message translates to:
-  /// **'Ratting'**
-  String get ratting;
+  /// **'Rating'**
+  String get rating;
 
   /// No description provided for @applyNow.
   ///

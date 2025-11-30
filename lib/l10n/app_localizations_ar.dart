@@ -512,7 +512,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get sortBy => 'الترتيب حسب';
 
   @override
-  String get ratting => 'التقييم';
+  String get rating => 'التقييم';
 
   @override
   String get applyNow => 'بحث';

@@ -512,7 +512,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get sortBy => 'Ordenar Por';
 
   @override
-  String get ratting => 'Avaliação';
+  String get rating => 'Avaliação';
 
   @override
   String get applyNow => 'Aplicar Agora';
