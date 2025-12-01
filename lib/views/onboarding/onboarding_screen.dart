@@ -1,4 +1,5 @@
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/views/onboarding/widgets/custom_onboarding_page.dart';
 import 'package:batrina/views/onboarding/widgets/moving_arrow.dart';
@@ -33,20 +34,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   physics: const BouncingScrollPhysics(),
                   children: [
                     CustomOnboardingPage(
-                      image:
-                          "https://i.pinimg.com/736x/24/d6/a5/24d6a5c152cc149152b139b12db4121b.jpg",
+                      image: AppAssets.onboarding1,
                       title: loc!.discountNewArrivalTitle,
                       subTitle: loc.discountNewArrivalDescription,
                     ),
                     CustomOnboardingPage(
-                      image:
-                          "https://i.pinimg.com/736x/64/33/44/6433444d347a9474e2d2ebe607d32fea.jpg",
+                      image: AppAssets.onboarding2,
                       title: loc.takeAdvantageShoppingTitle,
                       subTitle: loc.takeAdvantageShoppingDescription,
                     ),
                     CustomOnboardingPage(
-                      image:
-                          "https://i.pinimg.com/736x/3c/42/5e/3c425ee48ec0d4b183be05665ff83fe3.jpg",
+                      image: AppAssets.onboarding3,
                       title: loc.allTypesOffersTitle,
                       subTitle: loc.allTypesOffersDescription,
                     ),

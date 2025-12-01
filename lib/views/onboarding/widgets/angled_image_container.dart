@@ -242,7 +242,7 @@ class AngledImageContainer extends StatelessWidget {
               bottomRadius: bottomRadius,
               angleHeight: angleHeight,
             ),
-            child: Image.network(
+            child: Image.asset(
               imageUrl,
               width: width,
               height: height,

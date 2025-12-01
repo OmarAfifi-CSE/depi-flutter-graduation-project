@@ -1,5 +1,6 @@
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_colors.dart';
 import 'package:batrina/widgets/custom_text_form_field.dart';
 import 'package:batrina/views/auth/widgets/sign_up_button.dart';
@@ -8,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -106,23 +108,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
+                        SizedBox(height: 50.h),
+                        Lottie.asset(
+                          AppAssets.secureLoginAnimation,
+                          width: 200.r,
+                          height: 200.r,
+                          fit: BoxFit.scaleDown,
+                        ),
                         SizedBox(height: 30.h),
-                        //temp
-                        Icon(
-                              Icons.check_circle,
-                              size: 140.sp,
-                              color: theme.primaryColor,
-                            )
-                            .animate()
-                            .fade(duration: const Duration(milliseconds: 500))
-                            .shimmer(duration: 1000.ms)
-                            .moveY(
-                              begin: -300,
-                              end: 0,
-                              duration: 1000.ms,
-                              curve: Curves.easeInOut,
-                            ),
-                        SizedBox(height: 60.h),
                         Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.stretch,
