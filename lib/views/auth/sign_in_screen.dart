@@ -89,7 +89,7 @@ class _SignInScreenState extends State<SignInScreen> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 25.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [

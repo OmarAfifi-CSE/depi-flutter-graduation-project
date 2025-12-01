@@ -4,6 +4,7 @@ import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -42,7 +43,7 @@ class GoogleSignInButton extends StatelessWidget {
                 builder: (context) {
                   return AlertDialog(
                     contentPadding: EdgeInsets.zero,
-                    backgroundColor: Colors.white70,
+                    backgroundColor: theme.primaryColor.withValues(alpha: 0.2),
                     content: SizedBox(
                       height: 150.h,
                       child: Center(
@@ -57,30 +58,34 @@ class GoogleSignInButton extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return CustomElevatedButton(
+            return OutlinedButton(
               onPressed: context.read<AuthCubit>().signInWithGoogle,
-              backgroundColor: const Color(0xffde1500),
-              buttonChild: Row(
+              style: OutlinedButton.styleFrom(
+                backgroundColor: theme.scaffoldBackgroundColor,
+                fixedSize: Size(325.w, 46.h),
+                side: BorderSide(
+                  color: theme.primaryColor.withValues(alpha: 0.3),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.r),
+                ),
+                elevation: 0,
+              ),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                spacing: 20.w,
                 children: [
                   SvgPicture.asset(
                     AppAssets.googleIconLogo,
                     width: 24.w,
                     height: 24.w,
-                    colorFilter: ColorFilter.mode(
-                      theme.scaffoldBackgroundColor,
-                      BlendMode.srcIn,
-                    ),
                     fit: BoxFit.scaleDown,
                   ),
-                  Text(
-                    loc!.continueWithGoogleTitle,
-                    style: TextStyle(
-                      fontSize: 18.sp,
-                      fontFamily: AppFonts.mainFontName,
-                      color: theme.scaffoldBackgroundColor,
-                    ),
+                  SizedBox(width: 12.w),
+                  CustomText(
+                    data: loc!.continueWithGoogleTitle,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                    forceStrutHeight: true,
                   ),
                 ],
               ),

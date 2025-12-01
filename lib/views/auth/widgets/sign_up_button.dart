@@ -3,6 +3,7 @@ import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/styling/app_fonts.dart';
 import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
+import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -39,13 +40,12 @@ class SignUpButton extends StatelessWidget {
               backgroundColor: theme.primaryColor,
               onPressed: validation,
               buttonChild: state is! AuthSignUpLoading
-                  ? Text(
-                      loc!.signUpTitle,
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontFamily: AppFonts.mainFontName,
-                        color: theme.scaffoldBackgroundColor,
-                      ),
+                  ? CustomText(
+                      data: loc!.signUpTitle,
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                      forceStrutHeight: true,
+                      color: theme.scaffoldBackgroundColor,
                     )
                   : CupertinoActivityIndicator(
                       color: theme.scaffoldBackgroundColor,

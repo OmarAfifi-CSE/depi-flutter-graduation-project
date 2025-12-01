@@ -31,7 +31,7 @@ class CustomElevatedButton extends StatelessWidget {
         fixedSize: extend == false ? Size(325.w, 46.h) : null,
         shape:
             outlinedBorder ??
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
         disabledBackgroundColor: theme.disabledColor,
       ),
       child: extend

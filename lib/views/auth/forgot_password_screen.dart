@@ -52,7 +52,7 @@ class _ForgetPassState extends State<ForgetPass> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 25.w),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -72,8 +72,8 @@ class _ForgetPassState extends State<ForgetPass> {
                         Center(
                           child: Lottie.asset(
                             AppAssets.forgotPassword,
-                            height: 400.h,
-                            width: 400.w,
+                            height: 380.h,
+                            width: 380.w,
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -140,9 +140,10 @@ class _ForgetPassState extends State<ForgetPass> {
                                   buttonChild: state is! ForgetPasswordLoading
                                       ? CustomText(
                                           data: loc.sendInstruction,
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
                                           color: theme.scaffoldBackgroundColor,
+                                          forceStrutHeight: true,
                                         )
                                       : CupertinoActivityIndicator(
                                           color: theme.scaffoldBackgroundColor,
