@@ -390,6 +390,15 @@ class FireBaseFireStore {
     return documentReference.id;
   }
 
+  Future<void> updateWishList({required WishlistModel wishListModel}) async {
+    await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("userWishList")
+        .doc(wishListModel.id)
+        .set(wishListModel.toJson(), SetOptions(merge: true));
+  }
+
   Future<void> removeFromWishList({
     required WishlistModel wishListModel,
   }) async {
@@ -575,6 +584,15 @@ class FireBaseFireStore {
         .collection("userCart")
         .doc(cartId)
         .delete();
+  }
+
+  Future<void> updateCart({required CartModel cartModel}) async {
+    await fireBaseFireStore
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection("userCart")
+        .doc(cartModel.id)
+        .set(cartModel.toJson(), SetOptions(merge: true));
   }
 
   //هنجيب ايدي الفاريانت اللي حاططها في الكارت

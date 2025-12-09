@@ -34,4 +34,19 @@ class GetCartCubit extends Cubit<GetCartState> {
       emit(GetCartSuccess(userCart: userCart));
     }
   }
+
+  void updateLocal(CartModel updatedItem) {
+    if (state is GetCartSuccess) {
+      List<CartModel> currentList = List.from(
+        (state as GetCartSuccess).userCart,
+      );
+      int index = currentList.indexWhere(
+        (element) => element.id == updatedItem.id,
+      );
+      if (index != -1) {
+        currentList[index] = updatedItem;
+        emit(GetCartSuccess(userCart: currentList));
+      }
+    }
+  }
 }

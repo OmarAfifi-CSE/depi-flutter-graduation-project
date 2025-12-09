@@ -36,8 +36,8 @@ class InformationTextField extends StatelessWidget {
           textDirection: TextDirection.ltr,
           child: TextField(
             controller: textEditingController,
-            maxLines: isEmail ? 5 : 1,
-            minLines: isEmail ? 1 : null,
+            maxLines: isEmail ? 5 : 2,
+            minLines: isEmail ? 1 : 1,
             keyboardType: isEmail ? TextInputType.multiline : null,
             style: TextStyle(
               fontFamily: AppFonts.englishFontFamily,
@@ -50,7 +50,7 @@ class InformationTextField extends StatelessWidget {
               hintStyle: TextStyle(
                 fontFamily: AppFonts.englishFontFamily,
                 color: theme.dividerColor,
-                fontSize: 14.sp,
+                fontSize: 12.sp,
               ),
               contentPadding: EdgeInsets.symmetric(
                 horizontal: 20.w,

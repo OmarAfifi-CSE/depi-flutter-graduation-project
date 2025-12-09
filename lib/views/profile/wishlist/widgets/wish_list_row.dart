@@ -4,6 +4,7 @@ import 'package:batrina/controllers/cubit/profile/get_wish_list_cubit/get_wish_l
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/cart_model.dart';
+import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/wish_list_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
@@ -240,8 +241,9 @@ class _WishListRowState extends State<WishListRow>
                             ),
                             child: GestureDetector(
                               onTap: !isDeleting
-                                  ? () {
-                                      context.pushNamed(
+                                  ? () async {
+                                      ProductModel?
+                                      pr = await context.pushNamed(
                                         AppRoutes.productScreen,
                                         pathParameters: {
                                           'productId':
@@ -252,6 +254,71 @@ class _WishListRowState extends State<WishListRow>
                                           'color': widget.wishlistModel.color,
                                         },
                                       );
+                                      if (pr != null) {
+                                        ProductVariant? prVar = pr.getVariant(
+                                          widget.wishlistModel.color,
+                                          widget.wishlistModel.size,
+                                        );
+                                        if (prVar?.stock !=
+                                            widget
+                                                .wishlistModel
+                                                .availableStock) {
+                                          context
+                                              .read<GetWishListCubit>()
+                                              .updateLocal(
+                                                widget.wishlistModel.copyWith(
+                                                  availableStock:
+                                                      prVar?.stock ?? 0,
+                                                  variantId: prVar?.id ?? '',
+                                                ),
+                                              );
+                                          try {
+                                            FireBaseFireStore().updateWishList(
+                                              wishListModel: widget
+                                                  .wishlistModel
+                                                  .copyWith(
+                                                    availableStock:
+                                                        prVar?.stock ?? 0,
+                                                    variantId: prVar?.id ?? '',
+                                                  ),
+                                            );
+                                          } catch (e) {
+                                            debugPrint("error");
+                                          }
+                                        }
+
+                                        if ((pr.availableSizes.any(
+                                                  (element) =>
+                                                      element ==
+                                                      widget.wishlistModel.size,
+                                                ) ==
+                                                false ||
+                                            pr.availableColors.any(
+                                                  (element) =>
+                                                      element.colorCode ==
+                                                      widget
+                                                          .wishlistModel
+                                                          .color,
+                                                ) ==
+                                                false)) {
+                                          context
+                                              .read<GetWishListCubit>()
+                                              .removeLocal(
+                                                widget.wishlistModel.id,
+                                              );
+                                          try {
+                                            FireBaseFireStore()
+                                                .removeFromWishList(
+                                                  wishListModel:
+                                                      widget.wishlistModel,
+                                                );
+                                          } catch (e) {
+                                            debugPrint("error");
+                                          }
+
+                                          ;
+                                        }
+                                      }
                                     }
                                   : null,
                               onHorizontalDragUpdate: _handleSwipe,
@@ -395,14 +462,18 @@ class _WishListRowState extends State<WishListRow>
                                               cartItem = getCartState.userCart
                                                   .firstWhere(
                                                     (item) =>
+                                                        item.color ==
+                                                            widget
+                                                                .wishlistModel
+                                                                .color &&
+                                                        item.size ==
+                                                            widget
+                                                                .wishlistModel
+                                                                .size &&
                                                         item.productId ==
                                                             widget
                                                                 .wishlistModel
-                                                                .productId &&
-                                                        item.variantId ==
-                                                            widget
-                                                                .wishlistModel
-                                                                .variantId,
+                                                                .productId,
                                                   );
                                             } catch (e) {
                                               cartItem = null;
@@ -465,6 +536,16 @@ class _WishListRowState extends State<WishListRow>
                                                                 cartItem!.id,
                                                           );
                                                     } else {
+                                                      if (widget
+                                                                  .wishlistModel
+                                                                  .availableStock ==
+                                                              0 ||
+                                                          widget
+                                                              .wishlistModel
+                                                              .variantId
+                                                              .isEmpty) {
+                                                        return;
+                                                      }
                                                       final newCartItem =
                                                           CartModel(
                                                             id: '',
@@ -511,19 +592,34 @@ class _WishListRowState extends State<WishListRow>
                                                           );
                                                     }
                                                   },
-                                                  child: SvgPicture.asset(
-                                                    isInCart
-                                                        ? AppAssets
-                                                              .removeCartIcon
-                                                        : AppAssets.cartIcon,
-                                                    colorFilter: ColorFilter.mode(
+                                                  child: Opacity(
+                                                    opacity:
+                                                        widget
+                                                                    .wishlistModel
+                                                                    .availableStock ==
+                                                                0 ||
+                                                            widget
+                                                                .wishlistModel
+                                                                .variantId
+                                                                .isEmpty
+                                                        ? 0.3
+                                                        : 1,
+
+                                                    child: SvgPicture.asset(
                                                       isInCart
-                                                          ? Colors.red
-                                                          : theme.primaryColor,
-                                                      BlendMode.srcIn,
+                                                          ? AppAssets
+                                                                .removeCartIcon
+                                                          : AppAssets.cartIcon,
+                                                      colorFilter: ColorFilter.mode(
+                                                        isInCart
+                                                            ? Colors.red
+                                                            : theme
+                                                                  .primaryColor,
+                                                        BlendMode.srcIn,
+                                                      ),
+                                                      width: 24.w,
+                                                      height: 24.h,
                                                     ),
-                                                    width: 24.w,
-                                                    height: 24.h,
                                                   ),
                                                 );
                                               },

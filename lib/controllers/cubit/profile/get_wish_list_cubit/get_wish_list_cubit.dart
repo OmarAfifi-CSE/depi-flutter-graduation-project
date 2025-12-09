@@ -20,14 +20,14 @@ class GetWishListCubit extends Cubit<GetWishListState> {
     }
   }
 
-  void removeLocal(String cartId) {
+  void removeLocal(String wishListId) {
     for (var x in (state as GetWishListSuccess).userWishList) {
       print(x.id);
     }
     if (state is GetWishListSuccess) {
       List<WishlistModel> userWishList = List.from(
         (state as GetWishListSuccess).userWishList,
-      )..removeWhere((element) => element.id == cartId);
+      )..removeWhere((element) => element.id == wishListId);
       emit(GetWishListSuccess(userWishList: userWishList));
     }
   }
@@ -38,6 +38,24 @@ class GetWishListCubit extends Cubit<GetWishListState> {
         (state as GetWishListSuccess).userWishList,
       )..add(cartModel);
       emit(GetWishListSuccess(userWishList: userWishList));
+    }
+  }
+
+  void updateLocal(WishlistModel updatedItem) {
+    if (state is GetWishListSuccess) {
+      List<WishlistModel> currentList = List.from(
+        (state as GetWishListSuccess).userWishList,
+      );
+
+      int index = currentList.indexWhere(
+        (element) => element.id == updatedItem.id,
+      );
+
+      if (index != -1) {
+        currentList[index] = updatedItem;
+
+        emit(GetWishListSuccess(userWishList: currentList));
+      }
     }
   }
 }

@@ -21,6 +21,16 @@ class ProductProvider extends ChangeNotifier {
     if (productModel.isVariantAvailable(color ?? "", size ?? "")) {
       currentColorName = color;
       currentSize = size;
+    } else if (productModel.availableSizes.isNotEmpty &&
+        productModel.availableColors.isNotEmpty &&
+        productModel.availableSizes.any((element) {
+          return element == size;
+        }) &&
+        productModel.availableColors.any((element) {
+          return element.colorCode == color;
+        })) {
+      currentColorName = color;
+      currentSize = size;
     } else {
       currentColorName = productModel.availableColors.isEmpty
           ? null
@@ -42,6 +52,16 @@ class ProductProvider extends ChangeNotifier {
   }) {
     productModel = newProductModel;
     if (newProductModel.isVariantAvailable(color ?? "", size ?? "")) {
+      currentColorName = color;
+      currentSize = size;
+    } else if (productModel.availableSizes.isNotEmpty &&
+        productModel.availableColors.isNotEmpty &&
+        productModel.availableSizes.any((element) {
+          return element == size;
+        }) &&
+        productModel.availableColors.any((element) {
+          return element.colorCode == color;
+        })) {
       currentColorName = color;
       currentSize = size;
     } else {

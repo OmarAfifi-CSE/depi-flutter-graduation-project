@@ -2,6 +2,7 @@ import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dar
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/cart_model.dart';
+import 'package:batrina/models/product_model.dart';
 import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:batrina/styling/app_fonts.dart';
@@ -176,7 +177,6 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final theme = Theme.of(context);
-
     return Directionality(
       textDirection: TextDirection.ltr,
       child: SizeTransition(
@@ -229,8 +229,8 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                           ),
                           child: GestureDetector(
                             onTap: !isDeleting
-                                ? () {
-                                    context.pushNamed(
+                                ? () async {
+                                    ProductModel? pr = await context.pushNamed(
                                       AppRoutes.categoryProductScreen,
                                       pathParameters: {
                                         'categoryName':
@@ -242,6 +242,59 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                                         'color': widget.cartModel.color,
                                       },
                                     );
+                                    if (pr != null) {
+                                      ProductVariant? prVar = pr.getVariant(
+                                        widget.cartModel.color,
+                                        widget.cartModel.size,
+                                      );
+                                      if (prVar?.stock !=
+                                          widget.cartModel.availableStock) {
+                                        context
+                                            .read<GetCartCubit>()
+                                            .updateLocal(
+                                              widget.cartModel.copyWith(
+                                                availableStock:
+                                                    prVar?.stock ?? 0,
+                                              ),
+                                            );
+                                        try {
+                                          FireBaseFireStore().updateCart(
+                                            cartModel: widget.cartModel
+                                                .copyWith(
+                                                  availableStock:
+                                                      prVar?.stock ?? 0,
+                                                ),
+                                          );
+                                        } catch (e) {
+                                          debugPrint("error");
+                                        }
+                                      }
+                                      if ((pr.availableSizes.any(
+                                                (element) =>
+                                                    element ==
+                                                    widget.cartModel.size,
+                                              ) ==
+                                              false ||
+                                          pr.availableColors.any(
+                                                (element) =>
+                                                    element.colorCode ==
+                                                    widget.cartModel.color,
+                                              ) ==
+                                              false)) {
+                                        context
+                                            .read<GetCartCubit>()
+                                            .removeLocal(widget.cartModel.id);
+                                        try {
+                                          FireBaseFireStore().removeFromCart(
+                                            cartId: widget.cartModel.id,
+                                          );
+                                        } catch (e) {
+                                          debugPrint("error");
+                                        }
+
+                                        ;
+                                      }
+                                    }
                                   }
                                 : null,
                             onHorizontalDragUpdate: _handleSwipe,
@@ -319,11 +372,21 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                                       _buildColorOption(),
                                       const Spacer(),
                                       AbsorbPointer(
-                                        absorbing: isDeleting,
-                                        child: CartCounter(
-                                          cartModel: widget.cartModel,
-                                          deleteFromQuantity:
-                                              deleteFromQuantity,
+                                        absorbing:
+                                            isDeleting ||
+                                            widget.cartModel.availableStock <=
+                                                0,
+                                        child: Opacity(
+                                          opacity:
+                                              widget.cartModel.availableStock <=
+                                                  0
+                                              ? .3
+                                              : 1,
+                                          child: CartCounter(
+                                            cartModel: widget.cartModel,
+                                            deleteFromQuantity:
+                                                deleteFromQuantity,
+                                          ),
                                         ),
                                       ),
                                     ],

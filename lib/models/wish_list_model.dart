@@ -79,6 +79,7 @@ class WishlistModel {
     String? color,
     String? size,
     DateTime? addedAt,
+    int? availableStock,
   }) {
     return WishlistModel(
       id: id ?? this.id,
@@ -92,7 +93,7 @@ class WishlistModel {
       color: color ?? this.color,
       size: size ?? this.size,
       addedAt: addedAt ?? this.addedAt,
-      availableStock: availableStock,
+      availableStock: availableStock ?? this.availableStock,
     );
   }
 

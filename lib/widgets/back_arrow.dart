@@ -1,3 +1,4 @@
+import 'package:batrina/models/product_model.dart';
 import 'package:batrina/styling/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,9 +6,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 class BackArrow extends StatelessWidget {
-  const BackArrow({super.key, this.additionalFun});
+  const BackArrow({super.key, this.additionalFun, this.returnProduct});
   final void Function()? additionalFun;
 
+  final ProductModel? returnProduct;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -20,7 +22,7 @@ class BackArrow extends StatelessWidget {
           if (additionalFun != null) {
             additionalFun!();
           } else {
-            context.pop();
+            context.pop(returnProduct);
           }
         },
         child: Container(

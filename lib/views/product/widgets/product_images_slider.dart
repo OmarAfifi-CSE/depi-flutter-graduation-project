@@ -387,7 +387,7 @@ $productLink''';
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const BackArrow(),
+              BackArrow(returnProduct: productProvider.productModel),
               if (!productProvider.preview)
                 Column(
                   mainAxisSize: MainAxisSize.min,
