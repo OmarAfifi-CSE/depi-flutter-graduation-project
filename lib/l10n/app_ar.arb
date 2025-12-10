@@ -380,5 +380,9 @@
   "orderSummary": "ملخص الطلب",
   "discount": "خصم",
   "promoCode": "رمز ترويجي",
-  "apply": "تطبيق"
+  "apply": "تطبيق",
+
+  "cartItemRemovedMsg": "عذراً، هذا الخيار نفذ للتو وتمت إزالته من السلة",
+  "wishlistItemRemovedMsg": "عذراً، هذا المنتج لم يعد متوفراً وتمت إزالته من المفضلة",
+  "outOfStock": "نفذت الكمية"
 }

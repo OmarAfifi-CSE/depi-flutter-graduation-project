@@ -924,4 +924,13 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get apply => 'Applica';
+
+  @override
+  String get cartItemRemovedMsg => 'Spiacenti, questa opzione è appena esaurita ed è stata rimossa dal carrello';
+
+  @override
+  String get wishlistItemRemovedMsg => 'Spiacenti, questo prodotto non è più disponibile ed è stato rimosso dalla lista dei desideri';
+
+  @override
+  String get outOfStock => 'Esaurito';
 }

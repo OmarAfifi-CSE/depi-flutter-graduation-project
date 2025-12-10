@@ -384,5 +384,9 @@
   "orderSummary": "Riepilogo Ordine",
   "discount": "Sconto",
   "promoCode": "Codice promozionale",
-  "apply": "Applica"
+  "apply": "Applica",
+
+  "cartItemRemovedMsg": "Spiacenti, questa opzione è appena esaurita ed è stata rimossa dal carrello",
+  "wishlistItemRemovedMsg": "Spiacenti, questo prodotto non è più disponibile ed è stato rimosso dalla lista dei desideri",
+  "outOfStock": "Esaurito"
 }

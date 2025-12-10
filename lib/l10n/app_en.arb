@@ -384,5 +384,10 @@
   "orderSummary": "Order Summary",
   "discount": "Discount",
   "promoCode": "Promo Code",
-  "apply": "Apply"
+  "apply": "Apply",
+
+
+  "cartItemRemovedMsg": "Sorry, this option just ran out and was removed from your cart",
+  "wishlistItemRemovedMsg": "Sorry, this product is no longer available and was removed from your wishlist",
+  "outOfStock": "Out of Stock"
 }

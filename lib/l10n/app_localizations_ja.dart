@@ -924,4 +924,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get apply => '適用';
+
+  @override
+  String get cartItemRemovedMsg => '申し訳ありませんが、このオプションは在庫切れのためカートから削除されました';
+
+  @override
+  String get wishlistItemRemovedMsg => '申し訳ありませんが、この商品は現在利用できないため、ウィッシュリストから削除されました';
+
+  @override
+  String get outOfStock => '在庫切れ';
 }

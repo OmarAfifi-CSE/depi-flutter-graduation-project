@@ -1,6 +1,7 @@
 import 'package:batrina/controllers/cubit/cart/get_cart_cubit/get_cart_cubit.dart';
 import 'package:batrina/controllers/provider/cart_price_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
+import 'package:batrina/l10n/app_localizations.dart';
 import 'package:batrina/models/cart_model.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/routing/app_routes.dart';
@@ -177,6 +178,7 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final theme = Theme.of(context);
+    final loc = AppLocalizations.of(context);
     return Directionality(
       textDirection: TextDirection.ltr,
       child: SizeTransition(
@@ -284,6 +286,14 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                                         context
                                             .read<GetCartCubit>()
                                             .removeLocal(widget.cartModel.id);
+                                        CustomSnackBar.showSnackBar(
+                                          context: context,
+                                          message: loc!.cartItemRemovedMsg,
+                                          color: Colors.red,
+                                          duration: const Duration(
+                                            milliseconds: 2500,
+                                          ),
+                                        );
                                         try {
                                           FireBaseFireStore().removeFromCart(
                                             cartId: widget.cartModel.id,
@@ -372,22 +382,31 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                                       _buildColorOption(),
                                       const Spacer(),
                                       AbsorbPointer(
-                                        absorbing:
-                                            isDeleting ||
-                                            widget.cartModel.availableStock <=
-                                                0,
-                                        child: Opacity(
-                                          opacity:
-                                              widget.cartModel.availableStock <=
-                                                  0
-                                              ? .3
-                                              : 1,
-                                          child: CartCounter(
-                                            cartModel: widget.cartModel,
-                                            deleteFromQuantity:
-                                                deleteFromQuantity,
-                                          ),
-                                        ),
+                                        absorbing: isDeleting,
+                                        child:
+                                            widget.cartModel.availableStock > 0
+                                            ? CartCounter(
+                                                cartModel: widget.cartModel,
+                                                deleteFromQuantity:
+                                                    deleteFromQuantity,
+                                              )
+                                            : Container(
+                                                decoration: BoxDecoration(
+                                                  color: theme.primaryColor,
+                                                  borderRadius:
+                                                      BorderRadiusGeometry.circular(
+                                                        3.r,
+                                                      ),
+                                                ),
+                                                padding: EdgeInsets.all(5.r),
+                                                child: CustomText(
+                                                  data: loc!.outOfStock,
+                                                  fontSize: 12.sp,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: theme
+                                                      .scaffoldBackgroundColor,
+                                                ),
+                                              ),
                                       ),
                                     ],
                                   ),

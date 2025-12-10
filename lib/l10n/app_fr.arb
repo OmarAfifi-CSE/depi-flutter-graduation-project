@@ -384,5 +384,9 @@
   "orderSummary": "Résumé de la commande",
   "discount": "Remise",
   "promoCode": "Code promo",
-  "apply": "Appliquer"
+  "apply": "Appliquer",
+
+  "cartItemRemovedMsg": "Désolé, cette option vient de s'épuiser et a été retirée de votre panier",
+  "wishlistItemRemovedMsg": "Désolé, ce produit n'est plus disponible et a été retiré de votre liste de souhaits",
+  "outOfStock": "Rupture de stock"
 }

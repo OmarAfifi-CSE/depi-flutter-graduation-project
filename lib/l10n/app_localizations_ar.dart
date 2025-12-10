@@ -924,4 +924,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get apply => 'تطبيق';
+
+  @override
+  String get cartItemRemovedMsg => 'عذراً، هذا الخيار نفذ للتو وتمت إزالته من السلة';
+
+  @override
+  String get wishlistItemRemovedMsg => 'عذراً، هذا المنتج لم يعد متوفراً وتمت إزالته من المفضلة';
+
+  @override
+  String get outOfStock => 'نفذت الكمية';
 }

@@ -924,4 +924,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get apply => 'Apply';
+
+  @override
+  String get cartItemRemovedMsg => 'Sorry, this option just ran out and was removed from your cart';
+
+  @override
+  String get wishlistItemRemovedMsg => 'Sorry, this product is no longer available and was removed from your wishlist';
+
+  @override
+  String get outOfStock => 'Out of Stock';
 }

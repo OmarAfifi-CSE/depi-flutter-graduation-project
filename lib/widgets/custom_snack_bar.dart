@@ -9,6 +9,7 @@ class CustomSnackBar {
     required BuildContext context,
     required String message,
     required Color color,
+    Duration duration = const Duration(milliseconds: 1200),
   }) {
     if (!context.mounted) return Future.value();
     final theme = Theme.of(context);
@@ -62,7 +63,7 @@ class CustomSnackBar {
       borderRadius: BorderRadius.circular(8.r),
 
       // --- Animation & Duration ---
-      duration: const Duration(milliseconds: 1200),
+      duration: duration,
       animationDuration: 1000.ms,
       forwardAnimationCurve: Curves.fastEaseInToSlowEaseOut,
     ).show(context);

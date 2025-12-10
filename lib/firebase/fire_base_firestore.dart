@@ -633,7 +633,7 @@ class FireBaseFireStore {
         .map((e) => CartModel.fromJson(e.data()))
         .toList();
 
-    // جمع الـ products IDs
+    // جمع الـ products IDs عشان تقلل عدد الـ Reads
     Map<String, List<CartModel>> productVariants = {};
     for (var cart in userCart) {
       if (!productVariants.containsKey(cart.productId)) {
@@ -642,30 +642,30 @@ class FireBaseFireStore {
       productVariants[cart.productId]!.add(cart);
     }
 
-    // قائمة الـ items اللي هنحذفها
+    // قائمة الـ items اللي هنحذفها من الليستة المحلية في الآخر
     List<String> itemsToRemove = [];
 
-    // لكل product
+    // لكل product (عشان نجيب الفاريانتس بتاعته مرة واحدة)
     for (var product in productVariants.entries) {
-      // جيب كل الـ variants للـ product ده مرة واحدة
       final variantsSnapshot = await fireBaseFireStore
           .collection("products")
           .doc(product.key)
           .collection("variants")
           .get();
 
-      // خزن الـ variants في Map
+      // خزن الـ variants في Map لسهولة البحث
       Map<String, ProductVariant> variantsMap = {};
       for (var doc in variantsSnapshot.docs) {
         variantsMap[doc.id] = ProductVariant.fromJson(doc.data());
       }
 
-      // شيك على كل cart item
+      // شيك على كل cart item تبع المنتج ده
       for (var cart in product.value) {
         final variant = variantsMap[cart.variantId];
 
-        //حتته النال علشان لو اصلا اتشالت م الداتابيز الفارينت ده
+        // الحالة الأولى: المنتج اتحذف خالص أو الكمية بقت صفر
         if (variant == null || variant.stock == 0) {
+          // احذفه من الفايربيز
           await fireBaseFireStore
               .collection("users")
               .doc(userId)
@@ -673,8 +673,17 @@ class FireBaseFireStore {
               .doc(cart.id)
               .delete();
 
+          // ضيفه للقائمة عشان نحذفه من اللوكل ليست
           itemsToRemove.add(cart.id);
-        } else if (variant.stock < cart.quantity) {
+
+          // 🛑 مهم جداً: كمل اللفة ومتنزلش تحت عشان ميضربش Null Check
+          continue;
+        }
+
+        // --- من هنا ونازل إحنا متأكدين إن variant موجود ومش null ---
+
+        if (variant.stock < cart.quantity) {
+          // لو الكمية المتاحة أقل من اللي اليوزر طالبه -> نزل الكمية للحد الأقصى المتاح
           await fireBaseFireStore
               .collection("users")
               .doc(userId)
@@ -688,6 +697,7 @@ class FireBaseFireStore {
           // حدث الـ local cart
           cart.quantity = variant.stock;
         } else if (cart.availableStock != variant.stock) {
+          // تحديث مجرد لمعلومية المخزون (مش بيأثر على الكمية اللي في السلة)
           await fireBaseFireStore
               .collection("users")
               .doc(userId)
@@ -695,11 +705,13 @@ class FireBaseFireStore {
               .doc(cart.id)
               .update({"availableStock": variant.stock});
         }
-        cart.availableStock = variant!.stock;
+
+        // تحديث المخزون المتاح في الاوبجيكت المحلي
+        cart.availableStock = variant.stock;
       }
     }
 
-    // امسح الـ items المحذوفة من الـ list
+    // امسح الـ items المحذوفة من الـ list النهائية اللي راجعة للـ UI
     userCart.removeWhere((cart) => itemsToRemove.contains(cart.id));
 
     return userCart;

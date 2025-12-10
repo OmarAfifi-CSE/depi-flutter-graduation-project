@@ -1922,6 +1922,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Apply'**
   String get apply;
+
+  /// No description provided for @cartItemRemovedMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, this option just ran out and was removed from your cart'**
+  String get cartItemRemovedMsg;
+
+  /// No description provided for @wishlistItemRemovedMsg.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, this product is no longer available and was removed from your wishlist'**
+  String get wishlistItemRemovedMsg;
+
+  /// No description provided for @outOfStock.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Stock'**
+  String get outOfStock;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

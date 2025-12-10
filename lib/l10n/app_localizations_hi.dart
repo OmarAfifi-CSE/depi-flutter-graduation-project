@@ -924,4 +924,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get apply => 'लागू करें';
+
+  @override
+  String get cartItemRemovedMsg => 'क्षमा करें, यह विकल्प अभी समाप्त हो गया है और आपकी कार्ट से हटा दिया गया है';
+
+  @override
+  String get wishlistItemRemovedMsg => 'क्षमा करें, यह उत्पाद अब उपलब्ध नहीं है और आपकी इच्छा सूची से हटा दिया गया है';
+
+  @override
+  String get outOfStock => 'स्टॉक समाप्त';
 }

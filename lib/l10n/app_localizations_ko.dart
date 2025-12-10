@@ -924,4 +924,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get apply => '적용';
+
+  @override
+  String get cartItemRemovedMsg => '죄송합니다. 이 옵션은 방금 품절되어 장바구니에서 제거되었습니다';
+
+  @override
+  String get wishlistItemRemovedMsg => '죄송합니다. 이 제품은 더 이상 구매할 수 없어 위시리스트에서 제거되었습니다';
+
+  @override
+  String get outOfStock => '품절';
 }

@@ -32,6 +32,7 @@ class _CartCounterState extends State<CartCounter> {
   @override
   void initState() {
     count = widget.cartModel.quantity;
+
     super.initState();
   }
 
@@ -74,7 +75,11 @@ class _CartCounterState extends State<CartCounter> {
     final theme = Theme.of(context);
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
     final localeCode = Localizations.localeOf(context).languageCode;
-
+    if (count > widget.cartModel.availableStock) {
+      WidgetsBinding.instance.addPostFrameCallback(
+        (timeStamp) => _updateQuantity(widget.cartModel.availableStock),
+      );
+    }
     return Container(
       alignment: Alignment.center,
       height: 30.h,

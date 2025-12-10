@@ -301,6 +301,15 @@ class _WishListRowState extends State<WishListRow>
                                                           .color,
                                                 ) ==
                                                 false)) {
+                                          CustomSnackBar.showSnackBar(
+                                            context: context,
+                                            message:
+                                                loc!.wishlistItemRemovedMsg,
+                                            color: Colors.red,
+                                            duration: const Duration(
+                                              milliseconds: 2500,
+                                            ),
+                                          );
                                           context
                                               .read<GetWishListCubit>()
                                               .removeLocal(
