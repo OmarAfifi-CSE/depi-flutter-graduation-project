@@ -184,12 +184,17 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
       );
       if (prVar?.stock != widget.cartModel.availableStock) {
         context.read<GetCartCubit>().updateLocal(
-          widget.cartModel.copyWith(availableStock: prVar?.stock ?? 0),
+          widget.cartModel.copyWith(
+            availableStock: prVar?.stock ?? 0,
+
+            variantId: prVar?.id ?? '',
+          ),
         );
         try {
           FireBaseFireStore().updateCart(
             cartModel: widget.cartModel.copyWith(
               availableStock: prVar?.stock ?? 0,
+              variantId: prVar?.id ?? '',
             ),
           );
         } catch (e) {
