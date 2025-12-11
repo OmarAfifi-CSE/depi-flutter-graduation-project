@@ -18,6 +18,7 @@ class ProductScreen extends StatefulWidget {
     this.size,
     this.color,
     this.previewModel,
+    this.updateItem,
   });
   final ProductModel? previewModel;
 
@@ -25,6 +26,7 @@ class ProductScreen extends StatefulWidget {
   // If coming from cart
   final String? size;
   final String? color;
+  final void Function(ProductModel? pr, BuildContext context)? updateItem;
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -67,7 +69,11 @@ class _ProductScreenState extends State<ProductScreen> {
                   );
                 }
                 final product = (state as GetProductSuccess).productModel;
-
+                if (widget.updateItem != null) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    widget.updateItem!(product, context);
+                  });
+                }
                 if (product == null) {
                   return const Scaffold(
                     body: Center(child: ProductNotFoundView()),

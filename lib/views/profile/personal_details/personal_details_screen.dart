@@ -2,7 +2,6 @@ import 'package:batrina/controllers/cubit/profile/edit_user_cubit/edit_user_cubi
 import 'package:batrina/controllers/provider/profile_provider.dart';
 import 'package:batrina/firebase/fire_base_firestore.dart';
 import 'package:batrina/models/user_model.dart';
-import 'package:batrina/widgets/custom_elevated_button.dart';
 
 // IMPROVEMENT: Swapped CustomElevatedButton for TextButton for the logout action.
 import 'package:batrina/widgets/custom_text_form_field.dart';
@@ -145,27 +144,6 @@ class _PersonalDetailsScreenState extends State<PersonalDetailsScreen> {
                 cubit: profileCubit,
               ),
               SizedBox(height: 10.h),
-              CustomElevatedButton(
-                onPressed: () {},
-                buttonChild: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      Icons.logout,
-                      color: theme.scaffoldBackgroundColor,
-                      size: 20.sp,
-                    ),
-                    SizedBox(width: 10.w),
-                    CustomText(
-                      data: loc.logOut,
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w500,
-                      color: theme.scaffoldBackgroundColor,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 20.h),
             ],
           ),
         ),

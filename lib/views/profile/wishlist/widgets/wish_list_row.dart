@@ -174,6 +174,62 @@ class _WishListRowState extends State<WishListRow>
     }
   }
 
+  void updateStateOfWishListItem(ProductModel? pr, BuildContext context) {
+    final loc = AppLocalizations.of(context);
+
+    if (pr != null) {
+      ProductVariant? prVar = pr.getVariant(
+        widget.wishlistModel.color,
+        widget.wishlistModel.size,
+      );
+      if (prVar?.stock != widget.wishlistModel.availableStock) {
+        context.read<GetWishListCubit>().updateLocal(
+          widget.wishlistModel.copyWith(
+            availableStock: prVar?.stock ?? 0,
+            variantId: prVar?.id ?? '',
+          ),
+        );
+        try {
+          FireBaseFireStore().updateWishList(
+            wishListModel: widget.wishlistModel.copyWith(
+              availableStock: prVar?.stock ?? 0,
+              variantId: prVar?.id ?? '',
+            ),
+          );
+        } catch (e) {
+          debugPrint("error");
+        }
+      }
+
+      if ((pr.availableSizes.any(
+                (element) => element == widget.wishlistModel.size,
+              ) ==
+              false ||
+          pr.availableColors.any(
+                (element) => element.colorCode == widget.wishlistModel.color,
+              ) ==
+              false)) {
+        CustomSnackBar.showSnackBar(
+          context: context,
+          message: loc!.wishlistItemRemovedMsg,
+          color: Colors.red,
+          duration: const Duration(milliseconds: 2500),
+          longText: true,
+        );
+        context.read<GetWishListCubit>().removeLocal(widget.wishlistModel.id);
+        try {
+          FireBaseFireStore().removeFromWishList(
+            wishListModel: widget.wishlistModel,
+          );
+        } catch (e) {
+          debugPrint("error");
+        }
+
+        ;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
@@ -241,11 +297,12 @@ class _WishListRowState extends State<WishListRow>
                             ),
                             child: GestureDetector(
                               onTap: !isDeleting
-                                  ? () async {
-                                      ProductModel?
-                                      pr = await context.pushNamed(
-                                        AppRoutes.productScreen,
+                                  ? () {
+                                      context.pushNamed(
+                                        AppRoutes.categoryProductScreen,
                                         pathParameters: {
+                                          'categoryName':
+                                              widget.wishlistModel.categoryName,
                                           'productId':
                                               widget.wishlistModel.productId,
                                         },
@@ -253,81 +310,8 @@ class _WishListRowState extends State<WishListRow>
                                           'size': widget.wishlistModel.size,
                                           'color': widget.wishlistModel.color,
                                         },
+                                        extra: updateStateOfWishListItem,
                                       );
-                                      if (pr != null) {
-                                        ProductVariant? prVar = pr.getVariant(
-                                          widget.wishlistModel.color,
-                                          widget.wishlistModel.size,
-                                        );
-                                        if (prVar?.stock !=
-                                            widget
-                                                .wishlistModel
-                                                .availableStock) {
-                                          context
-                                              .read<GetWishListCubit>()
-                                              .updateLocal(
-                                                widget.wishlistModel.copyWith(
-                                                  availableStock:
-                                                      prVar?.stock ?? 0,
-                                                  variantId: prVar?.id ?? '',
-                                                ),
-                                              );
-                                          try {
-                                            FireBaseFireStore().updateWishList(
-                                              wishListModel: widget
-                                                  .wishlistModel
-                                                  .copyWith(
-                                                    availableStock:
-                                                        prVar?.stock ?? 0,
-                                                    variantId: prVar?.id ?? '',
-                                                  ),
-                                            );
-                                          } catch (e) {
-                                            debugPrint("error");
-                                          }
-                                        }
-
-                                        if ((pr.availableSizes.any(
-                                                  (element) =>
-                                                      element ==
-                                                      widget.wishlistModel.size,
-                                                ) ==
-                                                false ||
-                                            pr.availableColors.any(
-                                                  (element) =>
-                                                      element.colorCode ==
-                                                      widget
-                                                          .wishlistModel
-                                                          .color,
-                                                ) ==
-                                                false)) {
-                                          CustomSnackBar.showSnackBar(
-                                            context: context,
-                                            message:
-                                                loc!.wishlistItemRemovedMsg,
-                                            color: Colors.red,
-                                            duration: const Duration(
-                                              milliseconds: 2500,
-                                            ),
-                                          );
-                                          context
-                                              .read<GetWishListCubit>()
-                                              .removeLocal(
-                                                widget.wishlistModel.id,
-                                              );
-                                          try {
-                                            FireBaseFireStore()
-                                                .removeFromWishList(
-                                                  wishListModel:
-                                                      widget.wishlistModel,
-                                                );
-                                          } catch (e) {
-                                            debugPrint("error");
-                                          }
-
-                                          ;
-                                        }
-                                      }
                                     }
                                   : null,
                               onHorizontalDragUpdate: _handleSwipe,
@@ -409,47 +393,63 @@ class _WishListRowState extends State<WishListRow>
                                     SizedBox(width: 8.w),
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisSize: MainAxisSize.max,
+                                          (!(widget
+                                                      .wishlistModel
+                                                      .availableStock ==
+                                                  0 ||
+                                              widget
+                                                  .wishlistModel
+                                                  .variantId
+                                                  .isEmpty))
+                                          ? CrossAxisAlignment.center
+                                          : CrossAxisAlignment.end,
                                       children: [
-                                        SizedBox(height: 4.h),
-                                        GestureDetector(
-                                          onTap: isDeleting
-                                              ? null
-                                              : () {
-                                                  deleteFromWishList(loc);
-                                                },
-                                          child: Container(
-                                            width: 28.w,
-                                            height: 28.w,
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: theme.primaryColor,
-                                              border: Border.all(
-                                                color:
-                                                    appColors.containerBorder!,
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            SizedBox(height: 4.h),
+                                            GestureDetector(
+                                              onTap: isDeleting
+                                                  ? null
+                                                  : () {
+                                                      deleteFromWishList(loc);
+                                                    },
+                                              child: Container(
+                                                width: 28.w,
+                                                height: 28.w,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: theme.primaryColor,
+                                                  border: Border.all(
+                                                    color: appColors
+                                                        .containerBorder!,
+                                                  ),
+                                                ),
+                                                child: Center(
+                                                  child: isDeleting
+                                                      ? CupertinoActivityIndicator(
+                                                          radius: 8.w,
+                                                          color: theme
+                                                              .scaffoldBackgroundColor,
+                                                        )
+                                                      : SvgPicture.asset(
+                                                          AppAssets
+                                                              .heartIconFilled,
+                                                          width: 16.w,
+                                                          height: 16.w,
+                                                          fit: BoxFit.cover,
+                                                        ),
+                                                ),
                                               ),
                                             ),
-                                            child: Center(
-                                              child: isDeleting
-                                                  ? CupertinoActivityIndicator(
-                                                      radius: 8.w,
-                                                      color: theme
-                                                          .scaffoldBackgroundColor,
-                                                    )
-                                                  : SvgPicture.asset(
-                                                      AppAssets.heartIconFilled,
-                                                      width: 16.w,
-                                                      height: 16.w,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                            ),
-                                          ),
+                                            SizedBox(height: 4.h),
+                                            _buildSizeOption(),
+                                            SizedBox(height: 4.h),
+                                            _buildColorOption(),
+                                          ],
                                         ),
-                                        SizedBox(height: 4.h),
-                                        _buildSizeOption(),
-                                        SizedBox(height: 4.h),
-                                        _buildColorOption(),
                                         const Spacer(),
                                         BlocBuilder<GetCartCubit, GetCartState>(
                                           builder: (context, getCartState) {
@@ -537,6 +537,16 @@ class _WishListRowState extends State<WishListRow>
 
                                                 return GestureDetector(
                                                   onTap: () {
+                                                    if (widget
+                                                                .wishlistModel
+                                                                .availableStock ==
+                                                            0 ||
+                                                        widget
+                                                            .wishlistModel
+                                                            .variantId
+                                                            .isEmpty) {
+                                                      return;
+                                                    }
                                                     if (isInCart) {
                                                       context
                                                           .read<CartCubit>()
@@ -545,16 +555,6 @@ class _WishListRowState extends State<WishListRow>
                                                                 cartItem!.id,
                                                           );
                                                     } else {
-                                                      if (widget
-                                                                  .wishlistModel
-                                                                  .availableStock ==
-                                                              0 ||
-                                                          widget
-                                                              .wishlistModel
-                                                              .variantId
-                                                              .isEmpty) {
-                                                        return;
-                                                      }
                                                       final newCartItem =
                                                           CartModel(
                                                             id: '',
@@ -601,35 +601,55 @@ class _WishListRowState extends State<WishListRow>
                                                           );
                                                     }
                                                   },
-                                                  child: Opacity(
-                                                    opacity:
-                                                        widget
-                                                                    .wishlistModel
-                                                                    .availableStock ==
-                                                                0 ||
-                                                            widget
-                                                                .wishlistModel
-                                                                .variantId
-                                                                .isEmpty
-                                                        ? 0.3
-                                                        : 1,
-
-                                                    child: SvgPicture.asset(
-                                                      isInCart
-                                                          ? AppAssets
-                                                                .removeCartIcon
-                                                          : AppAssets.cartIcon,
-                                                      colorFilter: ColorFilter.mode(
-                                                        isInCart
-                                                            ? Colors.red
-                                                            : theme
-                                                                  .primaryColor,
-                                                        BlendMode.srcIn,
-                                                      ),
-                                                      width: 24.w,
-                                                      height: 24.h,
-                                                    ),
-                                                  ),
+                                                  child:
+                                                      !(widget
+                                                                  .wishlistModel
+                                                                  .availableStock ==
+                                                              0 ||
+                                                          widget
+                                                              .wishlistModel
+                                                              .variantId
+                                                              .isEmpty)
+                                                      ? SvgPicture.asset(
+                                                          isInCart
+                                                              ? AppAssets
+                                                                    .removeCartIcon
+                                                              : AppAssets
+                                                                    .cartIcon,
+                                                          colorFilter:
+                                                              ColorFilter.mode(
+                                                                isInCart
+                                                                    ? Colors.red
+                                                                    : theme
+                                                                          .primaryColor,
+                                                                BlendMode.srcIn,
+                                                              ),
+                                                          width: 24.w,
+                                                          height: 24.h,
+                                                        )
+                                                      : Container(
+                                                          decoration: BoxDecoration(
+                                                            color: theme
+                                                                .primaryColor,
+                                                            borderRadius:
+                                                                BorderRadiusGeometry.circular(
+                                                                  3.r,
+                                                                ),
+                                                          ),
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                5.r,
+                                                              ),
+                                                          child: CustomText(
+                                                            data:
+                                                                loc!.outOfStock,
+                                                            fontSize: 12.sp,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            color: theme
+                                                                .scaffoldBackgroundColor,
+                                                          ),
+                                                        ),
                                                 );
                                               },
                                             );

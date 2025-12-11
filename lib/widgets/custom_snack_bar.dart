@@ -10,6 +10,7 @@ class CustomSnackBar {
     required String message,
     required Color color,
     Duration duration = const Duration(milliseconds: 1200),
+    bool longText = false,
   }) {
     if (!context.mounted) return Future.value();
     final theme = Theme.of(context);
@@ -33,18 +34,28 @@ class CustomSnackBar {
                 color: theme.primaryColor,
               ),
               const SizedBox(width: 8),
-              Expanded(
-                child: FittedBox(
-                  alignment: AlignmentDirectional.centerStart,
-                  fit: BoxFit.scaleDown,
-                  child: CustomText(
-                    data: message,
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w500,
-                    forceStrutHeight: true,
-                  ),
-                ),
-              ),
+              !longText
+                  ? Expanded(
+                      child: FittedBox(
+                        alignment: AlignmentDirectional.centerStart,
+                        fit: BoxFit.scaleDown,
+                        child: CustomText(
+                          data: message,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w500,
+                          forceStrutHeight: true,
+                        ),
+                      ),
+                    )
+                  : Expanded(
+                      child: CustomText(
+                        data: message,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        forceStrutHeight: true,
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
             ],
           ),
         ),

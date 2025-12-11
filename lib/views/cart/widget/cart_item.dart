@@ -174,6 +174,53 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
     }
   }
 
+  void updateStateOfCartItem(ProductModel? pr, BuildContext context) {
+    final loc = AppLocalizations.of(context);
+
+    if (pr != null) {
+      ProductVariant? prVar = pr.getVariant(
+        widget.cartModel.color,
+        widget.cartModel.size,
+      );
+      if (prVar?.stock != widget.cartModel.availableStock) {
+        context.read<GetCartCubit>().updateLocal(
+          widget.cartModel.copyWith(availableStock: prVar?.stock ?? 0),
+        );
+        try {
+          FireBaseFireStore().updateCart(
+            cartModel: widget.cartModel.copyWith(
+              availableStock: prVar?.stock ?? 0,
+            ),
+          );
+        } catch (e) {
+          debugPrint("error");
+        }
+      }
+      if ((pr.availableSizes.any(
+                (element) => element == widget.cartModel.size,
+              ) ==
+              false ||
+          pr.availableColors.any(
+                (element) => element.colorCode == widget.cartModel.color,
+              ) ==
+              false)) {
+        context.read<GetCartCubit>().removeLocal(widget.cartModel.id);
+        CustomSnackBar.showSnackBar(
+          context: context,
+          message: loc!.cartItemRemovedMsg,
+          color: Colors.red,
+          duration: const Duration(milliseconds: 2500),
+          longText: true,
+        );
+        try {
+          FireBaseFireStore().removeFromCart(cartId: widget.cartModel.id);
+        } catch (e) {
+          debugPrint("error");
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final appColors = Theme.of(context).extension<AppColorTheme>()!;
@@ -231,8 +278,8 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                           ),
                           child: GestureDetector(
                             onTap: !isDeleting
-                                ? () async {
-                                    ProductModel? pr = await context.pushNamed(
+                                ? () {
+                                    context.pushNamed(
                                       AppRoutes.categoryProductScreen,
                                       pathParameters: {
                                         'categoryName':
@@ -243,68 +290,8 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
                                         'size': widget.cartModel.size,
                                         'color': widget.cartModel.color,
                                       },
+                                      extra: updateStateOfCartItem,
                                     );
-                                    if (pr != null) {
-                                      ProductVariant? prVar = pr.getVariant(
-                                        widget.cartModel.color,
-                                        widget.cartModel.size,
-                                      );
-                                      if (prVar?.stock !=
-                                          widget.cartModel.availableStock) {
-                                        context
-                                            .read<GetCartCubit>()
-                                            .updateLocal(
-                                              widget.cartModel.copyWith(
-                                                availableStock:
-                                                    prVar?.stock ?? 0,
-                                              ),
-                                            );
-                                        try {
-                                          FireBaseFireStore().updateCart(
-                                            cartModel: widget.cartModel
-                                                .copyWith(
-                                                  availableStock:
-                                                      prVar?.stock ?? 0,
-                                                ),
-                                          );
-                                        } catch (e) {
-                                          debugPrint("error");
-                                        }
-                                      }
-                                      if ((pr.availableSizes.any(
-                                                (element) =>
-                                                    element ==
-                                                    widget.cartModel.size,
-                                              ) ==
-                                              false ||
-                                          pr.availableColors.any(
-                                                (element) =>
-                                                    element.colorCode ==
-                                                    widget.cartModel.color,
-                                              ) ==
-                                              false)) {
-                                        context
-                                            .read<GetCartCubit>()
-                                            .removeLocal(widget.cartModel.id);
-                                        CustomSnackBar.showSnackBar(
-                                          context: context,
-                                          message: loc!.cartItemRemovedMsg,
-                                          color: Colors.red,
-                                          duration: const Duration(
-                                            milliseconds: 2500,
-                                          ),
-                                        );
-                                        try {
-                                          FireBaseFireStore().removeFromCart(
-                                            cartId: widget.cartModel.id,
-                                          );
-                                        } catch (e) {
-                                          debugPrint("error");
-                                        }
-
-                                        ;
-                                      }
-                                    }
                                   }
                                 : null,
                             onHorizontalDragUpdate: _handleSwipe,

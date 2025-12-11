@@ -306,11 +306,16 @@ class RouterGenerationConfig {
             final productId = state.pathParameters['productId'];
             final size = state.uri.queryParameters['size'];
             final color = state.uri.queryParameters['color'];
+            final void Function(ProductModel? pr, BuildContext context)?
+            updateItem =
+                state.extra
+                    as void Function(ProductModel? pr, BuildContext context)?;
             return CustomTransitionPage(
               child: ProductScreen(
                 productId: productId!,
                 size: size,
                 color: color,
+                updateItem: updateItem,
               ),
               transitionDuration: const Duration(milliseconds: 500),
               reverseTransitionDuration: const Duration(milliseconds: 300),
@@ -391,26 +396,26 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 300),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return FadeTransition(
-                  opacity: CurvedAnimation(
-                    parent: animation,
-                    curve: Curves.easeIn,
-                  ),
-                  child: SlideTransition(
-                    position:
-                    Tween<Offset>(
-                      begin: const Offset(0.3, 0),
-                      end: Offset.zero,
-                    ).animate(
-                      CurvedAnimation(
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
                         parent: animation,
-                        curve: Curves.easeInOut,
+                        curve: Curves.easeIn,
                       ),
-                    ),
-                    child: child,
-                  ),
-                );
-              },
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0.3, 0),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                        child: child,
+                      ),
+                    );
+                  },
             );
           },
         ),
@@ -424,26 +429,26 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 300),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return FadeTransition(
-                  opacity: CurvedAnimation(
-                    parent: animation,
-                    curve: Curves.easeIn,
-                  ),
-                  child: SlideTransition(
-                    position:
-                    Tween<Offset>(
-                      begin: const Offset(0.3, 0),
-                      end: Offset.zero,
-                    ).animate(
-                      CurvedAnimation(
+                    return FadeTransition(
+                      opacity: CurvedAnimation(
                         parent: animation,
-                        curve: Curves.easeInOut,
+                        curve: Curves.easeIn,
                       ),
-                    ),
-                    child: child,
-                  ),
-                );
-              },
+                      child: SlideTransition(
+                        position:
+                            Tween<Offset>(
+                              begin: const Offset(0.3, 0),
+                              end: Offset.zero,
+                            ).animate(
+                              CurvedAnimation(
+                                parent: animation,
+                                curve: Curves.easeInOut,
+                              ),
+                            ),
+                        child: child,
+                      ),
+                    );
+                  },
             );
           },
         ),
@@ -604,13 +609,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
         ),
@@ -634,13 +639,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
         ),
@@ -664,13 +669,13 @@ class RouterGenerationConfig {
               reverseTransitionDuration: const Duration(milliseconds: 1000),
               transitionsBuilder:
                   (context, animation, secondaryAnimation, child) {
-                return SharedAxisTransition(
-                  transitionType: SharedAxisTransitionType.horizontal,
-                  animation: animation,
-                  secondaryAnimation: secondaryAnimation,
-                  child: child,
-                );
-              },
+                    return SharedAxisTransition(
+                      transitionType: SharedAxisTransitionType.horizontal,
+                      animation: animation,
+                      secondaryAnimation: secondaryAnimation,
+                      child: child,
+                    );
+                  },
             );
           },
         ),
