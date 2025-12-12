@@ -942,4 +942,44 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => 'Teslimatta nakit ödeme yapın';
+
+  @override
+  String get allOrdersAdmin => 'Tüm Siparişler (Yönetici)';
+
+  @override
+  String get noOrdersYet => 'Henüz sipariş yok';
+
+  @override
+  String orderNumber(Object orderId) {
+    return 'Sipariş #$orderId';
+  }
+
+  @override
+  String get userLabel => 'Kullanıcı: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count Ürün';
+  }
+
+  @override
+  String get totalLabel => 'Toplam: ';
+
+  @override
+  String get changeStatus => 'Durumu değiştir';
+
+  @override
+  String get statusPending => 'Beklemede';
+
+  @override
+  String get statusProcessing => 'İşleniyor';
+
+  @override
+  String get statusShipped => 'Gönderildi';
+
+  @override
+  String get statusDelivered => 'Teslim edildi';
+
+  @override
+  String get statusCancelled => 'İptal edildi';
 }

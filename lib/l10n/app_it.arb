@@ -392,5 +392,18 @@
 
   "paymentMethod": "Metodo di pagamento",
   "payOnDelivery": "Pagamento alla consegna",
-  "payOnDeliverySubtitle": "Paga in contanti alla ricezione"
+  "payOnDeliverySubtitle": "Paga in contanti alla ricezione",
+
+  "allOrdersAdmin": "Tutti gli ordini (Admin)",
+  "noOrdersYet": "Nessun ordine ancora",
+  "orderNumber": "Ordine #{orderId}",
+  "userLabel": "Utente: ",
+  "itemsCount": "{count} Articoli",
+  "totalLabel": "Totale: ",
+  "changeStatus": "Cambia stato",
+  "statusPending": "In sospeso",
+  "statusProcessing": "In elaborazione",
+  "statusShipped": "Spedito",
+  "statusDelivered": "Consegnato",
+  "statusCancelled": "Annullato"
 }

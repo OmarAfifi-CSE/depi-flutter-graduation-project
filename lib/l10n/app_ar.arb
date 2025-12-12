@@ -389,5 +389,18 @@
 
   "paymentMethod": "طريقة الدفع",
   "payOnDelivery": "الدفع عند الاستلام",
-  "payOnDeliverySubtitle": "ادفع نقدًا عند استلام الطلب"
+  "payOnDeliverySubtitle": "ادفع نقدًا عند استلام الطلب",
+
+  "allOrdersAdmin": "جميع الطلبات (المشرف)",
+  "noOrdersYet": "لا توجد طلبات حتى الآن",
+  "orderNumber": "طلب #{orderId}",
+  "userLabel": "المستخدم: ",
+  "itemsCount": "{count} منتجات",
+  "totalLabel": "الإجمالي: ",
+  "changeStatus": "تغيير الحالة",
+  "statusPending": "قيد الانتظار",
+  "statusProcessing": "قيد المعالجة",
+  "statusShipped": "تم الشحن",
+  "statusDelivered": "تم التوصيل",
+  "statusCancelled": "ملغي"
 }

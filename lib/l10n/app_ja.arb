@@ -392,5 +392,18 @@
 
   "paymentMethod": "支払い方法",
   "payOnDelivery": "代金引換",
-  "payOnDeliverySubtitle": "受け取り時に現金で支払う"
+  "payOnDeliverySubtitle": "受け取り時に現金で支払う",
+
+  "allOrdersAdmin": "全ての注文（管理者）",
+  "noOrdersYet": "まだ注文がありません",
+  "orderNumber": "注文 #{orderId}",
+  "userLabel": "ユーザー: ",
+  "itemsCount": "{count} 個",
+  "totalLabel": "合計: ",
+  "changeStatus": "ステータス変更",
+  "statusPending": "保留中",
+  "statusProcessing": "処理中",
+  "statusShipped": "発送済み",
+  "statusDelivered": "配達済み",
+  "statusCancelled": "キャンセル"
 }

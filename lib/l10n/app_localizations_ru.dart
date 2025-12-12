@@ -942,4 +942,44 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => 'Оплата наличными при получении';
+
+  @override
+  String get allOrdersAdmin => 'Все заказы (Админ)';
+
+  @override
+  String get noOrdersYet => 'Заказов пока нет';
+
+  @override
+  String orderNumber(Object orderId) {
+    return 'Заказ #$orderId';
+  }
+
+  @override
+  String get userLabel => 'Пользователь: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count товаров';
+  }
+
+  @override
+  String get totalLabel => 'Итого: ';
+
+  @override
+  String get changeStatus => 'Изменить статус';
+
+  @override
+  String get statusPending => 'Ожидает';
+
+  @override
+  String get statusProcessing => 'Обрабатывается';
+
+  @override
+  String get statusShipped => 'Отправлен';
+
+  @override
+  String get statusDelivered => 'Доставлен';
+
+  @override
+  String get statusCancelled => 'Отменён';
 }

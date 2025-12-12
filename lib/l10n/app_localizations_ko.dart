@@ -942,4 +942,44 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => '수령 시 현금으로 결제하세요';
+
+  @override
+  String get allOrdersAdmin => '모든 주문 (관리자)';
+
+  @override
+  String get noOrdersYet => '아직 주문이 없습니다';
+
+  @override
+  String orderNumber(Object orderId) {
+    return '주문 #$orderId';
+  }
+
+  @override
+  String get userLabel => '사용자: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count 개';
+  }
+
+  @override
+  String get totalLabel => '총액: ';
+
+  @override
+  String get changeStatus => '상태 변경';
+
+  @override
+  String get statusPending => '대기 중';
+
+  @override
+  String get statusProcessing => '처리 중';
+
+  @override
+  String get statusShipped => '배송됨';
+
+  @override
+  String get statusDelivered => '배달 완료';
+
+  @override
+  String get statusCancelled => '취소됨';
 }

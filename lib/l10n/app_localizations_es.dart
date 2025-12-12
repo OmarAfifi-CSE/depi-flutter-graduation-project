@@ -942,4 +942,44 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => 'Paga en efectivo al recibir';
+
+  @override
+  String get allOrdersAdmin => 'Todos los pedidos (Admin)';
+
+  @override
+  String get noOrdersYet => 'Aún no hay pedidos';
+
+  @override
+  String orderNumber(Object orderId) {
+    return 'Pedido #$orderId';
+  }
+
+  @override
+  String get userLabel => 'Usuario: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count Artículos';
+  }
+
+  @override
+  String get totalLabel => 'Total: ';
+
+  @override
+  String get changeStatus => 'Cambiar estado';
+
+  @override
+  String get statusPending => 'Pendiente';
+
+  @override
+  String get statusProcessing => 'Procesando';
+
+  @override
+  String get statusShipped => 'Enviado';
+
+  @override
+  String get statusDelivered => 'Entregado';
+
+  @override
+  String get statusCancelled => 'Cancelado';
 }

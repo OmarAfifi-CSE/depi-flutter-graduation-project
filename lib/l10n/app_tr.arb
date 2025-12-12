@@ -388,5 +388,18 @@
 
   "paymentMethod": "Ödeme Yöntemi",
   "payOnDelivery": "Kapıda Ödeme",
-  "payOnDeliverySubtitle": "Teslimatta nakit ödeme yapın"
+  "payOnDeliverySubtitle": "Teslimatta nakit ödeme yapın",
+
+  "allOrdersAdmin": "Tüm Siparişler (Yönetici)",
+  "noOrdersYet": "Henüz sipariş yok",
+  "orderNumber": "Sipariş #{orderId}",
+  "userLabel": "Kullanıcı: ",
+  "itemsCount": "{count} Ürün",
+  "totalLabel": "Toplam: ",
+  "changeStatus": "Durumu değiştir",
+  "statusPending": "Beklemede",
+  "statusProcessing": "İşleniyor",
+  "statusShipped": "Gönderildi",
+  "statusDelivered": "Teslim edildi",
+  "statusCancelled": "İptal edildi"
 }

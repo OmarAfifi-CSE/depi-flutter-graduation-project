@@ -392,5 +392,18 @@
 
   "paymentMethod": "결제 방법",
   "payOnDelivery": "배송 시 결제",
-  "payOnDeliverySubtitle": "수령 시 현금으로 결제하세요"
+  "payOnDeliverySubtitle": "수령 시 현금으로 결제하세요",
+
+  "allOrdersAdmin": "모든 주문 (관리자)",
+  "noOrdersYet": "아직 주문이 없습니다",
+  "orderNumber": "주문 #{orderId}",
+  "userLabel": "사용자: ",
+  "itemsCount": "{count} 개",
+  "totalLabel": "총액: ",
+  "changeStatus": "상태 변경",
+  "statusPending": "대기 중",
+  "statusProcessing": "처리 중",
+  "statusShipped": "배송됨",
+  "statusDelivered": "배달 완료",
+  "statusCancelled": "취소됨"
 }

@@ -388,5 +388,18 @@
 
   "paymentMethod": "支付方式",
   "payOnDelivery": "货到付款",
-  "payOnDeliverySubtitle": "收货时现金支付"
+  "payOnDeliverySubtitle": "收货时现金支付",
+
+  "allOrdersAdmin": "所有订单 (管理员)",
+  "noOrdersYet": "暂无订单",
+  "orderNumber": "订单 #{orderId}",
+  "userLabel": "用户: ",
+  "itemsCount": "{count} 件商品",
+  "totalLabel": "总计: ",
+  "changeStatus": "更改状态",
+  "statusPending": "待处理",
+  "statusProcessing": "处理中",
+  "statusShipped": "已发货",
+  "statusDelivered": "已送达",
+  "statusCancelled": "已取消"
 }

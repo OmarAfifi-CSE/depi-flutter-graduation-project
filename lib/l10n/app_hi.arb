@@ -391,5 +391,18 @@
 
   "paymentMethod": "भुगतान विधि",
   "payOnDelivery": "डिलीवरी पर भुगतान",
-  "payOnDeliverySubtitle": "प्राप्ति पर नकद भुगतान करें"
+  "payOnDeliverySubtitle": "प्राप्ति पर नकद भुगतान करें",
+
+  "allOrdersAdmin": "सभी ऑर्डर (एडमिन)",
+  "noOrdersYet": "अभी तक कोई ऑर्डर नहीं",
+  "orderNumber": "ऑर्डर #{orderId}",
+  "userLabel": "उपयोगकर्ता: ",
+  "itemsCount": "{count} आइटम",
+  "totalLabel": "कुल: ",
+  "changeStatus": "स्थिति बदलें",
+  "statusPending": "लंबित",
+  "statusProcessing": "प्रोसेसिंग",
+  "statusShipped": "भेज दिया गया",
+  "statusDelivered": "डिलीवर किया गया",
+  "statusCancelled": "रद्द"
 }

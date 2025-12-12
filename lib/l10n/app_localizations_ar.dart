@@ -942,4 +942,44 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => 'ادفع نقدًا عند استلام الطلب';
+
+  @override
+  String get allOrdersAdmin => 'جميع الطلبات (المشرف)';
+
+  @override
+  String get noOrdersYet => 'لا توجد طلبات حتى الآن';
+
+  @override
+  String orderNumber(Object orderId) {
+    return 'طلب #$orderId';
+  }
+
+  @override
+  String get userLabel => 'المستخدم: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count منتجات';
+  }
+
+  @override
+  String get totalLabel => 'الإجمالي: ';
+
+  @override
+  String get changeStatus => 'تغيير الحالة';
+
+  @override
+  String get statusPending => 'قيد الانتظار';
+
+  @override
+  String get statusProcessing => 'قيد المعالجة';
+
+  @override
+  String get statusShipped => 'تم الشحن';
+
+  @override
+  String get statusDelivered => 'تم التوصيل';
+
+  @override
+  String get statusCancelled => 'ملغي';
 }

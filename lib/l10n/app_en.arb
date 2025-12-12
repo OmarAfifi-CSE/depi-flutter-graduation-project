@@ -393,5 +393,18 @@
 
   "paymentMethod": "Payment Method",
   "payOnDelivery": "Pay on Delivery",
-  "payOnDeliverySubtitle": "Pay in cash upon receipt"
+  "payOnDeliverySubtitle": "Pay in cash upon receipt",
+
+  "allOrdersAdmin": "All Orders (Admin)",
+  "noOrdersYet": "No orders yet",
+  "orderNumber": "Order #{orderId}",
+  "userLabel": "User: ",
+  "itemsCount": "{count} Items",
+  "totalLabel": "Total: ",
+  "changeStatus": "Change Status",
+  "statusPending": "Pending",
+  "statusProcessing": "Processing",
+  "statusShipped": "Shipped",
+  "statusDelivered": "Delivered",
+  "statusCancelled": "Cancelled"
 }

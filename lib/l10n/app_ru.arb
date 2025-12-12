@@ -388,5 +388,18 @@
 
   "paymentMethod": "Способ оплаты",
   "payOnDelivery": "Оплата при доставке",
-  "payOnDeliverySubtitle": "Оплата наличными при получении"
+  "payOnDeliverySubtitle": "Оплата наличными при получении",
+
+  "allOrdersAdmin": "Все заказы (Админ)",
+  "noOrdersYet": "Заказов пока нет",
+  "orderNumber": "Заказ #{orderId}",
+  "userLabel": "Пользователь: ",
+  "itemsCount": "{count} товаров",
+  "totalLabel": "Итого: ",
+  "changeStatus": "Изменить статус",
+  "statusPending": "Ожидает",
+  "statusProcessing": "Обрабатывается",
+  "statusShipped": "Отправлен",
+  "statusDelivered": "Доставлен",
+  "statusCancelled": "Отменён"
 }

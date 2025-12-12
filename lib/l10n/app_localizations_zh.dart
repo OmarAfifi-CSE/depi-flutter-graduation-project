@@ -942,4 +942,44 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => '收货时现金支付';
+
+  @override
+  String get allOrdersAdmin => '所有订单 (管理员)';
+
+  @override
+  String get noOrdersYet => '暂无订单';
+
+  @override
+  String orderNumber(Object orderId) {
+    return '订单 #$orderId';
+  }
+
+  @override
+  String get userLabel => '用户: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count 件商品';
+  }
+
+  @override
+  String get totalLabel => '总计: ';
+
+  @override
+  String get changeStatus => '更改状态';
+
+  @override
+  String get statusPending => '待处理';
+
+  @override
+  String get statusProcessing => '处理中';
+
+  @override
+  String get statusShipped => '已发货';
+
+  @override
+  String get statusDelivered => '已送达';
+
+  @override
+  String get statusCancelled => '已取消';
 }

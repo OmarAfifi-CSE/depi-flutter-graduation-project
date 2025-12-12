@@ -942,4 +942,44 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => 'प्राप्ति पर नकद भुगतान करें';
+
+  @override
+  String get allOrdersAdmin => 'सभी ऑर्डर (एडमिन)';
+
+  @override
+  String get noOrdersYet => 'अभी तक कोई ऑर्डर नहीं';
+
+  @override
+  String orderNumber(Object orderId) {
+    return 'ऑर्डर #$orderId';
+  }
+
+  @override
+  String get userLabel => 'उपयोगकर्ता: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count आइटम';
+  }
+
+  @override
+  String get totalLabel => 'कुल: ';
+
+  @override
+  String get changeStatus => 'स्थिति बदलें';
+
+  @override
+  String get statusPending => 'लंबित';
+
+  @override
+  String get statusProcessing => 'प्रोसेसिंग';
+
+  @override
+  String get statusShipped => 'भेज दिया गया';
+
+  @override
+  String get statusDelivered => 'डिलीवर किया गया';
+
+  @override
+  String get statusCancelled => 'रद्द';
 }

@@ -942,4 +942,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => 'Pay in cash upon receipt';
+
+  @override
+  String get allOrdersAdmin => 'All Orders (Admin)';
+
+  @override
+  String get noOrdersYet => 'No orders yet';
+
+  @override
+  String orderNumber(Object orderId) {
+    return 'Order #$orderId';
+  }
+
+  @override
+  String get userLabel => 'User: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count Items';
+  }
+
+  @override
+  String get totalLabel => 'Total: ';
+
+  @override
+  String get changeStatus => 'Change Status';
+
+  @override
+  String get statusPending => 'Pending';
+
+  @override
+  String get statusProcessing => 'Processing';
+
+  @override
+  String get statusShipped => 'Shipped';
+
+  @override
+  String get statusDelivered => 'Delivered';
+
+  @override
+  String get statusCancelled => 'Cancelled';
 }

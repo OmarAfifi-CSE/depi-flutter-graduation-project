@@ -392,5 +392,18 @@
 
   "paymentMethod": "Zahlungsmethode",
   "payOnDelivery": "Barzahlung bei Lieferung",
-  "payOnDeliverySubtitle": "Barzahlung bei Erhalt der Ware"
+  "payOnDeliverySubtitle": "Barzahlung bei Erhalt der Ware",
+
+  "allOrdersAdmin": "Alle Bestellungen (Admin)",
+  "noOrdersYet": "Noch keine Bestellungen",
+  "orderNumber": "Bestellung #{orderId}",
+  "userLabel": "Benutzer: ",
+  "itemsCount": "{count} Artikel",
+  "totalLabel": "Gesamt: ",
+  "changeStatus": "Status ändern",
+  "statusPending": "Ausstehend",
+  "statusProcessing": "In Bearbeitung",
+  "statusShipped": "Versendet",
+  "statusDelivered": "Geliefert",
+  "statusCancelled": "Storniert"
 }

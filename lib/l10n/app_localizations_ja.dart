@@ -942,4 +942,44 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get payOnDeliverySubtitle => '受け取り時に現金で支払う';
+
+  @override
+  String get allOrdersAdmin => '全ての注文（管理者）';
+
+  @override
+  String get noOrdersYet => 'まだ注文がありません';
+
+  @override
+  String orderNumber(Object orderId) {
+    return '注文 #$orderId';
+  }
+
+  @override
+  String get userLabel => 'ユーザー: ';
+
+  @override
+  String itemsCount(Object count) {
+    return '$count 個';
+  }
+
+  @override
+  String get totalLabel => '合計: ';
+
+  @override
+  String get changeStatus => 'ステータス変更';
+
+  @override
+  String get statusPending => '保留中';
+
+  @override
+  String get statusProcessing => '処理中';
+
+  @override
+  String get statusShipped => '発送済み';
+
+  @override
+  String get statusDelivered => '配達済み';
+
+  @override
+  String get statusCancelled => 'キャンセル';
 }

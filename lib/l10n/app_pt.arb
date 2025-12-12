@@ -388,5 +388,18 @@
 
   "paymentMethod": "Método de pagamento",
   "payOnDelivery": "Pagamento na entrega",
-  "payOnDeliverySubtitle": "Pague em dinheiro no ato do recebimento"
+  "payOnDeliverySubtitle": "Pague em dinheiro no ato do recebimento",
+
+  "allOrdersAdmin": "Todos os pedidos (Admin)",
+  "noOrdersYet": "Nenhum pedido ainda",
+  "orderNumber": "Pedido #{orderId}",
+  "userLabel": "Usuário: ",
+  "itemsCount": "{count} Itens",
+  "totalLabel": "Total: ",
+  "changeStatus": "Alterar status",
+  "statusPending": "Pendente",
+  "statusProcessing": "Processando",
+  "statusShipped": "Enviado",
+  "statusDelivered": "Entregue",
+  "statusCancelled": "Cancelado"
 }
