@@ -988,4 +988,28 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get statusCancelled => 'रद्द';
+
+  @override
+  String get orderDetails => 'ऑर्डर विवरण';
+
+  @override
+  String get customerLabel => 'ग्राहक: ';
+
+  @override
+  String get phoneLabel => 'फ़ोन: ';
+
+  @override
+  String get paymentSummary => 'भुगतान सारांश';
+
+  @override
+  String get free => 'मुफ़्त';
+
+  @override
+  String get totalAmount => 'कुल राशि';
+
+  @override
+  String get sizeLabel => 'साइज़: ';
+
+  @override
+  String get changeOrderStatus => 'ऑर्डर स्थिति बदलें';
 }

@@ -403,5 +403,14 @@
   "statusProcessing": "Processando",
   "statusShipped": "Enviado",
   "statusDelivered": "Entregue",
-  "statusCancelled": "Cancelado"
+  "statusCancelled": "Cancelado",
+
+  "orderDetails": "Detalhes do pedido",
+  "customerLabel": "Cliente: ",
+  "phoneLabel": "Telefone: ",
+  "paymentSummary": "Resumo do pagamento",
+  "free": "Grátis",
+  "totalAmount": "Valor total",
+  "sizeLabel": "Tamanho: ",
+  "changeOrderStatus": "Alterar status do pedido"
 }

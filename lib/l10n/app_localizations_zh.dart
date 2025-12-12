@@ -988,4 +988,28 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get statusCancelled => '已取消';
+
+  @override
+  String get orderDetails => '订单详情';
+
+  @override
+  String get customerLabel => '客户: ';
+
+  @override
+  String get phoneLabel => '电话: ';
+
+  @override
+  String get paymentSummary => '支付摘要';
+
+  @override
+  String get free => '免费';
+
+  @override
+  String get totalAmount => '总金额';
+
+  @override
+  String get sizeLabel => '尺码: ';
+
+  @override
+  String get changeOrderStatus => '更改订单状态';
 }

@@ -407,5 +407,14 @@
   "statusProcessing": "処理中",
   "statusShipped": "発送済み",
   "statusDelivered": "配達済み",
-  "statusCancelled": "キャンセル"
+  "statusCancelled": "キャンセル",
+
+  "orderDetails": "注文詳細",
+  "customerLabel": "お客様: ",
+  "phoneLabel": "電話: ",
+  "paymentSummary": "お支払い概要",
+  "free": "無料",
+  "totalAmount": "合計金額",
+  "sizeLabel": "サイズ: ",
+  "changeOrderStatus": "注文ステータスを変更"
 }

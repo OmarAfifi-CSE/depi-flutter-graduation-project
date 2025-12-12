@@ -408,5 +408,14 @@
   "statusProcessing": "Processing",
   "statusShipped": "Shipped",
   "statusDelivered": "Delivered",
-  "statusCancelled": "Cancelled"
+  "statusCancelled": "Cancelled",
+
+  "orderDetails": "Order Details",
+  "customerLabel": "Customer: ",
+  "phoneLabel": "Phone: ",
+  "paymentSummary": "Payment Summary",
+  "free": "Free",
+  "totalAmount": "Total Amount",
+  "sizeLabel": "Size: ",
+  "changeOrderStatus": "Change Order Status"
 }

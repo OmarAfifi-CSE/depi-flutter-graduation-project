@@ -403,5 +403,14 @@
   "statusProcessing": "Обрабатывается",
   "statusShipped": "Отправлен",
   "statusDelivered": "Доставлен",
-  "statusCancelled": "Отменён"
+  "statusCancelled": "Отменён",
+
+  "orderDetails": "Детали заказа",
+  "customerLabel": "Клиент: ",
+  "phoneLabel": "Телефон: ",
+  "paymentSummary": "Сводка платежа",
+  "free": "Бесплатно",
+  "totalAmount": "Общая сумма",
+  "sizeLabel": "Размер: ",
+  "changeOrderStatus": "Изменить статус заказа"
 }

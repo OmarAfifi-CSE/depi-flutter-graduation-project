@@ -407,5 +407,14 @@
   "statusProcessing": "En cours",
   "statusShipped": "Expédié",
   "statusDelivered": "Livré",
-  "statusCancelled": "Annulé"
+  "statusCancelled": "Annulé",
+
+  "orderDetails": "Détails de la commande",
+  "customerLabel": "Client: ",
+  "phoneLabel": "Téléphone: ",
+  "paymentSummary": "Résumé du paiement",
+  "free": "Gratuit",
+  "totalAmount": "Montant total",
+  "sizeLabel": "Taille: ",
+  "changeOrderStatus": "Changer le statut de la commande"
 }

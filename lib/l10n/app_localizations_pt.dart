@@ -988,4 +988,28 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get statusCancelled => 'Cancelado';
+
+  @override
+  String get orderDetails => 'Detalhes do pedido';
+
+  @override
+  String get customerLabel => 'Cliente: ';
+
+  @override
+  String get phoneLabel => 'Telefone: ';
+
+  @override
+  String get paymentSummary => 'Resumo do pagamento';
+
+  @override
+  String get free => 'Grátis';
+
+  @override
+  String get totalAmount => 'Valor total';
+
+  @override
+  String get sizeLabel => 'Tamanho: ';
+
+  @override
+  String get changeOrderStatus => 'Alterar status do pedido';
 }

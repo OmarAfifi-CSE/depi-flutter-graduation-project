@@ -817,4 +817,12 @@ class FireBaseFireStore {
       'status': newStatus,
     });
   }
+
+  Stream<OrderModel> getOrderStream(String orderId) {
+    return fireBaseFireStore
+        .collection('orders')
+        .doc(orderId)
+        .snapshots()
+        .map((doc) => OrderModel.fromJson(doc.data()!, doc.id));
+  }
 }

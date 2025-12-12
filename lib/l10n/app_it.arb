@@ -407,5 +407,14 @@
   "statusProcessing": "In elaborazione",
   "statusShipped": "Spedito",
   "statusDelivered": "Consegnato",
-  "statusCancelled": "Annullato"
+  "statusCancelled": "Annullato",
+
+  "orderDetails": "Dettagli ordine",
+  "customerLabel": "Cliente: ",
+  "phoneLabel": "Telefono: ",
+  "paymentSummary": "Riepilogo pagamento",
+  "free": "Gratuito",
+  "totalAmount": "Importo totale",
+  "sizeLabel": "Taglia: ",
+  "changeOrderStatus": "Cambia stato ordine"
 }

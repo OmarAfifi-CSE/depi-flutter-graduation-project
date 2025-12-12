@@ -988,4 +988,28 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get statusCancelled => '취소됨';
+
+  @override
+  String get orderDetails => '주문 상세';
+
+  @override
+  String get customerLabel => '고객: ';
+
+  @override
+  String get phoneLabel => '전화: ';
+
+  @override
+  String get paymentSummary => '결제 요약';
+
+  @override
+  String get free => '무료';
+
+  @override
+  String get totalAmount => '총 금액';
+
+  @override
+  String get sizeLabel => '사이즈: ';
+
+  @override
+  String get changeOrderStatus => '주문 상태 변경';
 }

@@ -406,5 +406,14 @@
   "statusProcessing": "प्रोसेसिंग",
   "statusShipped": "भेज दिया गया",
   "statusDelivered": "डिलीवर किया गया",
-  "statusCancelled": "रद्द"
+  "statusCancelled": "रद्द",
+
+  "orderDetails": "ऑर्डर विवरण",
+  "customerLabel": "ग्राहक: ",
+  "phoneLabel": "फ़ोन: ",
+  "paymentSummary": "भुगतान सारांश",
+  "free": "मुफ़्त",
+  "totalAmount": "कुल राशि",
+  "sizeLabel": "साइज़: ",
+  "changeOrderStatus": "ऑर्डर स्थिति बदलें"
 }

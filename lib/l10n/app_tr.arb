@@ -403,5 +403,14 @@
   "statusProcessing": "İşleniyor",
   "statusShipped": "Gönderildi",
   "statusDelivered": "Teslim edildi",
-  "statusCancelled": "İptal edildi"
+  "statusCancelled": "İptal edildi",
+
+  "orderDetails": "Sipariş Detayları",
+  "customerLabel": "Müşteri: ",
+  "phoneLabel": "Telefon: ",
+  "paymentSummary": "Ödeme Özeti",
+  "free": "Ücretsiz",
+  "totalAmount": "Toplam Tutar",
+  "sizeLabel": "Beden: ",
+  "changeOrderStatus": "Sipariş Durumunu Değiştir"
 }

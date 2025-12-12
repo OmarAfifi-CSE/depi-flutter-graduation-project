@@ -988,4 +988,28 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get statusCancelled => 'ملغي';
+
+  @override
+  String get orderDetails => 'تفاصيل الطلب';
+
+  @override
+  String get customerLabel => 'العميل: ';
+
+  @override
+  String get phoneLabel => 'الهاتف: ';
+
+  @override
+  String get paymentSummary => 'ملخص الدفع';
+
+  @override
+  String get free => 'مجاني';
+
+  @override
+  String get totalAmount => 'المبلغ الإجمالي';
+
+  @override
+  String get sizeLabel => 'المقاس: ';
+
+  @override
+  String get changeOrderStatus => 'تغيير حالة الطلب';
 }

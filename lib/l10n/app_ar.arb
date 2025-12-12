@@ -404,5 +404,14 @@
   "statusProcessing": "قيد المعالجة",
   "statusShipped": "تم الشحن",
   "statusDelivered": "تم التوصيل",
-  "statusCancelled": "ملغي"
+  "statusCancelled": "ملغي",
+
+  "orderDetails": "تفاصيل الطلب",
+  "customerLabel": "العميل: ",
+  "phoneLabel": "الهاتف: ",
+  "paymentSummary": "ملخص الدفع",
+  "free": "مجاني",
+  "totalAmount": "المبلغ الإجمالي",
+  "sizeLabel": "المقاس: ",
+  "changeOrderStatus": "تغيير حالة الطلب"
 }

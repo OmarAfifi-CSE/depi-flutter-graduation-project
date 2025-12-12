@@ -988,4 +988,28 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get statusCancelled => 'キャンセル';
+
+  @override
+  String get orderDetails => '注文詳細';
+
+  @override
+  String get customerLabel => 'お客様: ';
+
+  @override
+  String get phoneLabel => '電話: ';
+
+  @override
+  String get paymentSummary => 'お支払い概要';
+
+  @override
+  String get free => '無料';
+
+  @override
+  String get totalAmount => '合計金額';
+
+  @override
+  String get sizeLabel => 'サイズ: ';
+
+  @override
+  String get changeOrderStatus => '注文ステータスを変更';
 }

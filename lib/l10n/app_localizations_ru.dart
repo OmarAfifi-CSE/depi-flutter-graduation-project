@@ -988,4 +988,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get statusCancelled => 'Отменён';
+
+  @override
+  String get orderDetails => 'Детали заказа';
+
+  @override
+  String get customerLabel => 'Клиент: ';
+
+  @override
+  String get phoneLabel => 'Телефон: ';
+
+  @override
+  String get paymentSummary => 'Сводка платежа';
+
+  @override
+  String get free => 'Бесплатно';
+
+  @override
+  String get totalAmount => 'Общая сумма';
+
+  @override
+  String get sizeLabel => 'Размер: ';
+
+  @override
+  String get changeOrderStatus => 'Изменить статус заказа';
 }

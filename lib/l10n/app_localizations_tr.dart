@@ -988,4 +988,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get statusCancelled => 'İptal edildi';
+
+  @override
+  String get orderDetails => 'Sipariş Detayları';
+
+  @override
+  String get customerLabel => 'Müşteri: ';
+
+  @override
+  String get phoneLabel => 'Telefon: ';
+
+  @override
+  String get paymentSummary => 'Ödeme Özeti';
+
+  @override
+  String get free => 'Ücretsiz';
+
+  @override
+  String get totalAmount => 'Toplam Tutar';
+
+  @override
+  String get sizeLabel => 'Beden: ';
+
+  @override
+  String get changeOrderStatus => 'Sipariş Durumunu Değiştir';
 }

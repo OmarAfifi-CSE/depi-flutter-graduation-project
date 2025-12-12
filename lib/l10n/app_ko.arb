@@ -407,5 +407,14 @@
   "statusProcessing": "처리 중",
   "statusShipped": "배송됨",
   "statusDelivered": "배달 완료",
-  "statusCancelled": "취소됨"
+  "statusCancelled": "취소됨",
+
+  "orderDetails": "주문 상세",
+  "customerLabel": "고객: ",
+  "phoneLabel": "전화: ",
+  "paymentSummary": "결제 요약",
+  "free": "무료",
+  "totalAmount": "총 금액",
+  "sizeLabel": "사이즈: ",
+  "changeOrderStatus": "주문 상태 변경"
 }

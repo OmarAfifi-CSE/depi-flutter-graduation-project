@@ -407,5 +407,14 @@
   "statusProcessing": "In Bearbeitung",
   "statusShipped": "Versendet",
   "statusDelivered": "Geliefert",
-  "statusCancelled": "Storniert"
+  "statusCancelled": "Storniert",
+
+  "orderDetails": "Bestelldetails",
+  "customerLabel": "Kunde: ",
+  "phoneLabel": "Telefon: ",
+  "paymentSummary": "Zahlungsübersicht",
+  "free": "Kostenlos",
+  "totalAmount": "Gesamtbetrag",
+  "sizeLabel": "Größe: ",
+  "changeOrderStatus": "Bestellstatus ändern"
 }

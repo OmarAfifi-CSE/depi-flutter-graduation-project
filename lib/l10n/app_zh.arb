@@ -403,5 +403,14 @@
   "statusProcessing": "处理中",
   "statusShipped": "已发货",
   "statusDelivered": "已送达",
-  "statusCancelled": "已取消"
+  "statusCancelled": "已取消",
+
+  "orderDetails": "订单详情",
+  "customerLabel": "客户: ",
+  "phoneLabel": "电话: ",
+  "paymentSummary": "支付摘要",
+  "free": "免费",
+  "totalAmount": "总金额",
+  "sizeLabel": "尺码: ",
+  "changeOrderStatus": "更改订单状态"
 }
