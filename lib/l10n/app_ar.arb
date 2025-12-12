@@ -384,5 +384,10 @@
 
   "cartItemRemovedMsg": "عذراً، هذا الخيار نفذ للتو وتمت إزالته من السلة",
   "wishlistItemRemovedMsg": "عذراً، هذا المنتج لم يعد متوفراً وتمت إزالته من المفضلة",
-  "outOfStock": "نفذت الكمية"
+  "outOfStock": "نفذت الكمية",
+
+
+  "paymentMethod": "طريقة الدفع",
+  "payOnDelivery": "الدفع عند الاستلام",
+  "payOnDeliverySubtitle": "ادفع نقدًا عند استلام الطلب"
 }

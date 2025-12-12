@@ -933,4 +933,13 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get outOfStock => 'स्टॉक समाप्त';
+
+  @override
+  String get paymentMethod => 'भुगतान विधि';
+
+  @override
+  String get payOnDelivery => 'डिलीवरी पर भुगतान';
+
+  @override
+  String get payOnDeliverySubtitle => 'प्राप्ति पर नकद भुगतान करें';
 }

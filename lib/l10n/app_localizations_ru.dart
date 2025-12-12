@@ -933,4 +933,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get outOfStock => 'Out of Stock';
+
+  @override
+  String get paymentMethod => 'Способ оплаты';
+
+  @override
+  String get payOnDelivery => 'Оплата при доставке';
+
+  @override
+  String get payOnDeliverySubtitle => 'Оплата наличными при получении';
 }

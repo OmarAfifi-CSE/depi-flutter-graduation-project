@@ -388,5 +388,9 @@
 
   "cartItemRemovedMsg": "Désolé, cette option vient de s'épuiser et a été retirée de votre panier",
   "wishlistItemRemovedMsg": "Désolé, ce produit n'est plus disponible et a été retiré de votre liste de souhaits",
-  "outOfStock": "Rupture de stock"
+  "outOfStock": "Rupture de stock",
+
+  "paymentMethod": "Mode de paiement",
+  "payOnDelivery": "Paiement à la livraison",
+  "payOnDeliverySubtitle": "Payez en espèces à la réception"
 }

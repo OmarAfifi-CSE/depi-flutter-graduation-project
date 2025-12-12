@@ -12,7 +12,6 @@ class GetProductCubit extends Cubit<GetProductState> {
 
   Future<void> getProduct({required String productId}) async {
     try {
-      print("Mario ::"+productId.toString());
       emit(GetProductLoading());
       ProductModel? productModel = await fireBaseFireStore
           .getProductWithVariants(productID: productId);

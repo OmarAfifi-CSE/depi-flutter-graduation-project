@@ -168,8 +168,6 @@ class _ChatScreenState extends State<ChatScreen> {
           }
 
           transaction.set(messageRef, newMessage.toJson());
-          print(widget.chatId);
-
           transaction.set(convoRef, {
             'lastMessage': finalMessageText,
             'lastMessageSenderId': _myId,
@@ -334,8 +332,6 @@ class _ChatScreenState extends State<ChatScreen> {
                               isAnotherUserPending: true,
                               isRestricted: false,
                             );
-                            print("here");
-                            print(widget.anotherUser.picture);
                           } else {
                             conversationModel = ConversationModel.fromJson(
                               snapshot.data!.data()!,

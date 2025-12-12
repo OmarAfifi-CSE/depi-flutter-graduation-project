@@ -388,5 +388,9 @@
 
   "cartItemRemovedMsg": "죄송합니다. 이 옵션은 방금 품절되어 장바구니에서 제거되었습니다",
   "wishlistItemRemovedMsg": "죄송합니다. 이 제품은 더 이상 구매할 수 없어 위시리스트에서 제거되었습니다",
-  "outOfStock": "품절"
+  "outOfStock": "품절",
+
+  "paymentMethod": "결제 방법",
+  "payOnDelivery": "배송 시 결제",
+  "payOnDeliverySubtitle": "수령 시 현금으로 결제하세요"
 }

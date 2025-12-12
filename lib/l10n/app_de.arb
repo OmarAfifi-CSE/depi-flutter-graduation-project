@@ -388,5 +388,9 @@
 
   "cartItemRemovedMsg": "Entschuldigung, diese Option ist gerade ausverkauft und wurde aus Ihrem Warenkorb entfernt",
   "wishlistItemRemovedMsg": "Entschuldigung, dieses Produkt ist nicht mehr verfügbar und wurde aus Ihrer Wunschliste entfernt",
-  "outOfStock": "Ausverkauft"
+  "outOfStock": "Ausverkauft",
+
+  "paymentMethod": "Zahlungsmethode",
+  "payOnDelivery": "Barzahlung bei Lieferung",
+  "payOnDeliverySubtitle": "Barzahlung bei Erhalt der Ware"
 }

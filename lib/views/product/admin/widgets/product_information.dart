@@ -169,7 +169,6 @@ class _ProductInformationState extends State<ProductInformation> {
                           !categories.contains(selectedCategory)) {
                         selectedCategory = null;
                       }
-                      print(selectedCategory);
                       return DropdownButton<String>(
                         isExpanded: true,
                         dropdownColor: theme.scaffoldBackgroundColor,

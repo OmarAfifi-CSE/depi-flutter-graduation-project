@@ -384,5 +384,9 @@
   "orderSummary": "订单摘要",
   "discount": "折扣",
   "promoCode": "优惠码",
-  "apply": "应用"
+  "apply": "应用",
+
+  "paymentMethod": "支付方式",
+  "payOnDelivery": "货到付款",
+  "payOnDeliverySubtitle": "收货时现金支付"
 }

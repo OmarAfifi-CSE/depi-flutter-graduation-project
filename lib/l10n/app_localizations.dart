@@ -1940,6 +1940,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Out of Stock'**
   String get outOfStock;
+
+  /// No description provided for @paymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get paymentMethod;
+
+  /// No description provided for @payOnDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay on Delivery'**
+  String get payOnDelivery;
+
+  /// No description provided for @payOnDeliverySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay in cash upon receipt'**
+  String get payOnDeliverySubtitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

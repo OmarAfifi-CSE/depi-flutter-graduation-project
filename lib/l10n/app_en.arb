@@ -389,5 +389,9 @@
 
   "cartItemRemovedMsg": "Sorry, this option just ran out and was removed from your cart",
   "wishlistItemRemovedMsg": "Sorry, this product is no longer available and was removed from your wishlist",
-  "outOfStock": "Out of Stock"
+  "outOfStock": "Out of Stock",
+
+  "paymentMethod": "Payment Method",
+  "payOnDelivery": "Pay on Delivery",
+  "payOnDeliverySubtitle": "Pay in cash upon receipt"
 }

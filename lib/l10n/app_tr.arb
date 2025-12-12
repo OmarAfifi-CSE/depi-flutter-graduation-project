@@ -384,5 +384,9 @@
   "orderSummary": "Sipariş Özeti",
   "discount": "İndirim",
   "promoCode": "Promosyon Kodu",
-  "apply": "Uygula"
+  "apply": "Uygula",
+
+  "paymentMethod": "Ödeme Yöntemi",
+  "payOnDelivery": "Kapıda Ödeme",
+  "payOnDeliverySubtitle": "Teslimatta nakit ödeme yapın"
 }

@@ -46,7 +46,6 @@ class _SizeOptionState extends State<SizeOption> {
             spacing: 8.w,
             runSpacing: 8.h,
             children: List.generate(widget.sizes.length, (index) {
-              print(widget.sizes[index]);
               return GestureDetector(
                 onTap: () {
                   selected = index;

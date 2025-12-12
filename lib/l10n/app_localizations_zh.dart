@@ -933,4 +933,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get outOfStock => 'Out of Stock';
+
+  @override
+  String get paymentMethod => '支付方式';
+
+  @override
+  String get payOnDelivery => '货到付款';
+
+  @override
+  String get payOnDeliverySubtitle => '收货时现金支付';
 }

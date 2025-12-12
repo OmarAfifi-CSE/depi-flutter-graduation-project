@@ -100,7 +100,6 @@ class _AddProductColorDialogState extends State<AddProductColorDialog> {
     final loc = AppLocalizations.of(context);
     ProductFormProvider productFormProvider = context
         .read<ProductFormProvider>();
-    print(images.length);
     return Container(
       height: 1.sh / 2,
       width: double.infinity,

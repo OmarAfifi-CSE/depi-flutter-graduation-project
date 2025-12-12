@@ -38,8 +38,6 @@ class _AddVariantOptionState extends State<AddVariantOption> {
 
   @override
   Widget build(BuildContext context) {
-    print(selectedSize);
-    print(widget.productVariant?.size);
     ProductFormProvider productFormProvider = context
         .read<ProductFormProvider>();
     String variantType = productFormProvider.selectedVariantType;
@@ -144,7 +142,6 @@ class _AddVariantOptionState extends State<AddVariantOption> {
               setState(() {
                 quantity = int.tryParse(value) ?? 0;
               });
-              print(quantity);
             },
           ),
           SizedBox(height: 20.h),

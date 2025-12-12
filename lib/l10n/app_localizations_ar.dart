@@ -933,4 +933,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get outOfStock => 'نفذت الكمية';
+
+  @override
+  String get paymentMethod => 'طريقة الدفع';
+
+  @override
+  String get payOnDelivery => 'الدفع عند الاستلام';
+
+  @override
+  String get payOnDeliverySubtitle => 'ادفع نقدًا عند استلام الطلب';
 }

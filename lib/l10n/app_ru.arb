@@ -384,5 +384,9 @@
   "orderSummary": "Сводка заказа",
   "discount": "Скидка",
   "promoCode": "Промокод",
-  "apply": "Применить"
+  "apply": "Применить",
+
+  "paymentMethod": "Способ оплаты",
+  "payOnDelivery": "Оплата при доставке",
+  "payOnDeliverySubtitle": "Оплата наличными при получении"
 }

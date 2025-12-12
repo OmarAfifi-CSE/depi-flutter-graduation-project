@@ -933,4 +933,13 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get outOfStock => 'Rupture de stock';
+
+  @override
+  String get paymentMethod => 'Mode de paiement';
+
+  @override
+  String get payOnDelivery => 'Paiement à la livraison';
+
+  @override
+  String get payOnDeliverySubtitle => 'Payez en espèces à la réception';
 }

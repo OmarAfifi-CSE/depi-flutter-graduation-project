@@ -933,4 +933,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get outOfStock => '품절';
+
+  @override
+  String get paymentMethod => '결제 방법';
+
+  @override
+  String get payOnDelivery => '배송 시 결제';
+
+  @override
+  String get payOnDeliverySubtitle => '수령 시 현금으로 결제하세요';
 }

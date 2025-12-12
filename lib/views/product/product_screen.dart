@@ -42,7 +42,6 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     bool preview = widget.previewModel != null;
-    print(widget.previewModel);
 
     return !preview
         ? BlocProvider(

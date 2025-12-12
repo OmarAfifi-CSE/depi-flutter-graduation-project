@@ -46,7 +46,9 @@ class ProfileInfo extends StatelessWidget {
             ProfileMenuItem(
               icon: Icons.shopping_bag,
               title: loc.myOrders,
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(AppRoutes.ordersScreen);
+              },
             ),
             ProfileMenuItem(
               svg: theme.brightness != Brightness.light

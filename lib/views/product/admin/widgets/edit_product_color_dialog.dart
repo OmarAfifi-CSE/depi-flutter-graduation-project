@@ -88,7 +88,6 @@ class _EditProductColorDialogState extends State<EditProductColorDialog> {
         );
       },
     );
-    print(result);
     if (result != null) {
       setState(() {
         currentColor = result;

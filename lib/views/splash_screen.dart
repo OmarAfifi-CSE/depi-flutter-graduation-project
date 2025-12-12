@@ -63,7 +63,6 @@ class _SplashScreenState extends State<SplashScreen> {
           if (mounted) context.go(AppRoutes.wrapperScreen);
         }
       } catch (e) {
-        print(e.toString());
         // Handle a rare error where user is in Auth but not Firestore
         await FirebaseAuth.instance.signOut();
         if (mounted) context.go(AppRoutes.signInScreen);

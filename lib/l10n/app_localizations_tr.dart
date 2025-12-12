@@ -933,4 +933,13 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get outOfStock => 'Out of Stock';
+
+  @override
+  String get paymentMethod => 'Ödeme Yöntemi';
+
+  @override
+  String get payOnDelivery => 'Kapıda Ödeme';
+
+  @override
+  String get payOnDeliverySubtitle => 'Teslimatta nakit ödeme yapın';
 }

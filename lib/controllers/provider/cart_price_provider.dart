@@ -41,4 +41,12 @@ class CartPriceProvider extends ChangeNotifier {
     discount = dis;
     notifyListeners();
   }
+
+  void resetCart() {
+    subTotal = 0.0;
+    count = 0;
+    discount = 0.0;
+    currentCart = [];
+    notifyListeners();
+  }
 }

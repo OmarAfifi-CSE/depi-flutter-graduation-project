@@ -15,7 +15,7 @@ class GetCartCubit extends Cubit<GetCartState> {
       List<CartModel> userCart = await fireBaseFireStore.getUserCart();
       emit(GetCartSuccess(userCart: userCart));
     } catch (e) {
-      emit(GetCartFailure(error: "error happened"));
+      emit(GetCartFailure(error: "An error occurred while fetching the cart."));
     }
   }
 
@@ -48,5 +48,9 @@ class GetCartCubit extends Cubit<GetCartState> {
         emit(GetCartSuccess(userCart: currentList));
       }
     }
+  }
+
+  void clearCartLocal() {
+    emit(GetCartSuccess(userCart: []));
   }
 }

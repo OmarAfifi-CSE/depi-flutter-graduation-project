@@ -1,6 +1,7 @@
 import 'package:batrina/models/category_model.dart';
 import 'package:batrina/models/address_model.dart';
 import 'package:batrina/models/chat_page_models/conservesion_model.dart';
+import 'package:batrina/models/order_model.dart';
 import 'package:batrina/models/product_model.dart';
 import 'package:batrina/models/promo_model.dart';
 import 'package:batrina/models/review_model.dart';
@@ -174,7 +175,6 @@ class FireBaseFireStore {
       }
       return null;
     } catch (e) {
-      print(e.toString());
       return null;
     }
   }
@@ -754,5 +754,67 @@ class FireBaseFireStore {
     return querySnapshot.docs.map((e) {
       return WishlistModel.fromJson(e.data()).copyWith(id: e.id);
     }).toList();
+  }
+
+  // -----------------------------------------------
+  // Orders Functions
+  // -----------------------------------------------
+  Future<void> placeOrder({required OrderModel order}) async {
+    WriteBatch batch = fireBaseFireStore.batch();
+    DocumentReference orderRef = fireBaseFireStore.collection('orders').doc();
+    batch.set(orderRef, order.toJson());
+    var cartSnapshot = await fireBaseFireStore
+        .collection("users")
+        .doc(order.userId)
+        .collection("userCart")
+        .get();
+    for (var doc in cartSnapshot.docs) {
+      batch.delete(doc.reference);
+    }
+    for (var item in order.items) {
+      DocumentReference variantRef = fireBaseFireStore
+          .collection('products')
+          .doc(item.productId)
+          .collection('variants')
+          .doc(item.variantId);
+      batch.update(variantRef, {
+        'stock': FieldValue.increment(-item.quantity),
+      });
+    }
+    await batch.commit();
+  }
+
+  // 2. دالة جلب اوردرات اليوزر فقط (لصفحة My Orders)
+  Stream<List<OrderModel>> getUserOrders() {
+    return fireBaseFireStore
+        .collection('orders')
+        .where('userId', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+        .orderBy('createdAt', descending: true)
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => OrderModel.fromJson(doc.data(), doc.id))
+              .toList(),
+        );
+  }
+
+  // 3. دالة جلب كل الاوردرات (للأدمن)
+  Stream<List<OrderModel>> getAllOrdersForAdmin() {
+    return fireBaseFireStore
+        .collection('orders')
+        .orderBy('createdAt', descending: true)
+        .snapshots()
+        .map(
+          (snapshot) => snapshot.docs
+              .map((doc) => OrderModel.fromJson(doc.data(), doc.id))
+              .toList(),
+        );
+  }
+
+  // 4. دالة تغيير حالة الاوردر (للأدمن)
+  Future<void> updateOrderStatus(String orderId, String newStatus) async {
+    await fireBaseFireStore.collection('orders').doc(orderId).update({
+      'status': newStatus,
+    });
   }
 }

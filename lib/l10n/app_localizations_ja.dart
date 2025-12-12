@@ -933,4 +933,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get outOfStock => '在庫切れ';
+
+  @override
+  String get paymentMethod => '支払い方法';
+
+  @override
+  String get payOnDelivery => '代金引換';
+
+  @override
+  String get payOnDeliverySubtitle => '受け取り時に現金で支払う';
 }

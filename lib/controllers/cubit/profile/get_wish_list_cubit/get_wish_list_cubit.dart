@@ -21,9 +21,6 @@ class GetWishListCubit extends Cubit<GetWishListState> {
   }
 
   void removeLocal(String wishListId) {
-    for (var x in (state as GetWishListSuccess).userWishList) {
-      print(x.id);
-    }
     if (state is GetWishListSuccess) {
       List<WishlistModel> userWishList = List.from(
         (state as GetWishListSuccess).userWishList,

@@ -54,7 +54,6 @@ class _ChatHeaderState extends State<ChatHeader> {
             },
           }, SetOptions(merge: true));
     } catch (e) {
-      print("Error accepting chat: $e");
     }
     setState(() {
       isLoading = false;

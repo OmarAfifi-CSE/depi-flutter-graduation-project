@@ -64,7 +64,6 @@ class VariantSelector extends StatelessWidget {
                     .toList(),
                 onChanged: (String? value) {
                   productFormProvider.setType(value!);
-                  print(productFormProvider.selectedVariantType);
                   productFormProvider.clearAllVariants();
                 },
               ),

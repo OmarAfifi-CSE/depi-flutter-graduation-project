@@ -388,5 +388,9 @@
 
   "cartItemRemovedMsg": "Spiacenti, questa opzione è appena esaurita ed è stata rimossa dal carrello",
   "wishlistItemRemovedMsg": "Spiacenti, questo prodotto non è più disponibile ed è stato rimosso dalla lista dei desideri",
-  "outOfStock": "Esaurito"
+  "outOfStock": "Esaurito",
+
+  "paymentMethod": "Metodo di pagamento",
+  "payOnDelivery": "Pagamento alla consegna",
+  "payOnDeliverySubtitle": "Paga in contanti alla ricezione"
 }

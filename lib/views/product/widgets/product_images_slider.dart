@@ -186,15 +186,9 @@ $productLink''';
         ),
       );
     }
-    for (var p in state.conversations) {
-      print(p.me.conversationState);
-    }
     final acceptedList = state.conversations
         .where((element) => element.me.conversationState == 'accepted')
         .toList();
-    for (var p in acceptedList) {
-      print(p.otherUser.name);
-    }
 
     return ChangeNotifierProvider(
       create: (context) => LocalChatController(),
