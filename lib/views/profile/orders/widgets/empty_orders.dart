@@ -8,8 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 
-class EmptyOrders extends StatelessWidget {
-  const EmptyOrders({Key? key}) : super(key: key);
+class EmptyOrdersView extends StatelessWidget {
+  const EmptyOrdersView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class EmptyOrders extends StatelessWidget {
           ),
           SizedBox(height: 12.h),
           CustomText(
-            data: loc.emptyCartSubtitle,
+            data: loc.emptyOrdersSubtitle,
             fontSize: 16.sp,
             fontWeight: FontWeight.w400,
             textAlign: TextAlign.center,
@@ -60,7 +60,7 @@ class EmptyOrders extends StatelessWidget {
                   ),
                   SizedBox(width: 8.w),
                   CustomText(
-                    data: loc.continueShopping,
+                    data: loc.startShopping,
                     fontSize: 20.sp,
                     fontWeight: FontWeight.w400,
                     color: theme.scaffoldBackgroundColor,

@@ -1971,6 +1971,18 @@ abstract class AppLocalizations {
   /// **'No orders yet'**
   String get noOrdersYet;
 
+  /// No description provided for @emptyOrdersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Looks like you haven\'t placed any orders yet. Start shopping to fill this list!'**
+  String get emptyOrdersSubtitle;
+
+  /// No description provided for @startShopping.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Shopping'**
+  String get startShopping;
+
   /// No description provided for @orderNumber.
   ///
   /// In en, this message translates to:

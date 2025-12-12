@@ -392,6 +392,8 @@
 
   "allOrdersAdmin": "Все заказы (Админ)",
   "noOrdersYet": "Заказов пока нет",
+  "emptyOrdersSubtitle": "Похоже, вы ещё не делали заказов. Начните покупки, чтобы заполнить этот список!",
+  "startShopping": "Начать покупки",
   "orderNumber": "Заказ #{orderId}",
   "userLabel": "Пользователь: ",
   "itemsCount": "{count} товаров",

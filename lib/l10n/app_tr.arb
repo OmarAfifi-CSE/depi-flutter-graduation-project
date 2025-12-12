@@ -392,6 +392,8 @@
 
   "allOrdersAdmin": "Tüm Siparişler (Yönetici)",
   "noOrdersYet": "Henüz sipariş yok",
+  "emptyOrdersSubtitle": "Henüz sipariş vermemişsiniz gibi görünüyor. Bu listeyi doldurmak için alışverişe başlayın!",
+  "startShopping": "Alışverişe Başla",
   "orderNumber": "Sipariş #{orderId}",
   "userLabel": "Kullanıcı: ",
   "itemsCount": "{count} Ürün",

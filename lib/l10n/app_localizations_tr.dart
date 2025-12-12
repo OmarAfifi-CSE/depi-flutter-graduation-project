@@ -950,6 +950,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get noOrdersYet => 'Henüz sipariş yok';
 
   @override
+  String get emptyOrdersSubtitle => 'Henüz sipariş vermemişsiniz gibi görünüyor. Bu listeyi doldurmak için alışverişe başlayın!';
+
+  @override
+  String get startShopping => 'Alışverişe Başla';
+
+  @override
   String orderNumber(Object orderId) {
     return 'Sipariş #$orderId';
   }

@@ -950,6 +950,12 @@ class AppLocalizationsKo extends AppLocalizations {
   String get noOrdersYet => '아직 주문이 없습니다';
 
   @override
+  String get emptyOrdersSubtitle => '아직 주문하신 적이 없는 것 같습니다. 쇼핑을 시작하세요!';
+
+  @override
+  String get startShopping => '쇼핑 시작하기';
+
+  @override
   String orderNumber(Object orderId) {
     return '주문 #$orderId';
   }

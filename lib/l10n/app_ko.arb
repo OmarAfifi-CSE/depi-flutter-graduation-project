@@ -396,6 +396,8 @@
 
   "allOrdersAdmin": "모든 주문 (관리자)",
   "noOrdersYet": "아직 주문이 없습니다",
+  "emptyOrdersSubtitle": "아직 주문하신 적이 없는 것 같습니다. 쇼핑을 시작하세요!",
+  "startShopping": "쇼핑 시작하기",
   "orderNumber": "주문 #{orderId}",
   "userLabel": "사용자: ",
   "itemsCount": "{count} 개",

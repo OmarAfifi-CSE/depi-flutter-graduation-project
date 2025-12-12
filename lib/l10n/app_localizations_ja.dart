@@ -947,7 +947,13 @@ class AppLocalizationsJa extends AppLocalizations {
   String get allOrdersAdmin => '全ての注文（管理者）';
 
   @override
-  String get noOrdersYet => 'まだ注文がありません';
+  String get noOrdersYet => 'まだ注文はありません';
+
+  @override
+  String get emptyOrdersSubtitle => 'まだ注文がないようです。ショッピングを始めてリストを埋めましょう！';
+
+  @override
+  String get startShopping => 'ショッピングを始める';
 
   @override
   String orderNumber(Object orderId) {

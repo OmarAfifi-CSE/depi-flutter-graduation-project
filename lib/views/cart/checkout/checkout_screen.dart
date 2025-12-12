@@ -154,7 +154,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
           appBar: AppBar(
             title: CustomHeaderWidget(
               center: CustomText(
-                data: loc!.checkout,
+                data: loc.checkout,
                 textAlign: TextAlign.center,
                 fontSize: 22.sp,
                 fontWeight: FontWeight.w700,

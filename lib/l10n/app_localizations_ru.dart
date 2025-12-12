@@ -950,6 +950,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get noOrdersYet => 'Заказов пока нет';
 
   @override
+  String get emptyOrdersSubtitle => 'Похоже, вы ещё не делали заказов. Начните покупки, чтобы заполнить этот список!';
+
+  @override
+  String get startShopping => 'Начать покупки';
+
+  @override
   String orderNumber(Object orderId) {
     return 'Заказ #$orderId';
   }

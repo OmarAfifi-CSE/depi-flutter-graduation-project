@@ -395,6 +395,8 @@
 
   "allOrdersAdmin": "सभी ऑर्डर (एडमिन)",
   "noOrdersYet": "अभी तक कोई ऑर्डर नहीं",
+  "emptyOrdersSubtitle": "लगता है आपने अभी तक कोई ऑर्डर नहीं दिया है। इस सूची को भरने के लिए खरीदारी शुरू करें!",
+  "startShopping": "खरीदारी शुरू करें",
   "orderNumber": "ऑर्डर #{orderId}",
   "userLabel": "उपयोगकर्ता: ",
   "itemsCount": "{count} आइटम",

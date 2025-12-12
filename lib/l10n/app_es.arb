@@ -396,6 +396,8 @@
 
   "allOrdersAdmin": "Todos los pedidos (Admin)",
   "noOrdersYet": "Aún no hay pedidos",
+  "emptyOrdersSubtitle": "Parece que aún no has realizado ningún pedido. ¡Comienza a comprar para llenar esta lista!",
+  "startShopping": "Empezar a comprar",
   "orderNumber": "Pedido #{orderId}",
   "userLabel": "Usuario: ",
   "itemsCount": "{count} Artículos",

@@ -393,6 +393,8 @@
 
   "allOrdersAdmin": "جميع الطلبات (المشرف)",
   "noOrdersYet": "لا توجد طلبات حتى الآن",
+  "emptyOrdersSubtitle": "يبدو أنك لم تقم بأي طلبات بعد. ابدأ التسوق لملء هذه القائمة!",
+  "startShopping": "ابدأ التسوق",
   "orderNumber": "طلب #{orderId}",
   "userLabel": "المستخدم: ",
   "itemsCount": "{count} منتجات",

@@ -397,6 +397,8 @@
 
   "allOrdersAdmin": "All Orders (Admin)",
   "noOrdersYet": "No orders yet",
+  "emptyOrdersSubtitle": "Looks like you haven't placed any orders yet. Start shopping to fill this list!",
+  "startShopping": "Start Shopping",
   "orderNumber": "Order #{orderId}",
   "userLabel": "User: ",
   "itemsCount": "{count} Items",

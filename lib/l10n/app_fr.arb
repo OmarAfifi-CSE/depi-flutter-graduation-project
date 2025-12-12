@@ -396,6 +396,8 @@
 
   "allOrdersAdmin": "Toutes les commandes (Admin)",
   "noOrdersYet": "Pas encore de commandes",
+  "emptyOrdersSubtitle": "Il semble que vous n'avez pas encore passé de commande. Commencez vos achats!",
+  "startShopping": "Commencer les achats",
   "orderNumber": "Commande #{orderId}",
   "userLabel": "Utilisateur: ",
   "itemsCount": "{count} Articles",

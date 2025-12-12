@@ -392,6 +392,8 @@
 
   "allOrdersAdmin": "所有订单 (管理员)",
   "noOrdersYet": "暂无订单",
+  "emptyOrdersSubtitle": "看起来您还没有下过订单。开始购物来填充这个列表吧！",
+  "startShopping": "开始购物",
   "orderNumber": "订单 #{orderId}",
   "userLabel": "用户: ",
   "itemsCount": "{count} 件商品",

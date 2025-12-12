@@ -71,18 +71,17 @@ class OrderItemCard extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.all(16.r),
+        padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
-          color: theme.cardColor,
+          color: theme.scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withValues(alpha: 0.1),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
+              color: theme.primaryColor.withValues(alpha: 0.1),
+              blurRadius: 10.r,
+              spreadRadius: 1.r,
             ),
           ],
-          border: Border.all(color: theme.dividerColor.withValues(alpha: 0.5)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,6 +185,7 @@ class OrderItemCard extends StatelessWidget {
                 // Admin Action Button
                 if (isAdminMode)
                   PopupMenuButton<String>(
+                    color: theme.scaffoldBackgroundColor,
                     onSelected: (newStatus) {
                       context.read<OrdersCubit>().updateOrderStatus(
                         order.id,

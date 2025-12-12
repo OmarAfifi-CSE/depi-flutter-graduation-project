@@ -950,6 +950,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get noOrdersYet => '暂无订单';
 
   @override
+  String get emptyOrdersSubtitle => '看起来您还没有下过订单。开始购物来填充这个列表吧！';
+
+  @override
+  String get startShopping => '开始购物';
+
+  @override
   String orderNumber(Object orderId) {
     return '订单 #$orderId';
   }
