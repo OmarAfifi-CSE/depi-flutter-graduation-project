@@ -59,7 +59,7 @@ class OrderItemCard extends StatelessWidget {
     final loc = AppLocalizations.of(context);
     final theme = Theme.of(context);
     final formattedDate = DateFormat(
-      'MMM dd, yyyy - hh:mm a',
+      'MMM dd, yyyy',
     ).format(order.createdAt);
 
     return GestureDetector(

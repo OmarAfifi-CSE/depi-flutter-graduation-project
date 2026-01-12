@@ -71,11 +71,10 @@ class OrderSuccessfulScreen extends StatelessWidget {
 
                 // Secondary Button (View Orders)
                 TextButton(
-                  style: TextButton.styleFrom(
-                    overlayColor: Colors.transparent
-                  ),
+                  style: TextButton.styleFrom(overlayColor: Colors.transparent),
                   onPressed: () {
-                    context.goNamed(AppRoutes.ordersScreen);
+                    context.goNamed(AppRoutes.profileScreen);
+                    context.pushNamed(AppRoutes.ordersScreen);
                   },
                   child: CustomText(
                     data: loc.trackYourOrder,

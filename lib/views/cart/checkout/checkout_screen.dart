@@ -330,7 +330,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                             ],
                           ),
                         ),
-                        SizedBox(width: 15.w),
+                        SizedBox(width: 5.w),
                         SizedBox(
                           height: 50.h,
                           child: Consumer<ControlPlaceOrderProvider>(

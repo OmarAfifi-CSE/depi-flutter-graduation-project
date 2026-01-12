@@ -58,7 +58,12 @@ class OrderDetailsScreen extends StatelessWidget {
             final formattedDate = DateFormat(
               'MMM dd, yyyy - hh:mm a',
             ).format(currentOrder.createdAt);
-
+            const double shippingCost = 7.95;
+            double subTotal = currentOrder.items.fold(
+              0.0,
+              (sum, item) => sum + (item.price * item.quantity),
+            );
+            double totalAmount = currentOrder.totalAmount;
             return SingleChildScrollView(
               padding: EdgeInsets.all(20.r),
               child: Column(
@@ -73,13 +78,17 @@ class OrderDetailsScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            CustomText(
-                              data: loc.orderNumber(
-                                currentOrder.id.substring(0, 6).toUpperCase(),
+                            Flexible(
+                              child: CustomText(
+                                data: loc.orderNumber(
+                                  currentOrder.id.toUpperCase(),
+                                ),
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.bold,
+                                textAlign: TextAlign.start,
                               ),
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
                             ),
+                            SizedBox(width: 10.w),
                             _buildStatusBadge(context, currentOrder.status),
                           ],
                         ),
@@ -190,17 +199,24 @@ class OrderDetailsScreen extends StatelessWidget {
                     theme,
                     child: Column(
                       children: [
+                        // Subtotal
                         _buildSummaryRow(
                           loc.subtotal,
-                          "\$${currentOrder.totalAmount}",
+                          "\$${subTotal.toStringAsFixed(2)}",
                           theme: theme,
                         ),
                         SizedBox(height: 8.h),
-                        _buildSummaryRow(loc.shipping, loc.free, theme: theme),
+                        // Shipping
+                        _buildSummaryRow(
+                          loc.shipping,
+                          "\$${shippingCost.toStringAsFixed(2)}",
+                          theme: theme,
+                        ),
                         const Divider(height: 20),
+                        // Total
                         _buildSummaryRow(
                           loc.totalAmount,
-                          "\$${currentOrder.totalAmount}",
+                          "\$${totalAmount.toStringAsFixed(2)}",
                           isTotal: true,
                           theme: theme,
                         ),

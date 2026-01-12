@@ -166,54 +166,124 @@ class ProductOptions extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomText(
-                          data: "\$${productModel.price}",
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w400,
-                          color: theme.scaffoldBackgroundColor,
-                        ),
-                        SizedBox(
-                          height: 40.h,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              padding: EdgeInsets.symmetric(horizontal: 16.w),
-                              backgroundColor: theme.scaffoldBackgroundColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadiusGeometry.circular(
-                                  12.r,
+                        Expanded(
+                          flex: 4,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (productModel.price > productModel.finalPrice)
+                                CustomText(
+                                  data: "\$${productModel.price}",
+                                  fontSize: 12.sp,
+                                  color: theme.scaffoldBackgroundColor
+                                      .withValues(alpha: 0.7),
+                                  lined: true,
+                                  decorationColor: theme.scaffoldBackgroundColor
+                                      .withValues(alpha: 0.7),
+                                  fontFamily: AppFonts.englishFontFamily,
                                 ),
-                              ),
-                            ),
-                            onPressed: productProvider.currentVariantStock != 0
-                                ? () {}
-                                : () {},
-                            child: productProvider.currentVariantStock != 0
-                                ? Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      SvgPicture.asset(
-                                        AppAssets.cartIcon,
-                                        fit: BoxFit.scaleDown,
-                                        colorFilter: ColorFilter.mode(
-                                          theme.primaryColor,
-                                          BlendMode.srcIn,
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                alignment: Alignment.centerLeft,
+                                child: Row(
+                                  children: [
+                                    CustomText(
+                                      data: "\$${productModel.finalPrice}",
+                                      fontSize: 16.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: theme.scaffoldBackgroundColor,
+                                      fontFamily: AppFonts.englishFontFamily,
+                                    ),
+                                    if (productModel.price >
+                                        productModel.finalPrice) ...[
+                                      SizedBox(width: 6.w),
+                                      Container(
+                                        padding: EdgeInsets.symmetric(
+                                          horizontal: 6.w,
+                                          vertical: 2.h,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: theme.scaffoldBackgroundColor,
+                                          borderRadius: BorderRadius.circular(
+                                            4.r,
+                                          ),
+                                        ),
+                                        child: CustomText(
+                                          data:
+                                              "${productModel.discountPercentage.toInt()}% OFF",
+                                          fontSize: 10.sp,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily:
+                                              AppFonts.englishFontFamily,
                                         ),
                                       ),
-                                      SizedBox(width: 4.w),
-                                      CustomText(
-                                        data: loc.addToCart,
-                                        fontSize: 15.sp,
-                                        fontWeight: FontWeight.w400,
-                                      ),
                                     ],
-                                  )
-                                : Center(
-                                    child: CustomText(
-                                      data: loc.notAvailable,
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w400,
-                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(width: 8.w),
+                        Expanded(
+                          flex: 6,
+                          child: SizedBox(
+                            height: 40.h,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: EdgeInsets.symmetric(horizontal: 8.w),
+                                backgroundColor: theme.scaffoldBackgroundColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadiusGeometry.circular(
+                                    12.r,
                                   ),
+                                ),
+                              ),
+                              onPressed:
+                                  productProvider.currentVariantStock != 0
+                                  ? () {}
+                                  : () {},
+                              child: productProvider.currentVariantStock != 0
+                                  ? Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        SvgPicture.asset(
+                                          AppAssets.cartIcon,
+                                          fit: BoxFit.scaleDown,
+                                          width: 20.w,
+                                          height: 20.w,
+                                          colorFilter: ColorFilter.mode(
+                                            theme.primaryColor,
+                                            BlendMode.srcIn,
+                                          ),
+                                        ),
+                                        SizedBox(width: 4.w),
+                                        Flexible(
+                                          child: FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: CustomText(
+                                              data: loc.addToCart,
+                                              fontSize: 15.sp,
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  : Center(
+                                      child: FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: CustomText(
+                                          data: loc.notAvailable,
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ),
+                            ),
                           ),
                         ),
                       ],

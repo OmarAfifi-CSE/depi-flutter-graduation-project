@@ -13,6 +13,7 @@ class CustomText extends StatelessWidget {
     this.maxLines,
     this.forceStrutHeight = false,
     this.lined = false,
+    this.decorationColor,
   });
 
   final String data;
@@ -23,6 +24,7 @@ class CustomText extends StatelessWidget {
   final TextAlign? textAlign;
   final int? maxLines;
   final bool lined;
+  final Color? decorationColor;
 
   // Sometimes Arabic text appears slightly higher than adjacent text
   final bool forceStrutHeight;
@@ -39,6 +41,7 @@ class CustomText extends StatelessWidget {
       overflow: maxLines != null ? TextOverflow.ellipsis : null,
       style: TextStyle(
         decoration: lined ? TextDecoration.lineThrough : TextDecoration.none,
+        decorationColor: decorationColor,
         fontSize: fontSize,
         fontWeight: fontWeight ?? FontWeight.normal,
         fontFamily: fontFamily ?? AppFonts.mainFontName,
