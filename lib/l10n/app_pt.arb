@@ -385,6 +385,9 @@
   "discount": "Desconto",
   "promoCode": "Código promocional",
   "apply": "Aplicar",
+  "cartItemRemovedMsg": "Desculpe, esta opção acabou de esgotar e foi removida do seu carrinho",
+  "wishlistItemRemovedMsg": "Desculpe, este produto não está mais disponível e foi removido da sua lista de desejos",
+  "outOfStock": "Fora de estoque",
 
   "paymentMethod": "Método de pagamento",
   "payOnDelivery": "Pagamento na entrega",
@@ -412,5 +415,7 @@
   "free": "Grátis",
   "totalAmount": "Valor total",
   "sizeLabel": "Tamanho: ",
-  "changeOrderStatus": "Alterar status do pedido"
+  "changeOrderStatus": "Alterar status do pedido",
+  "applied": "Aplicado",
+  "invalid": "Inválido"
 }

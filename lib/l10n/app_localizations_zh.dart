@@ -338,7 +338,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get emptyCartSubtitle => '看来您还没有添加任何商品到购物车。去挑点您喜欢的东西吧！';
 
   @override
-  String get continueShopping => '继续购物';
+  String get continueShopping => '开始购物';
 
   @override
   String get addtocard => '加入购物车';
@@ -926,13 +926,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get apply => '应用';
 
   @override
-  String get cartItemRemovedMsg => 'Sorry, this option just ran out and was removed from your cart';
+  String get cartItemRemovedMsg => '抱歉，此选项刚刚售罄，已从您的购物车中移除';
 
   @override
-  String get wishlistItemRemovedMsg => 'Sorry, this product is no longer available and was removed from your wishlist';
+  String get wishlistItemRemovedMsg => '抱歉，该产品已不再可用，已从您的心愿单中移除';
 
   @override
-  String get outOfStock => 'Out of Stock';
+  String get outOfStock => '缺货';
 
   @override
   String get paymentMethod => '支付方式';
@@ -1012,4 +1012,10 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get changeOrderStatus => '更改订单状态';
+
+  @override
+  String get applied => '已应用';
+
+  @override
+  String get invalid => '无效';
 }

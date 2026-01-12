@@ -42,7 +42,7 @@ class CartViewBody extends StatelessWidget {
             );
           }
           final List<CartModel> userCart = (state as GetCartSuccess).userCart;
-          context.read<CartPriceProvider>().init(cart: userCart, shipping: 50);
+          context.read<CartPriceProvider>().init(cart: userCart, shipping: 7.95);
           return userCart.isEmpty
               ? const EmptyCartView()
               : Stack(
@@ -50,10 +50,10 @@ class CartViewBody extends StatelessWidget {
                     Column(
                       children: [
                         SizedBox(
-                          height: 360.h,
+                          height: 330.h,
                           child: _buildCartItems(context, userCart),
                         ),
-                        SizedBox(height: 25.h),
+                        SizedBox(height: 20.h),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25.0.w),
                           child: const PromoCodeTextField(),
@@ -119,7 +119,7 @@ class CartViewBody extends StatelessWidget {
       },
       itemCount: cart.length,
       itemBuilder: (context, index) {
-        return CardItem(key: ValueKey(cart[index].id), cartModel: cart[index]);
+        return CartItem(key: ValueKey(cart[index].id), cartModel: cart[index]);
       },
     );
   }

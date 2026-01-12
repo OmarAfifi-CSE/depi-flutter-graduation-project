@@ -338,7 +338,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get emptyCartSubtitle => '아직 장바구니에 담은 상품이 없는 것 같네요. 마음에 드는 상품을 찾아보세요!';
 
   @override
-  String get continueShopping => '쇼핑 계속하기';
+  String get continueShopping => '쇼핑 시작';
 
   @override
   String get addtocard => '장바구니에 담기';
@@ -1012,4 +1012,10 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get changeOrderStatus => '주문 상태 변경';
+
+  @override
+  String get applied => '적용됨';
+
+  @override
+  String get invalid => '유효하지 않음';
 }

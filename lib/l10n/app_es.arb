@@ -416,5 +416,7 @@
   "free": "Gratis",
   "totalAmount": "Monto total",
   "sizeLabel": "Talla: ",
-  "changeOrderStatus": "Cambiar estado del pedido"
+  "changeOrderStatus": "Cambiar estado del pedido",
+  "applied": "Aplicado",
+  "invalid": "Inválido"
 }

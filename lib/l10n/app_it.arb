@@ -416,5 +416,7 @@
   "free": "Gratuito",
   "totalAmount": "Importo totale",
   "sizeLabel": "Taglia: ",
-  "changeOrderStatus": "Cambia stato ordine"
+  "changeOrderStatus": "Cambia stato ordine",
+  "applied": "Applicato",
+  "invalid": "Non valido"
 }

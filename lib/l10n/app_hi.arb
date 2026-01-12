@@ -166,11 +166,11 @@
 
   "emptyCartTitle": "आपकी कार्ट खाली है",
   "emptyCartSubtitle": "ऐसा लगता है कि आपने अभी तक अपनी कार्ट में कुछ भी नहीं जोड़ा है। चलिए कुछ ऐसा ढूंढते हैं जो आपको पसंद आए!",
-  "continueShopping": "खरीदारी जारी रखें",
-
-
-  "addtocard" :"कार्ट में जोड़ें",
-  "processtocheckout" :"चेकआउट के लिए आगे बढ़ें",
+  "continueShopping": "खरीदारी शुरू करें",
+  "applied": "लागू किया गया",
+  "invalid": "अमान्य",
+  "addtocard": "कार्ट में जोड़ें",
+  "processtocheckout": "चेकआउट के लिए आगे बढ़ें",
   "mycart" : "मेरी कार्ट",
   "subtotal" : "उप-योग",
   "shipping" : "शिपिंग",

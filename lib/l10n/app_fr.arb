@@ -416,5 +416,7 @@
   "free": "Gratuit",
   "totalAmount": "Montant total",
   "sizeLabel": "Taille: ",
-  "changeOrderStatus": "Changer le statut de la commande"
+  "changeOrderStatus": "Changer le statut de la commande",
+  "applied": "Appliqué",
+  "invalid": "Invalide"
 }

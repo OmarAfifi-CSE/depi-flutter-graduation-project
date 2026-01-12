@@ -166,14 +166,15 @@
 
   "emptyCartTitle": "您的购物车是空的",
   "emptyCartSubtitle": "看来您还没有添加任何商品到购物车。去挑点您喜欢的东西吧！",
-  "continueShopping": "继续购物",
-
-
-  "addtocard" :"加入购物车",
-  "processtocheckout" :"去结算",
-  "mycart" : "我的购物车",
-  "subtotal" : "小计",
-  "shipping" : "运费",
+  "continueShopping": "开始购物",
+  "applied": "已应用",
+  "invalid": "无效",
+  "promoplaceholder": "输入优惠码",
+  "addtocard": "加入购物车",
+  "processtocheckout": "去结算",
+  "mycart": "我的购物车",
+  "subtotal": "小计",
+  "shipping": "运费",
   "total" : "总计",
   "items" : "件商品",
   "review":"评价",
@@ -385,6 +386,9 @@
   "discount": "折扣",
   "promoCode": "优惠码",
   "apply": "应用",
+  "cartItemRemovedMsg": "抱歉，此选项刚刚售罄，已从您的购物车中移除",
+  "wishlistItemRemovedMsg": "抱歉，该产品已不再可用，已从您的心愿单中移除",
+  "outOfStock": "缺货",
 
   "paymentMethod": "支付方式",
   "payOnDelivery": "货到付款",

@@ -385,6 +385,9 @@
   "discount": "İndirim",
   "promoCode": "Promosyon Kodu",
   "apply": "Uygula",
+  "cartItemRemovedMsg": "Üzgünüz, bu seçenek tükendi ve sepetinizden kaldırıldı",
+  "wishlistItemRemovedMsg": "Üzgünüz, bu ürün artık mevcut değil ve istek listenizden kaldırıldı",
+  "outOfStock": "Stokta Yok",
 
   "paymentMethod": "Ödeme Yöntemi",
   "payOnDelivery": "Kapıda Ödeme",
@@ -412,5 +415,7 @@
   "free": "Ücretsiz",
   "totalAmount": "Toplam Tutar",
   "sizeLabel": "Beden: ",
-  "changeOrderStatus": "Sipariş Durumunu Değiştir"
+  "changeOrderStatus": "Sipariş Durumunu Değiştir",
+  "applied": "Uygulandı",
+  "invalid": "Geçersiz"
 }

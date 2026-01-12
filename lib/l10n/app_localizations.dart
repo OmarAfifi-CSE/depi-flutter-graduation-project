@@ -2090,6 +2090,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Change Order Status'**
   String get changeOrderStatus;
+
+  /// No description provided for @applied.
+  ///
+  /// In en, this message translates to:
+  /// **'Applied'**
+  String get applied;
+
+  /// No description provided for @invalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid'**
+  String get invalid;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

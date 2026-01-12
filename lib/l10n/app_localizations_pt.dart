@@ -926,13 +926,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get apply => 'Aplicar';
 
   @override
-  String get cartItemRemovedMsg => 'Sorry, this option just ran out and was removed from your cart';
+  String get cartItemRemovedMsg => 'Desculpe, esta opção acabou de esgotar e foi removida do seu carrinho';
 
   @override
-  String get wishlistItemRemovedMsg => 'Sorry, this product is no longer available and was removed from your wishlist';
+  String get wishlistItemRemovedMsg => 'Desculpe, este produto não está mais disponível e foi removido da sua lista de desejos';
 
   @override
-  String get outOfStock => 'Out of Stock';
+  String get outOfStock => 'Fora de estoque';
 
   @override
   String get paymentMethod => 'Método de pagamento';
@@ -1012,4 +1012,10 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get changeOrderStatus => 'Alterar status do pedido';
+
+  @override
+  String get applied => 'Aplicado';
+
+  @override
+  String get invalid => 'Inválido';
 }

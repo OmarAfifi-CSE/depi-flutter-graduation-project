@@ -1012,4 +1012,10 @@ class AppLocalizationsIt extends AppLocalizations {
 
   @override
   String get changeOrderStatus => 'Cambia stato ordine';
+
+  @override
+  String get applied => 'Applicato';
+
+  @override
+  String get invalid => 'Non valido';
 }

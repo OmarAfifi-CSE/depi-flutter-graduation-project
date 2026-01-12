@@ -15,7 +15,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hello => 'أهلاً';
 
   @override
-  String get welcome => 'Welcome';
+  String get welcome => 'مرحباً';
 
   @override
   String userName(Object name) {
@@ -101,7 +101,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPasswordTitle => 'تأكيد كلمة المرور';
 
   @override
-  String get emailEmptyTitle => 'Email Required';
+  String get emailEmptyTitle => 'البريد الإلكتروني مطلوب';
 
   @override
   String get emailEmptyDescription => 'من فضلك أدخل بريدك الإلكتروني';
@@ -338,7 +338,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emptyCartSubtitle => 'يبدو أنك لم تقم بإضافة أي شيء إلى عربة التسوق بعد. هيا نجد شيئًا ستحبه!';
 
   @override
-  String get continueShopping => 'متابعة التسوق';
+  String get continueShopping => 'ابدأ التسوق';
 
   @override
   String get addtocard => 'إضافة إلى السلة';
@@ -1012,4 +1012,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get changeOrderStatus => 'تغيير حالة الطلب';
+
+  @override
+  String get applied => 'مُطبق';
+
+  @override
+  String get invalid => 'غير صالح';
 }

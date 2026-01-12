@@ -20,16 +20,16 @@ import 'package:go_router/go_router.dart';
 
 import 'package:batrina/widgets/build_dynamic_image.dart';
 
-class CardItem extends StatefulWidget {
-  const CardItem({super.key, required this.cartModel});
+class CartItem extends StatefulWidget {
+  const CartItem({super.key, required this.cartModel});
 
   final CartModel cartModel;
 
   @override
-  State<CardItem> createState() => _CardItemState();
+  State<CartItem> createState() => _CartItemState();
 }
 
-class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
+class _CartItemState extends State<CartItem> with TickerProviderStateMixin {
   late AnimationController sizeAnimationController;
   late Animation<double> sizeAnimation;
   late AnimationController exitAnimationController;
@@ -74,7 +74,7 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
         exitAnimationController.reverse();
         CustomSnackBar.showSnackBar(
           context: context,
-          message: "error happened",
+          message: "Error happened",
           color: Colors.red,
         );
       }
@@ -240,7 +240,7 @@ class _CardItemState extends State<CardItem> with TickerProviderStateMixin {
           child: SlideTransition(
             position: slideOutAnimation,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.0.h, horizontal: 15.w),
+              padding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 15.w),
               child: SizedBox(
                 height: 100.h,
                 width: double.infinity,

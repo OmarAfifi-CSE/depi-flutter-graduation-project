@@ -15,6 +15,7 @@ class PromoCodeTextField extends StatefulWidget {
 class _PromoCodeTextFieldState extends State<PromoCodeTextField> {
   final TextEditingController textEditingController = TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -22,32 +23,53 @@ class _PromoCodeTextFieldState extends State<PromoCodeTextField> {
     final loc = AppLocalizations.of(context);
     return SizedBox(
       height: 50.h,
-      child: TextField(
-        style: TextStyle(
-          fontFamily: AppFonts.englishFontFamily,
-          color: theme.primaryColor,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.r),
+          boxShadow: [
+            BoxShadow(
+              color: theme.primaryColor.withValues(alpha: .15),
+              blurRadius: 10,
+              offset: Offset(0, 2.h),
+              spreadRadius: 1,
+            ),
+          ],
         ),
-        controller: textEditingController,
-        maxLines: null,
-        expands: true,
-        decoration: InputDecoration(
-          contentPadding: EdgeInsetsGeometry.symmetric(horizontal: 18.w),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(10.r),
+        child: TextField(
+          controller: textEditingController,
+          style: TextStyle(
+            fontFamily: AppFonts.englishFontFamily,
+            color: theme.primaryColor,
+            fontSize: 16.sp,
           ),
-          hintText: loc!.promoCode,
-          fillColor: appColors.dividerColor,
-          filled: true,
-          hintStyle: TextStyle(
-            fontFamily: AppFonts.mainFontName,
-            color: appColors.textField,
-          ),
-
-          suffixIconConstraints: BoxConstraints.loose(Size.fromWidth(100.w)),
-          suffixIcon: Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0.h, horizontal: 18.w),
-            child: ApplyButton(textEditingController: textEditingController),
+          cursorColor: theme.primaryColor,
+          decoration: InputDecoration(
+            contentPadding: EdgeInsetsGeometry.symmetric(horizontal: 18.w),
+            border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            hintText: loc!.promoCode,
+            hintStyle: TextStyle(
+              fontFamily: AppFonts.mainFontName,
+              color: appColors.textField,
+              fontSize: 16.sp,
+            ),
+            filled: true,
+            fillColor: appColors.textFieldFill,
+            suffixIconConstraints: BoxConstraints.loose(Size.fromWidth(160.w)),
+            suffixIcon: Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 18.w),
+              child: ApplyButton(textEditingController: textEditingController),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.r),
+              borderSide: BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(30.r),
+              borderSide: BorderSide(color: theme.primaryColor),
+            ),
           ),
         ),
       ),

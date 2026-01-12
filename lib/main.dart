@@ -69,7 +69,34 @@ class MyApp extends StatelessWidget {
                     context.read<AuthCubit>().loc = AppLocalizations.of(
                       context,
                     );
-                    return child!;
+                    return Stack(
+                      children: [
+                        ?child,
+                        Positioned(
+                          right: 0,
+                          bottom: 0,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (themeProvider.themeMode == ThemeMode.dark) {
+                                context.read<ThemeProvider>().setTheme(
+                                  ThemeMode.light,
+                                );
+                              } else {
+                                context.read<ThemeProvider>().setTheme(
+                                  ThemeMode.dark,
+                                );
+                              }
+                              if (localeProvider.locale.languageCode != "ar") {
+                                context.read<LocaleProvider>().setLocale("ar");
+                              } else {
+                                context.read<LocaleProvider>().setLocale("en");
+                              }
+                            },
+                            child: Text(AppLocalizations.of(context)!.test),
+                          ),
+                        ),
+                      ],
+                    );
                   },
                   supportedLocales: AppLocalizations.supportedLocales,
                   localizationsDelegates: const [

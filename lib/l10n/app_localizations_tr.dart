@@ -926,13 +926,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get apply => 'Uygula';
 
   @override
-  String get cartItemRemovedMsg => 'Sorry, this option just ran out and was removed from your cart';
+  String get cartItemRemovedMsg => 'Üzgünüz, bu seçenek tükendi ve sepetinizden kaldırıldı';
 
   @override
-  String get wishlistItemRemovedMsg => 'Sorry, this product is no longer available and was removed from your wishlist';
+  String get wishlistItemRemovedMsg => 'Üzgünüz, bu ürün artık mevcut değil ve istek listenizden kaldırıldı';
 
   @override
-  String get outOfStock => 'Out of Stock';
+  String get outOfStock => 'Stokta Yok';
 
   @override
   String get paymentMethod => 'Ödeme Yöntemi';
@@ -1012,4 +1012,10 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get changeOrderStatus => 'Sipariş Durumunu Değiştir';
+
+  @override
+  String get applied => 'Uygulandı';
+
+  @override
+  String get invalid => 'Geçersiz';
 }

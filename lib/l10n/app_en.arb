@@ -417,5 +417,7 @@
   "free": "Free",
   "totalAmount": "Total Amount",
   "sizeLabel": "Size: ",
-  "changeOrderStatus": "Change Order Status"
+  "changeOrderStatus": "Change Order Status",
+  "applied": "Applied",
+  "invalid": "Invalid"
 }

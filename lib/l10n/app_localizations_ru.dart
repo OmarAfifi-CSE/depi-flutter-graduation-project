@@ -926,13 +926,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get apply => 'Применить';
 
   @override
-  String get cartItemRemovedMsg => 'Sorry, this option just ran out and was removed from your cart';
+  String get cartItemRemovedMsg => 'К сожалению, этот вариант только что закончился и был удален из вашей корзины';
 
   @override
-  String get wishlistItemRemovedMsg => 'Sorry, this product is no longer available and was removed from your wishlist';
+  String get wishlistItemRemovedMsg => 'К сожалению, этот товар больше недоступен и был удален из вашего списка желаний';
 
   @override
-  String get outOfStock => 'Out of Stock';
+  String get outOfStock => 'Нет в наличии';
 
   @override
   String get paymentMethod => 'Способ оплаты';
@@ -1012,4 +1012,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get changeOrderStatus => 'Изменить статус заказа';
+
+  @override
+  String get applied => 'Применено';
+
+  @override
+  String get invalid => 'Недействительный';
 }

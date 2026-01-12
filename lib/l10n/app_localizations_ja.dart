@@ -338,7 +338,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get emptyCartSubtitle => 'まだカートに商品がないようです。お気に入りを見つけに行きましょう！';
 
   @override
-  String get continueShopping => '買い物を続ける';
+  String get continueShopping => '買い物を始める';
 
   @override
   String get addtocard => 'カートに追加';
@@ -1012,4 +1012,10 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get changeOrderStatus => '注文ステータスを変更';
+
+  @override
+  String get applied => '適用済み';
+
+  @override
+  String get invalid => '無効';
 }

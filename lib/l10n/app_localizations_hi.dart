@@ -338,7 +338,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get emptyCartSubtitle => 'ऐसा लगता है कि आपने अभी तक अपनी कार्ट में कुछ भी नहीं जोड़ा है। चलिए कुछ ऐसा ढूंढते हैं जो आपको पसंद आए!';
 
   @override
-  String get continueShopping => 'खरीदारी जारी रखें';
+  String get continueShopping => 'खरीदारी शुरू करें';
 
   @override
   String get addtocard => 'कार्ट में जोड़ें';
@@ -1012,4 +1012,10 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get changeOrderStatus => 'ऑर्डर स्थिति बदलें';
+
+  @override
+  String get applied => 'लागू किया गया';
+
+  @override
+  String get invalid => 'अमान्य';
 }

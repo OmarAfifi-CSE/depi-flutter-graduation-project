@@ -166,11 +166,11 @@
 
   "emptyCartTitle": "カートは空です",
   "emptyCartSubtitle": "まだカートに商品がないようです。お気に入りを見つけに行きましょう！",
-  "continueShopping": "買い物を続ける",
-
-
-  "addtocard" :"カートに追加",
-  "processtocheckout" :"レジに進む",
+  "continueShopping": "買い物を始める",
+  "applied": "適用済み",
+  "invalid": "無効",
+  "addtocard": "カートに追加",
+  "processtocheckout": "レジに進む",
   "mycart" : "マイカート",
   "subtotal" : "小計",
   "shipping" : "送料",

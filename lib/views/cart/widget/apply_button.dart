@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+enum ApplyButtonStatus { idle, loading, success, invalid, error }
+
 class ApplyButton extends StatefulWidget {
   const ApplyButton({super.key, required this.textEditingController});
 
@@ -17,126 +19,172 @@ class ApplyButton extends StatefulWidget {
 }
 
 class _ApplyButtonState extends State<ApplyButton> {
-  bool showResult = false;
-  int lastTextLength = 0;
+  bool _showResult = false;
+  String _lastText = "";
 
   @override
   void initState() {
-    widget.textEditingController.addListener(() {
-      if (lastTextLength != widget.textEditingController.text.length) {
-        context.read<CartPriceProvider>().setDiscount(dis: 0);
+    super.initState();
+    _lastText = widget.textEditingController.text;
+    widget.textEditingController.addListener(_onTextChanged);
+  }
 
+  @override
+  void dispose() {
+    widget.textEditingController.removeListener(_onTextChanged);
+    super.dispose();
+  }
+
+  void _onTextChanged() {
+    if (!mounted) return;
+    if (widget.textEditingController.text != _lastText) {
+      _lastText = widget.textEditingController.text;
+      if (_showResult) {
+        context.read<CartPriceProvider>().setDiscount(dis: 0);
         setState(() {
-          showResult = false;
+          _showResult = false;
         });
       }
-    });
-    super.initState();
+    }
+  }
+
+  ApplyButtonStatus _getStatus(CheckPromoCodeState state) {
+    if (state is CheckPromoCodeLoading) return ApplyButtonStatus.loading;
+
+    if (_showResult) {
+      if (state is CheckPromoCodeFailure) return ApplyButtonStatus.error;
+
+      if (state is CheckPromoCodeSuccess) {
+        final isValid =
+            state.promoCodeModel != null && state.promoCodeModel!.isValid;
+        return isValid ? ApplyButtonStatus.success : ApplyButtonStatus.invalid;
+      }
+    }
+
+    return ApplyButtonStatus.idle;
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final loc = AppLocalizations.of(context);
+    final loc = AppLocalizations.of(context)!;
+
     return BlocProvider(
       create: (context) => CheckPromoCodeCubit(),
-      child: BlocListener<CheckPromoCodeCubit, CheckPromoCodeState>(
+      child: BlocConsumer<CheckPromoCodeCubit, CheckPromoCodeState>(
         listener: (context, state) {
           if (state is CheckPromoCodeSuccess) {
-            CartPriceProvider cartPriceProvider = context
-                .read<CartPriceProvider>();
-
-            if (state.promoCodeModel != null) {
-              cartPriceProvider.setDiscount(
-                dis: state.promoCodeModel!.calculateDiscount(
-                  cartPriceProvider.subTotal,
-                ),
+            final provider = context.read<CartPriceProvider>();
+            if (state.promoCodeModel != null && state.promoCodeModel!.isValid) {
+              double discount = state.promoCodeModel!.calculateDiscount(
+                provider.subTotal,
               );
+              provider.setDiscount(dis: discount);
             } else {
-              cartPriceProvider.setDiscount(dis: 0);
+              provider.setDiscount(dis: 0);
             }
             setState(() {
-              showResult = true;
+              _showResult = true;
             });
           }
         },
-        child: BlocBuilder<CheckPromoCodeCubit, CheckPromoCodeState>(
-          builder: (context, state) {
-            return AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color:
-                    showResult &&
-                        state is CheckPromoCodeSuccess &&
-                        state.promoCodeModel != null
-                    ? Colors.green
-                    : showResult &&
-                          state is CheckPromoCodeSuccess &&
-                          state.promoCodeModel == null
-                    ? Colors.red
-                    : theme.primaryColor,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: GestureDetector(
-                onTap: state is! CheckPromoCodeLoading
-                    ? () {
-                        FocusManager.instance.primaryFocus?.unfocus();
+        builder: (context, state) {
+          final status = _getStatus(state);
+          Color backgroundColor;
+          Widget content;
+
+          switch (status) {
+            case ApplyButtonStatus.loading:
+              backgroundColor = theme.primaryColor;
+              content = CupertinoActivityIndicator(
+                color: theme.scaffoldBackgroundColor,
+              );
+              break;
+
+            case ApplyButtonStatus.success:
+              backgroundColor = Colors.green;
+              content = Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.check_circle, color: Colors.white, size: 18.sp),
+                  SizedBox(width: 5.w),
+                  CustomText(
+                    data: loc.applied,
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ],
+              );
+              break;
+
+            case ApplyButtonStatus.invalid:
+              backgroundColor = Colors.red;
+              content = Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.cancel, color: Colors.white, size: 18.sp),
+                  SizedBox(width: 5.w),
+                  CustomText(
+                    data: loc.invalid,
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ],
+              );
+              break;
+
+            case ApplyButtonStatus.error:
+              backgroundColor = Colors.redAccent;
+              content = Icon(Icons.wifi_off, color: Colors.white, size: 18.sp);
+              break;
+
+            case ApplyButtonStatus.idle:
+              backgroundColor = theme.primaryColor;
+              content = CustomText(
+                data: loc.apply,
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w700,
+                color: theme.scaffoldBackgroundColor,
+              );
+              break;
+          }
+
+          return AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            height: 45.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(30.r),
+            ),
+            child: GestureDetector(
+              onTap: status == ApplyButtonStatus.loading
+                  ? null
+                  : () {
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      if (widget.textEditingController.text.isNotEmpty) {
                         context.read<CheckPromoCodeCubit>().isDiscounted(
                           code: widget.textEditingController.text,
                         );
-                        lastTextLength =
-                            widget.textEditingController.text.length;
                       }
-                    : null,
-                child: state is CheckPromoCodeLoading
-                    ? CupertinoActivityIndicator(
-                        color: theme.scaffoldBackgroundColor,
-                      )
-                    : AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 300),
-                        child:
-                            showResult &&
-                                state is CheckPromoCodeSuccess &&
-                                state.promoCodeModel != null &&
-                                state.promoCodeModel!.isValid
-                            ? Row(
-                                key: const ValueKey('success'),
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.check_circle,
-                                    color: theme.scaffoldBackgroundColor,
-                                    size: 18.sp,
-                                  ),
-                                ],
-                              )
-                            : showResult &&
-                                  state is CheckPromoCodeSuccess &&
-                                  state.promoCodeModel == null
-                            ? Row(
-                                key: const ValueKey('error'),
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.error,
-                                    color: theme.scaffoldBackgroundColor,
-                                    size: 18.sp,
-                                  ),
-                                ],
-                              )
-                            : CustomText(
-                                key: const ValueKey('normal'),
-                                data: loc!.apply,
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w700,
-                                color: theme.scaffoldBackgroundColor,
-                              ),
-                      ),
+                    },
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 500),
+                transitionBuilder: (child, anim) =>
+                    FadeTransition(opacity: anim, child: child),
+                child: KeyedSubtree(
+                  key: ValueKey<ApplyButtonStatus>(status),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: content,
+                  ),
+                ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

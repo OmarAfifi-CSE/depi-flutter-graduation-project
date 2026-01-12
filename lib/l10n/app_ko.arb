@@ -166,11 +166,11 @@
 
   "emptyCartTitle": "장바구니가 비어있습니다",
   "emptyCartSubtitle": "아직 장바구니에 담은 상품이 없는 것 같네요. 마음에 드는 상품을 찾아보세요!",
-  "continueShopping": "쇼핑 계속하기",
-
-
-  "addtocard" :"장바구니에 담기",
-  "processtocheckout" :"결제 진행하기",
+  "continueShopping": "쇼핑 시작",
+  "applied": "적용됨",
+  "invalid": "유효하지 않음",
+  "addtocard": "장바구니에 담기",
+  "processtocheckout": "결제 진행하기",
   "mycart" : "내 장바구니",
   "subtotal" : "소계",
   "shipping" : "배송비",
