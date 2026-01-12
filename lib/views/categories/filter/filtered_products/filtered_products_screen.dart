@@ -42,7 +42,14 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
     final loc = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const CustomHeaderWidget(prefix: BackArrow()),
+        title: CustomHeaderWidget(
+          prefix: const BackArrow(),
+          center: CustomText(
+            data: loc!.filteredProducts,
+            fontSize: 22.sp,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         leading: const SizedBox(),
         leadingWidth: 0,
       ),
@@ -66,12 +73,6 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomText(
-                        data: loc!.filteredProducts,
-                        fontSize: 22.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                      SizedBox(height: 18.h),
                       GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
@@ -94,6 +95,8 @@ class _FilteredProductsScreenState extends State<FilteredProductsScreen> {
                             },
                             child: ProductCardWidget(
                               price: product.price,
+                              finalPrice: product.finalPrice,
+                              discountPercentage: product.discountPercentage,
                               name: product.name,
                               subtitle: product.subtitle,
                               img: product.thumbnail,

@@ -52,6 +52,8 @@ class ProductGridView extends StatelessWidget {
                   },
                   child: ProductCardWidget(
                     price: product.price,
+                    finalPrice: product.finalPrice,
+                    discountPercentage: product.discountPercentage,
                     name: product.name,
                     subtitle: product.subtitle,
                     img: product.thumbnail,
