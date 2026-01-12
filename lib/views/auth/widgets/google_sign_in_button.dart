@@ -1,8 +1,8 @@
 import 'package:batrina/controllers/cubit/auth/auth_cubit/auth_cubit.dart';
+import 'package:batrina/controllers/provider/deep_link_provider.dart';
 import 'package:batrina/l10n/app_localizations.dart';
+import 'package:batrina/routing/app_routes.dart';
 import 'package:batrina/styling/app_assets.dart';
-import 'package:batrina/styling/app_fonts.dart';
-import 'package:batrina/widgets/custom_elevated_button.dart';
 import 'package:batrina/widgets/custom_snack_bar.dart';
 import 'package:batrina/widgets/custom_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -36,6 +36,19 @@ class GoogleSignInButton extends StatelessWidget {
                 message: loc!.signin_success,
                 color: Colors.green,
               );
+              final deepLinkProvider = context.read<DeepLinkProvider>();
+              final deepLink = deepLinkProvider.consumeDeepLink();
+              if (deepLink != null) {
+                if (context.mounted) context.go(AppRoutes.wrapperScreen);
+                if (context.mounted) {
+                  context.pushNamed(
+                    AppRoutes.productScreen,
+                    pathParameters: {'productId': deepLink},
+                  );
+                }
+              } else {
+                if (context.mounted) context.go(AppRoutes.wrapperScreen);
+              }
             } else if (state is AuthGoogleLoading) {
               showDialog(
                 barrierDismissible: false,
